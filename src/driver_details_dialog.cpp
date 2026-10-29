@@ -3,6 +3,10 @@
 #include "searchable_language_combo.h"
 #include "vector_icons.h"
 #include "theme.h"
+#include "ui_font.h"
+#include <QTabBar>
+#include <QCursor>
+#include <QResizeEvent>
 #include <QVBoxLayout>
 #include <QHBoxLayout>
 #include <QGridLayout>
@@ -21,6 +25,16 @@
 #include <QApplication>
 #include <QDesktopWidget>
 #include <QtMath>
+
+class EqualTabBar : public QTabBar {
+public:explicit EqualTabBar(QWidget *parent):QTabBar(parent){QFont face=QApplication::font();face.setFamily(UiFont::family());face.setWeight(QFont::DemiBold);setFont(face);setDrawBase(false);}
+protected:void paintEvent(QPaintEvent*) Q_DECL_OVERRIDE {QPainter p(this);p.setRenderHint(QPainter::Antialiasing);const bool dark=Theme::isDark(this),rtl=layoutDirection()==Qt::RightToLeft;for(int i=0;i<count();++i){const QRect area=tabRect(i).adjusted(4,1,-4,-8);const bool chosen=i==currentIndex(),hovered=underMouse() && tabAt(mapFromGlobal(QCursor::pos()))==i;QColor fill=Theme::color(chosen || hovered?"elevated":"surface",dark);p.setPen(QPen(chosen?Theme::color("link",dark):Theme::color("border",dark),1));p.setBrush(fill);p.drawRoundedRect(area,11,11);QFont face=QApplication::font();face.setFamily(UiFont::family());face.setPointSizeF(10);face.setWeight(chosen?QFont::DemiBold:QFont::Normal);p.setFont(face);p.setPen(Theme::color("text",dark));const QString label=p.fontMetrics().elidedText(tabText(i),Qt::ElideRight,area.width()-42);const int total=p.fontMetrics().width(label)+28;const int left=area.center().x()-total/2;tabIcon(i).paint(&p,QRect(rtl?left+total-19:left,area.center().y()-9,19,19));p.drawText(QRect(rtl?left:left+28,area.top(),total-28,area.height()),Qt::AlignCenter,label);}}
+    QSize tabSizeHint(int index)const Q_DECL_OVERRIDE {QSize size=QTabBar::tabSizeHint(index);size.setWidth(qMax(1,width()/qMax(1,count())));return size;}
+};
+class FullWidthTabs : public QTabWidget {
+public:explicit FullWidthTabs(QWidget *parent):QTabWidget(parent){setTabBar(new EqualTabBar(this));tabBar()->setExpanding(true);tabBar()->setUsesScrollButtons(false);setIconSize(QSize(19,19));}
+protected:void resizeEvent(QResizeEvent *event) Q_DECL_OVERRIDE {QTabWidget::resizeEvent(event);tabBar()->setFixedWidth(width());}
+};
 
 class ComparisonCard : public SurfaceCard {
 public:ComparisonCard(const QColor &accent,QWidget *parent):SurfaceCard(parent),m_accent(accent){setSizePolicy(QSizePolicy::Preferred,QSizePolicy::Maximum);}
@@ -43,7 +57,7 @@ private:int m_stars;
 static QLabel *addText(const QString &text,const char *name,QWidget *parent)
 {
     QLabel *v=new QLabel(text,parent);
-    v->setObjectName(QString::fromLatin1(name));
+    v->setObjectName(QString::fromLatin1(name));QFont face=QApplication::font();face.setFamily(UiFont::family());face.setWeight(QFont::Normal);v->setFont(face);
     v->setWordWrap(true);
     v->setTextInteractionFlags(Qt::TextSelectableByMouse);
     return v;
@@ -72,7 +86,7 @@ static QFrame *candidatePanel(const DriverCandidate &d,bool demo,bool verified,Q
            (d.status==QStringLiteral("recommended")?(demo?tr("RECOMMENDED - DEMO","موصى به — توضيحي"):tr("RECOMMENDED DRIVER","التعريف الموصى به")):(demo?tr("ALTERNATIVE - DEMO","بديل — توضيحي"):tr("AVAILABLE DRIVER","تعريف متاح")));
     QHBoxLayout *title=new QHBoxLayout;QLabel *symbol=new QLabel(card);symbol->setPixmap(VectorIcons::pixmap(installed?QStringLiteral("monitor"):QStringLiteral("shield"),accent,23));title->addWidget(symbol);
     const QColor headingInk=Theme::isDark(parent)?accent.lighter(135):accent.darker(140);
-    QLabel *caption=addText(heading,"detailHeading",card);caption->setStyleSheet(QStringLiteral("color:%1;background:transparent;font-size:11px;font-weight:700;").arg(headingInk.name()));title->addWidget(caption,1);box->addLayout(title);
+    QLabel *caption=addText(heading,"detailHeading",card);caption->setStyleSheet(QStringLiteral("color:%1;background:transparent;font-size:13px;font-weight:600;").arg(headingInk.name()));title->addWidget(caption,1);box->addLayout(title);
     QLabel *version=addText(d.version.isEmpty()?QStringLiteral("—"):d.version,"detailVersion",card);version->setProperty("keepLtr",true);version->setProperty("skipTranslation",true);version->setLayoutDirection(Qt::LeftToRight);version->setAlignment(Qt::AlignAbsolute|(UiLanguage::isRtl()?Qt::AlignRight:Qt::AlignLeft));box->addWidget(version);
     if(!technical){if(!installed && d.engineToken && d.matchStars){QHBoxLayout *rating=new QHBoxLayout;rating->addWidget(new MatchStars(d.matchStars,card));rating->addStretch();box->addLayout(rating);}else box->addSpacing(22);}
     QGridLayout *fields=new QGridLayout();
@@ -148,7 +162,7 @@ DriverDetailsDialog::DriverDetailsDialog(const DriverEntry &entry,bool demo,bool
     picker->setEnabled(picker->count()>0);
     if(!picker->count())picker->addItem(arabic?QString::fromUtf8("لا توجد إصدارات متاحة"):QStringLiteral("No available candidates"),-1);
     pickerRow->addWidget(picker,1);content->addWidget(pickerSurface);
-    QTabWidget *tabs=new QTabWidget(body);tabs->setObjectName(QStringLiteral("comparisonTabs"));
+    QTabWidget *tabs=new FullWidthTabs(body);tabs->setObjectName(QStringLiteral("comparisonTabs"));
     auto page=[tabs](const QString &title)->QWidget*{
         QScrollArea *scroll=new QScrollArea(tabs);scroll->setObjectName(QStringLiteral("dialogScroll"));
         scroll->viewport()->setObjectName(QStringLiteral("comparisonViewport"));
@@ -166,10 +180,11 @@ DriverDetailsDialog::DriverDetailsDialog(const DriverEntry &entry,bool demo,bool
     QVBoxLayout *hw=new QVBoxLayout(hardware);hw->setContentsMargins(0,12,0,0);hw->setSpacing(13);
     const QStringList hardwareTitles=QStringList()<<UiLanguage::text(QStringLiteral("Device instance ID"),QString::fromUtf8("معرّف مثيل الجهاز"))<<UiLanguage::text(QStringLiteral("Hardware ID"),QString::fromUtf8("معرّف الجهاز"))<<UiLanguage::text(QStringLiteral("Windows PnP problem"),QString::fromUtf8("حالة الجهاز في ويندوز"));
     const QStringList hardwareValues=QStringList()<<entry.device.instanceId<<entry.device.hardwareId<<(entry.device.hasProblem?UiLanguage::text(QStringLiteral("Code %1"),QString::fromUtf8("رمز %1")).arg(entry.device.problemCode):UiLanguage::text(QStringLiteral("None reported"),QString::fromUtf8("لا توجد مشكلات مسجّلة")));
-    for(int i=0;i<3;++i){const QColor tone=i==0?QColor("#469DCD"):i==1?QColor("#9C88D1"):entry.device.hasProblem?QColor("#D7A14C"):QColor("#23B9A6");QFrame *card=new ComparisonCard(tone,hardware);card->setObjectName(QStringLiteral("hardwareIdentityCard"));QVBoxLayout *stack=new QVBoxLayout(card);stack->setContentsMargins(20,18,20,18);stack->setSpacing(11);QHBoxLayout *caption=new QHBoxLayout;QLabel *mark=new QLabel(card);mark->setPixmap(VectorIcons::pixmap(i==2?QStringLiteral("shield"):QStringLiteral("chip"),tone,23));caption->addWidget(mark);caption->addWidget(addText(hardwareTitles[i],"sectionTitle",card),1);stack->addLayout(caption);QLabel *value=addText(hardwareValues[i].isEmpty()?QStringLiteral("—"):hardwareValues[i],"bodyText",card);value->setObjectName(QStringLiteral("hardwareIdentityValue"));value->setStyleSheet(QStringLiteral("background:transparent;color:%1;font-size:14px;font-weight:500;").arg(Theme::color("text",Theme::isDark(hardware)).name()));value->setProperty("keepLtr",i<2);value->setProperty("skipTranslation",true);if(i<2)value->setLayoutDirection(Qt::LeftToRight);value->setAlignment(Qt::AlignAbsolute|(arabic?Qt::AlignRight:Qt::AlignLeft));stack->addWidget(value);hw->addWidget(card);}
+    for(int i=0;i<3;++i){const QColor tone=i==0?QColor("#469DCD"):i==1?QColor("#9C88D1"):entry.device.hasProblem?QColor("#D7A14C"):QColor("#23B9A6");QFrame *card=new ComparisonCard(tone,hardware);card->setObjectName(QStringLiteral("hardwareIdentityCard"));QVBoxLayout *stack=new QVBoxLayout(card);stack->setContentsMargins(20,18,20,18);stack->setSpacing(11);QHBoxLayout *caption=new QHBoxLayout;QLabel *mark=new QLabel(card);mark->setPixmap(VectorIcons::pixmap(i==2?QStringLiteral("shield"):QStringLiteral("chip"),tone,23));caption->addWidget(mark);caption->addWidget(addText(hardwareTitles[i],"sectionTitle",card),1);stack->addLayout(caption);QLabel *value=addText(hardwareValues[i].isEmpty()?QStringLiteral("—"):hardwareValues[i],"bodyText",card);value->setObjectName(QStringLiteral("hardwareIdentityValue"));value->setStyleSheet(QStringLiteral("background:transparent;color:%1;font-size:13px;font-weight:400;").arg(Theme::color("text",Theme::isDark(hardware)).name()));value->setProperty("keepLtr",i<2);value->setProperty("skipTranslation",true);if(i<2)value->setLayoutDirection(Qt::LeftToRight);value->setAlignment(Qt::AlignAbsolute|(arabic?Qt::AlignRight:Qt::AlignLeft));stack->addWidget(value);hw->addWidget(card);}
     hw->addStretch(1);
     QWidget *technical=page(arabic?QString::fromUtf8("بيانات المحرك"):QStringLiteral("Engine details"));
     QVBoxLayout *technicalBox=new QVBoxLayout(technical);technicalBox->setContentsMargins(0,12,0,0);
+    const char *tabIcons[]={"layers","chip","settings"};for(int i=0;i<3;++i)tabs->setTabIcon(i,VectorIcons::icon(QString::fromLatin1(tabIcons[i]),Theme::color("link",Theme::isDark(parent)),19));
     auto update=[entry,demo,arabic,candidateBox,candidateHost,technicalBox,technical,picker,installedCard](){
         while(QLayoutItem *item=candidateBox->takeAt(0)){delete item->widget();delete item;}
         while(QLayoutItem *item=technicalBox->takeAt(0)){delete item->widget();delete item;}

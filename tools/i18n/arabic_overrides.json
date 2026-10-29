@@ -106,7 +106,7 @@
   "[Bug] ": "[مشكلة] ",
   "Dark": "داكن",
   "Light": "فاتح",
-  "Version: 0.21.7 (Beta)\nWindows: %1\nArchitecture: %2\nLanguage: %3\nTheme: %4": "الإصدار: 0.21.7 (بيتا)\nويندوز: %1\nالمعمارية: %2\nاللغة: %3\nالمظهر: %4",
+  "Version: 0.21.8 (Beta)\nWindows: %1\nArchitecture: %2\nLanguage: %3\nTheme: %4": "الإصدار: 0.21.8 (بيتا)\nويندوز: %1\nالمعمارية: %2\nاللغة: %3\nالمظهر: %4",
   "Completed": "مكتمل",
   "Failed": "فشل",
   "Installed -": "مثبّت -",
@@ -118,5 +118,12 @@
   "04  Results": "04  النتائج",
   "04  Finalizing": "04  إنهاء العملية",
   "02  Validation & extraction": "02  التحقق والاستخراج",
-  "03  Installing drivers": "03  تثبيت التعريفات"
+  "03  Installing drivers": "03  تثبيت التعريفات",
+  "Reinstall": "إعادة تثبيت",
+  "Reinstalling": "جارٍ إعادة التثبيت",
+  "Reinstalled": "أُعيد تثبيته",
+  "Device / installed version": "الجهاز / الإصدار المثبّت",
+  "Actions": "الإجراءات",
+  "Reinstall requires a matching local driver package. Download or add that package, then scan again.": "إعادة التثبيت تتطلب حزمة تعريف محلية مطابقة. أضف الحزمة أو نزّلها، ثم أعد الفحص.",
+  "Priority": "أولوية المطابقة"
 }

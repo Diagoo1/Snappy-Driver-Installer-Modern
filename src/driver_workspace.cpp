@@ -1,4 +1,6 @@
 #include "ui_language.h"
+#include "ui_font.h"
+#include "theme.h"
 #include "appearance.h"
 #include "driver_workspace.h"
 #include "driver_catalog.h"
@@ -41,6 +43,13 @@
 #include <QKeyEvent>
 #include <functional>
 #include "driver_row_delegate.h"
+
+class DriverHeader : public QHeaderView {
+public:explicit DriverHeader(QWidget *parent):QHeaderView(Qt::Horizontal,parent){setMinimumHeight(48);setMaximumHeight(48);}
+protected:void paintSection(QPainter *p,const QRect &rect,int section)const Q_DECL_OVERRIDE {
+    if(!rect.isValid())return;const bool dark=Theme::isDark(this),rtl=layoutDirection()==Qt::RightToLeft;const QColor link=Theme::color("link",dark);const QRect area=rect.adjusted(3,4,-3,-4);p->save();p->setRenderHint(QPainter::Antialiasing);p->setPen(Qt::NoPen);p->setBrush(Theme::color("elevated",dark));p->drawRoundedRect(area,9,9);QFont face=font();face.setFamily(UiFont::family());face.setPointSizeF(9);face.setWeight(QFont::DemiBold);p->setFont(face);p->setPen(Theme::color("text",dark));const char *symbols[]={"monitor","shield","layers","check-circle"};QRect textArea=area.adjusted(rtl?8:34,0,rtl?-34:-8,0);VectorIcons::icon(QString::fromLatin1(symbols[section%4]),link,17).paint(p,QRect(rtl?area.right()-25:area.left()+9,area.center().y()-8,17,17));p->drawText(textArea,Qt::AlignAbsolute|(rtl?Qt::AlignRight:Qt::AlignLeft)|Qt::AlignVCenter,QFontMetrics(face).elidedText(model()->headerData(section,Qt::Horizontal).toString(),Qt::ElideRight,textArea.width()));p->restore();
+}
+};
 
 // Populate before QTreeView measures the opening animation, including branch clicks.
 class DriverTree : public QTreeWidget {
@@ -275,9 +284,9 @@ DriverWorkspace::DriverWorkspace(DriverCatalog *catalog,QWidget *parent)
     tree->actions=[this](QTreeWidgetItem *item,const QPoint &point){showActions(item,point);};
     m_tree->setObjectName(QStringLiteral("driverTree"));
     m_tree->setMouseTracking(true);m_tree->setProperty("hoverRow",-1);
-    m_tree->setColumnCount(4);
-    m_tree->setHeaderLabels(QStringList()<<QStringLiteral("DEVICE / INSTALLED VERSION")
-                                          <<QStringLiteral("STATUS")<<QStringLiteral("MATCH PRIORITY")<<QStringLiteral("SELECT / INFO"));
+    m_tree->setColumnCount(4);m_tree->setHeader(new DriverHeader(m_tree));
+    m_tree->setHeaderLabels(QStringList()<<QStringLiteral("Device / installed version")
+                                          <<QStringLiteral("Status")<<QStringLiteral("Priority")<<QStringLiteral("Actions"));
     m_tree->setRootIsDecorated(true);
     m_tree->setIndentation(21);
     m_tree->setAlternatingRowColors(false);
@@ -291,7 +300,7 @@ DriverWorkspace::DriverWorkspace(DriverCatalog *catalog,QWidget *parent)
     m_tree->setExpandsOnDoubleClick(false);
     m_tree->header()->setStretchLastSection(false);
     for(int column=1;column<4;++column)m_tree->headerItem()->setTextAlignment(column,Qt::AlignCenter);
-    m_tree->header()->setHighlightSections(false);
+    m_tree->header()->setHighlightSections(false);m_tree->headerItem()->setToolTip(2,UiLanguage::text(QStringLiteral("Match priority")));
     m_tree->setItemDelegate(new DriverRowDelegate(m_tree));
     m_tree->header()->setSectionResizeMode(0,QHeaderView::Stretch);
     m_tree->header()->setSectionResizeMode(1,QHeaderView::Fixed);
@@ -471,6 +480,7 @@ void DriverWorkspace::rebuild()
         root->setText(3,UiLanguage::text(d.checked?QStringLiteral("Selected"):QStringLiteral("Select")));
         if (m_catalog->canQueue(row)) root->setCheckState(3,d.checked?Qt::Checked:Qt::Unchecked);
         else root->setText(3,UiLanguage::text(QStringLiteral("Details")));
+        root->setData(3,Qt::UserRole+12,!m_catalog->canQueue(row));
         const QColor subdued=m_dark?QColor("#A8C1CD"):QColor("#738897");
         root->setForeground(2,subdued);
         root->setForeground(1,d.device.hasProblem?QColor("#C68B42"):(m_demo?QColor("#08A695"):subdued));
@@ -505,6 +515,7 @@ void DriverWorkspace::populateCandidates(QTreeWidgetItem *root)
     const QColor subdued=m_dark?QColor("#A8C1CD"):QColor("#738897");
     for(int c=0;c<d.candidates.size();++c) {
         const DriverCandidate &candidate=d.candidates.at(c);
+                if(c>0 && c==reinstallCandidateIndex(d))continue;
                 if(m_catalog->native() && c>0 && !matchesCandidate(candidate))continue;
                 if(m_catalog->native() && c==0 && !d.sdioDriverPresent)continue;
                 if (c==0 && !m_showInstalled->isChecked()) continue;
@@ -517,7 +528,7 @@ void DriverWorkspace::populateCandidates(QTreeWidgetItem *root)
                 child->setData(0,Qt::UserRole,row);
                 child->setData(0,Qt::UserRole+1,c);
                 child->setText(0,candidate.version+QStringLiteral("  /  ")+candidate.date);
-                child->setData(0,Qt::UserRole+2,c==0?!d.checked:(d.checked && c==d.chosenCandidate));
+                child->setData(0,Qt::UserRole+2,c==0?(d.checked && d.chosenCandidate==reinstallCandidateIndex(d)):(d.checked && c==d.chosenCandidate));
                 child->setData(0,Qt::UserRole+3,candidate.hardwareId);
                 const QString status=driverStatus(d,c);QString translated=status;
                 if(m_arabic){if(status==QStringLiteral("Installed"))translated=QString::fromUtf8("مثبّت");else if(status==QStringLiteral("Missing"))translated=QString::fromUtf8("مفقود");else if(status==QStringLiteral("Upgrade"))translated=QString::fromUtf8("ترقية");else if(status==QStringLiteral("Downgrade"))translated=QString::fromUtf8("إصدار أقدم");else if(status==QStringLiteral("Invalid"))translated=QString::fromUtf8("غير صالح");}
@@ -525,11 +536,12 @@ void DriverWorkspace::populateCandidates(QTreeWidgetItem *root)
                 child->setText(2,m_demo?QStringLiteral("DEMO priority"):
                     (c==0?QStringLiteral("Installed"):(candidate.matchStars?QStringLiteral("Origin #%1").arg(candidate.originalOrder):QStringLiteral("Ineligible"))));
                 child->setData(2,Qt::UserRole+2,candidate.matchStars);
-                child->setText(3,UiLanguage::text(c==0?QStringLiteral("Installed"):
+                child->setText(3,UiLanguage::text(c==0?(d.checked && isReinstallCandidate(d,d.chosenCandidate)?QStringLiteral("Selected"):reinstallCandidateIndex(d)>0?QStringLiteral("Reinstall"):QStringLiteral("Installed")):
                     (!m_demo && !candidate.valid?QStringLiteral("Ineligible"):
                      (!m_demo && !candidate.local?QStringLiteral("Package missing"):
                       (!m_demo && !m_catalog->nativeInstallEnabled()?QStringLiteral("Read only"):
                        (c==d.chosenCandidate && d.checked?QStringLiteral("Selected"):QStringLiteral("Choose")))))));
+                child->setData(3,Qt::UserRole+12,m_catalog->canQueue(row) && (c==0?reinstallCandidateIndex(d)>0:(m_demo || (candidate.valid && candidate.local))));
                 child->setToolTip(2,candidate.matchReason);
                 child->setForeground(1,candidate.status==QStringLiteral("recommended")?QColor("#2BAE6B"):subdued);
                 child->setForeground(2,candidate.matchStars?QColor("#D49B38"):subdued);
@@ -553,7 +565,9 @@ void DriverWorkspace::handleClick(QTreeWidgetItem *item,int column)
     if (!item || m_rebuilding || m_busy) return;
     const int row=rowOf(item);
     const int candidate=item->data(0,Qt::UserRole+1).toInt();
-    if(candidate==0 && item->parent()){m_catalog->setSelected(row,false);}
+    if(candidate==0 && item->parent() && m_catalog->canQueue(row)){
+        if(!m_catalog->chooseCandidate(row,0))projectMessage(this,UiLanguage::text(QStringLiteral("Reinstall"),QString::fromUtf8("إعادة تثبيت")),UiLanguage::text(QStringLiteral("Reinstall requires a matching local driver package. Download or add that package, then scan again."),QString::fromUtf8("إعادة التثبيت تتطلب حزمة تعريف محلية مطابقة. أضف الحزمة أو نزّلها، ثم أعد الفحص.")),false,m_arabic);
+    }
     else if(candidate>0 && m_catalog->canQueue(row)){
         m_catalog->chooseCandidate(row,candidate);
     }else if (candidate<0 && column==0){
@@ -690,7 +704,7 @@ void DriverWorkspace::setArabic(bool arabic)
     m_moreLabel->setText(arabic?QString::fromUtf8("إظهار معلومات إضافية"):QStringLiteral("View additional information"));
     m_search->setPlaceholderText(arabic?QString::fromUtf8("ابحث عن جهاز..."):QStringLiteral("Search devices..."));
     m_tree->setHeaderLabels(arabic?QStringList()<<QString::fromUtf8("الجهاز / التعريف المثبّت")<<QString::fromUtf8("الحالة")<<QString::fromUtf8("أولوية المطابقة")<<QString::fromUtf8("التحديد / التفاصيل"):
-                             QStringList()<<QStringLiteral("DEVICE / INSTALLED VERSION")<<QStringLiteral("STATUS")<<QStringLiteral("MATCH PRIORITY")<<QStringLiteral("SELECT / INFO"));
+                             QStringList()<<QStringLiteral("Device / installed version")<<QStringLiteral("Status")<<QStringLiteral("Priority")<<QStringLiteral("Actions"));
     rebuild();
     m_tree->doItemsLayout();adjustColumns();m_tree->viewport()->update();
     updateCount();

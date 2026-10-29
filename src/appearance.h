@@ -7,7 +7,15 @@
 #include <QPushButton>
 #include <QPainterPath>
 #include <QMenu>
+#include <QProgressBar>
+#include <QTimer>
 #include <QPropertyAnimation>
+
+class RoundedActivityBar : public QProgressBar {
+public:explicit RoundedActivityBar(QWidget *parent=0);
+protected:void paintEvent(QPaintEvent*) Q_DECL_OVERRIDE;void showEvent(QShowEvent*) Q_DECL_OVERRIDE;void hideEvent(QHideEvent*) Q_DECL_OVERRIDE;
+private:QTimer m_tick;int m_phase;
+};
 
 class TitleButton : public QToolButton {
     Q_OBJECT

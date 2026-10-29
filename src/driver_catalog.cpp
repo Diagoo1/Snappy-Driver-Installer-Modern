@@ -1,5 +1,6 @@
 #include "driver_catalog.h"
 #include <QMap>
+#include "ui_language.h"
 
 // Presentation only: five equal priority bands over the unfiltered valid Origin order.
 // The matcher, recommendation, eligibility and install plan are never changed.
@@ -16,8 +17,18 @@ int matchPriorityStars(const DriverEntry &entry,int candidateIndex){
 }
 
 DriverCatalog::DriverCatalog(QObject *parent) : QObject(parent), m_demo(false), m_native(false) {}
+bool isReinstallCandidate(const DriverEntry &entry,int index){
+    if(index<=0 || index>=entry.candidates.size() || !entry.sdioDriverPresent)return false;
+    const DriverCandidate &candidate=entry.candidates[index];
+    return candidate.valid && (candidate.statusBits&0x042u)==0x042u;
+}
+int reinstallCandidateIndex(const DriverEntry &entry){
+    for(int i=1;i<entry.candidates.size();++i)if(isReinstallCandidate(entry,i) && entry.candidates[i].local)return i;
+    return -1;
+}
+int DriverCatalog::selectedReinstalls()const{int count=0;for(const DriverEntry &entry:m_entries)if(entry.checked && isReinstallCandidate(entry,entry.chosenCandidate))++count;return count;}
 QString driverStatus(const DriverEntry &entry,int candidateIndex){
-    if(candidateIndex==0)return QStringLiteral("Installed");
+    if(candidateIndex==0)return entry.checked && isReinstallCandidate(entry,entry.chosenCandidate)?QStringLiteral("Reinstall"):QStringLiteral("Installed");
     const bool installed=entry.sdioVerified?entry.sdioDriverPresent:!entry.device.driverVersion.isEmpty();
     if(!installed)return QStringLiteral("Missing");
     int index=candidateIndex>0?candidateIndex:entry.chosenCandidate;
@@ -27,6 +38,7 @@ QString driverStatus(const DriverEntry &entry,int candidateIndex){
     if(index>0 && index<entry.candidates.size()){
         const DriverCandidate &c=entry.candidates[index];
         if(!c.valid && entry.sdioVerified)return QStringLiteral("Invalid");
+        if(entry.checked && index==entry.chosenCandidate && isReinstallCandidate(entry,index))return QStringLiteral("Reinstall");
         if(c.statusBits&0x020)return QStringLiteral("Upgrade");
         if(c.statusBits&0x080)return QStringLiteral("Downgrade");
         if(!entry.sdioVerified && c.status==QStringLiteral("recommended"))return QStringLiteral("Upgrade");
@@ -111,6 +123,7 @@ bool DriverCatalog::chooseCandidate(int row, int candidateIndex)
 {
     if (!canQueue(row)) return false;
     DriverEntry &d=m_entries[row];
+    if(candidateIndex==0)candidateIndex=reinstallCandidateIndex(d);
     if (candidateIndex<=0 || candidateIndex>=d.candidates.size()) return false;
     if(m_native && (!d.candidates.at(candidateIndex).valid || !d.candidates.at(candidateIndex).local))return false;
     d.chosenCandidate=candidateIndex;
@@ -142,7 +155,7 @@ QStringList DriverCatalog::selectedNames() const
     for (int i=0;i<m_entries.size();++i) {
         const DriverEntry &d=m_entries.at(i);
         if (d.selectable && d.checked && d.chosenCandidate>0 && d.chosenCandidate<d.candidates.size())
-            names.append(d.device.name + QStringLiteral("  ·  ") + d.candidates.at(d.chosenCandidate).version);
+            names.append((isReinstallCandidate(d,d.chosenCandidate)?UiLanguage::text(QStringLiteral("Reinstall"),QString::fromUtf8("إعادة تثبيت"))+QStringLiteral(" · "):QString())+d.device.name + QStringLiteral("  ·  ") + d.candidates.at(d.chosenCandidate).version);
     }
     return names;
 }
@@ -230,7 +243,7 @@ void DriverCatalog::selectRows(const QVector<int> &rows,bool selected)
         if(selected && m_native){
             int recommended=-1;
             for(int c=1;c<entry.candidates.size();++c)
-                if(entry.candidates[c].recommended && entry.candidates[c].valid && entry.candidates[c].local){recommended=c;break;}
+                if(entry.candidates[c].recommended && entry.candidates[c].valid && entry.candidates[c].local && !isReinstallCandidate(entry,c)){recommended=c;break;}
             if(recommended<0)continue;
             if(entry.chosenCandidate!=recommended){entry.chosenCandidate=recommended;dirty=true;}
         }

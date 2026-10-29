@@ -1,10 +1,10 @@
 # Validation scope
 
-Current application version: **0.21.7 Beta**. Hardware/Windows compatibility testing is ongoing. This document separates verified behavior from implementation that still needs hardware/VM testing.
+Current application version: **0.21.8 Beta**. Hardware/Windows compatibility testing is ongoing. This document separates verified behavior from implementation that still needs hardware/VM testing.
 
 | Area | Evidence |
 | --- | --- |
-| Interface, menus, RTL and instances | 221 regression checks at 100% and 150%; English/Arabic and light/dark visual review |
+| Interface, menus, RTL and instances | 230 regression checks at 100% and 150%; English/Arabic and light/dark visual review |
 | Structural/source integration | 83 checks; critical original source fingerprints and reviewed patches |
 | Current native matching | Read-only scan: 222 devices and 572 candidates on the development host |
 | Original engine workflows | Repeated scan, snapshot save/load, target-system preview and extraction of six INF files |
@@ -33,3 +33,5 @@ Restore callback permissions follow the [Windows System Restore guidance](https:
 The final executable's `--gui-security-probe` returned `guiCom: 0` and `restoreCallbacks: 0`, with `installationRequested: false`. GUI startup initializes callback security before QApplication/Qt can establish COM defaults. This probe does not create a restore point or install a driver.
 
 0.21.7: 221 UI checks at 100%/150%, including equal About action widths/icons and selecting an alternative from its status cell. Gallery review covers the unified table card, expanded card shadows, bottom accents and rounded scrollbars. Windows 1058 means System Restore is disabled; the program preserves the requirement and offers System Protection or review of the explicit restore option. No Windows protection settings, restore creation or installation were changed during these checks.
+
+0.21.8: explicit reinstallation resolves the installed metadata row to an eligible, locally available same/current Origin candidate. The plan retains the native token and ordinary validation. Bulk selection skips reinstallation. Regression coverage checks the consent warning and simulated running/completed reinstall statuses; no real driver installation or restore creation was performed. Detail tabs fill the width and have vector icons, device values use regular body type, quiet actions have resting surfaces, and the update activity strip is directly painted with rounded caps.

@@ -31,12 +31,12 @@ public:explicit InstallationStatusDelegate(QObject *parent):QStyledItemDelegate(
     }
 };
 static void queueStatus(QTreeWidgetItem *row,const QString &text){
-    row->setText(1,text);row->setData(1,Qt::UserRole+4,text);const bool failed=text.startsWith(QStringLiteral("Failed"));const bool success=text==QStringLiteral("Installed") || text.startsWith(QStringLiteral("Installed -")) || text.startsWith(QStringLiteral("Completed"));
+    row->setText(1,text);row->setData(1,Qt::UserRole+4,text);const bool failed=text.startsWith(QStringLiteral("Failed"));const bool success=text==QStringLiteral("Reinstalled") || text==QStringLiteral("Installed") || text.startsWith(QStringLiteral("Installed -")) || text.startsWith(QStringLiteral("Completed"));
     const bool waiting=text==QStringLiteral("Pending") || text==QStringLiteral("Queued") || text==QStringLiteral("Not started") || text==QStringLiteral("Not installed");
     row->setData(1,Qt::UserRole+3,failed?3:success?2:waiting?0:1);
 }
 
-bool confirmDriverInstallation(QWidget *parent,const QStringList &drivers,bool restore,bool alternative,bool reboot,bool administrator,bool arabic){
+bool confirmDriverInstallation(QWidget *parent,const QStringList &drivers,bool restore,bool alternative,bool reboot,bool administrator,bool arabic,bool reinstall){
     auto t=[](const char *en,const char *ar){return UiLanguage::text(QString::fromUtf8(en),QString::fromUtf8(ar));};
     RoundedDialog dialog(parent);dialog.setObjectName(QStringLiteral("installationConsent"));dialog.setLayoutDirection(arabic?Qt::RightToLeft:Qt::LeftToRight);dialog.resize(620,520);
     QVBoxLayout *root=new QVBoxLayout(&dialog);root->setContentsMargins(0,0,0,18);root->addWidget(new DialogHeader(t("Confirm driver installation","تأكيد تثبيت التعريفات"),QStringLiteral("shield"),&dialog,arabic));
@@ -48,7 +48,7 @@ bool confirmDriverInstallation(QWidget *parent,const QStringList &drivers,bool r
     auto tag=[&](const QString &value){QLabel *label=new QLabel(value,&dialog);label->setWordWrap(true);label->setObjectName(QStringLiteral("installOptionTag"));tags->addWidget(label);};
     tag(t("Drivers: %1","التعريفات: %1").arg(drivers.size()));tag(restore?t("Restore point required","نقطة استعادة مطلوبة"):t("Restore point off","نقطة الاستعادة معطلة"));tag(reboot?t("Restart countdown enabled","عدّاد إعادة التشغيل مفعّل"):t("Manual restart","إعادة تشغيل يدوية"));body->addLayout(tags);
     QListWidget *list=new QListWidget(&dialog);list->setObjectName(QStringLiteral("installConsentList"));list->setSelectionMode(QAbstractItemView::NoSelection);list->addItems(drivers);for(int i=0;i<list->count();++i)list->item(i)->setSizeHint(QSize(0,48));body->addWidget(list,1);
-    const QString warning=alternative?t("Beta: alternative drivers selected. Review the versions carefully.","بيتا: تم اختيار تعريفات بديلة. راجع الإصدارات بعناية."):t("Beta: installing drivers changes Windows. Review your selection before continuing.","بيتا: تثبيت التعريفات يغيّر ويندوز. راجع اختياراتك قبل المتابعة.");
+    const QString warning=reinstall?t("Reinstallation selected: the matching local package will be installed again. Review the listed versions before continuing.","تم اختيار إعادة التثبيت: سيتم تثبيت الحزمة المحلية المطابقة من جديد. راجع الإصدارات قبل المتابعة."):alternative?t("Beta: alternative drivers selected. Review the versions carefully.","بيتا: تم اختيار تعريفات بديلة. راجع الإصدارات بعناية."):t("Beta: installing drivers changes Windows. Review your selection before continuing.","بيتا: تثبيت التعريفات يغيّر ويندوز. راجع اختياراتك قبل المتابعة.");
     QLabel *notice=new QLabel(warning+QLatin1Char(' ')+(restore?t("Restore-point failure stops the queue.","فشل نقطة الاستعادة يوقف التثبيت."):t("Installation will proceed without a restore point.","سيتم التثبيت دون إنشاء نقطة استعادة.")),&dialog);notice->setObjectName(QStringLiteral("installNotice"));notice->setWordWrap(true);body->addWidget(notice);
     QHBoxLayout *actions=new QHBoxLayout;actions->addStretch();ActionButton *cancel=new ActionButton(t("Cancel","إلغاء"),&dialog);cancel->setObjectName(QStringLiteral("installationCancel"));ActionButton *proceed=new ActionButton(administrator?t("Install selected drivers","تثبيت التعريفات المحددة"):t("Restart as administrator","إعادة الفتح كمسؤول"),&dialog);proceed->setObjectName(QStringLiteral("primaryButton"));actions->addWidget(cancel);actions->addWidget(proceed);body->addLayout(actions);root->addLayout(body,1);
     QObject::connect(cancel,&QPushButton::clicked,&dialog,&QDialog::reject);QObject::connect(proceed,&QPushButton::clicked,&dialog,&QDialog::accept);return dialog.exec()==QDialog::Accepted;
@@ -287,7 +287,7 @@ void InstallationWorkspace::beginNative(const QStringList &names,const QStringLi
     m_tip->setText(QStringLiteral("The current Windows driver operation is not interruptible. Stop cancels the remaining queue after the active driver returns."));
     for(int i=0;i<names.size();++i){
         QTreeWidgetItem *row=new QTreeWidgetItem(m_queue);row->setText(0,names.at(i));queueStatus(row,QStringLiteral("Pending"));
-        row->setData(0,Qt::UserRole,ids.at(i));row->setSizeHint(0,QSize(0,51));
+        row->setData(0,Qt::UserRole,ids.at(i));row->setData(0,Qt::UserRole+10,names.at(i).startsWith(UiLanguage::text(QStringLiteral("Reinstall"),QString::fromUtf8("إعادة تثبيت"))+QStringLiteral(" · ")));row->setSizeHint(0,QSize(0,51));
         row->setIcon(0,VectorIcons::icon(QStringLiteral("chip"),QColor("#16A9AD"),18));
     }
     m_stepRestore->setText(restore?QStringLiteral("01  Restore point"):QStringLiteral("01  Restore point (skipped)"));
@@ -319,7 +319,7 @@ void InstallationWorkspace::applyNativeEvent(const sdiomodern::Event &e)
     default:status=e.stage==sdiomodern::Stage::Extract?QStringLiteral("Extracting"):QStringLiteral("Working...");break;
     }
     for(int i=0;i<m_queue->topLevelItemCount();++i){QTreeWidgetItem *row=m_queue->topLevelItem(i);
-        if(!id.isEmpty() && row->data(0,Qt::UserRole).toString().compare(id,Qt::CaseInsensitive)==0){queueStatus(row,status);row->setToolTip(1,QString::fromStdWString(e.message));}}
+        if(!id.isEmpty() && row->data(0,Qt::UserRole).toString().compare(id,Qt::CaseInsensitive)==0){if(row->data(0,Qt::UserRole+10).toBool() && e.stage==sdiomodern::Stage::Install){if(e.outcome==sdiomodern::Outcome::Success)status=QStringLiteral("Reinstalled");else if(e.outcome==sdiomodern::Outcome::Running)status=QStringLiteral("Reinstalling");}queueStatus(row,status);row->setToolTip(1,QString::fromStdWString(e.message));}}
     m_summary->setText(QStringLiteral("%1 / %2 drivers processed").arg(static_cast<qulonglong>(e.done)).arg(static_cast<qulonglong>(e.total)));
 }
 void InstallationWorkspace::finishNative(const sdiomodern::InstallReport &report)
@@ -332,7 +332,7 @@ void InstallationWorkspace::finishNative(const sdiomodern::InstallReport &report
         else if(result.outcome==sdiomodern::Outcome::Failure){++failed;status=QStringLiteral("Failed (%1)").arg(result.nativeError);}
         else{++skipped;status=QStringLiteral("Not installed");}
         for(int j=0;j<m_queue->topLevelItemCount();++j){QTreeWidgetItem *row=m_queue->topLevelItem(j);
-            if(row->data(0,Qt::UserRole).toString().compare(QString::fromStdWString(result.deviceId),Qt::CaseInsensitive)==0){queueStatus(row,status);row->setToolTip(1,QString::fromStdWString(result.message));}}
+            if(row->data(0,Qt::UserRole).toString().compare(QString::fromStdWString(result.deviceId),Qt::CaseInsensitive)==0){if(row->data(0,Qt::UserRole+10).toBool() && result.outcome==sdiomodern::Outcome::Success)status=QStringLiteral("Reinstalled");queueStatus(row,status);row->setToolTip(1,QString::fromStdWString(result.message));}}
     }
     for(int j=0;j<m_queue->topLevelItemCount();++j){QTreeWidgetItem *row=m_queue->topLevelItem(j);
         if(row->data(1,Qt::UserRole+4).toString()==QStringLiteral("Pending")){queueStatus(row,QStringLiteral("Not started"));++skipped;}}

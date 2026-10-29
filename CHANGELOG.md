@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.21.8 Beta
+
+- Support explicit reinstallation from a matching local same/current Origin candidate, with operation-specific consent and queue labels. Never add reinstalls through bulk selection or install from metadata alone.
+- Give driver detail tabs equal full-width space and vector icons, align card typography and use regular-weight device identifiers.
+- Make quiet actions and table detail buttons visible before hover, with a clearer icon-led table header.
+- Add a direct GitHub releases action, explain the technician compatibility preview, and paint a rounded update activity indicator.
+- Balance the developer signature text with its two-beat heart.
+
 ## 0.21.7 Beta
 
 - Equalize the five About actions and show an icon with every label.

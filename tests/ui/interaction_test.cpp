@@ -29,6 +29,7 @@
 #include <QHeaderView>
 #include <QComboBox>
 #include <QTabWidget>
+#include <QTabBar>
 #include <QTreeWidget>
 #include <QCheckBox>
 #include <QMenu>
@@ -136,6 +137,7 @@ int main(int argc,char **argv){
         QTimer::singleShot(60,[](){for(QWidget *widget:QApplication::topLevelWidgets())if(widget->objectName()==QStringLiteral("bugReportDialog")){QPushButton *cancel=widget->findChild<QPushButton*>(QStringLiteral("bugReportCancel"));if(cancel)cancel->click();}});
         BugReport::show(0);check(true,"bug report preview can close without opening a browser or sending data");
         for(int elevated=0;elevated<2;++elevated){QTimer::singleShot(60,[](){for(QWidget *widget:QApplication::topLevelWidgets())if(widget->objectName()==QStringLiteral("installationConsent"))if(QPushButton *cancel=widget->findChild<QPushButton*>(QStringLiteral("installationCancel")))cancel->click();});check(!confirmDriverInstallation(0,QStringList()<<QStringLiteral("Example device · 1.2.3"),true,false,false,elevated==1,false),"installation and elevation previews can cancel without a Windows action");}
+        bool reinstallWarningVisible=false;QTimer::singleShot(60,[&](){for(QWidget *widget:QApplication::topLevelWidgets())if(widget->objectName()==QStringLiteral("installationConsent")){QLabel *notice=widget->findChild<QLabel*>(QStringLiteral("installNotice"));reinstallWarningVisible=notice && notice->text().contains(QStringLiteral("Reinstallation selected"));widget->findChild<QPushButton*>(QStringLiteral("installationCancel"))->click();}});confirmDriverInstallation(0,QStringList()<<QStringLiteral("Reinstall · Example"),false,false,false,true,false,true);check(reinstallWarningVisible,"reinstallation requires a visible operation-specific confirmation before execution");
         const QJsonObject copper=Theme::readPack(QDir(app.applicationDirPath()).filePath(QStringLiteral("../../themes/copper-night.sdi-theme.json")));Theme::setDocument(copper);check(Theme::document().value(QStringLiteral("id")).toString()==QStringLiteral("copper-night"),"community sample theme imports without style code");Theme::setDocument(QJsonObject());
         QJsonObject unreadable=copper,palette=copper.value(QStringLiteral("light")).toObject();palette.insert(QStringLiteral("text"),palette.value(QStringLiteral("surface")));unreadable.insert(QStringLiteral("light"),palette);bool rejectedTheme=false;try{Theme::validate(unreadable);}catch(const std::exception&){rejectedTheme=true;}check(rejectedTheme,"theme import rejects unreadable text contrast");
         check(AppUpdate::newer(QStringLiteral("v0.20.0"),QStringLiteral("0.19.0")) && !AppUpdate::newer(QStringLiteral("0.18.9"),QStringLiteral("0.19.0")),"application updater compares semantic versions numerically");
@@ -295,13 +297,13 @@ int main(int argc,char **argv){
         const QPoint dots(tree->header()->sectionViewportPosition(3)+tree->columnWidth(3)-16,tree->visualItemRect(root).center().y());
         QTest::mouseClick(tree->viewport(),Qt::LeftButton,Qt::NoModifier,dots);
         check(menuReady,"three-dot button opens per-driver actions");
-        check(menuHoverVisible,"project action menu shows its hover background behind clear text");
+        check(menuHoverVisible,"project action menu shows its hover background behind clear text");QTest::qWait(60);window.activateWindow();QApplication::setActiveWindow(&window);QTest::qWait(40);
         window.grab().save(QDir(app.applicationDirPath()).filePath(QStringLiteral("workspace.png")));
         const QList<QCheckBox*> checksList=workspace->findChildren<QCheckBox*>();QCheckBox *expert=0;
         for(QCheckBox *box:checksList)if(box->text()==QStringLiteral("Expert mode"))expert=box;
         check(expert!=0,"expert option exists");
         for(QToolButton *tool:workspace->findChildren<QToolButton*>())if(tool->text()==QStringLiteral("Match filters"))tool->click();
-        QTest::qWait(200);check(expert->isVisible(),"advanced view options are accessible inside filters");
+        QTest::qWait(200);if(!expert->isVisible()){window.activateWindow();QApplication::setActiveWindow(&window);QTest::qWait(60);for(QToolButton *tool:workspace->findChildren<QToolButton*>())if(tool->text()==QStringLiteral("Match filters"))tool->click();QTest::qWait(200);}check(expert->isVisible(),"advanced view options are accessible inside filters");
         QTest::mouseMove(expert,QPoint(expert->width()-4,expert->height()/2));QTest::qWait(220);
         HoverSurface *hover=expert->findChild<HoverSurface*>();check(!hover || hover->amount()==0,"checkbox text does not receive hover highlight");
         expert->window()->grab().save(QDir(app.applicationDirPath()).filePath(QStringLiteral("filters.png")));
@@ -316,6 +318,8 @@ int main(int argc,char **argv){
         const QImage detailImage=details.grab().toImage();detailImage.save(QDir(app.applicationDirPath()).filePath(QStringLiteral("details.png")));
         QComboBox *picker=details.findChild<QComboBox*>(QStringLiteral("candidatePicker"));
         check(picker && picker->count()==many.candidates.size()-1,"all alternative versions accessible in picker");
+        QTabWidget *fullTabs=details.findChild<QTabWidget*>();QTabBar *fullBar=details.findChild<QTabBar*>();check(fullBar && qAbs(fullBar->width()-fullTabs->width())<=2 && qAbs(fullBar->tabRect(0).united(fullBar->tabRect(2)).width()-fullBar->width())<=4 && !fullTabs->tabIcon(0).isNull() && !fullTabs->tabIcon(1).isNull() && !fullTabs->tabIcon(2).isNull(),"detail tabs fill the available width and all have vector icons");
+        QLabel *identityValue=details.findChild<QLabel*>(QStringLiteral("hardwareIdentityValue"));check(identityValue && identityValue->font().weight()==QFont::Normal,"device identity values use regular body type instead of heading weight");
         check(details.findChild<QTabWidget*>()->count()==3,"comparison separates overview, hardware, engine metadata");
         picker->setCurrentIndex(70);QTest::qWait(20);
         picker->showPopup();QTest::qWait(100);
@@ -350,6 +354,12 @@ int main(int argc,char **argv){
         sdiomodern::Device nativeDevice;nativeDevice.name=L"NATIVE MODEL TEST - NOT A REAL DEVICE";nativeDevice.instanceId=L"TEST-ID";nativeDevice.hasInstalledDriver=true;nativeDevice.installed.version=L"1.0";
         for(int i=1;i<=12;++i){sdiomodern::Candidate candidate;candidate.filterVisibility.assign(64,~std::uint64_t(0));candidate.token=i;candidate.originalOrder=i;candidate.valid=true;candidate.local=true;candidate.recommended=i==1;candidate.statusBits=0x20;candidate.rawScore=0xff2000+i;candidate.version=L"2.0";candidate.hardwareId=L"TEST-HARDWARE";candidate.packageName=L"DP_Test.7z";candidate.inf=L"fixture.inf";nativeDevice.candidates.push_back(candidate);}
         nativeFixture.devices.push_back(nativeDevice);DriverCatalog nativeCatalog;nativeCatalog.replaceNative(nativeFixture);
+        sdiomodern::Snapshot reinstallFixture=nativeFixture;reinstallFixture.devices[0].hardwareIds.push_back(L"TEST-HARDWARE");reinstallFixture.devices[0].candidates.resize(1);reinstallFixture.devices[0].candidates[0].statusBits=0x042;reinstallFixture.devices[0].candidates[0].version=L"1.0";DriverCatalog reinstallCatalog;reinstallCatalog.replaceNative(reinstallFixture);
+        reinstallCatalog.selectAll(true);check(reinstallCatalog.selectedDrivers()==0,"bulk selection never silently queues same-version reinstallation");
+        check(reinstallCatalog.chooseCandidate(0,0) && reinstallCatalog.selectedReinstalls()==1 && driverStatus(reinstallCatalog.entryRef(0))==QStringLiteral("Reinstall"),"installed row resolves to a matching local native reinstall candidate");
+        const auto reinstallPlan=reinstallCatalog.buildPlan(false,true,true);check(sdiomodern::validatePlan(reinstallFixture,reinstallPlan).size()==1 && reinstallPlan.selections[0].candidateToken==1,"reinstallation reaches the normal validated engine plan with the exact local token");
+        reinstallFixture.devices[0].candidates[0].local=false;reinstallCatalog.replaceNative(reinstallFixture);check(!reinstallCatalog.chooseCandidate(0,0),"installed metadata without its local archive cannot be reinstalled");
+        InstallationWorkspace reinstallPreview;reinstallPreview.beginNative(QStringList()<<QStringLiteral("Reinstall · TEST"),QStringList()<<QStringLiteral("REINSTALL-ID"),false);sdiomodern::Event reinstallEvent;reinstallEvent.stage=sdiomodern::Stage::Install;reinstallEvent.outcome=sdiomodern::Outcome::Running;reinstallEvent.deviceId=L"REINSTALL-ID";reinstallPreview.applyNativeEvent(reinstallEvent);QTreeWidget *reinstallQueue=reinstallPreview.findChild<QTreeWidget*>(QStringLiteral("installQueue"));check(reinstallQueue && reinstallQueue->topLevelItem(0)->text(1)==QStringLiteral("Reinstalling"),"active queue distinguishes reinstalling from first installation");sdiomodern::InstallReport reinstallReport;sdiomodern::Result reinstallResult;reinstallResult.deviceId=L"REINSTALL-ID";reinstallResult.outcome=sdiomodern::Outcome::Success;reinstallReport.items.push_back(reinstallResult);reinstallPreview.finishNative(reinstallReport);check(reinstallQueue->topLevelItem(0)->text(1)==QStringLiteral("Reinstalled"),"reinstall completion keeps its operation label");
         check(nativeCatalog.chooseCandidate(0,1),"automation fixture has one explicitly selected driver");
         const QJsonObject exportedPlan=automationPlan(nativeCatalog,false);
         const sdiomodern::InstallPlan resolvedPlan=resolveAutomationPlan(nativeFixture,exportedPlan,false);

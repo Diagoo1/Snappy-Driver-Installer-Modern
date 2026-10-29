@@ -27,7 +27,7 @@ struct DriverEntry
 {
     DeviceInfo device;
     QVector<DriverCandidate> candidates;
-    int chosenCandidate;        // -1 = none; do not queue the currently installed driver
+    int chosenCandidate;        // -1 = none; positive index always names a package candidate with a native token
     bool checked;
     bool selectable;           // true only when the active backend allows this candidate
     bool sdioVerified;         // metadata originates from the in-process Origin scan
@@ -37,6 +37,8 @@ struct DriverEntry
 };
 
 int matchPriorityStars(const DriverEntry &entry,int candidateIndex);
+bool isReinstallCandidate(const DriverEntry &entry,int candidateIndex);
+int reinstallCandidateIndex(const DriverEntry &entry);
 QString driverStatus(const DriverEntry &entry,int candidateIndex=-1);
 
 class DriverCatalog : public QObject
@@ -62,6 +64,7 @@ public:
     void selectRows(const QVector<int> &rows,bool selected);
     int sdioVerifiedCount() const;
     int selectedDrivers() const;
+    int selectedReinstalls() const;
     int problems() const;
     QStringList selectedNames() const;
     bool canQueue(int row) const;

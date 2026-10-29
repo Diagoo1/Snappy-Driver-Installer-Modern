@@ -19,6 +19,8 @@
 #include <QPushButton>
 #include <QEvent>
 #include <QShowEvent>
+#include <QHideEvent>
+#include <QShowEvent>
 #include <QEasingCurve>
 #include <QScrollArea>
 #include <QComboBox>
@@ -65,6 +67,11 @@ QPainterPath windowClip(QWidget *widget,qreal radius){
     QPainterPath path;path.addRoundedRect(QRectF(widget->window()->rect()).translated(-origin.x(),-origin.y()),
         widget->window()->isMaximized()?0:radius,widget->window()->isMaximized()?0:radius);return path;
 }
+RoundedActivityBar::RoundedActivityBar(QWidget *parent):QProgressBar(parent),m_tick(this),m_phase(0){setRange(0,0);setTextVisible(false);setFixedHeight(10);m_tick.setInterval(40);connect(&m_tick,&QTimer::timeout,this,[this](){m_phase=(m_phase+1)%55;update();});}
+void RoundedActivityBar::showEvent(QShowEvent *event){QProgressBar::showEvent(event);if(!qApp->property("reduceMotion").toBool())m_tick.start();}
+void RoundedActivityBar::hideEvent(QHideEvent *event){m_tick.stop();QProgressBar::hideEvent(event);}
+void RoundedActivityBar::paintEvent(QPaintEvent*){QPainter p(this);p.setRenderHint(QPainter::Antialiasing);const bool dark=darkSurface(this);const QRectF track=QRectF(rect()).adjusted(.5,.5,-.5,-.5);QPainterPath clip;clip.addRoundedRect(track,track.height()/2,track.height()/2);p.fillPath(clip,Theme::color("elevated",dark));p.setClipPath(clip);const qreal segment=width()*.36,travel=width()+segment;const qreal x=qApp->property("reduceMotion").toBool()?(width()-segment)/2:travel*m_phase/54-segment;p.setPen(Qt::NoPen);p.setBrush(Theme::color("accent",dark));p.drawRoundedRect(QRectF(x,track.top(),segment,track.height()),track.height()/2,track.height()/2);}
+
 ActionButton::ActionButton(const QString &text,QWidget *parent):QPushButton(text,parent),m_hover(0),m_animation(this,"hoverAmount",this){
     setCursor(Qt::PointingHandCursor);setMinimumHeight(38);m_animation.setDuration(155);m_animation.setEasingCurve(QEasingCurve::OutCubic);
 }
@@ -82,9 +89,9 @@ void ActionButton::paintEvent(QPaintEvent*){
     QColor hover=primary?Theme::color("accentHover",dark):Theme::color("elevated",dark);
     auto mix=[amount](int a,int b){return qRound(a+(b-a)*amount);};
     QColor fill(mix(base.red(),hover.red()),mix(base.green(),hover.green()),mix(base.blue(),hover.blue()));
-    if(quiet)fill.setAlpha(qRound(255*amount));
+    if(quiet){const QColor resting=Theme::color("elevated",dark);fill=QColor(mix(resting.red(),hover.red()),mix(resting.green(),hover.green()),mix(resting.blue(),hover.blue()));}
     if(!isEnabled())p.setOpacity(.45);
-    p.setPen(primary || quiet?Qt::NoPen:QPen(dark?QColor("#426474"):QColor("#D5E5E9"),1));p.setBrush(fill);
+    p.setPen(primary?Qt::NoPen:QPen(dark?QColor("#426474"):QColor("#D5E5E9"),1));p.setBrush(fill);
     p.drawRoundedRect(QRectF(rect()).adjusted(.5,.5,-.5,-.5),11,11);
     p.setPen(primary?QColor("#FFFFFF"):(dark?QColor("#E6F7FA"):QColor("#226071")));QFont face=font();face.setFamily(UiFont::family());face.setStyleHint(QFont::SansSerif);face.setStyleStrategy(QFont::PreferAntialias);p.setFont(face);
     QRect area=rect().adjusted(14,0,-14,0);

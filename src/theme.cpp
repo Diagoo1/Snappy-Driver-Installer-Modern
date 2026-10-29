@@ -55,7 +55,7 @@ QLabel#metricValue {font-size:17px; font-weight:700; color:%4; background:transp
 QLabel#metricCaption {font-size:12px; font-weight:500; color:%5; background:transparent;}
 QLabel#driverStats {color:%4; background:%3; padding:8px 13px; border:0; border-radius:6px;
  font-size:12px; font-weight:600;}
-QToolButton#quietTool {background:transparent; color:%5; border:0; border-radius:6px;
+QToolButton#quietTool {background:%3; color:%4; border:1px solid %6; border-radius:6px;
  padding:6px 11px; min-height:25px; font-size:12px;}
 QToolButton#quietTool:hover {color:%4;}
 QLabel#diagnosticsHeroTitle {color:white;font-size:23px;font-weight:700;background:transparent;}
@@ -127,7 +127,7 @@ QPushButton#outlineButton,QToolButton#secondaryTool {
  background:%3; color:%4; border:none; border-radius:12px; padding:9px 14px; min-height:22px;
 }
 QPushButton#outlineButton:hover,QToolButton#secondaryTool:hover {color:%4;}
-QPushButton#textLinkButton { background:transparent; color:#0BAEA5; border:0;
+QPushButton#textLinkButton { background:%3; color:%4; border:1px solid %6; border-radius:10px;
  padding:6px 9px; font-weight:600; font-size:12px; }
 QPushButton#textLinkButton:hover {color:#08D2C3;}
 QPushButton#textLinkButton:disabled { color:%5; background:transparent; }
@@ -222,7 +222,7 @@ QMessageBox QLabel {color:%4;}
     auto blend=[base,tint](qreal amount){return QColor(qRound(base.red()*(1-amount)+tint.red()*amount),qRound(base.green()*(1-amount)+tint.green()*amount),qRound(base.blue()*(1-amount)+tint.blue()*amount)).name();};
     result+=QStringLiteral("QListWidget#languageChoices::item:hover:enabled {background:%1;color:%3;} QListWidget#languageChoices::item:selected:enabled {background:%2;color:%3;border:1px solid %4;} QListWidget#languageChoices::item:selected:hover:enabled {background:%2;color:%3;}")
         .arg(blend(dark?.17:.09)).arg(blend(dark?.29:.16)).arg(primary).arg(blend(dark?.50:.38));
-    result+=QStringLiteral("QTabWidget#comparisonTabs::pane {background:transparent;} QTabWidget#comparisonTabs QTabBar::tab {background:%1;color:%2;border:1px solid transparent;border-radius:9px;margin:0 6px 6px 0;padding:10px 17px;} QTabWidget#comparisonTabs QTabBar::tab:hover {color:%3;background:%4;} QTabWidget#comparisonTabs QTabBar::tab:selected {background:%4;color:%3;border-color:%5;} QWidget#comparisonPage,QWidget#candidateHost {background:transparent;} QLabel#detailVersion {font-size:25px;font-weight:700;color:%3;background:transparent;} QLabel#detailHeading {font-size:11px;font-weight:700;background:transparent;} QWidget#comparisonPickerSurface {background:%1;border:1px solid %5;border-radius:13px;}")
+    result+=QStringLiteral("QTabWidget#comparisonTabs::pane {background:transparent;border:0;} QTabWidget#comparisonTabs QTabBar::tab {background:%1;color:%2;border:1px solid %5;border-radius:11px;margin:0 4px 8px 4px;padding:12px 8px;font-weight:500;} QTabWidget#comparisonTabs QTabBar::tab:hover {color:%3;background:%4;} QTabWidget#comparisonTabs QTabBar::tab:selected {background:%4;color:%3;border-color:%5;} QWidget#comparisonPage,QWidget#candidateHost {background:transparent;} QLabel#detailVersion {font-size:24px;font-weight:600;color:%3;background:transparent;} QLabel#detailHeading {font-size:11px;font-weight:700;background:transparent;} QWidget#comparisonPickerSurface {background:%1;border:1px solid %5;border-radius:13px;}")
         .arg(surface).arg(secondary).arg(primary).arg(blend(dark?.19:.09)).arg(stroke);
     result+=QStringLiteral("QTabWidget#comparisonTabs QScrollArea#dialogScroll {background:transparent;border:0;} QWidget#comparisonViewport {background:transparent;}");
     for(const char *value:{"#00AFA5","#00BDB1","#00A99E","#12AAB5","#0EAAA7","#09B5A8"})result.replace(QLatin1String(value),accent,Qt::CaseInsensitive);

@@ -39,8 +39,11 @@ void DriverRowDelegate::paint(QPainter *p,const QStyleOptionViewItem &option,
         QStyleOptionViewItem opt(rowOption);opt.state &= ~QStyle::State_HasFocus;
         opt.text.clear();opt.icon=QIcon();opt.features=QStyleOptionViewItem::None;
         (option.widget?option.widget->style():QApplication::style())->drawControl(QStyle::CE_ItemViewItem,&opt,p,option.widget);
+        if(index.data(Qt::CheckStateRole).isNull() && index.data(Qt::UserRole+12).toBool()){
+            const bool dark=option.palette.color(QPalette::Base).lightness()<130;const QRect action=option.rect.adjusted(rtl?36:7,22,rtl?-7:-36,-22);p->save();p->setRenderHint(QPainter::Antialiasing);p->setPen(QPen(dark?QColor("#426474"):QColor("#C9DDE3"),1));p->setBrush(dark?QColor("#234858"):QColor("#EDF6F8"));p->drawRoundedRect(action,9,9);p->setPen(option.palette.color(QPalette::Text));QFont face=option.font;face.setFamily(UiFont::family());face.setWeight(QFont::Medium);p->setFont(face);p->drawText(action.adjusted(6,0,-6,0),Qt::AlignCenter,option.fontMetrics.elidedText(index.data().toString(),Qt::ElideRight,action.width()-12));p->restore();
+        }else {
         opt= rowOption;opt.state &= ~QStyle::State_HasFocus;opt.rect.adjust(rtl?32:0,0,rtl?0:-32,0);
-        QStyledItemDelegate::paint(p,opt,index);
+        QStyledItemDelegate::paint(p,opt,index);}
         p->save();p->setRenderHint(QPainter::Antialiasing);p->setPen(Qt::NoPen);p->setBrush(option.palette.color(QPalette::Mid));
         for(int i=-1;i<=1;++i)p->drawEllipse(QPointF(rtl?option.rect.left()+16:option.rect.right()-16,option.rect.center().y()+i*5),1.6,1.6);
         p->restore();return;
@@ -104,7 +107,7 @@ void DriverRowDelegate::paint(QPainter *p,const QStyleOptionViewItem &option,
     }else if(col==1){
         const QString status=index.data(Qt::DisplayRole).toString();
         const QString code=index.data(Qt::UserRole+6).toString();
-        const bool recommended=code==QStringLiteral("Upgrade") || status.contains(QStringLiteral("Recommended"),Qt::CaseInsensitive) ||
+        const bool recommended=code==QStringLiteral("Reinstall") || code==QStringLiteral("Upgrade") || status.contains(QStringLiteral("Recommended"),Qt::CaseInsensitive) ||
                 status.contains(QStringLiteral("Update"),Qt::CaseInsensitive);
         const bool warning=code==QStringLiteral("Missing") || code==QStringLiteral("Downgrade") || status.contains(QStringLiteral("warning"),Qt::CaseInsensitive);
         const bool current=code==QStringLiteral("Installed") || status.contains(QStringLiteral("Current"),Qt::CaseInsensitive) ||
