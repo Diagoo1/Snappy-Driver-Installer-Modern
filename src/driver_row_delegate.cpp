@@ -31,10 +31,8 @@ void DriverRowDelegate::paint(QPainter *p,const QStyleOptionViewItem &option,
     const int align=Qt::AlignAbsolute|(rtl?Qt::AlignRight:Qt::AlignLeft);
     const int col=index.column();
     QStyleOptionViewItem rowOption(option);
-    const QModelIndex identity=index.sibling(index.row(),0);
-    const QWidget *tree=option.widget;while(tree && !qobject_cast<const QTreeWidget*>(tree))tree=tree->parentWidget();
-    if(tree && tree->property("hoverRow").toInt()==identity.data(Qt::UserRole).toInt() &&
-       tree->property("hoverCandidate").toInt()==identity.data(Qt::UserRole+1).toInt())rowOption.state|=QStyle::State_MouseOver;
+    // The tree paints a single rounded full-row surface, including branches and actions.
+    rowOption.state &= ~(QStyle::State_MouseOver|QStyle::State_Selected|QStyle::State_HasFocus);
     if(col==3){
         QStyleOptionViewItem opt(rowOption);opt.state &= ~QStyle::State_HasFocus;
         opt.text.clear();opt.icon=QIcon();opt.features=QStyleOptionViewItem::None;

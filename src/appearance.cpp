@@ -80,28 +80,38 @@ void ActionButton::animate(qreal value){m_animation.stop();if(qApp->property("re
     m_animation.setStartValue(m_hover);m_animation.setEndValue(value);m_animation.start();}
 void ActionButton::enterEvent(QEvent *event){if(isEnabled())animate(1);QPushButton::enterEvent(event);}
 void ActionButton::leaveEvent(QEvent *event){animate(0);QPushButton::leaveEvent(event);}
-void ActionButton::paintEvent(QPaintEvent*){
-    QPainter p(this);p.setRenderHint(QPainter::Antialiasing);const bool dark=darkSurface(this);
-    const bool primary=objectName()==QStringLiteral("primaryButton");
-    const bool quiet=objectName().contains(QStringLiteral("Link"),Qt::CaseInsensitive);
-    const qreal amount=isEnabled()?(isDown()?1:m_hover):0;
-    QColor base=primary?Theme::color("accent",dark):Theme::color("surface",dark);
+static void paintActionSurface(QAbstractButton *button,qreal hoverAmount){
+    QPainter p(button);p.setRenderHint(QPainter::Antialiasing);const bool dark=darkSurface(button);
+    const bool command=button->property("workspaceCommand").toBool();
+    const bool primary=button->objectName()==QStringLiteral("primaryButton");
+    const bool quiet=button->objectName().contains(QStringLiteral("Link"),Qt::CaseInsensitive);
+    const qreal amount=button->isEnabled()?(button->isDown()?1:hoverAmount):0;
+    QColor base=primary?Theme::color("accent",dark):Theme::color(command?"elevated":"surface",dark);
     QColor hover=primary?Theme::color("accentHover",dark):Theme::color("elevated",dark);
     auto mix=[amount](int a,int b){return qRound(a+(b-a)*amount);};
     QColor fill(mix(base.red(),hover.red()),mix(base.green(),hover.green()),mix(base.blue(),hover.blue()));
-    if(quiet){const QColor resting=Theme::color("elevated",dark);fill=QColor(mix(resting.red(),hover.red()),mix(resting.green(),hover.green()),mix(resting.blue(),hover.blue()));}
-    if(!isEnabled())p.setOpacity(.45);
-    p.setPen(primary?Qt::NoPen:QPen(dark?QColor("#426474"):QColor("#D5E5E9"),1));p.setBrush(fill);
-    p.drawRoundedRect(QRectF(rect()).adjusted(.5,.5,-.5,-.5),11,11);
-    p.setPen(primary?QColor("#FFFFFF"):(dark?QColor("#E6F7FA"):QColor("#226071")));QFont face=font();face.setFamily(UiFont::family());face.setStyleHint(QFont::SansSerif);face.setStyleStrategy(QFont::PreferAntialias);p.setFont(face);
-    QRect area=rect().adjusted(14,0,-14,0);
-    if(!icon().isNull()){
-        const int total=fontMetrics().width(text())+iconSize().width()+9;const bool rtl=layoutDirection()==Qt::RightToLeft;const int x=rtl?(width()+total)/2-iconSize().width():(width()-total)/2;
-        icon().paint(&p,QRect(x,(height()-iconSize().height())/2,iconSize().width(),iconSize().height()));if(rtl)area.setRight(x-9);else area.setLeft(x+iconSize().width()+9);
-        p.drawText(area,Qt::AlignAbsolute|(rtl?Qt::AlignRight:Qt::AlignLeft)|Qt::AlignVCenter,text());
-    }else p.drawText(area,Qt::AlignCenter,text());
-    if(hasFocus() && window()->testAttribute(Qt::WA_KeyboardFocusChange)){p.setBrush(Qt::NoBrush);p.setPen(QPen(QColor("#20BCAF"),1.3));p.drawRoundedRect(QRectF(rect()).adjusted(3,3,-3,-3),8,8);}
+    if(quiet && !command){const QColor resting=Theme::color("elevated",dark);fill=QColor(mix(resting.red(),hover.red()),mix(resting.green(),hover.green()),mix(resting.blue(),hover.blue()));}
+    if(command){const QColor rest=Theme::color("elevated",dark),ink=Theme::color("link",dark);const qreal tint=amount*.10;fill=QColor(qRound(rest.red()*(1-tint)+ink.red()*tint),qRound(rest.green()*(1-tint)+ink.green()*tint),qRound(rest.blue()*(1-tint)+ink.blue()*tint));}
+    if(!button->isEnabled())p.setOpacity(.45);
+    p.setPen(primary?Qt::NoPen:QPen(command?Theme::color("border",dark):(dark?QColor("#426474"):QColor("#D5E5E9")),1));p.setBrush(fill);
+    p.drawRoundedRect(QRectF(button->rect()).adjusted(.5,.5,-.5,-.5),11,11);
+    p.setPen(primary?QColor("#FFFFFF"):(command?Theme::color("text",dark):(dark?QColor("#E6F7FA"):QColor("#226071"))));QFont face=button->font();face.setFamily(UiFont::family());face.setStyleHint(QFont::SansSerif);face.setStyleStrategy(QFont::PreferAntialias);if(command)face.setWeight(QFont::Medium);p.setFont(face);
+    QRect area=button->rect().adjusted(14,0,-14,0);
+    if(!button->icon().isNull()){
+        const int total=p.fontMetrics().width(button->text())+button->iconSize().width()+9;const bool rtl=button->layoutDirection()==Qt::RightToLeft;const int x=rtl?(button->width()+total)/2-button->iconSize().width():(button->width()-total)/2;
+        button->icon().paint(&p,QRect(x,(button->height()-button->iconSize().height())/2,button->iconSize().width(),button->iconSize().height()));if(rtl)area.setRight(x-9);else area.setLeft(x+button->iconSize().width()+9);
+        p.drawText(area,Qt::AlignAbsolute|(rtl?Qt::AlignRight:Qt::AlignLeft)|Qt::AlignVCenter,button->text());
+    }else p.drawText(area,Qt::AlignCenter,button->text());
+    if(button->hasFocus() && button->window()->testAttribute(Qt::WA_KeyboardFocusChange)){p.setBrush(Qt::NoBrush);p.setPen(QPen(QColor("#20BCAF"),1.3));p.drawRoundedRect(QRectF(button->rect()).adjusted(3,3,-3,-3),8,8);}
 }
+void ActionButton::paintEvent(QPaintEvent*){paintActionSurface(this,m_hover);}
+CommandToolButton::CommandToolButton(QWidget *parent):QToolButton(parent),m_hover(0),m_animation(this,"hoverAmount",this){setProperty("workspaceCommand",true);setCursor(Qt::PointingHandCursor);setToolButtonStyle(Qt::ToolButtonTextBesideIcon);setIconSize(QSize(18,18));setFixedHeight(40);m_animation.setDuration(155);m_animation.setEasingCurve(QEasingCurve::OutCubic);}
+QSize CommandToolButton::sizeHint()const{return QSize(fontMetrics().width(text())+32+(icon().isNull()?0:iconSize().width()+9),40);}
+void CommandToolButton::animate(qreal value){m_animation.stop();if(qApp->property("reduceMotion").toBool()){setHoverAmount(value);return;}m_animation.setStartValue(m_hover);m_animation.setEndValue(value);m_animation.start();}
+void CommandToolButton::enterEvent(QEvent *event){if(isEnabled())animate(1);QToolButton::enterEvent(event);}
+void CommandToolButton::leaveEvent(QEvent *event){animate(0);QToolButton::leaveEvent(event);}
+void CommandToolButton::changeEvent(QEvent *event){if(event->type()==QEvent::EnabledChange && !isEnabled()){m_animation.stop();setHoverAmount(0);}QToolButton::changeEvent(event);}
+void CommandToolButton::paintEvent(QPaintEvent*){paintActionSurface(this,m_hover);}
 DialogHeader::DialogHeader(const QString &title,const QString &symbol,QDialog *dialog,bool arabic):QWidget(dialog),m_dragging(false){
     setFixedHeight(64);setObjectName(QStringLiteral("dialogHeader"));
     QHBoxLayout *line=new QHBoxLayout(this);line->setContentsMargins(22,0,9,0);line->setSpacing(12);
@@ -220,7 +230,7 @@ public:
         if(event->type()==QEvent::ContextMenu){QWidget *widget=qobject_cast<QWidget*>(object);if(widget && textContextMenu(widget,static_cast<QContextMenuEvent*>(event)))return true;}
         QWidget *button=qobject_cast<QAbstractButton*>(object);
         if(!button)button=qobject_cast<QComboBox*>(object);
-        if(!button || qobject_cast<ActionButton*>(button) || qobject_cast<TitleButton*>(button) || qobject_cast<SidebarItem*>(button) ||
+        if(!button || qobject_cast<CommandToolButton*>(button) || qobject_cast<ActionButton*>(button) || qobject_cast<TitleButton*>(button) || qobject_cast<SidebarItem*>(button) ||
            qobject_cast<GradientButton*>(button) || qobject_cast<ToggleSwitch*>(button))return false;
         if(event->type()==QEvent::Polish){button->setMouseTracking(true);}
         if(event->type()==QEvent::Enter || event->type()==QEvent::Leave || event->type()==QEvent::Resize || event->type()==QEvent::MouseMove){

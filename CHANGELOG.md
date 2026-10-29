@@ -1,5 +1,12 @@
 # Changelog
 
+## 0.21.9 Beta
+
+- Use one shared renderer, height, type scale, border and hover treatment for the five driver-workspace commands; every command has a consistent vector icon.
+- Replace the ambiguous tools gear with a wrench and use sliders for match filters.
+- Paint full-row hover/keyboard selection as one rounded surface, including the expansion arrow and three-dot action area.
+- Paint the table header as one continuous rounded band with subtle separators, removing native rectangular backgrounds around the corners.
+
 ## 0.21.8 Beta
 
 - Support explicit reinstallation from a matching local same/current Origin candidate, with operation-specific consent and queue labels. Never add reinstalls through bulk selection or install from metadata alone.

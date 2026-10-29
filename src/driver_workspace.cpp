@@ -44,10 +44,25 @@
 #include <functional>
 #include "driver_row_delegate.h"
 
+// Paint the entire header once so native section backgrounds cannot leave square corners.
 class DriverHeader : public QHeaderView {
-public:explicit DriverHeader(QWidget *parent):QHeaderView(Qt::Horizontal,parent){setMinimumHeight(48);setMaximumHeight(48);}
-protected:void paintSection(QPainter *p,const QRect &rect,int section)const Q_DECL_OVERRIDE {
-    if(!rect.isValid())return;const bool dark=Theme::isDark(this),rtl=layoutDirection()==Qt::RightToLeft;const QColor link=Theme::color("link",dark);const QRect area=rect.adjusted(3,4,-3,-4);p->save();p->setRenderHint(QPainter::Antialiasing);p->setPen(Qt::NoPen);p->setBrush(Theme::color("elevated",dark));p->drawRoundedRect(area,9,9);QFont face=font();face.setFamily(UiFont::family());face.setPointSizeF(9);face.setWeight(QFont::DemiBold);p->setFont(face);p->setPen(Theme::color("text",dark));const char *symbols[]={"monitor","shield","layers","check-circle"};QRect textArea=area.adjusted(rtl?8:34,0,rtl?-34:-8,0);VectorIcons::icon(QString::fromLatin1(symbols[section%4]),link,17).paint(p,QRect(rtl?area.right()-25:area.left()+9,area.center().y()-8,17,17));p->drawText(textArea,Qt::AlignAbsolute|(rtl?Qt::AlignRight:Qt::AlignLeft)|Qt::AlignVCenter,QFontMetrics(face).elidedText(model()->headerData(section,Qt::Horizontal).toString(),Qt::ElideRight,textArea.width()));p->restore();
+public:explicit DriverHeader(QWidget *parent):QHeaderView(Qt::Horizontal,parent){setFixedHeight(48);viewport()->setAutoFillBackground(false);viewport()->setAttribute(Qt::WA_OpaquePaintEvent,false);}
+protected:void paintEvent(QPaintEvent*) Q_DECL_OVERRIDE {
+    QPainter p(viewport());p.setRenderHint(QPainter::Antialiasing);const bool dark=Theme::isDark(this),rtl=layoutDirection()==Qt::RightToLeft;
+    p.fillRect(viewport()->rect(),Theme::color("surface",dark));
+    const QRectF band=QRectF(viewport()->rect()).adjusted(.5,3.5,-.5,-3.5);p.setPen(QPen(Theme::color("border",dark),1));p.setBrush(Theme::color("elevated",dark));p.drawRoundedRect(band,12,12);
+    QPainterPath clip;clip.addRoundedRect(band,12,12);p.setClipPath(clip);
+    QFont face=font();face.setFamily(UiFont::family());face.setPixelSize(12);face.setWeight(QFont::DemiBold);p.setFont(face);
+    const char *symbols[]={"monitor","shield","layers","check-circle"};
+    for(int section=0;section<count();++section){
+        if(isSectionHidden(section))continue;const QRect area(sectionViewportPosition(section),4,sectionSize(section),height()-8);
+        if(section>0){const int x=rtl?area.right():area.left();p.setPen(QPen(Theme::color("border",dark),1));p.drawLine(QPointF(x,band.top()+11),QPointF(x,band.bottom()-11));}
+        const QString label=p.fontMetrics().elidedText(model()->headerData(section,Qt::Horizontal).toString(),Qt::ElideRight,qMax(0,area.width()-48));
+        const int textWidth=p.fontMetrics().width(label),total=textWidth+25;
+        const int left=section==0?(rtl?area.right()-total-14:area.left()+14):area.center().x()-total/2;
+        VectorIcons::icon(QString::fromLatin1(symbols[section%4]),Theme::color("link",dark),17).paint(&p,QRect(rtl?left+total-17:left,area.center().y()-8,17,17));
+        p.setPen(Theme::color("text",dark));p.drawText(QRect(rtl?left:left+25,area.top(),textWidth,area.height()),Qt::AlignAbsolute|(rtl?Qt::AlignRight:Qt::AlignLeft)|Qt::AlignVCenter,label);
+    }
 }
 };
 
@@ -65,10 +80,13 @@ protected:
         viewport()->update();QTreeWidget::mouseMoveEvent(event);
     }
     void leaveEvent(QEvent *event) Q_DECL_OVERRIDE {setProperty("hoverRow",-1);viewport()->update();QTreeWidget::leaveEvent(event);}
-    void drawBranches(QPainter *p,const QRect &rect,const QModelIndex &index)const Q_DECL_OVERRIDE {
+    void drawRow(QPainter *p,const QStyleOptionViewItem &option,const QModelIndex &index)const Q_DECL_OVERRIDE {
         const bool hovered=property("hoverRow").toInt()==index.data(Qt::UserRole).toInt() && property("hoverCandidate").toInt()==index.data(Qt::UserRole+1).toInt();
+        if(hovered || selectionModel()->isSelected(index)){p->save();p->setRenderHint(QPainter::Antialiasing);p->setPen(Qt::NoPen);p->setBrush(Theme::color("elevated",Theme::isDark(this)));p->drawRoundedRect(QRectF(2,option.rect.top()+3,viewport()->width()-4,option.rect.height()-6),12,12);p->restore();}
+        QStyleOptionViewItem clean(option);clean.state &= ~(QStyle::State_MouseOver|QStyle::State_Selected|QStyle::State_HasFocus);QTreeWidget::drawRow(p,clean,index);
+    }
+    void drawBranches(QPainter *p,const QRect &rect,const QModelIndex &index)const Q_DECL_OVERRIDE {
         const bool dark=palette().color(QPalette::Base).lightness()<130;
-        if(hovered || selectionModel()->isSelected(index))p->fillRect(rect,dark?QColor("#244457"):QColor("#EEF7F8"));
         if(!index.parent().isValid() && model()->hasChildren(index)){
             p->save();p->setRenderHint(QPainter::Antialiasing);p->translate(rect.center());if(isExpanded(index))p->rotate(90);else if(layoutDirection()==Qt::RightToLeft)p->rotate(180);
             VectorIcons::paint(p,QStringLiteral("chevron-right"),QRectF(-8,-8,16,16),dark?QColor("#A4C6D0"):QColor("#668594"));p->restore();
@@ -122,9 +140,9 @@ DriverWorkspace::DriverWorkspace(DriverCatalog *catalog,QWidget *parent)
     m_subtitle=label(QStringLiteral("Driver matching, alternatives and selection"),"subText",this);
     titleBox->addWidget(m_title);titleBox->addWidget(m_subtitle);
     heading->addLayout(titleBox,1);
-    m_tools=new QToolButton(this);
+    m_tools=new CommandToolButton(this);
     m_tools->setObjectName(QStringLiteral("secondaryTool"));
-    m_tools->setIcon(VectorIcons::icon(QStringLiteral("settings"),QColor("#0CAFA3"),18));
+    m_tools->setIcon(VectorIcons::icon(QStringLiteral("wrench"),QColor("#10AAA0"),18));
     m_tools->setIconSize(QSize(18,18));
     m_tools->setText(QStringLiteral("Tools"));
     m_tools->setToolButtonStyle(Qt::ToolButtonTextBesideIcon);
@@ -215,11 +233,11 @@ DriverWorkspace::DriverWorkspace(DriverCatalog *catalog,QWidget *parent)
     summaryRow->addStretch(1);
 
     // Safety options remain editable before the demo install but live in one menu.
-    m_installOptions=new QToolButton(summary);
+    m_installOptions=new CommandToolButton(summary);
     m_installOptions->setObjectName(QStringLiteral("quietTool"));
     m_installOptions->setText(QStringLiteral("Install options"));
     m_installOptions->setToolButtonStyle(Qt::ToolButtonTextBesideIcon);
-    m_installOptions->setIcon(VectorIcons::icon(QStringLiteral("shield"),QColor("#0CAFA3"),17));
+    m_installOptions->setIcon(VectorIcons::icon(QStringLiteral("shield"),QColor("#10AAA0"),18));
     m_installPopup=new PremiumPopover(this);
     m_installHeading=m_installPopup->addHeading(QStringLiteral("INSTALL PREFERENCES"));
     m_restore=m_installPopup->addOption(QStringLiteral("Create restore point"),true);
@@ -232,6 +250,7 @@ DriverWorkspace::DriverWorkspace(DriverCatalog *catalog,QWidget *parent)
 
     m_all=actionButton(QStringLiteral("Select all"),"textLinkButton",summary);
     m_none=actionButton(QStringLiteral("Select none"),"textLinkButton",summary);
+    m_all->setIcon(VectorIcons::icon(QStringLiteral("check-circle"),QColor("#10AAA0"),18));m_none->setIcon(VectorIcons::icon(QStringLiteral("close"),QColor("#10AAA0"),18));
     summaryActions->addWidget(m_all);
     summaryActions->addWidget(m_none);
     summaryRow->addLayout(summaryActions);
@@ -240,11 +259,13 @@ DriverWorkspace::DriverWorkspace(DriverCatalog *catalog,QWidget *parent)
     // ONE search/filter toolbar directly above the full-width driver list.
 
 
-    m_filters=new QToolButton(this);
+    m_filters=new CommandToolButton(this);
     m_filters->setObjectName(QStringLiteral("secondaryTool"));
     m_filters->setText(QStringLiteral("Match filters"));
     m_filters->setToolButtonStyle(Qt::ToolButtonTextBesideIcon);
-    m_filters->setIcon(VectorIcons::icon(QStringLiteral("layers"),QColor("#06A79F"),18));
+    m_filters->setIcon(VectorIcons::icon(QStringLiteral("sliders"),QColor("#10AAA0"),18));
+    const QList<QAbstractButton*> commands=QList<QAbstractButton*>()<<m_tools<<m_installOptions<<m_all<<m_none<<m_filters;
+    for(QAbstractButton *command:commands){command->setObjectName(QStringLiteral("workspaceCommand"));command->setProperty("workspaceCommand",true);command->setFixedHeight(40);command->setIconSize(QSize(18,18));QFont face=command->font();face.setFamily(UiFont::family());face.setPixelSize(13);face.setWeight(QFont::Medium);command->setFont(face);}
     m_filterPopup=new PremiumPopover(this);
     m_filterViewHeading=m_filterPopup->addHeading(QStringLiteral("VIEW OPTIONS"));
     m_expert=m_filterPopup->addOption(QStringLiteral("Expert mode"),true);
@@ -703,7 +724,7 @@ void DriverWorkspace::setArabic(bool arabic)
     m_installedLabel->setText(arabic?QString::fromUtf8("إظهار المثبت والتعريفات البديلة"):QStringLiteral("View installed and alternative drivers"));
     m_moreLabel->setText(arabic?QString::fromUtf8("إظهار معلومات إضافية"):QStringLiteral("View additional information"));
     m_search->setPlaceholderText(arabic?QString::fromUtf8("ابحث عن جهاز..."):QStringLiteral("Search devices..."));
-    m_tree->setHeaderLabels(arabic?QStringList()<<QString::fromUtf8("الجهاز / التعريف المثبّت")<<QString::fromUtf8("الحالة")<<QString::fromUtf8("أولوية المطابقة")<<QString::fromUtf8("التحديد / التفاصيل"):
+    m_tree->setHeaderLabels(arabic?QStringList()<<QString::fromUtf8("الجهاز / التعريف المثبّت")<<QString::fromUtf8("الحالة")<<QString::fromUtf8("أولوية المطابقة")<<QString::fromUtf8("الإجراءات"):
                              QStringList()<<QStringLiteral("Device / installed version")<<QStringLiteral("Status")<<QStringLiteral("Priority")<<QStringLiteral("Actions"));
     rebuild();
     m_tree->doItemsLayout();adjustColumns();m_tree->viewport()->update();

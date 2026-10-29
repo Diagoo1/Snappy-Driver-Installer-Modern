@@ -903,13 +903,13 @@
     "For technicians: inspect matches for another Windows version or architecture when preparing an offline library. Installation stays disabled in preview.": "لفني الصيانة: افحص المطابقات لويندوز أو معمارية مختلفة عند تجهيز مكتبة دون إنترنت. التثبيت معطّل أثناء المعاينة.",
     "Browse Beta releases and release notes on GitHub. The update check follows stable releases.": "تصفّح إصدارات البيتا والتغييرات على GitHub. فحص التحديث يتابع الإصدارات المستقرة.",
     "Browse releases": "تصفّح الإصدارات",
-    "Version: 0.21.8 (Beta)\nWindows: %1\nArchitecture: %2\nLanguage: %3\nTheme: %4": "الإصدار: 0.21.8 (بيتا)\nويندوز: %1\nالمعمارية: %2\nاللغة: %3\nالمظهر: %4",
     "Reinstall": "إعادة تثبيت",
     "Reinstalling": "جارٍ إعادة التثبيت",
     "Reinstalled": "أُعيد تثبيته",
     "Device / installed version": "الجهاز / الإصدار المثبّت",
     "Actions": "الإجراءات",
     "Reinstall requires a matching local driver package. Download or add that package, then scan again.": "إعادة التثبيت تتطلب حزمة تعريف محلية مطابقة. أضف الحزمة أو نزّلها، ثم أعد الفحص.",
-    "Priority": "أولوية المطابقة"
+    "Priority": "أولوية المطابقة",
+    "Version: 0.21.9 (Beta)\nWindows: %1\nArchitecture: %2\nLanguage: %3\nTheme: %4": "الإصدار: 0.21.9 (بيتا)\nويندوز: %1\nالمعمارية: %2\nاللغة: %3\nالمظهر: %4"
   }
 }

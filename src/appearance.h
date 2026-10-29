@@ -51,6 +51,27 @@ protected:
 };
 
 QPainterPath windowClip(QWidget *widget,qreal radius=20);
+// Uses the same command surface and sizing as ActionButton in workspace toolbars.
+class CommandToolButton : public QToolButton {
+    Q_OBJECT
+    Q_PROPERTY(qreal hoverAmount READ hoverAmount WRITE setHoverAmount)
+public:
+    explicit CommandToolButton(QWidget *parent=0);
+    QSize sizeHint()const Q_DECL_OVERRIDE;
+    QSize minimumSizeHint()const Q_DECL_OVERRIDE{return sizeHint();}
+    qreal hoverAmount()const{return m_hover;}
+    void setHoverAmount(qreal value){m_hover=value;update();}
+protected:
+    void paintEvent(QPaintEvent*) Q_DECL_OVERRIDE;
+    void enterEvent(QEvent*) Q_DECL_OVERRIDE;
+    void leaveEvent(QEvent*) Q_DECL_OVERRIDE;
+    void changeEvent(QEvent*) Q_DECL_OVERRIDE;
+private:
+    void animate(qreal value);
+    qreal m_hover;
+    QPropertyAnimation m_animation;
+};
+
 class ActionButton : public QPushButton {
     Q_OBJECT
     Q_PROPERTY(qreal hoverAmount READ hoverAmount WRITE setHoverAmount)

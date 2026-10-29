@@ -49,6 +49,7 @@ QWidget#settingsSectionHeader {background:transparent;}
 QWidget#settingsCard {background:transparent;border:0;border-radius:16px;}
 QWidget#softSurface { background: transparent; border: 0; border-radius: 16px; }
 QWidget#driverTableCard,QWidget#driverTableToolbar {background:transparent;border:0;}
+QAbstractButton[workspaceCommand="true"] {background:transparent;border:0;padding:0;min-height:0;font-size:13px;font-weight:500;}
 QWidget#driverSummaryStrip { background:transparent; border:0; }
 QFrame#metricCard {background:transparent; border:0; border-radius:10px; min-height:54px;}
 QLabel#metricValue {font-size:17px; font-weight:700; color:%4; background:transparent;}
@@ -149,9 +150,9 @@ QTreeWidget#driverTree,QTreeWidget#installQueue,QScrollArea#diagnosticScroll,QSc
  background:%2; color:%4; border:0; border-radius:9px; outline:0;
 }
 QTreeWidget#driverTree::item,QTreeWidget#installQueue::item {border-bottom:1px solid %6; padding:0px;}
-QTreeWidget#driverTree::item:hover {background:%3;}
+QTreeWidget#driverTree::item:hover {background:transparent;}
 QTreeWidget#driverTree QHeaderView::section {background:%3;color:%4;border:0;border-bottom:1px solid %6;padding:12px 10px;font-weight:600;}
-QTreeWidget#driverTree::item:selected {background:%3; color:%4;}
+QTreeWidget#driverTree::item:selected {background:transparent; color:%4;}
 QTreeWidget#installQueue::item:selected {background:transparent; color:%4;}
 QTreeWidget#driverTree::indicator:unchecked { width:18px; height:18px; border-radius:3px; background:%2; border:1px solid %7; }
 QTreeWidget#driverTree::indicator:checked { width:18px; height:18px; border-radius:3px; background:#12AAB5; border:1px solid #12AAB5; image:url(:/sdio/assets/icons/check.svg); }
