@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.21.4 Beta
+
+- Add Report a bug to About and Tools, with a cancelable preview of minimal environment information and no automatic submission or log attachment.
+- Provide a bilingual GitHub issue form for reproduction steps and expected/actual behavior.
+- Mark the public test release as a GitHub prerelease; keep automatic updates on the stable channel.
+
 ## Unreleased
 
 - Consolidate the local checkout and Git repository, remove obsolete development snapshots from the active source tree, and organize maintenance tools.

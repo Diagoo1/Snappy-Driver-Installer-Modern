@@ -50,6 +50,13 @@
             "theme": "light"
         },
         {
+            "file": "en-light/18-report-bug.png",
+            "installationSimulation": false,
+            "locale": "en",
+            "sampleData": true,
+            "theme": "light"
+        },
+        {
             "file": "en-light/08-tools.png",
             "installationSimulation": false,
             "locale": "en",
@@ -163,6 +170,13 @@
         },
         {
             "file": "en-dark/07-about.png",
+            "installationSimulation": false,
+            "locale": "en",
+            "sampleData": true,
+            "theme": "dark"
+        },
+        {
+            "file": "en-dark/18-report-bug.png",
             "installationSimulation": false,
             "locale": "en",
             "sampleData": true,
@@ -288,6 +302,13 @@
             "theme": "light"
         },
         {
+            "file": "ar-light/18-report-bug.png",
+            "installationSimulation": false,
+            "locale": "ar",
+            "sampleData": true,
+            "theme": "light"
+        },
+        {
             "file": "ar-light/08-tools.png",
             "installationSimulation": false,
             "locale": "ar",
@@ -401,6 +422,13 @@
         },
         {
             "file": "ar-dark/07-about.png",
+            "installationSimulation": false,
+            "locale": "ar",
+            "sampleData": true,
+            "theme": "dark"
+        },
+        {
+            "file": "ar-dark/18-report-bug.png",
             "installationSimulation": false,
             "locale": "ar",
             "sampleData": true,

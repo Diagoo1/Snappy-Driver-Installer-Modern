@@ -2,6 +2,10 @@
 
 A native Windows interface by **Tarek Sadek (Diagoo1)**, built with C++11/Qt and an embedded, pinned SDIO engine. One executable; driver packs and indexes remain external.
 
+**Beta testing:** [v0.21.4 Beta](https://github.com/Diagoo1/Snappy-Driver-Installer-Modern/releases/tag/v0.21.4) adds reviewed GitHub bug reports from About and Tools. Compatibility testing across hardware, Windows versions and CPU architectures is ongoing. Automatic updates continue to use the stable channel.
+
+Use **Report a bug** to review the version, Windows, architecture, language and theme before opening a public GitHub issue. Nothing is submitted automatically; hardware IDs and logs are excluded. Review any attachments yourself. [Open a bug report](https://github.com/Diagoo1/Snappy-Driver-Installer-Modern/issues/new?template=bug_report.yml).
+
 [العربية](README_AR.md) · [Download](https://github.com/Diagoo1/Snappy-Driver-Installer-Modern/releases/latest) · [Build guide](docs/BUILDING.md) · [Validation](docs/VALIDATION.md)
 
 ## Features
@@ -14,11 +18,11 @@ A native Windows interface by **Tarek Sadek (Diagoo1)**, built with C++11/Qt and
 
 Download the EXE from Releases, place `drivers`/`indexes` beside it or choose their paths in Settings. Preferences use the current user's Registry; no adjacent DLLs or INI are required. Stars indicate relative matching priority, not safety.
 
-The x86 build targets XP through 11, but actual older-Windows execution and real installation/restore/reboot still require disposable-system validation. See the [verified scope and remaining tests](docs/VALIDATION.md). Translation coverage is complete for collected keys; native language review remains necessary.
+The x86 build targets XP through 11, but actual older-Windows execution and real installation/restore/reboot still require disposable-system validation. See the [verified scope and remaining tests](docs/VALIDATION.md). English/Arabic cover collected keys; eleven new bug-report/beta strings temporarily use English in the other locales. Native language review remains necessary.
 
 ## Screenshots
 
-[Explore all 68 screenshots](docs/GALLERY.md): English, Arabic, light and dark, including dialogs and **explicit installation simulations**. Screenshots use sample data; they do not demonstrate a real driver installation.
+[Explore all 72 screenshots](docs/GALLERY.md): English, Arabic, light and dark, including dialogs and **explicit installation simulations**. Screenshots use sample data; they do not demonstrate a real driver installation.
 
 | English · Light | English · Dark |
 | --- | --- |

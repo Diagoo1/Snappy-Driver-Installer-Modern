@@ -1,202 +1,658 @@
 {
   "arabic": {
-    "translated": 874,
-    "total": 874,
+    "translated": 885,
+    "total": 885,
     "englishFallbacks": []
   },
   "armenian": {
     "translated": 874,
-    "total": 874,
-    "englishFallbacks": []
+    "total": 885,
+    "englishFallbacks": [
+      "Beta · Hardware and Windows compatibility testing is ongoing.",
+      "Cannot open link",
+      "Dark",
+      "Light",
+      "No report is sent automatically. Hardware IDs, device names, paths and logs are not included. Check any screenshots or files you attach for private information.",
+      "Open GitHub",
+      "Open the project's Issues page in your browser to report the problem.",
+      "Report a bug",
+      "Review these details before opening GitHub. Describe the problem and add steps or screenshots there. A GitHub account is required; reports are public.",
+      "Version: 0.21.4 (Beta)\nWindows: %1\nArchitecture: %2\nLanguage: %3\nTheme: %4",
+      "[Bug] "
+    ]
   },
   "azerbaijan": {
     "translated": 874,
-    "total": 874,
-    "englishFallbacks": []
+    "total": 885,
+    "englishFallbacks": [
+      "Beta · Hardware and Windows compatibility testing is ongoing.",
+      "Cannot open link",
+      "Dark",
+      "Light",
+      "No report is sent automatically. Hardware IDs, device names, paths and logs are not included. Check any screenshots or files you attach for private information.",
+      "Open GitHub",
+      "Open the project's Issues page in your browser to report the problem.",
+      "Report a bug",
+      "Review these details before opening GitHub. Describe the problem and add steps or screenshots there. A GitHub account is required; reports are public.",
+      "Version: 0.21.4 (Beta)\nWindows: %1\nArchitecture: %2\nLanguage: %3\nTheme: %4",
+      "[Bug] "
+    ]
   },
   "belarusian": {
     "translated": 874,
-    "total": 874,
-    "englishFallbacks": []
+    "total": 885,
+    "englishFallbacks": [
+      "Beta · Hardware and Windows compatibility testing is ongoing.",
+      "Cannot open link",
+      "Dark",
+      "Light",
+      "No report is sent automatically. Hardware IDs, device names, paths and logs are not included. Check any screenshots or files you attach for private information.",
+      "Open GitHub",
+      "Open the project's Issues page in your browser to report the problem.",
+      "Report a bug",
+      "Review these details before opening GitHub. Describe the problem and add steps or screenshots there. A GitHub account is required; reports are public.",
+      "Version: 0.21.4 (Beta)\nWindows: %1\nArchitecture: %2\nLanguage: %3\nTheme: %4",
+      "[Bug] "
+    ]
   },
   "brazilian": {
     "translated": 874,
-    "total": 874,
-    "englishFallbacks": []
+    "total": 885,
+    "englishFallbacks": [
+      "Beta · Hardware and Windows compatibility testing is ongoing.",
+      "Cannot open link",
+      "Dark",
+      "Light",
+      "No report is sent automatically. Hardware IDs, device names, paths and logs are not included. Check any screenshots or files you attach for private information.",
+      "Open GitHub",
+      "Open the project's Issues page in your browser to report the problem.",
+      "Report a bug",
+      "Review these details before opening GitHub. Describe the problem and add steps or screenshots there. A GitHub account is required; reports are public.",
+      "Version: 0.21.4 (Beta)\nWindows: %1\nArchitecture: %2\nLanguage: %3\nTheme: %4",
+      "[Bug] "
+    ]
   },
   "bulgarian": {
     "translated": 874,
-    "total": 874,
-    "englishFallbacks": []
+    "total": 885,
+    "englishFallbacks": [
+      "Beta · Hardware and Windows compatibility testing is ongoing.",
+      "Cannot open link",
+      "Dark",
+      "Light",
+      "No report is sent automatically. Hardware IDs, device names, paths and logs are not included. Check any screenshots or files you attach for private information.",
+      "Open GitHub",
+      "Open the project's Issues page in your browser to report the problem.",
+      "Report a bug",
+      "Review these details before opening GitHub. Describe the problem and add steps or screenshots there. A GitHub account is required; reports are public.",
+      "Version: 0.21.4 (Beta)\nWindows: %1\nArchitecture: %2\nLanguage: %3\nTheme: %4",
+      "[Bug] "
+    ]
   },
   "catalan": {
     "translated": 874,
-    "total": 874,
-    "englishFallbacks": []
+    "total": 885,
+    "englishFallbacks": [
+      "Beta · Hardware and Windows compatibility testing is ongoing.",
+      "Cannot open link",
+      "Dark",
+      "Light",
+      "No report is sent automatically. Hardware IDs, device names, paths and logs are not included. Check any screenshots or files you attach for private information.",
+      "Open GitHub",
+      "Open the project's Issues page in your browser to report the problem.",
+      "Report a bug",
+      "Review these details before opening GitHub. Describe the problem and add steps or screenshots there. A GitHub account is required; reports are public.",
+      "Version: 0.21.4 (Beta)\nWindows: %1\nArchitecture: %2\nLanguage: %3\nTheme: %4",
+      "[Bug] "
+    ]
   },
   "chinese_cn": {
     "translated": 874,
-    "total": 874,
-    "englishFallbacks": []
+    "total": 885,
+    "englishFallbacks": [
+      "Beta · Hardware and Windows compatibility testing is ongoing.",
+      "Cannot open link",
+      "Dark",
+      "Light",
+      "No report is sent automatically. Hardware IDs, device names, paths and logs are not included. Check any screenshots or files you attach for private information.",
+      "Open GitHub",
+      "Open the project's Issues page in your browser to report the problem.",
+      "Report a bug",
+      "Review these details before opening GitHub. Describe the problem and add steps or screenshots there. A GitHub account is required; reports are public.",
+      "Version: 0.21.4 (Beta)\nWindows: %1\nArchitecture: %2\nLanguage: %3\nTheme: %4",
+      "[Bug] "
+    ]
   },
   "chinese_tw": {
     "translated": 874,
-    "total": 874,
-    "englishFallbacks": []
+    "total": 885,
+    "englishFallbacks": [
+      "Beta · Hardware and Windows compatibility testing is ongoing.",
+      "Cannot open link",
+      "Dark",
+      "Light",
+      "No report is sent automatically. Hardware IDs, device names, paths and logs are not included. Check any screenshots or files you attach for private information.",
+      "Open GitHub",
+      "Open the project's Issues page in your browser to report the problem.",
+      "Report a bug",
+      "Review these details before opening GitHub. Describe the problem and add steps or screenshots there. A GitHub account is required; reports are public.",
+      "Version: 0.21.4 (Beta)\nWindows: %1\nArchitecture: %2\nLanguage: %3\nTheme: %4",
+      "[Bug] "
+    ]
   },
   "croatian": {
     "translated": 874,
-    "total": 874,
-    "englishFallbacks": []
+    "total": 885,
+    "englishFallbacks": [
+      "Beta · Hardware and Windows compatibility testing is ongoing.",
+      "Cannot open link",
+      "Dark",
+      "Light",
+      "No report is sent automatically. Hardware IDs, device names, paths and logs are not included. Check any screenshots or files you attach for private information.",
+      "Open GitHub",
+      "Open the project's Issues page in your browser to report the problem.",
+      "Report a bug",
+      "Review these details before opening GitHub. Describe the problem and add steps or screenshots there. A GitHub account is required; reports are public.",
+      "Version: 0.21.4 (Beta)\nWindows: %1\nArchitecture: %2\nLanguage: %3\nTheme: %4",
+      "[Bug] "
+    ]
   },
   "czech": {
     "translated": 874,
-    "total": 874,
-    "englishFallbacks": []
+    "total": 885,
+    "englishFallbacks": [
+      "Beta · Hardware and Windows compatibility testing is ongoing.",
+      "Cannot open link",
+      "Dark",
+      "Light",
+      "No report is sent automatically. Hardware IDs, device names, paths and logs are not included. Check any screenshots or files you attach for private information.",
+      "Open GitHub",
+      "Open the project's Issues page in your browser to report the problem.",
+      "Report a bug",
+      "Review these details before opening GitHub. Describe the problem and add steps or screenshots there. A GitHub account is required; reports are public.",
+      "Version: 0.21.4 (Beta)\nWindows: %1\nArchitecture: %2\nLanguage: %3\nTheme: %4",
+      "[Bug] "
+    ]
   },
   "danish": {
     "translated": 874,
-    "total": 874,
-    "englishFallbacks": []
+    "total": 885,
+    "englishFallbacks": [
+      "Beta · Hardware and Windows compatibility testing is ongoing.",
+      "Cannot open link",
+      "Dark",
+      "Light",
+      "No report is sent automatically. Hardware IDs, device names, paths and logs are not included. Check any screenshots or files you attach for private information.",
+      "Open GitHub",
+      "Open the project's Issues page in your browser to report the problem.",
+      "Report a bug",
+      "Review these details before opening GitHub. Describe the problem and add steps or screenshots there. A GitHub account is required; reports are public.",
+      "Version: 0.21.4 (Beta)\nWindows: %1\nArchitecture: %2\nLanguage: %3\nTheme: %4",
+      "[Bug] "
+    ]
   },
   "dutch": {
     "translated": 874,
-    "total": 874,
-    "englishFallbacks": []
+    "total": 885,
+    "englishFallbacks": [
+      "Beta · Hardware and Windows compatibility testing is ongoing.",
+      "Cannot open link",
+      "Dark",
+      "Light",
+      "No report is sent automatically. Hardware IDs, device names, paths and logs are not included. Check any screenshots or files you attach for private information.",
+      "Open GitHub",
+      "Open the project's Issues page in your browser to report the problem.",
+      "Report a bug",
+      "Review these details before opening GitHub. Describe the problem and add steps or screenshots there. A GitHub account is required; reports are public.",
+      "Version: 0.21.4 (Beta)\nWindows: %1\nArchitecture: %2\nLanguage: %3\nTheme: %4",
+      "[Bug] "
+    ]
   },
   "english": {
-    "translated": 874,
-    "total": 874,
+    "translated": 885,
+    "total": 885,
     "englishFallbacks": []
   },
   "estonian": {
     "translated": 874,
-    "total": 874,
-    "englishFallbacks": []
+    "total": 885,
+    "englishFallbacks": [
+      "Beta · Hardware and Windows compatibility testing is ongoing.",
+      "Cannot open link",
+      "Dark",
+      "Light",
+      "No report is sent automatically. Hardware IDs, device names, paths and logs are not included. Check any screenshots or files you attach for private information.",
+      "Open GitHub",
+      "Open the project's Issues page in your browser to report the problem.",
+      "Report a bug",
+      "Review these details before opening GitHub. Describe the problem and add steps or screenshots there. A GitHub account is required; reports are public.",
+      "Version: 0.21.4 (Beta)\nWindows: %1\nArchitecture: %2\nLanguage: %3\nTheme: %4",
+      "[Bug] "
+    ]
   },
   "farsi": {
     "translated": 874,
-    "total": 874,
-    "englishFallbacks": []
+    "total": 885,
+    "englishFallbacks": [
+      "Beta · Hardware and Windows compatibility testing is ongoing.",
+      "Cannot open link",
+      "Dark",
+      "Light",
+      "No report is sent automatically. Hardware IDs, device names, paths and logs are not included. Check any screenshots or files you attach for private information.",
+      "Open GitHub",
+      "Open the project's Issues page in your browser to report the problem.",
+      "Report a bug",
+      "Review these details before opening GitHub. Describe the problem and add steps or screenshots there. A GitHub account is required; reports are public.",
+      "Version: 0.21.4 (Beta)\nWindows: %1\nArchitecture: %2\nLanguage: %3\nTheme: %4",
+      "[Bug] "
+    ]
   },
   "french": {
     "translated": 874,
-    "total": 874,
-    "englishFallbacks": []
+    "total": 885,
+    "englishFallbacks": [
+      "Beta · Hardware and Windows compatibility testing is ongoing.",
+      "Cannot open link",
+      "Dark",
+      "Light",
+      "No report is sent automatically. Hardware IDs, device names, paths and logs are not included. Check any screenshots or files you attach for private information.",
+      "Open GitHub",
+      "Open the project's Issues page in your browser to report the problem.",
+      "Report a bug",
+      "Review these details before opening GitHub. Describe the problem and add steps or screenshots there. A GitHub account is required; reports are public.",
+      "Version: 0.21.4 (Beta)\nWindows: %1\nArchitecture: %2\nLanguage: %3\nTheme: %4",
+      "[Bug] "
+    ]
   },
   "georgian": {
     "translated": 874,
-    "total": 874,
-    "englishFallbacks": []
+    "total": 885,
+    "englishFallbacks": [
+      "Beta · Hardware and Windows compatibility testing is ongoing.",
+      "Cannot open link",
+      "Dark",
+      "Light",
+      "No report is sent automatically. Hardware IDs, device names, paths and logs are not included. Check any screenshots or files you attach for private information.",
+      "Open GitHub",
+      "Open the project's Issues page in your browser to report the problem.",
+      "Report a bug",
+      "Review these details before opening GitHub. Describe the problem and add steps or screenshots there. A GitHub account is required; reports are public.",
+      "Version: 0.21.4 (Beta)\nWindows: %1\nArchitecture: %2\nLanguage: %3\nTheme: %4",
+      "[Bug] "
+    ]
   },
   "german": {
     "translated": 874,
-    "total": 874,
-    "englishFallbacks": []
+    "total": 885,
+    "englishFallbacks": [
+      "Beta · Hardware and Windows compatibility testing is ongoing.",
+      "Cannot open link",
+      "Dark",
+      "Light",
+      "No report is sent automatically. Hardware IDs, device names, paths and logs are not included. Check any screenshots or files you attach for private information.",
+      "Open GitHub",
+      "Open the project's Issues page in your browser to report the problem.",
+      "Report a bug",
+      "Review these details before opening GitHub. Describe the problem and add steps or screenshots there. A GitHub account is required; reports are public.",
+      "Version: 0.21.4 (Beta)\nWindows: %1\nArchitecture: %2\nLanguage: %3\nTheme: %4",
+      "[Bug] "
+    ]
   },
   "greek": {
     "translated": 874,
-    "total": 874,
-    "englishFallbacks": []
+    "total": 885,
+    "englishFallbacks": [
+      "Beta · Hardware and Windows compatibility testing is ongoing.",
+      "Cannot open link",
+      "Dark",
+      "Light",
+      "No report is sent automatically. Hardware IDs, device names, paths and logs are not included. Check any screenshots or files you attach for private information.",
+      "Open GitHub",
+      "Open the project's Issues page in your browser to report the problem.",
+      "Report a bug",
+      "Review these details before opening GitHub. Describe the problem and add steps or screenshots there. A GitHub account is required; reports are public.",
+      "Version: 0.21.4 (Beta)\nWindows: %1\nArchitecture: %2\nLanguage: %3\nTheme: %4",
+      "[Bug] "
+    ]
   },
   "hungarian": {
     "translated": 874,
-    "total": 874,
-    "englishFallbacks": []
+    "total": 885,
+    "englishFallbacks": [
+      "Beta · Hardware and Windows compatibility testing is ongoing.",
+      "Cannot open link",
+      "Dark",
+      "Light",
+      "No report is sent automatically. Hardware IDs, device names, paths and logs are not included. Check any screenshots or files you attach for private information.",
+      "Open GitHub",
+      "Open the project's Issues page in your browser to report the problem.",
+      "Report a bug",
+      "Review these details before opening GitHub. Describe the problem and add steps or screenshots there. A GitHub account is required; reports are public.",
+      "Version: 0.21.4 (Beta)\nWindows: %1\nArchitecture: %2\nLanguage: %3\nTheme: %4",
+      "[Bug] "
+    ]
   },
   "indonesian": {
     "translated": 874,
-    "total": 874,
-    "englishFallbacks": []
+    "total": 885,
+    "englishFallbacks": [
+      "Beta · Hardware and Windows compatibility testing is ongoing.",
+      "Cannot open link",
+      "Dark",
+      "Light",
+      "No report is sent automatically. Hardware IDs, device names, paths and logs are not included. Check any screenshots or files you attach for private information.",
+      "Open GitHub",
+      "Open the project's Issues page in your browser to report the problem.",
+      "Report a bug",
+      "Review these details before opening GitHub. Describe the problem and add steps or screenshots there. A GitHub account is required; reports are public.",
+      "Version: 0.21.4 (Beta)\nWindows: %1\nArchitecture: %2\nLanguage: %3\nTheme: %4",
+      "[Bug] "
+    ]
   },
   "italian": {
     "translated": 874,
-    "total": 874,
-    "englishFallbacks": []
+    "total": 885,
+    "englishFallbacks": [
+      "Beta · Hardware and Windows compatibility testing is ongoing.",
+      "Cannot open link",
+      "Dark",
+      "Light",
+      "No report is sent automatically. Hardware IDs, device names, paths and logs are not included. Check any screenshots or files you attach for private information.",
+      "Open GitHub",
+      "Open the project's Issues page in your browser to report the problem.",
+      "Report a bug",
+      "Review these details before opening GitHub. Describe the problem and add steps or screenshots there. A GitHub account is required; reports are public.",
+      "Version: 0.21.4 (Beta)\nWindows: %1\nArchitecture: %2\nLanguage: %3\nTheme: %4",
+      "[Bug] "
+    ]
   },
   "japanese": {
     "translated": 874,
-    "total": 874,
-    "englishFallbacks": []
+    "total": 885,
+    "englishFallbacks": [
+      "Beta · Hardware and Windows compatibility testing is ongoing.",
+      "Cannot open link",
+      "Dark",
+      "Light",
+      "No report is sent automatically. Hardware IDs, device names, paths and logs are not included. Check any screenshots or files you attach for private information.",
+      "Open GitHub",
+      "Open the project's Issues page in your browser to report the problem.",
+      "Report a bug",
+      "Review these details before opening GitHub. Describe the problem and add steps or screenshots there. A GitHub account is required; reports are public.",
+      "Version: 0.21.4 (Beta)\nWindows: %1\nArchitecture: %2\nLanguage: %3\nTheme: %4",
+      "[Bug] "
+    ]
   },
   "korean": {
     "translated": 874,
-    "total": 874,
-    "englishFallbacks": []
+    "total": 885,
+    "englishFallbacks": [
+      "Beta · Hardware and Windows compatibility testing is ongoing.",
+      "Cannot open link",
+      "Dark",
+      "Light",
+      "No report is sent automatically. Hardware IDs, device names, paths and logs are not included. Check any screenshots or files you attach for private information.",
+      "Open GitHub",
+      "Open the project's Issues page in your browser to report the problem.",
+      "Report a bug",
+      "Review these details before opening GitHub. Describe the problem and add steps or screenshots there. A GitHub account is required; reports are public.",
+      "Version: 0.21.4 (Beta)\nWindows: %1\nArchitecture: %2\nLanguage: %3\nTheme: %4",
+      "[Bug] "
+    ]
   },
   "latvian": {
     "translated": 874,
-    "total": 874,
-    "englishFallbacks": []
+    "total": 885,
+    "englishFallbacks": [
+      "Beta · Hardware and Windows compatibility testing is ongoing.",
+      "Cannot open link",
+      "Dark",
+      "Light",
+      "No report is sent automatically. Hardware IDs, device names, paths and logs are not included. Check any screenshots or files you attach for private information.",
+      "Open GitHub",
+      "Open the project's Issues page in your browser to report the problem.",
+      "Report a bug",
+      "Review these details before opening GitHub. Describe the problem and add steps or screenshots there. A GitHub account is required; reports are public.",
+      "Version: 0.21.4 (Beta)\nWindows: %1\nArchitecture: %2\nLanguage: %3\nTheme: %4",
+      "[Bug] "
+    ]
   },
   "lithuanian": {
     "translated": 874,
-    "total": 874,
-    "englishFallbacks": []
+    "total": 885,
+    "englishFallbacks": [
+      "Beta · Hardware and Windows compatibility testing is ongoing.",
+      "Cannot open link",
+      "Dark",
+      "Light",
+      "No report is sent automatically. Hardware IDs, device names, paths and logs are not included. Check any screenshots or files you attach for private information.",
+      "Open GitHub",
+      "Open the project's Issues page in your browser to report the problem.",
+      "Report a bug",
+      "Review these details before opening GitHub. Describe the problem and add steps or screenshots there. A GitHub account is required; reports are public.",
+      "Version: 0.21.4 (Beta)\nWindows: %1\nArchitecture: %2\nLanguage: %3\nTheme: %4",
+      "[Bug] "
+    ]
   },
   "norwegian": {
     "translated": 874,
-    "total": 874,
-    "englishFallbacks": []
+    "total": 885,
+    "englishFallbacks": [
+      "Beta · Hardware and Windows compatibility testing is ongoing.",
+      "Cannot open link",
+      "Dark",
+      "Light",
+      "No report is sent automatically. Hardware IDs, device names, paths and logs are not included. Check any screenshots or files you attach for private information.",
+      "Open GitHub",
+      "Open the project's Issues page in your browser to report the problem.",
+      "Report a bug",
+      "Review these details before opening GitHub. Describe the problem and add steps or screenshots there. A GitHub account is required; reports are public.",
+      "Version: 0.21.4 (Beta)\nWindows: %1\nArchitecture: %2\nLanguage: %3\nTheme: %4",
+      "[Bug] "
+    ]
   },
   "polish": {
     "translated": 874,
-    "total": 874,
-    "englishFallbacks": []
+    "total": 885,
+    "englishFallbacks": [
+      "Beta · Hardware and Windows compatibility testing is ongoing.",
+      "Cannot open link",
+      "Dark",
+      "Light",
+      "No report is sent automatically. Hardware IDs, device names, paths and logs are not included. Check any screenshots or files you attach for private information.",
+      "Open GitHub",
+      "Open the project's Issues page in your browser to report the problem.",
+      "Report a bug",
+      "Review these details before opening GitHub. Describe the problem and add steps or screenshots there. A GitHub account is required; reports are public.",
+      "Version: 0.21.4 (Beta)\nWindows: %1\nArchitecture: %2\nLanguage: %3\nTheme: %4",
+      "[Bug] "
+    ]
   },
   "portuguese": {
     "translated": 874,
-    "total": 874,
-    "englishFallbacks": []
+    "total": 885,
+    "englishFallbacks": [
+      "Beta · Hardware and Windows compatibility testing is ongoing.",
+      "Cannot open link",
+      "Dark",
+      "Light",
+      "No report is sent automatically. Hardware IDs, device names, paths and logs are not included. Check any screenshots or files you attach for private information.",
+      "Open GitHub",
+      "Open the project's Issues page in your browser to report the problem.",
+      "Report a bug",
+      "Review these details before opening GitHub. Describe the problem and add steps or screenshots there. A GitHub account is required; reports are public.",
+      "Version: 0.21.4 (Beta)\nWindows: %1\nArchitecture: %2\nLanguage: %3\nTheme: %4",
+      "[Bug] "
+    ]
   },
   "romanian": {
     "translated": 874,
-    "total": 874,
-    "englishFallbacks": []
+    "total": 885,
+    "englishFallbacks": [
+      "Beta · Hardware and Windows compatibility testing is ongoing.",
+      "Cannot open link",
+      "Dark",
+      "Light",
+      "No report is sent automatically. Hardware IDs, device names, paths and logs are not included. Check any screenshots or files you attach for private information.",
+      "Open GitHub",
+      "Open the project's Issues page in your browser to report the problem.",
+      "Report a bug",
+      "Review these details before opening GitHub. Describe the problem and add steps or screenshots there. A GitHub account is required; reports are public.",
+      "Version: 0.21.4 (Beta)\nWindows: %1\nArchitecture: %2\nLanguage: %3\nTheme: %4",
+      "[Bug] "
+    ]
   },
   "russian": {
     "translated": 874,
-    "total": 874,
-    "englishFallbacks": []
+    "total": 885,
+    "englishFallbacks": [
+      "Beta · Hardware and Windows compatibility testing is ongoing.",
+      "Cannot open link",
+      "Dark",
+      "Light",
+      "No report is sent automatically. Hardware IDs, device names, paths and logs are not included. Check any screenshots or files you attach for private information.",
+      "Open GitHub",
+      "Open the project's Issues page in your browser to report the problem.",
+      "Report a bug",
+      "Review these details before opening GitHub. Describe the problem and add steps or screenshots there. A GitHub account is required; reports are public.",
+      "Version: 0.21.4 (Beta)\nWindows: %1\nArchitecture: %2\nLanguage: %3\nTheme: %4",
+      "[Bug] "
+    ]
   },
   "serbian": {
     "translated": 874,
-    "total": 874,
-    "englishFallbacks": []
+    "total": 885,
+    "englishFallbacks": [
+      "Beta · Hardware and Windows compatibility testing is ongoing.",
+      "Cannot open link",
+      "Dark",
+      "Light",
+      "No report is sent automatically. Hardware IDs, device names, paths and logs are not included. Check any screenshots or files you attach for private information.",
+      "Open GitHub",
+      "Open the project's Issues page in your browser to report the problem.",
+      "Report a bug",
+      "Review these details before opening GitHub. Describe the problem and add steps or screenshots there. A GitHub account is required; reports are public.",
+      "Version: 0.21.4 (Beta)\nWindows: %1\nArchitecture: %2\nLanguage: %3\nTheme: %4",
+      "[Bug] "
+    ]
   },
   "slovenian": {
     "translated": 874,
-    "total": 874,
-    "englishFallbacks": []
+    "total": 885,
+    "englishFallbacks": [
+      "Beta · Hardware and Windows compatibility testing is ongoing.",
+      "Cannot open link",
+      "Dark",
+      "Light",
+      "No report is sent automatically. Hardware IDs, device names, paths and logs are not included. Check any screenshots or files you attach for private information.",
+      "Open GitHub",
+      "Open the project's Issues page in your browser to report the problem.",
+      "Report a bug",
+      "Review these details before opening GitHub. Describe the problem and add steps or screenshots there. A GitHub account is required; reports are public.",
+      "Version: 0.21.4 (Beta)\nWindows: %1\nArchitecture: %2\nLanguage: %3\nTheme: %4",
+      "[Bug] "
+    ]
   },
   "spanish": {
     "translated": 874,
-    "total": 874,
-    "englishFallbacks": []
+    "total": 885,
+    "englishFallbacks": [
+      "Beta · Hardware and Windows compatibility testing is ongoing.",
+      "Cannot open link",
+      "Dark",
+      "Light",
+      "No report is sent automatically. Hardware IDs, device names, paths and logs are not included. Check any screenshots or files you attach for private information.",
+      "Open GitHub",
+      "Open the project's Issues page in your browser to report the problem.",
+      "Report a bug",
+      "Review these details before opening GitHub. Describe the problem and add steps or screenshots there. A GitHub account is required; reports are public.",
+      "Version: 0.21.4 (Beta)\nWindows: %1\nArchitecture: %2\nLanguage: %3\nTheme: %4",
+      "[Bug] "
+    ]
   },
   "swedish": {
     "translated": 874,
-    "total": 874,
-    "englishFallbacks": []
+    "total": 885,
+    "englishFallbacks": [
+      "Beta · Hardware and Windows compatibility testing is ongoing.",
+      "Cannot open link",
+      "Dark",
+      "Light",
+      "No report is sent automatically. Hardware IDs, device names, paths and logs are not included. Check any screenshots or files you attach for private information.",
+      "Open GitHub",
+      "Open the project's Issues page in your browser to report the problem.",
+      "Report a bug",
+      "Review these details before opening GitHub. Describe the problem and add steps or screenshots there. A GitHub account is required; reports are public.",
+      "Version: 0.21.4 (Beta)\nWindows: %1\nArchitecture: %2\nLanguage: %3\nTheme: %4",
+      "[Bug] "
+    ]
   },
   "thai": {
     "translated": 874,
-    "total": 874,
-    "englishFallbacks": []
+    "total": 885,
+    "englishFallbacks": [
+      "Beta · Hardware and Windows compatibility testing is ongoing.",
+      "Cannot open link",
+      "Dark",
+      "Light",
+      "No report is sent automatically. Hardware IDs, device names, paths and logs are not included. Check any screenshots or files you attach for private information.",
+      "Open GitHub",
+      "Open the project's Issues page in your browser to report the problem.",
+      "Report a bug",
+      "Review these details before opening GitHub. Describe the problem and add steps or screenshots there. A GitHub account is required; reports are public.",
+      "Version: 0.21.4 (Beta)\nWindows: %1\nArchitecture: %2\nLanguage: %3\nTheme: %4",
+      "[Bug] "
+    ]
   },
   "turkish": {
     "translated": 874,
-    "total": 874,
-    "englishFallbacks": []
+    "total": 885,
+    "englishFallbacks": [
+      "Beta · Hardware and Windows compatibility testing is ongoing.",
+      "Cannot open link",
+      "Dark",
+      "Light",
+      "No report is sent automatically. Hardware IDs, device names, paths and logs are not included. Check any screenshots or files you attach for private information.",
+      "Open GitHub",
+      "Open the project's Issues page in your browser to report the problem.",
+      "Report a bug",
+      "Review these details before opening GitHub. Describe the problem and add steps or screenshots there. A GitHub account is required; reports are public.",
+      "Version: 0.21.4 (Beta)\nWindows: %1\nArchitecture: %2\nLanguage: %3\nTheme: %4",
+      "[Bug] "
+    ]
   },
   "ukrainian": {
     "translated": 874,
-    "total": 874,
-    "englishFallbacks": []
+    "total": 885,
+    "englishFallbacks": [
+      "Beta · Hardware and Windows compatibility testing is ongoing.",
+      "Cannot open link",
+      "Dark",
+      "Light",
+      "No report is sent automatically. Hardware IDs, device names, paths and logs are not included. Check any screenshots or files you attach for private information.",
+      "Open GitHub",
+      "Open the project's Issues page in your browser to report the problem.",
+      "Report a bug",
+      "Review these details before opening GitHub. Describe the problem and add steps or screenshots there. A GitHub account is required; reports are public.",
+      "Version: 0.21.4 (Beta)\nWindows: %1\nArchitecture: %2\nLanguage: %3\nTheme: %4",
+      "[Bug] "
+    ]
   },
   "vietnamese": {
     "translated": 874,
-    "total": 874,
-    "englishFallbacks": []
+    "total": 885,
+    "englishFallbacks": [
+      "Beta · Hardware and Windows compatibility testing is ongoing.",
+      "Cannot open link",
+      "Dark",
+      "Light",
+      "No report is sent automatically. Hardware IDs, device names, paths and logs are not included. Check any screenshots or files you attach for private information.",
+      "Open GitHub",
+      "Open the project's Issues page in your browser to report the problem.",
+      "Report a bug",
+      "Review these details before opening GitHub. Describe the problem and add steps or screenshots there. A GitHub account is required; reports are public.",
+      "Version: 0.21.4 (Beta)\nWindows: %1\nArchitecture: %2\nLanguage: %3\nTheme: %4",
+      "[Bug] "
+    ]
   }
 }

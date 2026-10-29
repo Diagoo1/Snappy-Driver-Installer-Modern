@@ -1,0 +1,45 @@
+name: Bug report / الإبلاغ عن مشكلة
+description: Report a reproducible issue in the beta / الإبلاغ عن مشكلة في النسخة التجريبية
+title: "[Bug] "
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for testing the beta. Reports are public. Remove personal information from screenshots and files. Never post passwords, serial numbers, full hardware/device instance IDs or unreviewed support reports.
+
+        شكرًا لتجربة نسخة البيتا. البلاغات علنية؛ احذف البيانات الشخصية من الصور والملفات، ولا ترفق كلمات مرور أو أرقامًا تسلسلية أو معرّفات أجهزة كاملة أو تقرير دعم دون مراجعته.
+  - type: textarea
+    id: environment
+    attributes:
+      label: Environment / بيئة التشغيل
+      description: App version, Windows version, architecture, language and theme only.
+      placeholder: "Version / Windows / x86 or x64 / language / theme"
+    validations:
+      required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: Steps to reproduce / خطوات تكرار المشكلة
+      placeholder: "1. Open… / افتح…\n2. Click… / اضغط…"
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected behavior / النتيجة المتوقعة
+    validations:
+      required: true
+  - type: textarea
+    id: actual
+    attributes:
+      label: Actual behavior / ما حدث فعليًا
+      description: Include an error message or reviewed screenshot if useful. Was this a real scan or sample data?
+    validations:
+      required: true
+  - type: checkboxes
+    id: privacy
+    attributes:
+      label: Before submitting / قبل الإرسال
+      options:
+        - label: I reviewed attachments for private data / راجعت المرفقات للتأكد من خلوها من بيانات خاصة
+          required: true

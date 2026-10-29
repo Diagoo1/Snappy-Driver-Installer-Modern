@@ -1,4 +1,5 @@
 #include <QApplication>
+#include <QUrlQuery>
 #ifdef Q_OS_WIN
 #include <windows.h>
 #endif
@@ -118,6 +119,13 @@ int main(int argc,char **argv){
         DriverEntry state;state.sdioVerified=true;state.sdioDriverPresent=true;state.candidates.resize(2);state.candidates[1].valid=true;state.candidates[1].recommended=true;state.chosenCandidate=1;
         check(driverStatus(state)==QStringLiteral("Installed"),"short status reflects an unchanged installed driver");state.candidates[1].statusBits=0x20;check(driverStatus(state)==QStringLiteral("Upgrade"),"short status uses native upgrade bit");state.candidates[1].statusBits=0x80;check(driverStatus(state)==QStringLiteral("Downgrade"),"short status uses native downgrade bit");state.sdioDriverPresent=false;check(driverStatus(state)==QStringLiteral("Missing"),"short status reports a missing installed driver");check(driverStatus(state,0)==QStringLiteral("Installed"),"installed version row stays Installed");
         Theme::validate(Theme::defaultDocument());check(true,"built-in theme meets documented contrast requirements");
+        const QString safeEnvironment=BugReport::environment(QStringLiteral("Windows 11"),QStringLiteral("x86_64"),QStringLiteral("arabic"),true);
+        const QUrl bugUrl=BugReport::issueUrl(safeEnvironment);const QUrlQuery bugQuery(bugUrl);
+        check(bugUrl.scheme()==QStringLiteral("https") && bugUrl.host()==QStringLiteral("github.com") && bugUrl.path()==QStringLiteral("/Diagoo1/Snappy-Driver-Installer-Modern/issues/new"),"bug reports open the authorized repository over HTTPS");
+        check(bugQuery.queryItemValue(QStringLiteral("template"))==QStringLiteral("bug_report.yml") && bugQuery.queryItemValue(QStringLiteral("environment"),QUrl::FullyDecoded)==safeEnvironment,"issue form prefill preserves the reviewed environment");
+        check(!safeEnvironment.contains(QStringLiteral("hardware"),Qt::CaseInsensitive) && !safeEnvironment.contains(QStringLiteral("instance"),Qt::CaseInsensitive) && !safeEnvironment.contains(QStringLiteral("Users")),"automatic bug context omits hardware IDs and user paths");
+        QTimer::singleShot(60,[](){for(QWidget *widget:QApplication::topLevelWidgets())if(widget->objectName()==QStringLiteral("bugReportDialog")){QPushButton *cancel=widget->findChild<QPushButton*>(QStringLiteral("bugReportCancel"));if(cancel)cancel->click();}});
+        BugReport::show(0);check(true,"bug report preview can close without opening a browser or sending data");
         const QJsonObject copper=Theme::readPack(QDir(app.applicationDirPath()).filePath(QStringLiteral("../../themes/copper-night.sdi-theme.json")));Theme::setDocument(copper);check(Theme::document().value(QStringLiteral("id")).toString()==QStringLiteral("copper-night"),"community sample theme imports without style code");Theme::setDocument(QJsonObject());
         QJsonObject unreadable=copper,palette=copper.value(QStringLiteral("light")).toObject();palette.insert(QStringLiteral("text"),palette.value(QStringLiteral("surface")));unreadable.insert(QStringLiteral("light"),palette);bool rejectedTheme=false;try{Theme::validate(unreadable);}catch(const std::exception&){rejectedTheme=true;}check(rejectedTheme,"theme import rejects unreadable text contrast");
         check(AppUpdate::newer(QStringLiteral("v0.20.0"),QStringLiteral("0.19.0")) && !AppUpdate::newer(QStringLiteral("0.18.9"),QStringLiteral("0.19.0")),"application updater compares semantic versions numerically");
@@ -174,7 +182,7 @@ int main(int argc,char **argv){
         QMetaObject::invokeMethod(&window,"navigate",Q_ARG(int,5));QTest::qWait(240);
         QLabel *developer=pages->widget(5)->findChild<QLabel*>(QStringLiteral("developerName"));
         check(developer && developer->text()==QStringLiteral("Tarek Sadek"),"About page presents the verified developer identity");
-        check(pages->widget(5)->findChildren<ActionButton*>().size()==3,"About page has developer project, support and contact links");
+        check(pages->widget(5)->findChildren<ActionButton*>().size()==4 && pages->widget(5)->findChild<ActionButton*>(QStringLiteral("reportBugButton")),"About page has developer links and a separate bug report action");
         window.grab().save(QDir(app.applicationDirPath()).filePath(QStringLiteral("about-page.png")));
         QMetaObject::invokeMethod(&window,"navigate",Q_ARG(int,2));QTest::qWait(240);
         window.grab().save(QDir(app.applicationDirPath()).filePath(QStringLiteral("packages-page.png")));

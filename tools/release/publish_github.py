@@ -34,7 +34,7 @@ class Github:
         if account.get('login','').lower()!='diagoo1':raise RuntimeError('The authenticated account differs from the user-authorized repository owner.')
         return {'login':account['login'],'repository':REPOSITORY,'repositoryExists':self.call('/repos/'+REPOSITORY) is not None}
 def main():
-    parser=argparse.ArgumentParser();parser.add_argument('--check',action='store_true');parser.add_argument('--create-repository',action='store_true');parser.add_argument('--release');parser.add_argument('--assets',type=Path);parser.add_argument('--notes',type=Path);parser.add_argument('--commit');args=parser.parse_args()
+    parser=argparse.ArgumentParser();parser.add_argument('--check',action='store_true');parser.add_argument('--create-repository',action='store_true');parser.add_argument('--release');parser.add_argument('--assets',type=Path);parser.add_argument('--notes',type=Path);parser.add_argument('--commit');parser.add_argument('--prerelease',action='store_true');args=parser.parse_args()
     github=Github();state=github.verify()
     if args.check:print(json.dumps(state));return
     if args.create_repository and not state['repositoryExists']:
@@ -44,7 +44,8 @@ def main():
         version='v'+args.release
         release=github.call('/repos/'+REPOSITORY+'/releases/tags/'+version)
         if release and not release['draft']:raise RuntimeError('This public release already exists; refusing to replace its assets.')
-        if not release:release=github.call('/repos/'+REPOSITORY+'/releases','POST',{'tag_name':version,'target_commitish':args.commit,'name':version,'body':args.notes.read_text('utf-8'),'draft':True,'prerelease':False})
+        if release and bool(release['prerelease'])!=args.prerelease:raise RuntimeError('Existing draft has a different prerelease status.')
+        if not release:release=github.call('/repos/'+REPOSITORY+'/releases','POST',{'tag_name':version,'target_commitish':args.commit,'name':version+(' Beta' if args.prerelease else ''),'body':args.notes.read_text('utf-8'),'draft':True,'prerelease':args.prerelease})
         existing={item['name']:item for item in github.call('/repos/'+REPOSITORY+'/releases/'+str(release['id'])+'/assets')}
         for file in sorted(args.assets.iterdir()):
             if not file.is_file():continue
@@ -52,6 +53,6 @@ def main():
             url=release['upload_url'].split('{',1)[0]+'?name='+urllib.parse.quote(file.name)
             asset=github.call(url,'POST',file.read_bytes(),'application/octet-stream');expected='sha256:'+hashlib.sha256(file.read_bytes()).hexdigest()
             if asset.get('digest')!=expected or asset['size']!=file.stat().st_size:raise RuntimeError('Uploaded asset integrity mismatch.')
-        final=github.call('/repos/'+REPOSITORY+'/releases/'+str(release['id']),'PATCH',{'draft':False,'make_latest':'true'})
+        final=github.call('/repos/'+REPOSITORY+'/releases/'+str(release['id']),'PATCH',{'draft':False,'make_latest':'false' if args.prerelease else 'true'})
         print(json.dumps({'release':final['html_url'],'assets':[{ 'name':item['name'],'digest':item.get('digest')} for item in github.call('/repos/'+REPOSITORY+'/releases/'+str(release['id'])+'/assets')]}))
 if __name__=='__main__':main()

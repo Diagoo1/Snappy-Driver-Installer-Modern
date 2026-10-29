@@ -878,6 +878,17 @@
     "Copy": "نسخ",
     "Paste": "لصق",
     "Delete": "حذف",
-    "Status": "الحالة"
+    "Status": "الحالة",
+    "Report a bug": "الإبلاغ عن مشكلة",
+    "Beta · Hardware and Windows compatibility testing is ongoing.": "نسخة بيتا · اختبار التوافق مع الأجهزة وإصدارات ويندوز مستمر.",
+    "Review these details before opening GitHub. Describe the problem and add steps or screenshots there. A GitHub account is required; reports are public.": "راجع البيانات قبل فتح GitHub، ثم اشرح المشكلة وأضف خطوات تكرارها أو صورًا هناك. يلزم حساب GitHub، والبلاغات علنية.",
+    "No report is sent automatically. Hardware IDs, device names, paths and logs are not included. Check any screenshots or files you attach for private information.": "لا يُرسل البلاغ تلقائيًا. لا تُرفق معرّفات الأجهزة أو أسماؤها أو المسارات أو السجلات. راجع الصور والملفات التي تضيفها للتأكد من خلوها من بياناتك الخاصة.",
+    "Open GitHub": "فتح GitHub",
+    "Cannot open link": "تعذّر فتح الرابط",
+    "Open the project's Issues page in your browser to report the problem.": "افتح صفحة Issues في مستودع المشروع من متصفحك للإبلاغ عن المشكلة.",
+    "[Bug] ": "[مشكلة] ",
+    "Dark": "داكن",
+    "Light": "فاتح",
+    "Version: 0.21.4 (Beta)\nWindows: %1\nArchitecture: %2\nLanguage: %3\nTheme: %4": "الإصدار: 0.21.4 (بيتا)\nويندوز: %1\nالمعمارية: %2\nاللغة: %3\nالمظهر: %4"
   }
 }

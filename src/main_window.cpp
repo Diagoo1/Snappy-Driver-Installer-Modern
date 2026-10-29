@@ -546,6 +546,7 @@ void MainWindow::openToolsMenu()
 }
 void MainWindow::dispatchTool(const QString &id)
 {
+    if(id==QStringLiteral("report-bug")){BugReport::show(this);return;}
     if(id==QStringLiteral("updates")){openOnlinePackages();return;}
     if(id==QStringLiteral("offline")){navigate(2);return;}
     if(id==QStringLiteral("snapshot")){openSnapshot();return;}

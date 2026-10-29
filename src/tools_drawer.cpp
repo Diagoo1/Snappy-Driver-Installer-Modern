@@ -93,6 +93,7 @@ ToolsDrawer::ToolsDrawer(QWidget *parent)
     addRow(stack,QStringLiteral("license"),QStringLiteral("License Agreement"),QString::fromUtf8("اتفاقية الترخيص"),QStringLiteral("shield"));
     addRow(stack,QStringLiteral("automation"),QStringLiteral("Export installation plan"),QString::fromUtf8("تصدير خطة التثبيت"),QStringLiteral("save"));
     addRow(stack,QStringLiteral("report"),QStringLiteral("Export support report"),QString::fromUtf8("تصدير تقرير الدعم"),QStringLiteral("alert"));
+    addRow(stack,QStringLiteral("report-bug"),QStringLiteral("Report a bug"),QString::fromUtf8("الإبلاغ عن مشكلة"),QStringLiteral("alert"));
     stack->addStretch(1);
     scroll->setWidget(contents);
     panel->addWidget(scroll,1);

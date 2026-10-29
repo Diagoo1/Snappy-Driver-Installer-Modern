@@ -30,6 +30,9 @@
 #include "ui_language.h"
 #include "app_settings.h"
 #include "theme.h"
+#include "support_report.h"
+#include <QPlainTextEdit>
+#include <QPushButton>
 #include "../online/fixture.h"
 #include <stdexcept>
 #include <cstdio>
@@ -65,6 +68,7 @@ int renderPublicationGallery(QApplication &app){
         page(3);shot(&window,QStringLiteral("05-settings"));
         for(QScrollArea *scroll:pages->widget(3)->findChildren<QScrollArea*>())scroll->verticalScrollBar()->setValue(scroll->verticalScrollBar()->maximum());shot(&window,QStringLiteral("06-settings-advanced"));for(QScrollArea *scroll:pages->widget(3)->findChildren<QScrollArea*>())scroll->verticalScrollBar()->setValue(0);
         page(5);shot(&window,QStringLiteral("07-about"));
+        QTimer::singleShot(90,[&](){for(QWidget *widget:QApplication::topLevelWidgets())if(widget->objectName()==QStringLiteral("bugReportDialog")){QPlainTextEdit *preview=widget->findChild<QPlainTextEdit*>(QStringLiteral("bugReportPreview"));if(preview)preview->setPlainText(BugReport::environment(QStringLiteral("Windows 11 (demo)"),QStringLiteral("x86_64"),ar?QStringLiteral("arabic"):QStringLiteral("english"),dark==1));shot(widget,QStringLiteral("18-report-bug"));widget->close();}});BugReport::show(&window);
         page(0);ToolsDrawer *tools=window.findChild<ToolsDrawer*>();tools->setMotionEnabled(false);tools->openDrawer();shot(&window,QStringLiteral("08-tools"));tools->closeDrawer();
         {DriverDetailsDialog details(catalog->entry(0),true,ar,&window);details.show();QTest::qWait(60);QTabWidget *tabs=details.findChild<QTabWidget*>();shot(&details,QStringLiteral("09-comparison"));tabs->setCurrentIndex(1);shot(&details,QStringLiteral("10-device"));QLabel *value=details.findChild<QLabel*>(QStringLiteral("hardwareIdentityValue"));value->setSelection(0,value->text().size());QTimer::singleShot(70,[&](){QMenu *menu=qobject_cast<QMenu*>(app.activePopupWidget());if(menu){menu->setActiveAction(menu->actions().first());shot(menu,QStringLiteral("17-text-menu"));menu->close();}});QContextMenuEvent context(QContextMenuEvent::Mouse,QPoint(12,12),value->mapToGlobal(QPoint(12,12)));QApplication::sendEvent(value,&context);tabs->setCurrentIndex(2);shot(&details,QStringLiteral("11-engine-details"));details.close();}
         {OnlineDialog online(QStringLiteral("./drivers"),QStringLiteral("./indexes"),QStringList(),ar,&window);online.setProperty("darkMode",dark==1);online.setStyleSheet(Theme::styleSheet(dark==1));Fixture fixture;online.setCatalog(OnlinePackages::parse(fixture.torrent));online.show();QTest::qWait(60);shot(&online,QStringLiteral("12-download-catalog"));online.close();}

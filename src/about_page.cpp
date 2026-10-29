@@ -12,6 +12,7 @@
 #include <QTimer>
 #include <QElapsedTimer>
 #include "ui_language.h"
+#include "support_report.h"
 #include <QApplication>
 #include <QDesktopServices>
 #include <QUrl>
@@ -71,6 +72,8 @@ void AboutPage::setArabic(bool ar){
     const QStringList titles=QStringList()<<t("GitHub projects","مشاريعي على GitHub")<<t("Support development","دعم التطوير")<<t("Contact me","تواصل معي");
     const QStringList urls=QStringList()<<QStringLiteral("https://github.com/Diagoo1")<<QStringLiteral("https://paypal.me/Diagoo1")<<QStringLiteral("mailto:tarek.sadek44@gmail.com");
     for(int i=0;i<titles.size();++i){ActionButton *button=new ActionButton(titles[i],body);button->setObjectName(QStringLiteral("outlineButton"));button->setMinimumHeight(48);button->setToolTip(urls[i]);const QUrl url(urls[i]);connect(button,&QPushButton::clicked,this,[url](){QDesktopServices::openUrl(url);});links->addWidget(button,1);}box->addLayout(links);
+    ActionButton *report=new ActionButton(t("Report a bug","الإبلاغ عن مشكلة"),body);report->setObjectName(QStringLiteral("reportBugButton"));report->setMinimumHeight(48);connect(report,&QPushButton::clicked,this,[this](){BugReport::show(this);});box->addWidget(report);
+    box->addWidget(text(t("Beta · Hardware and Windows compatibility testing is ongoing.","نسخة بيتا · اختبار التوافق مع الأجهزة وإصدارات ويندوز مستمر."),"subText",body));
     QWidget *credits=new QWidget(body);credits->setObjectName(QStringLiteral("softSurface"));QVBoxLayout *creditBox=new QVBoxLayout(credits);creditBox->setContentsMargins(24,18,24,18);creditBox->setSpacing(9);
     creditBox->addWidget(text(t("Built on open source","مبني على برمجيات مفتوحة المصدر"),"sectionTitle",credits));
     creditBox->addWidget(text(t("Driver matching and installation: Snappy Driver Installer Origin contributors. Modern interface: Tarek Sadek. Distributed under GPL v3 or later.","مطابقة التعريفات وتثبيتها: مساهمو Snappy Driver Installer Origin. الواجهة الحديثة: طارق صادق. التوزيع وفق GPL الإصدار الثالث أو أحدث."),"bodyText",credits));

@@ -102,5 +102,9 @@
   "PROCESS STAGES": "مراحل العملية",
   "Completed (demo)": "اكتمل (محاكاة)",
   "Queued": "في قائمة الانتظار",
-  "Simulating %1%": "محاكاة %1%"
+  "Simulating %1%": "محاكاة %1%",
+  "[Bug] ": "[مشكلة] ",
+  "Dark": "داكن",
+  "Light": "فاتح",
+  "Version: 0.21.4 (Beta)\nWindows: %1\nArchitecture: %2\nLanguage: %3\nTheme: %4": "الإصدار: 0.21.4 (بيتا)\nويندوز: %1\nالمعمارية: %2\nاللغة: %3\nالمظهر: %4"
 }
