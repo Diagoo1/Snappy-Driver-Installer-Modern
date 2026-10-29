@@ -1,4 +1,4 @@
-خطوط الواجهة واتجاه النصوص — 0.20.0
+خطوط الواجهة واتجاه النصوص
 
 العربية تستخدم Cairo بأوزان Regular وMedium وBold تحت SIL OFL 1.1.
 الإنجليزية تستخدم Satoshi، وهو خط مشروع Dreams، بنسخ TTF ثابتة رسمية دون تعديل.
@@ -9,7 +9,7 @@ Satoshi مرخّص تحت ITF Free Font License وليس GPL؛ ترخيص تضم
 لبناء المصدر: نزّل Satoshi من https://api.fontshare.com/v2/fonts/download/satoshi
 واقرأ ترخيصه المرفق. لا تنشر ملفات Satoshi الخام في المستودع العام؛ كل من يبني المصدر ينزّل نسخته من Fontshare.
 ملفات Cairo وSatoshi-FFL.txt وCairo-OFL.txt وPROVENANCE.json توثّق المصادر والتراخيص والبصمات.
-أداة tools/integration/prepare_ui_fonts.py تنشئ نسخ Cairo الثابتة المتوافقة مع Qt 5.6 من مصدره الرسمي، وتنسخ Satoshi الرسمي دون تعديله.
+ملفات Cairo الثابتة مرفقة. أداة `tools/integration/bootstrap_fonts.py` تنزّل Satoshi الرسمي وتتحقق من البصمات قبل البناء.
 
 إصلاح الدقة الكسري في طبقة Qt المشتركة مستمر، ويشمل تأثيرات الشفافية وانتقالات الصفحات وأنيميشن شجرة التعريفات.
 النصوص المرسومة يدويًا تستخدم محاذاة فعلية ثابتة لتجنب انعكاس المحاذاة مرتين في RTL.

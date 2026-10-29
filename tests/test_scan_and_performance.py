@@ -3,7 +3,7 @@ import unittest
 from pathlib import Path
 ROOT=Path(__file__).resolve().parents[1]
 def read(p):return (ROOT/p).read_text(encoding='utf-8')
-class Release16Wiring(unittest.TestCase):
+class ScanAndPerformanceWiring(unittest.TestCase):
     def test_name_copyright_scope_and_unique_portable_executable(self):
         self.assertIn('Snappy Driver Installer',read('src/title_bar.cpp'))
         self.assertIn('UI by Tarek Sadek',read('src/title_bar.cpp'))
@@ -11,8 +11,8 @@ class Release16Wiring(unittest.TestCase):
         self.assertIn('Original SDIO contributors',read('resources.rc'))
         self.assertIn('GPL-3.0-or-later',read('resources.rc'))
         self.assertIn('TARGET = SnappyDriverInstaller-TS',read('SDIO_Modern_Qt.pro'))
-        self.assertIn('SnappyDriverInstaller-TS.exe',read('tools/package_offline_portable.ps1'))
-        self.assertNotIn("$dest=Join-Path $OfflineRoot 'SDI_R2600.exe'",read('tools/package_offline_portable.ps1'))
+        self.assertIn('SnappyDriverInstaller-TS.exe',read('tools/integration/build_native_engine.ps1'))
+        self.assertNotIn('OfflineRoot',read('tools/build.ps1'))
     def test_overlay_is_actual_progress_not_fake_progress(self):
         overlay=read('src/scan_overlay.cpp')
         self.assertIn('parentWidget()->grab()',overlay)
@@ -50,7 +50,7 @@ class Release16Wiring(unittest.TestCase):
         self.assertIn('validatePlan(m->snapshot,plan)',native)
     def test_no_live_driver_install_in_matching_profile(self):
         self.assertIn('SDIO_MODERN_ENABLE_EXPERIMENTAL_INSTALL',read('src/engine_bridge.cpp'))
-        self.assertIn("profile -ne 'matching'",read('tools/package_offline_portable.ps1'))
+        self.assertIn('MatchingOnly',read('tools/build.ps1'))
         self.assertIn("$EnableExperimentalInstall",read('tools/integration/build_native_engine.ps1'))
     def test_qmake_cmake_sources_and_headers_exist(self):
         for unit in ('src/scan_overlay.cpp','src/scan_overlay.h'):

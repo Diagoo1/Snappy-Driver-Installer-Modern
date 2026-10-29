@@ -29,7 +29,7 @@ try {
     $qtConfig=Join-Path $qtPrefix 'mkspecs\qconfig.pri'
     $staticQt=$false
     if(Test-Path -LiteralPath $qtConfig){$staticQt=(Get-Content -LiteralPath $qtConfig -Raw) -match '(?m)^QT_CONFIG\s*[+:]?=.*\bstatic\b'}
-    if($SingleFile -and -not $staticQt){throw 'Single-file build requires a genuinely STATIC Qt 5.6.3 SDK. The installed official Qt DLL SDK cannot be turned static by adding a flag. See docs/integration/STATIC_BUILD_AR.md.'}
+    if($SingleFile -and -not $staticQt){throw 'Single-file build requires a genuinely STATIC Qt 5.6.3 SDK. The installed official Qt DLL SDK cannot be turned static by adding a flag. See docs/BUILDING.md.'}
     if(-not $SkipSourceDownload){& (Join-Path $PSScriptRoot 'prepare_sources.ps1') -ProjectRoot $ProjectRoot}
     $origin=Join-Path $ProjectRoot 'vendor\origin-patched'
     $boost=Join-Path $ProjectRoot 'vendor\boost'
@@ -290,8 +290,10 @@ QMAKE_LFLAGS += -Wl,--gc-sections
     if(-not $built){throw 'Integrated executable not found after linking.'}
     # Catch stale qmake object/resource files before writing the build manifest.
     $version=[Diagnostics.FileVersionInfo]::GetVersionInfo($built)
-    if($version.FileMajorPart -ne 0 -or $version.FileMinorPart -ne 21){
-        throw ('Stale Windows executable/resource detected: '+$version.FileVersion+'. Expected 0.19.x. The current UI was not linked.')
+    $expectedVersionText=(Get-Content -LiteralPath (Join-Path $ProjectRoot 'VERSION.txt') -Raw).Trim()
+    $expectedVersion=[Version]($expectedVersionText+'.0')
+    if($version.FileMajorPart -ne $expectedVersion.Major -or $version.FileMinorPart -ne $expectedVersion.Minor -or $version.FileBuildPart -ne $expectedVersion.Build -or $version.FilePrivatePart -ne $expectedVersion.Revision){
+        throw ('Stale Windows executable/resource detected: '+$version.FileVersion+'. Expected '+$expectedVersionText+'. The current UI was not linked.')
     }
     New-Item -ItemType Directory -Force -Path $dist | Out-Null
     $exe=Join-Path $dist 'SnappyDriverInstaller-TS.exe';Copy-Item -LiteralPath $built -Destination $exe -Force

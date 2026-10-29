@@ -2,8 +2,8 @@ import unittest
 from pathlib import Path
 ROOT=Path(__file__).resolve().parents[1]
 def read(f):return (ROOT/f).read_text(encoding='utf-8')
-class Release17VisibleFixes(unittest.TestCase):
- def test_language_picker_has_own_popup_filter_and_41_origins(self):
+class InterfaceWiringTests(unittest.TestCase):
+ def test_language_picker_uses_project_popup_and_embedded_catalogs(self):
   source=read('src/searchable_language_combo.cpp')
   for token in ('Qt::Popup','m_filter->setPlaceholderText','void SearchableLanguageCombo::filterItems(',
                 'm_popup->show()','setCurrentIndex(index)'):
@@ -25,26 +25,21 @@ class Release17VisibleFixes(unittest.TestCase):
   self.assertIn('summaryActions->addWidget(m_all)',ui)
   self.assertIn('summaryActions->addWidget(m_none)',ui)
   self.assertIn('summaryRow->addWidget(card)',ui)
- def test_build_and_portable_verification_reject_stale_exe(self):
-  build=read('tools/integration/build_native_engine.ps1')
-  launch=read('tools/verify_r17_and_launch.ps1')
-  pack=read('tools/package_offline_portable.ps1')
-  self.assertIn("releaseTag='SDIO-MODERN'",build)
-  self.assertIn("$m.releaseTag -ne 'SDIO-MODERN'",launch)
-  self.assertIn('Get-FileHash',launch)
-  self.assertIn('FileMinorPart -ne 21',build)
-  self.assertIn('FileMinorPart -ne 21',launch)
-  self.assertIn('Offline EXE is different/stale',launch)
-  self.assertIn('-NoLaunch',read('01_BUILD_ENGINE_MATCHING.cmd'))
-  self.assertIn("$m.releaseTag -ne 'SDIO-MODERN'",pack)
-  self.assertIn('Existing language/theme preferences preserved',pack)
-  self.assertIn('05_VERIFY_R17_AND_LAUNCH.cmd',read('RELEASE17_IMPLEMENTED_VS_PENDING_AR.md'))
+ def test_build_entry_point_requires_static_dependencies_and_does_not_autolaunch(self):
+  source=read('tools/build.ps1')
+  self.assertIn('bootstrap_fonts.py',source)
+  self.assertIn('-SingleFile -NoLaunch',source)
+  self.assertIn('build_native_engine.ps1',source)
+  self.assertIn('tools\\build.ps1',read('BUILD.cmd'))
+  self.assertIn('VERSION.txt',read('tools/integration/build_native_engine.ps1'))
+  self.assertIn('$expectedVersion',read('tools/integration/build_native_engine.ps1'))
  def test_no_false_claim_real_install_or_rename_origin(self):
   self.assertIn('SDIO_MODERN_ENABLE_EXPERIMENTAL_INSTALL',read('src/engine_bridge.cpp'))
   self.assertIn('Matching-only builds cannot modify Windows drivers',read('src/installation_workspace.cpp'))
   self.assertIn('Snappy Driver Installer',read('src/title_bar.cpp'))
   self.assertNotIn('R17 UI UPDATE',read('src/title_bar.cpp'))
-  self.assertIn('FILEVERSION 0,21,3,0',read('resources.rc'))
+  version=read('VERSION.txt').strip().replace('.',',')+',0'
+  self.assertIn('FILEVERSION '+version,read('resources.rc'))
   self.assertIn('UI © 2026 Tarek Sadek',read('src/sidebar.cpp'))
  def test_build_files_include_new_picker_and_cpp_is_not_faked(self):
   for unit in ('src/searchable_language_combo.cpp','src/searchable_language_combo.h'):

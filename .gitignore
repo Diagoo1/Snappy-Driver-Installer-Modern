@@ -10,6 +10,13 @@ __pycache__/
 *.dll
 *.exe
 logs/
-publish/
-release/
+/publish/
+/release/
 assets/fonts/Satoshi-*.ttf
+*.pyc
+*.log
+*.tmp
+.cleanup*
+i18n/source-catalog.json
+SOURCE_SHA256.txt
+.review/

@@ -315,7 +315,6 @@ class SourceWiring(unittest.TestCase):
         self.assertIn("if($EnableExperimentalInstall){$profile='install-test'}",build)
         self.assertIn("$profile='matching'",build)
         self.assertNotIn('void z7_SwapBytes2(',build)
-        self.assertIn('SwapBytes.c',text('docs/integration/FIX13_SWAP_BYTES_LINKER.md'))
 
     def test_fix12_original_bit_reverse_table_implementation_is_pinned(self):
         p='external/SevenZ/build/CPP/7zip/Compress/BitlDecoder.cpp'
@@ -357,7 +356,6 @@ class SourceWiring(unittest.TestCase):
         self.assertIn('EXTRACT_ONLY PROG_VARIANT_R',build)
         self.assertIn('runtimeTested=$false',build)
         self.assertNotIn('Byte kReverseTable[256];',build)
-        self.assertIn('BitlDecoder.cpp',text('docs/integration/FIX12_BIT_REVERSE_TABLE_LINKER.md'))
 
     def test_fix11_original_huffman_encoder_is_pinned_and_included(self):
         p='external/SevenZ/build/C/HuffEnc.c'
@@ -398,7 +396,6 @@ class SourceWiring(unittest.TestCase):
         self.assertIn('runtimeTested=$false',build)
         self.assertNotIn('void Huffman_Generate(',build)
         self.assertIn('No placeholder or fake functions are used',build)
-        self.assertIn('Huffman_Generate',text('docs/integration/FIX11_HUFFMAN_LINKER.md'))
 
     def test_fix10_original_lz_out_window_implementation_is_pinned(self):
         p='external/SevenZ/build/CPP/7zip/Compress/LzOutWindow.cpp'
@@ -441,7 +438,6 @@ class SourceWiring(unittest.TestCase):
         self.assertIn(' -Wl,--whole-archive ',b)
         self.assertIn(' -Wl,--no-whole-archive ',b)
         self.assertIn('No placeholder or fake functions are used',b)
-        self.assertIn('CLzOutWindow',text('docs/integration/FIX10_LZOUT_PPMD.md'))
         self.assertNotIn('void CLzOutWindow::Init(bool)',b)
         self.assertNotIn('NCompress::NPpmd::CEncoder::CEncoder()',b)
         self.assertIn('foreach($entry in $lock.origin.gitBlobs.PSObject.Properties)',text('tools/integration/prepare_sources.ps1'))
@@ -470,7 +466,6 @@ class SourceWiring(unittest.TestCase):
         self.assertIn("if($EnableExperimentalInstall){$profile='install-test'}",b)
         self.assertIn('runtimeTested=$false',b)
         self.assertIn('parityTested=$false',b)
-        self.assertIn('Z7_RARVM_VM_ENABLE',text('docs/integration/FIX9_RAR3_VM.md'))
         self.assertIn(' -Wl,--whole-archive ',b)
         self.assertIn(' -Wl,--no-whole-archive ',b)
         patches=json.loads(text('tools/integration/patches.json'))['changes']
