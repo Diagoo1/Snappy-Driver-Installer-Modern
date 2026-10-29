@@ -1,0 +1,23 @@
+[Device]
+Name: Example Network Adapter
+Description: PCI Network Adapter
+Manufacturer: Example Manufacturer
+Hardware ID: PCI\VEN_1234&DEV_5678
+Driver: Example Ethernet Driver
+
+[Driver]
+Description: Example Ethernet Driver
+Provider: Example Inc.
+Date: 01/01/2025
+Version: 1.2.3.4
+Matching Device ID: PCI\VEN_1234&DEV_5678
+Inf Path: oem42.inf
+Inf Section: Install.NT
+
+[Device]
+Name: Example Unknown Peripheral
+Description: PCI Device
+Manufacturer: Example
+Hardware ID: PCI\VEN_9000&DEV_0001
+Driver: 
+

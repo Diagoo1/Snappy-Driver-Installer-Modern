@@ -1,0 +1,240 @@
+#include "driver_catalog.h"
+#include <QMap>
+
+// Presentation only: five equal priority bands over the unfiltered valid Origin order.
+// The matcher, recommendation, eligibility and install plan are never changed.
+int matchPriorityStars(const DriverEntry &entry,int candidateIndex){
+    if(candidateIndex<=0 || candidateIndex>=entry.candidates.size())return 0;
+    const DriverCandidate &target=entry.candidates[candidateIndex];
+    if(!target.valid || target.originalOrder<=0)return 0;
+    int count=0,earlier=0;
+    for(int i=1;i<entry.candidates.size();++i){const DriverCandidate &candidate=entry.candidates[i];
+        if(!candidate.valid || candidate.originalOrder<=0)continue;
+        ++count;if(candidate.originalOrder<target.originalOrder)++earlier;
+    }
+    return count?qBound(1,5-earlier*5/count,5):0;
+}
+
+DriverCatalog::DriverCatalog(QObject *parent) : QObject(parent), m_demo(false), m_native(false) {}
+QString driverStatus(const DriverEntry &entry,int candidateIndex){
+    if(candidateIndex==0)return QStringLiteral("Installed");
+    const bool installed=entry.sdioVerified?entry.sdioDriverPresent:!entry.device.driverVersion.isEmpty();
+    if(!installed)return QStringLiteral("Missing");
+    int index=candidateIndex>0?candidateIndex:entry.chosenCandidate;
+    if(index<=0 || index>=entry.candidates.size()){
+        index=-1;for(int i=1;i<entry.candidates.size();++i)if(entry.candidates[i].valid && entry.candidates[i].recommended){index=i;break;}
+    }
+    if(index>0 && index<entry.candidates.size()){
+        const DriverCandidate &c=entry.candidates[index];
+        if(!c.valid && entry.sdioVerified)return QStringLiteral("Invalid");
+        if(c.statusBits&0x020)return QStringLiteral("Upgrade");
+        if(c.statusBits&0x080)return QStringLiteral("Downgrade");
+        if(!entry.sdioVerified && c.status==QStringLiteral("recommended"))return QStringLiteral("Upgrade");
+    }
+    return QStringLiteral("Installed");
+}
+
+DriverEntry DriverCatalog::entry(int index) const
+{
+    return index >= 0 && index < m_entries.size() ? m_entries.at(index) : DriverEntry();
+}
+
+void DriverCatalog::replace(const QVector<DeviceInfo> &devices, bool demo)
+{
+    m_demo=demo;
+    m_native=false; m_snapshot=sdiomodern::Snapshot();
+    m_entries.clear();
+    m_entries.reserve(devices.size());
+    for (int i=0; i<devices.size(); ++i) {
+        DriverEntry entry;
+        entry.device=devices.at(i);
+        DriverCandidate installed;
+        installed.status=QStringLiteral("installed");
+        installed.version=entry.device.driverVersion;
+        installed.provider=entry.device.manufacturer;
+        installed.hardwareId=entry.device.hardwareId;
+        entry.candidates.append(installed);
+        if (demo) {
+            // Illustrative values only; NEVER present these as matches for real devices.
+            DriverCandidate recommended;
+            recommended.status=QStringLiteral("recommended");
+            recommended.version=QStringLiteral("10.1.%1.2026").arg(200+i);
+            recommended.date=QStringLiteral("10/10/2026");
+            recommended.provider=entry.device.manufacturer;
+            recommended.hardwareId=entry.device.hardwareId;
+            recommended.inf=QStringLiteral("demo_driver_%1.inf").arg(i);
+            recommended.section=QStringLiteral("DemoInstall.NT");
+            recommended.packageSource=QStringLiteral("DEMO_LOCAL_PACKAGE");
+            recommended.matchStars=5;
+            entry.candidates.append(recommended);
+            DriverCandidate alternative=recommended;
+            alternative.status=QStringLiteral("alternative");
+            alternative.version=QStringLiteral("9.8.%1.2025").arg(100+i);
+            alternative.date=QStringLiteral("08/07/2025");
+            alternative.matchStars=3;
+            entry.candidates.append(alternative);
+            entry.chosenCandidate=1;
+            entry.selectable=true;
+        }
+        m_entries.append(entry);
+    }
+    emit changed();
+}
+
+bool DriverCatalog::canQueue(int row) const
+{ return row>=0 && row<m_entries.size() && !isIgnored(row) && (m_demo || nativeInstallEnabled()) && m_entries.at(row).selectable; }
+bool DriverCatalog::isIgnored(int row)const{
+    return row>=0 && row<m_entries.size() && !m_entries[row].device.hardwareId.isEmpty() && m_ignored.contains(m_entries[row].device.hardwareId,Qt::CaseInsensitive);
+}
+void DriverCatalog::setIgnoredHardwareIds(const QStringList &ids){
+    m_ignored=ids;m_ignored.removeAll(QString());m_ignored.removeDuplicates();
+    for(int row=0;row<m_entries.size();++row)if(isIgnored(row))m_entries[row].checked=false;
+    emit ignoredChanged(m_ignored);emit changed();
+}
+void DriverCatalog::toggleIgnored(int row){
+    if(row<0 || row>=m_entries.size() || m_entries[row].device.hardwareId.isEmpty())return;
+    QStringList ids=m_ignored;const QString id=m_entries[row].device.hardwareId;
+    if(isIgnored(row)){for(int i=ids.size()-1;i>=0;--i)if(ids[i].compare(id,Qt::CaseInsensitive)==0)ids.removeAt(i);}else ids.append(id);
+    setIgnoredHardwareIds(ids);
+}
+
+bool DriverCatalog::setSelected(int row, bool selected)
+{
+    if (!canQueue(row)) return false;
+    DriverEntry &d=m_entries[row];
+    if (selected && (d.chosenCandidate<=0 || d.chosenCandidate>=d.candidates.size())) return false;
+    if (d.checked!=selected) { d.checked=selected; emit changed(); }
+    return true;
+}
+
+bool DriverCatalog::chooseCandidate(int row, int candidateIndex)
+{
+    if (!canQueue(row)) return false;
+    DriverEntry &d=m_entries[row];
+    if (candidateIndex<=0 || candidateIndex>=d.candidates.size()) return false;
+    if(m_native && (!d.candidates.at(candidateIndex).valid || !d.candidates.at(candidateIndex).local))return false;
+    d.chosenCandidate=candidateIndex;
+    d.checked=true;
+    emit changed();
+    return true;
+}
+void DriverCatalog::selectAll(bool selected)
+{
+    QVector<int> rows;
+    for(int i=0;i<m_entries.size();++i)rows.append(i);
+    selectRows(rows,selected);
+}
+int DriverCatalog::selectedDrivers() const
+{
+    int n=0;for (int i=0;i<m_entries.size();++i)
+        if (m_entries.at(i).selectable && m_entries.at(i).checked) ++n;
+    return n;
+}
+int DriverCatalog::problems() const
+{
+    int n=0;for (int i=0;i<m_entries.size();++i)
+        if (m_entries.at(i).device.hasProblem) ++n;
+    return n;
+}
+QStringList DriverCatalog::selectedNames() const
+{
+    QStringList names;
+    for (int i=0;i<m_entries.size();++i) {
+        const DriverEntry &d=m_entries.at(i);
+        if (d.selectable && d.checked && d.chosenCandidate>0 && d.chosenCandidate<d.candidates.size())
+            names.append(d.device.name + QStringLiteral("  ·  ") + d.candidates.at(d.chosenCandidate).version);
+    }
+    return names;
+}
+
+int DriverCatalog::sdioVerifiedCount() const
+{
+    int n=0;
+    for(int i=0;i<m_entries.size();++i)if(m_entries.at(i).sdioVerified)++n;
+    return n;
+}
+
+void DriverCatalog::replaceNative(const sdiomodern::Snapshot& snapshot)
+{
+    m_demo=false;m_native=true;m_snapshot=snapshot;m_entries.clear();
+    // Offline driver packs can expose many matches: allocate once instead of
+    // repeatedly copying completed entries/candidate vectors during growth.
+    m_entries.reserve(static_cast<int>(snapshot.devices.size()));
+    for(const sdiomodern::Device& source:snapshot.devices) {
+        DriverEntry entry;
+        entry.candidates.reserve(static_cast<int>(source.candidates.size())+1);
+        entry.device.name=QString::fromStdWString(source.name);
+        entry.device.instanceId=QString::fromStdWString(source.instanceId);
+        entry.device.manufacturer=QString::fromStdWString(source.manufacturer);
+        entry.device.deviceClass=QString::fromStdWString(source.category);
+        entry.device.hardwareId=source.hardwareIds.empty()?QString():QString::fromStdWString(source.hardwareIds[0]);
+        entry.device.driverVersion=QString::fromStdWString(source.installed.version);
+        entry.device.problemCode=source.problemCode;entry.device.hasProblem=source.problemCode!=0;
+        entry.sdioVerified=true;entry.engineDeviceStatus=source.matchStatus;entry.sdioDriverPresent=source.hasInstalledDriver;
+        DriverCandidate installed;installed.status=QStringLiteral("installed");
+        installed.version=QString::fromStdWString(source.installed.version);
+        installed.date=QString::fromStdWString(source.installed.date);
+        installed.provider=QString::fromStdWString(source.installed.provider);
+        installed.inf=QString::fromStdWString(source.installed.inf);
+        installed.section=QString::fromStdWString(source.installed.section);
+        installed.hardwareId=QString::fromStdWString(source.installed.hardwareId);
+        entry.candidates.append(installed);
+        for(const sdiomodern::Candidate& candidate:source.candidates) {
+            DriverCandidate c;c.engineToken=candidate.token;c.statusBits=candidate.statusBits;
+            c.rawScore=candidate.rawScore;c.originalOrder=candidate.originalOrder;
+            c.valid=candidate.valid;c.local=candidate.local;c.recommended=candidate.recommended;
+            for(std::uint64_t word:candidate.filterVisibility)c.filterVisibility.append(word);
+            c.version=QString::fromStdWString(candidate.version);c.date=QString::fromStdWString(candidate.date);
+            c.provider=QString::fromStdWString(candidate.provider);c.inf=QString::fromStdWString(candidate.inf);
+            c.section=QString::fromStdWString(candidate.section);c.hardwareId=QString::fromStdWString(candidate.hardwareId);
+            c.packageSource=QString::fromStdWString(candidate.packageName);c.matchReason=QString::fromStdWString(candidate.reason);
+            c.status=c.recommended?QStringLiteral("recommended"):QStringLiteral("alternative");
+            c.matchStars=0; // Original rank is not a five-star quality/safety score.
+            entry.candidates.append(c);
+            if(c.valid && c.local && snapshot.capabilities.localInstall) {
+                entry.selectable=true;
+                if(entry.chosenCandidate<0 || c.recommended)entry.chosenCandidate=entry.candidates.size()-1;
+            }
+        }
+        for(int i=1;i<entry.candidates.size();++i)entry.candidates[i].matchStars=matchPriorityStars(entry,i);
+        m_entries.append(entry);
+    }
+    emit changed();
+}
+void DriverCatalog::invalidateNative()
+{
+    if(!m_native)return;
+    m_snapshot.generation=0;
+    for(int i=0;i<m_entries.size();++i){m_entries[i].checked=false;m_entries[i].selectable=false;}
+    emit changed();
+}
+sdiomodern::InstallPlan DriverCatalog::buildPlan(bool restore,bool confirmed,bool alternatives)const
+{
+    sdiomodern::InstallPlan plan;plan.generation=m_snapshot.generation;
+    plan.createRestorePoint=restore;plan.confirmed=confirmed;plan.allowAlternatives=alternatives;
+    if(!m_native)return plan;
+    for(const DriverEntry& entry:m_entries) {
+        if(!entry.checked || entry.chosenCandidate<=0 || entry.chosenCandidate>=entry.candidates.size())continue;
+        sdiomodern::Selection selected;selected.deviceInstanceId=entry.device.instanceId.toStdWString();
+        selected.candidateToken=entry.candidates.at(entry.chosenCandidate).engineToken;plan.selections.push_back(selected);
+    }
+    return plan;
+}
+
+void DriverCatalog::selectRows(const QVector<int> &rows,bool selected)
+{
+    bool dirty=false;
+    for(int i=0;i<rows.size();++i){const int row=rows.at(i);if(!canQueue(row))continue;
+        DriverEntry &entry=m_entries[row];
+        // Bulk selection never silently installs a non-recommended alternative.
+        if(selected && m_native){
+            int recommended=-1;
+            for(int c=1;c<entry.candidates.size();++c)
+                if(entry.candidates[c].recommended && entry.candidates[c].valid && entry.candidates[c].local){recommended=c;break;}
+            if(recommended<0)continue;
+            if(entry.chosenCandidate!=recommended){entry.chosenCandidate=recommended;dirty=true;}
+        }
+        if(entry.checked!=selected){entry.checked=selected;dirty=true;}
+    }
+    if(dirty)emit changed();
+}

@@ -1,0 +1,326 @@
+{
+  "schema": 1,
+  "locales": [
+    {
+      "id": "arabic",
+      "tag": "ar",
+      "name": "العربية",
+      "rtl": true,
+      "messages": 866,
+      "englishFallbacks": 0
+    },
+    {
+      "id": "armenian",
+      "tag": "hy",
+      "name": "Հայերեն",
+      "rtl": false,
+      "messages": 866,
+      "englishFallbacks": 0
+    },
+    {
+      "id": "azerbaijan",
+      "tag": "az",
+      "name": "Azərbaycanca",
+      "rtl": false,
+      "messages": 866,
+      "englishFallbacks": 0
+    },
+    {
+      "id": "belarusian",
+      "tag": "be",
+      "name": "Беларуская",
+      "rtl": false,
+      "messages": 866,
+      "englishFallbacks": 0
+    },
+    {
+      "id": "brazilian",
+      "tag": "pt-BR",
+      "name": "Português Brasileiro",
+      "rtl": false,
+      "messages": 866,
+      "englishFallbacks": 0
+    },
+    {
+      "id": "bulgarian",
+      "tag": "bg",
+      "name": "Български",
+      "rtl": false,
+      "messages": 866,
+      "englishFallbacks": 0
+    },
+    {
+      "id": "catalan",
+      "tag": "ca",
+      "name": "Català",
+      "rtl": false,
+      "messages": 866,
+      "englishFallbacks": 0
+    },
+    {
+      "id": "chinese_cn",
+      "tag": "zh-CN",
+      "name": "简体中文",
+      "rtl": false,
+      "messages": 866,
+      "englishFallbacks": 0
+    },
+    {
+      "id": "chinese_tw",
+      "tag": "zh-TW",
+      "name": "正體中文",
+      "rtl": false,
+      "messages": 866,
+      "englishFallbacks": 0
+    },
+    {
+      "id": "croatian",
+      "tag": "hr",
+      "name": "Hrvatski",
+      "rtl": false,
+      "messages": 866,
+      "englishFallbacks": 0
+    },
+    {
+      "id": "czech",
+      "tag": "cs",
+      "name": "Čeština",
+      "rtl": false,
+      "messages": 866,
+      "englishFallbacks": 0
+    },
+    {
+      "id": "danish",
+      "tag": "da",
+      "name": "Dansk",
+      "rtl": false,
+      "messages": 866,
+      "englishFallbacks": 0
+    },
+    {
+      "id": "dutch",
+      "tag": "nl",
+      "name": "Nederlands",
+      "rtl": false,
+      "messages": 866,
+      "englishFallbacks": 0
+    },
+    {
+      "id": "english",
+      "tag": "en",
+      "name": "English",
+      "rtl": false,
+      "messages": 866,
+      "englishFallbacks": 0
+    },
+    {
+      "id": "estonian",
+      "tag": "et",
+      "name": "Eesti",
+      "rtl": false,
+      "messages": 866,
+      "englishFallbacks": 0
+    },
+    {
+      "id": "farsi",
+      "tag": "fa",
+      "name": "فارسی",
+      "rtl": true,
+      "messages": 866,
+      "englishFallbacks": 0
+    },
+    {
+      "id": "french",
+      "tag": "fr",
+      "name": "Français",
+      "rtl": false,
+      "messages": 866,
+      "englishFallbacks": 0
+    },
+    {
+      "id": "georgian",
+      "tag": "ka",
+      "name": "ქართული",
+      "rtl": false,
+      "messages": 866,
+      "englishFallbacks": 0
+    },
+    {
+      "id": "german",
+      "tag": "de",
+      "name": "Deutsch",
+      "rtl": false,
+      "messages": 866,
+      "englishFallbacks": 0
+    },
+    {
+      "id": "greek",
+      "tag": "el",
+      "name": "Ελληνικά",
+      "rtl": false,
+      "messages": 866,
+      "englishFallbacks": 0
+    },
+    {
+      "id": "hungarian",
+      "tag": "hu",
+      "name": "Magyar",
+      "rtl": false,
+      "messages": 866,
+      "englishFallbacks": 0
+    },
+    {
+      "id": "indonesian",
+      "tag": "id",
+      "name": "Bahasa Indonesia",
+      "rtl": false,
+      "messages": 866,
+      "englishFallbacks": 0
+    },
+    {
+      "id": "italian",
+      "tag": "it",
+      "name": "Italiano",
+      "rtl": false,
+      "messages": 866,
+      "englishFallbacks": 0
+    },
+    {
+      "id": "japanese",
+      "tag": "ja",
+      "name": "日本語",
+      "rtl": false,
+      "messages": 866,
+      "englishFallbacks": 0
+    },
+    {
+      "id": "korean",
+      "tag": "ko",
+      "name": "한국어",
+      "rtl": false,
+      "messages": 866,
+      "englishFallbacks": 0
+    },
+    {
+      "id": "latvian",
+      "tag": "lv",
+      "name": "Latviešu",
+      "rtl": false,
+      "messages": 866,
+      "englishFallbacks": 0
+    },
+    {
+      "id": "lithuanian",
+      "tag": "lt",
+      "name": "Lietuvių",
+      "rtl": false,
+      "messages": 866,
+      "englishFallbacks": 0
+    },
+    {
+      "id": "norwegian",
+      "tag": "no",
+      "name": "Norsk",
+      "rtl": false,
+      "messages": 866,
+      "englishFallbacks": 0
+    },
+    {
+      "id": "polish",
+      "tag": "pl",
+      "name": "Polski",
+      "rtl": false,
+      "messages": 866,
+      "englishFallbacks": 0
+    },
+    {
+      "id": "portuguese",
+      "tag": "pt-PT",
+      "name": "Português Europeu",
+      "rtl": false,
+      "messages": 866,
+      "englishFallbacks": 0
+    },
+    {
+      "id": "romanian",
+      "tag": "ro",
+      "name": "Română",
+      "rtl": false,
+      "messages": 866,
+      "englishFallbacks": 0
+    },
+    {
+      "id": "russian",
+      "tag": "ru",
+      "name": "Русский",
+      "rtl": false,
+      "messages": 866,
+      "englishFallbacks": 0
+    },
+    {
+      "id": "serbian",
+      "tag": "sr",
+      "name": "Српски",
+      "rtl": false,
+      "messages": 866,
+      "englishFallbacks": 0
+    },
+    {
+      "id": "slovenian",
+      "tag": "sl",
+      "name": "Slovenščina",
+      "rtl": false,
+      "messages": 866,
+      "englishFallbacks": 0
+    },
+    {
+      "id": "spanish",
+      "tag": "es",
+      "name": "Español",
+      "rtl": false,
+      "messages": 866,
+      "englishFallbacks": 0
+    },
+    {
+      "id": "swedish",
+      "tag": "sv",
+      "name": "Svenska",
+      "rtl": false,
+      "messages": 866,
+      "englishFallbacks": 0
+    },
+    {
+      "id": "thai",
+      "tag": "th",
+      "name": "ภาษาไทย",
+      "rtl": false,
+      "messages": 866,
+      "englishFallbacks": 0
+    },
+    {
+      "id": "turkish",
+      "tag": "tr",
+      "name": "Türkçe",
+      "rtl": false,
+      "messages": 866,
+      "englishFallbacks": 0
+    },
+    {
+      "id": "ukrainian",
+      "tag": "uk",
+      "name": "Українська",
+      "rtl": false,
+      "messages": 866,
+      "englishFallbacks": 0
+    },
+    {
+      "id": "vietnamese",
+      "tag": "vi",
+      "name": "Tiếng Việt",
+      "rtl": false,
+      "messages": 866,
+      "englishFallbacks": 0
+    }
+  ],
+  "nativeReviewRequired": true
+}

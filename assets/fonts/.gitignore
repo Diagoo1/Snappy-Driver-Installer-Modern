@@ -1,0 +1,3 @@
+# Fontshare permits embedding in our application, but source builders must
+# download their own standalone copies under the ITF Free Font License.
+Satoshi-*.ttf

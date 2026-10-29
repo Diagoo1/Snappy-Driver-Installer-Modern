@@ -1,0 +1,15 @@
+build*/
+dist*/
+vendor/
+.source-cache/
+__pycache__/
+*.user
+*.o
+*.obj
+*.a
+*.dll
+*.exe
+logs/
+publish/
+release/
+assets/fonts/Satoshi-*.ttf

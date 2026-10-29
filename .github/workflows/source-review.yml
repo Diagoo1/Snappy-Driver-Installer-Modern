@@ -1,0 +1,19 @@
+name: Source review
+on: [push, pull_request, workflow_dispatch]
+jobs:
+  review:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - name: Prepare pinned review sources and fonts
+        run: |
+          python3 tools/integration/prepare_review_sources.py
+          python3 tools/integration/bootstrap_fonts.py
+      - name: Structural checks
+        run: python3 -m unittest discover -s tests -p 'test_*.py'
+      - name: Compile modern-host review interface
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y qtbase5-dev libqt5svg5-dev
+          cmake -S . -B build-review-ci -DCMAKE_BUILD_TYPE=Release
+          cmake --build build-review-ci -j2

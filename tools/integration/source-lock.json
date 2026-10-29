@@ -1,0 +1,76 @@
+{
+  "schema": 1,
+  "origin": {
+    "repository": "IDisposable/sdio-go",
+    "commit": "25468bdb37d46a72ab4e8bf037b4e1a28ffec70e",
+    "subdirectory": "SDIO-baseline",
+    "version": "2.0.3 C++ baseline (community mirror; not latest-verified official source)",
+    "url": "https://codeload.github.com/IDisposable/sdio-go/zip/25468bdb37d46a72ab4e8bf037b4e1a28ffec70e",
+    "gitBlobs": {
+      "source/matcher.h": "57238210c2e85172b86866a21e471dbfb52f9048",
+      "source/matcher.cpp": "c3c523bf6de663f0f480ddfc3941b9b893c5051b",
+      "source/manager.h": "627fb3cbeb7e188a8936aa2b0b31f9419ad56ced",
+      "source/manager.cpp": "ace71ccd7be149953315f9d8e9895e9474ac87ef",
+      "source/enum.h": "d2808f51d234899ddedca2bf369bec21dd15964d",
+      "source/model.cpp": "23fbcdc603b7cc900477f2e7230134e3a04ebacc",
+      "source/main.cpp": "d5f53a803b988e40d84d06891dac0eeb4a0ad096",
+      "source/install.cpp": "41a6071c05bff61d55c1b64909e8bf93b018e45d",
+      "source/install64.c": "fdc54f5206b6862cfa62bc168fec89d8fb0cccc0",
+      "source/indexing.h": "d9d4aca2b4a74829043763d50b503380cdc3c7db",
+      "source/indexing.cpp": "993d530d4a9089fa87a64beb65e6529075fd3075",
+      "source/theme.h": "2f2d41645477dc229d94839e8fd9f59b1958c858",
+      "resources/resources.h": "b467778a3b7b1517b4b22cefd5a8a8580c1937f1",
+      "resources/resources.rc": "f1dc0d7607b579c3a7ce68c558a56e718eeaf1e1",
+      "project/Drivers.cbp": "781097ba7cd4f053a37baa7efcb8f247539f1baf",
+      "project/7zip/lib.cbp": "781659afa87155a8459c17fc7abbf084ada5a20b",
+      "source/system.cpp": "8d5dc7242bc71f7cd49d246b8c4be6168c337dfd",
+      "source/baseboard.cpp": "6f021396b96ab543f4c54a7c0eb2cca3f7b2f59c",
+      "external/SevenZ/build/C/Xz.c": "92bae029e60813bce196bea2915d83abb9c70769",
+      "external/SevenZ/build/C/Sha256.c": "b29f06bcd1ec75b18ac7c4c593d8cb0fc0c9403d",
+      "external/SevenZ/build/C/Sha256Opt.c": "291e71c120b85aabb2789fe8121b680487bfa687",
+      "external/SevenZ/build/C/XzCrc64.c": "a0023a6fa2c8b459f3d931f399a31f3f20225397",
+      "external/SevenZ/build/C/XzCrc64Opt.c": "08a419ca526349c70740853b525b1c8e64f88e72",
+      "external/SevenZ/build/C/Sort.c": "0c30ca8bc323ec641272c607fb5c2c48c50e03f2",
+      "external/SevenZ/build/CPP/Windows/FileSystem.cpp": "02faf627b10a6722441da7e9bbc03827ec2df744",
+      "external/SevenZ/build/CPP/7zip/UI/Common/ZipRegistry.cpp": "f4c27bc93feb46aea9f6f6ee363b5f091271211e",
+      "external/SevenZ/build/CPP/7zip/Compress/Rar3Vm.cpp": "e6bfd7ea689bcd1fc07cbfee99fdd4678c16a282",
+      "external/SevenZ/build/CPP/7zip/Compress/LzOutWindow.cpp": "213e0a69ce56e47d7501dea4f1a8bce42929196d",
+      "external/SevenZ/build/CPP/7zip/Compress/PpmdDecoder.cpp": "e2399dc4b10923d8bf0b17a77557331ea6261cb1",
+      "external/SevenZ/build/CPP/7zip/Compress/PpmdEncoder.cpp": "16a40d69f52f1278c65cf63971bac354718bd3ff",
+      "external/SevenZ/build/C/HuffEnc.c": "04faf9e824fd3c1d594c4306fb83c106b6984f7c",
+      "external/SevenZ/build/CPP/7zip/Compress/BitlDecoder.cpp": "1236bab4b666f3bcc8874d60be19630cb42af59c",
+      "external/SevenZ/build/C/SwapBytes.c": "d382c327a0c142b4383234cbeed98a99b75a3293",
+      "external/SevenZ/build/CPP/7zip/Compress/BZip2Crc.cpp": "c1709170b53c413717db10bcdda6809417e0b571",
+      "source/common.cpp": "0a96f0614e1f7e6fedb50e284c21d3174a357d6f",
+      "source/enum.cpp": "6365ea963c151a8a745880c0c0eb0940f20c9413"
+    }
+  },
+  "boost": {
+    "version": "1.79.0",
+    "url": "https://archives.boost.io/release/1.79.0/source/boost_1_79_0.zip",
+    "sha256": "3634f9a85759311f321e587eace21799c0d0c946ff933e477a2f98885c54bbff",
+    "subdirectory": "boost_1_79_0",
+    "checksumSource": "https://live.boost.org/users/history/version_1_79_0.html"
+  },
+  "webp": {
+    "repository": "webmproject/libwebp",
+    "version": "1.6.0",
+    "commit": "4fa21912338357f89e4fd51cf2368325b59e9bd9",
+    "url": "https://codeload.github.com/webmproject/libwebp/zip/4fa21912338357f89e4fd51cf2368325b59e9bd9"
+  },
+  "policy": {
+    "network": "Only this explicit build preparation downloads source archives over HTTPS. The application does not silently download executables.",
+    "archiveIntegrity": "Boost release SHA256; pinned GitHub commit URLs; additional Git blob SHA1 checks on critical Origin files. These checks are not a code-signing certificate.",
+    "install": "Off by default; explicit experimental build plus per-operation user confirmation."
+  },
+  "sevenZipBootstrap": {
+    "version": "26.01",
+    "upstreamRepository": "ip7z/7zip",
+    "upstreamCommit": "8c63d71ff886bda90c86db28466287f977374237",
+    "description": "A single verified header absent from the community-mirror SevenZ/CPP/Common copy",
+    "relativePath": "external/SevenZ/build/CPP/Common/Common0.h",
+    "url": "https://raw.githubusercontent.com/ip7z/7zip/8c63d71ff886bda90c86db28466287f977374237/CPP/Common/Common0.h",
+    "gitBlob": "5781a957b105c6a8e397561fbcdf2e11d76183ee",
+    "maxBytes": 64000
+  }
+}

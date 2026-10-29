@@ -1,0 +1,337 @@
+{
+  "schema": 1,
+  "repository": "IDisposable/sdio-go",
+  "commit": "25468bdb37d46a72ab4e8bf037b4e1a28ffec70e",
+  "root": "external/SevenZ/build",
+  "description": "Source-only 7-Zip code units omitted from pinned Code::Blocks lib.cbp; do not build all indiscriminately",
+  "files": [
+    {
+      "path": "CPP/7zip/Archive/7z/7zSpecStream.cpp",
+      "blob": "1cc0767d07003b360c63cfc4fa7606f5bb6cceeb"
+    },
+    {
+      "path": "CPP/7zip/Archive/7z/StdAfx.cpp",
+      "blob": "c6d3b1fa62316f392ed278d2acca0862d5326158"
+    },
+    {
+      "path": "CPP/7zip/Archive/Common/FindSignature.cpp",
+      "blob": "ddbc930264cbf52601ac9b09ff11845cad968d45"
+    },
+    {
+      "path": "CPP/7zip/Archive/Common/OutStreamWithSha1.cpp",
+      "blob": "d223af2e017dd68fbb0f49b3bac7877f8af5f66e"
+    },
+    {
+      "path": "CPP/7zip/Common/MemBlocks.cpp",
+      "blob": "21c056028afe05283bfc64d002f96d00dc558cba"
+    },
+    {
+      "path": "CPP/7zip/Common/OutMemStream.cpp",
+      "blob": "29773e7df2aef9ad879284d7f742f299d72511bb"
+    },
+    {
+      "path": "CPP/7zip/Common/ProgressMt.cpp",
+      "blob": "d4f114472183c98e35acd7360319da986aa10c59"
+    },
+    {
+      "path": "CPP/7zip/Compress/BZip2Crc.cpp",
+      "blob": "c1709170b53c413717db10bcdda6809417e0b571"
+    },
+    {
+      "path": "CPP/7zip/Compress/BZip2Encoder.cpp",
+      "blob": "2529c8fecaf2e3b87a75b93a4c500699434da39e"
+    },
+    {
+      "path": "CPP/7zip/Compress/BZip2Register.cpp",
+      "blob": "199b7803943a9e85b24c1a352e90fcc4d59be6d9"
+    },
+    {
+      "path": "CPP/7zip/Compress/CodecExports.cpp",
+      "blob": "6b0572e8d6b660464b88ae2f44148aaebf7d4ef9"
+    },
+    {
+      "path": "CPP/7zip/Compress/Deflate64Register.cpp",
+      "blob": "f531e10cc7d915fcb6ad600c11287ebb1f55f090"
+    },
+    {
+      "path": "CPP/7zip/Compress/DeflateRegister.cpp",
+      "blob": "22a8aa623ce83d5f869ffeeb00aadf2d6ed17e56"
+    },
+    {
+      "path": "CPP/7zip/Compress/DllExports2Compress.cpp",
+      "blob": "21bf7bb41029817af6831d35e6240f9d549df555"
+    },
+    {
+      "path": "CPP/7zip/Compress/DllExportsCompress.cpp",
+      "blob": "5c59dc5b171587a31b8ea73314702ce69626f61c"
+    },
+    {
+      "path": "CPP/7zip/Compress/ImplodeDecoder.cpp",
+      "blob": "fc720f7085a8f5e2d1cd5e34c656697ca1f1d2d5"
+    },
+    {
+      "path": "CPP/7zip/Compress/ImplodeHuffmanDecoder.cpp",
+      "blob": "c0af85f7a9464522caeb76b606df770067cabd46"
+    },
+    {
+      "path": "CPP/7zip/Compress/LzfseDecoder.cpp",
+      "blob": "1a3919879c27c6d1dd1e85bde69a04f4e0176c41"
+    },
+    {
+      "path": "CPP/7zip/Compress/LzhDecoder.cpp",
+      "blob": "f83390bbbce859c2f4b00de4ffd2ba34ddb3ebbe"
+    },
+    {
+      "path": "CPP/7zip/Compress/LzxDecoder.cpp",
+      "blob": "583db067adeb64b2fc0c5378401c30615ced842c"
+    },
+    {
+      "path": "CPP/7zip/Compress/PpmdZip.cpp",
+      "blob": "0ef8cde2434e98d77a2f6164fe6b941731feb948"
+    },
+    {
+      "path": "CPP/7zip/Compress/QuantumDecoder.cpp",
+      "blob": "1812a9492ada75c012214551969d85146f33e795"
+    },
+    {
+      "path": "CPP/7zip/Compress/RarCodecsRegister.cpp",
+      "blob": "9679b6e5e397ea69a36218ac3899f3723112f32f"
+    },
+    {
+      "path": "CPP/7zip/Compress/XzDecoder.cpp",
+      "blob": "73715f8f0f68edda2f509c0bae58d7aed84b6df0"
+    },
+    {
+      "path": "CPP/7zip/Compress/XzEncoder.cpp",
+      "blob": "0b65767d11813050ade212957632099f69c95db2"
+    },
+    {
+      "path": "CPP/7zip/Compress/ZDecoder.cpp",
+      "blob": "f5886b94bfba1d59096a9adaf926dfa55cd68972"
+    },
+    {
+      "path": "CPP/7zip/Compress/ZlibDecoder.cpp",
+      "blob": "95beb9d98a1f729cc93adf0f270ee21dfc293ee1"
+    },
+    {
+      "path": "CPP/7zip/Compress/ZlibEncoder.cpp",
+      "blob": "4c875c30007919cc3d2e4a6db108dce452e9ad4b"
+    },
+    {
+      "path": "CPP/7zip/UI/Common/ArchiveName.cpp",
+      "blob": "22c5ed4d5015d52fdc5cf459cf27c2a43c21ceb4"
+    },
+    {
+      "path": "CPP/7zip/UI/Common/CompressCall.cpp",
+      "blob": "9993ab44c605b221d97f8429738476f9842d5bd0"
+    },
+    {
+      "path": "CPP/7zip/UI/Common/CompressCall2.cpp",
+      "blob": "e9b5ca1d268618bc3385bf15165185620f1e1c72"
+    },
+    {
+      "path": "CPP/7zip/UI/Console/StdAfx.cpp",
+      "blob": "c6d3b1fa62316f392ed278d2acca0862d5326158"
+    },
+    {
+      "path": "CPP/Common/C_FileIO.cpp",
+      "blob": "82da3cf1c2c15b6df6bc6710c356737edff8a3d7"
+    },
+    {
+      "path": "CPP/Common/CksumReg.cpp",
+      "blob": "030147cffd8da330dcf31766fdab0966bc2555ea"
+    },
+    {
+      "path": "CPP/Common/CrcReg.cpp",
+      "blob": "a35b00a4e32d277ec15b7a3dd4e5f11c3cd61731"
+    },
+    {
+      "path": "CPP/Common/Lang.cpp",
+      "blob": "e81b40faf109421fcf40a219153edf52959fb7c5"
+    },
+    {
+      "path": "CPP/Common/MyMap.cpp",
+      "blob": "f5d98bc473d33b39fd9dcf4e6171f4e9bd22810f"
+    },
+    {
+      "path": "CPP/Common/MyXml.cpp",
+      "blob": "d48b0910a19fa5ba1cdac6f69361fd7bc06156f0"
+    },
+    {
+      "path": "CPP/Common/Random.cpp",
+      "blob": "598eba1b868bd365f935590df433e3a16581dd67"
+    },
+    {
+      "path": "CPP/Common/Sha1Prepare.cpp",
+      "blob": "2adbfdeb109db3844002474beeb416a0292307b3"
+    },
+    {
+      "path": "CPP/Common/Sha1Reg.cpp",
+      "blob": "db16faf728e36e8965e04baf92586b974fd1fb16"
+    },
+    {
+      "path": "CPP/Common/Sha256Prepare.cpp",
+      "blob": "d670d86122945731d1984e4e9185c53f0518cee9"
+    },
+    {
+      "path": "CPP/Common/Sha256Reg.cpp",
+      "blob": "c0e88fed8a26ed745fc2feaa92194869b4046e7c"
+    },
+    {
+      "path": "CPP/Common/TextConfig.cpp",
+      "blob": "cd99e1ad24b3bbfe768d6f53473b036ace2067cc"
+    },
+    {
+      "path": "CPP/Common/XzCrc64Init.cpp",
+      "blob": "1eae72ad9b4d015a69bee72bc968baf105bcdf3f"
+    },
+    {
+      "path": "CPP/Common/XzCrc64Reg.cpp",
+      "blob": "dfafa8d73384f4268aea769cd503f13f03e9d3ec"
+    },
+    {
+      "path": "CPP/Windows/COM.cpp",
+      "blob": "b859326c145eda9babb9af27e41d3054c9bea810"
+    },
+    {
+      "path": "CPP/Windows/Clipboard.cpp",
+      "blob": "90c486430a984a0c36d756ee4eda204d5f3031d3"
+    },
+    {
+      "path": "CPP/Windows/CommonDialog.cpp",
+      "blob": "59d5b1bd916ee53ed1ad6ed4ff2d75e7bf1c28f7"
+    },
+    {
+      "path": "CPP/Windows/Console.cpp",
+      "blob": "cb0c5d9c34067d1efa714ca84936408731a49588"
+    },
+    {
+      "path": "CPP/Windows/Control/ComboBox.cpp",
+      "blob": "a5a828d22f0536f349232116a737efa754f74fa5"
+    },
+    {
+      "path": "CPP/Windows/Control/Dialog.cpp",
+      "blob": "547d50ab819da0a130bde80f4ce20e0a663bec3e"
+    },
+    {
+      "path": "CPP/Windows/Control/ImageList.cpp",
+      "blob": "d201c8fd7e26c90379a21616ece50d836bb255b2"
+    },
+    {
+      "path": "CPP/Windows/Control/ListView.cpp",
+      "blob": "7516d3cf41aed0445a864a9c61924eadc03b88cf"
+    },
+    {
+      "path": "CPP/Windows/Control/PropertyPage.cpp",
+      "blob": "03f035557e3e8e9961eb9ff8bf49f60b8d063d25"
+    },
+    {
+      "path": "CPP/Windows/Control/Window2.cpp",
+      "blob": "639b1e2de2bf856313137a16a2af86b54cdb9ec6"
+    },
+    {
+      "path": "CPP/Windows/FileMapping.cpp",
+      "blob": "01c4a943d4cc5f5421301add26e2cf0f0e35080d"
+    },
+    {
+      "path": "CPP/Windows/MemoryGlobal.cpp",
+      "blob": "7e2d3de3a510c902f819d0d7f8bb5f7ad52179a8"
+    },
+    {
+      "path": "CPP/Windows/Menu.cpp",
+      "blob": "600e32a8429664be581580bd0d49930eafcd0297"
+    },
+    {
+      "path": "CPP/Windows/NationalTime.cpp",
+      "blob": "75c3213de4ef7991d4c5b34b7a6d9d55a33895f4"
+    },
+    {
+      "path": "CPP/Windows/Net.cpp",
+      "blob": "8ca3b6de6c5587770ce11f1b5d68f29f4e86c193"
+    },
+    {
+      "path": "CPP/Windows/ProcessMessages.cpp",
+      "blob": "439d3fdbbca9cb322ea3914381de53886baac140"
+    },
+    {
+      "path": "CPP/Windows/ProcessUtils.cpp",
+      "blob": "00b9156da891f6586002b9e1962a946a180b18a0"
+    },
+    {
+      "path": "CPP/Windows/PropVariantUtils.cpp",
+      "blob": "660c326d9d4c88f8659d77fc142ccf4eff1f6218"
+    },
+    {
+      "path": "CPP/Windows/ResourceString.cpp",
+      "blob": "099a884da4de02c8b6bc0ea7eec1f0ba9313913f"
+    },
+    {
+      "path": "CPP/Windows/Shell.cpp",
+      "blob": "4bd9000524e60f94795e946a4cbc0a30658f4975"
+    },
+    {
+      "path": "CPP/Windows/Window.cpp",
+      "blob": "ab763d58e165103f9d76b5e0a41106feb7d77d40"
+    },
+    {
+      "path": "C/7zBuf2.c",
+      "blob": "49b4343b6727ccc2a13139b740442f830d18b1bc"
+    },
+    {
+      "path": "C/Aes.c",
+      "blob": "fc2c492d3f140719278e161e094446ab5db9d4e4"
+    },
+    {
+      "path": "C/AesOpt.c",
+      "blob": "99fc507a8ed778f568a8cebb193b675893d555f3"
+    },
+    {
+      "path": "C/Blake2s.c",
+      "blob": "95c7d958f537116bd981df88ed4dbadd5bf7c4ea"
+    },
+    {
+      "path": "C/DllSecur.c",
+      "blob": "d65f7edc9cfadc287f514de7da122bafd6eb3f53"
+    },
+    {
+      "path": "C/LzmaLib.c",
+      "blob": "350c1953de6c1b66c1adab70d295b61b85df884f"
+    },
+    {
+      "path": "C/Md5.c",
+      "blob": "4fd125a053230bc381d45409dd31d1af0b580250"
+    },
+    {
+      "path": "C/Ppmd8Enc.c",
+      "blob": "6756d247a7c0591f1f5da3c86e26497aab4ab197"
+    },
+    {
+      "path": "C/Sha1.c",
+      "blob": "0450543b2491197e8e120f0a4b5ec37a44876ebd"
+    },
+    {
+      "path": "C/Sha1Opt.c",
+      "blob": "c905b43b0d8c06c06ee3cb0872835db9a3a9ba3c"
+    },
+    {
+      "path": "C/Sha3.c",
+      "blob": "9ac265328e2a4d084c9a34179b1aabd5c8cdf314"
+    },
+    {
+      "path": "C/Sha512.c",
+      "blob": "bb9b23ef3bed971eeb4fe12d7404a576eb1539dd"
+    },
+    {
+      "path": "C/Sha512Opt.c",
+      "blob": "f4d37034ba6de6201abbd33bc2b494b13bffd271"
+    },
+    {
+      "path": "C/Xxh64.c",
+      "blob": "d4e90f19c22212edfb9ce559c4d1863cc4ab2e1c"
+    },
+    {
+      "path": "C/ZstdDec.c",
+      "blob": "ef9eca3d7e85531bb92674d822b1e00b132466dc"
+    }
+  ]
+}

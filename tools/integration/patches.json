@@ -1,0 +1,215 @@
+{
+  "schema": 1,
+  "changes": [
+    {
+      "file": "source/manager.h",
+      "old": "class Manager\n{",
+      "new": "class Manager\n{\n    friend class SdioQtAccess;",
+      "count": 1
+    },
+    {
+      "file": "source/enum.h",
+      "old": "class Device\n{",
+      "new": "class Device\n{\n    friend class SdioQtAccess;",
+      "count": 1
+    },
+    {
+      "file": "source/matcher.h",
+      "old": "class Devicematch\n{",
+      "new": "class Devicematch\n{\n    friend class SdioQtAccess;",
+      "count": 1
+    },
+    {
+      "file": "source/main.cpp",
+      "old": "int WINAPI WinMain(",
+      "new": "int WINAPI SdioLegacyWinMain(",
+      "count": 1
+    },
+    {
+      "file": "source/main.cpp",
+      "old": "void MainWindow_t::redrawfield()\n{",
+      "new": "void MainWindow_t::redrawfield()\n{\n    if(Settings.flags & FLAG_NOGUI)return;",
+      "count": 1
+    },
+    {
+      "file": "source/main.cpp",
+      "old": "void MainWindow_t::redrawmainwnd()\n{",
+      "new": "void MainWindow_t::redrawmainwnd()\n{\n    if(Settings.flags & FLAG_NOGUI)return;",
+      "count": 1
+    },
+    {
+      "file": "source/install.cpp",
+      "old": "    ClickVisiter cv{ID_REBOOT,CHECKBOX::GET};\n    wPanels->Accept(cv);\n\n    if(isRebootDesired())Settings.flags|=FLAG_AUTOINSTALL;",
+      "new": "    // SDIO Modern: no legacy widgets and no automatic restart/rescan loop.\n    Settings.flags &= ~FLAG_AUTOINSTALL;",
+      "count": 1
+    },
+    {
+      "file": "source/install.cpp",
+      "old": "    ThreadAbs *thr=CreateThread();",
+      "new": "    // SDIO Modern: do not start the legacy security-dialog autoclicker.",
+      "count": 1
+    },
+    {
+      "file": "source/install.cpp",
+      "old": "    Autoclicker.setflag(1);\n    Log.save();\n    thr->start(&Autoclicker_t::thread_clicker,nullptr);",
+      "new": "    Log.save(); // Security/driver consent dialogs remain under user control.",
+      "count": 1
+    },
+    {
+      "file": "source/install.cpp",
+      "old": "    Autoclicker.setflag(0);\n\n    thr->join();\n    delete thr;",
+      "new": "    // SDIO Modern: no autoclicker worker was created.",
+      "count": 1
+    },
+    {
+      "file": "source/install.cpp",
+      "old": "    _wremove(buf);",
+      "new": "    // SDIO Modern: preserve Windows SetupAPI logs; never delete them.",
+      "count": 1
+    },
+    {
+      "file": "source/install.cpp",
+      "old": "            SetTimer(MainWindow.hMain,1,1000/60,nullptr);",
+      "new": "            if(MainWindow.hMain)SetTimer(MainWindow.hMain,1,1000/60,nullptr);",
+      "count": 1
+    },
+    {
+      "file": "source/install.cpp",
+      "old": "    if(instflag&INSTALLDRIVERS&&(Settings.flags&FLAG_KEEPTEMPFILES)==0)",
+      "new": "    if(false) // SDIO Modern owns and safely removes its private extraction directory.",
+      "count": 1
+    },
+    {
+      "file": "source/install64.c",
+      "old": "#include <newdev.h>",
+      "new": "#include <newdev.h>\n#include <shellapi.h> // Correct CommandLineToArgvW prototype on x64.",
+      "count": 1
+    },
+    {
+      "file": "source/install.cpp",
+      "old": "    if(!*ret)*ret=GetLastError();",
+      "new": "    if(!*ret) {\n        const DWORD nativeFailure=GetLastError();\n        // The legacy caller treats 1 as success; never map a failed API call to 1.\n        *ret=nativeFailure>1?static_cast<int>(nativeFailure):ERROR_GEN_FAILURE;\n    }",
+      "count": 1
+    },
+    {
+      "file": "source/install64.c",
+      "old": "\t\tret=lr;",
+      "new": "\t\t/* Exit code 1 is reserved for success by the original caller. */\n\t\tret=(lr>1)?lr:ERROR_GEN_FAILURE;",
+      "count": 1
+    },
+    {
+      "file": "source/install.cpp",
+      "old": "                        if(!itembar->checked||installmode!=MODE_INSTALLING||tries>60)break;",
+      "new": "                        if(!itembar->checked||installmode!=MODE_INSTALLING||tries>=2)break;",
+      "count": 2
+    },
+    {
+      "file": "source/install.cpp",
+      "old": "                        r=Extract7z(cmd);",
+      "new": "                        ++tries; // Bound archive-error retries, including nonfatal warnings.\n                        r=Extract7z(cmd);",
+      "count": 1
+    },
+    {
+      "file": "source/system.cpp",
+      "old": "#include <sapi.h>",
+      "new": "// SDIO Modern: SAPI speech header is unused in this file; MinGW 4.9.2 does not provide it.",
+      "count": 1
+    },
+    {
+      "file": "source/baseboard.cpp",
+      "old": "#include <Wbemidl.h>        // for IWbemLocator",
+      "new": "#include <Wbemidl.h>        // for IWbemLocator\n// MinGW 4.9.2 wbemuuid.a does not export CLSID_WbemLocator.\n// This is the published Windows WMI locator class identifier, local to this file.\nstatic const CLSID kSdioWbemLocator = { 0x4590F811, 0x1D3A, 0x11D0, { 0x89, 0x1F, 0x00, 0xAA, 0x00, 0x4B, 0x2E, 0x24 } };",
+      "count": 1
+    },
+    {
+      "file": "source/baseboard.cpp",
+      "old": "hres=CoCreateInstance(CLSID_WbemLocator,nullptr,CLSCTX_INPROC_SERVER,IID_IWbemLocator,(LPVOID *)&pLoc);",
+      "new": "hres=CoCreateInstance(kSdioWbemLocator,nullptr,CLSCTX_INPROC_SERVER,IID_IWbemLocator,(LPVOID *)&pLoc);",
+      "count": 1
+    },
+    {
+      "file": "source/common.cpp",
+      "old": "unsigned Hashtable::gethashcode(const char *s,size_t sz)\n{\n    // testing a different hash algorithm\n    return APHash(s, sz);\n/*\n    int h=5381;\n\n    while(sz--)\n    {\n        int ch=*s++;\n        h=((h<<5)+h)^ch;\n    }\n    return h; */\n}\n",
+      "new": "unsigned Hashtable::gethashcode(const char *s,size_t sz)\n{\n    // SDI R2600 .bin indexes persist this legacy hash. The mirror's APHash\n    // experiment retained VER_INDEX=0x205, silently breaking existing indexes.\n    // Unsigned arithmetic gives the required defined 32-bit wraparound.\n    unsigned h=5381u;\n    while(sz--)h=(h*33u)^static_cast<int>(static_cast<signed char>(*s++));\n    return h;\n}\n",
+      "count": 1
+    },
+    {
+      "file": "source/indexing.cpp",
+      "old": "int Driverpack::loadindex()\n{",
+      "new": "int Driverpack::loadindex()\n{\n    // Cache identity is not portable: bind it to the archive selected on this machine.\n    const std::wstring localPath(getPath()),localName(getFilename());",
+      "count": 1
+    },
+    {
+      "file": "source/indexing.cpp",
+      "old": "    p=indexes.loaddata(p);\n\n    delete[] mem;",
+      "new": "    p=indexes.loaddata(p);\n    drppath=static_cast<ofst>(text_ind.strcpyw(localPath.c_str()));\n    drpfilename=static_cast<ofst>(text_ind.strcpyw(localName.c_str()));\n\n    delete[] mem;",
+      "count": 1
+    },
+    {
+      "file": "source/enum.cpp",
+      "old": "InstanceId=static_cast<ofst>(state->textas.alloc(buffersize));",
+      "new": "InstanceId=static_cast<ofst>(state->textas.alloc(buffersize*sizeof(wchar_t)));",
+      "count": 1
+    },
+    {
+      "file": "source/indexing.cpp",
+      "old": "void Collection::loadOnlineIndexes()\n{\n    // load online indexes for driver packs\n    // that i don't have\n    WStringShort buf;;\n    buf.sprintf(L\"%s\\\\_*.*\",index_bin_dir);\n    WIN32_FIND_DATA FindFileData;\n    HANDLE hFind=FindFirstFile(buf.Get(),&FindFileData);\n\n    while(FindNextFile(hFind,&FindFileData)!=0)\n    {\n        wchar_t filename[BUFLEN];\n        wsprintf(filename,L\"%ws\",FindFileData.cFileName);\n        wcscpy(filename+wcslen(FindFileData.cFileName)-3,L\"7z\");\n\n        buf.sprintf(L\"drivers\\\\%ws\",filename);\n        (buf.GetV())[8]=L'D';\n        if(System.FileExists(buf.Get()))\n        {\n            Log.print_debug(\"Skip %S\\n\",buf.Get());\n            continue;\n        }\n\n        driverpack_list.push_back(Driverpack(driverpack_dir,filename,this));\n        driverpack_list.back().loadindex();\n    }\n    FindClose(hFind);\n}\n",
+      "new": "void Collection::loadOnlineIndexes()\n{\n    // Online cache names replace the leading D in DP_ with an underscore.\n    WStringShort buf;buf.sprintf(L\"%ws\\\\_P_*.bin\",index_bin_dir);\n    WIN32_FIND_DATA data;HANDLE find=FindFirstFile(buf.Get(),&data);\n    if(find==INVALID_HANDLE_VALUE)return;\n    do {\n        if(data.dwFileAttributes&FILE_ATTRIBUTE_DIRECTORY)continue;\n        std::wstring indexName(data.cFileName);\n        if(indexName.size()<8 || _wcsicmp(indexName.c_str()+indexName.size()-4,L\".bin\"))continue;\n        const std::wstring cacheName=indexName.substr(0,indexName.size()-4)+L\".7z\";\n        std::wstring archiveName(cacheName);archiveName[0]=L'D';\n        buf.sprintf(L\"%ws\\\\%ws\",driverpack_dir,archiveName.c_str());\n        if(System.FileExists(buf.Get()))continue;\n        driverpack_list.push_back(Driverpack(driverpack_dir,cacheName.c_str(),this));\n        if(!driverpack_list.back().loadindex())driverpack_list.pop_back();\n    }while(FindNextFile(find,&data));\n    FindClose(find);\n}\n",
+      "count": 1
+    },
+    {
+      "file": "source/indexing.cpp",
+      "old": "    FILE *f=_wfopen(filename,L\"rb\");\n    if(!f)return 0;",
+      "new": "    FILE *f=_wfopen(filename,L\"rb\");\n    if(!f){\n        wchar_t *base=wcsrchr(filename,L'\\\\');\n        if(base && base[1]==L'D' && base[2]==L'P' && base[3]==L'_'){\n            base[1]=L'_';f=_wfopen(filename,L\"rb\");\n        }\n    }\n    if(!f)return 0;",
+      "count": 1
+    },
+    {
+      "file": "source/indexing.cpp",
+      "old": "    f=_wfopen(filename,L\"rb\");\n    if(!f)return 0;",
+      "new": "    f=_wfopen(filename,L\"rb\");\n    if(!f){\n        wchar_t *base=wcsrchr(filename,L'\\\\');\n        if(base && base[1]==L'D' && base[2]==L'P' && base[3]==L'_'){\n            base[1]=L'_';f=_wfopen(filename,L\"rb\");\n        }\n    }\n    if(!f)return 0;",
+      "count": 1
+    },
+    {
+      "file": "source/indexing.cpp",
+      "old": "    type=StrStrIW(filename,L\"\\\\_\")?DRIVERPACK_TYPE_UPDATE:DRIVERPACK_TYPE_INDEXED;",
+      "new": "    type=!localName.empty() && localName[0]==L'_'?DRIVERPACK_TYPE_UPDATE:DRIVERPACK_TYPE_INDEXED;",
+      "count": 1
+    },
+    {
+      "file": "source/indexing.cpp",
+      "old": "    p=indexes.loaddata(p);\n    drppath=",
+      "new": "    p=indexes.loaddata(p);\n    // VER_INDEX 0x205 is shared by legacy and APHash caches. Rebuild only the\n    // derived HWID lookup with the runtime hash; INF data and ranking stay intact.\n    indexes.reset(HWID_list.size()/2);\n    for(size_t i=0;i<HWID_list.size();++i){\n        const char *hwid=text_ind.get(HWID_list[i].HWID);\n        indexes.additem(indexes.gethashcode(hwid,strlen(hwid)),static_cast<int>(i));\n    }\n    drppath=",
+      "count": 1
+    },
+    {
+      "file": "source/indexing.cpp",
+      "old": "    f=_wfopen(filename,L\"wt\");\n\n    Log.print_con(\"Saving %S\\n\",filename);",
+      "new": "    f=_wfopen(filename,L\"wt\");\n    if(!f){Log.print_err(\"Index text export could not open %S\\n\",filename);return;}\n\n    Log.print_con(\"Saving %S\\n\",filename);",
+      "count": 1
+    },
+    {
+      "file": "source/indexing.cpp",
+      "old": "    sz-=3+sizeof(int);\n\n    if(memcmp(buf,\"SDW\",3)!=0||version!=VER_INDEX)if(version!=0x204)return 0;",
+      "new": "    if(sz<3+sizeof(int) || sz>128u*1024*1024){fclose(f);return 0;}\n    sz-=3+sizeof(int);\n\n    if(memcmp(buf,\"SDW\",3)!=0 || (version!=VER_INDEX && version!=0x204)){fclose(f);return 0;}",
+      "count": 1
+    },
+    {
+      "file": "source/indexing.cpp",
+      "old": "        Lzma86_GetUnpackSize((Byte *)p,sz,&val);\n        sz_unpack=(size_t)val;\n        mem_unpack=new char[sz_unpack];\n        decode(mem_unpack,sz_unpack,mem,sz);\n        p=mem_unpack;\n    }\n\n    p=inffile.loaddata(p);",
+      "new": "        if(Lzma86_GetUnpackSize((Byte *)p,sz,&val)!=SZ_OK || val<52 || val>512u*1024*1024){delete[] mem;fclose(f);return 0;}\n        sz_unpack=(size_t)val;\n        mem_unpack=new char[sz_unpack];\n        SizeT written=sz_unpack,consumed=sz;\n        if(Lzma86_Decode((Byte *)mem_unpack,&written,(const Byte *)mem,&consumed)!=SZ_OK || written!=sz_unpack){delete[] mem;delete[] mem_unpack;fclose(f);return 0;}\n        p=mem_unpack;sz=sz_unpack;\n    }\n\n    // Check serialized lengths before the original vectors allocate/copy.\n    // A failed encoder or truncated cache must be rebuilt, not interpreted.\n    const size_t widths[]={sizeof(data_inffile_t),sizeof(data_manufacturer_t),sizeof(data_desc_t),sizeof(data_HWID_t),1,sizeof(Hashitem)};\n    size_t checked=0;bool valid=true;\n    for(unsigned block=0;block<6 && valid;++block){\n        if(block==5){if(sz-checked<sizeof(int)){valid=false;break;}int buckets;memcpy(&buckets,p+checked,sizeof(int));checked+=sizeof(int);if(buckets<0 || static_cast<size_t>(buckets)>sz/sizeof(Hashitem)){valid=false;break;}}\n        if(sz-checked<2*sizeof(int)){valid=false;break;}\n        int used,count;memcpy(&used,p+checked,sizeof(int));memcpy(&count,p+checked+sizeof(int),sizeof(int));checked+=2*sizeof(int);\n        if(used<0 || count<0 || static_cast<size_t>(used)>sz-checked || static_cast<size_t>(used)%widths[block] || (count && static_cast<size_t>(count)!=static_cast<size_t>(used)/widths[block])){valid=false;break;}\n        checked+=static_cast<size_t>(used);\n    }\n    if(!valid){delete[] mem;delete[] mem_unpack;fclose(f);return 0;}\n    p=inffile.loaddata(p);",
+      "count": 1
+    },
+    {
+      "file": "source/common.cpp",
+      "old": "    Lzma86_Encode((Byte *)dest,(SizeT *)&dest_sz,(const Byte *)src,src_sz,0,1<<23,SZ_FILTER_AUTO);\n    return dest_sz;",
+      "new": "    const SRes status=Lzma86_Encode((Byte *)dest,(SizeT *)&dest_sz,(const Byte *)src,src_sz,0,1<<23,SZ_FILTER_AUTO);\n    return status==SZ_OK?dest_sz:0;",
+      "count": 1
+    },
+    {
+      "file": "source/indexing.cpp",
+      "old": "void Driverpack::saveindex()\n{\n    wchar_t filename[BUFLEN];\n    FILE *f;\n    size_t sz;\n    int version=VER_INDEX;\n    char *mem,*p,*mem_pack;\n\n    getindexfilename(col->getIndex_bin_dir(),L\"bin\",filename);\n    if(!System.canWriteFile(filename,L\"wb\"))\n    {\n        Log.print_err(\"ERROR in driverpack_saveindex(): Write-protected,'%S'\\n\",filename);\n        return;\n    }\n    f=_wfopen(filename,L\"wb\");\n\n    // calculate size of all data\n    sz=\n        inffile.size()*sizeof(data_inffile_t)+\n        manufacturer_list.size()*sizeof(data_manufacturer_t)+\n        desc_list.size()*sizeof(data_desc_t)+\n        HWID_list.size()*sizeof(data_HWID_t)+\n        text_ind.getSize()+\n        indexes.getSize()*sizeof(Hashitem)+sizeof(int)+\n        6*sizeof(int)*2;\n\n    // construct a buffer in memory of the entire index\n    p=mem=new char[sz];\n    fwrite(\"SDW\",3,1,f);\n    fwrite(&version,sizeof(int),1,f);\n\n    p=inffile.savedata(p);\n    p=manufacturer_list.savedata(p);\n    p=desc_list.savedata(p);\n    p=HWID_list.savedata(p);\n    p=text_ind.savedata(p);\n    p=indexes.savedata(p);\n\n    // compress the output and write\n    if(Settings.flags&COLLECTION_USE_LZMA)\n    {\n        mem_pack=new char[sz];\n        sz=encode(mem_pack,sz,mem,sz);\n        fwrite(mem_pack,sz,1,f);\n        delete[] mem_pack;\n    }\n    else fwrite(mem,sz,1,f);\n\n    delete[] mem;\n    fclose(f);\n    type=DRIVERPACK_TYPE_INDEXED;\n}\n",
+      "new": "void Driverpack::saveindex()\n{\n    wchar_t filename[BUFLEN];\n    FILE *f;\n    size_t sz;\n    int version=VER_INDEX;\n    char *mem,*p,*mem_pack;\n\n    getindexfilename(col->getIndex_bin_dir(),L\"bin\",filename);\n    std::wstring pending=std::wstring(filename)+L\".partial\";\n    if(!System.canWriteFile(pending.c_str(),L\"wb\"))\n    {\n        Log.print_err(\"ERROR in driverpack_saveindex(): Write-protected,'%S'\\n\",filename);\n        return;\n    }\n    f=_wfopen(pending.c_str(),L\"wb\");\n    if(!f)return;\n    bool complete=true;\n\n    // calculate size of all data\n    sz=\n        inffile.size()*sizeof(data_inffile_t)+\n        manufacturer_list.size()*sizeof(data_manufacturer_t)+\n        desc_list.size()*sizeof(data_desc_t)+\n        HWID_list.size()*sizeof(data_HWID_t)+\n        text_ind.getSize()+\n        indexes.getSize()*sizeof(Hashitem)+sizeof(int)+\n        6*sizeof(int)*2;\n\n    // construct a buffer in memory of the entire index\n    p=mem=new char[sz];\n    fwrite(\"SDW\",3,1,f);\n    fwrite(&version,sizeof(int),1,f);\n\n    p=inffile.savedata(p);\n    p=manufacturer_list.savedata(p);\n    p=desc_list.savedata(p);\n    p=HWID_list.savedata(p);\n    p=text_ind.savedata(p);\n    p=indexes.savedata(p);\n\n    // compress the output and write\n    if(Settings.flags&COLLECTION_USE_LZMA)\n    {\n        mem_pack=new char[sz];\n        sz=encode(mem_pack,sz,mem,sz);\n        complete=sz && fwrite(mem_pack,sz,1,f)==1;\n        delete[] mem_pack;\n    }\n    else complete=fwrite(mem,sz,1,f)==1;\n\n    delete[] mem;\n    complete=fclose(f)==0 && complete;\n    if(!complete || !MoveFileExW(pending.c_str(),filename,MOVEFILE_REPLACE_EXISTING|MOVEFILE_WRITE_THROUGH)){DeleteFileW(pending.c_str());Log.print_err(\"Index write failed; previous cache preserved.\\n\");return;}\n    type=DRIVERPACK_TYPE_INDEXED;\n}\n",
+      "count": 1
+    }
+  ]
+}

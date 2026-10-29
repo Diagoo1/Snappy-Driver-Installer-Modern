@@ -1,0 +1,60 @@
+{
+  "sourceVersion": "1.2.20",
+  "archiveSha256": "6a486a72ddd779e9e0e3c2275ade0db958de0b52f30063944f5632deba71350c",
+  "changes": [
+    {
+      "file": "src/enum_net.cpp",
+      "old": "offsetof(IP_ADAPTER_UNICAST_ADDRESS, OnLinkPrefixLength)",
+      "new": "offsetof(IP_ADAPTER_UNICAST_ADDRESS_LH, OnLinkPrefixLength)",
+      "count": 1
+    },
+    {
+      "file": "src/enum_net.cpp",
+      "old": "unicast->OnLinkPrefixLength",
+      "new": "reinterpret_cast<IP_ADAPTER_UNICAST_ADDRESS_LH const*>(unicast)->OnLinkPrefixLength",
+      "count": 3
+    },
+    {
+      "file": "src/add_torrent_params.cpp",
+      "old": "add_torrent_params::add_torrent_params(add_torrent_params&&) noexcept = default;",
+      "new": "add_torrent_params::add_torrent_params(add_torrent_params&& rhs) noexcept : add_torrent_params() { *this = std::move(rhs); }",
+      "count": 1
+    },
+    {
+      "file": "src/add_torrent_params.cpp",
+      "old": "\tstatic_assert(std::is_nothrow_move_constructible<std::string>::value\n\t\t, \"should be nothrow move constructible\");",
+      "new": "\t// Legacy libstdc++ omits noexcept on std::string; explicit aggregate moves retain the public guarantee.",
+      "count": 1
+    },
+    {
+      "file": "src/file_storage.cpp",
+      "old": "file_storage::file_storage(file_storage&&) noexcept = default;",
+      "new": "file_storage::file_storage(file_storage&& rhs) noexcept : file_storage() { *this = std::move(rhs); }",
+      "count": 1
+    },
+    {
+      "file": "src/torrent_status.cpp",
+      "old": "torrent_status::torrent_status(torrent_status&&) noexcept = default;",
+      "new": "torrent_status::torrent_status(torrent_status&& rhs) noexcept : torrent_status() { *this = std::move(rhs); }",
+      "count": 1
+    },
+    {
+      "file": "include/libtorrent/alert_types.hpp",
+      "old": "\t\tstd::string salt;",
+      "new": "\t\taux::noexcept_movable<std::string> salt;",
+      "count": 2
+    },
+    {
+      "file": "src/alert.cpp",
+      "old": "salt(s)",
+      "new": "salt(std::string(s))",
+      "count": 1
+    },
+    {
+      "file": "src/enum_net.cpp",
+      "old": "\t\t\t\t\twcstombs(r.name, ifentry.wszName, sizeof(r.name) - 1);",
+      "new": "\t\t\t\t\t// Match GetAdaptersAddresses names on the XP routing-table fallback too.\n\t\t\t\t\twchar_t const* name = ifentry.wszName;\n\t\t\t\t\tif (wcsncmp(name, L\"\\\\DEVICE\\\\TCPIP_\", wcslen(L\"\\\\DEVICE\\\\TCPIP_\")) == 0)\n\t\t\t\t\t\tname += wcslen(L\"\\\\DEVICE\\\\TCPIP_\");\n\t\t\t\t\twcstombs(r.name, name, sizeof(r.name) - 1);",
+      "count": 1
+    }
+  ]
+}

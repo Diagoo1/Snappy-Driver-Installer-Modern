@@ -1,0 +1,22 @@
+{
+  "schema": 1,
+  "id": "copper-night",
+  "name": "Copper Night",
+  "author": "Tarek Sadek",
+  "light": {
+    "background": "#FCF7F3", "surface": "#FFFFFF", "elevated": "#F5E7DD",
+    "text": "#3F2C25", "muted": "#856B60", "border": "#DBC8BD",
+    "scrollbar": "#A78270", "link": "#8B3F20"
+  },
+  "dark": {
+    "background": "#251E24", "surface": "#342930", "elevated": "#49333D",
+    "text": "#FFF4EC", "muted": "#D3B8B1", "border": "#6D5056",
+    "scrollbar": "#AD7E7A", "link": "#FFBA8D"
+  },
+  "colors": {
+    "accent": "#A65022", "accentHover": "#803A19", "accentSoft": "#F8D2BA",
+    "headerStart": "#40282B", "headerMiddle": "#523031", "headerEnd": "#673B2A",
+    "sidebarStart": "#38222A", "sidebarMiddle": "#36232A", "sidebarEnd": "#291B25",
+    "heroStart": "#63372D", "heroMiddle": "#8B482E", "heroEnd": "#7D432A"
+  }
+}
