@@ -439,7 +439,6 @@
     "Logical processors": "Logische processors",
     "MATCH PRIORITY": "WEDSTRIJDPRIORITEIT",
     "MATCHING-ONLY BUILD": "MATCHING-ALLEEN BOUW",
-    "Made with care by": "Met zorg gemaakt door",
     "Make it feel like yours.": "Laat het voelen alsof het van jou is.",
     "Match filters": "Matchfilters",
     "Match priority": "Matchprioriteit",
@@ -869,6 +868,9 @@
     "x64 (64-bit)": "x64 (64-bits)",
     "x86 (32-bit)": "x86 (32-bits)",
     "~MHz": "~ MHz",
-    "Account / repository": "Account / opslagplaats"
+    "Account / repository": "Account / opslagplaats",
+    "Made with": "Gemaakt met",
+    "by": "door",
+    "Love": "Liefde"
   }
 }

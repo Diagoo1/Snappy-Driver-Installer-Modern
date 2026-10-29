@@ -2,6 +2,7 @@
 #define SDIO_ABOUT_PAGE_H
 #include <QWidget>
 class QScrollArea;
+namespace AboutMotion {qreal heartbeatScale(qint64 elapsedMs);}
 class AboutPage : public QWidget {
 public:
     explicit AboutPage(bool arabic,QWidget *parent=0);

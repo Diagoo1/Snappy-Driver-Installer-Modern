@@ -440,7 +440,6 @@
     "Logical processors": "Mantıksal işlemciler",
     "MATCH PRIORITY": "EŞLEŞME ÖNCELİĞİ",
     "MATCHING-ONLY BUILD": "SADECE EŞLEŞTİRME YAPISI",
-    "Made with care by": "tarafından özenle yapılmıştır",
     "Make it feel like yours.": "Size aitmiş gibi hissetmesini sağlayın.",
     "Match filters": "Eşleştirme filtreleri",
     "Match priority": "Eşleştirme önceliği",
@@ -869,6 +868,9 @@
     "trusted platform module": "güvenilir platform modülü",
     "x64 (64-bit)": "x64 (64 bit)",
     "x86 (32-bit)": "x86 (32 bit)",
-    "~MHz": "~MHz"
+    "~MHz": "~MHz",
+    "Made with": "Sevgiyle yapıldı",
+    "by": "geliştiren:",
+    "Love": "Sevgi"
   }
 }

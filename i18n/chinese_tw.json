@@ -440,7 +440,6 @@
     "Logical processors": "邏輯處理器",
     "MATCH PRIORITY": "匹配優先權",
     "MATCHING-ONLY BUILD": "僅符合版本",
-    "Made with care by": "精心打造",
     "Make it feel like yours.": "讓它感覺像您的。",
     "Match filters": "匹配濾波器",
     "Match priority": "匹配優先權",
@@ -869,6 +868,9 @@
     "trusted platform module": "可信任平台模組",
     "x64 (64-bit)": "x64（64 位元）",
     "x86 (32-bit)": "x86（32 位元）",
-    "~MHz": "~MHz"
+    "~MHz": "~MHz",
+    "Made with": "用心製作",
+    "by": "作者：",
+    "Love": "愛"
   }
 }

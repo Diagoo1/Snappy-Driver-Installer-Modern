@@ -440,7 +440,6 @@
     "Logical processors": "Procesory logiczne",
     "MATCH PRIORITY": "PRIORYTET DOPASOWANIA",
     "MATCHING-ONLY BUILD": "KONSTRUKCJA TYLKO DOPASOWANA",
-    "Made with care by": "Starannie wykonane przez",
     "Make it feel like yours.": "Spraw, by poczuł się jak Twój.",
     "Match filters": "Filtry dopasowania",
     "Match priority": "Priorytet dopasowania",
@@ -869,6 +868,9 @@
     "trusted platform module": "zaufany moduł platformy",
     "x64 (64-bit)": "x64 (64-bitowy)",
     "x86 (32-bit)": "x86 (32-bitowy)",
-    "~MHz": "~ MHz"
+    "~MHz": "~ MHz",
+    "Made with": "Stworzone z",
+    "by": "autor:",
+    "Love": "Miłość"
   }
 }

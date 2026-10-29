@@ -439,7 +439,6 @@
     "Logical processors": "Logični procesorji",
     "MATCH PRIORITY": "PRIORITETA UJEMANJA",
     "MATCHING-ONLY BUILD": "SAMO UJEMAJOČA ZGRADBA",
-    "Made with care by": "Skrbno izdelano",
     "Make it feel like yours.": "Naj se počuti kot vaš.",
     "Match filters": "Filtri za ujemanje",
     "Match priority": "Prednost ujemanja",
@@ -869,6 +868,9 @@
     "x64 (64-bit)": "x64 (64-bitni)",
     "x86 (32-bit)": "x86 (32-bitni)",
     "~MHz": "~MHz",
-    "Account / repository": "Račun / repozitorij"
+    "Account / repository": "Račun / repozitorij",
+    "Made with": "Ustvarjeno z",
+    "by": "avtor:",
+    "Love": "Ljubezen"
   }
 }

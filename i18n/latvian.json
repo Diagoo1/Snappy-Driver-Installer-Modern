@@ -440,7 +440,6 @@
     "Logical processors": "Loģiskie procesori",
     "MATCH PRIORITY": "MATCH PRIORITĀTE",
     "MATCHING-ONLY BUILD": "TIKAI ATBILSTĪGA BŪVE",
-    "Made with care by": "Rūpīgi izgatavojis",
     "Make it feel like yours.": "Ļaujiet tai justies kā jums.",
     "Match filters": "Match filtri",
     "Match priority": "Atbilstības prioritāte",
@@ -869,6 +868,9 @@
     "trusted platform module": "uzticamas platformas modulis",
     "x64 (64-bit)": "x64 (64 bitu)",
     "x86 (32-bit)": "x86 (32 bitu)",
-    "~MHz": "~MHz"
+    "~MHz": "~MHz",
+    "Made with": "Radīts ar",
+    "by": "autors:",
+    "Love": "Mīlestība"
   }
 }

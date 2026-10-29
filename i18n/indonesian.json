@@ -440,7 +440,6 @@
     "Logical processors": "Prosesor logis\nPRIORITAS PERTANDINGAN",
     "MATCH PRIORITY": "Revisi Motherboard",
     "MATCHING-ONLY BUILD": "BUILD HANYA YANG COCOK",
-    "Made with care by": "Dibuat dengan hati-hati oleh",
     "Make it feel like yours.": "Jadikan itu terasa seperti milik Anda.",
     "Match filters": "Filter kecocokan",
     "Match priority": "Prioritas kecocokan",
@@ -869,6 +868,9 @@
     "trusted platform module": "modul platform tepercaya",
     "x64 (64-bit)": "x64 (64-bit)",
     "x86 (32-bit)": "x86 (32-bit)",
-    "~MHz": "~MHz"
+    "~MHz": "~MHz",
+    "Made with": "Dibuat dengan",
+    "by": "oleh",
+    "Love": "Cinta"
   }
 }

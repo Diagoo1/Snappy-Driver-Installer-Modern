@@ -79,6 +79,7 @@ def run_locale(locale,tag,catalog,native,english):
         if key and native.get(key):shared[source]=native[key]
     translated.update(shared)
     if locale=='arabic':translated.update(catalog['arabic']);translated.update({'Installed':'مثبّت','Missing':'مفقود','Upgrade':'ترقية','Downgrade':'إصدار أقدم','Invalid':'غير صالح','Ignored':'متجاهل'})
+    translated.update(json.loads((ROOT/'tools/i18n/signature_translations.json').read_text('utf-8')).get(locale,{}))
     if locale=='english':translated={key:key for key in keys}
     missing=[key for key in keys if not translated.get(key)]
     def persist():write(destination,{'schema':1,'language':locale,'tag':tag,'rtl':locale in {'arabic','farsi'},'generated':'Upstream human translations, maintained Arabic, and build-time machine translation; native review recommended.','messages':{key:translated[key] for key in keys if key in translated}})

@@ -37,6 +37,7 @@ def collect():
                 if visible(value):messages.add(value);sources.setdefault(value,[]).append(str(path.relative_to(ROOT)))
     # These short states and common dialog verbs are intentionally translated.
     messages.update(('Classic Teal','Snappy Driver Installer','Tarek Sadek','Installed','Missing','Upgrade','Downgrade','Invalid','Ignored','Cancel','Close','Continue','Apply','Browse...','Yes','No','Automatic','Unlimited','Download','Pause','Stop','Resume','Settings','About','Drivers','Diagnostics','Recommended'))
+    messages.update(('Made with','by','Love'))
     maintained=ROOT/'tools/i18n/arabic_overrides.json'
     if maintained.exists():arabic.update(json.loads(maintained.read_text(encoding='utf-8')))
     directory=ROOT/'i18n';directory.mkdir(exist_ok=True)

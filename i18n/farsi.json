@@ -440,7 +440,6 @@
     "Logical processors": "اولویت مسابقه",
     "MATCH PRIORITY": "اولویت مسابقه",
     "MATCHING-ONLY BUILD": "MATCHING-ONLY BUILD",
-    "Made with care by": "ساخته شده با دقت توسط\nفیلترهای مطابقت",
     "Make it feel like yours.": "کاری کنید که شبیه شما باشد.",
     "Match filters": "اولویت مسابقه",
     "Match priority": "استفاده از حافظه",
@@ -869,6 +868,9 @@
     "trusted platform module": "ماژول پلت فرم قابل اعتماد",
     "x64 (64-bit)": "x64 (64 بیت)",
     "x86 (32-bit)": "x86 (32 بیت)",
-    "~MHz": "~ مگاهرتز"
+    "~MHz": "~ مگاهرتز",
+    "Made with": "ساخته‌شده با",
+    "by": "توسط",
+    "Love": "عشق"
   }
 }

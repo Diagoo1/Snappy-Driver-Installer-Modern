@@ -16,6 +16,7 @@ add_executable(SnappyDriverInstaller-TS
   src/online_packages.cpp src/online_packages.h src/online_dialog.cpp src/online_dialog.h
   src/support_report.cpp src/support_report.h
   src/appearance.cpp
+  src/window_motion.cpp src/window_motion.h
   src/appearance.h
   src/single_instance.cpp
   src/single_instance.h

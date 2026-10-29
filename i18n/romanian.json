@@ -440,7 +440,6 @@
     "Logical processors": "Procesoare logice",
     "MATCH PRIORITY": "PRIORITATE DE MECI",
     "MATCHING-ONLY BUILD": "CONSTRUCȚIE NUMAI POTRIVĂ",
-    "Made with care by": "Realizat cu grijă de",
     "Make it feel like yours.": "Fă-l să se simtă ca al tău.",
     "Match filters": "Filtre de potrivire",
     "Match priority": "Prioritate de potrivire",
@@ -869,6 +868,9 @@
     "trusted platform module": "modul platformă de încredere",
     "x64 (64-bit)": "x64 (64 de biți)",
     "x86 (32-bit)": "x86 (32 de biți)",
-    "~MHz": "~MHz"
+    "~MHz": "~MHz",
+    "Made with": "Creat cu",
+    "by": "de",
+    "Love": "Dragoste"
   }
 }

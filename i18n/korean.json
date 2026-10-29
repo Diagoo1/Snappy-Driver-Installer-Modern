@@ -440,7 +440,6 @@
     "Logical processors": "논리 프로세서",
     "MATCH PRIORITY": "일치 우선순위",
     "MATCHING-ONLY BUILD": "매칭 전용 빌드",
-    "Made with care by": "정성껏 제작",
     "Make it feel like yours.": "당신의 것 같은 느낌을 만들어 보세요.",
     "Match filters": "일치 필터",
     "Match priority": "일치 우선 순위",
@@ -869,6 +868,9 @@
     "trusted platform module": "신뢰할 수 있는 플랫폼 모듈",
     "x64 (64-bit)": "x64(64비트)",
     "x86 (32-bit)": "x86(32비트)",
-    "~MHz": "~MHz"
+    "~MHz": "~MHz",
+    "Made with": "정성을 담아 제작",
+    "by": "제작자:",
+    "Love": "사랑"
   }
 }

@@ -12,7 +12,7 @@ SOURCES += \
     src/online_packages.cpp \
     src/online_dialog.cpp \
     src/support_report.cpp \
-    src/appearance.cpp \
+    src/appearance.cpp src/window_motion.cpp \
     src/single_instance.cpp \
     src/scan_report.cpp \
     src/automation_plan.cpp \
@@ -55,7 +55,7 @@ HEADERS += \
     src/online_packages.h \
     src/online_dialog.h \
     src/support_report.h \
-    src/appearance.h \
+    src/appearance.h src/window_motion.h \
     src/single_instance.h \
     src/scan_report.h \
     src/main_window.h \

@@ -10,6 +10,8 @@
 #include <QRadialGradient>
 #include <QLinearGradient>
 #include <QTimer>
+#include <QElapsedTimer>
+#include "ui_language.h"
 #include <QApplication>
 #include <QDesktopServices>
 #include <QUrl>
@@ -30,10 +32,19 @@ protected:void paintEvent(QPaintEvent*) Q_DECL_OVERRIDE {
     p.setClipping(false);p.setPen(QPen(QColor(109,183,183,65),1));p.drawRoundedRect(area,23,23);
 }
 };
+qreal AboutMotion::heartbeatScale(qint64 elapsedMs){
+    const qint64 phase=qMax<qint64>(0,elapsedMs)%1800;
+    if(phase<220)return 1+.18*qSin(phase*3.141592653589793/220.);
+    if(phase>=310 && phase<500)return 1+.12*qSin((phase-310)*3.141592653589793/190.);
+    return 1;
+}
 class Heartbeat : public QWidget {
-public:explicit Heartbeat(QWidget *parent):QWidget(parent),m_frame(0){setFixedSize(32,32);QTimer *timer=new QTimer(this);timer->setInterval(33);connect(timer,&QTimer::timeout,this,[this](){if(isVisible() && !qApp->property("reduceMotion").toBool()){++m_frame;update();}});timer->start();}
-protected:void paintEvent(QPaintEvent*) Q_DECL_OVERRIDE {QPainter p(this);p.setRenderHint(QPainter::Antialiasing);const qreal phase=(m_frame%60)/60.0;const qreal scale=qApp->property("reduceMotion").toBool()?1:1+.13*qMax(0.0,qSin(phase*4*3.14159265))*qExp(-phase*4);p.translate(16,16);p.scale(scale,scale);QPainterPath heart;heart.moveTo(0,9);heart.cubicTo(-18,-2,-10,-15,0,-6);heart.cubicTo(10,-15,18,-2,0,9);p.setPen(Qt::NoPen);p.setBrush(QColor("#ED7589"));p.drawPath(heart);}
-private:int m_frame;
+public:explicit Heartbeat(QWidget *parent):QWidget(parent){setObjectName(QStringLiteral("signatureHeart"));setFixedSize(32,32);setAccessibleName(UiLanguage::text(QStringLiteral("Love"),QString::fromUtf8("حب")));m_clock.start();m_timer.setSingleShot(true);m_timer.setInterval(33);connect(&m_timer,&QTimer::timeout,this,[this](){if(qApp->property("reduceMotion").toBool()){update();return;}const int phase=int(m_clock.elapsed()%1800);if(phase<550){update();m_timer.start(33);}else m_timer.start(1800-phase);});}
+protected:
+void showEvent(QShowEvent *e) Q_DECL_OVERRIDE {QWidget::showEvent(e);m_clock.restart();m_timer.start(33);}
+void hideEvent(QHideEvent *e) Q_DECL_OVERRIDE {m_timer.stop();QWidget::hideEvent(e);}
+void paintEvent(QPaintEvent*) Q_DECL_OVERRIDE {QPainter p(this);p.setRenderHint(QPainter::Antialiasing);p.translate(16,17);const qreal scale=qApp->property("reduceMotion").toBool()?1:AboutMotion::heartbeatScale(m_clock.elapsed());p.scale(scale,scale);QPainterPath heart;heart.moveTo(0,8);heart.cubicTo(-5,4,-11,0,-11,-6);heart.cubicTo(-11,-13,-3,-14,0,-7);heart.cubicTo(3,-14,11,-13,11,-6);heart.cubicTo(11,0,5,4,0,8);QLinearGradient rose(-7,-12,7,9);rose.setColorAt(0,QColor("#FFB1BA"));rose.setColorAt(.45,QColor("#F47C96"));rose.setColorAt(1,QColor("#D94F79"));p.setPen(Qt::NoPen);p.setBrush(rose);p.drawPath(heart);}
+private:QElapsedTimer m_clock;QTimer m_timer;
 };
 AboutPage::AboutPage(bool arabic,QWidget *parent):QWidget(parent),m_scroll(new QScrollArea(this)){
     setObjectName(QStringLiteral("page"));QVBoxLayout *root=new QVBoxLayout(this);root->setContentsMargins(0,0,0,20);
@@ -51,11 +62,11 @@ void AboutPage::setArabic(bool ar){
     QVBoxLayout *heroText=new QVBoxLayout;QLabel *name=text(t("Snappy Driver Installer","مدير تعريفات الأجهزة"),"heroName",hero);name->setStyleSheet(QStringLiteral("color:white;background:transparent;font-size:25px;font-weight:600;"));heroText->addWidget(name);
     QLabel *description=text(t("Find the right driver. Keep the process clear.","اعثر على التعريف المناسب، بخطوات واضحة."),"heroDescription",hero);description->setStyleSheet(QStringLiteral("color:#BDE7E8;background:transparent;font-size:13px;"));heroText->addWidget(description);heroLayout->addLayout(heroText,1);box->addWidget(hero);
     QWidget *developer=new DeveloperCard(body);QHBoxLayout *profile=new QHBoxLayout(developer);profile->setContentsMargins(30,27,30,27);profile->setSpacing(24);profile->addWidget(new DeveloperPortrait(developer),0,Qt::AlignVCenter);
-    QVBoxLayout *bio=new QVBoxLayout;QHBoxLayout *made=new QHBoxLayout;made->addWidget(text(t("Made with care by","صُمّم بعناية بواسطة"),"mutedText",developer));made->addWidget(new Heartbeat(developer));made->addStretch();bio->addLayout(made);
+    QVBoxLayout *bio=new QVBoxLayout;QWidget *signature=new QWidget(developer);signature->setObjectName(QStringLiteral("developerSignature"));QHBoxLayout *made=new QHBoxLayout(signature);made->setContentsMargins(11,2,11,2);made->setSpacing(6);made->addWidget(text(t("Made with","صُنع بكل"),"signatureText",signature));made->addWidget(new Heartbeat(signature));made->addWidget(text(t("by","بواسطة"),"signatureText",signature));bio->addWidget(signature,0,Qt::AlignAbsolute|(ar?Qt::AlignRight:Qt::AlignLeft));
     QLabel *author=text(t("Tarek Sadek","طارق صادق"),"developerName",developer);author->setStyleSheet(QStringLiteral("color:#F4FAF7;font-size:32px;font-weight:700;background:transparent;"));bio->addWidget(author);
     bio->addWidget(text(t("Interface design & development · Diagoo1","تصميم وتطوير الواجهة · Diagoo1"),"bodyText",developer));
     bio->addWidget(text(t("Creator of Dreams Software Collection","مطوّر مجموعة دريمز للبرامج"),"subText",developer));profile->addLayout(bio,1);box->addWidget(developer);
-    developer->setStyleSheet(QStringLiteral("QLabel {background:transparent;} QLabel#mutedText {color:#C8D8DC;font-size:12px;} QLabel#bodyText {color:#79E0CE;font-size:14px;font-weight:500;} QLabel#subText {color:#BCD1D4;font-size:12px;}"));
+    developer->setStyleSheet(QStringLiteral("QLabel {background:transparent;} QWidget#developerSignature {background:rgba(227,241,235,13);border:1px solid rgba(214,206,164,45);border-radius:18px;} QLabel#signatureText {color:#E8DCC2;font-size:13px;font-weight:500;} QLabel#mutedText {color:#C8D8DC;font-size:12px;} QLabel#bodyText {color:#79E0CE;font-size:14px;font-weight:500;} QLabel#subText {color:#BCD1D4;font-size:12px;}"));
     QHBoxLayout *links=new QHBoxLayout;links->setSpacing(12);
     const QStringList titles=QStringList()<<t("GitHub projects","مشاريعي على GitHub")<<t("Support development","دعم التطوير")<<t("Contact me","تواصل معي");
     const QStringList urls=QStringList()<<QStringLiteral("https://github.com/Diagoo1")<<QStringLiteral("https://paypal.me/Diagoo1")<<QStringLiteral("mailto:tarek.sadek44@gmail.com");

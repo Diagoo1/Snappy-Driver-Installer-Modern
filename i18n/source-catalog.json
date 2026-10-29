@@ -434,9 +434,10 @@
     "Local package present",
     "Local\\SDIO.TarekSadek.ModernUI.SingleInstance",
     "Logical processors",
+    "Love",
     "MATCH PRIORITY",
     "MATCHING-ONLY BUILD",
-    "Made with care by",
+    "Made with",
     "Make it feel like yours.",
     "Match filters",
     "Match priority",
@@ -861,6 +862,7 @@
     "\\driver-",
     "\\n",
     "app x -y \"",
+    "by",
     "bytes %1-%2/%3",
     "trusted platform module",
     "x64 (64-bit)",
@@ -872,7 +874,7 @@
     "Thoughtful design. Practical tools. Built for your Windows PC.": "تصميم بعناية، وأدوات عملية لجهازك.",
     "Snappy Driver Installer": "مدير تعريفات الأجهزة",
     "Find the right driver. Keep the process clear.": "اعثر على التعريف المناسب، بخطوات واضحة.",
-    "Made with care by": "صُمّم بعناية بواسطة",
+    "Made with": "صُنع بكل",
     "Tarek Sadek": "طارق صادق",
     "Interface design & development · Diagoo1": "تصميم وتطوير الواجهة · Diagoo1",
     "Creator of Dreams Software Collection": "مطوّر مجموعة دريمز للبرامج",
@@ -2478,13 +2480,16 @@
     "Logical processors": [
       "src\\main_window.cpp"
     ],
+    "Love": [
+      "src\\about_page.cpp"
+    ],
     "MATCH PRIORITY": [
       "src\\driver_workspace.cpp"
     ],
     "MATCHING-ONLY BUILD": [
       "src\\installation_workspace.cpp"
     ],
-    "Made with care by": [
+    "Made with": [
       "src\\about_page.cpp"
     ],
     "Make it feel like yours.": [
@@ -3768,6 +3773,7 @@
     "app x -y \"": [
       "native\\origin_native.cpp"
     ],
+    "by": [],
     "bytes %1-%2/%3": [
       "src\\online_packages.cpp"
     ],

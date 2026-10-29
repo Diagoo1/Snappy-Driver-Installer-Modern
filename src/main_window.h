@@ -119,6 +119,7 @@ private:
     QLabel *m_probeStatus,*m_probeHint;
     QMap<QString,QString> m_diagnosticFacts;
     class QProgressBar *m_memoryUsageBar=0;
+    class WindowMotion *m_windowMotion=0;
     QMap<QString,QLabel*> m_diagValues;
     QMap<QString,QLabel*> m_diagCaptions,m_diagSections;
 };

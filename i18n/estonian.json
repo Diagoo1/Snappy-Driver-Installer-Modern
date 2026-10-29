@@ -440,7 +440,6 @@
     "Logical processors": "Loogilised protsessorid",
     "MATCH PRIORITY": "MATCH PRIORITEET",
     "MATCHING-ONLY BUILD": "AINULT SOBIV EHITUS",
-    "Made with care by": "Ettevaatlikult valmistanud",
     "Make it feel like yours.": "Tundke see enda omana.",
     "Match filters": "Sobivad filtrid",
     "Match priority": "Sobitage prioriteet",
@@ -869,6 +868,9 @@
     "trusted platform module": "usaldusväärse platvormi moodul",
     "x64 (64-bit)": "x64 (64-bitine)",
     "x86 (32-bit)": "x86 (32-bitine)",
-    "~MHz": "~MHz"
+    "~MHz": "~MHz",
+    "Made with": "Loodud",
+    "by": "autor:",
+    "Love": "Armastus"
   }
 }

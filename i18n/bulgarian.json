@@ -440,7 +440,6 @@
     "Logical processors": "Логически процесори",
     "MATCH PRIORITY": "ПРИОРИТЕТ НА СЪОТВЕТСТВИЕ",
     "MATCHING-ONLY BUILD": "САМО СЪОТВЕТСТВАЩА КОМПЛЕКТ",
-    "Made with care by": "Изработено с внимание от",
     "Make it feel like yours.": "Накарайте го да се почувства като ваш.",
     "Match filters": "Филтри за съвпадение",
     "Match priority": "Приоритет на съвпадение",
@@ -869,6 +868,9 @@
     "trusted platform module": "доверен платформен модул",
     "x64 (64-bit)": "x64 (64-битов)",
     "x86 (32-bit)": "x86 (32-битов)",
-    "~MHz": "~MHz"
+    "~MHz": "~MHz",
+    "Made with": "Създадено с",
+    "by": "от",
+    "Love": "Любов"
   }
 }

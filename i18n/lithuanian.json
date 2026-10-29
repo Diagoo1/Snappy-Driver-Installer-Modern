@@ -440,7 +440,6 @@
     "Logical processors": "Loginiai procesoriai",
     "MATCH PRIORITY": "MATCH PRIORITETAS",
     "MATCHING-ONLY BUILD": "TINKAMAS TIK KONSTRUKCIJA",
-    "Made with care by": "Pagaminta atsargiai",
     "Make it feel like yours.": "Pajuskite kaip savo.",
     "Match filters": "Match filtrai",
     "Match priority": "Atitikties prioritetas",
@@ -869,6 +868,9 @@
     "trusted platform module": "patikimos platformos modulis",
     "x64 (64-bit)": "x64 (64 bitų)",
     "x86 (32-bit)": "x86 (32 bitų)",
-    "~MHz": "~MHz"
+    "~MHz": "~MHz",
+    "Made with": "Sukurta su",
+    "by": "autorius:",
+    "Love": "Meilė"
   }
 }

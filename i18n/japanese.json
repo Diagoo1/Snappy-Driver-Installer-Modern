@@ -440,7 +440,6 @@
     "Logical processors": "論理プロセッサ",
     "MATCH PRIORITY": "一致優先度",
     "MATCHING-ONLY BUILD": "マッチング専用ビルド",
-    "Made with care by": "丁寧に作られています",
     "Make it feel like yours.": "自分らしく。",
     "Match filters": "マッチフィルター",
     "Match priority": "一致優先度",
@@ -869,6 +868,9 @@
     "trusted platform module": "トラステッド プラットフォーム モジュール",
     "x64 (64-bit)": "x64 (64 ビット)",
     "x86 (32-bit)": "x86 (32 ビット)",
-    "~MHz": "~MHz"
+    "~MHz": "~MHz",
+    "Made with": "心を込めて制作",
+    "by": "作者：",
+    "Love": "愛"
   }
 }

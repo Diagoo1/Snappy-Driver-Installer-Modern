@@ -440,7 +440,6 @@
     "Logical processors": "Logické procesory",
     "MATCH PRIORITY": "SHODA S PRIORITOU",
     "MATCHING-ONLY BUILD": "SESTAVENÍ POUZE MATCHING",
-    "Made with care by": "Vyrobeno s péčí",
     "Make it feel like yours.": "Udělejte to jako vy.",
     "Match filters": "Odpovídající filtry",
     "Match priority": "Priorita shody",
@@ -869,6 +868,9 @@
     "trusted platform module": "modul důvěryhodné platformy",
     "x64 (64-bit)": "x64 (64bitový)",
     "x86 (32-bit)": "x86 (32bitový)",
-    "~MHz": "~MHz"
+    "~MHz": "~MHz",
+    "Made with": "Vytvořeno s",
+    "by": "autor:",
+    "Love": "Láska"
   }
 }

@@ -440,7 +440,6 @@
     "Logical processors": "المعالجات المنطقية",
     "MATCH PRIORITY": "أولوية المباراة",
     "MATCHING-ONLY BUILD": "بناء مطابق فقط",
-    "Made with care by": "صُمّم بعناية بواسطة",
     "Make it feel like yours.": "اضبط البرنامج على ذوقك.",
     "Match filters": "مرشحات المباراة\nتم إرجاع",
     "Match priority": "أولوية المطابقة",
@@ -869,6 +868,9 @@
     "trusted platform module": "وحدة النظام الأساسي الموثوق بها",
     "x64 (64-bit)": "64 بت (x64)",
     "x86 (32-bit)": "32 بت (x86)",
-    "~MHz": "~ ميجا هرتز"
+    "~MHz": "~ ميجا هرتز",
+    "Made with": "صُنع بكل",
+    "by": "بواسطة",
+    "Love": "حب"
   }
 }

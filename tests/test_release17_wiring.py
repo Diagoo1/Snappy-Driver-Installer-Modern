@@ -44,7 +44,7 @@ class Release17VisibleFixes(unittest.TestCase):
   self.assertIn('Matching-only builds cannot modify Windows drivers',read('src/installation_workspace.cpp'))
   self.assertIn('Snappy Driver Installer',read('src/title_bar.cpp'))
   self.assertNotIn('R17 UI UPDATE',read('src/title_bar.cpp'))
-  self.assertIn('FILEVERSION 0,21,1,0',read('resources.rc'))
+  self.assertIn('FILEVERSION 0,21,2,0',read('resources.rc'))
   self.assertIn('UI © 2026 Tarek Sadek',read('src/sidebar.cpp'))
  def test_build_files_include_new_picker_and_cpp_is_not_faked(self):
   for unit in ('src/searchable_language_combo.cpp','src/searchable_language_combo.h'):

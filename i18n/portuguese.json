@@ -440,7 +440,6 @@
     "Logical processors": "Análise da placa-mãe",
     "MATCH PRIORITY": "PRIORIDADE DE CORRESPONDÊNCIA",
     "MATCHING-ONLY BUILD": "CONSTRUÇÃO APENAS DE CORRESPONDÊNCIA",
-    "Made with care by": "Feito com cuidado por",
     "Make it feel like yours.": "Faça com que pareça seu.",
     "Match filters": "Filtros de correspondência",
     "Match priority": "Prioridade de correspondência\nCorrespondente",
@@ -869,6 +868,9 @@
     "trusted platform module": "módulo de plataforma fiável",
     "x64 (64-bit)": "x64 (64 bits)",
     "x86 (32-bit)": "x86 (32 bits)",
-    "~MHz": "~MHz"
+    "~MHz": "~MHz",
+    "Made with": "Feito com",
+    "by": "por",
+    "Love": "Amor"
   }
 }

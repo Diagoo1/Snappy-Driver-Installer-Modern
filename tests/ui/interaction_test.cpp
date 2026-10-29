@@ -398,6 +398,7 @@ int main(int argc,char **argv){
                 window.grab().save(QDir(app.applicationDirPath()).filePath(QStringLiteral("premium-about-")+suffix+QStringLiteral(".png")));
                 DriverDetailsDialog redesigned(sample,false,rtl,&window);redesigned.show();QTest::qWait(220);
                 redesigned.grab().save(QDir(app.applicationDirPath()).filePath(QStringLiteral("premium-comparison-")+suffix+QStringLiteral(".png")));
+                redesigned.findChild<QTabWidget*>()->setCurrentIndex(1);QTest::qWait(30);redesigned.grab().save(QDir(app.applicationDirPath()).filePath(QStringLiteral("premium-device-")+suffix+QStringLiteral(".png")));redesigned.findChild<QTabWidget*>()->setCurrentIndex(0);
                 for(QLabel *value:redesigned.findChildren<QLabel*>(QStringLiteral("detailVersion")))versionStable=versionStable && value->property("keepLtr").toBool() && value->layoutDirection()==Qt::LeftToRight;
                 QWidget *stars=redesigned.findChild<QWidget*>(QStringLiteral("comparisonStars"));starStable=starStable && stars && stars->property("matchPriority").toInt()==5;
                 redesigned.close();
@@ -524,6 +525,20 @@ int main(int argc,char **argv){
         const QStringList rtlLocales=QStringList()<<QStringLiteral("arabic")<<QStringLiteral("farsi");
         for(const QString &locale:rtlLocales){language->setCurrentIndex(language->findData(locale));QTest::qWait(30);UiLanguage::refresh();check(qApp->layoutDirection()==Qt::RightToLeft,"RTL language changes global widget flow");check(UiLanguage::text(QStringLiteral("Installed"))!=QStringLiteral("Installed"),"short state is translated in RTL locales");}
         language->setCurrentIndex(language->findData(QStringLiteral("french")));QTest::qWait(30);check(UiLanguage::text(QStringLiteral("Installed"))!=QStringLiteral("Installed"),"modern UI text is localized beyond Arabic and English");language->setCurrentIndex(language->findData(QStringLiteral("english")));UiLanguage::refresh();
+        check(AboutMotion::heartbeatScale(110)>1.17 && AboutMotion::heartbeatScale(405)>1.11,"signature heart has two distinct heartbeat peaks");
+        check(AboutMotion::heartbeatScale(700)==1 && AboutMotion::heartbeatScale(1500)==1 && qAbs(AboutMotion::heartbeatScale(1910)-AboutMotion::heartbeatScale(110))<.001,"heartbeat rests between pairs and repeats using elapsed time");
+        QMetaObject::invokeMethod(&window,"navigate",Q_ARG(int,5));QTest::qWait(230);
+        QWidget *signature=window.findChild<QWidget*>(QStringLiteral("developerSignature"));QStringList signatureWords;for(QLabel *word:signature->findChildren<QLabel*>())signatureWords<<word->text();
+        check(signatureWords.contains(QStringLiteral("Made with")) && signatureWords.contains(QStringLiteral("by")) && signature->findChild<QWidget*>(QStringLiteral("signatureHeart")),"developer signature places the heart between made-with and by above the author name");
+        qApp->setProperty("reduceMotion",false);
+        QMetaObject::invokeMethod(window.findChild<TitleBar*>(),"maximizeRequested");QMetaObject::invokeMethod(window.findChild<TitleBar*>(),"maximizeRequested");QTest::qWait(300);
+        check(window.isMaximized() && !window.property("windowMotionActive").toBool() && window.windowOpacity()>.99,"maximize completes and repeated clicks cannot queue conflicting transitions");
+        check(window.property("motionCapturePixels").toInt()<=960*640 && window.property("motionFrames").toInt()<=5,"window transition bounds raster memory and frame count independently of display scale");
+        QMetaObject::invokeMethod(window.findChild<TitleBar*>(),"maximizeRequested");QTest::qWait(300);check(!window.isMaximized() && window.windowOpacity()>.99,"restore from maximized completes with the live interface visible");
+        QMetaObject::invokeMethod(window.findChild<TitleBar*>(),"minimizeRequested");QTest::qWait(280);check(window.isMinimized() && !window.property("windowMotionActive").toBool(),"minimize reaches the real window-manager state after its bounded transition");
+        window.showNormal();QTest::qWait(300);bool ghostVisible=false;for(QWidget *top:app.topLevelWidgets())if(top->objectName()==QStringLiteral("windowMotionSnapshot") && top->isVisible())ghostVisible=true;
+        check(window.isVisible() && window.windowOpacity()>.99 && !ghostVisible,"taskbar-style restore releases the snapshot and restores window opacity");
+        qApp->setProperty("reduceMotion",true);QMetaObject::invokeMethod(window.findChild<TitleBar*>(),"maximizeRequested");QTest::qWait(40);check(window.isMaximized() && !window.property("windowMotionActive").toBool(),"reduced-motion preference takes the direct native window-state path");window.showNormal();qApp->setProperty("reduceMotion",false);
         Splash splash;splash.begin();QTest::qWait(500);splash.grab().save(QDir(app.applicationDirPath()).filePath(QStringLiteral("splash.png")));
         check(splash.progress()>0 && splash.progress()<100,"startup progress animation runs");splash.close();
         std::printf("%d UI and instance checks passed; no system installation was performed.\n",checks);

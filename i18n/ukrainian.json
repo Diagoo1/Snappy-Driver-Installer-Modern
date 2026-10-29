@@ -439,7 +439,6 @@
     "Logical processors": "Логічні процесори",
     "MATCH PRIORITY": "ПРІОРИТЕТ Збігу",
     "MATCHING-ONLY BUILD": "ТІЛЬКИ ВІДПОВІДНІСТЬ",
-    "Made with care by": "Зроблено дбайливо",
     "Make it feel like yours.": "Зробіть так, щоб він був вашим.",
     "Match filters": "Фільтри відповідності",
     "Match priority": "Пріоритет відповідності",
@@ -869,6 +868,9 @@
     "x64 (64-bit)": "x64 (64-розрядна)",
     "x86 (32-bit)": "x86 (32-розрядна)",
     "~MHz": "~ МГц",
-    "Account / repository": "Обліковий запис / репозиторій"
+    "Account / repository": "Обліковий запис / репозиторій",
+    "Made with": "Створено з",
+    "by": "автор:",
+    "Love": "Любов"
   }
 }

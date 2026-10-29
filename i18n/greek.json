@@ -440,7 +440,6 @@
     "Logical processors": "Λογικοί επεξεργαστές",
     "MATCH PRIORITY": "ΑΓΩΝΑΣ ΠΡΟΤΕΡΑΙΟΤΗΤΑΣ\nΚΑΤΑΣΚΕΥΗ",
     "MATCHING-ONLY BUILD": "ΑΝΤΙΣΤΟΙΧΙΑΣ ΜΟΝΟ",
-    "Made with care by": "Κατασκευασμένο με προσοχή από",
     "Make it feel like yours.": "Κάντε το να νιώθει σαν δικό σας.",
     "Match filters": "Φίλτρα αντιστοίχισης",
     "Match priority": "Προτεραιότητα αντιστοίχισης\nΤο",
@@ -869,6 +868,9 @@
     "trusted platform module": "μονάδα αξιόπιστης πλατφόρμας",
     "x64 (64-bit)": "x64 (64-bit)",
     "x86 (32-bit)": "x86 (32-bit)",
-    "~MHz": "~MHz"
+    "~MHz": "~MHz",
+    "Made with": "Δημιουργήθηκε με",
+    "by": "από",
+    "Love": "Αγάπη"
   }
 }

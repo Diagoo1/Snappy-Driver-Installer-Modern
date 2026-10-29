@@ -440,7 +440,6 @@
     "Logical processors": "Логички процесори",
     "MATCH PRIORITY": "ПРИОРИТЕТ УТАКМИЦЕ",
     "MATCHING-ONLY BUILD": "ИЗГРАДЊА САМО ЗА УПОТРЕБУ",
-    "Made with care by": "Пажљиво направљен од",
     "Make it feel like yours.": "Нека се осећа као твоја.",
     "Match filters": "Подударни филтери",
     "Match priority": "Приоритет утакмице",
@@ -869,6 +868,9 @@
     "trusted platform module": "модул поуздане платформе",
     "x64 (64-bit)": "к64 (64-бит)",
     "x86 (32-bit)": "к86 (32-бит)",
-    "~MHz": "~МХз"
+    "~MHz": "~МХз",
+    "Made with": "Направљено с",
+    "by": "аутор:",
+    "Love": "Љубав"
   }
 }

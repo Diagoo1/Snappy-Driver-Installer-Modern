@@ -440,7 +440,6 @@
     "Logical processors": "ლოგიკური პროცესორები",
     "MATCH PRIORITY": "მატჩის პრიორიტეტი",
     "MATCHING-ONLY BUILD": "შესატყვისი მხოლოდ აშენება",
-    "Made with care by": "დამზადებულია ზრუნვით",
     "Make it feel like yours.": "აგრძნობინეთ ის, როგორც თქვენი.",
     "Match filters": "მატჩის ფილტრები",
     "Match priority": "მატჩის პრიორიტეტი",
@@ -869,6 +868,9 @@
     "trusted platform module": "სანდო პლატფორმის მოდული",
     "x64 (64-bit)": "x64 (64 ბიტიანი)",
     "x86 (32-bit)": "x86 (32 ბიტიანი)",
-    "~MHz": "~ MHz"
+    "~MHz": "~ MHz",
+    "Made with": "შექმნილია",
+    "by": "ავტორი:",
+    "Love": "სიყვარული"
   }
 }

@@ -440,7 +440,6 @@
     "Logical processors": "Logiske prosessorer",
     "MATCH PRIORITY": "MATCH PRIORITET",
     "MATCHING-ONLY BUILD": "KUN MATCHING",
-    "Made with care by": "Laget med omhu av",
     "Make it feel like yours.": "Få den til å føles som din.",
     "Match filters": "Match-filtre",
     "Match priority": "Samsvarsprioritet",
@@ -869,6 +868,9 @@
     "trusted platform module": "pålitelig plattformmodul",
     "x64 (64-bit)": "x64 (64-bit)",
     "x86 (32-bit)": "x86 (32-bit)",
-    "~MHz": "~MHz"
+    "~MHz": "~MHz",
+    "Made with": "Laget med",
+    "by": "av",
+    "Love": "Kjærlighet"
   }
 }

@@ -24,6 +24,8 @@
 #include "origin_languages.h"
 #include "offline_paths.h"
 #include "appearance.h"
+#include "window_motion.h"
+#include <QWindowStateChangeEvent>
 #include "support_report.h"
 #include "online_dialog.h"
 #include <QSaveFile>
@@ -191,11 +193,11 @@ MainWindow::MainWindow(bool demo,QWidget *parent)
     connect(m_titleBar,&TitleBar::refreshRequested,this,&MainWindow::beginScan);
     connect(m_titleBar,&TitleBar::sidebarRequested,m_sidebar,&Sidebar::toggleCollapsed);
     connect(m_titleBar,&TitleBar::menuRequested,this,&MainWindow::openToolsMenu);
-    connect(m_titleBar,&TitleBar::minimizeRequested,this,&MainWindow::showMinimized);
+    m_windowMotion=new WindowMotion(this);
+    connect(m_titleBar,&TitleBar::minimizeRequested,this,[this](){m_windowMotion->minimize();});
     connect(m_titleBar,&TitleBar::closeRequested,this,&MainWindow::close);
     connect(m_titleBar,&TitleBar::maximizeRequested,this,[this](){
-        if(isMaximized()) showNormal();else showMaximized();
-        m_titleBar->setMaximized(isMaximized());
+        m_windowMotion->toggleMaximized();
     });
     connect(m_engine,&EngineBridge::inventoryReady,this,&MainWindow::onInventoryReady);
     connect(m_engine,&EngineBridge::nativeSnapshotReady,this,&MainWindow::onNativeSnapshot);
@@ -328,8 +330,10 @@ void MainWindow::changeEvent(QEvent *e)
 {
     QWidget::changeEvent(e);
     if(e->type()==QEvent::WindowStateChange && m_titleBar){
+        const bool restored=static_cast<QWindowStateChangeEvent*>(e)->oldState().testFlag(Qt::WindowMinimized) && !isMinimized();
         m_titleBar->setMaximized(isMaximized());setProperty("maximized",isMaximized());
         applyTheme();m_sidebar->update();update();
+        if(restored && m_windowMotion)m_windowMotion->restoredFromMinimized();
     }
 }
 #ifdef Q_OS_WIN

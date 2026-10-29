@@ -440,7 +440,6 @@
     "Logical processors": "ƯU TIÊN TRẬN ĐẤU",
     "MATCH PRIORITY": "XÂY DỰNG CHỈ PHÙ HỢP",
     "MATCHING-ONLY BUILD": "Bộ lọc phù hợp",
-    "Made with care by": "Được chế tạo cẩn thận bởi\nBộ lọc phù hợp",
     "Make it feel like yours.": "Tạo cảm giác như của bạn.",
     "Match filters": "Sửa đổi bo mạch chủ",
     "Match priority": "Ưu tiên đối sánh\nMáy so khớp",
@@ -869,6 +868,9 @@
     "trusted platform module": "mô-đun nền tảng đáng tin cậy",
     "x64 (64-bit)": "x64 (64-bit)",
     "x86 (32-bit)": "x86 (32-bit)",
-    "~MHz": "~ MHz"
+    "~MHz": "~ MHz",
+    "Made with": "Được tạo với",
+    "by": "bởi",
+    "Love": "Tình yêu"
   }
 }
