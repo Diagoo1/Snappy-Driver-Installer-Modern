@@ -22,11 +22,13 @@ class Github:
         data=json.dumps(body).encode() if isinstance(body,dict) else body
         request=urllib.request.Request(url,data=data,method=method,headers={'Authorization':'Bearer '+self.token,'Accept':'application/vnd.github+json','X-GitHub-Api-Version':'2022-11-28','User-Agent':'Snappy-Driver-Installer-Modern-publisher','Content-Type':content_type})
         try:
-            with urllib.request.urlopen(request,timeout=180) as response:return json.load(response)
+            with urllib.request.urlopen(request,timeout=180) as response:return {} if response.status==204 else json.load(response)
         except urllib.error.HTTPError as error:
             if error.code==404:return None
             # Never echo request headers or credential-manager output.
-            raise RuntimeError('GitHub API returned HTTP '+str(error.code)) from None
+            try:message=json.load(error).get('message','')
+            except (ValueError,AttributeError):message=''
+            raise RuntimeError('GitHub API returned HTTP '+str(error.code)+(': '+message[:400] if message else '')) from None
     def verify(self):
         account=self.call('/user')
         if account.get('login','').lower()!='diagoo1':raise RuntimeError('The authenticated account differs from the user-authorized repository owner.')
