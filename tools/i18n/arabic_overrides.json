@@ -106,5 +106,10 @@
   "[Bug] ": "[مشكلة] ",
   "Dark": "داكن",
   "Light": "فاتح",
-  "Version: 0.21.4 (Beta)\nWindows: %1\nArchitecture: %2\nLanguage: %3\nTheme: %4": "الإصدار: 0.21.4 (بيتا)\nويندوز: %1\nالمعمارية: %2\nاللغة: %3\nالمظهر: %4"
+  "Version: 0.21.5 (Beta)\nWindows: %1\nArchitecture: %2\nLanguage: %3\nTheme: %4": "الإصدار: 0.21.5 (بيتا)\nويندوز: %1\nالمعمارية: %2\nاللغة: %3\nالمظهر: %4",
+  "Completed": "مكتمل",
+  "Failed": "فشل",
+  "Installed -": "مثبّت -",
+  "Installation needs attention": "التثبيت يحتاج مراجعة",
+  "Live installation · Beta": "تثبيت فعلي · بيتا"
 }

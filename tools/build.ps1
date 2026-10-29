@@ -3,7 +3,8 @@ param(
     [switch]$PrepareStaticQt,
     [switch]$MatchingOnly,
     [switch]$SkipSourceDownload,
-    [switch]$ValidateOnly
+    [switch]$ValidateOnly,
+    [switch]$RunTests
 )
 $ErrorActionPreference='Stop'
 $ProjectRoot=[IO.Path]::GetFullPath($ProjectRoot)
@@ -18,6 +19,7 @@ if($ValidateOnly){
 $python=$env:SDIO_PYTHON
 if(-not $python){$command=Get-Command python.exe,python3.exe,python,python3 -ErrorAction SilentlyContinue|Select-Object -First 1;if($command){$python=$command.Source}}
 if(-not $python){throw 'Install Python 3 or set SDIO_PYTHON to its executable path. See docs/BUILDING.md.'}
+if($RunTests){Push-Location $ProjectRoot;try{& $python -m unittest discover -s tests -p 'test_*.py';exit $LASTEXITCODE}finally{Pop-Location}}
 & $python (Join-Path $integration 'bootstrap_fonts.py')
 if($LASTEXITCODE -ne 0){throw 'Font verification/bootstrap failed.'}
 if($PrepareStaticQt){& (Join-Path $integration 'build_static_qt.ps1') -ProjectRoot $ProjectRoot;exit $LASTEXITCODE}

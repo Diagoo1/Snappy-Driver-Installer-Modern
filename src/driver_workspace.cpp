@@ -583,7 +583,7 @@ void DriverWorkspace::updateCount()
     m_devicesNumber->setText(QString::number(recommendedCount));
     m_warningsNumber->setText(QString::number(m_catalog->problems()));
     m_selectedNumber->setText(QString::number(selected));
-    const int count=selected>0?selected+(m_restore->isChecked()?1:0):0;
+    const int count=selected;
     m_stats->setText(m_arabic?QString::fromUtf8("%1 جهاز   ·   %2 تحذير   ·   %3 محدد")
           .arg(m_catalog->size()).arg(m_catalog->problems()).arg(selected)
         :QStringLiteral("%1 devices   ·   %2 warnings   ·   %3 selected")

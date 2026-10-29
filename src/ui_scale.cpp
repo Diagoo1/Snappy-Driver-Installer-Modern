@@ -6,10 +6,35 @@
 #include <QScopedPointer>
 #include <QByteArray>
 #include <cstring>
+#include <QCoreApplication>
+#include <QDir>
 #ifdef Q_OS_WIN
 #include <windows.h>
+#include <shellapi.h>
 #endif
 namespace UiScale {
+bool administrator(){
+#ifdef Q_OS_WIN
+    SID_IDENTIFIER_AUTHORITY authority=SECURITY_NT_AUTHORITY;PSID group=0;BOOL member=FALSE;
+    if(!AllocateAndInitializeSid(&authority,2,SECURITY_BUILTIN_DOMAIN_RID,DOMAIN_ALIAS_RID_ADMINS,0,0,0,0,0,0,&group))return false;
+    const BOOL checked=CheckTokenMembership(0,group,&member);FreeSid(group);return checked && member;
+#else
+    return false;
+#endif
+}
+QString restartElevated(){
+#ifdef Q_OS_WIN
+    const QString executable=QDir::toNativeSeparators(QCoreApplication::applicationFilePath());
+    const QString directory=QDir::toNativeSeparators(QCoreApplication::applicationDirPath());
+    const QString arguments=QStringLiteral("--restart-after %1").arg(QCoreApplication::applicationPid());
+    SHELLEXECUTEINFOW info={};info.cbSize=sizeof(info);info.fMask=SEE_MASK_NOCLOSEPROCESS|SEE_MASK_FLAG_NO_UI;
+    info.lpVerb=L"runas";info.lpFile=reinterpret_cast<LPCWSTR>(executable.utf16());info.lpParameters=reinterpret_cast<LPCWSTR>(arguments.utf16());info.lpDirectory=reinterpret_cast<LPCWSTR>(directory.utf16());info.nShow=SW_SHOWNORMAL;
+    if(!ShellExecuteExW(&info))return QString::number(GetLastError());
+    if(info.hProcess)CloseHandle(info.hProcess);return QString();
+#else
+    return QStringLiteral("Windows only");
+#endif
+}
 static int effective=100;
 int fitPercent(int requested,const QSize &available){
     const int maximum=qMin((available.width()-24)*100/950,(available.height()-24)*100/640);
@@ -39,7 +64,7 @@ bool restartAfterParent(int argc,char **argv){
     for(int i=1;i<argc;++i)if(std::strcmp(argv[i],"--restart-after")==0){
         if(i+1>=argc)return false;bool ok=false;const quint32 pid=QByteArray(argv[i+1]).toUInt(&ok);if(!ok || !pid)return false;
 #ifdef Q_OS_WIN
-        HANDLE parent=OpenProcess(SYNCHRONIZE,FALSE,pid);if(!parent)return false;const DWORD status=WaitForSingleObject(parent,60000);CloseHandle(parent);if(status!=WAIT_OBJECT_0)return false;
+        HANDLE parent=OpenProcess(SYNCHRONIZE,FALSE,pid);if(!parent)return GetLastError()==ERROR_INVALID_PARAMETER;const DWORD status=WaitForSingleObject(parent,60000);CloseHandle(parent);if(status!=WAIT_OBJECT_0)return false;
 #endif
     }return true;
 }

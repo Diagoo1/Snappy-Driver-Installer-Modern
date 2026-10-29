@@ -8,6 +8,7 @@ class QProgressBar;
 class QTreeWidget;
 class QPushButton;
 class QTimer;
+bool confirmDriverInstallation(QWidget *parent,const QStringList &drivers,bool restore,bool alternative,bool reboot,bool administrator,bool arabic);
 
 // Separate explicit demo and native-event paths. Real progress is never timer-generated.
 class InstallationWorkspace : public QWidget

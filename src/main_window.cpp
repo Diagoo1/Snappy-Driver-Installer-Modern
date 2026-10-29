@@ -468,13 +468,13 @@ void MainWindow::beginInstallation()
                 const sdiomodern::Candidate &c=snap.devices[j].candidates[k];
                 if(c.token==plan.selections[i].candidateToken && !c.recommended)alternative=true;
             }
-    const QString consentTitle=t("Confirm driver installation","تأكيد تثبيت التعريفات");
-    const QString consentText=t("Install the selected drivers on this computer? Administrator rights are required. This is a real system change.\n\n","تثبيت التعريفات المحددة على هذا الجهاز؟ يتطلب صلاحيات المسؤول. هذه عملية فعلية ستغير تعريفات النظام.\n\n")+
-        (plan.createRestorePoint?t("A restore point is required; failure stops the queue.\n","يلزم نجاح إنشاء نقطة استعادة قبل بدء التثبيت.\n"):t("You disabled the restore-point requirement.\n","تم إلغاء شرط إنشاء نقطة استعادة.\n"))+
-        (alternative?t("Your selection includes alternatives to the recommended drivers.\n","التحديد يتضمن بدائل للتعريفات الموصى بها.\n"):QString())+
-        t("Windows will not restart automatically. Test this integration build on a test machine before relying on it.\n\nSelected drivers:\n","لن يعاد تشغيل ويندوز تلقائيًا. يلزم اختبار هذه النسخة على جهاز اختبار قبل الاعتماد عليها.\n\nالتعريفات المحددة:\n")+
-        selected.join(QLatin1Char('\n'));
-    if(!projectMessage(this,consentTitle,consentText,true,m_arabic))return;
+    const bool elevated=UiScale::administrator();
+    if(!confirmDriverInstallation(this,selected,plan.createRestorePoint,alternative,m_drivers->rebootAfter(),elevated,m_arabic))return;
+    if(!elevated){
+        saveSettings();const QString error=UiScale::restartElevated();
+        if(error.isEmpty()){QCoreApplication::quit();return;}
+        projectMessage(this,t("Administrator access","صلاحيات المسؤول"),t("The administrator restart was cancelled or could not start. Your selection is unchanged. Windows error: %1","تم إلغاء إعادة الفتح كمسؤول أو تعذّر بدؤها. لم يتغير تحديدك. خطأ ويندوز: %1").arg(error),false,m_arabic);return;
+    }
     plan.confirmed=true;plan.allowAlternatives=alternative;
     try{sdiomodern::validatePlan(snap,plan);}catch(const std::exception &e){onEngineError(QString::fromLocal8Bit(e.what()));return;}
     QStringList ids;for(std::size_t i=0;i<plan.selections.size();++i)ids<<QString::fromStdWString(plan.selections[i].deviceInstanceId);

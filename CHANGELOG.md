@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.21.5 Beta
+
+- Count selected drivers independently of the restore-point task.
+- Intercept non-admin installation before opening the native queue; offer an explicit elevated restart, wait for the original process to exit and require a fresh scan/confirmation.
+- Redesign installation review and progress with themed cards, stage indicators and status badges; keep restore/restart summaries accurate.
+- Theme multiline inputs globally and clip decorative hero artwork to rounded corners.
+- Consolidate build modes and checks in one `BUILD.cmd` entry point, refresh English/Arabic project documentation and provide copy-only forum material.
+
 ## 0.21.4 Beta
 
 - Add Report a bug to About and Tools, with a cancelable preview of minimal environment information and no automatic submission or log attachment.

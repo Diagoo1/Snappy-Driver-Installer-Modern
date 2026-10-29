@@ -5,8 +5,8 @@ The native Windows target uses C++11, **Qt 5.6.3 static**, **MinGW 4.9.2 x86**, 
 ## Windows application
 
 1. Install the Qt 5.6.3 MinGW SDK and Python 3. If necessary, set `QT_QMAKE`, `QT_MINGW_BIN` and `SDIO_PYTHON` to their executable/compiler paths.
-2. Run `BUILD_STATIC_QT.cmd` once to build the patched static Qt SDK. This downloads pinned Qt sources and takes substantial time. If a static SDK already exists in `vendor/qt-static`, skip this step.
-3. Run `BUILD.cmd` to prepare pinned dependencies and build the integrated application. Font verification/bootstrap runs first. The build never launches the executable or copies files into a driver library.
+2. Run `BUILD.cmd -PrepareStaticQt` once to build the patched static Qt SDK. This downloads pinned Qt sources and takes substantial time. If a static SDK already exists in `vendor/qt-static`, skip this step.
+3. Run `BUILD.cmd` and choose the application build, or pass `-SkipSourceDownload` for an already prepared checkout. The menu also exposes static Qt preparation, matching-only builds, configuration validation and source regression checks. Font verification/bootstrap runs first. The build never launches the executable or copies files into a driver library.
 
 The installation-enabled executable is written to `dist-origin-install-test-static/SnappyDriverInstaller-TS.exe`. Installation still requires an explicit runtime action and administrator privileges; actual installation needs validation on a disposable system.
 
@@ -17,6 +17,8 @@ Options:
 | `BUILD.cmd -MatchingOnly` | Static native matching build with installation disabled |
 | `BUILD.cmd -SkipSourceDownload` | Reuse already prepared native dependency sources |
 | `BUILD.cmd -ValidateOnly` | Inspect the selected build plan without downloading or compiling |
+| `BUILD.cmd -RunTests` | Run maintained Python source regressions |
+| `BUILD.cmd -Help` | List command-line options |
 
 Dependencies, source fingerprints and bridge patches are in `tools/integration`. `vendor/`, `.source-cache/`, `build-*/` and `dist-*/` are local generated dependencies/outputs and are ignored by Git. They are not part of the application distribution.
 
@@ -56,4 +58,4 @@ python tools/checks/audit_windows_pe.py path/to/SnappyDriverInstaller-TS.exe --s
 
 ## إرشادات مختصرة بالعربية
 
-البناء الأساسي: `BUILD_STATIC_QT.cmd` مرة واحدة لتجهيز Qt الثابتة، ثم `BUILD.cmd`. يمكن استخدام `-MatchingOnly` لبناء الفحص فقط. لا يشغّل البناء البرنامج ولا يثبّت تعريفات. المكتبات والكاش ومخرجات البناء المحلية غير مرفوعة إلى GitHub. راجع [التحقق وحدوده](VALIDATION.md) قبل اعتبار دعم الأنظمة القديمة أو التثبيت الفعلي مُختبرًا.
+البناء الأساسي: `BUILD.cmd -PrepareStaticQt` مرة واحدة لتجهيز Qt الثابتة، ثم `BUILD.cmd`. يمكن استخدام `-MatchingOnly` لبناء الفحص فقط. لا يشغّل البناء البرنامج ولا يثبّت تعريفات. المكتبات والكاش ومخرجات البناء المحلية غير مرفوعة إلى GitHub. راجع [التحقق وحدوده](VALIDATION.md) قبل اعتبار دعم الأنظمة القديمة أو التثبيت الفعلي مُختبرًا.

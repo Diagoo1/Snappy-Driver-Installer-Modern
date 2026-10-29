@@ -1,6 +1,10 @@
 #include "installation_workspace.h"
 #include "vector_icons.h"
 #include "ui_language.h"
+#include "appearance.h"
+#include "theme.h"
+#include <QListWidget>
+
 #include <QVBoxLayout>
 #include <QHBoxLayout>
 #include <QGridLayout>
@@ -14,6 +18,41 @@
 #include <QFont>
 #include <QStyle>
 #include <QAbstractItemView>
+#include <QStyledItemDelegate>
+#include <QPainter>
+
+class InstallationStatusDelegate : public QStyledItemDelegate {
+public:explicit InstallationStatusDelegate(QObject *parent):QStyledItemDelegate(parent){}
+    void paint(QPainter *p,const QStyleOptionViewItem &option,const QModelIndex &index)const Q_DECL_OVERRIDE {
+        if(index.column()!=1){QStyledItemDelegate::paint(p,option,index);return;}
+        const int tone=index.data(Qt::UserRole+3).toInt();const QColor ink=tone==2?QColor("#00866F"):tone==3?QColor("#C34462"):tone==1?QColor("#1477AA"):QColor("#987022");
+        const bool dark=Theme::isDark(qobject_cast<QWidget*>(parent()));QColor fill=ink;fill.setAlpha(dark?55:20);QColor text=dark?ink.lighter(190):ink;
+        p->save();p->setRenderHint(QPainter::Antialiasing);const QRect area=option.rect.adjusted(8,10,-8,-10);p->setPen(Qt::NoPen);p->setBrush(fill);p->drawRoundedRect(area,12,12);p->setPen(text);p->drawText(area.adjusted(7,0,-7,0),Qt::AlignCenter,option.fontMetrics.elidedText(index.data().toString(),Qt::ElideRight,area.width()-14));p->restore();
+    }
+};
+static void queueStatus(QTreeWidgetItem *row,const QString &text){
+    row->setText(1,text);row->setData(1,Qt::UserRole+4,text);const bool failed=text.startsWith(QStringLiteral("Failed"));const bool success=text==QStringLiteral("Installed") || text.startsWith(QStringLiteral("Installed -")) || text.startsWith(QStringLiteral("Completed"));
+    const bool waiting=text==QStringLiteral("Pending") || text==QStringLiteral("Queued") || text==QStringLiteral("Not started") || text==QStringLiteral("Not installed");
+    row->setData(1,Qt::UserRole+3,failed?3:success?2:waiting?0:1);
+}
+
+bool confirmDriverInstallation(QWidget *parent,const QStringList &drivers,bool restore,bool alternative,bool reboot,bool administrator,bool arabic){
+    auto t=[](const char *en,const char *ar){return UiLanguage::text(QString::fromUtf8(en),QString::fromUtf8(ar));};
+    RoundedDialog dialog(parent);dialog.setObjectName(QStringLiteral("installationConsent"));dialog.setLayoutDirection(arabic?Qt::RightToLeft:Qt::LeftToRight);dialog.resize(620,520);
+    QVBoxLayout *root=new QVBoxLayout(&dialog);root->setContentsMargins(0,0,0,18);root->addWidget(new DialogHeader(t("Confirm driver installation","تأكيد تثبيت التعريفات"),QStringLiteral("shield"),&dialog,arabic));
+    QVBoxLayout *body=new QVBoxLayout;body->setContentsMargins(24,12,24,0);body->setSpacing(14);
+    AccentCard *hero=new AccentCard(&dialog);QVBoxLayout *heroBox=new QVBoxLayout(hero);heroBox->setContentsMargins(20,18,20,18);
+    QLabel *title=new QLabel(t("Review before installing","راجع اختياراتك قبل التثبيت"),hero);title->setStyleSheet(QStringLiteral("color:white;background:transparent;font-size:21px;font-weight:600;"));heroBox->addWidget(title);
+    QLabel *subtitle=new QLabel(administrator?t("Only the selected drivers will be installed on this computer.","سيتم تثبيت التعريفات المحددة فقط على هذا الجهاز."):t("Administrator access is required. Reopen, scan and confirm again; installation will not start automatically.","يلزم فتح البرنامج كمسؤول، ثم الفحص والتأكيد من جديد. لن يبدأ التثبيت تلقائيًا."),hero);subtitle->setWordWrap(true);subtitle->setStyleSheet(QStringLiteral("color:#D4F1F0;background:transparent;"));heroBox->addWidget(subtitle);body->addWidget(hero);
+    QHBoxLayout *tags=new QHBoxLayout;
+    auto tag=[&](const QString &value){QLabel *label=new QLabel(value,&dialog);label->setWordWrap(true);label->setObjectName(QStringLiteral("installOptionTag"));tags->addWidget(label);};
+    tag(t("Drivers: %1","التعريفات: %1").arg(drivers.size()));tag(restore?t("Restore point required","نقطة استعادة مطلوبة"):t("Restore point off","نقطة الاستعادة معطلة"));tag(reboot?t("Restart countdown enabled","عدّاد إعادة التشغيل مفعّل"):t("Manual restart","إعادة تشغيل يدوية"));body->addLayout(tags);
+    QListWidget *list=new QListWidget(&dialog);list->setObjectName(QStringLiteral("installConsentList"));list->setSelectionMode(QAbstractItemView::NoSelection);list->addItems(drivers);for(int i=0;i<list->count();++i)list->item(i)->setSizeHint(QSize(0,48));body->addWidget(list,1);
+    const QString warning=alternative?t("Beta: alternative drivers selected. Review the versions carefully.","بيتا: تم اختيار تعريفات بديلة. راجع الإصدارات بعناية."):t("Beta: installing drivers changes Windows. Review your selection before continuing.","بيتا: تثبيت التعريفات يغيّر ويندوز. راجع اختياراتك قبل المتابعة.");
+    QLabel *notice=new QLabel(warning+QLatin1Char(' ')+(restore?t("Restore-point failure stops the queue.","فشل نقطة الاستعادة يوقف التثبيت."):t("Installation will proceed without a restore point.","سيتم التثبيت دون إنشاء نقطة استعادة.")),&dialog);notice->setObjectName(QStringLiteral("installNotice"));notice->setWordWrap(true);body->addWidget(notice);
+    QHBoxLayout *actions=new QHBoxLayout;actions->addStretch();ActionButton *cancel=new ActionButton(t("Cancel","إلغاء"),&dialog);cancel->setObjectName(QStringLiteral("installationCancel"));ActionButton *proceed=new ActionButton(administrator?t("Install selected drivers","تثبيت التعريفات المحددة"):t("Restart as administrator","إعادة الفتح كمسؤول"),&dialog);proceed->setObjectName(QStringLiteral("primaryButton"));actions->addWidget(cancel);actions->addWidget(proceed);body->addLayout(actions);root->addLayout(body,1);
+    QObject::connect(cancel,&QPushButton::clicked,&dialog,&QDialog::reject);QObject::connect(proceed,&QPushButton::clicked,&dialog,&QDialog::accept);return dialog.exec()==QDialog::Accepted;
+}
 
 static QLabel *textLabel(const QString &s,const char *name,QWidget *parent)
 {
@@ -41,11 +80,12 @@ InstallationWorkspace::InstallationWorkspace(QWidget *parent)
     top->addWidget(m_badge);
     outer->addLayout(top);
 
-    QWidget *mainProgress=new QWidget(this);
-    mainProgress->setObjectName(QStringLiteral("softSurface"));
+    QWidget *mainProgress=new AccentCard(this);
+    mainProgress->setObjectName(QStringLiteral("installationHero"));
     QVBoxLayout *mp=new QVBoxLayout(mainProgress);
     mp->setContentsMargins(23,18,23,18);mp->setSpacing(10);
     m_stage=textLabel(QStringLiteral("Ready for native installation when validated"),"sectionTitle",mainProgress);
+    m_stage->setStyleSheet(QStringLiteral("color:white;background:transparent;font-size:20px;font-weight:600;"));
     mp->addWidget(m_stage);
     m_progress=new QProgressBar(mainProgress);
     m_progress->setObjectName(QStringLiteral("mainProgress"));
@@ -54,6 +94,7 @@ InstallationWorkspace::InstallationWorkspace(QWidget *parent)
     m_progress->setMinimumHeight(21);
     mp->addWidget(m_progress);
     m_summary=textLabel(QStringLiteral("No tasks scheduled"),"subText",mainProgress);
+    m_summary->setStyleSheet(QStringLiteral("color:#D4F1F0;background:transparent;font-size:13px;"));
     mp->addWidget(m_summary);
     outer->addWidget(mainProgress);
 
@@ -83,6 +124,7 @@ InstallationWorkspace::InstallationWorkspace(QWidget *parent)
     olist->addWidget(textLabel(QStringLiteral("INSTALLATION ITEMS"),"detailHeading",operations));
     m_queue=new QTreeWidget(operations);
     m_queue->setObjectName(QStringLiteral("installQueue"));
+    m_queue->setItemDelegate(new InstallationStatusDelegate(m_queue));
     m_queue->setColumnCount(2);
     m_queue->setHeaderLabels(QStringList()<<QStringLiteral("Drivers")<<QStringLiteral("Status"));
     m_queue->setRootIsDecorated(false);
@@ -102,6 +144,7 @@ InstallationWorkspace::InstallationWorkspace(QWidget *parent)
 
     QHBoxLayout *bottom=new QHBoxLayout();
     m_complete=textLabel(QStringLiteral("No changes are made to Windows."),"demoText",this);
+    m_complete->setObjectName(QStringLiteral("installNotice"));
     bottom->addWidget(m_complete,1);
     m_stop=new QPushButton(QStringLiteral("Stop demo"),this);
     m_stop->setObjectName(QStringLiteral("outlineButton"));
@@ -124,6 +167,7 @@ void InstallationWorkspace::beginDemo(const QStringList &drivers,bool restorePoi
 {
     if(m_active || drivers.isEmpty()) return;
     m_live=false;m_items=drivers;
+    m_complete->setProperty("tone",QString());m_complete->style()->unpolish(m_complete);m_complete->style()->polish(m_complete);
     m_progress->setRange(0,100);m_progress->setFormat(QStringLiteral("%p%"));
     m_badge->setText(QStringLiteral("SIMULATION ONLY"));
     m_stop->setText(QStringLiteral("Stop demo"));m_stop->setEnabled(true);
@@ -134,7 +178,7 @@ void InstallationWorkspace::beginDemo(const QStringList &drivers,bool restorePoi
     for(int i=0;i<m_items.size();++i){
         QTreeWidgetItem *item=new QTreeWidgetItem(m_queue);
         item->setText(0,m_items.at(i));
-        item->setText(1,QStringLiteral("Queued"));
+        queueStatus(item,QStringLiteral("Queued"));
         item->setIcon(0,VectorIcons::icon(i==0 && restorePoint?QStringLiteral("restore"):QStringLiteral("chip"),QColor("#16A9AD"),18));
         item->setSizeHint(0,QSize(0,51));
     }
@@ -178,7 +222,7 @@ void InstallationWorkspace::updateProgress()
         const QString state=m_percent>=finish?QStringLiteral("Completed (demo)"):
            (m_percent>=start && m_percent<finish?QStringLiteral("Simulating %1%").arg(
                  qBound(0,(m_percent-start)*100/qMax(1,finish-start),99)):QStringLiteral("Queued"));
-        row->setText(1,state);
+        queueStatus(row,state);
         if(m_percent>=finish) {++completed;row->setForeground(1,QColor("#31B273"));}
         else if(m_percent>=start)row->setForeground(1,QColor("#159FAC"));
     }
@@ -232,10 +276,11 @@ void InstallationWorkspace::beginNative(const QStringList &names,const QStringLi
 {
     if(m_active || names.isEmpty() || names.size()!=ids.size())return;
     m_timer->stop();m_live=true;m_active=true;m_hasRestore=restore;m_queue->clear();
-    m_badge->setText(QStringLiteral("REAL SYSTEM OPERATION - TEST BUILD"));
+    m_complete->setProperty("tone",QString());m_complete->style()->unpolish(m_complete);m_complete->style()->polish(m_complete);
+    m_badge->setText(UiLanguage::text(QStringLiteral("Live installation · Beta"),QString::fromUtf8("تثبيت فعلي · بيتا")));
     m_tip->setText(QStringLiteral("The current Windows driver operation is not interruptible. Stop cancels the remaining queue after the active driver returns."));
     for(int i=0;i<names.size();++i){
-        QTreeWidgetItem *row=new QTreeWidgetItem(m_queue);row->setText(0,names.at(i));row->setText(1,QStringLiteral("Pending"));
+        QTreeWidgetItem *row=new QTreeWidgetItem(m_queue);row->setText(0,names.at(i));queueStatus(row,QStringLiteral("Pending"));
         row->setData(0,Qt::UserRole,ids.at(i));row->setSizeHint(0,QSize(0,51));
         row->setIcon(0,VectorIcons::icon(QStringLiteral("chip"),QColor("#16A9AD"),18));
     }
@@ -268,7 +313,7 @@ void InstallationWorkspace::applyNativeEvent(const sdiomodern::Event &e)
     default:status=e.stage==sdiomodern::Stage::Extract?QStringLiteral("Extracting"):QStringLiteral("Working...");break;
     }
     for(int i=0;i<m_queue->topLevelItemCount();++i){QTreeWidgetItem *row=m_queue->topLevelItem(i);
-        if(!id.isEmpty() && row->data(0,Qt::UserRole).toString().compare(id,Qt::CaseInsensitive)==0){row->setText(1,status);row->setToolTip(1,QString::fromStdWString(e.message));}}
+        if(!id.isEmpty() && row->data(0,Qt::UserRole).toString().compare(id,Qt::CaseInsensitive)==0){queueStatus(row,status);row->setToolTip(1,QString::fromStdWString(e.message));}}
     m_summary->setText(QStringLiteral("%1 / %2 drivers processed").arg(static_cast<qulonglong>(e.done)).arg(static_cast<qulonglong>(e.total)));
 }
 void InstallationWorkspace::finishNative(const sdiomodern::InstallReport &report)
@@ -280,10 +325,10 @@ void InstallationWorkspace::finishNative(const sdiomodern::InstallReport &report
         else if(result.outcome==sdiomodern::Outcome::Failure){++failed;status=QStringLiteral("Failed (%1)").arg(result.nativeError);}
         else{++skipped;status=QStringLiteral("Not installed");}
         for(int j=0;j<m_queue->topLevelItemCount();++j){QTreeWidgetItem *row=m_queue->topLevelItem(j);
-            if(row->data(0,Qt::UserRole).toString().compare(QString::fromStdWString(result.deviceId),Qt::CaseInsensitive)==0){row->setText(1,status);row->setToolTip(1,QString::fromStdWString(result.message));}}
+            if(row->data(0,Qt::UserRole).toString().compare(QString::fromStdWString(result.deviceId),Qt::CaseInsensitive)==0){queueStatus(row,status);row->setToolTip(1,QString::fromStdWString(result.message));}}
     }
     for(int j=0;j<m_queue->topLevelItemCount();++j){QTreeWidgetItem *row=m_queue->topLevelItem(j);
-        if(row->text(1)==QStringLiteral("Pending")){row->setText(1,QStringLiteral("Not started"));++skipped;}}
+        if(row->data(1,Qt::UserRole+4).toString()==QStringLiteral("Pending")){queueStatus(row,QStringLiteral("Not started"));++skipped;}}
     m_active=false;m_live=false;m_stop->setVisible(false);m_back->setEnabled(true);
     QLabel *steps[]={m_stepRestore,m_stepPrep,m_stepInstall,m_stepFinish};for(int i=0;i<4;++i){steps[i]->setObjectName(i==3?QStringLiteral("activeStage"):QStringLiteral("stageItem"));steps[i]->style()->unpolish(steps[i]);steps[i]->style()->polish(steps[i]);}
     m_stage->setText(report.cancelled?QStringLiteral("Stopped safely after the active operation"):
@@ -297,9 +342,9 @@ void InstallationWorkspace::finishNative(const sdiomodern::InstallReport &report
 void InstallationWorkspace::failNative(const QString &reason)
 {
     if(!m_live)return;m_active=false;m_live=false;m_stop->setVisible(false);m_back->setEnabled(true);
-    m_stage->setText(QStringLiteral("Native operation stopped"));m_complete->setText(reason);
+    m_stage->setText(UiLanguage::text(QStringLiteral("Installation needs attention"),QString::fromUtf8("التثبيت يحتاج مراجعة")));m_complete->setText(reason);m_complete->setProperty("tone",QStringLiteral("error"));m_complete->style()->unpolish(m_complete);m_complete->style()->polish(m_complete);
     for(int i=0;i<m_queue->topLevelItemCount();++i){QTreeWidgetItem *row=m_queue->topLevelItem(i);
-        if(row->text(1)==QStringLiteral("Pending"))row->setText(1,QStringLiteral("Not started"));}
+        if(row->data(1,Qt::UserRole+4).toString()==QStringLiteral("Pending"))queueStatus(row,QStringLiteral("Not started"));}
     emit activeChanged(false);
 }
 

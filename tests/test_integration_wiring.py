@@ -40,7 +40,11 @@ class SourceWiring(unittest.TestCase):
         self.assertIn('#ifdef SDIO_MODERN_ENABLE_EXPERIMENTAL_INSTALL', text('native/origin_native.cpp'))
         self.assertIn('plan.confirmed=true',text('src/main_window.cpp'))
         self.assertIn('cancel->setDefault(true)',text('src/appearance.cpp'))
-        self.assertIn('projectMessage(this,consentTitle,consentText,true,m_arabic)',text('src/main_window.cpp'))
+        window=text('src/main_window.cpp').split('void MainWindow::beginInstallation()',1)[1].split('void MainWindow::openSnapshot()',1)[0]
+        self.assertIn('if(!confirmDriverInstallation(',window)
+        self.assertLess(window.index('if(!confirmDriverInstallation('),window.index('plan.confirmed=true'))
+        self.assertLess(window.index('if(!elevated){'),window.index('m_installation->beginNative('))
+        self.assertIn('QDialog::Accepted',text('src/installation_workspace.cpp'))
         self.assertIn('if(!plan.confirmed)',text('native/plan_validation.cpp'))
 
     def test_demo_separated_from_live(self):

@@ -1,5 +1,14 @@
 # Screenshot gallery / معرض الصور
 
+## Installation review / مراجعة التثبيت
+
+The review shows selected drivers and restore/restart preferences. A non-admin session offers to reopen with administrator access; no installation is submitted by these gallery captures.
+
+| English · Light | العربية · داكن |
+| --- | --- |
+| ![Installation review](screenshots/en-light/19-installation-review.png) | ![مراجعة التثبيت](screenshots/ar-dark/19-installation-review.png) |
+| ![Administrator review](screenshots/en-light/20-administrator-review.png) | ![صلاحيات المسؤول](screenshots/ar-dark/20-administrator-review.png) |
+
 ## Report a bug / الإبلاغ عن مشكلة
 
 Review the minimal environment details before opening the public GitHub issue form. No submission or attachment is automatic.
@@ -8,11 +17,11 @@ Review the minimal environment details before opening the public GitHub issue fo
 | --- | --- | --- | --- |
 | ![Report preview](screenshots/en-light/18-report-bug.png) | ![Report preview](screenshots/en-dark/18-report-bug.png) | ![معاينة البلاغ](screenshots/ar-light/18-report-bug.png) | ![معاينة البلاغ](screenshots/ar-dark/18-report-bug.png) |
 
-72 screenshots from the application's actual Qt interface: English/Arabic and light/dark. Click any image for full size.
+80 screenshots from the application's actual Qt interface: English/Arabic and light/dark. Click any image for full size.
 
 **All screenshots use illustrative device data. Installation and completion screens show the explicit simulation mode; no real drivers were installed, no restore point was created and no reboot was performed. Download screens use a local test catalog and do not show an actual transfer.** Personal machine names, real instance IDs and user-folder paths are excluded.
 
-72 صورة من واجهة البرنامج الفعلية بالعربية والإنجليزية والوضعين الفاتح والداكن. جميع بيانات الأجهزة توضيحية. **صور التثبيت والاكتمال محاكاة فقط، وليست إثباتًا لتثبيت فعلي.** اضغط الصورة لعرضها بالحجم الكامل.
+80 صورة من واجهة البرنامج الفعلية بالعربية والإنجليزية والوضعين الفاتح والداكن. جميع بيانات الأجهزة توضيحية. **صور التثبيت والاكتمال محاكاة فقط، وليست إثباتًا لتثبيت فعلي.** اضغط الصورة لعرضها بالحجم الكامل.
 
 The gallery is reproducible with `tests/ui/interaction_test.pro`: run the test executable with `--publication-gallery <output-directory>`. It uses isolated preferences and sanitizes diagnostic values before capture. See [capture manifest](screenshots/manifest.json).
 

@@ -126,6 +126,7 @@ int main(int argc,char **argv){
         check(!safeEnvironment.contains(QStringLiteral("hardware"),Qt::CaseInsensitive) && !safeEnvironment.contains(QStringLiteral("instance"),Qt::CaseInsensitive) && !safeEnvironment.contains(QStringLiteral("Users")),"automatic bug context omits hardware IDs and user paths");
         QTimer::singleShot(60,[](){for(QWidget *widget:QApplication::topLevelWidgets())if(widget->objectName()==QStringLiteral("bugReportDialog")){QPushButton *cancel=widget->findChild<QPushButton*>(QStringLiteral("bugReportCancel"));if(cancel)cancel->click();}});
         BugReport::show(0);check(true,"bug report preview can close without opening a browser or sending data");
+        for(int elevated=0;elevated<2;++elevated){QTimer::singleShot(60,[](){for(QWidget *widget:QApplication::topLevelWidgets())if(widget->objectName()==QStringLiteral("installationConsent"))if(QPushButton *cancel=widget->findChild<QPushButton*>(QStringLiteral("installationCancel")))cancel->click();});check(!confirmDriverInstallation(0,QStringList()<<QStringLiteral("Example device · 1.2.3"),true,false,false,elevated==1,false),"installation and elevation previews can cancel without a Windows action");}
         const QJsonObject copper=Theme::readPack(QDir(app.applicationDirPath()).filePath(QStringLiteral("../../themes/copper-night.sdi-theme.json")));Theme::setDocument(copper);check(Theme::document().value(QStringLiteral("id")).toString()==QStringLiteral("copper-night"),"community sample theme imports without style code");Theme::setDocument(QJsonObject());
         QJsonObject unreadable=copper,palette=copper.value(QStringLiteral("light")).toObject();palette.insert(QStringLiteral("text"),palette.value(QStringLiteral("surface")));unreadable.insert(QStringLiteral("light"),palette);bool rejectedTheme=false;try{Theme::validate(unreadable);}catch(const std::exception&){rejectedTheme=true;}check(rejectedTheme,"theme import rejects unreadable text contrast");
         check(AppUpdate::newer(QStringLiteral("v0.20.0"),QStringLiteral("0.19.0")) && !AppUpdate::newer(QStringLiteral("0.18.9"),QStringLiteral("0.19.0")),"application updater compares semantic versions numerically");
@@ -252,6 +253,7 @@ int main(int argc,char **argv){
         root->setCheckState(3,Qt::Unchecked);
         check(editingIndex.isValid(),"selection must not delete an item while its check event is on the stack");
         QTest::qWait(20);root=tree->topLevelItem(0);
+        catalog->setSelected(0,true);QTest::qWait(40);check(workspace->findChild<GradientButton*>()->text()==QStringLiteral("Install (1)"),"install action counts one driver without counting the restore point");catalog->setSelected(0,false);QTest::qWait(20);
         for(int i=0;i<200;++i){
             root=tree->topLevelItem(0);tree->setCurrentItem(root,3);
             QTest::keyClick(tree,Qt::Key_Space);QTest::qWait(1);

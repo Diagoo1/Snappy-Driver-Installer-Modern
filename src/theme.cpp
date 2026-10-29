@@ -118,8 +118,8 @@ QLabel#bodyText {color: %4; font-size: 13px;}
 QLabel#mutedText,QLabel#subText {color: %5; font-size: 12px;}
 QLabel#demoText {color: %5; font-size: 12px;}
 QLabel#simulationBadge {color:#CAFDFA; background:#0B777B; border-radius:11px; padding:6px 12px; font-weight:600;}
-QLabel#stageItem {color: %5; font-size: 13px; padding: 9px 6px;}
-QLabel#activeStage {color:#00D6C8; background:%3; font-weight:600; border-radius:6px; font-size:13px; padding:9px 6px;}
+QLabel#stageItem {color:%5; background:%3; border:1px solid %6; border-radius:12px; font-size:13px; padding:14px 10px;}
+QLabel#activeStage {color:%4; background:rgba(0,181,166,27); border:1px solid #00B5A6; font-weight:600; border-radius:12px; font-size:13px; padding:14px 10px;}
 QToolButton#titleAction,QToolButton#windowAction,QToolButton#windowClose {
  background:transparent; border:none; border-radius:10px; margin:5px 1px; padding:0;
 }
@@ -147,6 +147,14 @@ QLineEdit {
  padding:9px 13px; selection-background-color:#0EAAA7;
 }
 QLineEdit:focus {border:1px solid #09B5A8;}
+QPlainTextEdit,QTextEdit {background:%2;color:%4;border:1px solid %6;border-radius:12px;padding:12px;selection-background-color:%3;selection-color:%4;}
+QListWidget#installConsentList {background:%2;color:%4;border:1px solid %6;border-radius:14px;padding:8px;}
+QListWidget#installConsentList::item {padding:8px;border-bottom:1px solid %6;}
+QLabel#installOptionTag {background:%3;color:%4;border:1px solid %6;border-radius:12px;padding:11px;font-weight:600;}
+QLabel#installNotice {background:%3;color:%4;border:1px solid %6;border-radius:13px;padding:14px;font-size:13px;}
+QLabel#installNotice[tone="error"] {background:rgba(208,71,94,20);color:#D0475E;border:1px solid rgba(208,71,94,90);}
+QWidget#installationHero QProgressBar#mainProgress {background:rgba(255,255,255,32);color:white;min-height:28px;border-radius:10px;}
+QWidget#installationHero QProgressBar#mainProgress::chunk {background:#42D9BC;border-radius:10px;}
 QTreeWidget#driverTree,QTreeWidget#installQueue,QScrollArea#diagnosticScroll,QScrollArea#dialogScroll {
  background:%2; color:%4; border:0; border-radius:9px; outline:0;
 }

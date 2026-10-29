@@ -64,6 +64,20 @@
             "theme": "light"
         },
         {
+            "file": "en-light/20-administrator-review.png",
+            "installationSimulation": false,
+            "locale": "en",
+            "sampleData": true,
+            "theme": "light"
+        },
+        {
+            "file": "en-light/19-installation-review.png",
+            "installationSimulation": false,
+            "locale": "en",
+            "sampleData": true,
+            "theme": "light"
+        },
+        {
             "file": "en-light/09-comparison.png",
             "installationSimulation": false,
             "locale": "en",
@@ -184,6 +198,20 @@
         },
         {
             "file": "en-dark/08-tools.png",
+            "installationSimulation": false,
+            "locale": "en",
+            "sampleData": true,
+            "theme": "dark"
+        },
+        {
+            "file": "en-dark/20-administrator-review.png",
+            "installationSimulation": false,
+            "locale": "en",
+            "sampleData": true,
+            "theme": "dark"
+        },
+        {
+            "file": "en-dark/19-installation-review.png",
             "installationSimulation": false,
             "locale": "en",
             "sampleData": true,
@@ -316,6 +344,20 @@
             "theme": "light"
         },
         {
+            "file": "ar-light/20-administrator-review.png",
+            "installationSimulation": false,
+            "locale": "ar",
+            "sampleData": true,
+            "theme": "light"
+        },
+        {
+            "file": "ar-light/19-installation-review.png",
+            "installationSimulation": false,
+            "locale": "ar",
+            "sampleData": true,
+            "theme": "light"
+        },
+        {
             "file": "ar-light/09-comparison.png",
             "installationSimulation": false,
             "locale": "ar",
@@ -436,6 +478,20 @@
         },
         {
             "file": "ar-dark/08-tools.png",
+            "installationSimulation": false,
+            "locale": "ar",
+            "sampleData": true,
+            "theme": "dark"
+        },
+        {
+            "file": "ar-dark/20-administrator-review.png",
+            "installationSimulation": false,
+            "locale": "ar",
+            "sampleData": true,
+            "theme": "dark"
+        },
+        {
+            "file": "ar-dark/19-installation-review.png",
             "installationSimulation": false,
             "locale": "ar",
             "sampleData": true,
