@@ -213,7 +213,6 @@
     "Confirm driver installation": "Confirme a instalação do driver",
     "Conflicting update targets.": "Destinos de atualização conflitantes.",
     "Connecting to torrent peers to complete verified blocks...": "Conectando-se a peers de torrent para completar blocos verificados...",
-    "Contact me": "Entre em contato comigo",
     "Continue": "Continuar",
     "Control Panel": "Painel de Controle",
     "Copy hardware ID": "Copiar ID de hardware",
@@ -351,7 +350,6 @@
     "General settings": "Configurações gerais\nProjetos",
     "GitHub could not provide this release. Check the repository and published releases.": "GitHub não pôde fornecer esta versão. Verifique o repositório e as versões publicadas.",
     "GitHub did not provide the required SHA-256 digest.": "GitHub não forneceu o resumo SHA-256 necessário.",
-    "GitHub projects": "GitHub\nAdaptadores gráficos",
     "Graphics adapters": "Visualização da interface",
     "HKEY_LOCAL_MACHINE\\HARDWARE\\DESCRIPTION\\System\\BIOS": "HKEY_LOCAL_MACHINE\\HARDWARE\\DESCRIPTION\\Sistema\\BIOS",
     "HKEY_LOCAL_MACHINE\\HARDWARE\\DESCRIPTION\\System\\CentralProcessor\\0": "HKEY_LOCAL_MACHINE\\HARDWARE\\DESCRIPTION\\System\\CentralProcessor\\0",
@@ -625,7 +623,6 @@
     "Restore all ignored devices": "Restaurar todos os dispositivos ignorados",
     "Restore default": "Restaurar padrão\nPonto de restauração",
     "Restore point (simulated)": "(simulado)",
-    "Restore point creation failed. No driver installation was started.": "Falha na criação do ponto de restauração. Nenhuma instalação de driver foi iniciada.",
     "Restore point creation is unavailable. No driver was changed.": "A criação do ponto de restauração não está disponível. Nenhum driver foi alterado.",
     "Restore point failed; continuing because the legacy caller explicitly selected -nostop.": "Falha no ponto de restauração; continuando porque o chamador legado selecionou explicitamente -nostop.",
     "Restore point: %1 · Reboot: %2": "Ponto de restauração: %1 · Reinicialização: %2",
@@ -711,11 +708,8 @@
     "Stop ignoring this device": "Pare de ignorar este dispositivo",
     "Stopped safely after the active operation": "Parado com segurança após a operação ativa",
     "Storage controllers / drives": "Controladores/unidades de armazenamento",
-    "Support development": "Suporte ao desenvolvimento",
     "Symbolic links are not accepted.": "Links simbólicos não são aceitos.\nA API de restauração do sistema",
     "System Properties": "Propriedades do Sistema",
-    "System Restore API is unavailable.": "não está disponível.",
-    "System Restore is unavailable on this Windows installation.": "não está disponível nesta instalação do Windows.\nArquitetura do sistema",
     "System architecture": "Diagnóstico do sistema",
     "System diagnostics": "Fabricante do sistema",
     "System manufacturer": "Gerenciador de tarefas",
@@ -831,7 +825,6 @@
     "Windows could not export driver packages. Run as Administrator on a Windows version supporting DISM /Export-Driver; see export-log.txt.": "Windows não pôde exportar pacotes de driver. Execute como Administrador em uma versão Windows com suporte para DISM /Export-Driver; consulte export-log.txt.",
     "Windows could not open an Internet session.": "Windows não pôde abrir uma sessão da Internet.",
     "Windows could not start the restart request.": "Windows não pôde iniciar a solicitação de reinicialização.",
-    "Windows did not complete the restore point. Check System Protection and its service.": "Windows não concluiu o ponto de restauração. Verifique a proteção do sistema e seu serviço.",
     "Windows did not grant permission to restart.": "Windows não concedeu permissão para reiniciar.",
     "Windows is exporting third-party driver packages...": "Windows está exportando pacotes de drivers de terceiros...\nSomente",
     "Windows only": "Windows",
@@ -871,6 +864,7 @@
     "Copy": "Copiar",
     "Paste": "Colar",
     "Delete": "Excluir",
-    "Status": "Status"
+    "Status": "Status",
+    "System Protection": "Proteção do Sistema"
   }
 }

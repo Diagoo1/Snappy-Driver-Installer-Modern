@@ -213,7 +213,6 @@
     "Confirm driver installation": "Potwierdź instalację sterownika",
     "Conflicting update targets.": "Sprzeczne cele aktualizacji.",
     "Connecting to torrent peers to complete verified blocks...": "Łączenie z urządzeniami równorzędnymi z torrentami w celu ukończenia zweryfikowanych bloków...",
-    "Contact me": "Skontaktuj się ze mną",
     "Continue": "Kontynuuj",
     "Control Panel": "Panel sterowania",
     "Copy hardware ID": "Skopiuj identyfikator sprzętu",
@@ -351,7 +350,6 @@
     "General settings": "Ustawienia ogólne\nProjekty",
     "GitHub could not provide this release. Check the repository and published releases.": "GitHub nie mógł udostępnić tej wersji. Sprawdź repozytorium i opublikowane wydania.",
     "GitHub did not provide the required SHA-256 digest.": "GitHub nie dostarczył wymaganego podsumowania SHA-256.",
-    "GitHub projects": "GitHub",
     "Graphics adapters": "Adaptery graficzne",
     "HKEY_LOCAL_MACHINE\\HARDWARE\\DESCRIPTION\\System\\BIOS": "HKEY_LOCAL_MACHINE\\HARDWARE\\DESCRIPTION\\System\\BIOS",
     "HKEY_LOCAL_MACHINE\\HARDWARE\\DESCRIPTION\\System\\CentralProcessor\\0": "HKEY_LOCAL_MACHINE\\HARDWARE\\DESCRIPTION\\System\\CentralProcessor\\0",
@@ -625,7 +623,6 @@
     "Restore all ignored devices": "Przywróć wszystkie ignorowane urządzenia",
     "Restore default": "Przywróć ustawienia domyślne",
     "Restore point (simulated)": "Punkt przywracania (symulowany)",
-    "Restore point creation failed. No driver installation was started.": "Nie udało się utworzyć punktu przywracania. Nie rozpoczęto instalacji sterownika.",
     "Restore point creation is unavailable. No driver was changed.": "Tworzenie punktu przywracania jest niedostępne. Żaden sterownik nie został zmieniony.",
     "Restore point failed; continuing because the legacy caller explicitly selected -nostop.": "Punkt przywracania nie powiódł się; kontynuuje, ponieważ starszy obiekt wywołujący jawnie wybrał opcję -nostop.",
     "Restore point: %1 · Reboot: %2": "Punkt przywracania: %1 · Ponowne uruchomienie: %2",
@@ -711,11 +708,8 @@
     "Stop ignoring this device": "Przestań ignorować to urządzenie",
     "Stopped safely after the active operation": "Zatrzymano bezpiecznie po aktywnej operacji",
     "Storage controllers / drives": "Kontrolery/napędy pamięci masowej",
-    "Support development": "Wsparcie rozwoju",
     "Symbolic links are not accepted.": "Dowiązania symboliczne nie są akceptowane.",
     "System Properties": "Otwórz Właściwości systemu...",
-    "System Restore API is unavailable.": "Interfejs API przywracania systemu jest niedostępny.",
-    "System Restore is unavailable on this Windows installation.": "jest niedostępne w tej instalacji Windows.",
     "System architecture": "Architektura systemu",
     "System diagnostics": "Diagnostyka systemu\nProducent systemu",
     "System manufacturer": "Producent systemu\nMenedżer zadań",
@@ -831,7 +825,6 @@
     "Windows could not export driver packages. Run as Administrator on a Windows version supporting DISM /Export-Driver; see export-log.txt.": "Windows nie mógł wyeksportować pakietów sterowników. Uruchom jako administrator w wersji Windows obsługującej DISM /Export-Driver; zobacz plik eksport-log.txt.",
     "Windows could not open an Internet session.": "Windows nie mógł otworzyć sesji internetowej.",
     "Windows could not start the restart request.": "Windows nie mógł uruchomić żądania ponownego uruchomienia.",
-    "Windows did not complete the restore point. Check System Protection and its service.": "Windows nie ukończył punktu przywracania. Sprawdź Ochronę systemu i jej usługę.",
     "Windows did not grant permission to restart.": "Windows nie udzielił pozwolenia na ponowne uruchomienie.",
     "Windows is exporting third-party driver packages...": "Windows eksportuje pakiety sterowników innych firm...\nTylko",
     "Windows only": "Windows",
@@ -871,6 +864,7 @@
     "Copy": "Kopiuj",
     "Paste": "Wklej",
     "Delete": "Usuń",
-    "Status": "Stan"
+    "Status": "Stan",
+    "System Protection": "Ochrona systemu"
   }
 }

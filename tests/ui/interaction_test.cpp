@@ -36,6 +36,7 @@
 #include <QScrollBar>
 #include "driver_workspace.h"
 #include "support_report.h"
+#include "offline_paths.h"
 #include "theme.h"
 #include "ui_language.h"
 #include "ui_font.h"
@@ -119,6 +120,14 @@ int main(int argc,char **argv){
         DriverEntry state;state.sdioVerified=true;state.sdioDriverPresent=true;state.candidates.resize(2);state.candidates[1].valid=true;state.candidates[1].recommended=true;state.chosenCandidate=1;
         check(driverStatus(state)==QStringLiteral("Installed"),"short status reflects an unchanged installed driver");state.candidates[1].statusBits=0x20;check(driverStatus(state)==QStringLiteral("Upgrade"),"short status uses native upgrade bit");state.candidates[1].statusBits=0x80;check(driverStatus(state)==QStringLiteral("Downgrade"),"short status uses native downgrade bit");state.sdioDriverPresent=false;check(driverStatus(state)==QStringLiteral("Missing"),"short status reports a missing installed driver");check(driverStatus(state,0)==QStringLiteral("Installed"),"installed version row stays Installed");
         Theme::validate(Theme::defaultDocument());check(true,"built-in theme meets documented contrast requirements");
+        QTemporaryDir library;check(library.isValid(),"library detection fixtures use an isolated folder");QDir().mkpath(library.path()+QStringLiteral("/drivers"));QDir().mkpath(library.path()+QStringLiteral("/indexes/SDI"));QDir().mkpath(library.path()+QStringLiteral("/indexes/SDIO"));
+        auto fixtureFile=[](const QString &path,const QByteArray &bytes){QFile file(path);if(!file.open(QIODevice::WriteOnly) || file.write(bytes)!=bytes.size())throw std::runtime_error("Cannot create library fixture");};
+        const QByteArray supported=QByteArray::fromHex("53445705020000")+QByteArray("fixture");const QString sdiIndex=library.path()+QStringLiteral("/indexes/SDI/DP_Demo.bin"),sdioIndex=library.path()+QStringLiteral("/indexes/SDIO/DP_Other.bin");fixtureFile(sdiIndex,supported);fixtureFile(sdioIndex,supported);fixtureFile(library.path()+QStringLiteral("/drivers/DP_Demo.7z"),QByteArray("fixture"));
+        check(resolveIndexDirectory(library.path()+QStringLiteral("/indexes"),library.path()+QStringLiteral("/drivers")).endsWith(QStringLiteral("/SDI")),"mixed index roots prefer the cache matching the selected driver packs");
+        fixtureFile(library.path()+QStringLiteral("/SDIO_x64.exe"),QByteArray("fixture"));check(resolveIndexDirectory(library.path()+QStringLiteral("/indexes"),library.path()+QStringLiteral("/drivers")).endsWith(QStringLiteral("/SDIO")),"SDIO layout detection selects its own index subtree");
+        check(compatibleLibraryIndex(sdiIndex),"native cache signatures accept the supported SDI and SDIO versions");fixtureFile(sdioIndex,QByteArray::fromHex("53445706020000"));check(!compatibleLibraryIndex(sdioIndex),"unknown index formats are rejected before native parsing");
+        const QString managed=prepareLibraryIndexes(library.path()+QStringLiteral("/drivers"),library.path()+QStringLiteral("/indexes/SDI"));check(QFileInfo(QDir(managed).filePath(QStringLiteral("DP_Demo.bin"))).isFile() && !managed.startsWith(library.path()),"native scans use a private copied cache without rewriting library indexes");
+        InstallationWorkspace blocked;blocked.beginNative(QStringList()<<QStringLiteral("Example"),QStringList()<<QStringLiteral("DEMO-ID"),true);sdiomodern::InstallReport restoreFailure;restoreFailure.restoreFailed=true;restoreFailure.restoreError=1058;restoreFailure.error=L"System Protection disabled (1058)";blocked.finishNative(restoreFailure);check(blocked.findChild<QPushButton*>(QStringLiteral("restoreHelp"))->isHidden()==false && blocked.findChild<QProgressBar*>()->value()==0,"restore failure offers System Protection and never shows completed driver progress");
         const QString safeEnvironment=BugReport::environment(QStringLiteral("Windows 11"),QStringLiteral("x86_64"),QStringLiteral("arabic"),true);
         const QUrl bugUrl=BugReport::issueUrl(safeEnvironment);const QUrlQuery bugQuery(bugUrl);
         check(bugUrl.scheme()==QStringLiteral("https") && bugUrl.host()==QStringLiteral("github.com") && bugUrl.path()==QStringLiteral("/Diagoo1/Snappy-Driver-Installer-Modern/issues/new"),"bug reports open the authorized repository over HTTPS");
@@ -183,7 +192,7 @@ int main(int argc,char **argv){
         QMetaObject::invokeMethod(&window,"navigate",Q_ARG(int,5));QTest::qWait(240);
         QLabel *developer=pages->widget(5)->findChild<QLabel*>(QStringLiteral("developerName"));
         check(developer && developer->text()==QStringLiteral("Tarek Sadek"),"About page presents the verified developer identity");
-        check(pages->widget(5)->findChildren<ActionButton*>().size()==4 && pages->widget(5)->findChild<ActionButton*>(QStringLiteral("reportBugButton")),"About page has developer links and a separate bug report action");
+        check(pages->widget(5)->findChildren<ActionButton*>().size()==5 && pages->widget(5)->findChild<ActionButton*>(QStringLiteral("reportBugButton"))->width()==46,"About page has compact developer, coffee and icon-only bug actions");
         window.grab().save(QDir(app.applicationDirPath()).filePath(QStringLiteral("about-page.png")));
         QMetaObject::invokeMethod(&window,"navigate",Q_ARG(int,2));QTest::qWait(240);
         window.grab().save(QDir(app.applicationDirPath()).filePath(QStringLiteral("packages-page.png")));

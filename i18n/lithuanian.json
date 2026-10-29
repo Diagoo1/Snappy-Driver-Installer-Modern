@@ -213,7 +213,6 @@
     "Confirm driver installation": "Patvirtinkite tvarkyklės įdiegimą",
     "Conflicting update targets.": "Nesuderinami naujinimo tikslai.",
     "Connecting to torrent peers to complete verified blocks...": "Prisijungiama prie „torrent“ partnerių, kad būtų užbaigti patvirtinti blokai...",
-    "Contact me": "Susisiekite su manimi",
     "Continue": "Tęsti",
     "Control Panel": "Valdymo skydas",
     "Copy hardware ID": "Nukopijuokite aparatūros ID",
@@ -351,7 +350,6 @@
     "General settings": "Bendrieji nustatymai",
     "GitHub could not provide this release. Check the repository and published releases.": "GitHub negalėjo pateikti šio leidimo. Patikrinkite saugyklą ir paskelbtus leidimus.",
     "GitHub did not provide the required SHA-256 digest.": "GitHub nepateikė reikiamo SHA-256 santraukos.",
-    "GitHub projects": "GitHub projektai",
     "Graphics adapters": "grafikos adapteriai",
     "HKEY_LOCAL_MACHINE\\HARDWARE\\DESCRIPTION\\System\\BIOS": "HKEY_LOCAL_MACHINE\\HARDWARE\\DESCRIPTION\\System\\BIOS",
     "HKEY_LOCAL_MACHINE\\HARDWARE\\DESCRIPTION\\System\\CentralProcessor\\0": "HKEY_LOCAL_MACHINE\\HARDWARE\\DESCRIPTION\\System\\CentralProcessor\\0",
@@ -625,7 +623,6 @@
     "Restore all ignored devices": "Atkurti visus ignoruotus įrenginius",
     "Restore default": "Atkurti numatytuosius nustatymus",
     "Restore point (simulated)": "Atkūrimo taškas (imituojamas)",
-    "Restore point creation failed. No driver installation was started.": "Nepavyko sukurti atkūrimo taško. Nebuvo pradėtas tvarkyklės diegimas.",
     "Restore point creation is unavailable. No driver was changed.": "Atkūrimo taško sukurti negalima. Vairuotojas nebuvo pakeistas.",
     "Restore point failed; continuing because the legacy caller explicitly selected -nostop.": "Atkūrimo taško nepavyko; tęsiasi, nes senasis skambintojas aiškiai pasirinko -nostop.",
     "Restore point: %1 · Reboot: %2": "Atkūrimo taškas: %1 · Perkraukite: %2",
@@ -711,11 +708,8 @@
     "Stop ignoring this device": "Nustokite ignoruoti šį įrenginį",
     "Stopped safely after the active operation": "Saugiai sustojo po aktyvaus veikimo",
     "Storage controllers / drives": "Saugojimo valdikliai / diskai",
-    "Support development": "Palaikykite plėtrą",
     "Symbolic links are not accepted.": "Simbolinės nuorodos nepriimamos.",
     "System Properties": "Atidaryti Sistemos Ypatybes",
-    "System Restore API is unavailable.": "sistemos atkūrimo API nepasiekiama.",
-    "System Restore is unavailable on this Windows installation.": "šiame Windows diegime nepasiekiamas.",
     "System architecture": "Sistemos architektūra",
     "System diagnostics": "Sistemos diagnostika",
     "System manufacturer": "sistemos gamintojas",
@@ -831,7 +825,6 @@
     "Windows could not export driver packages. Run as Administrator on a Windows version supporting DISM /Export-Driver; see export-log.txt.": "Windows nepavyko eksportuoti tvarkyklių paketų. Vykdykite kaip administratorius Windows versijoje, palaikančioje DISM /Export-Driver; žr. failą export-log.txt.",
     "Windows could not open an Internet session.": "Windows nepavyko atidaryti interneto seanso.",
     "Windows could not start the restart request.": "Windows nepavyko paleisti pakartotinio paleidimo užklausos.",
-    "Windows did not complete the restore point. Check System Protection and its service.": "Windows neužbaigė atkūrimo taško. Patikrinkite sistemos apsaugą ir jos paslaugą.",
     "Windows did not grant permission to restart.": "Windows nesuteikė leidimo paleisti iš naujo.",
     "Windows is exporting third-party driver packages...": "Windows eksportuoja trečiųjų šalių tvarkyklių paketus...\nTik",
     "Windows only": "Windows",
@@ -871,6 +864,7 @@
     "Copy": "Kopijuoti",
     "Paste": "Įklijuoti",
     "Delete": "Ištrinti",
-    "Status": "Būsena"
+    "Status": "Būsena",
+    "System Protection": "Sistemos apsauga"
   }
 }

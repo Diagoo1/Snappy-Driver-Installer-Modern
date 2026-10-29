@@ -29,7 +29,7 @@ int runScanReport(int argc,char **argv)
     OriginWorker worker;
     worker.paths.targetVersion=value(QStringLiteral("--target-windows")).toInt();worker.paths.targetArchitecture=value(QStringLiteral("--target-arch")).toInt();
     worker.paths.drivers=drivers.toStdWString();
-    worker.paths.indexes=resolveIndexDirectory(indexes).toStdWString();
+    worker.paths.indexes=resolveIndexDirectory(indexes,drivers).toStdWString();
     worker.paths.logDirectory=QDir(QFileInfo(file).absolutePath()).filePath(QStringLiteral("logs")).toStdWString();
     worker.paths.snapshotFile=value(QStringLiteral("--load-snapshot")).toStdWString();
     worker.paths.forceReindex=args.contains(QStringLiteral("--reindex"));
@@ -60,6 +60,7 @@ int runScanReport(int argc,char **argv)
     }
     QJsonObject report;
     report.insert(QStringLiteral("sourceRevision"),QString::fromStdWString(snapshot.sourceRevision));
+    report.insert(QStringLiteral("libraryFamily"),libraryFamily(drivers,resolveIndexDirectory(indexes,drivers)));report.insert(QStringLiteral("indexPolicy"),QStringLiteral("isolated-native-cache"));
     report.insert(QStringLiteral("error"),scanError);
     report.insert(QStringLiteral("installationRequested"),false);
     report.insert(QStringLiteral("localInstallCapability"),snapshot.capabilities.localInstall);

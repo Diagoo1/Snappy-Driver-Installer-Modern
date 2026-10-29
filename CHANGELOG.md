@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.21.6 Beta
+
+- Detect SDI/SDIO library layouts, select the relevant index subtree and use an isolated application cache for native scans and maintenance. Compatible SDW 0x204/0x205 indexes are copied; unsupported caches are rebuilt from available local archives.
+- Initialize process COM callback security before the original engine's WMI queries, preserve restore API error codes and stop before installation when a required restore point fails. Do not override Windows' restore-point frequency setting.
+- Show blocked restore operations with zero installation progress and a System Protection shortcut; remove the live-installation banner.
+- Add compact About links, Ko-fi support and an icon-only bug report action. Paint subtle card shadows directly without blur effects or animation.
+- Make static engine libraries explicit linker dependencies so incremental builds cannot silently retain an older engine.
+
 ## 0.21.5 Beta
 
 - Count selected drivers independently of the restore-point task.

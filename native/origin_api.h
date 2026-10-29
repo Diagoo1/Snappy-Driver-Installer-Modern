@@ -9,6 +9,7 @@
 #include <vector>
 
 namespace sdiomodern {
+std::uint32_t initializeRestoreCallbacks();
 // No Qt objects or upstream pointers cross this boundary. All strings and records
 // are owned copies. OriginCore must only be called from its single worker thread.
 enum class Stage { Scan, Indexes, Match, RestorePoint, Extract, Install, Finished };
@@ -76,9 +77,10 @@ struct Result {
 };
 struct InstallReport {
     std::vector<Result> items;
-    bool restoreCreated, cancelled, rebootRequired;
+    bool restoreCreated, cancelled, rebootRequired, restoreFailed;
+    std::uint32_t restoreError;
     std::wstring error;
-    InstallReport() : restoreCreated(false), cancelled(false), rebootRequired(false) {}
+    InstallReport() : restoreCreated(false), cancelled(false), rebootRequired(false),restoreFailed(false),restoreError(0) {}
 };
 struct Paths {
     std::wstring drivers,indexes,logDirectory,snapshotFile,indexTextDirectory;

@@ -51,7 +51,7 @@ QWidget#settingsCard[tone="teal"] {border-top:3px solid #16B8A6;}
 QWidget#settingsCard[tone="blue"] {border-top:3px solid #419AC8;}
 QWidget#settingsCard[tone="violet"] {border-top:3px solid #9886D5;}
 QWidget#settingsCard[tone="amber"] {border-top:3px solid #D6A44E;}
-QWidget#softSurface { background: %2; border: 0; border-radius: 16px; }
+QWidget#softSurface { background: transparent; border: 0; border-radius: 16px; }
 QWidget#driverSummaryStrip { background:transparent; border:0; }
 QFrame#metricCard {background:%2; border:1px solid %6; border-radius:10px; min-height:46px;}
 QFrame#metricCard[tone="blue"] {border-bottom:2px solid #2797CC;}

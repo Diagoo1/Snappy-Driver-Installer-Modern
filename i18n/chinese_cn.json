@@ -213,7 +213,6 @@
     "Confirm driver installation": "确认驱动安装",
     "Conflicting update targets.": "更新目标冲突。",
     "Connecting to torrent peers to complete verified blocks...": "正在连接 torrent 对等点以完成验证块...",
-    "Contact me": "联系我",
     "Continue": "继续",
     "Control Panel": "控制面板",
     "Copy hardware ID": "复制硬件 ID",
@@ -351,7 +350,6 @@
     "General settings": "常规设置",
     "GitHub could not provide this release. Check the repository and published releases.": "GitHub 无法提供此版本。检查存储库和已发布的版本。",
     "GitHub did not provide the required SHA-256 digest.": "GitHub 未提供所需的 SHA-256 摘要。",
-    "GitHub projects": "GitHub 项目",
     "Graphics adapters": "图形适配器",
     "HKEY_LOCAL_MACHINE\\HARDWARE\\DESCRIPTION\\System\\BIOS": "HKEY_LOCAL_MACHINE\\HARDWARE\\DESCRIPTION\\System\\BIOS",
     "HKEY_LOCAL_MACHINE\\HARDWARE\\DESCRIPTION\\System\\CentralProcessor\\0": "HKEY_LOCAL_MACHINE\\HARDWARE\\DESCRIPTION\\System\\CentralProcessor\\0",
@@ -625,7 +623,6 @@
     "Restore all ignored devices": "恢复所有被忽略的设备",
     "Restore default": "恢复默认",
     "Restore point (simulated)": "还原点（模拟）",
-    "Restore point creation failed. No driver installation was started.": "还原点创建失败。没有开始安装驱动程序。",
     "Restore point creation is unavailable. No driver was changed.": "恢复点创建不可用。没有更换驱动程序。",
     "Restore point failed; continuing because the legacy caller explicitly selected -nostop.": "还原点失败；继续，因为旧调用者明确选择了 -nostop。",
     "Restore point: %1 · Reboot: %2": "还原点：%1 · 重启：%2",
@@ -711,11 +708,8 @@
     "Stop ignoring this device": "停止忽略该设备",
     "Stopped safely after the active operation": "主动操作后安全停止",
     "Storage controllers / drives": "存储控制器/驱动器",
-    "Support development": "支持开发",
     "Symbolic links are not accepted.": "不接受符号链接。",
     "System Properties": "系统属性…",
-    "System Restore API is unavailable.": "系统还原 API 不可用。",
-    "System Restore is unavailable on this Windows installation.": "系统还原在此 Windows 安装上不可用。",
     "System architecture": "系统架构",
     "System diagnostics": "系统诊断",
     "System manufacturer": "系统制造商",
@@ -831,7 +825,6 @@
     "Windows could not export driver packages. Run as Administrator on a Windows version supporting DISM /Export-Driver; see export-log.txt.": "Windows 无法导出驱动程序包。在支持 DISM /Export-Driver 的 Windows 版本上以管理员身份运行；请参阅导出日志.txt。",
     "Windows could not open an Internet session.": "Windows 无法打开 Internet 会话。",
     "Windows could not start the restart request.": "Windows 无法启动重新启动请求。",
-    "Windows did not complete the restore point. Check System Protection and its service.": "Windows 未完成还原点。检查系统保护及其服务。",
     "Windows did not grant permission to restart.": "Windows 未授予重启权限。",
     "Windows is exporting third-party driver packages...": "Windows 正在导出第三方驱动程序包...\n仅",
     "Windows only": "Windows",
@@ -871,6 +864,7 @@
     "Copy": "复制",
     "Paste": "粘贴",
     "Delete": "删除",
-    "Status": "状态"
+    "Status": "状态",
+    "System Protection": "系统保护"
   }
 }

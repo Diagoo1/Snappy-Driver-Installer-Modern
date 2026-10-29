@@ -213,7 +213,6 @@
     "Confirm driver installation": "ドライバーのインストールを確認する",
     "Conflicting update targets.": "更新ターゲットが競合しています。",
     "Connecting to torrent peers to complete verified blocks...": "検証済みブロックを完了するためにトレント ピアに接続しています...",
-    "Contact me": "お問い合わせください",
     "Continue": "続行",
     "Control Panel": "コントロールパネル",
     "Copy hardware ID": "ハードウェア ID をコピー",
@@ -351,7 +350,6 @@
     "General settings": "一般設定",
     "GitHub could not provide this release. Check the repository and published releases.": "GitHub はこのリリースを提供できませんでした。リポジトリと公開されたリリースを確認してください。",
     "GitHub did not provide the required SHA-256 digest.": "GitHub は、必要な SHA-256 ダイジェストを提供しませんでした。",
-    "GitHub projects": "GitHub プロジェクト",
     "Graphics adapters": "グラフィックス アダプター",
     "HKEY_LOCAL_MACHINE\\HARDWARE\\DESCRIPTION\\System\\BIOS": "HKEY_LOCAL_MACHINE\\HARDWARE\\DESCRIPTION\\システム\\BIOS",
     "HKEY_LOCAL_MACHINE\\HARDWARE\\DESCRIPTION\\System\\CentralProcessor\\0": "HKEY_LOCAL_MACHINE\\HARDWARE\\DESCRIPTION\\System\\CentralProcessor\\0",
@@ -625,7 +623,6 @@
     "Restore all ignored devices": "無視されたすべてのデバイスを復元します",
     "Restore default": "デフォルトに戻す",
     "Restore point (simulated)": "復元ポイント (シミュレート)",
-    "Restore point creation failed. No driver installation was started.": "復元ポイントの作成に失敗しました。ドライバーのインストールは開始されませんでした。",
     "Restore point creation is unavailable. No driver was changed.": "復元ポイントの作成は利用できません。ドライバーは変更されませんでした。",
     "Restore point failed; continuing because the legacy caller explicitly selected -nostop.": "復元ポイントが失敗しました。従来の呼び出し元が明示的に -nostop を選択したため続行されます。",
     "Restore point: %1 · Reboot: %2": "復元ポイント: %1 · 再起動: %2",
@@ -711,11 +708,8 @@
     "Stop ignoring this device": "このデバイスの無視をやめる",
     "Stopped safely after the active operation": "アクティブな操作後に安全に停止しました",
     "Storage controllers / drives": "ストレージ コントローラー/ドライブ",
-    "Support development": "サポート開発",
     "Symbolic links are not accepted.": "シンボリックリンクは使用できません。",
     "System Properties": "システムのプロパティを開く...",
-    "System Restore API is unavailable.": "システム復元 API は使用できません。",
-    "System Restore is unavailable on this Windows installation.": "システムの復元は、この Windows インストールでは使用できません。",
     "System architecture": "システムアーキテクチャ",
     "System diagnostics": "システム診断",
     "System manufacturer": "システムメーカー",
@@ -831,7 +825,6 @@
     "Windows could not export driver packages. Run as Administrator on a Windows version supporting DISM /Export-Driver; see export-log.txt.": "Windows はドライバー パッケージをエクスポートできませんでした。 DISM /Export-Driver をサポートする Windows バージョンで管理者として実行します。エクスポートログ.txtを参照してください。",
     "Windows could not open an Internet session.": "Windows はインターネット セッションを開けませんでした。",
     "Windows could not start the restart request.": "Windows は再起動要求を開始できませんでした。",
-    "Windows did not complete the restore point. Check System Protection and its service.": "Windows は復元ポイントを完了しませんでした。システム保護とそのサービスを確認してください。",
     "Windows did not grant permission to restart.": "Windows は再起動の許可を与えませんでした。",
     "Windows is exporting third-party driver packages...": "Windows はサードパーティのドライバー パッケージをエクスポートしています...",
     "Windows only": "Windowsのみ",
@@ -871,6 +864,7 @@
     "Copy": "コピー",
     "Paste": "貼り付け",
     "Delete": "削除",
-    "Status": "ステータス"
+    "Status": "ステータス",
+    "System Protection": "システム保護"
   }
 }

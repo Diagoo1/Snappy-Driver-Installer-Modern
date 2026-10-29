@@ -213,7 +213,6 @@
     "Confirm driver installation": "Sürücünün quraşdırılmasını təsdiqləyin",
     "Conflicting update targets.": "ziddiyyətli yeniləmə hədəfləri.",
     "Connecting to torrent peers to complete verified blocks...": "Doğrulanmış blokları tamamlamaq üçün torrent həmyaşıdlarına qoşulur...",
-    "Contact me": "Mənimlə əlaqə saxlayın",
     "Continue": "Davam edin",
     "Control Panel": "İdarə paneli",
     "Copy hardware ID": "Avadanlıq ID-sini kopyalayın",
@@ -351,7 +350,6 @@
     "General settings": "Ümumi parametrlər",
     "GitHub could not provide this release. Check the repository and published releases.": "GitHub bu buraxılışı təmin edə bilmədi. Repozitoriyanı və dərc edilmiş buraxılışları yoxlayın.",
     "GitHub did not provide the required SHA-256 digest.": "GitHub tələb olunan SHA-256 həzmini təmin etmədi.",
-    "GitHub projects": "GitHub layihələri",
     "Graphics adapters": "Qrafik adapterlər",
     "HKEY_LOCAL_MACHINE\\HARDWARE\\DESCRIPTION\\System\\BIOS": "HKEY_LOCAL_MACHINE\\HARDWARE\\DESCRIPTION\\System\\BIOS",
     "HKEY_LOCAL_MACHINE\\HARDWARE\\DESCRIPTION\\System\\CentralProcessor\\0": "HKEY_LOCAL_MACHINE\\HARDWARE\\DESCRIPTION\\System\\CentralProcessor\\0",
@@ -625,7 +623,6 @@
     "Restore all ignored devices": "Bütün nəzərə alınmayan cihazları bərpa edin",
     "Restore default": "Standartı bərpa edin",
     "Restore point (simulated)": "Bərpa nöqtəsi (imitasiya edilmiş)",
-    "Restore point creation failed. No driver installation was started.": "Bərpa nöqtəsinin yaradılması uğursuz oldu. Heç bir sürücü quraşdırma başlamadı.",
     "Restore point creation is unavailable. No driver was changed.": "Bərpa nöqtəsi yaratmaq mümkün deyil. Sürücü dəyişdirilməyib.",
     "Restore point failed; continuing because the legacy caller explicitly selected -nostop.": "Bərpa nöqtəsi uğursuz oldu; davam edir, çünki köhnə zəng edən şəxs açıq şəkildə -nostop seçmişdir.",
     "Restore point: %1 · Reboot: %2": "Bərpa nöqtəsi: %1 · Yenidən başladın: %2",
@@ -711,11 +708,8 @@
     "Stop ignoring this device": "Bu cihaza məhəl qoymamağı dayandırın",
     "Stopped safely after the active operation": "Aktiv əməliyyatdan sonra təhlükəsiz şəkildə dayandırıldı",
     "Storage controllers / drives": "Saxlama nəzarətçiləri / sürücüləri",
-    "Support development": "İnkişafı dəstəkləyin",
     "Symbolic links are not accepted.": "Simvolik keçidlər qəbul edilmir.",
     "System Properties": "Sistemin xüsusiyyətləri",
-    "System Restore API is unavailable.": "Sistem Bərpası API əlçatan deyil.",
-    "System Restore is unavailable on this Windows installation.": "Sistem Bərpası bu Windows quraşdırmasında mövcud deyil.",
     "System architecture": "Sistem arxitekturası",
     "System diagnostics": "Sistem diaqnostikası",
     "System manufacturer": "Sistem istehsalçısı",
@@ -831,7 +825,6 @@
     "Windows could not export driver packages. Run as Administrator on a Windows version supporting DISM /Export-Driver; see export-log.txt.": "Windows driver paketlərini ixrac edə bilmədi. DISM /Export-Driver-i dəstəkləyən Windows versiyasında Administrator kimi işə salın; eksport-log.txt-ə baxın.",
     "Windows could not open an Internet session.": "Windows İnternet sessiyasını aça bilmədi.",
     "Windows could not start the restart request.": "Windows yenidən başladın sorğunu başlata bilmədi.",
-    "Windows did not complete the restore point. Check System Protection and its service.": "Windows bərpa nöqtəsini tamamlamadı. Sistem Mühafizəsini və onun xidmətini yoxlayın.",
     "Windows did not grant permission to restart.": "Windows yenidən başlamağa icazə vermədi.",
     "Windows is exporting third-party driver packages...": "Windows üçüncü tərəf sürücü paketlərini ixrac edir...\nYalnız",
     "Windows only": "Windows",
@@ -871,6 +864,7 @@
     "Copy": "Kopyala",
     "Paste": "Yapışdır",
     "Delete": "Sil",
-    "Status": "Vəziyyət"
+    "Status": "Vəziyyət",
+    "System Protection": "Sistem qorunması"
   }
 }

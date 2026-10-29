@@ -213,7 +213,6 @@
     "Confirm driver installation": "Potvrďte instalaci ovladače",
     "Conflicting update targets.": "Konfliktní cíle aktualizace.",
     "Connecting to torrent peers to complete verified blocks...": "Připojování k torrentovým kolegům za účelem dokončení ověřených bloků...",
-    "Contact me": "Kontaktujte mě",
     "Continue": "Pokračovat",
     "Control Panel": "Ovládací panel",
     "Copy hardware ID": "Zkopírujte ID hardwaru",
@@ -351,7 +350,6 @@
     "General settings": "Obecná nastavení\nProjekty",
     "GitHub could not provide this release. Check the repository and published releases.": "GitHub nemohl poskytnout toto vydání. Zkontrolujte úložiště a publikovaná vydání.",
     "GitHub did not provide the required SHA-256 digest.": "GitHub neposkytlo požadovaný výtah SHA-256.",
-    "GitHub projects": "GitHub\nGrafické adaptéry",
     "Graphics adapters": "Náhled rozhraní",
     "HKEY_LOCAL_MACHINE\\HARDWARE\\DESCRIPTION\\System\\BIOS": "HKEY_LOCAL_MACHINE\\HARDWARE\\DESCRIPTION\\System\\BIOS",
     "HKEY_LOCAL_MACHINE\\HARDWARE\\DESCRIPTION\\System\\CentralProcessor\\0": "HKEY_LOCAL_MACHINE\\HARDWARE\\DESCRIPTION\\System\\CentralProcessor\\0",
@@ -625,7 +623,6 @@
     "Restore all ignored devices": "Obnovte všechna ignorovaná zařízení",
     "Restore default": "Obnovit výchozí",
     "Restore point (simulated)": "Bod obnovení (simulovaný)",
-    "Restore point creation failed. No driver installation was started.": "Vytvoření bodu obnovení se nezdařilo. Nebyla zahájena žádná instalace ovladače.",
     "Restore point creation is unavailable. No driver was changed.": "Vytvoření bodu obnovení není k dispozici. Nebyl změněn žádný řidič.",
     "Restore point failed; continuing because the legacy caller explicitly selected -nostop.": "Bod obnovení se nezdařil; pokračování, protože starší volající výslovně zvolil -nostop.",
     "Restore point: %1 · Reboot: %2": "Bod obnovení: %1 · Restart: %2",
@@ -711,11 +708,8 @@
     "Stop ignoring this device": "Přestaňte toto zařízení ignorovat",
     "Stopped safely after the active operation": "Bezpečně zastaveno po aktivní operaci",
     "Storage controllers / drives": "Úložné řadiče / jednotky",
-    "Support development": "Podpora vývoje",
     "Symbolic links are not accepted.": "Symbolické odkazy nejsou akceptovány.",
     "System Properties": "Vlastnosti systému",
-    "System Restore API is unavailable.": "API pro obnovení systému není k dispozici.",
-    "System Restore is unavailable on this Windows installation.": "není v této instalaci Windows dostupné.\nArchitektura systému",
     "System architecture": "Výrobce systému",
     "System diagnostics": "Diagnostika systému\nVýrobce systému",
     "System manufacturer": "Správce úloh",
@@ -831,7 +825,6 @@
     "Windows could not export driver packages. Run as Administrator on a Windows version supporting DISM /Export-Driver; see export-log.txt.": "Windows nemohl exportovat balíčky ovladačů. Spusťte jako správce na verzi Windows s podporou ovladače DISM /Export-Driver; viz export-log.txt.",
     "Windows could not open an Internet session.": "Windows nemohl otevřít internetovou relaci.",
     "Windows could not start the restart request.": "Windows nemohl spustit požadavek na restart.",
-    "Windows did not complete the restore point. Check System Protection and its service.": "Windows nedokončil bod obnovení. Zkontrolujte Ochranu systému a její servis.",
     "Windows did not grant permission to restart.": "Windows neudělil oprávnění k restartování.",
     "Windows is exporting third-party driver packages...": "Windows exportuje balíčky ovladačů třetích stran...\nPouze",
     "Windows only": "Windows",
@@ -871,6 +864,7 @@
     "Copy": "Kopírovat",
     "Paste": "Vložit",
     "Delete": "Odstranit",
-    "Status": "Stav"
+    "Status": "Stav",
+    "System Protection": "Ochrana systému"
   }
 }

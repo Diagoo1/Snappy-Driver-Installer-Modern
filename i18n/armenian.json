@@ -213,7 +213,6 @@
     "Confirm driver installation": "Հաստատեք վարորդի տեղադրումը",
     "Conflicting update targets.": "Թարմացման հակասական թիրախներ:",
     "Connecting to torrent peers to complete verified blocks...": "Միացում torrent-ի հետ՝ ստուգված բլոկները ավարտելու համար...",
-    "Contact me": "Կապվեք ինձ հետ",
     "Continue": "Շարունակել",
     "Control Panel": "Վերահսկիչ խորհուրդը",
     "Copy hardware ID": "Պատճենել ապարատային ID",
@@ -351,7 +350,6 @@
     "General settings": "Ընդհանուր պարամետրեր",
     "GitHub could not provide this release. Check the repository and published releases.": "GitHub-ը չկարողացավ տրամադրել այս թողարկումը: Ստուգեք պահոցը և հրապարակված թողարկումները:",
     "GitHub did not provide the required SHA-256 digest.": "GitHub-ը չի տրամադրել անհրաժեշտ SHA-256 ամփոփումը:",
-    "GitHub projects": "GitHub նախագծեր",
     "Graphics adapters": "գրաֆիկական ադապտերներ",
     "HKEY_LOCAL_MACHINE\\HARDWARE\\DESCRIPTION\\System\\BIOS": "HKEY_LOCAL_MACHINE\\HARDWARE\\DESCRIPTION\\Համակարգ\\BIOS",
     "HKEY_LOCAL_MACHINE\\HARDWARE\\DESCRIPTION\\System\\CentralProcessor\\0": "HKEY_LOCAL_MACHINE\\HARDWARE\\DESCRIPTION\\System\\Central Processor\\0",
@@ -625,7 +623,6 @@
     "Restore all ignored devices": "Վերականգնել բոլոր անտեսված սարքերը",
     "Restore default": "Վերականգնել կանխադրվածը",
     "Restore point (simulated)": "վերականգնման կետ (սիմուլյացված)",
-    "Restore point creation failed. No driver installation was started.": "Վերականգնման կետի ստեղծումը ձախողվեց: Վարորդի տեղադրում չի սկսվել:",
     "Restore point creation is unavailable. No driver was changed.": "վերականգնման կետի ստեղծումն անհասանելի է: Վարորդ չի փոխվել.",
     "Restore point failed; continuing because the legacy caller explicitly selected -nostop.": "վերականգնման կետը ձախողվեց; շարունակվում է, քանի որ հին զանգահարողը բացահայտորեն ընտրել է -nostop-ը:",
     "Restore point: %1 · Reboot: %2": "Վերականգնման կետ՝ %1 · Վերագործարկեք՝ %2",
@@ -711,11 +708,8 @@
     "Stop ignoring this device": "Դադարեցրեք անտեսել այս սարքը",
     "Stopped safely after the active operation": "Անվտանգ կերպով դադարեցվել է ակտիվ աշխատանքից հետո",
     "Storage controllers / drives": "Պահպանման կարգավորիչներ / կրիչներ",
-    "Support development": "Աջակցության զարգացում",
     "Symbolic links are not accepted.": "Խորհրդանշական հղումները չեն ընդունվում:",
     "System Properties": "Համակարգի հատկությունները",
-    "System Restore API is unavailable.": "System Restore API-ն անհասանելի է:",
-    "System Restore is unavailable on this Windows installation.": "System Restore-ն անհասանելի է այս Windows տեղադրման ժամանակ:",
     "System architecture": "համակարգի ճարտարապետություն",
     "System diagnostics": "համակարգի ախտորոշում",
     "System manufacturer": "համակարգի արտադրող",
@@ -831,7 +825,6 @@
     "Windows could not export driver packages. Run as Administrator on a Windows version supporting DISM /Export-Driver; see export-log.txt.": "Windows-ը չկարողացավ արտահանել վարորդական փաթեթներ: Գործարկեք որպես ադմինիստրատոր Windows տարբերակի վրա, որն աջակցում է DISM /Export-Driver; տես export-log.txt:",
     "Windows could not open an Internet session.": "Windows-ը չկարողացավ բացել ինտերնետ սեսիան:",
     "Windows could not start the restart request.": "Windows-ը չկարողացավ սկսել վերագործարկման հարցումը:",
-    "Windows did not complete the restore point. Check System Protection and its service.": "Windows-ը չի ավարտել վերականգնման կետը: Ստուգեք համակարգի պաշտպանությունը և դրա սպասարկումը:",
     "Windows did not grant permission to restart.": "Windows-ը վերագործարկման թույլտվություն չի տվել:",
     "Windows is exporting third-party driver packages...": "Windows-ն արտահանում է երրորդ կողմի վարորդական փաթեթներ...\nՄիայն",
     "Windows only": "Windows",
@@ -871,6 +864,7 @@
     "Copy": "Պատճենել",
     "Paste": "Տեղադրել",
     "Delete": "Ջնջել",
-    "Status": "Կարգավիճակ"
+    "Status": "Կարգավիճակ",
+    "System Protection": "Համակարգի պաշտպանություն"
   }
 }

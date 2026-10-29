@@ -23,6 +23,11 @@
 #include "app_update.h"
 #include <QScopedPointer>
 #include <cstring>
+#ifdef Q_OS_WIN
+#include <windows.h>
+#include <objbase.h>
+struct GuiComScope {HRESULT result;GuiComScope():result(CoInitializeEx(0,COINIT_APARTMENTTHREADED)){}~GuiComScope(){if(SUCCEEDED(result))CoUninitialize();}};
+#endif
 
 int main(int argc,char **argv)
 {
@@ -47,7 +52,16 @@ int main(int argc,char **argv)
     QApplication::setAttribute(Qt::AA_UseHighDpiPixmaps);
     QApplication::setAttribute(Qt::AA_EnableHighDpiScaling);
     UiScale::prepareEnvironment();
+#ifdef Q_OS_WIN
+    GuiComScope guiCom;
+#ifdef SDIO_ORIGIN_LINKED
+    const std::uint32_t restoreCallbacks=sdiomodern::initializeRestoreCallbacks();
+#endif
+#endif
     QApplication app(argc,argv);
+#if defined(Q_OS_WIN) && defined(SDIO_ORIGIN_LINKED)
+    if(app.arguments().contains(QStringLiteral("--gui-security-probe"))){fprintf(stdout,"{\"guiCom\":%lu,\"restoreCallbacks\":%lu,\"installationRequested\":false}\n",static_cast<unsigned long>(guiCom.result),static_cast<unsigned long>(restoreCallbacks));return FAILED(guiCom.result) || restoreCallbacks?1:0;}
+#endif
     // Verifiable release identity: scripts can reject stale executables.
     if(app.arguments().contains(QStringLiteral("--version"))) {
         fprintf(stdout,"Snappy Driver Installer | UI by Tarek Sadek\n");

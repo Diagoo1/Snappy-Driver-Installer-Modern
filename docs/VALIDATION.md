@@ -1,10 +1,10 @@
 # Validation scope
 
-Current application version: **0.21.5 Beta**. Hardware/Windows compatibility testing is ongoing. This document separates verified behavior from implementation that still needs hardware/VM testing.
+Current application version: **0.21.6 Beta**. Hardware/Windows compatibility testing is ongoing. This document separates verified behavior from implementation that still needs hardware/VM testing.
 
 | Area | Evidence |
 | --- | --- |
-| Interface, menus, RTL and instances | 212 regression checks at 100% and 150%; English/Arabic and light/dark visual review |
+| Interface, menus, RTL and instances | 219 regression checks at 100% and 150%; English/Arabic and light/dark visual review |
 | Structural/source integration | 83 checks; critical original source fingerprints and reviewed patches |
 | Current native matching | Read-only scan: 222 devices and 572 candidates on the development host |
 | Original engine workflows | Repeated scan, snapshot save/load, target-system preview and extraction of six INF files |
@@ -24,4 +24,10 @@ Bug reporting opens a GitHub issue form only after a review dialog and an explic
 
 The repository provides a source-review workflow. Cloud CI is not counted as passing: GitHub Actions was disabled for the account during release validation. Historical test logs and development snapshots are retained outside the active local project and in Git history, rather than published as repeated reports.
 
-0.21.5: non-admin installation is intercepted before the queue begins. The elevation dialog can cancel, and the elevated app waits for the prior process to exit and starts without an installation plan. UI tests do not invoke UAC. A fresh read-only scan of the supplied SDI R2600 library, using copied indexes, enumerated 222 devices. Real elevation/installation still needs user or disposable-system validation.
+0.21.6: non-admin installation is intercepted before the queue begins. The elevation dialog can cancel, and the elevated app waits for the prior process to exit and starts without an installation plan. UI tests do not invoke UAC. A fresh read-only scan of the supplied SDI R2600 library, using copied indexes, enumerated 222 devices. Real elevation/installation still needs user or disposable-system validation.
+
+0.21.6: 219 UI checks at 100%/150%; a simulated restore failure exposes System Protection and leaves installation progress at zero. Actual restore creation/installation were not invoked. Process COM callback setup returned S_OK (0x00000000) during read-only native scans. Both SDI and SDIO directory layouts, using copies of the same supplied SDI R2600 index set and the same pack library, returned 222 devices/572 candidates; source index hashes were unchanged. Unsupported SDW 0x206 input was left intact while the native engine regenerated a usable private index from a 1.5 MB local test pack and exported its contents.
+
+Restore callback permissions follow the [Windows System Restore guidance](https://learn.microsoft.com/en-us/windows/win32/sr/using-system-restore). System Protection is never enabled automatically, restore failure never silently disables the user's requirement, and the global restore-point frequency value is left untouched. Static archive dependencies were verified in the generated app Makefile.
+
+The final executable's `--gui-security-probe` returned `guiCom: 0` and `restoreCallbacks: 0`, with `installationRequested: false`. GUI startup initializes callback security before QApplication/Qt can establish COM defaults. This probe does not create a restore point or install a driver.

@@ -106,10 +106,17 @@
   "[Bug] ": "[مشكلة] ",
   "Dark": "داكن",
   "Light": "فاتح",
-  "Version: 0.21.5 (Beta)\nWindows: %1\nArchitecture: %2\nLanguage: %3\nTheme: %4": "الإصدار: 0.21.5 (بيتا)\nويندوز: %1\nالمعمارية: %2\nاللغة: %3\nالمظهر: %4",
+  "Version: 0.21.6 (Beta)\nWindows: %1\nArchitecture: %2\nLanguage: %3\nTheme: %4": "الإصدار: 0.21.6 (بيتا)\nويندوز: %1\nالمعمارية: %2\nاللغة: %3\nالمظهر: %4",
   "Completed": "مكتمل",
   "Failed": "فشل",
   "Installed -": "مثبّت -",
   "Installation needs attention": "التثبيت يحتاج مراجعة",
-  "Live installation · Beta": "تثبيت فعلي · بيتا"
+  "Live installation · Beta": "تثبيت فعلي · بيتا",
+  "System Protection": "حماية النظام",
+  "Installation blocked: restore point": "التثبيت متوقف: نقطة الاستعادة",
+  "Restore point creation failed. No driver installation was started. ": "فشل إنشاء نقطة الاستعادة. لم يبدأ تثبيت أي تعريف. ",
+  "04  Results": "04  النتائج",
+  "04  Finalizing": "04  إنهاء العملية",
+  "02  Validation & extraction": "02  التحقق والاستخراج",
+  "03  Installing drivers": "03  تثبيت التعريفات"
 }

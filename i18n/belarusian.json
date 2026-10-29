@@ -213,7 +213,6 @@
     "Confirm driver installation": "Пацвердзіце ўстаноўку драйвера",
     "Conflicting update targets.": "Канфліктныя мэты абнаўлення.",
     "Connecting to torrent peers to complete verified blocks...": "Падключэнне да торэнт-піраў для завяршэння правераных блокаў...",
-    "Contact me": "Звяжыцеся са мной",
     "Continue": "Працягнуць",
     "Control Panel": "Панэль кіравання",
     "Copy hardware ID": "Скапіруйце ідэнтыфікатар абсталявання",
@@ -351,7 +350,6 @@
     "General settings": "Агульныя налады\nПраекты",
     "GitHub could not provide this release. Check the repository and published releases.": "GitHub не можа забяспечыць гэты выпуск. Праверце рэпазітар і апублікаваныя выпускі.",
     "GitHub did not provide the required SHA-256 digest.": "GitHub не даў неабходны дайджэст SHA-256.",
-    "GitHub projects": "GitHub\nГрафічныя адаптары",
     "Graphics adapters": "ПАРАМЕТРЫ ЎСТАНОВКІ",
     "HKEY_LOCAL_MACHINE\\HARDWARE\\DESCRIPTION\\System\\BIOS": "HKEY_LOCAL_MACHINE\\HARDWARE\\DESCRIPTION\\System\\BIOS",
     "HKEY_LOCAL_MACHINE\\HARDWARE\\DESCRIPTION\\System\\CentralProcessor\\0": "HKEY_LOCAL_MACHINE\\HARDWARE\\DESCRIPTION\\System\\CentralProcessor\\0",
@@ -625,7 +623,6 @@
     "Restore all ignored devices": "Аднавіць усе праігнараваныя прылады",
     "Restore default": "Аднавіць па змаўчанні",
     "Restore point (simulated)": "Кропка аднаўлення (імітацыя)",
-    "Restore point creation failed. No driver installation was started.": "Не атрымалася стварыць кропку аднаўлення. Не пачалася ўстаноўка драйвера.",
     "Restore point creation is unavailable. No driver was changed.": "Стварэнне кропкі аднаўлення недаступна. Драйвера не мянялі.",
     "Restore point failed; continuing because the legacy caller explicitly selected -nostop.": "Збой кропкі аднаўлення; працягваецца, таму што ранейшы абанент відавочна выбраў -nostop.",
     "Restore point: %1 · Reboot: %2": "Кропка аднаўлення: %1 · Перазагрузка: %2",
@@ -711,11 +708,8 @@
     "Stop ignoring this device": "Перастаньце ігнараваць гэту прыладу",
     "Stopped safely after the active operation": "Бяспечна спыніўся пасля актыўнай аперацыі",
     "Storage controllers / drives": "Кантролеры / прывады захоўвання дадзеных",
-    "Support development": "Падтрымка распрацоўкі",
     "Symbolic links are not accepted.": "Сімвалічныя спасылкі не прымаюцца.",
     "System Properties": "Уласцівасці сістэмы",
-    "System Restore API is unavailable.": "API аднаўлення сістэмы недаступны.",
-    "System Restore is unavailable on this Windows installation.": "недаступна для гэтай устаноўкі Windows.",
     "System architecture": "Архітэктура сістэмы",
     "System diagnostics": "Дыягностыка сістэмы",
     "System manufacturer": "Вытворца сістэмы",
@@ -831,7 +825,6 @@
     "Windows could not export driver packages. Run as Administrator on a Windows version supporting DISM /Export-Driver; see export-log.txt.": "Windows не можа экспартаваць пакеты драйвераў. Запуск ад імя адміністратара на версіі Windows, якая падтрымлівае DISM /Export-Driver; гл. export-log.txt.",
     "Windows could not open an Internet session.": "Windows не можа адкрыць Інтэрнэт-сеанс.",
     "Windows could not start the restart request.": "Windows не можа запусціць запыт на перазапуск.",
-    "Windows did not complete the restore point. Check System Protection and its service.": "Windows не завяршыў кропку аднаўлення. Праверце абарону сістэмы і яе абслугоўванне.",
     "Windows did not grant permission to restart.": "Windows не даў дазвол на перазапуск.",
     "Windows is exporting third-party driver packages...": "Windows экспартуе пакеты драйвераў іншых вытворцаў...\nТолькі",
     "Windows only": "Windows",
@@ -871,6 +864,7 @@
     "Copy": "Капіяваць",
     "Paste": "Уставіць",
     "Delete": "Выдаліць",
-    "Status": "Статут"
+    "Status": "Статут",
+    "System Protection": "сістэма абароны"
   }
 }

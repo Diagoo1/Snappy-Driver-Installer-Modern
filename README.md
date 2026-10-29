@@ -4,11 +4,11 @@
   <p><strong>Original matching. A modern interface. A clearer driver workflow.</strong></p>
   <p>A community project by <strong>Tarek Sadek · Diagoo1</strong></p>
   <p>
-    <img src="https://img.shields.io/badge/release-0.21.5_Beta-E9A23B" alt="Beta">
+    <img src="https://img.shields.io/badge/release-0.21.6_Beta-E9A23B" alt="Beta">
     <img src="https://img.shields.io/badge/license-GPL--3.0-00857D" alt="GPL 3">
     <img src="https://img.shields.io/badge/built_with-C%2B%2B_%2F_Qt-075266" alt="C++ and Qt">
   </p>
-  <p><a href="README_AR.md">العربية</a> · <a href="https://github.com/Diagoo1/Snappy-Driver-Installer-Modern/releases/tag/v0.21.5">Download Beta</a> · <a href="docs/GALLERY.md">Screenshots</a> · <a href="https://github.com/Diagoo1/Snappy-Driver-Installer-Modern/issues/new?template=bug_report.yml">Report a bug</a></p>
+  <p><a href="README_AR.md">العربية</a> · <a href="https://github.com/Diagoo1/Snappy-Driver-Installer-Modern/releases/tag/v0.21.6">Download Beta</a> · <a href="docs/GALLERY.md">Screenshots</a> · <a href="https://github.com/Diagoo1/Snappy-Driver-Installer-Modern/issues/new?template=bug_report.yml">Report a bug</a></p>
 </div>
 
 ## Meet the project
@@ -43,7 +43,7 @@ Stars indicate **relative matching priority**, not safety. Forty locales are emb
 
 ## Get started
 
-1. Download the EXE or portable archive from [0.21.5 Beta](https://github.com/Diagoo1/Snappy-Driver-Installer-Modern/releases/tag/v0.21.5).
+1. Download the EXE or portable archive from [0.21.6 Beta](https://github.com/Diagoo1/Snappy-Driver-Installer-Modern/releases/tag/v0.21.6).
 2. Place `drivers` and `indexes` beside it, or choose their locations in Settings. Packs are not included.
 3. Scan, compare versions and review your selection. If administrator access is needed, the app offers to reopen; scan and confirm again afterward. No selection is installed automatically after elevation.
 
@@ -51,7 +51,9 @@ Settings use your Windows Registry. No adjacent DLLs or INI are required. Automa
 
 ## SDI, SDIO and Windows support
 
-The app embeds **one SDIO Origin engine**; it does not launch or switch between external SDI/SDIO executable files. Standard driver-pack libraries can be selected independently of which program downloaded them. Read-only matching has been verified against the supplied **SDI R2600** library. This does not prove equivalence with every SDI/SDIO fork or index format; incompatible caches may need regeneration in a separate index directory.
+The app automatically detects **SDI and SDIO library layouts**, including flat, `indexes/SDI` and `indexes/SDIO` folders. When both exist, it uses the detected distribution or the index names matching your local packs. Native scanning and maintenance use a private application cache: compatible SDW 0x204/0x205 indexes are copied, while unsupported formats are regenerated from available local archives. Native processing does not overwrite the source library's indexes.
+
+Both layouts were tested with the same supplied SDI R2600 pack library and produced equal device/candidate counts. An unsupported-index regeneration case was also verified. The matching engine remains embedded SDIO Origin; there is no dependency on launching external SDI/SDIO executables, and every fork's index format is not guaranteed.
 
 The x86 build targets XP–11 and includes the helper used for x64 driver workflows. Older-Windows execution, actual 32-bit hosts and broad hardware compatibility remain unverified. This is not a native ARM64 build. Read the [validation scope](docs/VALIDATION.md) and [engine provenance](docs/ARCHITECTURE.md).
 

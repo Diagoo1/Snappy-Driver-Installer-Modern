@@ -77,6 +77,10 @@ public:
 protected:
     void paintEvent(QPaintEvent*) Q_DECL_OVERRIDE;
 };
+class SurfaceCard : public QWidget {
+public:explicit SurfaceCard(QWidget *parent=0):QWidget(parent){setObjectName(QStringLiteral("surfaceCard"));}
+protected:void paintEvent(QPaintEvent*) Q_DECL_OVERRIDE;
+};
 class ProjectMenu : public QMenu {
     Q_OBJECT
     Q_PROPERTY(qreal highlightY READ highlightY WRITE setHighlightY)

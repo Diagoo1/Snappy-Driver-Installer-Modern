@@ -213,7 +213,6 @@
     "Confirm driver installation": "Apstipriniet draivera instalēšanu",
     "Conflicting update targets.": "Konfliktējoši atjaunināšanas mērķi.",
     "Connecting to torrent peers to complete verified blocks...": "Notiek savienojuma izveide ar torrent vienaudžiem, lai pabeigtu pārbaudītos blokus...",
-    "Contact me": "Sazinieties ar mani",
     "Continue": "Turpināt",
     "Control Panel": "Vadības panelis",
     "Copy hardware ID": "Kopējiet aparatūras ID",
@@ -351,7 +350,6 @@
     "General settings": "Vispārīgie iestatījumi",
     "GitHub could not provide this release. Check the repository and published releases.": "GitHub nevarēja nodrošināt šo laidienu. Pārbaudiet repozitoriju un publicētos izdevumus.",
     "GitHub did not provide the required SHA-256 digest.": "GitHub neiesniedza nepieciešamo SHA-256 īssavilkumu.",
-    "GitHub projects": "GitHub projekti",
     "Graphics adapters": "Grafikas adapteri",
     "HKEY_LOCAL_MACHINE\\HARDWARE\\DESCRIPTION\\System\\BIOS": "HKEY_LOCAL_MACHINE\\HARDWARE\\DESCRIPTION\\System\\BIOS",
     "HKEY_LOCAL_MACHINE\\HARDWARE\\DESCRIPTION\\System\\CentralProcessor\\0": "HKEY_LOCAL_MACHINE\\HARDWARE\\DESCRIPTION\\System\\CentralProcessor\\0",
@@ -625,7 +623,6 @@
     "Restore all ignored devices": "Atjaunojiet visas ignorētās ierīces",
     "Restore default": "Atjaunot noklusējuma iestatījumus",
     "Restore point (simulated)": "Atkopšanas punkts (imitēts)",
-    "Restore point creation failed. No driver installation was started.": "Neizdevās izveidot atjaunošanas punktu. Netika sākta draivera instalēšana.",
     "Restore point creation is unavailable. No driver was changed.": "Atkopšanas punkta izveide nav pieejama. Neviens vadītājs netika mainīts.",
     "Restore point failed; continuing because the legacy caller explicitly selected -nostop.": "Atkopšanas punkts neizdevās; turpinās, jo mantotais zvanītājs skaidri atlasīja -nostop.",
     "Restore point: %1 · Reboot: %2": "Atjaunošanas punkts: %1 · Atsāknēšana: %2",
@@ -711,11 +708,8 @@
     "Stop ignoring this device": "Pārtrauciet šīs ierīces ignorēšanu",
     "Stopped safely after the active operation": "Pēc aktīvās darbības droši apstājās",
     "Storage controllers / drives": "Krātuves kontrolleri / diskdziņi",
-    "Support development": "Atbalsta izstrāde",
     "Symbolic links are not accepted.": "Simboliskās saites netiek pieņemtas.",
     "System Properties": "Sistēmas rekvizīti",
-    "System Restore API is unavailable.": "sistēmas atjaunošanas API nav pieejama.",
-    "System Restore is unavailable on this Windows installation.": "sistēmas atjaunošana šajā Windows instalācijā nav pieejama.",
     "System architecture": "Sistēmas arhitektūra",
     "System diagnostics": "Sistēmas diagnostika",
     "System manufacturer": "Sistēmas ražotājs",
@@ -831,7 +825,6 @@
     "Windows could not export driver packages. Run as Administrator on a Windows version supporting DISM /Export-Driver; see export-log.txt.": "Windows nevarēja eksportēt draiveru pakotnes. Palaist kā administrators Windows versijā, kas atbalsta DISM /Export-Driver; skatiet failu export-log.txt.",
     "Windows could not open an Internet session.": "Windows nevarēja atvērt interneta sesiju.",
     "Windows could not start the restart request.": "Windows nevarēja sākt restartēšanas pieprasījumu.",
-    "Windows did not complete the restore point. Check System Protection and its service.": "Windows nepabeidza atjaunošanas punktu. Pārbaudiet sistēmas aizsardzību un tās pakalpojumus.",
     "Windows did not grant permission to restart.": "Windows nepiešķīra restartēšanas atļauju.",
     "Windows is exporting third-party driver packages...": "Windows eksportē trešās puses draiveru pakotnes...\nTikai",
     "Windows only": "Windows",
@@ -871,6 +864,7 @@
     "Copy": "Kopēt",
     "Paste": "Ielīmēt",
     "Delete": "Dzēst",
-    "Status": "Statuss"
+    "Status": "Statuss",
+    "System Protection": "Sistēmas aizsardzība"
   }
 }

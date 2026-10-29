@@ -213,7 +213,6 @@
     "Confirm driver installation": "نصب درایور را تایید کنید",
     "Conflicting update targets.": "اهداف به‌روزرسانی متناقض.",
     "Connecting to torrent peers to complete verified blocks...": "اتصال به همتایان تورنت برای تکمیل بلوک های تایید شده...",
-    "Contact me": "با من تماس بگیرید",
     "Continue": "ادامه دهید\nشناسه سخت افزاری",
     "Control Panel": "کنترل پنل",
     "Copy hardware ID": "کپی کنید",
@@ -351,7 +350,6 @@
     "General settings": "تنظیمات عمومی\nپروژه های",
     "GitHub could not provide this release. Check the repository and published releases.": "GitHub نتوانست این نسخه را ارائه دهد. مخزن و نسخه های منتشر شده را بررسی کنید.",
     "GitHub did not provide the required SHA-256 digest.": "GitHub خلاصه مورد نیاز SHA-256 را ارائه نکرد.",
-    "GitHub projects": "GitHub\nآداپتورهای گرافیکی",
     "Graphics adapters": "درایور نصب شده",
     "HKEY_LOCAL_MACHINE\\HARDWARE\\DESCRIPTION\\System\\BIOS": "HKEY_LOCAL_MACHINE\\HARDWARE\\DESCRIPTION\\System\\BIOS",
     "HKEY_LOCAL_MACHINE\\HARDWARE\\DESCRIPTION\\System\\CentralProcessor\\0": "HKEY_LOCAL_MACHINE\\HARDWARE\\DESCRIPTION\\System\\CentralProcessor\\0",
@@ -625,7 +623,6 @@
     "Restore all ignored devices": "همه دستگاه های نادیده گرفته شده را بازیابی کنید",
     "Restore default": "بازیابی پیش فرض\nنقطه بازیابی",
     "Restore point (simulated)": "(شبیه‌سازی شده)\nایجاد نقطه بازیابی",
-    "Restore point creation failed. No driver installation was started.": "انجام نشد. نصب درایوری شروع نشده است.\nایجاد نقطه بازیابی",
     "Restore point creation is unavailable. No driver was changed.": "در دسترس نیست. هیچ راننده ای عوض نشد\nنقطه بازیابی",
     "Restore point failed; continuing because the legacy caller explicitly selected -nostop.": "ناموفق بود. ادامه می یابد زیرا تماس گیرنده قدیمی به صراحت -nostop را انتخاب کرده است.",
     "Restore point: %1 · Reboot: %2": ": %1 · راه اندازی مجدد: %2",
@@ -711,11 +708,8 @@
     "Stop ignoring this device": "نادیده گرفتن این دستگاه را متوقف کنید",
     "Stopped safely after the active operation": "پس از عملیات فعال با خیال راحت متوقف شد\nکنترلر/درایوهای ذخیره سازی",
     "Storage controllers / drives": "توسعه پشتیبانی",
-    "Support development": "پیوندهای نمادین",
     "Symbolic links are not accepted.": "پذیرفته نمی شوند.",
     "System Properties": "باز کردن تنظیمات سیستم...",
-    "System Restore API is unavailable.": "System Restore API در دسترس نیست.",
-    "System Restore is unavailable on this Windows installation.": "System Restore در نصب Windows در دسترس نیست.\nمعماری سیستم",
     "System architecture": "عیب یابی سیستم",
     "System diagnostics": "سازنده سیستم",
     "System manufacturer": "پیش نمایش تم",
@@ -831,7 +825,6 @@
     "Windows could not export driver packages. Run as Administrator on a Windows version supporting DISM /Export-Driver; see export-log.txt.": "Windows نمی تواند بسته های درایور را صادر کند. اجرا به عنوان سرپرست در نسخه Windows که از DISM /Export-Driver پشتیبانی می کند. export-log.txt را ببینید.",
     "Windows could not open an Internet session.": "Windows نتوانست یک جلسه اینترنت را باز کند.",
     "Windows could not start the restart request.": "Windows نتوانست درخواست راه اندازی مجدد را شروع کند.",
-    "Windows did not complete the restore point. Check System Protection and its service.": "Windows نقطه بازیابی را کامل نکرد. System Protection و سرویس آن را بررسی کنید.",
     "Windows did not grant permission to restart.": "Windows اجازه راه اندازی مجدد را نداد.",
     "Windows is exporting third-party driver packages...": "Windows بسته های راننده شخص ثالث را صادر می کند...\nفقط",
     "Windows only": "Windows",
@@ -871,6 +864,7 @@
     "Copy": "رونوشت",
     "Paste": "چسباندن",
     "Delete": "حذف",
-    "Status": "وضعیت"
+    "Status": "وضعیت",
+    "System Protection": "محافظت از سیستم"
   }
 }

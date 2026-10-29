@@ -213,7 +213,6 @@
     "Confirm driver installation": "Conferma l'installazione del driver",
     "Conflicting update targets.": "Destinazioni di aggiornamento in conflitto.",
     "Connecting to torrent peers to complete verified blocks...": "Connessione ai peer torrent per completare i blocchi verificati...",
-    "Contact me": "Contattami",
     "Continue": "Continua",
     "Control Panel": "Pannello di controllo",
     "Copy hardware ID": "Copia ID hardware",
@@ -351,7 +350,6 @@
     "General settings": "Impostazioni generali\nProgetti",
     "GitHub could not provide this release. Check the repository and published releases.": "GitHub non ha potuto fornire questa versione. Controlla il repository e le versioni pubblicate.",
     "GitHub did not provide the required SHA-256 digest.": "GitHub non ha fornito il digest SHA-256 richiesto.",
-    "GitHub projects": "GitHub",
     "Graphics adapters": "Adattatori grafici",
     "HKEY_LOCAL_MACHINE\\HARDWARE\\DESCRIPTION\\System\\BIOS": "HKEY_LOCAL_MACHINE\\HARDWARE\\DESCRIPZIONE\\Sistema\\BIOS",
     "HKEY_LOCAL_MACHINE\\HARDWARE\\DESCRIPTION\\System\\CentralProcessor\\0": "HKEY_LOCAL_MACHINE\\HARDWARE\\DESCRIPTION\\System\\CentralProcessor\\0",
@@ -625,7 +623,6 @@
     "Restore all ignored devices": "Ripristina tutti i dispositivi ignorati",
     "Restore default": "Ripristina le impostazioni predefinite",
     "Restore point (simulated)": "Punto di ripristino (simulato)",
-    "Restore point creation failed. No driver installation was started.": "Creazione del punto di ripristino non riuscita. Non è stata avviata alcuna installazione del driver.",
     "Restore point creation is unavailable. No driver was changed.": "La creazione del punto di ripristino non è disponibile. Nessun conducente è stato cambiato.",
     "Restore point failed; continuing because the legacy caller explicitly selected -nostop.": "Punto di ripristino non riuscito; continuing because the legacy caller explicitly selected -nostop.",
     "Restore point: %1 · Reboot: %2": "Punto di ripristino: %1 · Riavvio: %2",
@@ -711,11 +708,8 @@
     "Stop ignoring this device": "Smetti di ignorare questo dispositivo",
     "Stopped safely after the active operation": "Arresto sicuro dopo l'operazione attiva",
     "Storage controllers / drives": "Controller/unità di storage",
-    "Support development": "Supporto allo sviluppo",
     "Symbolic links are not accepted.": "I collegamenti simbolici non sono accettati.",
     "System Properties": "Proprietà di sistema",
-    "System Restore API is unavailable.": "L'API Ripristino configurazione di sistema non è disponibile.",
-    "System Restore is unavailable on this Windows installation.": "non è disponibile su questa installazione Windows.",
     "System architecture": "Architettura del sistema",
     "System diagnostics": "Diagnostica del sistema",
     "System manufacturer": "Produttore del sistema",
@@ -831,7 +825,6 @@
     "Windows could not export driver packages. Run as Administrator on a Windows version supporting DISM /Export-Driver; see export-log.txt.": "Windows non è riuscito a esportare i pacchetti driver. Esegui come amministratore su una versione Windows che supporta DISM /Export-Driver; vedere export-log.txt.",
     "Windows could not open an Internet session.": "Windows non è riuscito ad aprire una sessione Internet.",
     "Windows could not start the restart request.": "Windows non è riuscito ad avviare la richiesta di riavvio.",
-    "Windows did not complete the restore point. Check System Protection and its service.": "Windows non ha completato il punto di ripristino. Controlla la protezione del sistema e il suo servizio.",
     "Windows did not grant permission to restart.": "Windows non ha concesso l'autorizzazione al riavvio.",
     "Windows is exporting third-party driver packages...": "Windows sta esportando pacchetti driver di terze parti...\nSolo",
     "Windows only": "Windows",
@@ -871,6 +864,7 @@
     "Copy": "Copia",
     "Paste": "Incolla",
     "Delete": "Elimina",
-    "Status": "Stato"
+    "Status": "Stato",
+    "System Protection": "Protezione del sistema"
   }
 }

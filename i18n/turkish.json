@@ -213,7 +213,6 @@
     "Confirm driver installation": "Sürücü kurulumunu onaylayın",
     "Conflicting update targets.": "Çakışan güncelleme hedefleri.",
     "Connecting to torrent peers to complete verified blocks...": "Doğrulanmış blokları tamamlamak için torrent eşlerine bağlanılıyor...",
-    "Contact me": "Bana ulaşın",
     "Continue": "Devam Et",
     "Control Panel": "Kontrol Paneli",
     "Copy hardware ID": "Donanım kimliğini kopyala",
@@ -351,7 +350,6 @@
     "General settings": "Genel ayarlar",
     "GitHub could not provide this release. Check the repository and published releases.": "GitHub bu sürümü sağlayamadı. Depoyu ve yayınlanan sürümleri kontrol edin.",
     "GitHub did not provide the required SHA-256 digest.": "GitHub gerekli SHA-256 özetini sağlamadı.",
-    "GitHub projects": "GitHub projeleri",
     "Graphics adapters": "Grafik adaptörleri",
     "HKEY_LOCAL_MACHINE\\HARDWARE\\DESCRIPTION\\System\\BIOS": "HKEY_LOCAL_MACHINE\\HARDWARE\\DESCRIPTION\\System\\BIOS",
     "HKEY_LOCAL_MACHINE\\HARDWARE\\DESCRIPTION\\System\\CentralProcessor\\0": "HKEY_LOCAL_MACHINE\\HARDWARE\\DESCRIPTION\\System\\CentralProcessor\\0",
@@ -625,7 +623,6 @@
     "Restore all ignored devices": "Yok sayılan tüm aygıtları geri yükleyin",
     "Restore default": "Varsayılanı geri yükle",
     "Restore point (simulated)": "Geri yükleme noktası (simüle edilmiş)",
-    "Restore point creation failed. No driver installation was started.": "Geri yükleme noktası oluşturulamadı. Hiçbir sürücü kurulumu başlatılmadı.",
     "Restore point creation is unavailable. No driver was changed.": "Geri yükleme noktası oluşturma kullanılamıyor. Hiçbir sürücü değişmedi.",
     "Restore point failed; continuing because the legacy caller explicitly selected -nostop.": "Geri yükleme noktası başarısız oldu; eski arayan açıkça -nostop'u seçtiği için devam ediyor.",
     "Restore point: %1 · Reboot: %2": "Geri yükleme noktası: %1 · Yeniden başlatma: %2",
@@ -711,11 +708,8 @@
     "Stop ignoring this device": "Bu cihazı görmezden gelmeyi bırakın",
     "Stopped safely after the active operation": "Etkin işlemden sonra güvenli bir şekilde durduruldu",
     "Storage controllers / drives": "Depolama denetleyicileri / sürücüleri",
-    "Support development": "Destek geliştirme",
     "Symbolic links are not accepted.": "Sembolik bağlantılar kabul edilmez.",
     "System Properties": "Sistem Bilgilerini görüntüle...",
-    "System Restore API is unavailable.": "Sistem Geri Yükleme API'si kullanılamıyor.",
-    "System Restore is unavailable on this Windows installation.": "Sistem Geri Yükleme bu Windows kurulumunda kullanılamaz.",
     "System architecture": "Sistem mimarisi",
     "System diagnostics": "Sistem teşhisi",
     "System manufacturer": "Sistem üreticisi",
@@ -831,7 +825,6 @@
     "Windows could not export driver packages. Run as Administrator on a Windows version supporting DISM /Export-Driver; see export-log.txt.": "Windows, sürücü paketlerini dışa aktaramadı. DISM /Export-Driver'ı destekleyen bir Windows sürümünde Yönetici olarak çalıştırın; Export-log.txt'ye bakın.",
     "Windows could not open an Internet session.": "Windows bir İnternet oturumu açamadı.",
     "Windows could not start the restart request.": "Windows yeniden başlatma isteğini başlatamadı.",
-    "Windows did not complete the restore point. Check System Protection and its service.": "Windows geri yükleme noktasını tamamlamadı. Sistem Korumasını ve servisini kontrol edin.",
     "Windows did not grant permission to restart.": "Windows, yeniden başlatma izni vermedi.",
     "Windows is exporting third-party driver packages...": "Windows üçüncü taraf sürücü paketlerini ihraç ediyor...\nYalnızca",
     "Windows only": "Windows",
@@ -871,6 +864,7 @@
     "Copy": "Kopyala",
     "Paste": "Yapıştır",
     "Delete": "Sil",
-    "Status": "Durum"
+    "Status": "Durum",
+    "System Protection": "Sistem koruması"
   }
 }

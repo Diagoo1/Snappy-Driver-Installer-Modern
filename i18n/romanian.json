@@ -213,7 +213,6 @@
     "Confirm driver installation": "Confirmați instalarea driverului",
     "Conflicting update targets.": "Ținte de actualizare aflate în conflict.",
     "Connecting to torrent peers to complete verified blocks...": "Se conectează la torrent peer pentru a finaliza blocurile verificate...",
-    "Contact me": "Contactați-mă",
     "Continue": "Continuați",
     "Control Panel": "Panou de control",
     "Copy hardware ID": "Copiați ID-ul hardware",
@@ -351,7 +350,6 @@
     "General settings": "Setări generale",
     "GitHub could not provide this release. Check the repository and published releases.": "GitHub nu a putut furniza această versiune. Verificați depozitul și versiunile publicate.",
     "GitHub did not provide the required SHA-256 digest.": "GitHub nu a furnizat rezumatul SHA-256 necesar.",
-    "GitHub projects": "GitHub proiecte",
     "Graphics adapters": "Adaptoare grafice",
     "HKEY_LOCAL_MACHINE\\HARDWARE\\DESCRIPTION\\System\\BIOS": "HKEY_LOCAL_MACHINE\\HARDWARE\\DESCRIPTION\\System\\BIOS",
     "HKEY_LOCAL_MACHINE\\HARDWARE\\DESCRIPTION\\System\\CentralProcessor\\0": "HKEY_LOCAL_MACHINE\\HARDWARE\\DESCRIPTION\\System\\CentralProcessor\\0",
@@ -625,7 +623,6 @@
     "Restore all ignored devices": "Restaurați toate dispozitivele ignorate",
     "Restore default": "Restabiliți valoarea implicită",
     "Restore point (simulated)": "Punct de restaurare (simulat)",
-    "Restore point creation failed. No driver installation was started.": "Crearea punctului de restaurare a eșuat. Instalarea driverului nu a fost începută.",
     "Restore point creation is unavailable. No driver was changed.": "Crearea punctului de restaurare nu este disponibilă. Niciun șofer nu a fost schimbat.",
     "Restore point failed; continuing because the legacy caller explicitly selected -nostop.": "Punctul de restaurare a eșuat; continuă deoarece apelantul moștenit a selectat în mod explicit -nostop.",
     "Restore point: %1 · Reboot: %2": "Punct de restaurare: %1 · Repornire: %2",
@@ -711,11 +708,8 @@
     "Stop ignoring this device": "Nu mai ignorați acest dispozitiv",
     "Stopped safely after the active operation": "Oprit în siguranță după operațiunea activă",
     "Storage controllers / drives": "Controlere/unități de stocare",
-    "Support development": "Suport pentru dezvoltare",
     "Symbolic links are not accepted.": "Legăturile simbolice nu sunt acceptate.",
     "System Properties": "Sistēmas rekvizīti",
-    "System Restore API is unavailable.": "System Restore API nu este disponibil.",
-    "System Restore is unavailable on this Windows installation.": "System Restore nu este disponibil pentru această instalare Windows.",
     "System architecture": "Arhitectura sistemului",
     "System diagnostics": "Diagnosticare sistem",
     "System manufacturer": "Producător de sistem",
@@ -831,7 +825,6 @@
     "Windows could not export driver packages. Run as Administrator on a Windows version supporting DISM /Export-Driver; see export-log.txt.": "Windows nu a putut exporta pachetele de drivere. Rulați ca administrator pe o versiune Windows care acceptă DISM /Export-Driver; vezi export-log.txt.",
     "Windows could not open an Internet session.": "Windows nu a putut deschide o sesiune de Internet.",
     "Windows could not start the restart request.": "Windows nu a putut porni cererea de repornire.",
-    "Windows did not complete the restore point. Check System Protection and its service.": "Windows nu a finalizat punctul de restaurare. Verificați Protecția sistemului și serviciul acestuia.",
     "Windows did not grant permission to restart.": "Windows nu a acordat permisiunea de a reporni.",
     "Windows is exporting third-party driver packages...": "Windows exportă pachete de drivere terță parte...\nNumai",
     "Windows only": "Windows",
@@ -871,6 +864,7 @@
     "Copy": "Copiază",
     "Paste": "Lipește",
     "Delete": "Șterge",
-    "Status": "Stare"
+    "Status": "Stare",
+    "System Protection": "Protecția sistemului"
   }
 }

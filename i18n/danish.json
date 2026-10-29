@@ -213,7 +213,6 @@
     "Confirm driver installation": "Bekræft driverinstallation",
     "Conflicting update targets.": "Modstridende opdateringsmål.",
     "Connecting to torrent peers to complete verified blocks...": "Opretter forbindelse til torrent-peers for at fuldføre verificerede blokke...",
-    "Contact me": "Kontakt mig",
     "Continue": "Fortsæt",
     "Control Panel": "Kontrolpanel",
     "Copy hardware ID": "Kopiér hardware-id",
@@ -351,7 +350,6 @@
     "General settings": "Generelle indstillinger",
     "GitHub could not provide this release. Check the repository and published releases.": "GitHub kunne ikke levere denne udgivelse. Tjek lageret og offentliggjorte udgivelser.",
     "GitHub did not provide the required SHA-256 digest.": "GitHub leverede ikke den påkrævede SHA-256-sammenfatning.",
-    "GitHub projects": "GitHub projekter",
     "Graphics adapters": "grafikadaptere",
     "HKEY_LOCAL_MACHINE\\HARDWARE\\DESCRIPTION\\System\\BIOS": "HKEY_LOCAL_MACHINE\\HARDWARE\\DESCRIPTION\\System\\BIOS",
     "HKEY_LOCAL_MACHINE\\HARDWARE\\DESCRIPTION\\System\\CentralProcessor\\0": "HKEY_LOCAL_MACHINE\\HARDWARE\\DESCRIPTION\\System\\CentralProcessor\\0",
@@ -625,7 +623,6 @@
     "Restore all ignored devices": "Gendan alle ignorerede enheder",
     "Restore default": "Gendan standard",
     "Restore point (simulated)": "Gendannelsespunkt (simuleret)",
-    "Restore point creation failed. No driver installation was started.": "Oprettelse af gendannelsespunkt mislykkedes. Ingen driverinstallation blev startet.",
     "Restore point creation is unavailable. No driver was changed.": "Oprettelse af gendannelsespunkt er ikke tilgængelig. Ingen driver blev skiftet.",
     "Restore point failed; continuing because the legacy caller explicitly selected -nostop.": "Gendannelsespunkt mislykkedes; fortsætter, fordi den gamle opkalder eksplicit valgte -nostop.",
     "Restore point: %1 · Reboot: %2": "Gendannelsespunkt: %1 · Genstart: %2",
@@ -711,11 +708,8 @@
     "Stop ignoring this device": "Stop med at ignorere denne enhed",
     "Stopped safely after the active operation": "Stoppet sikkert efter den aktive drift",
     "Storage controllers / drives": "Lagercontrollere / drev",
-    "Support development": "Support udvikling",
     "Symbolic links are not accepted.": "Symbolske links accepteres ikke.",
     "System Properties": "Åben Indstillinger for system",
-    "System Restore API is unavailable.": "Systemgendannelses-API er ikke tilgængelig.",
-    "System Restore is unavailable on this Windows installation.": "Systemgendannelse er ikke tilgængelig på denne Windows-installation.",
     "System architecture": "Systemarkitektur",
     "System diagnostics": "Systemdiagnostik",
     "System manufacturer": "System producent",
@@ -831,7 +825,6 @@
     "Windows could not export driver packages. Run as Administrator on a Windows version supporting DISM /Export-Driver; see export-log.txt.": "Windows kunne ikke eksportere driverpakker. Kør som administrator på en Windows version, der understøtter DISM /Export-Driver; se eksport-log.txt.",
     "Windows could not open an Internet session.": "Windows kunne ikke åbne en internetsession.",
     "Windows could not start the restart request.": "Windows kunne ikke starte genstartsanmodningen.",
-    "Windows did not complete the restore point. Check System Protection and its service.": "Windows fuldførte ikke gendannelsespunktet. Tjek Systembeskyttelse og dens service.",
     "Windows did not grant permission to restart.": "Windows gav ikke tilladelse til at genstarte.",
     "Windows is exporting third-party driver packages...": "Windows eksporterer tredjeparts driverpakker...\nKun",
     "Windows only": "Windows",
@@ -871,6 +864,7 @@
     "Copy": "Kopiér",
     "Paste": "Sæt ind",
     "Delete": "Slet",
-    "Status": "Status"
+    "Status": "Status",
+    "System Protection": "Systembeskyttelse"
   }
 }

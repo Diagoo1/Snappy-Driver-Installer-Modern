@@ -213,7 +213,6 @@
     "Confirm driver installation": "Подтвердите установку драйвера.",
     "Conflicting update targets.": "Конфликтующие цели обновления.",
     "Connecting to torrent peers to complete verified blocks...": "Подключение к торрент-пирам для завершения проверенных блоков...",
-    "Contact me": "Свяжитесь со мной",
     "Continue": "Продолжить",
     "Control Panel": "Панель управления",
     "Copy hardware ID": "Скопировать идентификатор оборудования",
@@ -351,7 +350,6 @@
     "General settings": "Общие настройки",
     "GitHub could not provide this release. Check the repository and published releases.": "GitHub не смог предоставить этот выпуск. Проверьте репозиторий и опубликованные выпуски.",
     "GitHub did not provide the required SHA-256 digest.": "GitHub не предоставил требуемый дайджест SHA-256.",
-    "GitHub projects": "GitHub проекты",
     "Graphics adapters": "Графические адаптеры",
     "HKEY_LOCAL_MACHINE\\HARDWARE\\DESCRIPTION\\System\\BIOS": "HKEY_LOCAL_MACHINE\\HARDWARE\\DESCRIPTION\\System\\BIOS",
     "HKEY_LOCAL_MACHINE\\HARDWARE\\DESCRIPTION\\System\\CentralProcessor\\0": "HKEY_LOCAL_MACHINE\\HARDWARE\\DESCRIPTION\\System\\CentralProcessor\\0",
@@ -625,7 +623,6 @@
     "Restore all ignored devices": "Восстановить все игнорируемые устройства.",
     "Restore default": "Восстановить настройки по умолчанию",
     "Restore point (simulated)": "Точка восстановления (смоделированная)",
-    "Restore point creation failed. No driver installation was started.": "Не удалось создать точку восстановления. Установка драйвера не началась.",
     "Restore point creation is unavailable. No driver was changed.": "Создание точки восстановления недоступно. Ни один драйвер не менялся.",
     "Restore point failed; continuing because the legacy caller explicitly selected -nostop.": "Точка восстановления не удалась; продолжается, поскольку устаревший вызывающий абонент явно выбрал -nostop.",
     "Restore point: %1 · Reboot: %2": "Точка восстановления: %1 · Перезагрузка: %2",
@@ -711,11 +708,8 @@
     "Stop ignoring this device": "Перестаньте игнорировать это устройство.",
     "Stopped safely after the active operation": "Безопасно остановлен после активной операции.",
     "Storage controllers / drives": "Контроллеры/диски хранения данных",
-    "Support development": "Поддержка разработки",
     "Symbolic links are not accepted.": "Символические ссылки не принимаются.",
     "System Properties": "Настроить точки восстановления...",
-    "System Restore API is unavailable.": "API восстановления системы недоступен.",
-    "System Restore is unavailable on this Windows installation.": "недоступно для этой установки Windows.",
     "System architecture": "Архитектура системы",
     "System diagnostics": "Диагностика системы",
     "System manufacturer": "Производитель системы",
@@ -831,7 +825,6 @@
     "Windows could not export driver packages. Run as Administrator on a Windows version supporting DISM /Export-Driver; see export-log.txt.": "Windows не удалось экспортировать пакеты драйверов. Запускайте от имени администратора на версии Windows, поддерживающей DISM /Export-Driver; см. экспорт-log.txt.",
     "Windows could not open an Internet session.": "Windows не удалось открыть сеанс Интернета.",
     "Windows could not start the restart request.": "Windows не удалось запустить запрос на перезагрузку.",
-    "Windows did not complete the restore point. Check System Protection and its service.": "Windows не завершил точку восстановления. Проверьте защиту системы и ее обслуживание.",
     "Windows did not grant permission to restart.": "Windows не предоставил разрешение на перезагрузку.",
     "Windows is exporting third-party driver packages...": "Windows экспортирует сторонние пакеты драйверов...\nТолько",
     "Windows only": "Windows",
@@ -871,6 +864,7 @@
     "Copy": "Копировать",
     "Paste": "Вставить",
     "Delete": "Удалить",
-    "Status": "Статус"
+    "Status": "Статус",
+    "System Protection": "Защита системы"
   }
 }

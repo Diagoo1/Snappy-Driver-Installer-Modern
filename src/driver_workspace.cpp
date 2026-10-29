@@ -126,7 +126,7 @@ DriverWorkspace::DriverWorkspace(DriverCatalog *catalog,QWidget *parent)
 
     // One primary action: Scan -> Install (N) when a demo selection exists.
     // Everything else lives in quieter secondary controls below the hero.
-    QWidget *bar=new QWidget(this);
+    QWidget *bar=new SurfaceCard(this);
     bar->setObjectName(QStringLiteral("softSurface"));
     m_controlBar=bar;
     QHBoxLayout *hero=new QHBoxLayout(bar);
@@ -266,7 +266,7 @@ DriverWorkspace::DriverWorkspace(DriverCatalog *catalog,QWidget *parent)
     m_search->setMaximumWidth(380);
     m_search->setSizePolicy(QSizePolicy::Expanding,QSizePolicy::Fixed);
     filterDetails->addWidget(m_search);
-    QWidget *listToolbar=new QWidget(this);listToolbar->setObjectName(QStringLiteral("softSurface"));
+    QWidget *listToolbar=new SurfaceCard(this);listToolbar->setObjectName(QStringLiteral("softSurface"));
     filterDetails->setContentsMargins(14,8,14,8);listToolbar->setLayout(filterDetails);
     root->addWidget(listToolbar);
 

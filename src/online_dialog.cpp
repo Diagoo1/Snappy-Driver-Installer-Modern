@@ -1,3 +1,4 @@
+#include "appearance.h"
 #include "online_dialog.h"
 #include "ui_language.h"
 #include "sharing_restore.h"
@@ -66,7 +67,7 @@ OnlineDialog::OnlineDialog(const QString &drivers,const QString &indexes,const Q
     auto button=[this](const QString &text,const char *name){QPushButton *b=new ActionButton(text,this);b->setObjectName(QString::fromLatin1(name));b->setCursor(Qt::PointingHandCursor);return b;};
     QHBoxLayout *source=new QHBoxLayout();m_check=button(trText("Check for updates","البحث عن تحديثات"),"outlineButton");m_import=button(trText("Open catalog file...","فتح ملف التحديثات..."),"textLinkButton");source->addWidget(m_check);source->addWidget(m_import);source->addStretch();QLineEdit *search=new QLineEdit(this);search->setPlaceholderText(trText("Find a package...","ابحث عن حزمة..."));search->setMaximumWidth(280);search->setClearButtonEnabled(true);source->addWidget(search,1);root->addLayout(source);
     ActionButton *transferToggle=new ActionButton(trText("Transfer settings","إعدادات النقل"),this);transferToggle->setObjectName(QStringLiteral("textLinkButton"));source->insertWidget(2,transferToggle);
-    m_transferPanel=new QWidget(this);m_transferPanel->setObjectName(QStringLiteral("softSurface"));QGridLayout *transferGrid=new QGridLayout(m_transferPanel);transferGrid->setContentsMargins(14,11,14,11);transferGrid->setHorizontalSpacing(12);
+    m_transferPanel=new SurfaceCard(this);m_transferPanel->setObjectName(QStringLiteral("softSurface"));QGridLayout *transferGrid=new QGridLayout(m_transferPanel);transferGrid->setContentsMargins(14,11,14,11);transferGrid->setHorizontalSpacing(12);
     auto spin=[&](const QString &caption,int low,int high,int value,int column){QLabel *label=new QLabel(caption,m_transferPanel);label->setObjectName(QStringLiteral("subText"));transferGrid->addWidget(label,0,column);QSpinBox *input=new QSpinBox(m_transferPanel);input->setRange(low,high);input->setValue(value);input->setMinimumWidth(110);transferGrid->addWidget(input,1,column);return input;};
     QScopedPointer<QSettings> preferences(createAppSettings(QCoreApplication::applicationDirPath(),0,false));
     m_downloadLimit=spin(trText("Download KiB/s","التنزيل KiB/s"),0,102400,preferences->value(QStringLiteral("transfer/downloadKiB"),0).toInt(),0);m_downloadLimit->setSpecialValueText(trText("Unlimited","غير محدود"));

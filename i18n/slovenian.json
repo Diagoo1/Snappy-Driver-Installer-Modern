@@ -212,7 +212,6 @@
     "Confirm driver installation": "Potrdite namestitev gonilnika",
     "Conflicting update targets.": "Cilji posodobitve v nasprotju.",
     "Connecting to torrent peers to complete verified blocks...": "Povezovanje s torrent peerji za dokončanje preverjenih blokov ...",
-    "Contact me": "Kontaktirajte me",
     "Continue": "Nadaljuj",
     "Control Panel": "Nadzorna plošča",
     "Copy hardware ID": "Kopiraj ID strojne opreme",
@@ -350,7 +349,6 @@
     "General settings": "Splošne nastavitve\nProjekti",
     "GitHub could not provide this release. Check the repository and published releases.": "GitHub ni mogel zagotoviti te izdaje. Preverite repozitorij in objavljene izdaje.",
     "GitHub did not provide the required SHA-256 digest.": "GitHub ni zagotovil zahtevanega izvlečka SHA-256.",
-    "GitHub projects": "GitHub",
     "Graphics adapters": "Grafični adapterji",
     "HKEY_LOCAL_MACHINE\\HARDWARE\\DESCRIPTION\\System\\BIOS": "HKEY_LOCAL_MACHINE\\HARDWARE\\DESCRIPTION\\System\\BIOS",
     "HKEY_LOCAL_MACHINE\\HARDWARE\\DESCRIPTION\\System\\CentralProcessor\\0": "HKEY_LOCAL_MACHINE\\HARDWARE\\DESCRIPTION\\System\\CentralProcessor\\0",
@@ -624,7 +622,6 @@
     "Restore all ignored devices": "Obnovi vse prezrte naprave",
     "Restore default": "Obnovi privzeto",
     "Restore point (simulated)": "Obnovitvena točka (simulirano)",
-    "Restore point creation failed. No driver installation was started.": "Ustvarjanje obnovitvene točke ni uspelo. Namestitev gonilnika se ni začela.",
     "Restore point creation is unavailable. No driver was changed.": "Ustvarjanje obnovitvene točke ni na voljo. Noben voznik ni bil spremenjen.",
     "Restore point failed; continuing because the legacy caller explicitly selected -nostop.": "Obnovitvena točka ni uspela; nadaljuje, ker je stari klicatelj izrecno izbral -nostop.",
     "Restore point: %1 · Reboot: %2": "Obnovitvena točka: %1 · Ponovni zagon: %2",
@@ -710,11 +707,8 @@
     "Stop ignoring this device": "Nehajte ignorirati to napravo",
     "Stopped safely after the active operation": "Varno ustavljen po aktivni operaciji",
     "Storage controllers / drives": "Krmilniki/pogoni za shranjevanje",
-    "Support development": "Podpira razvoj",
     "Symbolic links are not accepted.": "Simbolične povezave niso sprejete.\nAPI za obnovitev sistema",
     "System Properties": "Lastnosti sistema",
-    "System Restore API is unavailable.": "ni na voljo.",
-    "System Restore is unavailable on this Windows installation.": "v tej namestitvi Windows ni na voljo.",
     "System architecture": "Arhitektura sistema",
     "System diagnostics": "Diagnostika sistema",
     "System manufacturer": "Proizvajalec sistema",
@@ -830,7 +824,6 @@
     "Windows could not export driver packages. Run as Administrator on a Windows version supporting DISM /Export-Driver; see export-log.txt.": "Windows ni mogel izvoziti paketov gonilnikov. Zaženite kot skrbnik v različici Windows, ki podpira DISM /Export-Driver; glejte export-log.txt.",
     "Windows could not open an Internet session.": "Windows ni mogel odpreti internetne seje.",
     "Windows could not start the restart request.": "Windows ni mogel zagnati zahteve za ponovni zagon.",
-    "Windows did not complete the restore point. Check System Protection and its service.": "Windows ni dokončal obnovitvene točke. Preverite zaščito sistema in njeno storitev.",
     "Windows did not grant permission to restart.": "Windows ni dal dovoljenja za ponovni zagon.",
     "Windows is exporting third-party driver packages...": "Windows izvaža pakete gonilnikov tretjih oseb ...\nSamo",
     "Windows only": "Windows",
@@ -871,6 +864,7 @@
     "Copy": "Kopiraj",
     "Paste": "Prilepi",
     "Delete": "Izbriši",
-    "Status": "Stanje"
+    "Status": "Stanje",
+    "System Protection": "Zaščita sistema"
   }
 }

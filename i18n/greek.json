@@ -213,7 +213,6 @@
     "Confirm driver installation": "Επιβεβαιώστε την εγκατάσταση του προγράμματος οδήγησης",
     "Conflicting update targets.": "Αντικρουόμενοι στόχοι ενημέρωσης.",
     "Connecting to torrent peers to complete verified blocks...": "Σύνδεση σε peers torrent για να ολοκληρώσετε επαληθευμένα μπλοκ...",
-    "Contact me": "Επικοινωνήστε μαζί μου",
     "Continue": "Συνέχεια",
     "Control Panel": "Πίνακας ελέγχου",
     "Copy hardware ID": "Αντιγραφή αναγνωριστικού υλικού",
@@ -351,7 +350,6 @@
     "General settings": "Γενικές ρυθμίσεις\nΈργα",
     "GitHub could not provide this release. Check the repository and published releases.": "Το GitHub δεν μπόρεσε να παράσχει αυτήν την έκδοση. Ελέγξτε το αποθετήριο και τις δημοσιευμένες εκδόσεις.\nΤο",
     "GitHub did not provide the required SHA-256 digest.": "Το GitHub δεν παρείχε την απαιτούμενη σύνοψη SHA-256.",
-    "GitHub projects": "GitHub\nΠροσαρμογείς γραφικών",
     "Graphics adapters": "Εγκατεστημένο πρόγραμμα οδήγησης",
     "HKEY_LOCAL_MACHINE\\HARDWARE\\DESCRIPTION\\System\\BIOS": "HKEY_LOCAL_MACHINE\\HARDWARE\\DESCRIPTION\\System\\BIOS",
     "HKEY_LOCAL_MACHINE\\HARDWARE\\DESCRIPTION\\System\\CentralProcessor\\0": "HKEY_LOCAL_MACHINE\\HARDWARE\\DESCRIPTION\\System\\CentralProcessor\\0",
@@ -625,7 +623,6 @@
     "Restore all ignored devices": "Επαναφέρετε όλες τις συσκευές που αγνοήθηκαν",
     "Restore default": "Επαναφορά προεπιλογής\nΣημείο επαναφοράς",
     "Restore point (simulated)": "(προσομοίωση)",
-    "Restore point creation failed. No driver installation was started.": "Η δημιουργία σημείου επαναφοράς απέτυχε. Δεν ξεκίνησε η εγκατάσταση του προγράμματος οδήγησης.\nΗ δημιουργία σημείου επαναφοράς",
     "Restore point creation is unavailable. No driver was changed.": "δεν είναι διαθέσιμη. Κανένας οδηγός δεν άλλαξε.",
     "Restore point failed; continuing because the legacy caller explicitly selected -nostop.": "Το σημείο επαναφοράς απέτυχε. συνεχίζει επειδή ο καλών παλαιού τύπου επέλεξε ρητά -nostop.",
     "Restore point: %1 · Reboot: %2": "Σημείο επαναφοράς: %1 · Επανεκκίνηση: %2",
@@ -711,11 +708,8 @@
     "Stop ignoring this device": "Σταματήστε να αγνοείτε αυτήν τη συσκευή",
     "Stopped safely after the active operation": "Σταμάτησε με ασφάλεια μετά την ενεργή λειτουργία",
     "Storage controllers / drives": "Ελεγκτές / μονάδες αποθήκευσης",
-    "Support development": "Ανάπτυξη υποστήριξης",
     "Symbolic links are not accepted.": "Οι συμβολικοί σύνδεσμοι δεν γίνονται δεκτοί.\nΤο",
     "System Properties": "Ανοίξτε τις Ιδιότητες συστήματος...",
-    "System Restore API is unavailable.": "System Restore API δεν είναι διαθέσιμο.",
-    "System Restore is unavailable on this Windows installation.": "System Restore δεν είναι διαθέσιμο σε αυτήν την εγκατάσταση Windows.",
     "System architecture": "Αρχιτεκτονική συστήματος",
     "System diagnostics": "Διαγνωστικά συστήματος\nΚατασκευαστής συστήματος",
     "System manufacturer": "Προεπισκόπηση θέματος",
@@ -831,7 +825,6 @@
     "Windows could not export driver packages. Run as Administrator on a Windows version supporting DISM /Export-Driver; see export-log.txt.": "Το Windows δεν μπόρεσε να εξάγει πακέτα προγραμμάτων οδήγησης. Εκτέλεση ως Διαχειριστής σε έκδοση Windows που υποστηρίζει DISM /Εξαγωγή-Πρόγραμμα οδήγησης. δείτε το export-log.txt.\nΤο",
     "Windows could not open an Internet session.": "Το Windows δεν μπόρεσε να ανοίξει μια περίοδο λειτουργίας Διαδικτύου.\nΤο",
     "Windows could not start the restart request.": "Το Windows δεν μπόρεσε να ξεκινήσει το αίτημα επανεκκίνησης.\nΤο",
-    "Windows did not complete the restore point. Check System Protection and its service.": "Το Windows δεν ολοκλήρωσε το σημείο επαναφοράς. Ελέγξτε την Προστασία συστήματος και την εξυπηρέτησή της.\nΤο",
     "Windows did not grant permission to restart.": "Το Windows δεν χορήγησε άδεια επανεκκίνησης.",
     "Windows is exporting third-party driver packages...": "Windows εξάγει πακέτα προγραμμάτων οδήγησης τρίτων...",
     "Windows only": "Windows μόνο\nΤο",
@@ -871,6 +864,7 @@
     "Copy": "Αντιγραφή",
     "Paste": "Επικόλληση",
     "Delete": "Διαγραφή",
-    "Status": "Κατάσταση"
+    "Status": "Κατάσταση",
+    "System Protection": "Προστασία συστήματος"
   }
 }

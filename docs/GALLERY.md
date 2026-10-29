@@ -17,11 +17,11 @@ Review the minimal environment details before opening the public GitHub issue fo
 | --- | --- | --- | --- |
 | ![Report preview](screenshots/en-light/18-report-bug.png) | ![Report preview](screenshots/en-dark/18-report-bug.png) | ![معاينة البلاغ](screenshots/ar-light/18-report-bug.png) | ![معاينة البلاغ](screenshots/ar-dark/18-report-bug.png) |
 
-80 screenshots from the application's actual Qt interface: English/Arabic and light/dark. Click any image for full size.
+84 screenshots from the application's actual Qt interface: English/Arabic and light/dark. Click any image for full size.
 
 **All screenshots use illustrative device data. Installation and completion screens show the explicit simulation mode; no real drivers were installed, no restore point was created and no reboot was performed. Download screens use a local test catalog and do not show an actual transfer.** Personal machine names, real instance IDs and user-folder paths are excluded.
 
-80 صورة من واجهة البرنامج الفعلية بالعربية والإنجليزية والوضعين الفاتح والداكن. جميع بيانات الأجهزة توضيحية. **صور التثبيت والاكتمال محاكاة فقط، وليست إثباتًا لتثبيت فعلي.** اضغط الصورة لعرضها بالحجم الكامل.
+84 صورة من واجهة البرنامج الفعلية بالعربية والإنجليزية والوضعين الفاتح والداكن. جميع بيانات الأجهزة توضيحية. **صور التثبيت والاكتمال محاكاة فقط، وليست إثباتًا لتثبيت فعلي.** اضغط الصورة لعرضها بالحجم الكامل.
 
 The gallery is reproducible with `tests/ui/interaction_test.pro`: run the test executable with `--publication-gallery <output-directory>`. It uses isolated preferences and sanitizes diagnostic values before capture. See [capture manifest](screenshots/manifest.json).
 
@@ -127,3 +127,11 @@ The gallery is reproducible with `tests/ui/interaction_test.pro`: run the test e
 | --- | --- | --- | --- |
 | [![Rounded text menus / قوائم النصوص الدائرية — en-light](screenshots/en-light/17-text-menu.png)](screenshots/en-light/17-text-menu.png) | [![Rounded text menus / قوائم النصوص الدائرية — en-dark](screenshots/en-dark/17-text-menu.png)](screenshots/en-dark/17-text-menu.png) | [![Rounded text menus / قوائم النصوص الدائرية — ar-light](screenshots/ar-light/17-text-menu.png)](screenshots/ar-light/17-text-menu.png) | [![Rounded text menus / قوائم النصوص الدائرية — ar-dark](screenshots/ar-dark/17-text-menu.png)](screenshots/ar-dark/17-text-menu.png) |
 
+
+## Restore failure example / مثال توضيحي لفشل الاستعادة
+
+This is an injected example, not a restore operation or diagnosis of the development PC.
+
+| English · Light | العربية · داكن |
+| --- | --- |
+| ![Restore failure example](screenshots/en-light/21-restore-error-example.png) | ![مثال لفشل الاستعادة](screenshots/ar-dark/21-restore-error-example.png) |

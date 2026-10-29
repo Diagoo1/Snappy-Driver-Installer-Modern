@@ -189,6 +189,7 @@ MainWindow::MainWindow(bool demo,QWidget *parent)
     m_toolsDrawer->setGeometry(0,m_titleBar->height(),width(),height()-m_titleBar->height());
     m_toolsDrawer->setMotionEnabled(!m_reduceMotion);
     connect(m_toolsDrawer,&ToolsDrawer::actionRequested,this,&MainWindow::dispatchTool);
+    connect(m_installation,&InstallationWorkspace::systemProtectionRequested,this,[this](){dispatchTool(QStringLiteral("system-protection"));});
 
     connect(m_sidebar,&Sidebar::pageRequested,this,&MainWindow::navigate);
     connect(m_titleBar,&TitleBar::refreshRequested,this,&MainWindow::beginScan);
@@ -610,6 +611,11 @@ void MainWindow::dispatchTool(const QString &id)
 
 #ifdef Q_OS_WIN
     // Windows tools are OS control-panel shortcuts, not SDIO driver operations.
+    if(id==QStringLiteral("system-protection")){
+        const QDir windows(QString::fromLocal8Bit(qgetenv("SystemRoot")));QString panel=windows.filePath(QStringLiteral("Sysnative/SystemPropertiesProtection.exe"));if(!QFileInfo(panel).isFile())panel=windows.filePath(QStringLiteral("System32/SystemPropertiesProtection.exe"));
+        const bool ok=QFileInfo(panel).isFile()?QProcess::startDetached(panel):QProcess::startDetached(windows.filePath(QStringLiteral("System32/control.exe")),QStringList()<<QStringLiteral("sysdm.cpl,,4"));
+        if(!ok)projectMessage(this,t("Cannot open tool","تعذّر فتح الأداة"),t("Open System Protection from Windows System Properties.","افتح حماية النظام من خصائص ويندوز."));return;
+    }
     const QStringList ids=QStringList()<<QStringLiteral("uninstall")<<QStringLiteral("device-manager")
       <<QStringLiteral("system-properties")<<QStringLiteral("display-settings")
       <<QStringLiteral("power-options")<<QStringLiteral("network-connections")
@@ -765,21 +771,21 @@ QWidget *MainWindow::createOffline()
     m_offlineStatus=newLabel(QString(),"libraryStatus",body);m_offlineStatus->setStyleSheet(QStringLiteral("color:#138E8C;background:transparent;font-size:13px;font-weight:600;padding:7px 3px;"));layout->addWidget(m_offlineStatus);
     QHBoxLayout *folders=new QHBoxLayout;folders->setSpacing(15);
     auto folder=[&](const QString &heading,const QString &hint,const QString &icon,QLabel **path,QPushButton **browse){
-        QWidget *card=new QWidget(body);card->setObjectName(QStringLiteral("softSurface"));QVBoxLayout *form=new QVBoxLayout(card);form->setContentsMargins(21,21,21,21);form->setSpacing(13);
+        QWidget *card=new SurfaceCard(body);card->setObjectName(QStringLiteral("softSurface"));QVBoxLayout *form=new QVBoxLayout(card);form->setContentsMargins(21,21,21,21);form->setSpacing(13);
         QHBoxLayout *top=new QHBoxLayout;QLabel *mark=new QLabel(card);mark->setPixmap(VectorIcons::pixmap(icon,QColor("#00A99E"),26));top->addWidget(mark);top->addSpacing(5);top->addWidget(icon==QStringLiteral("layers")?translatedLabel("Driver archives","أرشيفات التعريفات","sectionTitle",card):translatedLabel("Device indexes","فهارس الأجهزة","sectionTitle",card),1);form->addLayout(top);Q_UNUSED(heading);
         form->addWidget(icon==QStringLiteral("layers")?translatedLabel("The .7z packages used for installation.","حزم .7z المستخدمة في التثبيت.","subText",card):translatedLabel("Small files that help find matching versions.","ملفات صغيرة للعثور على الإصدارات المتوافقة.","subText",card));Q_UNUSED(hint);*path=newLabel(QString(),"bodyText",card);(*path)->setMinimumHeight(52);(*path)->setWordWrap(true);(*path)->setTextInteractionFlags(Qt::TextSelectableByMouse);form->addWidget(*path);
         *browse=translatedButton("Choose folder","اختيار المجلد","outlineButton",card);(*browse)->setIcon(VectorIcons::icon(QStringLiteral("folder"),QColor("#258F9E"),18));form->addWidget(*browse);folders->addWidget(card,1);
     };
     folder(t("Driver archives","أرشيفات التعريفات"),t("The .7z packages used for installation.","حزم .7z المستخدمة في التثبيت."),QStringLiteral("layers"),&m_driversFolder,&m_driversBrowse);
     folder(t("Device indexes","فهارس الأجهزة"),t("Small files that help find matching versions.","ملفات صغيرة للعثور على الإصدارات المتوافقة."),QStringLiteral("search"),&m_indexesFolder,&m_indexesBrowse);layout->addLayout(folders);
-    QWidget *actions=new QWidget(body);actions->setObjectName(QStringLiteral("softSurface"));QVBoxLayout *box=new QVBoxLayout(actions);box->setContentsMargins(23,20,23,21);box->setSpacing(13);
+    QWidget *actions=new SurfaceCard(body);actions->setObjectName(QStringLiteral("softSurface"));QVBoxLayout *box=new QVBoxLayout(actions);box->setContentsMargins(23,20,23,21);box->setSpacing(13);
     box->addWidget(translatedLabel("Keep your library ready","جهّز مكتبتك للتحديث","sectionTitle",actions));
     m_probeHint=translatedLabel("Download indexes, scan this computer, then get the packages you need.","نزّل الفهارس، وافحص جهازك، ثم احصل على الحزم المطلوبة.","subText",actions);box->addWidget(m_probeHint);
     QHBoxLayout *buttons=new QHBoxLayout;buttons->setSpacing(12);m_onlineButton=translatedButton("Download indexes & packages...","تنزيل الفهارس والحزم...","primaryButton",actions);m_onlineButton->setMinimumHeight(46);buttons->addWidget(m_onlineButton,1);
     m_probeButton=translatedButton("Scan driver library","فحص مكتبة التعريفات","outlineButton",actions);m_probeButton->setMinimumHeight(46);buttons->addWidget(m_probeButton,1);box->addLayout(buttons);
     m_probeStatus=newLabel(QString(),"subText",actions);m_probeStatus->setWordWrap(true);box->addWidget(m_probeStatus);m_toolsFolder=newLabel(QString(),"subText",actions);m_toolsFolder->hide();
     ActionButton *portable=new ActionButton(t("Create portable USB library...","إنشاء مكتبة USB محمولة..."),actions);portable->setObjectName(QStringLiteral("textLinkButton"));portable->setProperty("englishCopy",QStringLiteral("Create portable USB library..."));portable->setProperty("arabicCopy",QString::fromUtf8("إنشاء مكتبة USB محمولة..."));box->addWidget(portable);
-    connect(portable,&QPushButton::clicked,this,[this](){if(m_engine->isBusy())return;QStringList packages;for(const DriverEntry &entry:m_catalog->entries())for(const DriverCandidate &candidate:entry.candidates)if(candidate.recommended && candidate.local && !packages.contains(candidate.packageSource,Qt::CaseInsensitive))packages<<candidate.packageSource;openPortableLibrary(this,m_driversPath,resolveIndexDirectory(m_indexesPath),packages,m_arabic);});
+    connect(portable,&QPushButton::clicked,this,[this](){if(m_engine->isBusy())return;QStringList packages;for(const DriverEntry &entry:m_catalog->entries())for(const DriverCandidate &candidate:entry.candidates)if(candidate.recommended && candidate.local && !packages.contains(candidate.packageSource,Qt::CaseInsensitive))packages<<candidate.packageSource;openPortableLibrary(this,m_driversPath,resolveIndexDirectory(m_indexesPath,m_driversPath),packages,m_arabic);});
     connect(m_onlineButton,&QPushButton::clicked,this,[this](){openOnlinePackages();});layout->addWidget(actions);layout->addStretch(1);scroll->setWidget(body);return page;
 }
 QWidget *MainWindow::createSettings()
@@ -951,11 +957,12 @@ void MainWindow::updateOffline()
 {
     m_driversFolder->setText(m_driversPath);m_indexesFolder->setText(m_indexesPath);
     m_toolsFolder->setText(QDir(m_toolsPath).exists()?m_toolsPath:QStringLiteral("Not present (optional)"));
-    const QDir drivers(m_driversPath),indexes(resolveIndexDirectory(m_indexesPath));
+    const QDir drivers(m_driversPath),indexes(resolveIndexDirectory(m_indexesPath,m_driversPath));
     const int count=drivers.exists()?drivers.entryList(QStringList()<<QStringLiteral("*.7z"),QDir::Files|QDir::Hidden|QDir::System).size():0;
     const int idx=indexes.exists()?indexes.entryList(QStringList()<<QStringLiteral("*.bin"),QDir::Files|QDir::Hidden|QDir::System).size():0;
     const bool ready=drivers.exists() && indexes.exists() && count>0 && idx>0;
     m_offlineStatus->setText(t("%1 packages  ·  %2 indexes  ·  %3","%1 حزمة  ·  %2 فهرس  ·  %3").arg(count).arg(idx).arg(ready?t("Library ready","المكتبة جاهزة"):t("Choose your folders to get started","اختر المجلدات للبدء")));
+    m_offlineStatus->setText(m_offlineStatus->text()+QStringLiteral(" · ")+UiLanguage::text(libraryFamily(m_driversPath,indexes.absolutePath())));
     m_probeHint->setText(t("Download indexes, scan this computer, then get the packages you need.","نزّل الفهارس، وافحص جهازك، ثم احصل على الحزم المطلوبة."));
 
 }
@@ -1122,7 +1129,7 @@ void MainWindow::openOnlinePackages(const QString &package){
     QStringList needed;if(!package.isEmpty())needed<<package;
     else for(const DriverEntry &entry:m_catalog->entries())for(const DriverCandidate &candidate:entry.candidates)
         if(candidate.engineToken && candidate.recommended && !candidate.local && !needed.contains(candidate.packageSource,Qt::CaseInsensitive))needed<<candidate.packageSource;
-    OnlineDialog dialog(m_driversPath,resolveIndexDirectory(m_indexesPath),needed,m_arabic,this);dialog.exec();
+    OnlineDialog dialog(m_driversPath,resolveIndexDirectory(m_indexesPath,m_driversPath),needed,m_arabic,this);dialog.exec();
     if(!dialog.lastError().isEmpty())m_lastEngineError=dialog.lastError();
     if(dialog.filesChanged()){
         m_catalog->invalidateNative();updateOffline();

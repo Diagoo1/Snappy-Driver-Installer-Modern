@@ -213,7 +213,6 @@
     "Confirm driver installation": "Confirmeu la instal·lació del controlador",
     "Conflicting update targets.": "Objectius d'actualització en conflicte.",
     "Connecting to torrent peers to complete verified blocks...": "S'està connectant a pares de torrent per completar blocs verificats...",
-    "Contact me": "Contacteu amb mi",
     "Continue": "Continua",
     "Control Panel": "Контролен панел",
     "Copy hardware ID": "Copia l'ID de maquinari",
@@ -351,7 +350,6 @@
     "General settings": "Configuració general\nProjectes",
     "GitHub could not provide this release. Check the repository and published releases.": "GitHub no ha pogut proporcionar aquesta versió. Comproveu el repositori i les versions publicades.",
     "GitHub did not provide the required SHA-256 digest.": "GitHub no va proporcionar el resum SHA-256 requerit.",
-    "GitHub projects": "GitHub",
     "Graphics adapters": "Adaptadors gràfics",
     "HKEY_LOCAL_MACHINE\\HARDWARE\\DESCRIPTION\\System\\BIOS": "HKEY_LOCAL_MACHINE\\HARDWARE\\DESCRIPTION\\System\\BIOS",
     "HKEY_LOCAL_MACHINE\\HARDWARE\\DESCRIPTION\\System\\CentralProcessor\\0": "HKEY_LOCAL_MACHINE\\HARDWARE\\DESCRIPTION\\System\\CentralProcessor\\0",
@@ -625,7 +623,6 @@
     "Restore all ignored devices": "Restaura tots els dispositius ignorats",
     "Restore default": "Restaura el valor predeterminat",
     "Restore point (simulated)": "Punt de restauració (simulat)",
-    "Restore point creation failed. No driver installation was started.": "La creació del punt de restauració ha fallat. No s'ha iniciat cap instal·lació del controlador.",
     "Restore point creation is unavailable. No driver was changed.": "La creació del punt de restauració no està disponible. No es va canviar cap conductor.",
     "Restore point failed; continuing because the legacy caller explicitly selected -nostop.": "El punt de restauració ha fallat; continua perquè la persona que truca heretada ha seleccionat explícitament -nostop.",
     "Restore point: %1 · Reboot: %2": "Punt de restauració: %1 · Reinici: %2",
@@ -711,11 +708,8 @@
     "Stop ignoring this device": "Deixeu d'ignorar aquest dispositiu",
     "Stopped safely after the active operation": "S'ha aturat amb seguretat després de l'operació activa",
     "Storage controllers / drives": "Controladors/unitats d'emmagatzematge",
-    "Support development": "Suport al desenvolupament",
     "Symbolic links are not accepted.": "No s'accepten enllaços simbòlics.\nL'API de restauració del sistema",
     "System Properties": "Obrir Propietats de Sistema",
-    "System Restore API is unavailable.": "no està disponible.",
-    "System Restore is unavailable on this Windows installation.": "no està disponible en aquesta instal·lació de Windows.",
     "System architecture": "Arquitectura del sistema",
     "System diagnostics": "Diagnòstic del sistema",
     "System manufacturer": "Fabricant del sistema",
@@ -831,7 +825,6 @@
     "Windows could not export driver packages. Run as Administrator on a Windows version supporting DISM /Export-Driver; see export-log.txt.": "Windows no ha pogut exportar paquets de controladors. Executeu com a administrador en una versió Windows compatible amb DISM /Export-Driver; vegeu export-log.txt.",
     "Windows could not open an Internet session.": "Windows no ha pogut obrir una sessió d'Internet.",
     "Windows could not start the restart request.": "Windows no ha pogut iniciar la sol·licitud de reinici.",
-    "Windows did not complete the restore point. Check System Protection and its service.": "Windows no ha completat el punt de restauració. Comproveu la protecció del sistema i el seu servei.",
     "Windows did not grant permission to restart.": "Windows no va concedir permís per reiniciar.",
     "Windows is exporting third-party driver packages...": "Windows està exportant paquets de controladors de tercers...",
     "Windows only": "Només Windows",
@@ -871,6 +864,7 @@
     "Copy": "Copia",
     "Paste": "Enganxa",
     "Delete": "Suprimeix",
-    "Status": "Estat"
+    "Status": "Estat",
+    "System Protection": "Защита на системата"
   }
 }

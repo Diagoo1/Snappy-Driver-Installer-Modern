@@ -213,7 +213,6 @@
     "Confirm driver installation": "Confirmar la instalación del controlador",
     "Conflicting update targets.": "Objetivos de actualización en conflicto.",
     "Connecting to torrent peers to complete verified blocks...": "Conectándose a pares de torrent para completar bloques verificados...",
-    "Contact me": "Contáctame",
     "Continue": "Continuar",
     "Control Panel": "Panel de control",
     "Copy hardware ID": "Copiar ID de hardware",
@@ -351,7 +350,6 @@
     "General settings": "Configuraciones generales\nProyectos",
     "GitHub could not provide this release. Check the repository and published releases.": "GitHub no pudo proporcionar esta versión. Consulta el repositorio y los lanzamientos publicados.",
     "GitHub did not provide the required SHA-256 digest.": "GitHub no proporcionó el resumen SHA-256 requerido.",
-    "GitHub projects": "GitHub\nAdaptadores gráficos",
     "Graphics adapters": "CONTROLADOR INSTALADO",
     "HKEY_LOCAL_MACHINE\\HARDWARE\\DESCRIPTION\\System\\BIOS": "HKEY_LOCAL_MACHINE\\HARDWARE\\DESCRIPTION\\Sistema\\BIOS",
     "HKEY_LOCAL_MACHINE\\HARDWARE\\DESCRIPTION\\System\\CentralProcessor\\0": "HKEY_LOCAL_MACHINE\\HARDWARE\\DESCRIPTION\\System\\CentralProcessor\\0",
@@ -625,7 +623,6 @@
     "Restore all ignored devices": "Restaurar todos los dispositivos ignorados",
     "Restore default": "Restaurar valor predeterminado",
     "Restore point (simulated)": "Punto de restauración (simulado)",
-    "Restore point creation failed. No driver installation was started.": "Error al crear el punto de restauración. No se inició ninguna instalación del controlador.",
     "Restore point creation is unavailable. No driver was changed.": "La creación de puntos de restauración no está disponible. No se cambió ningún conductor.",
     "Restore point failed; continuing because the legacy caller explicitly selected -nostop.": "Error en el punto de restauración; continúa porque la persona que llama heredada seleccionó explícitamente -nostop.",
     "Restore point: %1 · Reboot: %2": "Punto de restauración: %1 · Reinicio: %2",
@@ -711,11 +708,8 @@
     "Stop ignoring this device": "Deja de ignorar este dispositivo",
     "Stopped safely after the active operation": "Detenido de forma segura después de la operación activa\nControladores/unidades de almacenamiento",
     "Storage controllers / drives": "Actualización",
-    "Support development": "Desarrollo de soporte",
     "Symbolic links are not accepted.": "No se aceptan enlaces simbólicos.",
     "System Properties": "Abrir Propiedes de Sistema...",
-    "System Restore API is unavailable.": "La API de restauración del sistema no está disponible.",
-    "System Restore is unavailable on this Windows installation.": "no está disponible en esta instalación de Windows.",
     "System architecture": "Arquitectura del sistema",
     "System diagnostics": "Diagnóstico del sistema",
     "System manufacturer": "Fabricante del sistema",
@@ -831,7 +825,6 @@
     "Windows could not export driver packages. Run as Administrator on a Windows version supporting DISM /Export-Driver; see export-log.txt.": "Windows no pudo exportar paquetes de controladores. Ejecútelo como administrador en una versión Windows compatible con DISM /Export-Driver; consulte export-log.txt.",
     "Windows could not open an Internet session.": "Windows no pudo abrir una sesión de Internet.",
     "Windows could not start the restart request.": "Windows no pudo iniciar la solicitud de reinicio.",
-    "Windows did not complete the restore point. Check System Protection and its service.": "Windows no completó el punto de restauración. Verifique la protección del sistema y su servicio.",
     "Windows did not grant permission to restart.": "Windows no otorgó permiso para reiniciar.",
     "Windows is exporting third-party driver packages...": "Windows está exportando paquetes de controladores de terceros...",
     "Windows only": "Windows solamente",
@@ -871,6 +864,7 @@
     "Copy": "Copiar",
     "Paste": "Pegar",
     "Delete": "Eliminar",
-    "Status": "Estado"
+    "Status": "Estado",
+    "System Protection": "Proteccion del sistema"
   }
 }

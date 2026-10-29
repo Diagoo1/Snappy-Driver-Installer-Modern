@@ -213,7 +213,6 @@
     "Confirm driver installation": "드라이버 설치 확인",
     "Conflicting update targets.": "업데이트 대상이 충돌합니다.",
     "Connecting to torrent peers to complete verified blocks...": "검증된 블록을 완료하기 위해 토렌트 피어에 연결하는 중...",
-    "Contact me": "저에게 연락하세요",
     "Continue": "계속",
     "Control Panel": "제어판",
     "Copy hardware ID": "하드웨어 ID 복사",
@@ -351,7 +350,6 @@
     "General settings": "일반 설정",
     "GitHub could not provide this release. Check the repository and published releases.": "GitHub는 이 릴리스를 제공할 수 없습니다. 저장소와 게시된 릴리스를 확인하세요.",
     "GitHub did not provide the required SHA-256 digest.": "GitHub가 필수 SHA-256 다이제스트를 제공하지 않았습니다.",
-    "GitHub projects": "GitHub 프로젝트",
     "Graphics adapters": "그래픽 어댑터",
     "HKEY_LOCAL_MACHINE\\HARDWARE\\DESCRIPTION\\System\\BIOS": "HKEY_LOCAL_MACHINE\\HARDWARE\\DESCRIPTION\\System\\BIOS",
     "HKEY_LOCAL_MACHINE\\HARDWARE\\DESCRIPTION\\System\\CentralProcessor\\0": "HKEY_LOCAL_MACHINE\\HARDWARE\\DESCRIPTION\\System\\CentralProcessor\\0",
@@ -625,7 +623,6 @@
     "Restore all ignored devices": "무시된 모든 장치 복원",
     "Restore default": "기본값 복원",
     "Restore point (simulated)": "복원 지점(시뮬레이션)",
-    "Restore point creation failed. No driver installation was started.": "복원 지점 생성에 실패했습니다. 드라이버 설치가 시작되지 않았습니다.",
     "Restore point creation is unavailable. No driver was changed.": "복원 지점 생성을 사용할 수 없습니다. 드라이버가 변경되지 않았습니다.",
     "Restore point failed; continuing because the legacy caller explicitly selected -nostop.": "복원 지점이 실패했습니다. 레거시 호출자가 명시적으로 -nostop을 선택했기 때문에 계속됩니다.",
     "Restore point: %1 · Reboot: %2": "복원 지점: %1 · 재부팅: %2",
@@ -711,11 +708,8 @@
     "Stop ignoring this device": "이 장치 무시 중지",
     "Stopped safely after the active operation": "활성 작동 후 안전하게 정지됨",
     "Storage controllers / drives": "스토리지 컨트롤러/드라이브",
-    "Support development": "지원 개발",
     "Symbolic links are not accepted.": "기호 링크는 허용되지 않습니다.",
     "System Properties": "시스템 속성 열기...",
-    "System Restore API is unavailable.": "시스템 복원 API를 사용할 수 없습니다.",
-    "System Restore is unavailable on this Windows installation.": "시스템 복원을 사용할 수 없습니다.",
     "System architecture": "시스템 아키텍처",
     "System diagnostics": "시스템 진단",
     "System manufacturer": "시스템 제조업체",
@@ -831,7 +825,6 @@
     "Windows could not export driver packages. Run as Administrator on a Windows version supporting DISM /Export-Driver; see export-log.txt.": "Windows가 드라이버 패키지를 내보낼 수 없습니다. DISM /Export-Driver를 지원하는 Windows 버전에서 관리자로 실행합니다. 내보내기-log.txt를 참조하세요.",
     "Windows could not open an Internet session.": "Windows가 인터넷 세션을 열 수 없습니다.",
     "Windows could not start the restart request.": "Windows가 다시 시작 요청을 시작할 수 없습니다.",
-    "Windows did not complete the restore point. Check System Protection and its service.": "Windows가 복원 지점을 완료하지 못했습니다. 시스템 보호 및 해당 서비스를 확인하세요.",
     "Windows did not grant permission to restart.": "Windows가 다시 시작할 권한을 부여하지 않았습니다.",
     "Windows is exporting third-party driver packages...": "Windows가 타사 드라이버 패키지를 내보내는 중입니다...",
     "Windows only": "Windows 전용",
@@ -871,6 +864,7 @@
     "Copy": "복사",
     "Paste": "붙여넣기",
     "Delete": "삭제",
-    "Status": "상태"
+    "Status": "상태",
+    "System Protection": "시스템 보호"
   }
 }

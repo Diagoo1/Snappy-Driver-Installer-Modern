@@ -213,7 +213,6 @@
     "Confirm driver installation": "Xác nhận cài đặt trình điều khiển",
     "Conflicting update targets.": "Xung đột mục tiêu cập nhật.",
     "Connecting to torrent peers to complete verified blocks...": "Đang kết nối với các torrent ngang hàng để hoàn thành các khối đã được xác minh...",
-    "Contact me": "Liên hệ với tôi",
     "Continue": "Tiếp tục",
     "Control Panel": "Bảng điều khiển",
     "Copy hardware ID": "Sao chép ID phần cứng",
@@ -351,7 +350,6 @@
     "General settings": "Cài đặt chung\nDự án",
     "GitHub could not provide this release. Check the repository and published releases.": "GitHub không thể cung cấp bản phát hành này. Kiểm tra kho lưu trữ và các bản phát hành đã xuất bản.",
     "GitHub did not provide the required SHA-256 digest.": "GitHub không cung cấp thông báo SHA-256 cần thiết.",
-    "GitHub projects": "GitHub\nBộ điều hợp đồ họa",
     "Graphics adapters": "Trình điều khiển được cài đặt",
     "HKEY_LOCAL_MACHINE\\HARDWARE\\DESCRIPTION\\System\\BIOS": "HKEY_LOCAL_MACHINE\\HARDWARE\\DESCRIPTION\\System\\BIOS",
     "HKEY_LOCAL_MACHINE\\HARDWARE\\DESCRIPTION\\System\\CentralProcessor\\0": "HKEY_LOCAL_MACHINE\\HARDWARE\\DESCRIPTION\\System\\CentralProcessor\\0",
@@ -625,7 +623,6 @@
     "Restore all ignored devices": "Khôi phục tất cả các thiết bị bị bỏ qua",
     "Restore default": "Khôi phục mặc định\nĐiểm khôi phục",
     "Restore point (simulated)": "(mô phỏng)",
-    "Restore point creation failed. No driver installation was started.": "Tạo điểm khôi phục không thành công. Không có cài đặt trình điều khiển đã được bắt đầu.",
     "Restore point creation is unavailable. No driver was changed.": "Tính năng tạo điểm khôi phục không khả dụng. Không có trình điều khiển đã được thay đổi.",
     "Restore point failed; continuing because the legacy caller explicitly selected -nostop.": "không thành công; tiếp tục vì người gọi kế thừa đã chọn rõ ràng -nostop.",
     "Restore point: %1 · Reboot: %2": "Điểm khôi phục: %1 · Khởi động lại: %2",
@@ -711,11 +708,8 @@
     "Stop ignoring this device": "Dừng bỏ qua thiết bị này",
     "Stopped safely after the active operation": "Đã dừng an toàn sau khi hoạt động\nBộ điều khiển / ổ đĩa lưu trữ",
     "Storage controllers / drives": "Thời gian hoạt động của hệ thống",
-    "Support development": "Hỗ trợ phát triển",
     "Symbolic links are not accepted.": "Liên kết tượng trưng không được chấp nhận.\nAPI khôi phục hệ thống",
     "System Properties": "Thuộc tính Hệ thống",
-    "System Restore API is unavailable.": "không khả dụng.",
-    "System Restore is unavailable on this Windows installation.": "không khả dụng trên bản cài đặt Windows này.\nKiến trúc hệ thống",
     "System architecture": "Chẩn đoán hệ thống",
     "System diagnostics": "Nhà sản xuất hệ thống",
     "System manufacturer": "Thời gian hoạt động của hệ thống",
@@ -831,7 +825,6 @@
     "Windows could not export driver packages. Run as Administrator on a Windows version supporting DISM /Export-Driver; see export-log.txt.": "Windows không thể xuất gói trình điều khiển. Chạy với tư cách Quản trị viên trên phiên bản Windows hỗ trợ DISM /Export-Driver; xem xuất-log.txt.",
     "Windows could not open an Internet session.": "Windows không thể mở phiên Internet.",
     "Windows could not start the restart request.": "Windows không thể bắt đầu yêu cầu khởi động lại.",
-    "Windows did not complete the restore point. Check System Protection and its service.": "Windows không hoàn thành điểm khôi phục. Kiểm tra Bảo vệ hệ thống và dịch vụ của nó.",
     "Windows did not grant permission to restart.": "Windows không cấp quyền khởi động lại.",
     "Windows is exporting third-party driver packages...": "Windows đang xuất các gói trình điều khiển của bên thứ ba...\nChỉ",
     "Windows only": "Windows",
@@ -871,6 +864,7 @@
     "Copy": "Sao chép",
     "Paste": "Dán",
     "Delete": "Xóa",
-    "Status": "Trạng thái"
+    "Status": "Trạng thái",
+    "System Protection": "Bảo vệ hệ thống"
   }
 }

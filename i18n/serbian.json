@@ -213,7 +213,6 @@
     "Confirm driver installation": "Потврдите инсталацију драјвера",
     "Conflicting update targets.": "Конфликтни циљеви ажурирања.",
     "Connecting to torrent peers to complete verified blocks...": "Повезивање са торрент колегама ради комплетирања верификованих блокова...",
-    "Contact me": "Контактирајте ме",
     "Continue": "Настави",
     "Control Panel": "Контролна табла",
     "Copy hardware ID": "Копирајте ИД хардвера",
@@ -351,7 +350,6 @@
     "General settings": "Општа подешавања",
     "GitHub could not provide this release. Check the repository and published releases.": "GitHub није могао да обезбеди ово издање. Проверите спремиште и објављена издања.",
     "GitHub did not provide the required SHA-256 digest.": "GitHub није обезбедио тражену SHA-256 дигест.",
-    "GitHub projects": "GitHub пројектима",
     "Graphics adapters": "Графички адаптери",
     "HKEY_LOCAL_MACHINE\\HARDWARE\\DESCRIPTION\\System\\BIOS": "ХКЕИ_ЛОЦАЛ_МАЦХИНЕ\\ХАРДВАРЕ\\ДЕСЦРИПТИОН\\Систем\\БИОС",
     "HKEY_LOCAL_MACHINE\\HARDWARE\\DESCRIPTION\\System\\CentralProcessor\\0": "ХКЕИ_ЛОЦАЛ_МАЦХИНЕ\\ХАРДВАРЕ\\ДЕСЦРИПТИОН\\Систем\\ЦентралПроцессор\\0",
@@ -625,7 +623,6 @@
     "Restore all ignored devices": "Вратите све занемарене уређаје",
     "Restore default": "Врати подразумевано",
     "Restore point (simulated)": "Тачка враћања (симулирана)",
-    "Restore point creation failed. No driver installation was started.": "Креирање тачке враћања није успело. Инсталација драјвера није започета.",
     "Restore point creation is unavailable. No driver was changed.": "Креирање тачке враћања није доступно. Ниједан возач није промењен.",
     "Restore point failed; continuing because the legacy caller explicitly selected -nostop.": "Тачка враћања није успела; наставља се јер је застарели позивалац експлицитно изабрао -ностоп.",
     "Restore point: %1 · Reboot: %2": "Тачка враћања: %1 · Поновно покретање: %2",
@@ -711,11 +708,8 @@
     "Stop ignoring this device": "Престаните да игноришете овај уређај",
     "Stopped safely after the active operation": "Безбедно заустављен након активне операције",
     "Storage controllers / drives": "Контролери за складиштење / диск јединице",
-    "Support development": "Подршка развоју",
     "Symbolic links are not accepted.": "Симболичке везе се не прихватају.",
     "System Properties": "Својства система",
-    "System Restore API is unavailable.": "АПИ за враћање система је недоступан.",
-    "System Restore is unavailable on this Windows installation.": "Враћање система у претходно стање није доступно Windows инсталација.",
     "System architecture": "Архитектура система",
     "System diagnostics": "Системска дијагностика",
     "System manufacturer": "Произвођач система",
@@ -831,7 +825,6 @@
     "Windows could not export driver packages. Run as Administrator on a Windows version supporting DISM /Export-Driver; see export-log.txt.": "Windows није могао да извезе пакете драјвера. Покрени као администратор на а Windows подржава верзију DISM /Екпорт-Дривер; погледајте екпорт-лог.ткт.",
     "Windows could not open an Internet session.": "Windows није могао да отвори интернет сесију.",
     "Windows could not start the restart request.": "Windows није могао да покрене захтев за поновно покретање.",
-    "Windows did not complete the restore point. Check System Protection and its service.": "Windows није довршио тачку враћања. Проверите заштиту система и њен сервис.",
     "Windows did not grant permission to restart.": "Windows није дао дозволу за поновно покретање.",
     "Windows is exporting third-party driver packages...": "Windows извози пакете драјвера треће стране...",
     "Windows only": "Windows само",
@@ -871,6 +864,7 @@
     "Copy": "Копирај",
     "Paste": "Налепи",
     "Delete": "Обриши",
-    "Status": "Статус"
+    "Status": "Статус",
+    "System Protection": "Заштита система"
   }
 }

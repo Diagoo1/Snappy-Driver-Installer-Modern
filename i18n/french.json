@@ -213,7 +213,6 @@
     "Confirm driver installation": "Confirmer l'installation du pilote",
     "Conflicting update targets.": "Cibles de mise à jour en conflit.",
     "Connecting to torrent peers to complete verified blocks...": "Connexion à des pairs torrent pour terminer les blocs vérifiés...",
-    "Contact me": "Contactez-moi",
     "Continue": "Continuer",
     "Control Panel": "Control Panel",
     "Copy hardware ID": "Copier l'ID matériel",
@@ -351,7 +350,6 @@
     "General settings": "Paramètres généraux\nProjets",
     "GitHub could not provide this release. Check the repository and published releases.": "GitHub n'a pas pu fournir cette version. Vérifiez le référentiel et les versions publiées.",
     "GitHub did not provide the required SHA-256 digest.": "GitHub n’a pas fourni le résumé SHA-256 requis.",
-    "GitHub projects": "GitHub\nAdaptateurs graphiques",
     "Graphics adapters": "PILOTE INSTALLÉ",
     "HKEY_LOCAL_MACHINE\\HARDWARE\\DESCRIPTION\\System\\BIOS": "HKEY_LOCAL_MACHINE\\HARDWARE\\DESCRIPTION\\Système\\BIOS",
     "HKEY_LOCAL_MACHINE\\HARDWARE\\DESCRIPTION\\System\\CentralProcessor\\0": "HKEY_LOCAL_MACHINE\\HARDWARE\\DESCRIPTION\\Système\\CentralProcessor\\0",
@@ -625,7 +623,6 @@
     "Restore all ignored devices": "Restaurer tous les appareils ignorés",
     "Restore default": "Restaurer les valeurs par défaut",
     "Restore point (simulated)": "Point de restauration (simulé)",
-    "Restore point creation failed. No driver installation was started.": "La création du point de restauration a échoué. Aucune installation de pilote n'a été lancée.",
     "Restore point creation is unavailable. No driver was changed.": "La création de points de restauration n'est pas disponible. Aucun pilote n'a été changé.",
     "Restore point failed; continuing because the legacy caller explicitly selected -nostop.": "Échec du point de restauration ; continue car l'ancien appelant a explicitement sélectionné -nostop.",
     "Restore point: %1 · Reboot: %2": "Point de restauration : %1 · Redémarrage : %2",
@@ -711,11 +708,8 @@
     "Stop ignoring this device": "Arrêtez d’ignorer cet appareil",
     "Stopped safely after the active operation": "Arrêté en toute sécurité après l'opération active",
     "Storage controllers / drives": "Contrôleurs/lecteurs de stockage",
-    "Support development": "Prise en charge du développement",
     "Symbolic links are not accepted.": "Les liens symboliques ne sont pas acceptés.\nL’API de restauration du système",
     "System Properties": "Ouvrir les Propriétés Système...",
-    "System Restore API is unavailable.": "n’est pas disponible.",
-    "System Restore is unavailable on this Windows installation.": "n'est pas disponible sur cette installation Windows.\nArchitecture du système",
     "System architecture": "Gestionnaire de tâches",
     "System diagnostics": "Diagnostic du système",
     "System manufacturer": "Fabricant du système",
@@ -831,7 +825,6 @@
     "Windows could not export driver packages. Run as Administrator on a Windows version supporting DISM /Export-Driver; see export-log.txt.": "Windows n'a pas pu exporter les packages de pilotes. Exécuter en tant qu'administrateur sur une version Windows prenant en charge DISM /Export-Driver ; voir export-log.txt.",
     "Windows could not open an Internet session.": "Windows n'a pas pu ouvrir une session Internet.",
     "Windows could not start the restart request.": "Windows n'a pas pu démarrer la demande de redémarrage.",
-    "Windows did not complete the restore point. Check System Protection and its service.": "Windows n’a pas terminé le point de restauration. Vérifiez la protection du système et son service.",
     "Windows did not grant permission to restart.": "Windows n’a pas accordé l’autorisation de redémarrer.",
     "Windows is exporting third-party driver packages...": "Windows exporte des packages de pilotes tiers...",
     "Windows only": "Windows uniquement",
@@ -871,6 +864,7 @@
     "Copy": "Copier",
     "Paste": "Coller",
     "Delete": "Supprimer",
-    "Status": "Etat"
+    "Status": "Etat",
+    "System Protection": "Protection du système"
   }
 }

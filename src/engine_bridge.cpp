@@ -28,7 +28,7 @@ bool EngineBridge::canInstall()const {
 #endif
 }
 void EngineBridge::configure(const QString& d,const QString& i,const QString& l){
-    if(isBusy())return;m_worker->paths.drivers=d.toStdWString();m_worker->paths.indexes=resolveIndexDirectory(i).toStdWString();m_worker->paths.logDirectory=l.toStdWString();
+    if(isBusy())return;m_worker->paths.drivers=d.toStdWString();m_worker->paths.indexes=resolveIndexDirectory(i,d).toStdWString();m_worker->paths.logDirectory=l.toStdWString();
 }
 void EngineBridge::requestInventory(bool demo){
     if(isBusy())return;

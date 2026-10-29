@@ -77,6 +77,7 @@ InstallationWorkspace::InstallationWorkspace(QWidget *parent)
     top->addLayout(titles,1);
     m_badge=textLabel(QStringLiteral("INSTALLATION LOCKED IN SCAN BUILD"),"simulationBadge",this);
     m_badge->setWordWrap(false);
+    m_badge->hide();
     top->addWidget(m_badge);
     outer->addLayout(top);
 
@@ -99,7 +100,7 @@ InstallationWorkspace::InstallationWorkspace(QWidget *parent)
     outer->addWidget(mainProgress);
 
     QHBoxLayout *center=new QHBoxLayout();center->setSpacing(15);
-    QWidget *milestones=new QWidget(this);
+    QWidget *milestones=new SurfaceCard(this);
     milestones->setObjectName(QStringLiteral("softSurface"));
     milestones->setMinimumWidth(218);
     milestones->setMaximumWidth(300);
@@ -117,7 +118,7 @@ InstallationWorkspace::InstallationWorkspace(QWidget *parent)
     steps->addWidget(m_tip);
     center->addWidget(milestones);
 
-    QWidget *operations=new QWidget(this);
+    QWidget *operations=new SurfaceCard(this);
     operations->setObjectName(QStringLiteral("softSurface"));
     QVBoxLayout *olist=new QVBoxLayout(operations);
     olist->setContentsMargins(18,18,18,15);olist->setSpacing(9);
@@ -150,6 +151,7 @@ InstallationWorkspace::InstallationWorkspace(QWidget *parent)
     m_stop->setObjectName(QStringLiteral("outlineButton"));
     m_stop->setVisible(false);
     bottom->addWidget(m_stop);
+    m_restoreHelp=new ActionButton(UiLanguage::text(QStringLiteral("System Protection"),QString::fromUtf8("حماية النظام")),this);m_restoreHelp->setObjectName(QStringLiteral("restoreHelp"));m_restoreHelp->hide();bottom->addWidget(m_restoreHelp);connect(m_restoreHelp,&QPushButton::clicked,this,&InstallationWorkspace::systemProtectionRequested);
     m_back=new QPushButton(QStringLiteral("Back to drivers"),this);
     m_back->setObjectName(QStringLiteral("primaryButton"));
     bottom->addWidget(m_back);
@@ -167,6 +169,7 @@ void InstallationWorkspace::beginDemo(const QStringList &drivers,bool restorePoi
 {
     if(m_active || drivers.isEmpty()) return;
     m_live=false;m_items=drivers;
+    m_restoreHelp->hide();
     m_complete->setProperty("tone",QString());m_complete->style()->unpolish(m_complete);m_complete->style()->polish(m_complete);
     m_progress->setRange(0,100);m_progress->setFormat(QStringLiteral("%p%"));
     m_badge->setText(QStringLiteral("SIMULATION ONLY"));
@@ -276,6 +279,7 @@ void InstallationWorkspace::beginNative(const QStringList &names,const QStringLi
 {
     if(m_active || names.isEmpty() || names.size()!=ids.size())return;
     m_timer->stop();m_live=true;m_active=true;m_hasRestore=restore;m_queue->clear();
+    m_restoreHelp->hide();
     m_complete->setProperty("tone",QString());m_complete->style()->unpolish(m_complete);m_complete->style()->polish(m_complete);
     m_badge->setText(UiLanguage::text(QStringLiteral("Live installation · Beta"),QString::fromUtf8("تثبيت فعلي · بيتا")));
     m_tip->setText(QStringLiteral("The current Windows driver operation is not interruptible. Stop cancels the remaining queue after the active driver returns."));
@@ -288,7 +292,7 @@ void InstallationWorkspace::beginNative(const QStringList &names,const QStringLi
     m_stepPrep->setText(QStringLiteral("02  Validation & extraction"));m_stepInstall->setText(QStringLiteral("03  Installing drivers"));m_stepFinish->setText(QStringLiteral("04  Results"));
     m_currentStage=-1;
     m_items=names;m_back->setEnabled(false);m_stop->setVisible(true);m_stop->setEnabled(true);m_stop->setText(QStringLiteral("Stop after current"));
-    m_progress->setRange(0,names.size());m_progress->setValue(0);m_progress->setFormat(QStringLiteral("%v / %m"));
+    m_progress->setRange(0,names.size());m_progress->setValue(0);m_progress->setFormat(QChar(0x202a)+QStringLiteral("%v / %m")+QChar(0x202c));
     m_stage->setText(QStringLiteral("Validating selected candidates and local packages"));
     m_summary->setText(QStringLiteral("0 / %1 drivers completed").arg(names.size()));
     m_complete->setText(QStringLiteral("Results and errors below come from the native installer, not a simulation."));emit activeChanged(true);
@@ -330,14 +334,17 @@ void InstallationWorkspace::finishNative(const sdiomodern::InstallReport &report
     for(int j=0;j<m_queue->topLevelItemCount();++j){QTreeWidgetItem *row=m_queue->topLevelItem(j);
         if(row->data(1,Qt::UserRole+4).toString()==QStringLiteral("Pending")){queueStatus(row,QStringLiteral("Not started"));++skipped;}}
     m_active=false;m_live=false;m_stop->setVisible(false);m_back->setEnabled(true);
-    QLabel *steps[]={m_stepRestore,m_stepPrep,m_stepInstall,m_stepFinish};for(int i=0;i<4;++i){steps[i]->setObjectName(i==3?QStringLiteral("activeStage"):QStringLiteral("stageItem"));steps[i]->style()->unpolish(steps[i]);steps[i]->style()->polish(steps[i]);}
+    const int finalStage=report.restoreFailed && !report.error.empty()?0:3;
+    QLabel *steps[]={m_stepRestore,m_stepPrep,m_stepInstall,m_stepFinish};for(int i=0;i<4;++i){steps[i]->setObjectName(i==finalStage?QStringLiteral("activeStage"):QStringLiteral("stageItem"));steps[i]->style()->unpolish(steps[i]);steps[i]->style()->polish(steps[i]);}
     m_stage->setText(report.cancelled?QStringLiteral("Stopped safely after the active operation"):
       (failed || !report.error.empty()?QStringLiteral("Completed with errors"):QStringLiteral("Native installation finished")));
     m_summary->setText(QStringLiteral("Installed: %1 | Failed: %2 | Not installed: %3").arg(ok).arg(failed).arg(skipped));
     m_complete->setText(!report.error.empty()?QString::fromStdWString(report.error):
         (report.rebootRequired?QStringLiteral("Windows restart is required. Restart manually after saving your work."):
          QStringLiteral("Scan again to verify the current Windows driver state.")));
-    m_progress->setValue(ok+failed+skipped);emit activeChanged(false);
+    if(report.restoreFailed && !report.restoreCreated && !report.error.empty()){
+        m_stage->setText(UiLanguage::text(QStringLiteral("Installation blocked: restore point"),QString::fromUtf8("التثبيت متوقف: نقطة الاستعادة")));m_restoreHelp->show();m_complete->setProperty("tone",QStringLiteral("error"));m_complete->style()->unpolish(m_complete);m_complete->style()->polish(m_complete);m_progress->setValue(0);
+    }else m_progress->setValue(ok+failed+skipped);emit activeChanged(false);
 }
 void InstallationWorkspace::failNative(const QString &reason)
 {

@@ -213,7 +213,6 @@
     "Confirm driver installation": "Bekreft driverinstallasjon",
     "Conflicting update targets.": "Motstridende oppdateringsmål.",
     "Connecting to torrent peers to complete verified blocks...": "Kobler til torrent-peers for å fullføre verifiserte blokkeringer...",
-    "Contact me": "Kontakt meg",
     "Continue": "Fortsett",
     "Control Panel": "Kontrollpanel",
     "Copy hardware ID": "Kopier maskinvare-ID",
@@ -351,7 +350,6 @@
     "General settings": "Generelle innstillinger",
     "GitHub could not provide this release. Check the repository and published releases.": "GitHub kunne ikke levere denne utgivelsen. Sjekk depotet og publiserte utgivelser.",
     "GitHub did not provide the required SHA-256 digest.": "GitHub ga ikke den nødvendige SHA-256-sammendragen.",
-    "GitHub projects": "GitHub prosjekter",
     "Graphics adapters": "grafikkadaptere",
     "HKEY_LOCAL_MACHINE\\HARDWARE\\DESCRIPTION\\System\\BIOS": "HKEY_LOCAL_MACHINE\\HARDWARE\\DESCRIPTION\\System\\BIOS",
     "HKEY_LOCAL_MACHINE\\HARDWARE\\DESCRIPTION\\System\\CentralProcessor\\0": "HKEY_LOCAL_MACHINE\\HARDWARE\\DESCRIPTION\\System\\CentralProcessor\\0",
@@ -625,7 +623,6 @@
     "Restore all ignored devices": "Gjenopprett alle ignorerte enheter",
     "Restore default": "Gjenopprett standard",
     "Restore point (simulated)": "Gjenopprettingspunkt (simulert)",
-    "Restore point creation failed. No driver installation was started.": "Oppretting av gjenopprettingspunkt mislyktes. Ingen driverinstallasjon ble startet.",
     "Restore point creation is unavailable. No driver was changed.": "Oppretting av gjenopprettingspunkt er ikke tilgjengelig. Ingen sjåfør ble byttet.",
     "Restore point failed; continuing because the legacy caller explicitly selected -nostop.": "Gjenopprettingspunkt mislyktes; fortsetter fordi den eldre oppringeren eksplisitt valgte -nostop.",
     "Restore point: %1 · Reboot: %2": "Gjenopprettingspunkt: %1 · Start på nytt: %2",
@@ -711,11 +708,8 @@
     "Stop ignoring this device": "Slutt å ignorere denne enheten",
     "Stopped safely after the active operation": "Stoppet trygt etter den aktive operasjonen",
     "Storage controllers / drives": "Lagringskontrollere / stasjoner",
-    "Support development": "Støtteutvikling",
     "Symbolic links are not accepted.": "Symbolske lenker godtas ikke.",
     "System Properties": "Åpne Systemegenskaper...",
-    "System Restore API is unavailable.": "System Restore API er utilgjengelig.",
-    "System Restore is unavailable on this Windows installation.": "Systemgjenoppretting er utilgjengelig på denne Windows-installasjonen.",
     "System architecture": "Systemarkitektur",
     "System diagnostics": "Systemdiagnostikk",
     "System manufacturer": "Systemprodusent",
@@ -831,7 +825,6 @@
     "Windows could not export driver packages. Run as Administrator on a Windows version supporting DISM /Export-Driver; see export-log.txt.": "Windows kunne ikke eksportere driverpakker. Kjør som administrator på en Windows-versjon som støtter DISM /Export-Driver; se eksport-log.txt.",
     "Windows could not open an Internet session.": "Windows kunne ikke åpne en Internett-økt.",
     "Windows could not start the restart request.": "Windows kunne ikke starte omstartsforespørselen.",
-    "Windows did not complete the restore point. Check System Protection and its service.": "Windows fullførte ikke gjenopprettingspunktet. Sjekk Systembeskyttelse og tjenesten.",
     "Windows did not grant permission to restart.": "Windows ga ikke tillatelse til å starte på nytt.",
     "Windows is exporting third-party driver packages...": "Windows eksporterer tredjeparts driverpakker...\nKun",
     "Windows only": "Windows",
@@ -871,6 +864,7 @@
     "Copy": "Kopier",
     "Paste": "Lim inn",
     "Delete": "Slett",
-    "Status": "Status"
+    "Status": "Status",
+    "System Protection": "Systembeskyttelse"
   }
 }

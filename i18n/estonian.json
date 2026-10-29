@@ -213,7 +213,6 @@
     "Confirm driver installation": "Kinnitage draiveri installimine",
     "Conflicting update targets.": "Vastuolulised värskenduse sihtmärgid.",
     "Connecting to torrent peers to complete verified blocks...": "Torrenti eakaaslastega ühendamine, et lõpetada kinnitatud plokid...",
-    "Contact me": "Võtke minuga ühendust",
     "Continue": "Jätka",
     "Control Panel": "Kontrollpaneel",
     "Copy hardware ID": "Riistvara ID kopeerimine",
@@ -351,7 +350,6 @@
     "General settings": "Üldseaded",
     "GitHub could not provide this release. Check the repository and published releases.": "GitHub ei saanud seda versiooni pakkuda. Kontrollige hoidlat ja avaldatud väljaandeid.",
     "GitHub did not provide the required SHA-256 digest.": "GitHub ei esitanud nõutavat SHA-256 kokkuvõtet.",
-    "GitHub projects": "GitHub projektid",
     "Graphics adapters": "graafikaadapterid",
     "HKEY_LOCAL_MACHINE\\HARDWARE\\DESCRIPTION\\System\\BIOS": "HKEY_LOCAL_MACHINE\\RIISTVARA\\DESCRIPTION\\System\\BIOS",
     "HKEY_LOCAL_MACHINE\\HARDWARE\\DESCRIPTION\\System\\CentralProcessor\\0": "HKEY_LOCAL_MACHINE\\RIISTVARA\\DESCRIPTION\\System\\CentralProcessor\\0",
@@ -625,7 +623,6 @@
     "Restore all ignored devices": "Taasta kõik ignoreeritud seadmed",
     "Restore default": "Taasta vaikeseade",
     "Restore point (simulated)": "taastepunkt (simuleeritud)",
-    "Restore point creation failed. No driver installation was started.": "Taastepunkti loomine ebaõnnestus. Draiveri installimist ei alustatud.",
     "Restore point creation is unavailable. No driver was changed.": "Taastepunkti loomine pole saadaval. Juhti ei vahetatud.",
     "Restore point failed; continuing because the legacy caller explicitly selected -nostop.": "Taastepunkt nurjus; jätkub, kuna pärandhelistaja valis selgesõnaliselt -nostop.",
     "Restore point: %1 · Reboot: %2": "Taastepunkt: %1 · Taaskäivitamine: %2",
@@ -711,11 +708,8 @@
     "Stop ignoring this device": "Lõpetage selle seadme ignoreerimine",
     "Stopped safely after the active operation": "Seiskus pärast aktiivset tööd ohutult",
     "Storage controllers / drives": "Salvestuskontrollerid / draivid",
-    "Support development": "Toetage arendust",
     "Symbolic links are not accepted.": "Sümboolseid linke ei aktsepteerita.",
     "System Properties": "Ava süsteemi sätted...",
-    "System Restore API is unavailable.": "System Restore API pole saadaval.",
-    "System Restore is unavailable on this Windows installation.": "süsteemi taastamine pole selle Windows installi puhul saadaval.",
     "System architecture": "Süsteemi arhitektuur",
     "System diagnostics": "Süsteemi diagnostika",
     "System manufacturer": "Süsteemi tootja",
@@ -831,7 +825,6 @@
     "Windows could not export driver packages. Run as Administrator on a Windows version supporting DISM /Export-Driver; see export-log.txt.": "Windows ei saanud draiveripakette eksportida. Käitage administraatorina Windows versioonil, mis toetab DISM /Export-Driver; vaadake faili eksport-log.txt.",
     "Windows could not open an Internet session.": "Windows ei saanud Interneti-seanssi avada.",
     "Windows could not start the restart request.": "Windows ei saanud taaskäivitustaotlust käivitada.",
-    "Windows did not complete the restore point. Check System Protection and its service.": "Windows ei viinud taastepunkti lõpule. Kontrollige süsteemikaitset ja selle teenust.",
     "Windows did not grant permission to restart.": "Windows ei andnud taaskäivitamiseks luba.",
     "Windows is exporting third-party driver packages...": "Windows ekspordib kolmanda osapoole draiveripakette...\nAinult",
     "Windows only": "Windows",
@@ -871,6 +864,7 @@
     "Copy": "Kopeeri",
     "Paste": "Kleebi",
     "Delete": "Kustuta",
-    "Status": "Staatus"
+    "Status": "Staatus",
+    "System Protection": "Süsteemi kaitse"
   }
 }

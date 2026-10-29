@@ -1,5 +1,6 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 #include "origin_worker.h"
+#include "offline_paths.h"
 #include <QFile>
 #include <QDir>
 #include <QDateTime>
@@ -52,7 +53,7 @@ void OriginWorker::run()
             }
             emit progress(e);
         };
-        if(job==Scan){output=m_core->scan(paths,sink);if(!paths.indexTextDirectory.empty())m_core->exportIndexText(paths.indexTextDirectory);}
+        if(job==Scan){sdiomodern::Paths session=paths;session.indexes=prepareLibraryIndexes(QString::fromStdWString(paths.drivers),QString::fromStdWString(paths.indexes)).toStdWString();output=m_core->scan(session,sink);if(!paths.indexTextDirectory.empty())m_core->exportIndexText(paths.indexTextDirectory);}
         else if(job==Install)installation=m_core->install(plan,sink,m_stop);
         else if(job==SaveSnapshot)m_core->saveSnapshot(snapshotFile);
         else if(job==Extract)snapshotFile=m_core->extract(plan,snapshotFile,sink,m_stop);

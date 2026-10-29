@@ -212,7 +212,6 @@
     "Confirm driver installation": "Bevestig de installatie van het stuurprogramma",
     "Conflicting update targets.": "Conflicterende updatedoelen.",
     "Connecting to torrent peers to complete verified blocks...": "Verbinding maken met torrent-peers om geverifieerde blokken te voltooien...",
-    "Contact me": "Neem contact met mij op",
     "Continue": "Ga verder",
     "Control Panel": "Controlepaneel",
     "Copy hardware ID": "Kopieer hardware-ID",
@@ -350,7 +349,6 @@
     "General settings": "Algemene instellingen",
     "GitHub could not provide this release. Check the repository and published releases.": "GitHub kan deze release niet leveren. Controleer de repository en gepubliceerde releases.",
     "GitHub did not provide the required SHA-256 digest.": "GitHub heeft niet de vereiste SHA-256-samenvatting geleverd.",
-    "GitHub projects": "GitHub-projecten",
     "Graphics adapters": "Grafische adapters",
     "HKEY_LOCAL_MACHINE\\HARDWARE\\DESCRIPTION\\System\\BIOS": "HKEY_LOCAL_MACHINE\\HARDWARE\\DESCRIPTION\\Systeem\\BIOS",
     "HKEY_LOCAL_MACHINE\\HARDWARE\\DESCRIPTION\\System\\CentralProcessor\\0": "HKEY_LOCAL_MACHINE\\HARDWARE\\DESCRIPTION\\System\\CentralProcessor\\0",
@@ -624,7 +622,6 @@
     "Restore all ignored devices": "Herstel alle genegeerde apparaten",
     "Restore default": "Standaard herstellen",
     "Restore point (simulated)": "Herstelpunt (gesimuleerd)",
-    "Restore point creation failed. No driver installation was started.": "Het maken van herstelpunten is mislukt. Er is geen driverinstallatie gestart.",
     "Restore point creation is unavailable. No driver was changed.": "Het maken van herstelpunten is niet beschikbaar. Er is geen bestuurder gewisseld.",
     "Restore point failed; continuing because the legacy caller explicitly selected -nostop.": "Herstelpunt mislukt; gaat door omdat de oude beller expliciet -nostop heeft geselecteerd.",
     "Restore point: %1 · Reboot: %2": "Herstelpunt: %1 · Opnieuw opstarten: %2",
@@ -710,11 +707,8 @@
     "Stop ignoring this device": "Negeer dit apparaat niet langer",
     "Stopped safely after the active operation": "Veilig gestopt na de actieve werking",
     "Storage controllers / drives": "Opslagcontrollers/schijven",
-    "Support development": "Ondersteuning van ontwikkeling",
     "Symbolic links are not accepted.": "Symbolische links worden niet geaccepteerd.",
     "System Properties": "Systeem Eigenschappen",
-    "System Restore API is unavailable.": "Systeemherstel-API is niet beschikbaar.",
-    "System Restore is unavailable on this Windows installation.": "Systeemherstel is niet beschikbaar op deze Windows-installatie.",
     "System architecture": "Systeemarchitectuur",
     "System diagnostics": "Systeemdiagnostiek",
     "System manufacturer": "Systeemfabrikant",
@@ -830,7 +824,6 @@
     "Windows could not export driver packages. Run as Administrator on a Windows version supporting DISM /Export-Driver; see export-log.txt.": "Windows kan geen stuurprogrammapakketten exporteren. Uitvoeren als beheerder op een Windows-versie die DISM /Export-Driver ondersteunt; zie export-log.txt.",
     "Windows could not open an Internet session.": "Windows kan geen internetsessie openen.",
     "Windows could not start the restart request.": "Windows kan het herstartverzoek niet starten.",
-    "Windows did not complete the restore point. Check System Protection and its service.": "Windows heeft het herstelpunt niet voltooid. Controleer Systeembescherming en de service ervan.",
     "Windows did not grant permission to restart.": "Windows heeft geen toestemming gegeven om opnieuw op te starten.",
     "Windows is exporting third-party driver packages...": "Windows exporteert stuurprogrammapakketten van derden...\nAlleen",
     "Windows only": "Windows",
@@ -871,6 +864,7 @@
     "Copy": "Kopiëren",
     "Paste": "Plakken",
     "Delete": "Verwijderen",
-    "Status": "Status"
+    "Status": "Status",
+    "System Protection": "Systeem beveiliging"
   }
 }

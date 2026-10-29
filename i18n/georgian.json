@@ -213,7 +213,6 @@
     "Confirm driver installation": "დაადასტურეთ დრაივერის ინსტალაცია",
     "Conflicting update targets.": "განახლების კონფლიქტური მიზნები.",
     "Connecting to torrent peers to complete verified blocks...": "ტორენტთან დაკავშირება დადასტურებული ბლოკების დასასრულებლად...",
-    "Contact me": "დამიკავშირდით",
     "Continue": "გაგრძელება",
     "Control Panel": "Მართვის პანელი",
     "Copy hardware ID": "დააკოპირეთ ტექნიკის ID",
@@ -351,7 +350,6 @@
     "General settings": "ზოგადი პარამეტრები",
     "GitHub could not provide this release. Check the repository and published releases.": "GitHub-მ ვერ უზრუნველყო ეს გამოშვება. შეამოწმეთ საცავი და გამოქვეყნებული გამოშვებები.",
     "GitHub did not provide the required SHA-256 digest.": "GitHub არ მოგვაწოდა საჭირო SHA-256 დაიჯესტი.",
-    "GitHub projects": "GitHub პროექტები",
     "Graphics adapters": "გრაფიკული გადამყვანები",
     "HKEY_LOCAL_MACHINE\\HARDWARE\\DESCRIPTION\\System\\BIOS": "HKEY_LOCAL_MACHINE\\HARDWARE\\DESCRIPTION\\System\\BIOS",
     "HKEY_LOCAL_MACHINE\\HARDWARE\\DESCRIPTION\\System\\CentralProcessor\\0": "HKEY_LOCAL_MACHINE\\HARDWARE\\DESCRIPTION\\System\\Central Processor\\0",
@@ -625,7 +623,6 @@
     "Restore all ignored devices": "აღადგინეთ ყველა იგნორირებული მოწყობილობა",
     "Restore default": "აღადგინეთ ნაგულისხმევი",
     "Restore point (simulated)": "აღდგენის წერტილი (სიმულირებული)",
-    "Restore point creation failed. No driver installation was started.": "აღდგენის წერტილის შექმნა ვერ მოხერხდა. დრაივერის ინსტალაცია არ დაწყებულა.",
     "Restore point creation is unavailable. No driver was changed.": "აღდგენის წერტილის შექმნა მიუწვდომელია. მძღოლი არ შეცვლილა.",
     "Restore point failed; continuing because the legacy caller explicitly selected -nostop.": "აღდგენის წერტილი ვერ მოხერხდა; გრძელდება, რადგან მოძველებულმა აბონენტმა ცალსახად შეარჩია -nostop.",
     "Restore point: %1 · Reboot: %2": "აღდგენის წერტილი: %1 · გადატვირთვა: %2",
@@ -711,11 +708,8 @@
     "Stop ignoring this device": "შეწყვიტეთ ამ მოწყობილობის იგნორირება",
     "Stopped safely after the active operation": "უსაფრთხოდ შეჩერდა აქტიური მუშაობის შემდეგ",
     "Storage controllers / drives": "შენახვის კონტროლერები / დისკები",
-    "Support development": "განვითარების მხარდაჭერა",
     "Symbolic links are not accepted.": "სიმბოლური ბმულები არ მიიღება.",
     "System Properties": "სისტემის თვისებები",
-    "System Restore API is unavailable.": "System Restore API მიუწვდომელია.",
-    "System Restore is unavailable on this Windows installation.": "სისტემის აღდგენა მიუწვდომელია ამ Windows ინსტალაციაზე.",
     "System architecture": "სისტემის არქიტექტურა",
     "System diagnostics": "სისტემის დიაგნოსტიკა",
     "System manufacturer": "სისტემის მწარმოებელი",
@@ -831,7 +825,6 @@
     "Windows could not export driver packages. Run as Administrator on a Windows version supporting DISM /Export-Driver; see export-log.txt.": "Windows-მ ვერ შეძლო დრაივერის პაკეტების ექსპორტი. გაუშვით როგორც ადმინისტრატორი Windows ვერსიაზე, რომელიც მხარს უჭერს DISM /Export-Driver; იხილეთ export-log.txt.",
     "Windows could not open an Internet session.": "Windows ვერ გახსნა ინტერნეტ სესია.",
     "Windows could not start the restart request.": "Windows ვერ დაიწყო გადატვირთვის მოთხოვნა.",
-    "Windows did not complete the restore point. Check System Protection and its service.": "Windows-მ არ დაასრულა აღდგენის წერტილი. შეამოწმეთ სისტემის დაცვა და მისი მომსახურება.",
     "Windows did not grant permission to restart.": "Windows არ მისცა გადატვირთვის ნებართვა.",
     "Windows is exporting third-party driver packages...": "Windows ახორციელებს მესამე მხარის დრაივერების პაკეტების ექსპორტს...\nმხოლოდ",
     "Windows only": "Windows",
@@ -871,6 +864,7 @@
     "Copy": "კოპირება",
     "Paste": "ჩასმა",
     "Delete": "წაშლა",
-    "Status": "სტატუსი"
+    "Status": "სტატუსი",
+    "System Protection": "სისტემის დაცვა"
   }
 }

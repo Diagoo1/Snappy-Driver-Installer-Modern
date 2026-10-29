@@ -213,7 +213,6 @@
     "Confirm driver installation": "ยืนยันการติดตั้งไดรเวอร์",
     "Conflicting update targets.": "เป้าหมายการอัพเดตที่ขัดแย้งกัน",
     "Connecting to torrent peers to complete verified blocks...": "กำลังเชื่อมต่อกับ torrent peers เพื่อทำบล็อกที่ตรวจสอบแล้ว...",
-    "Contact me": "ติดต่อผมได้นะครับ",
     "Continue": "ดำเนินการต่อ",
     "Control Panel": "แผงควบคุม",
     "Copy hardware ID": "คัดลอก ID ฮาร์ดแวร์",
@@ -351,7 +350,6 @@
     "General settings": "การตั้งค่าทั่วไป\nโครงการ",
     "GitHub could not provide this release. Check the repository and published releases.": "GitHub ไม่สามารถจัดเตรียมรีลีสนี้ได้ ตรวจสอบพื้นที่เก็บข้อมูลและรีลีสที่เผยแพร่",
     "GitHub did not provide the required SHA-256 digest.": "GitHub ไม่ได้จัดเตรียมการแยกย่อย SHA-256 ที่จำเป็น",
-    "GitHub projects": "GitHub\nอะแดปเตอร์กราฟิก",
     "Graphics adapters": "ตัวเลือกการติดตั้ง",
     "HKEY_LOCAL_MACHINE\\HARDWARE\\DESCRIPTION\\System\\BIOS": "HKEY_LOCAL_MACHINE\\HARDWARE\\DESCRIPTION\\System\\BIOS",
     "HKEY_LOCAL_MACHINE\\HARDWARE\\DESCRIPTION\\System\\CentralProcessor\\0": "HKEY_LOCAL_MACHINE\\HARDWARE\\DESCRIPTION\\System\\CentralProcessor\\0",
@@ -625,7 +623,6 @@
     "Restore all ignored devices": "กู้คืนอุปกรณ์ที่ถูกละเว้นทั้งหมด",
     "Restore default": "คืนค่าเริ่มต้น\nจุดคืนค่า",
     "Restore point (simulated)": "(จำลอง)\nการสร้างจุดคืนค่า",
-    "Restore point creation failed. No driver installation was started.": "ล้มเหลว ไม่มีการติดตั้งไดรเวอร์เริ่มต้น\nการสร้างจุดคืนค่า",
     "Restore point creation is unavailable. No driver was changed.": "ไม่พร้อมใช้งาน ไม่มีการเปลี่ยนไดรเวอร์\nจุดคืนค่า",
     "Restore point failed; continuing because the legacy caller explicitly selected -nostop.": "ล้มเหลว; ดำเนินการต่อเนื่องจากผู้เรียกแบบเดิมได้เลือก -nostop ไว้อย่างชัดเจน",
     "Restore point: %1 · Reboot: %2": ": %1 · รีบูต: %2",
@@ -711,11 +708,8 @@
     "Stop ignoring this device": "หยุดละเว้นอุปกรณ์นี้",
     "Stopped safely after the active operation": "หยุดอย่างปลอดภัยหลังจากการดำเนินการที่ใช้งานอยู่",
     "Storage controllers / drives": "คอนโทรลเลอร์ / ไดรฟ์จัดเก็บข้อมูล",
-    "Support development": "รองรับการพัฒนา",
     "Symbolic links are not accepted.": "ไม่ยอมรับลิงก์สัญลักษณ์",
     "System Properties": "เปิดคุณสมบัติของระบบ...",
-    "System Restore API is unavailable.": "System Restore API ไม่พร้อมใช้งาน",
-    "System Restore is unavailable on this Windows installation.": "ไม่พร้อมใช้งานในการติดตั้ง Windows นี้\nสถาปัตยกรรมระบบ",
     "System architecture": "การวินิจฉัยระบบ",
     "System diagnostics": "ผู้ผลิตระบบ",
     "System manufacturer": "ตัวจัดการงาน",
@@ -831,7 +825,6 @@
     "Windows could not export driver packages. Run as Administrator on a Windows version supporting DISM /Export-Driver; see export-log.txt.": "Windows ไม่สามารถส่งออกแพ็คเกจไดรเวอร์ได้ เรียกใช้ในฐานะผู้ดูแลระบบในเวอร์ชัน Windows ที่รองรับ DISM /Export-Driver ดูที่export-log.txt",
     "Windows could not open an Internet session.": "Windows ไม่สามารถเปิดเซสชันอินเทอร์เน็ตได้",
     "Windows could not start the restart request.": "Windows ไม่สามารถเริ่มคำร้องขอรีสตาร์ทได้",
-    "Windows did not complete the restore point. Check System Protection and its service.": "Windows ทำจุดคืนค่าไม่เสร็จสมบูรณ์ ตรวจสอบการป้องกันระบบและบริการ",
     "Windows did not grant permission to restart.": "Windows ไม่อนุญาตให้รีสตาร์ท",
     "Windows is exporting third-party driver packages...": "Windows กำลังส่งออกแพ็คเกจไดรเวอร์ของบริษัทอื่น...",
     "Windows only": "Windows เท่านั้น",
@@ -871,6 +864,7 @@
     "Copy": "คัดลอก",
     "Paste": "วาง",
     "Delete": "ลบ",
-    "Status": "สถานะ"
+    "Status": "สถานะ",
+    "System Protection": "การป้องกันระบบ"
   }
 }

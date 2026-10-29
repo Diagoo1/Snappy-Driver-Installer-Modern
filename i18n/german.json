@@ -213,7 +213,6 @@
     "Confirm driver installation": "Bestätigen Sie die Treiberinstallation",
     "Conflicting update targets.": "Widersprüchliche Updateziele.",
     "Connecting to torrent peers to complete verified blocks...": "Verbindung zu Torrent-Peers wird hergestellt, um verifizierte Blöcke abzuschließen ...",
-    "Contact me": "Kontaktieren Sie mich",
     "Continue": "Weiter",
     "Control Panel": "Alle Systemsteuerungselemente",
     "Copy hardware ID": "Hardware-ID kopieren",
@@ -351,7 +350,6 @@
     "General settings": "Allgemeine Einstellungen",
     "GitHub could not provide this release. Check the repository and published releases.": "GitHub konnte diese Version nicht bereitstellen. Überprüfen Sie das Repository und die veröffentlichten Versionen.",
     "GitHub did not provide the required SHA-256 digest.": "GitHub hat den erforderlichen SHA-256-Digest nicht bereitgestellt.",
-    "GitHub projects": "GitHub Projekte",
     "Graphics adapters": "Grafikkarten",
     "HKEY_LOCAL_MACHINE\\HARDWARE\\DESCRIPTION\\System\\BIOS": "HKEY_LOCAL_MACHINE\\HARDWARE\\DESCRIPTION\\System\\BIOS",
     "HKEY_LOCAL_MACHINE\\HARDWARE\\DESCRIPTION\\System\\CentralProcessor\\0": "HKEY_LOCAL_MACHINE\\HARDWARE\\DESCRIPTION\\System\\CentralProcessor\\0",
@@ -625,7 +623,6 @@
     "Restore all ignored devices": "Alle ignorierten Geräte wiederherstellen",
     "Restore default": "Standard wiederherstellen",
     "Restore point (simulated)": "Wiederherstellungspunkt (simuliert)",
-    "Restore point creation failed. No driver installation was started.": "Wiederherstellungspunkterstellung fehlgeschlagen. Es wurde keine Treiberinstallation gestartet.",
     "Restore point creation is unavailable. No driver was changed.": "Die Erstellung eines Wiederherstellungspunkts ist nicht verfügbar. Es wurde kein Treiber geändert.",
     "Restore point failed; continuing because the legacy caller explicitly selected -nostop.": "Wiederherstellungspunkt fehlgeschlagen; Wird fortgesetzt, da der alte Aufrufer explizit -nostop ausgewählt hat.",
     "Restore point: %1 · Reboot: %2": "Wiederherstellungspunkt: %1 · Neustart: %2",
@@ -711,11 +708,8 @@
     "Stop ignoring this device": "Hören Sie auf, dieses Gerät zu ignorieren",
     "Stopped safely after the active operation": "Sicherer Stopp nach dem aktiven Vorgang",
     "Storage controllers / drives": "Speichercontroller/Laufwerke",
-    "Support development": "Unterstützt die Entwicklung",
     "Symbolic links are not accepted.": "Symbolische Links werden nicht akzeptiert.",
     "System Properties": "Systemeigenschaften",
-    "System Restore API is unavailable.": "Systemwiederherstellungs-API ist nicht verfügbar.",
-    "System Restore is unavailable on this Windows installation.": "-Systemwiederherstellung ist bei dieser Windows-Installation nicht verfügbar.",
     "System architecture": "Systemarchitektur",
     "System diagnostics": "Systemdiagnose",
     "System manufacturer": "Systemhersteller",
@@ -831,7 +825,6 @@
     "Windows could not export driver packages. Run as Administrator on a Windows version supporting DISM /Export-Driver; see export-log.txt.": "Windows konnte Treiberpakete nicht exportieren. Als Administrator auf einer Windows-Version ausführen, die DISM /Export-Driver unterstützt; siehe export-log.txt.",
     "Windows could not open an Internet session.": "Windows konnte keine Internetsitzung öffnen.",
     "Windows could not start the restart request.": "Windows konnte die Neustartanforderung nicht starten.",
-    "Windows did not complete the restore point. Check System Protection and its service.": "Windows hat den Wiederherstellungspunkt nicht abgeschlossen. Überprüfen Sie den Systemschutz und seinen Dienst.",
     "Windows did not grant permission to restart.": "Windows hat keine Berechtigung zum Neustart erteilt.",
     "Windows is exporting third-party driver packages...": "Windows exportiert Treiberpakete von Drittanbietern ...\nNur",
     "Windows only": "Windows",
@@ -871,6 +864,7 @@
     "Copy": "Kopieren",
     "Paste": "Einfügen",
     "Delete": "Löschen",
-    "Status": "Status"
+    "Status": "Status",
+    "System Protection": "Computerschutz"
   }
 }

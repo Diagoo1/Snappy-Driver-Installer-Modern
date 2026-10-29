@@ -22,6 +22,7 @@
 #include <windows.h>
 #include <setupapi.h>
 #include <objbase.h>
+#include <aclapi.h>
 #include <SRRestorePtAPI.h>
 #include <algorithm>
 #include <map>
@@ -307,7 +308,23 @@ struct OriginCore::Impl {
         installmode=MODE_NONE;
     }
 };
-OriginCore::OriginCore():m(new Impl){}
+class RestorePointError : public std::runtime_error {public:DWORD code;RestorePointError(const std::string &message,DWORD value):std::runtime_error(message),code(value){}};
+static HRESULT restoreComSecurity(){
+    static bool initialized=false;static HRESULT result=S_OK;if(initialized)return result;initialized=true;
+    SID_IDENTIFIER_AUTHORITY nt=SECURITY_NT_AUTHORITY;PSID sids[4]={};
+    const DWORD rids[3]={SECURITY_LOCAL_SYSTEM_RID,SECURITY_LOCAL_SERVICE_RID,SECURITY_NETWORK_SERVICE_RID};
+    EXPLICIT_ACCESSW entries[5]={};PACL acl=0;SECURITY_DESCRIPTOR descriptor={};BYTE user[256]={};DWORD required=0;HANDLE token=0;
+    bool ready=AllocateAndInitializeSid(&nt,2,SECURITY_BUILTIN_DOMAIN_RID,DOMAIN_ALIAS_RID_ADMINS,0,0,0,0,0,0,&sids[0])!=FALSE;
+    for(int i=0;i<3 && ready;++i)ready=AllocateAndInitializeSid(&nt,1,rids[i],0,0,0,0,0,0,0,&sids[i+1])!=FALSE;
+    if(ready){ready=OpenProcessToken(GetCurrentProcess(),TOKEN_QUERY,&token) && GetTokenInformation(token,TokenUser,user,sizeof(user),&required);if(token)CloseHandle(token);}
+    if(ready){for(int i=0;i<5;++i){entries[i].grfAccessPermissions=3;entries[i].grfAccessMode=SET_ACCESS;entries[i].grfInheritance=NO_INHERITANCE;entries[i].Trustee.TrusteeForm=TRUSTEE_IS_SID;entries[i].Trustee.TrusteeType=TRUSTEE_IS_UNKNOWN;entries[i].Trustee.ptstrName=static_cast<LPWSTR>(i<4?sids[i]:reinterpret_cast<TOKEN_USER*>(user)->User.Sid);}
+        const DWORD status=SetEntriesInAclW(5,entries,0,&acl);if(status!=ERROR_SUCCESS)SetLastError(status);ready=status==ERROR_SUCCESS && InitializeSecurityDescriptor(&descriptor,SECURITY_DESCRIPTOR_REVISION) && SetSecurityDescriptorOwner(&descriptor,reinterpret_cast<TOKEN_USER*>(user)->User.Sid,FALSE) && SetSecurityDescriptorGroup(&descriptor,sids[0],FALSE) && SetSecurityDescriptorDacl(&descriptor,TRUE,acl,FALSE);
+    }
+    result=ready?CoInitializeSecurity(&descriptor,-1,0,0,RPC_C_AUTHN_LEVEL_PKT_PRIVACY,RPC_C_IMP_LEVEL_IMPERSONATE,0,EOAC_NONE,0):HRESULT_FROM_WIN32(GetLastError()?GetLastError():ERROR_GEN_FAILURE);
+    if(acl)LocalFree(acl);for(PSID sid:sids)if(sid)FreeSid(sid);return result;
+}
+std::uint32_t initializeRestoreCallbacks(){return static_cast<std::uint32_t>(restoreComSecurity());}
+OriginCore::OriginCore():m(new Impl){restoreComSecurity();}
 OriginCore::~OriginCore(){}
 Capabilities OriginCore::capabilities()const
 {
@@ -322,6 +339,7 @@ Snapshot OriginCore::scan(const Paths& paths,const EventSink& sink)
 {
     m->snapshot=Snapshot();m->itemByToken.clear();m->stamps.clear();++m->generation;
     m->initialize(paths);
+    Log.print_con("Restore callback COM security: 0x%08lX\n",static_cast<unsigned long>(restoreComSecurity()));
     report(sink,Stage::Scan,L"Origin: enumerating devices, loading indexes and matching candidates.");
     const DWORD originStart=GetTickCount();
     Script script;script.initEngine(paths.forceReindex?L"reindex":L""); // original synchronous headless pipeline
@@ -462,12 +480,14 @@ InstallReport OriginCore::install(const InstallPlan& plan,const EventSink& sink,
     if(plan.createRestorePoint) {
         report(sink,Stage::RestorePoint,L"Creating a Windows restore point using the Origin system helper.");
         try {createRestorePoint();out.restoreCreated=true;}
-        catch(const std::exception&){out.restoreCreated=false;}
+        catch(const RestorePointError& error){out.restoreCreated=false;out.restoreFailed=true;out.restoreError=error.code;out.error=ansi(error.what());}
+        catch(const std::exception& error){out.restoreCreated=false;out.restoreFailed=true;out.error=ansi(error.what());}
         if(!out.restoreCreated && !plan.continueOnRestoreFailure) {
-            out.error=L"Restore point creation failed. No driver installation was started.";
-            report(sink,Stage::RestorePoint,out.error,Outcome::Failure);++m->generation;m->snapshot=Snapshot();return out;
+            out.error=L"Restore point creation failed. No driver installation was started. "+out.error;
+            report(sink,Stage::RestorePoint,out.error,Outcome::Failure,L"",0,checked.size(),out.restoreError);++m->generation;m->snapshot=Snapshot();return out;
         }
         report(sink,Stage::RestorePoint,out.restoreCreated?L"Windows accepted the restore-point request.":L"Restore point failed; continuing because the legacy caller explicitly selected -nostop.",out.restoreCreated?Outcome::Success:Outcome::Skipped);
+        if(plan.continueOnRestoreFailure)out.error.clear();
     }
     std::uint64_t completed=0;
     for(const auto& selected:checked) {
@@ -604,22 +624,22 @@ void OriginCore::createRestorePoint(const std::wstring &description)
     if(!administrator())throw std::runtime_error("Run as Administrator to create a restore point.");
     typedef BOOL (WINAPI *RestoreFn)(PRESTOREPOINTINFOW,PSTATEMGRSTATUS);
     HMODULE library=LoadLibraryW(L"srclient.dll");
-    if(!library)throw std::runtime_error("System Restore is unavailable on this Windows installation.");
+    if(!library)throw RestorePointError("System Restore is unavailable on this Windows installation.",GetLastError());
     RestoreFn restore=reinterpret_cast<RestoreFn>(GetProcAddress(library,"SRSetRestorePointW"));
-    if(!restore){FreeLibrary(library);throw std::runtime_error("System Restore API is unavailable.");}
+    if(!restore){const DWORD error=GetLastError();FreeLibrary(library);throw RestorePointError("System Restore API is unavailable.",error);}
     RESTOREPOINTINFOW request={};STATEMGRSTATUS status={};
     request.dwEventType=BEGIN_SYSTEM_CHANGE;request.dwRestorePtType=DEVICE_DRIVER_INSTALL;
     copyPath(request.szDescription,sizeof(request.szDescription)/sizeof(wchar_t),description.empty()?L"Snappy Driver Installer - before driver changes":description);
-    const int frequency=System.GetRestorePointCreationFrequency();
-    System.SetRestorePointCreationFrequency(0);
     const bool started=restore(&request,&status)!=FALSE && status.nStatus==ERROR_SUCCESS;
+    DWORD failure=started?ERROR_SUCCESS:(status.nStatus?status.nStatus:GetLastError());
     bool ended=false;
     if(started){
         request.dwEventType=END_SYSTEM_CHANGE;request.llSequenceNumber=status.llSequenceNumber;
         ended=restore(&request,&status)!=FALSE && status.nStatus==ERROR_SUCCESS;
+        if(!ended)failure=status.nStatus?status.nStatus:GetLastError();
     }
-    System.SetRestorePointCreationFrequency(frequency);FreeLibrary(library);
-    if(!started || !ended)throw std::runtime_error("Windows did not complete the restore point. Check System Protection and its service.");
+    FreeLibrary(library);
+    if(!started || !ended){std::ostringstream message;message<<"Windows restore point failed (error "<<failure<<", COM security 0x"<<std::hex<<static_cast<unsigned long>(restoreComSecurity())<<"). ";if(failure==ERROR_SERVICE_DISABLED)message<<"System Protection is disabled. Open System Protection and enable protection for the system drive.";else if(failure==ERROR_DISK_FULL)message<<"System Restore has insufficient disk space.";else message<<"Check System Protection and the Windows System Restore services.";throw RestorePointError(message.str(),failure);}
 }
 std::wstring OriginCore::extract(const InstallPlan& plan,const std::wstring& folder,const EventSink& sink,const std::atomic<bool>& stop)
 {

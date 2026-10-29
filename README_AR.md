@@ -3,8 +3,8 @@
   <h1>مدير تعريفات الأجهزة — الواجهة الحديثة</h1>
   <p><strong>مطابقة المحرك الأصلي، وواجهة حديثة، وخطوات أوضح.</strong></p>
   <p>مشروع مجتمعي من تطوير <strong>طارق صادق · Diagoo1</strong></p>
-  <p><img src="https://img.shields.io/badge/release-0.21.5_Beta-E9A23B" alt="بيتا"> <img src="https://img.shields.io/badge/license-GPL--3.0-00857D" alt="GPL 3"></p>
-  <p><a href="README.md">English</a> · <a href="https://github.com/Diagoo1/Snappy-Driver-Installer-Modern/releases/tag/v0.21.5">تحميل البيتا</a> · <a href="docs/GALLERY.md">معرض الصور</a> · <a href="https://github.com/Diagoo1/Snappy-Driver-Installer-Modern/issues/new?template=bug_report.yml">الإبلاغ عن مشكلة</a></p>
+  <p><img src="https://img.shields.io/badge/release-0.21.6_Beta-E9A23B" alt="بيتا"> <img src="https://img.shields.io/badge/license-GPL--3.0-00857D" alt="GPL 3"></p>
+  <p><a href="README.md">English</a> · <a href="https://github.com/Diagoo1/Snappy-Driver-Installer-Modern/releases/tag/v0.21.6">تحميل البيتا</a> · <a href="docs/GALLERY.md">معرض الصور</a> · <a href="https://github.com/Diagoo1/Snappy-Driver-Installer-Modern/issues/new?template=bug_report.yml">الإبلاغ عن مشكلة</a></p>
 </div>
 
 ## فكرة المشروع
@@ -39,7 +39,7 @@
 
 ## البدء
 
-1. حمّل الملف التنفيذي أو الحزمة المحمولة من [الإصدار 0.21.5 Beta](https://github.com/Diagoo1/Snappy-Driver-Installer-Modern/releases/tag/v0.21.5).
+1. حمّل الملف التنفيذي أو الحزمة المحمولة من [الإصدار 0.21.6 Beta](https://github.com/Diagoo1/Snappy-Driver-Installer-Modern/releases/tag/v0.21.6).
 2. ضع `drivers` و`indexes` بجواره، أو اختر مساراتهما من الإعدادات. الحزم غير مرفقة.
 3. افحص الجهاز وراجع الإصدارات والتحديد. إذا احتاج البرنامج صلاحيات المسؤول، يعرض إعادة الفتح؛ أعد الفحص والتأكيد بعدها. لا يبدأ تثبيت تلقائي عند إعادة الفتح.
 
@@ -47,7 +47,9 @@
 
 ## التوافق مع SDI وSDIO وويندوز
 
-البرنامج يدمج **محرك SDIO Origin واحدًا**، ولا يشغّل ملفي SDI وSDIO الخارجيين أو يبدّل بين محركيهما. يمكن اختيار مكتبة الحزم المعتادة بغض النظر عن البرنامج الذي نزّلها، وقد اختُبرت المطابقة للقراءة فقط مع مكتبة **SDI R2600** المتاحة. هذا لا يثبت تطابق كل الفروع أو صيغ الفهارس؛ قد تحتاج الفهارس غير المتوافقة إلى إعادة توليدها في مجلد منفصل.
+يكتشف البرنامج مكتبات **SDI وSDIO تلقائيًا**، سواء كانت الفهارس مباشرة أو داخل `indexes/SDI` أو `indexes/SDIO`. عند وجود النوعين يختار وفق ملفات التوزيعة أو أسماء الفهارس المطابقة للحزم المحلية. الفحص وصيانة الفهارس يعملان في كاش خاص بالبرنامج: تُنسخ الفهارس المتوافقة بصيغتي SDW 0x204 و0x205، وتُعاد الفهارس غير المتوافقة من الحزم المحلية المتاحة، دون الكتابة فوق فهارس المكتبة الأصلية أثناء المعالجة.
+
+اختُبر الترتيبان باستخدام مكتبة حزم SDI R2600 نفسها، وأعطيا أعداد الأجهزة والمرشحين نفسها، مع اختبار إعادة بناء فهرس غير متوافق. يظل محرك المطابقة SDIO Origin مدمجًا؛ لا يحتاج البرنامج تشغيل ملفات SDI أو SDIO الخارجية، ولا ندّعي دعم أي صيغة مجهولة لدى كل الفروع.
 
 بناء x86 يستهدف XP حتى 11 ويتضمن مساعد عمليات تعريفات x64. التشغيل على ويندوز القديم وأنظمة 32 بت والتوافق مع جميع الأجهزة ما زال يحتاج تحققًا فعليًا. هذه ليست نسخة ARM64 أصلية. راجع [حدود الاختبار](docs/VALIDATION.md) و[مصدر المحرك](docs/ARCHITECTURE.md).
 

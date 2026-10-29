@@ -277,6 +277,7 @@ $Extra
 $defineLine
 RC_FILE = $(QPath $resources)
 RC_INCLUDEPATH += $(QPath $ProjectRoot)
+PRE_TARGETDEPS += $(QPath $coreLib) $(QPath $sevenLib) $(QPath $boostLib) $(QPath $webpLib)
 LIBS += -Wl,--start-group $(QPath $coreLib) -Wl,--whole-archive $(QPath $sevenLib) -Wl,--no-whole-archive $(QPath $boostLib) $(QPath $webpLib) -Wl,--end-group
 LIBS += -lcomctl32 -lgdi32 -liphlpapi -lmsimg32 -lkernel32 -luser32 -lcomdlg32 -ladvapi32 -lshell32 -lole32 -loleaut32 -lsetupapi -lshlwapi -lnewdev -luuid -lwbemuuid -lurlmon -lwinmm -lversion -lws2_32 -lwsock32 -lwininet
 QMAKE_LFLAGS += -Wl,--gc-sections

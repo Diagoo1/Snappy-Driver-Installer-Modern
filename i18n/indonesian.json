@@ -213,7 +213,6 @@
     "Confirm driver installation": "Konfirmasi instalasi driver",
     "Conflicting update targets.": "Target pembaruan yang bertentangan.",
     "Connecting to torrent peers to complete verified blocks...": "Menghubungkan ke rekan torrent untuk menyelesaikan blok terverifikasi...",
-    "Contact me": "Hubungi saya",
     "Continue": "Lanjutkan",
     "Control Panel": "Panel kontrol",
     "Copy hardware ID": "Menyalin ID perangkat keras",
@@ -351,7 +350,6 @@
     "General settings": "Pengaturan umum\nProyek",
     "GitHub could not provide this release. Check the repository and published releases.": "GitHub tidak dapat menyediakan rilis ini. Periksa repositori dan rilis yang diterbitkan.",
     "GitHub did not provide the required SHA-256 digest.": "GitHub tidak menyediakan intisari SHA-256 yang diperlukan.",
-    "GitHub projects": "GitHub",
     "Graphics adapters": "Adaptor grafis",
     "HKEY_LOCAL_MACHINE\\HARDWARE\\DESCRIPTION\\System\\BIOS": "HKEY_LOCAL_MACHINE\\HARDWARE\\DESCRIPTION\\System\\BIOS",
     "HKEY_LOCAL_MACHINE\\HARDWARE\\DESCRIPTION\\System\\CentralProcessor\\0": "HKEY_LOCAL_MACHINE\\HARDWARE\\DESCRIPTION\\System\\CentralProcessor\\0",
@@ -625,7 +623,6 @@
     "Restore all ignored devices": "Pulihkan semua perangkat yang diabaikan",
     "Restore default": "Kembalikan default",
     "Restore point (simulated)": "Titik pemulihan (disimulasikan)",
-    "Restore point creation failed. No driver installation was started.": "Pembuatan titik pemulihan gagal. Tidak ada instalasi driver yang dimulai.",
     "Restore point creation is unavailable. No driver was changed.": "Pembuatan titik pemulihan tidak tersedia. Tidak ada pengemudi yang diubah.",
     "Restore point failed; continuing because the legacy caller explicitly selected -nostop.": "Titik pemulihan gagal; melanjutkan karena pemanggil lama secara eksplisit memilih -nostop.",
     "Restore point: %1 · Reboot: %2": "Titik pemulihan: %1 · Reboot: %2",
@@ -711,11 +708,8 @@
     "Stop ignoring this device": "Berhenti mengabaikan perangkat ini",
     "Stopped safely after the active operation": "Berhenti dengan aman setelah pengoperasian aktif",
     "Storage controllers / drives": "Pengontrol / drive penyimpanan",
-    "Support development": "Mendukung pengembangan",
     "Symbolic links are not accepted.": "Tautan simbolis tidak diterima.\nAPI Pemulihan Sistem",
     "System Properties": "Buka System Properties...",
-    "System Restore API is unavailable.": "tidak tersedia.",
-    "System Restore is unavailable on this Windows installation.": "tidak tersedia pada instalasi Windows ini.\nArsitektur Sistem",
     "System architecture": "Diagnostik Sistem",
     "System diagnostics": "Produsen Sistem",
     "System manufacturer": "Manajer Tugas",
@@ -831,7 +825,6 @@
     "Windows could not export driver packages. Run as Administrator on a Windows version supporting DISM /Export-Driver; see export-log.txt.": "Windows tidak dapat mengekspor paket driver. Jalankan sebagai Administrator pada versi Windows yang mendukung DISM /Export-Driver; lihat ekspor-log.txt.",
     "Windows could not open an Internet session.": "Windows tidak dapat membuka sesi Internet.",
     "Windows could not start the restart request.": "Windows tidak dapat memulai permintaan restart.",
-    "Windows did not complete the restore point. Check System Protection and its service.": "Windows tidak menyelesaikan titik pemulihan. Periksa Perlindungan Sistem dan layanannya.",
     "Windows did not grant permission to restart.": "Windows tidak memberikan izin untuk memulai ulang.",
     "Windows is exporting third-party driver packages...": "Windows mengekspor paket driver pihak ketiga...",
     "Windows only": "Windows saja",
@@ -871,6 +864,7 @@
     "Copy": "Salin",
     "Paste": "Tempel",
     "Delete": "Hapus",
-    "Status": "Keadaan"
+    "Status": "Keadaan",
+    "System Protection": "Sistem perlindungan"
   }
 }

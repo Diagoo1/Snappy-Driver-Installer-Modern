@@ -213,7 +213,6 @@
     "Confirm driver installation": "確認驅動程式安裝",
     "Conflicting update targets.": "更新目標衝突。",
     "Connecting to torrent peers to complete verified blocks...": "正在連接 torrent 對等點以完成驗證區塊...",
-    "Contact me": "聯絡我",
     "Continue": "繼續",
     "Control Panel": "控制面板",
     "Copy hardware ID": "複製硬體 ID",
@@ -351,7 +350,6 @@
     "General settings": "常規設定",
     "GitHub could not provide this release. Check the repository and published releases.": "GitHub 無法提供此版本。檢查儲存庫和已發布的版本。",
     "GitHub did not provide the required SHA-256 digest.": "GitHub 未提供所需的 SHA-256 摘要。",
-    "GitHub projects": "GitHub 項目",
     "Graphics adapters": "圖形轉接器",
     "HKEY_LOCAL_MACHINE\\HARDWARE\\DESCRIPTION\\System\\BIOS": "HKEY_LOCAL_MACHINE\\HARDWARE\\DESCRIPTION\\System\\BIOS",
     "HKEY_LOCAL_MACHINE\\HARDWARE\\DESCRIPTION\\System\\CentralProcessor\\0": "HKEY_LOCAL_MACHINE\\HARDWARE\\DESCRIPTION\\System\\CentralProcessor\\0",
@@ -625,7 +623,6 @@
     "Restore all ignored devices": "恢復所有被忽略的設備",
     "Restore default": "恢復預設",
     "Restore point (simulated)": "還原點（模擬）",
-    "Restore point creation failed. No driver installation was started.": "還原點建立失敗。沒有開始安裝驅動程式。",
     "Restore point creation is unavailable. No driver was changed.": "恢復點建立不可用。沒有更換驅動程式。",
     "Restore point failed; continuing because the legacy caller explicitly selected -nostop.": "還原點失敗；繼續，因為舊呼叫者明確選擇了 -nostop。",
     "Restore point: %1 · Reboot: %2": "還原點：%1 · 重啟：%2",
@@ -711,11 +708,8 @@
     "Stop ignoring this device": "停止忽略該設備",
     "Stopped safely after the active operation": "主動操作後安全停止",
     "Storage controllers / drives": "儲存控制器/驅動器",
-    "Support development": "支援開發",
     "Symbolic links are not accepted.": "不接受符號連結。",
     "System Properties": "開啟系統屬性…",
-    "System Restore API is unavailable.": "系統還原 API 不可用。",
-    "System Restore is unavailable on this Windows installation.": "系統還原在此 Windows 安裝上不可用。",
     "System architecture": "系統架構",
     "System diagnostics": "系統診斷",
     "System manufacturer": "系統製造商",
@@ -831,7 +825,6 @@
     "Windows could not export driver packages. Run as Administrator on a Windows version supporting DISM /Export-Driver; see export-log.txt.": "Windows 無法匯出驅動程式套件。在支援 DISM /Export-Driver 的 Windows 版本上以管理員身分執行；請參閱匯出日誌.txt。",
     "Windows could not open an Internet session.": "Windows 無法開啟 Internet 會話。",
     "Windows could not start the restart request.": "Windows 無法啟動重新啟動要求。",
-    "Windows did not complete the restore point. Check System Protection and its service.": "Windows 未完成還原點。檢查系統保護及其服務。",
     "Windows did not grant permission to restart.": "Windows 未授予重新啟動權限。",
     "Windows is exporting third-party driver packages...": "Windows 正在匯出第三方驅動程式套件...\n僅",
     "Windows only": "Windows",
@@ -871,6 +864,7 @@
     "Copy": "複製",
     "Paste": "貼上",
     "Delete": "刪除",
-    "Status": "狀態"
+    "Status": "狀態",
+    "System Protection": "系統保護"
   }
 }

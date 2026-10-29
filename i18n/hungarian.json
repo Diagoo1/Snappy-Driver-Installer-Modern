@@ -213,7 +213,6 @@
     "Confirm driver installation": "Erősítse meg az illesztőprogram telepítését",
     "Conflicting update targets.": "Ellentmondó frissítési célok.",
     "Connecting to torrent peers to complete verified blocks...": "Csatlakozás torrent társokhoz az ellenőrzött blokkok befejezéséhez...",
-    "Contact me": "Lépjen kapcsolatba velem",
     "Continue": "Folytatás",
     "Control Panel": "Kezelőpanel",
     "Copy hardware ID": "Hardverazonosító másolása",
@@ -351,7 +350,6 @@
     "General settings": "Általános beállítások",
     "GitHub could not provide this release. Check the repository and published releases.": "A GitHub nem tudta biztosítani ezt a kiadást. Ellenőrizze a tárolót és a közzétett kiadásokat.",
     "GitHub did not provide the required SHA-256 digest.": "A GitHub nem biztosította a szükséges SHA-256 kivonatot.",
-    "GitHub projects": "GitHub projektek",
     "Graphics adapters": "grafikus adapterek",
     "HKEY_LOCAL_MACHINE\\HARDWARE\\DESCRIPTION\\System\\BIOS": "HKEY_LOCAL_MACHINE\\HARDWARE\\DESCRIPTION\\System\\BIOS",
     "HKEY_LOCAL_MACHINE\\HARDWARE\\DESCRIPTION\\System\\CentralProcessor\\0": "HKEY_LOCAL_MACHINE\\HARDWARE\\DESCRIPTION\\System\\CentralProcessor\\0",
@@ -625,7 +623,6 @@
     "Restore all ignored devices": "Az összes figyelmen kívül hagyott eszköz visszaállítása",
     "Restore default": "Alapértelmezés visszaállítása",
     "Restore point (simulated)": "Visszaállítási pont (szimulált)",
-    "Restore point creation failed. No driver installation was started.": "A visszaállítási pont létrehozása nem sikerült. Nem indult el az illesztőprogram telepítése.",
     "Restore point creation is unavailable. No driver was changed.": "A visszaállítási pont létrehozása nem érhető el. Sofőrt nem cseréltek.",
     "Restore point failed; continuing because the legacy caller explicitly selected -nostop.": "A visszaállítási pont nem sikerült; folytatódik, mert a régi hívó kifejezetten a -nostopot választotta.",
     "Restore point: %1 · Reboot: %2": "Visszaállítási pont: %1 · Újraindítás: %2",
@@ -711,11 +708,8 @@
     "Stop ignoring this device": "Ne hagyja figyelmen kívül ezt az eszközt",
     "Stopped safely after the active operation": "Az aktív működés után biztonságosan leállt",
     "Storage controllers / drives": "Tárolóvezérlők / meghajtók",
-    "Support development": "Fejlesztés támogatása",
     "Symbolic links are not accepted.": "Szimbolikus hivatkozásokat nem fogadunk el.\nA",
     "System Properties": "Rendszer tulajdonságok",
-    "System Restore API is unavailable.": "rendszer-visszaállítási API nem érhető el.",
-    "System Restore is unavailable on this Windows installation.": "rendszer-visszaállítás nem érhető el ezen a Windows telepítésen.",
     "System architecture": "Rendszerarchitektúra",
     "System diagnostics": "Rendszerdiagnosztika",
     "System manufacturer": "Rendszergyártó",
@@ -831,7 +825,6 @@
     "Windows could not export driver packages. Run as Administrator on a Windows version supporting DISM /Export-Driver; see export-log.txt.": "A Windows nem tudta exportálni az illesztőprogram-csomagokat. Futtassa rendszergazdaként a Windows verziót, amely támogatja a DISM /Export-Driver-t; lásd az export-log.txt fájlt.",
     "Windows could not open an Internet session.": "A Windows nem tudott internetes munkamenetet nyitni.",
     "Windows could not start the restart request.": "A Windows nem tudta elindítani az újraindítási kérést.",
-    "Windows did not complete the restore point. Check System Protection and its service.": "A Windows nem fejezte be a visszaállítási pontot. Ellenőrizze a rendszervédelmet és annak szolgáltatásait.",
     "Windows did not grant permission to restart.": "A Windows nem adott engedélyt az újraindításra.",
     "Windows is exporting third-party driver packages...": "A Windows harmadik féltől származó illesztőprogram-csomagokat exportál...\nCsak",
     "Windows only": "Windows",
@@ -871,6 +864,7 @@
     "Copy": "Másolás",
     "Paste": "Beillesztés",
     "Delete": "Törlés",
-    "Status": "Állapot :"
+    "Status": "Állapot :",
+    "System Protection": "Rendszervédelem"
   }
 }

@@ -32,6 +32,7 @@ signals:
     void stopRequested();
     void activeChanged(bool active);
     void simulationFinished(bool rebootRequested);
+    void systemProtectionRequested();
 
 private slots:
     void step();
@@ -47,6 +48,6 @@ private:
     QLabel *m_stepRestore,*m_stepPrep,*m_stepInstall,*m_stepFinish;
     QProgressBar *m_progress;
     QTreeWidget *m_queue;
-    QPushButton *m_back,*m_stop;
+    QPushButton *m_back,*m_stop,*m_restoreHelp;
 };
 #endif

@@ -8,6 +8,7 @@ def decode(value):
     return ''.join(json.loads(token) for token in re.findall(STRING,value))
 def visible(value):
     if not value or len(value)>850 or not re.search('[A-Za-z]',value):return False
+    if re.fullmatch(r'[a-z0-9_.-]+\.cpl(?:,\d*)+',value,re.I):return False
     if any('\u0590'<=c<='\u08ff' for c in value):return False
     if any(x in value for x in ('{','}','background:','color:','font-size:','QWidget','QMenu::','QPushButton#','QTreeWidget')):return False
     if value.startswith((':/','http:','https:','mailto:','C:/','Software\\','SOFTWARE\\','--','^')):return False
