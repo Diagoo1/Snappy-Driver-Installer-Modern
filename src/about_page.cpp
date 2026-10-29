@@ -1,11 +1,14 @@
 #include "about_page.h"
 #include "appearance.h"
 #include "vector_icons.h"
+#include "theme.h"
 #include <QVBoxLayout>
 #include <QHBoxLayout>
 #include <QLabel>
 #include <QScrollArea>
 #include <QPainter>
+#include <QRadialGradient>
+#include <QLinearGradient>
 #include <QTimer>
 #include <QApplication>
 #include <QDesktopServices>
@@ -13,8 +16,19 @@
 #include <QtMath>
 
 class DeveloperPortrait : public QWidget {
-public:explicit DeveloperPortrait(QWidget *p):QWidget(p){setFixedSize(92,92);}
-protected:void paintEvent(QPaintEvent*) Q_DECL_OVERRIDE {QPainter p(this);p.setRenderHint(QPainter::Antialiasing);QPainterPath clip;clip.addEllipse(QRectF(4,4,84,84));p.setClipPath(clip);p.drawPixmap(rect(),QPixmap(QStringLiteral(":/sdio/assets/developer-avatar.jpg")));p.setClipping(false);p.setPen(QPen(QColor("#33C9BA"),3));p.setBrush(Qt::NoBrush);p.drawEllipse(QRectF(3,3,86,86));}
+public:explicit DeveloperPortrait(QWidget *p):QWidget(p){setFixedSize(116,116);}
+protected:void paintEvent(QPaintEvent*) Q_DECL_OVERRIDE {QPainter p(this);p.setRenderHint(QPainter::Antialiasing);p.setRenderHint(QPainter::SmoothPixmapTransform);QRadialGradient glow(QPointF(58,58),58);glow.setColorAt(.7,QColor(42,213,190,75));glow.setColorAt(1,QColor(42,213,190,0));p.setPen(Qt::NoPen);p.setBrush(glow);p.drawEllipse(rect());QPainterPath clip;clip.addEllipse(QRectF(9,9,98,98));p.setClipPath(clip);p.drawPixmap(QRectF(9,9,98,98),QPixmap(QStringLiteral(":/sdio/assets/developer-avatar.jpg")),QRectF(QPixmap(QStringLiteral(":/sdio/assets/developer-avatar.jpg")).rect()));p.setClipping(false);QLinearGradient ring(0,0,116,116);ring.setColorAt(0,QColor("#EAD1A0"));ring.setColorAt(.48,QColor("#59D7C5"));ring.setColorAt(1,QColor("#159389"));p.setPen(QPen(QBrush(ring),2));p.setBrush(Qt::NoBrush);p.drawEllipse(QRectF(7,7,102,102));}
+};
+class DeveloperCard : public QWidget {
+public:explicit DeveloperCard(QWidget *parent):QWidget(parent){setObjectName(QStringLiteral("developerCard"));setMinimumHeight(248);}
+protected:void paintEvent(QPaintEvent*) Q_DECL_OVERRIDE {
+    QPainter p(this);p.setRenderHint(QPainter::Antialiasing);const QRectF area=QRectF(rect()).adjusted(1,1,-1,-1);QPainterPath frame;frame.addRoundedRect(area,23,23);p.setClipPath(frame);
+    QLinearGradient base(0,0,width(),height());base.setColorAt(0,QColor("#102B40"));base.setColorAt(.55,QColor("#113E4B"));base.setColorAt(1,QColor("#123A39"));p.fillPath(frame,base);
+    const bool rtl=layoutDirection()==Qt::RightToLeft;const QPointF center(rtl?70:width()-70,25);QRadialGradient halo(center,340);halo.setColorAt(0,QColor(51,205,174,48));halo.setColorAt(1,QColor(51,205,174,0));p.fillPath(frame,halo);
+    p.setPen(QPen(QColor(142,220,209,23),1));p.setBrush(Qt::NoBrush);for(int i=0;i<3;++i)p.drawEllipse(center,100+i*49,100+i*49);
+    QLinearGradient line(0,0,width(),0);line.setColorAt(0,QColor(225,199,148,0));line.setColorAt(.2,QColor(225,199,148,135));line.setColorAt(.7,QColor(61,213,188,110));line.setColorAt(1,QColor(61,213,188,0));p.setPen(QPen(QBrush(line),1));p.drawLine(QPointF(26,1),QPointF(width()-26,1));
+    p.setClipping(false);p.setPen(QPen(QColor(109,183,183,65),1));p.drawRoundedRect(area,23,23);
+}
 };
 class Heartbeat : public QWidget {
 public:explicit Heartbeat(QWidget *parent):QWidget(parent),m_frame(0){setFixedSize(32,32);QTimer *timer=new QTimer(this);timer->setInterval(33);connect(timer,&QTimer::timeout,this,[this](){if(isVisible() && !qApp->property("reduceMotion").toBool()){++m_frame;update();}});timer->start();}
@@ -36,11 +50,12 @@ void AboutPage::setArabic(bool ar){
     QLabel *logo=new QLabel(hero);QPixmap mark(QStringLiteral(":/sdio/assets/tarek-sadek-logo.png"));const qreal dpr=logo->devicePixelRatioF();mark=mark.scaled(qRound(80*dpr),qRound(80*dpr),Qt::KeepAspectRatio,Qt::SmoothTransformation);mark.setDevicePixelRatio(dpr);logo->setPixmap(mark);heroLayout->addWidget(logo);
     QVBoxLayout *heroText=new QVBoxLayout;QLabel *name=text(t("Snappy Driver Installer","مدير تعريفات الأجهزة"),"heroName",hero);name->setStyleSheet(QStringLiteral("color:white;background:transparent;font-size:25px;font-weight:600;"));heroText->addWidget(name);
     QLabel *description=text(t("Find the right driver. Keep the process clear.","اعثر على التعريف المناسب، بخطوات واضحة."),"heroDescription",hero);description->setStyleSheet(QStringLiteral("color:#BDE7E8;background:transparent;font-size:13px;"));heroText->addWidget(description);heroLayout->addLayout(heroText,1);box->addWidget(hero);
-    QWidget *developer=new QWidget(body);developer->setObjectName(QStringLiteral("softSurface"));QHBoxLayout *profile=new QHBoxLayout(developer);profile->setContentsMargins(25,23,25,23);profile->setSpacing(22);profile->addWidget(new DeveloperPortrait(developer));
+    QWidget *developer=new DeveloperCard(body);QHBoxLayout *profile=new QHBoxLayout(developer);profile->setContentsMargins(30,27,30,27);profile->setSpacing(24);profile->addWidget(new DeveloperPortrait(developer),0,Qt::AlignVCenter);
     QVBoxLayout *bio=new QVBoxLayout;QHBoxLayout *made=new QHBoxLayout;made->addWidget(text(t("Made with care by","صُمّم بعناية بواسطة"),"mutedText",developer));made->addWidget(new Heartbeat(developer));made->addStretch();bio->addLayout(made);
-    QLabel *author=text(t("Tarek Sadek","طارق صادق"),"developerName",developer);author->setStyleSheet(QStringLiteral("color:#00A89E;font-size:28px;font-weight:700;background:transparent;"));bio->addWidget(author);
+    QLabel *author=text(t("Tarek Sadek","طارق صادق"),"developerName",developer);author->setStyleSheet(QStringLiteral("color:#F4FAF7;font-size:32px;font-weight:700;background:transparent;"));bio->addWidget(author);
     bio->addWidget(text(t("Interface design & development · Diagoo1","تصميم وتطوير الواجهة · Diagoo1"),"bodyText",developer));
     bio->addWidget(text(t("Creator of Dreams Software Collection","مطوّر مجموعة دريمز للبرامج"),"subText",developer));profile->addLayout(bio,1);box->addWidget(developer);
+    developer->setStyleSheet(QStringLiteral("QLabel {background:transparent;} QLabel#mutedText {color:#C8D8DC;font-size:12px;} QLabel#bodyText {color:#79E0CE;font-size:14px;font-weight:500;} QLabel#subText {color:#BCD1D4;font-size:12px;}"));
     QHBoxLayout *links=new QHBoxLayout;links->setSpacing(12);
     const QStringList titles=QStringList()<<t("GitHub projects","مشاريعي على GitHub")<<t("Support development","دعم التطوير")<<t("Contact me","تواصل معي");
     const QStringList urls=QStringList()<<QStringLiteral("https://github.com/Diagoo1")<<QStringLiteral("https://paypal.me/Diagoo1")<<QStringLiteral("mailto:tarek.sadek44@gmail.com");

@@ -49,8 +49,7 @@ void TitleButton::paintEvent(QPaintEvent*){
 }
 
 static bool darkSurface(QWidget *widget){
-    for(QWidget *w=widget;w;w=w->parentWidget())if(w->property("darkMode").isValid())return w->property("darkMode").toBool();
-    return false;
+    return Theme::isDark(widget);
 }
 QPainterPath windowClip(QWidget *widget,qreal radius){
     const QPoint origin=widget->mapTo(widget->window(),QPoint());

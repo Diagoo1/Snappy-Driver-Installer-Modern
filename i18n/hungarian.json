@@ -811,7 +811,6 @@
     "Validation and installation modes are mutually exclusive.": "Az érvényesítési és telepítési módok kölcsönösen kizárják egymást.",
     "Verification read failed.": "Az ellenőrzési olvasás sikertelen.",
     "Verified and saved %1": "Ellenőrizve és mentve %1",
-    "Version": "Verzió",
     "Version %1 is downloaded and verified. Restart the application to apply it now?": "%1 verzió letöltése és ellenőrzése megtörtént. Újraindítja az alkalmazást az azonnali alkalmazáshoz?",
     "View INF file": "INF fájl megtekintése",
     "View additional information": "További információk megtekintése",

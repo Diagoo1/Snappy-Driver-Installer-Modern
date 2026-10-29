@@ -811,7 +811,6 @@
     "Validation and installation modes are mutually exclusive.": "Patvirtinimo ir diegimo režimai yra vienas kitą paneigiantys.",
     "Verification read failed.": "Nepavyko nuskaityti patvirtinimo.",
     "Verified and saved %1": "Patvirtinta ir išsaugota %1",
-    "Version": "Versija",
     "Version %1 is downloaded and verified. Restart the application to apply it now?": "versija %1 atsisiųsta ir patikrinta. Iš naujo paleisti programą, kad ją pritaikytumėte dabar?",
     "View INF file": "Peržiūrėkite INF failą",
     "View additional information": "Peržiūrėkite papildomą informaciją",

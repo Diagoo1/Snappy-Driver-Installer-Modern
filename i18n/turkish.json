@@ -811,7 +811,6 @@
     "Validation and installation modes are mutually exclusive.": "Doğrulama ve kurulum modları birbirini dışlar.",
     "Verification read failed.": "Doğrulama okuması başarısız oldu.",
     "Verified and saved %1": "Doğrulandı ve kaydedildi %1",
-    "Version": "Sürüm",
     "Version %1 is downloaded and verified. Restart the application to apply it now?": "Sürümü %1 indirildi ve doğrulandı. Uygulamayı şimdi uygulamak için yeniden başlatılsın mı?",
     "View INF file": "INF dosyasını görüntüle",
     "View additional information": "Ek bilgileri görüntüleyin",

@@ -1,5 +1,14 @@
 #include "theme.h"
 #include "ui_font.h"
+#include <QWidget>
+#include <QVariant>
+
+bool Theme::isDark(const QWidget *widget)
+{
+    for(const QWidget *w=widget;w;w=w->parentWidget())
+        if(w->property("darkMode").isValid())return w->property("darkMode").toBool();
+    return widget && widget->palette().color(QPalette::Base).lightness()<130;
+}
 
 QString Theme::styleSheet(bool dark)
 {
@@ -19,7 +28,12 @@ QSpinBox::up-button:hover,QSpinBox::down-button:hover {background:%3;}
 QTabWidget::pane {border:0; background:transparent;}
 QTabBar::tab {color:%5; background:transparent; padding:10px 18px; border-bottom:2px solid transparent;}
 QTabBar::tab:selected {color:%4; border-bottom:2px solid #00AFA5;}
-QComboBox#candidatePicker {selection-background-color:#D9F1ED;selection-color:#166D69;background:%2;color:%4;border:1px solid %6;border-radius:10px;padding:10px;min-height:24px;}
+QComboBox[projectCombo="true"] {background:%2;color:%4;border:1px solid %6;border-radius:10px;padding:10px 38px 10px 13px;min-height:24px;font-size:13px;}
+QComboBox[projectCombo="true"]:hover,QComboBox[projectCombo="true"]:focus {background:%3;border-color:#00AFA5;}
+QComboBox[projectCombo="true"]:disabled {color:%5;background:%1;}
+QComboBox[projectCombo="true"]::drop-down {background:transparent;border:0;width:34px;}
+QComboBox[projectCombo="true"]::down-arrow {image:url(%8);width:14px;height:14px;}
+QComboBox#candidatePicker {background:%2;color:%4;border:1px solid %6;border-radius:10px;padding:10px 38px 10px 13px;min-height:24px;}
 QComboBox#candidatePicker::drop-down {border:0; width:28px;}
 QComboBox#candidatePicker::down-arrow {image:url(%8);width:12px;height:12px;}
 QComboBox#candidatePicker QAbstractItemView {background:%2;color:%4;selection-background-color:%3;}
@@ -174,8 +188,7 @@ QLineEdit#languageSearch {background:%3; color:%4; border:1px solid %6; border-r
  min-height:23px; padding:7px 11px; font-size:12px;}
 QListWidget#languageChoices {background:%2; color:%4; border:0; outline:0; font-size:13px;}
 QListWidget#languageChoices::item {padding:7px 10px; border-radius:6px;}
-QListWidget#languageChoices::item:hover {background:#DDF3F0; color:#125C59;}
-QListWidget#languageChoices::item:selected {background:#C9EBE5; color:#075E57;}
+QListWidget#languageChoices::item:disabled {color:%5;background:transparent;}
 
 QFrame#premiumPopupCard {background:transparent; color:%4; border:none;}
 QLabel#popoverSection {color:%5; background:transparent; font-size:10px; font-weight:700;}
@@ -206,6 +219,13 @@ QComboBox#candidatePicker::down-arrow {image:url(%8);width:14px;height:14px;}
 QMessageBox QLabel {color:%4;}
 )QSS").arg(background).arg(surface).arg(elevated).arg(primary).arg(secondary).arg(stroke).arg(thumb).arg(comboArrow);
     const QString accent=color("accent",dark).name(),hover=color("accentHover",dark).name(),link=color("link",dark).name();
+    const QColor base=color("surface",dark),tint=color("link",dark);
+    auto blend=[base,tint](qreal amount){return QColor(qRound(base.red()*(1-amount)+tint.red()*amount),qRound(base.green()*(1-amount)+tint.green()*amount),qRound(base.blue()*(1-amount)+tint.blue()*amount)).name();};
+    result+=QStringLiteral("QListWidget#languageChoices::item:hover:enabled {background:%1;color:%3;} QListWidget#languageChoices::item:selected:enabled {background:%2;color:%3;border:1px solid %4;} QListWidget#languageChoices::item:selected:hover:enabled {background:%2;color:%3;}")
+        .arg(blend(dark?.17:.09)).arg(blend(dark?.29:.16)).arg(primary).arg(blend(dark?.50:.38));
+    result+=QStringLiteral("QTabWidget#comparisonTabs::pane {background:transparent;} QTabWidget#comparisonTabs QTabBar::tab {background:%1;color:%2;border:1px solid transparent;border-radius:9px;margin:0 6px 6px 0;padding:10px 17px;} QTabWidget#comparisonTabs QTabBar::tab:hover {color:%3;background:%4;} QTabWidget#comparisonTabs QTabBar::tab:selected {background:%4;color:%3;border-color:%5;} QWidget#comparisonPage,QWidget#candidateHost {background:transparent;} QLabel#detailVersion {font-size:25px;font-weight:700;color:%3;background:transparent;} QLabel#detailHeading {font-size:11px;font-weight:700;background:transparent;} QWidget#comparisonPickerSurface {background:%1;border:1px solid %5;border-radius:13px;}")
+        .arg(surface).arg(secondary).arg(primary).arg(blend(dark?.19:.09)).arg(stroke);
+    result+=QStringLiteral("QTabWidget#comparisonTabs QScrollArea#dialogScroll {background:transparent;border:0;} QWidget#comparisonViewport {background:transparent;}");
     for(const char *value:{"#00AFA5","#00BDB1","#00A99E","#12AAB5","#0EAAA7","#09B5A8"})result.replace(QLatin1String(value),accent,Qt::CaseInsensitive);
     for(const char *value:{"#008B85","#008C85"})result.replace(QLatin1String(value),hover,Qt::CaseInsensitive);
     for(const char *value:{"#0BAEA5","#03AFA7","#08D2C3","#009A92"})result.replace(QLatin1String(value),link,Qt::CaseInsensitive);

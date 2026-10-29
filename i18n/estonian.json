@@ -811,7 +811,6 @@
     "Validation and installation modes are mutually exclusive.": "Valideerimis- ja installirežiimid välistavad üksteist.",
     "Verification read failed.": "Kinnituslugemine ebaõnnestus.",
     "Verified and saved %1": "Kontrollitud ja salvestatud %1",
-    "Version": "Versioon",
     "Version %1 is downloaded and verified. Restart the application to apply it now?": "versioon %1 on alla laaditud ja kinnitatud. Kas soovite rakenduse kohe rakendamiseks taaskäivitada?",
     "View INF file": "Vaadake faili INF",
     "View additional information": "Vaadake lisateavet",

@@ -811,7 +811,6 @@
     "Validation and installation modes are mutually exclusive.": "Режими валидације и инсталације се међусобно искључују.",
     "Verification read failed.": "Читање верификације није успело.",
     "Verified and saved %1": "Верификовано и сачувано %1",
-    "Version": "Верзија",
     "Version %1 is downloaded and verified. Restart the application to apply it now?": "Версион %1 је преузета и верификована. Поново покренути апликацију да бисте је сада применили?",
     "View INF file": "Виев INF фајл",
     "View additional information": "Погледајте додатне информације",

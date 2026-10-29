@@ -811,7 +811,6 @@
     "Validation and installation modes are mutually exclusive.": "Els modes de validació i instal·lació s'exclouen mútuament.",
     "Verification read failed.": "La lectura de verificació ha fallat.",
     "Verified and saved %1": "Verificat i desat %1",
-    "Version": "Versió",
     "Version %1 is downloaded and verified. Restart the application to apply it now?": "La versió %1 està baixada i verificada. Reinicieu l'aplicació per aplicar-la ara?",
     "View INF file": "Visualitza el fitxer INF",
     "View additional information": "Mostra informació addicional",

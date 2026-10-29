@@ -1,6 +1,8 @@
 #include "searchable_language_combo.h"
 #include "appearance.h"
 #include "ui_language.h"
+#include "theme.h"
+#include <QAbstractItemModel>
 #include <QPropertyAnimation>
 #include <QFrame>
 #include <QLineEdit>
@@ -16,9 +18,10 @@ SearchableLanguageCombo::SearchableLanguageCombo(QWidget *parent)
     : QComboBox(parent),m_popup(new RoundedPanel(this)),
       m_filter(new QLineEdit(m_popup)),m_list(new QListWidget(m_popup))
 {
+    setProperty("projectCombo",true);
     m_popup->setWindowFlags(Qt::Popup|Qt::FramelessWindowHint|Qt::NoDropShadowWindowHint);
     m_popup->setObjectName(QStringLiteral("languagePopup"));
-    m_popup->setProperty("darkMode",palette().color(QPalette::Base).lightness()<130);
+    m_popup->setProperty("darkMode",Theme::isDark(this));
     m_popup->setMinimumWidth(290);
     m_popup->setFocusPolicy(Qt::StrongFocus);
     QVBoxLayout *layout=new QVBoxLayout(m_popup);
@@ -31,14 +34,14 @@ SearchableLanguageCombo::SearchableLanguageCombo(QWidget *parent)
     m_list->setVerticalScrollMode(QAbstractItemView::ScrollPerPixel);
     m_list->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
     m_list->setSelectionMode(QAbstractItemView::SingleSelection);
-    m_list->setFocusPolicy(Qt::NoFocus);
+    m_list->setFocusPolicy(Qt::StrongFocus);
     layout->addWidget(m_filter);
     layout->addWidget(m_list,1);
     connect(m_filter,&QLineEdit::textChanged,this,[this](const QString &text){filterItems(text);});
     connect(m_list,&QListWidget::itemClicked,this,[this](QListWidgetItem *item){choose(item);});
     connect(m_list,&QListWidget::itemActivated,this,[this](QListWidgetItem *item){choose(item);});
     connect(m_filter,&QLineEdit::returnPressed,this,[this](){
-        for(int i=0;i<m_list->count();++i)if(!m_list->item(i)->isHidden()){
+        for(int i=0;i<m_list->count();++i)if(!m_list->item(i)->isHidden() && (m_list->item(i)->flags()&Qt::ItemIsEnabled)){
             choose(m_list->item(i));return;
         }
     });
@@ -55,14 +58,14 @@ void SearchableLanguageCombo::filterItems(const QString &query)
 }
 void SearchableLanguageCombo::choose(QListWidgetItem *item)
 {
-    if(!item)return;
+    if(!item || !(item->flags()&Qt::ItemIsEnabled))return;
     const int index=item->data(Qt::UserRole).toInt();
     if(index>=0 && index<count())setCurrentIndex(index);
     hidePopup();
 }
 void SearchableLanguageCombo::showPopup()
 {
-    m_popup->setProperty("darkMode",palette().color(QPalette::Base).lightness()<130);
+    m_popup->setProperty("darkMode",Theme::isDark(this));
     m_filter->setPlaceholderText(property("languageSelector").toBool()?
         UiLanguage::text(QStringLiteral("Search languages..."),QString::fromUtf8("ابحث عن لغة...")):
         objectName()==QStringLiteral("candidatePicker")?
@@ -75,9 +78,10 @@ void SearchableLanguageCombo::showPopup()
         QListWidgetItem *entry=new QListWidgetItem(itemText(i),m_list);
         entry->setData(Qt::UserRole,i);
         entry->setSizeHint(QSize(0,44));
+        if(!(model()->flags(model()->index(i,modelColumn(),rootModelIndex()))&Qt::ItemIsEnabled))entry->setFlags(entry->flags()&~Qt::ItemIsEnabled);
         if(i==currentIndex())m_list->setCurrentItem(entry);
     }
-    m_filter->clear();m_filter->setVisible(count()>8);
+    m_filter->clear();m_filter->setVisible(count()>8 && objectName()!=QStringLiteral("interfaceZoom"));
     int w=qMax(width(),330);
     const QRect screen=QApplication::desktop()->availableGeometry(this);
     w=qMin(w,screen.width()-24);
@@ -88,7 +92,9 @@ void SearchableLanguageCombo::showPopup()
     if(pos.x()+w>screen.right()-4)pos.setX(screen.right()-w-4);
     if(pos.x()<screen.left()+4)pos.setX(screen.left()+4);
     m_popup->setGeometry(QRect(pos,QSize(w,h)));
-    m_popup->show();m_popup->raise();m_filter->setFocus(Qt::PopupFocusReason);
+    m_popup->show();m_popup->raise();
+    if(m_filter->isVisible())m_filter->setFocus(Qt::PopupFocusReason);else m_list->setFocus(Qt::PopupFocusReason);
+    if(m_list->currentItem())m_list->scrollToItem(m_list->currentItem(),QAbstractItemView::EnsureVisible);
     if(!qApp->property("reduceMotion").toBool()){
         QPropertyAnimation *fade=new QPropertyAnimation(m_popup,"windowOpacity",m_popup);
         fade->setDuration(160);fade->setStartValue(.0);fade->setEndValue(1.0);fade->start(QAbstractAnimation::DeleteWhenStopped);

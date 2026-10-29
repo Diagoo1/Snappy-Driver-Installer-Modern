@@ -811,7 +811,6 @@
     "Validation and installation modes are mutually exclusive.": "Validerings- og installationstilstande udelukker hinanden.",
     "Verification read failed.": "Bekræftelseslæsning mislykkedes.",
     "Verified and saved %1": "Verificeret og gemt %1",
-    "Version": "Version",
     "Version %1 is downloaded and verified. Restart the application to apply it now?": "Version %1 downloades og verificeres. Genstart applikationen for at anvende den nu?",
     "View INF file": "Se INF-fil",
     "View additional information": "Se yderligere information",

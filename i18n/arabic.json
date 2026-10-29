@@ -811,7 +811,6 @@
     "Validation and installation modes are mutually exclusive.": "أوضاع التحقق من الصحة والتثبيت متنافية.\nفشلت قراءة التحقق من",
     "Verification read failed.": ".\nتم التحقق من",
     "Verified and saved %1": "وحفظ %1",
-    "Version": "الإصدار",
     "Version %1 is downloaded and verified. Restart the application to apply it now?": "تم تنزيل الإصدار %1 والتحقق منه. هل تريد إعادة تشغيل البرنامج لتطبيقه الآن؟",
     "View INF file": "عرض ملف INF",
     "View additional information": "عرض معلومات إضافية",

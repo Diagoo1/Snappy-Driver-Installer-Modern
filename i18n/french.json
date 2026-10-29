@@ -811,7 +811,6 @@
     "Validation and installation modes are mutually exclusive.": "Les modes de validation et d’installation s’excluent mutuellement.",
     "Verification read failed.": "Échec de la lecture de vérification.",
     "Verified and saved %1": "Vérifié et enregistré %1",
-    "Version": "Version",
     "Version %1 is downloaded and verified. Restart the application to apply it now?": "%1 est téléchargée et vérifiée. Redémarrer l'application pour l'appliquer maintenant ?",
     "View INF file": "Afficher le fichier INF",
     "View additional information": "Afficher des informations supplémentaires",

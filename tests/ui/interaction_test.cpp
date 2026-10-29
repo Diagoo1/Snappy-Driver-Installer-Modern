@@ -378,6 +378,34 @@ int main(int argc,char **argv){
         window.grab().save(QDir(app.applicationDirPath()).filePath(QStringLiteral("packages-arabic.png")));
         QMetaObject::invokeMethod(&window,"updateDark",Q_ARG(bool,true));QMetaObject::invokeMethod(&window,"navigate",Q_ARG(int,5));QTest::qWait(250);
         window.grab().save(QDir(app.applicationDirPath()).filePath(QStringLiteral("about-arabic-dark.png")));
+        {
+            QComboBox *zoom=window.findChild<QComboBox*>(QStringLiteral("interfaceZoom"));
+            check(zoom && zoom->property("projectCombo").toBool(),"interface zoom shares the themed project combo styling");
+            check(zoom && Theme::isDark(zoom),"combo theme follows the dark application instead of the Windows palette");
+            if(zoom){zoom->showPopup();QTest::qWait(180);QWidget *popup=app.activePopupWidget();
+                check(popup && popup->property("darkMode").toBool(),"dark zoom popup paints a dark rounded frame");
+                QListWidget *choices=popup?popup->findChild<QListWidget*>(QStringLiteral("languageChoices")):0;
+                bool sameFlags=choices && choices->count()==zoom->count();for(int i=0;choices && i<choices->count();++i)sameFlags=sameFlags && bool(choices->item(i)->flags()&Qt::ItemIsEnabled)==bool(zoom->model()->flags(zoom->model()->index(i,0))&Qt::ItemIsEnabled);
+                check(sameFlags,"popup preserves disabled zoom levels from the source model");
+                check(popup && !popup->findChild<QLineEdit*>(QStringLiteral("languageSearch"))->isVisible(),"short percentage choices omit the unnecessary search field");
+                if(popup)popup->grab().save(QDir(app.applicationDirPath()).filePath(QStringLiteral("zoom-dark-premium.png")));zoom->hidePopup();
+            }
+            DriverEntry sample=many;sample.sdioVerified=true;sample.sdioDriverPresent=true;sample.device.name=QStringLiteral("Thunderbolt(TM) Controller - 1134");sample.device.manufacturer=QStringLiteral("Intel(R) Corporation");sample.device.deviceClass=QStringLiteral("System devices");sample.candidates.resize(3);sample.candidates[0].version=QStringLiteral("1.41.1420.0");sample.candidates[0].status=QStringLiteral("installed");sample.candidates[1].version=QStringLiteral("1.41.1423.0");sample.candidates[1].status=QStringLiteral("recommended");sample.candidates[1].engineToken=1;sample.candidates[1].matchStars=5;sample.candidates[1].originalOrder=1;sample.candidates[1].local=true;
+            bool versionStable=true,starStable=true;
+            for(int mode=0;mode<2;++mode)for(int rtl=0;rtl<2;++rtl){
+                language->setCurrentIndex(language->findData(rtl?QStringLiteral("arabic"):QStringLiteral("english")));QMetaObject::invokeMethod(&window,"updateDark",Q_ARG(bool,mode==1));QMetaObject::invokeMethod(&window,"navigate",Q_ARG(int,5));QTest::qWait(240);
+                const QString suffix=QStringLiteral("%1-%2").arg(mode?QStringLiteral("dark"):QStringLiteral("light"),rtl?QStringLiteral("arabic"):QStringLiteral("english"));
+                window.grab().save(QDir(app.applicationDirPath()).filePath(QStringLiteral("premium-about-")+suffix+QStringLiteral(".png")));
+                DriverDetailsDialog redesigned(sample,false,rtl,&window);redesigned.show();QTest::qWait(220);
+                redesigned.grab().save(QDir(app.applicationDirPath()).filePath(QStringLiteral("premium-comparison-")+suffix+QStringLiteral(".png")));
+                for(QLabel *value:redesigned.findChildren<QLabel*>(QStringLiteral("detailVersion")))versionStable=versionStable && value->property("keepLtr").toBool() && value->layoutDirection()==Qt::LeftToRight;
+                QWidget *stars=redesigned.findChild<QWidget*>(QStringLiteral("comparisonStars"));starStable=starStable && stars && stars->property("matchPriority").toInt()==5;
+                redesigned.close();
+            }
+            check(versionStable,"comparison redesign preserves left-to-right technical versions in both interface directions");
+            check(starStable,"comparison stars retain the selected engine candidate's match priority");
+            language->setCurrentIndex(arabicIndex);QMetaObject::invokeMethod(&window,"updateDark",Q_ARG(bool,true));
+        }
         bool cleanBranding=true;for(QLabel *label:window.findChildren<QLabel*>())if(label->text().contains(QStringLiteral("Release 17")) || label->text().contains(QStringLiteral("R17 UI UPDATE")))cleanBranding=false;
         check(cleanBranding,"local release labels are absent throughout the interface");
         language->setCurrentIndex(language->findData(QStringLiteral("english")));QMetaObject::invokeMethod(&window,"updateDark",Q_ARG(bool,false));QTest::qWait(100);

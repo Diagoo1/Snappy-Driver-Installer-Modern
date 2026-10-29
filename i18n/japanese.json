@@ -811,7 +811,6 @@
     "Validation and installation modes are mutually exclusive.": "検証モードとインストール モードは相互に排他的です。",
     "Verification read failed.": "検証読み取りに失敗しました。",
     "Verified and saved %1": "確認して保存しました %1",
-    "Version": "バージョン",
     "Version %1 is downloaded and verified. Restart the application to apply it now?": "バージョン %1 をダウンロードして確認します。今すぐ適用するにはアプリケーションを再起動しますか?",
     "View INF file": "INF ファイルを表示する",
     "View additional information": "追加情報を見る",

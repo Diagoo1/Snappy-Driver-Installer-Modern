@@ -811,7 +811,6 @@
     "Validation and installation modes are mutually exclusive.": "Режимы проверки и установки являются взаимоисключающими.",
     "Verification read failed.": "Проверка чтения не удалась.",
     "Verified and saved %1": "Проверено и сохранено %1",
-    "Version": "Версия",
     "Version %1 is downloaded and verified. Restart the application to apply it now?": "Версия %1 загружена и проверена. Перезапустить приложение, чтобы применить его сейчас?",
     "View INF file": "Посмотреть файл INF",
     "View additional information": "Посмотреть дополнительную информацию",

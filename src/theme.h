@@ -3,7 +3,9 @@
 #include <QString>
 #include <QColor>
 #include <QJsonObject>
+class QWidget;
 namespace Theme {
+bool isDark(const QWidget *widget);
 QString styleSheet(bool dark);
 QJsonObject defaultDocument();
 QJsonObject document();
