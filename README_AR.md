@@ -3,8 +3,8 @@
   <h1>مدير تعريفات الأجهزة — الواجهة الحديثة</h1>
   <p><strong>مطابقة المحرك الأصلي، وواجهة حديثة، وخطوات أوضح.</strong></p>
   <p>مشروع مجتمعي من تطوير <strong>طارق صادق · Diagoo1</strong></p>
-  <p><img src="https://img.shields.io/badge/release-0.21.6_Beta-E9A23B" alt="بيتا"> <img src="https://img.shields.io/badge/license-GPL--3.0-00857D" alt="GPL 3"></p>
-  <p><a href="README.md">English</a> · <a href="https://github.com/Diagoo1/Snappy-Driver-Installer-Modern/releases/tag/v0.21.6">تحميل البيتا</a> · <a href="docs/GALLERY.md">معرض الصور</a> · <a href="https://github.com/Diagoo1/Snappy-Driver-Installer-Modern/issues/new?template=bug_report.yml">الإبلاغ عن مشكلة</a></p>
+  <p><img src="https://img.shields.io/badge/release-0.21.7_Beta-E9A23B" alt="بيتا"> <img src="https://img.shields.io/badge/license-GPL--3.0-00857D" alt="GPL 3"></p>
+  <p><a href="README.md">English</a> · <a href="https://github.com/Diagoo1/Snappy-Driver-Installer-Modern/releases/tag/v0.21.7">تحميل البيتا</a> · <a href="docs/GALLERY.md">معرض الصور</a> · <a href="https://github.com/Diagoo1/Snappy-Driver-Installer-Modern/issues/new?template=bug_report.yml">الإبلاغ عن مشكلة</a></p>
 </div>
 
 ## فكرة المشروع
@@ -39,7 +39,7 @@
 
 ## البدء
 
-1. حمّل الملف التنفيذي أو الحزمة المحمولة من [الإصدار 0.21.6 Beta](https://github.com/Diagoo1/Snappy-Driver-Installer-Modern/releases/tag/v0.21.6).
+1. حمّل الملف التنفيذي أو الحزمة المحمولة من [الإصدار 0.21.7 Beta](https://github.com/Diagoo1/Snappy-Driver-Installer-Modern/releases/tag/v0.21.7).
 2. ضع `drivers` و`indexes` بجواره، أو اختر مساراتهما من الإعدادات. الحزم غير مرفقة.
 3. افحص الجهاز وراجع الإصدارات والتحديد. إذا احتاج البرنامج صلاحيات المسؤول، يعرض إعادة الفتح؛ أعد الفحص والتأكيد بعدها. لا يبدأ تثبيت تلقائي عند إعادة الفتح.
 

@@ -2,6 +2,7 @@
 #define SDIOMODERN_APPEARANCE_H
 #include <QDialog>
 #include <QWidget>
+#include <QFrame>
 #include <QToolButton>
 #include <QPushButton>
 #include <QPainterPath>
@@ -77,8 +78,8 @@ public:
 protected:
     void paintEvent(QPaintEvent*) Q_DECL_OVERRIDE;
 };
-class SurfaceCard : public QWidget {
-public:explicit SurfaceCard(QWidget *parent=0):QWidget(parent){setObjectName(QStringLiteral("surfaceCard"));}
+class SurfaceCard : public QFrame {
+public:explicit SurfaceCard(QWidget *parent=0):QFrame(parent){setObjectName(QStringLiteral("softSurface"));}
 protected:void paintEvent(QPaintEvent*) Q_DECL_OVERRIDE;
 };
 class ProjectMenu : public QMenu {

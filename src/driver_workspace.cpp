@@ -181,7 +181,7 @@ DriverWorkspace::DriverWorkspace(DriverCatalog *catalog,QWidget *parent)
     m_stats->setVisible(false); // kept as an accessible text summary for diagnostics
     auto statCard=[summary,summaryRow](const QString &icon,const QString &caption,
                                          const QString &tone,QLabel **number)->void {
-        QFrame *card=new QFrame(summary);
+        QFrame *card=new SurfaceCard(summary);
         card->setObjectName(QStringLiteral("metricCard"));
         card->setProperty("tone",tone);
         card->setMinimumWidth(132);
@@ -266,9 +266,9 @@ DriverWorkspace::DriverWorkspace(DriverCatalog *catalog,QWidget *parent)
     m_search->setMaximumWidth(380);
     m_search->setSizePolicy(QSizePolicy::Expanding,QSizePolicy::Fixed);
     filterDetails->addWidget(m_search);
-    QWidget *listToolbar=new SurfaceCard(this);listToolbar->setObjectName(QStringLiteral("softSurface"));
+    QWidget *listToolbar=new QWidget(this);listToolbar->setObjectName(QStringLiteral("softSurface"));
     filterDetails->setContentsMargins(14,8,14,8);listToolbar->setLayout(filterDetails);
-    root->addWidget(listToolbar);
+    SurfaceCard *driverCard=new SurfaceCard(this);driverCard->setObjectName(QStringLiteral("driverTableCard"));QVBoxLayout *driverLayout=new QVBoxLayout(driverCard);driverLayout->setContentsMargins(12,12,12,16);driverLayout->setSpacing(8);listToolbar->setObjectName(QStringLiteral("driverTableToolbar"));driverLayout->addWidget(listToolbar);root->addWidget(driverCard,1);
 
     DriverTree *tree=new DriverTree(this);m_tree=tree;
     tree->prepare=[this](QTreeWidgetItem *item){populateCandidates(item);};
@@ -290,6 +290,8 @@ DriverWorkspace::DriverWorkspace(DriverCatalog *catalog,QWidget *parent)
     m_tree->setAnimated(true);
     m_tree->setExpandsOnDoubleClick(false);
     m_tree->header()->setStretchLastSection(false);
+    for(int column=1;column<4;++column)m_tree->headerItem()->setTextAlignment(column,Qt::AlignCenter);
+    m_tree->header()->setHighlightSections(false);
     m_tree->setItemDelegate(new DriverRowDelegate(m_tree));
     m_tree->header()->setSectionResizeMode(0,QHeaderView::Stretch);
     m_tree->header()->setSectionResizeMode(1,QHeaderView::Fixed);
@@ -299,8 +301,8 @@ DriverWorkspace::DriverWorkspace(DriverCatalog *catalog,QWidget *parent)
     m_tree->header()->resizeSection(2,166);
     m_tree->header()->resizeSection(3,130);
     QTimer::singleShot(0,this,[this](){adjustColumns();});
-    m_tree->setMinimumHeight(230);
-    root->addWidget(m_tree,1);
+    m_tree->setMinimumHeight(170);
+    driverLayout->addWidget(m_tree,1);
 
     // An itemChanged signal can originate inside Qt's checkbox delegate. Never
     // delete that item/model index by clearing the tree on the same call stack.
@@ -515,7 +517,7 @@ void DriverWorkspace::populateCandidates(QTreeWidgetItem *root)
                 child->setData(0,Qt::UserRole,row);
                 child->setData(0,Qt::UserRole+1,c);
                 child->setText(0,candidate.version+QStringLiteral("  /  ")+candidate.date);
-                child->setData(0,Qt::UserRole+2,d.checked && c==d.chosenCandidate);
+                child->setData(0,Qt::UserRole+2,c==0?!d.checked:(d.checked && c==d.chosenCandidate));
                 child->setData(0,Qt::UserRole+3,candidate.hardwareId);
                 const QString status=driverStatus(d,c);QString translated=status;
                 if(m_arabic){if(status==QStringLiteral("Installed"))translated=QString::fromUtf8("مثبّت");else if(status==QStringLiteral("Missing"))translated=QString::fromUtf8("مفقود");else if(status==QStringLiteral("Upgrade"))translated=QString::fromUtf8("ترقية");else if(status==QStringLiteral("Downgrade"))translated=QString::fromUtf8("إصدار أقدم");else if(status==QStringLiteral("Invalid"))translated=QString::fromUtf8("غير صالح");}
@@ -551,8 +553,8 @@ void DriverWorkspace::handleClick(QTreeWidgetItem *item,int column)
     if (!item || m_rebuilding || m_busy) return;
     const int row=rowOf(item);
     const int candidate=item->data(0,Qt::UserRole+1).toInt();
-    const bool selectionHit=column==3 || (column==0 && (layoutDirection()==Qt::RightToLeft?m_tree->property("clickX").toInt()>m_tree->visualItemRect(item).right()-38:m_tree->property("clickX").toInt()<m_tree->visualItemRect(item).left()+38));
-    if(candidate>0 && selectionHit && m_catalog->canQueue(row)){
+    if(candidate==0 && item->parent()){m_catalog->setSelected(row,false);}
+    else if(candidate>0 && m_catalog->canQueue(row)){
         m_catalog->chooseCandidate(row,candidate);
     }else if (candidate<0 && column==0){
         populateCandidates(item);
@@ -619,13 +621,15 @@ void DriverWorkspace::updateCount()
     m_scan->setEnabled(!m_busy);
     m_all->setEnabled(canInstall && !m_busy);
     m_none->setEnabled(canInstall && !m_busy);
-    m_restore->setEnabled(canInstall && !m_busy);
-    m_reboot->setEnabled(canInstall && !m_busy);
+    m_restore->setEnabled(!m_busy);
+    m_reboot->setEnabled(!m_busy);
     m_filters->setEnabled((m_demo || m_catalog->native()) && !m_busy);
     m_tree->setEnabled(!m_busy);
 }
 void DriverWorkspace::setStatus(const QString &status)
 { m_info->setText(status);m_info->setVisible(!status.trimmed().isEmpty()); }
+void DriverWorkspace::openInstallOptions(){if(!m_busy)m_installOptions->click();}
+void DriverWorkspace::setInstallationPreferences(bool restorePoint,bool rebootAfter){QSignalBlocker restoreSignals(m_restore),rebootSignals(m_reboot);m_restore->setChecked(restorePoint);m_reboot->setChecked(rebootAfter);updateCount();}
 void DriverWorkspace::setBusy(bool busy)
 { m_busy=busy;updateCount(); }
 void DriverWorkspace::setAnimations(bool enabled)

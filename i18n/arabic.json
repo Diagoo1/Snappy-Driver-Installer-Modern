@@ -897,11 +897,14 @@
     "Restore-point failure stops the queue.": "فشل نقطة الاستعادة يوقف التثبيت.",
     "Installation will proceed without a restore point.": "سيتم التثبيت دون إنشاء نقطة استعادة.",
     "System Protection": "حماية النظام",
-    "Version: 0.21.6 (Beta)\nWindows: %1\nArchitecture: %2\nLanguage: %3\nTheme: %4": "الإصدار: 0.21.6 (بيتا)\nويندوز: %1\nالمعمارية: %2\nاللغة: %3\nالمظهر: %4",
     "Installation blocked: restore point": "التثبيت متوقف: نقطة الاستعادة",
     "Contact": "تواصل",
     "Coffee": "قهوة",
     "Restore point creation failed. No driver installation was started. ": "فشل إنشاء نقطة الاستعادة. لم يبدأ تثبيت أي تعريف. ",
-    "Open System Protection from Windows System Properties.": "افتح حماية النظام من خصائص ويندوز."
+    "Open System Protection from Windows System Properties.": "افتح حماية النظام من خصائص ويندوز.",
+    "Bug report": "بلاغ",
+    "Version: 0.21.7 (Beta)\nWindows: %1\nArchitecture: %2\nLanguage: %3\nTheme: %4": "الإصدار: 0.21.7 (بيتا)\nويندوز: %1\nالمعمارية: %2\nاللغة: %3\nالمظهر: %4",
+    "Review install options": "مراجعة خيارات التثبيت",
+    "System Protection is disabled (Windows 1058). Enable it for the Windows drive, or review your restore-point option before retrying.": "حماية النظام معطّلة (Windows 1058). فعّلها لقرص ويندوز، أو راجع خيار نقطة الاستعادة قبل المحاولة مجددًا."
   }
 }

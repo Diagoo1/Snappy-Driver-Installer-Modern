@@ -169,6 +169,7 @@ void InstallationWorkspace::beginDemo(const QStringList &drivers,bool restorePoi
 {
     if(m_active || drivers.isEmpty()) return;
     m_live=false;m_items=drivers;
+    m_back->setText(UiLanguage::text(QStringLiteral("Back to drivers"),QString::fromUtf8("العودة للتعريفات")));m_complete->setToolTip(QString());
     m_restoreHelp->hide();
     m_complete->setProperty("tone",QString());m_complete->style()->unpolish(m_complete);m_complete->style()->polish(m_complete);
     m_progress->setRange(0,100);m_progress->setFormat(QStringLiteral("%p%"));
@@ -279,6 +280,7 @@ void InstallationWorkspace::beginNative(const QStringList &names,const QStringLi
 {
     if(m_active || names.isEmpty() || names.size()!=ids.size())return;
     m_timer->stop();m_live=true;m_active=true;m_hasRestore=restore;m_queue->clear();
+    m_back->setText(UiLanguage::text(QStringLiteral("Back to drivers"),QString::fromUtf8("العودة للتعريفات")));m_complete->setToolTip(QString());
     m_restoreHelp->hide();
     m_complete->setProperty("tone",QString());m_complete->style()->unpolish(m_complete);m_complete->style()->polish(m_complete);
     m_badge->setText(UiLanguage::text(QStringLiteral("Live installation · Beta"),QString::fromUtf8("تثبيت فعلي · بيتا")));
@@ -322,6 +324,7 @@ void InstallationWorkspace::applyNativeEvent(const sdiomodern::Event &e)
 }
 void InstallationWorkspace::finishNative(const sdiomodern::InstallReport &report)
 {
+    auto t=[](const char *en,const char *ar){return UiLanguage::text(QString::fromUtf8(en),QString::fromUtf8(ar));};
     if(!m_live)return;int ok=0,failed=0,skipped=0;
     for(std::size_t i=0;i<report.items.size();++i){const sdiomodern::Result &result=report.items[i];
         QString status;
@@ -343,6 +346,8 @@ void InstallationWorkspace::finishNative(const sdiomodern::InstallReport &report
         (report.rebootRequired?QStringLiteral("Windows restart is required. Restart manually after saving your work."):
          QStringLiteral("Scan again to verify the current Windows driver state.")));
     if(report.restoreFailed && !report.restoreCreated && !report.error.empty()){
+        m_complete->setToolTip(QString::fromStdWString(report.error));m_back->setText(t("Review install options","مراجعة خيارات التثبيت"));
+        if(report.restoreError==1058)m_complete->setText(t("System Protection is disabled (Windows 1058). Enable it for the Windows drive, or review your restore-point option before retrying.","حماية النظام معطّلة (Windows 1058). فعّلها لقرص ويندوز، أو راجع خيار نقطة الاستعادة قبل المحاولة مجددًا."));
         m_stage->setText(UiLanguage::text(QStringLiteral("Installation blocked: restore point"),QString::fromUtf8("التثبيت متوقف: نقطة الاستعادة")));m_restoreHelp->show();m_complete->setProperty("tone",QStringLiteral("error"));m_complete->style()->unpolish(m_complete);m_complete->style()->polish(m_complete);m_progress->setValue(0);
     }else m_progress->setValue(ok+failed+skipped);emit activeChanged(false);
 }

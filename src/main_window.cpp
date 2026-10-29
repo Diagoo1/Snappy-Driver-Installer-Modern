@@ -172,6 +172,7 @@ MainWindow::MainWindow(bool demo,QWidget *parent)
     body->addWidget(m_sidebar);
     m_pages=new QStackedWidget(container);
     m_drivers=new DriverWorkspace(m_catalog,m_pages);
+    m_drivers->setInstallationPreferences(m_settings->value(QStringLiteral("installation/restorePointRequired"),true).toBool(),m_settings->value(QStringLiteral("installation/rebootAfter"),false).toBool());
     m_installation=new InstallationWorkspace(m_pages);
     m_pages->addWidget(m_drivers);           // 0
     m_pages->addWidget(createDiagnostics()); // 1
@@ -261,7 +262,7 @@ MainWindow::MainWindow(bool demo,QWidget *parent)
         m_pendingInf=QFileInfo(QDir::fromNativeSeparators(data.inf)).fileName();m_locatePendingInf=locate;m_drivers->setBusy(true);m_titleBar->setRefreshEnabled(false);m_probeButton->setEnabled(false);
         m_scanOverlay->startOperation(t("Preparing driver details","تجهيز بيانات التعريف"),t("Extracting the INF for viewing. No driver will be installed.","استخراج INF للعرض فقط، دون تثبيت أي تعريف."),m_reduceMotion);m_engine->requestExtraction(plan,folder);
     });
-    connect(m_installation,&InstallationWorkspace::backRequested,this,[this](){navigate(0);});
+    connect(m_installation,&InstallationWorkspace::backRequested,this,[this](){navigate(0);if(m_lastInstallation.restoreFailed)QTimer::singleShot(0,m_drivers,&DriverWorkspace::openInstallOptions);});
     connect(m_installation,&InstallationWorkspace::simulationFinished,this,[this](bool reboot){
         if(!reboot) return;
         projectMessage(this,t("Reboot required — preview","مطلوب إعادة تشغيل — معاينة"),
@@ -644,7 +645,7 @@ void MainWindow::dispatchTool(const QString &id)
 void MainWindow::addDiagnosticCard(QGridLayout *grid,int row,int col,const QString &icon,
     const QString &caption,const QString &key)
 {
-    QFrame *card=new QFrame(this);
+    QFrame *card=new SurfaceCard(this);
     card->setObjectName(QStringLiteral("diagnosticCard"));
     const QString group=grid->property("diagnosticGroup").toString();
     card->setProperty("tone",group);card->setMinimumHeight(102);
@@ -802,7 +803,7 @@ QWidget *MainWindow::createSettings()
     heroText->addWidget(translatedLabel("Make it feel like yours.","اضبط البرنامج على ذوقك.","settingsHeroSubtitle",hero));heroLayout->addLayout(heroText,1);root->addWidget(hero);
     QGridLayout *sections=new QGridLayout;sections->setSpacing(16);sections->setColumnStretch(0,1);sections->setColumnStretch(1,1);root->addLayout(sections);
     auto sectionHeading=[this](const char *en,const char *ar,const char *symbol,QWidget *card){QWidget *header=new QWidget(card);header->setObjectName(QStringLiteral("settingsSectionHeader"));QHBoxLayout *line=new QHBoxLayout(header);line->setContentsMargins(0,0,0,4);line->setSpacing(10);QLabel *icon=new QLabel(header);icon->setPixmap(VectorIcons::pixmap(QString::fromLatin1(symbol),QColor("#13A99D"),22));line->addWidget(icon);line->addWidget(translatedLabel(en,ar,"sectionTitle",header),1);return header;};
-    QWidget *panel=new QWidget(page);panel->setObjectName(QStringLiteral("settingsCard"));panel->setProperty("tone",QStringLiteral("teal"));
+    QWidget *panel=new SurfaceCard(page);panel->setObjectName(QStringLiteral("settingsCard"));panel->setProperty("tone",QStringLiteral("teal"));
     QGridLayout *grid=new QGridLayout(panel);
     grid->setContentsMargins(24,24,24,24);
     grid->setHorizontalSpacing(18);grid->setVerticalSpacing(16);
@@ -838,7 +839,7 @@ QWidget *MainWindow::createSettings()
     grid->addWidget(m_langNotice,6,0,1,2);
     grid->setColumnStretch(0,1);
     sections->addWidget(panel,0,0);
-    QWidget *preview=new QWidget(page);preview->setObjectName(QStringLiteral("settingsCard"));preview->setProperty("tone",QStringLiteral("blue"));QGridLayout *previewGrid=new QGridLayout(preview);previewGrid->setContentsMargins(24,20,24,20);previewGrid->setHorizontalSpacing(20);previewGrid->setVerticalSpacing(12);
+    QWidget *preview=new SurfaceCard(page);preview->setObjectName(QStringLiteral("settingsCard"));preview->setProperty("tone",QStringLiteral("blue"));QGridLayout *previewGrid=new QGridLayout(preview);previewGrid->setContentsMargins(24,20,24,20);previewGrid->setHorizontalSpacing(20);previewGrid->setVerticalSpacing(12);
     previewGrid->addWidget(sectionHeading("Compatibility preview","معاينة التوافق","monitor",preview),0,0,1,2);
     QLabel *previewNote=translatedLabel("Preview matches for another Windows version or architecture. Installation is disabled while previewing.","اعرض المطابقات لإصدار ويندوز أو معمارية أخرى. التثبيت معطّل في وضع المعاينة.","subText",preview);previewNote->setWordWrap(true);previewGrid->addWidget(previewNote,1,0,1,2);
     m_targetVersion=new SearchableLanguageCombo(preview);m_targetVersion->setObjectName(QStringLiteral("premiumCombo"));m_targetVersion->addItem(t("Current Windows","ويندوز الحالي"),0);
@@ -847,12 +848,12 @@ QWidget *MainWindow::createSettings()
     previewGrid->addWidget(m_targetVersion,2,0,1,2);previewGrid->addWidget(m_targetArchitecture,3,0,1,2);previewGrid->setRowStretch(4,1);sections->addWidget(preview,1,0);
     auto changeTarget=[this](){if(m_engine->isBusy())return;const int target=m_targetVersion->currentData().toInt();if(target==51 || target==52 || target==110){QSignalBlocker blocked(m_targetArchitecture);m_targetArchitecture->setCurrentIndex(m_targetArchitecture->findData(target==51?32:64));}m_catalog->invalidateNative();m_engine->setPreviewTarget(m_targetVersion->currentData().toInt(),m_targetArchitecture->currentData().toInt());m_drivers->setStatus(t("Compatibility target changed. Scan again to refresh matches.","تغيّر النظام المستهدف. أعد الفحص لتحديث المطابقة."));};
     connect(m_targetVersion,static_cast<void(QComboBox::*)(int)>(&QComboBox::currentIndexChanged),this,[changeTarget](int){changeTarget();});connect(m_targetArchitecture,static_cast<void(QComboBox::*)(int)>(&QComboBox::currentIndexChanged),this,[changeTarget](int){changeTarget();});
-    QWidget *themes=new QWidget(body);themes->setObjectName(QStringLiteral("settingsCard"));themes->setProperty("tone",QStringLiteral("violet"));QVBoxLayout *themeBox=new QVBoxLayout(themes);themeBox->setContentsMargins(24,20,24,20);themeBox->setSpacing(12);
+    QWidget *themes=new SurfaceCard(body);themes->setObjectName(QStringLiteral("settingsCard"));themes->setProperty("tone",QStringLiteral("violet"));QVBoxLayout *themeBox=new QVBoxLayout(themes);themeBox->setContentsMargins(24,20,24,20);themeBox->setSpacing(12);
     themeBox->addWidget(sectionHeading("Community themes","ثيمات المجتمع","layers",themes));m_themeName=newLabel(Theme::document().value(QStringLiteral("name")).toString(),"bodyText",themes);themeBox->addWidget(m_themeName);
     themeBox->addWidget(translatedLabel("Import a theme, preview it, or export a starting point for your own design.","استورد ثيمًا وعاينه، أو صدّر عينة لتصميم ثيمك الخاص.","subText",themes));
     QVBoxLayout *themeButtons=new QVBoxLayout;themeButtons->setSpacing(8);QPushButton *load=translatedButton("Import & preview...","استيراد ومعاينة...","primaryButton",themes),*save=translatedButton("Export theme...","تصدير الثيم...","outlineButton",themes),*reset=translatedButton("Restore default","استعادة الافتراضي","textLinkButton",themes);themeButtons->addWidget(load);themeButtons->addWidget(save);themeButtons->addWidget(reset);themeBox->addLayout(themeButtons);sections->addWidget(themes,0,1);
     connect(load,&QPushButton::clicked,this,&MainWindow::importTheme);connect(save,&QPushButton::clicked,this,&MainWindow::exportTheme);connect(reset,&QPushButton::clicked,this,[this](){Theme::setDocument(QJsonObject());m_settings->remove(QStringLiteral("theme/document"));m_settings->sync();m_themeName->setText(Theme::document().value(QStringLiteral("name")).toString());applyTheme();});
-    QWidget *updates=new QWidget(body);updates->setObjectName(QStringLiteral("settingsCard"));updates->setProperty("tone",QStringLiteral("amber"));QVBoxLayout *updateBox=new QVBoxLayout(updates);updateBox->setContentsMargins(24,20,24,20);updateBox->setSpacing(12);
+    QWidget *updates=new SurfaceCard(body);updates->setObjectName(QStringLiteral("settingsCard"));updates->setProperty("tone",QStringLiteral("amber"));QVBoxLayout *updateBox=new QVBoxLayout(updates);updateBox->setContentsMargins(24,20,24,20);updateBox->setSpacing(12);
     updateBox->addWidget(sectionHeading("Application updates","تحديثات البرنامج","refresh",updates));updateBox->addWidget(translatedLabel("Use the project's public GitHub release channel. Available after the first stable release.","قناة إصدارات المشروع العامة على GitHub، وتتاح بعد نشر أول إصدار مستقر.","subText",updates));
     QLineEdit *repository=new QLineEdit(m_settings->value(QStringLiteral("update/repository"),AppUpdate::projectRepository()).toString(),updates);if(repository->text().trimmed().isEmpty())repository->setText(AppUpdate::projectRepository());repository->setObjectName(QStringLiteral("updateRepository"));repository->setProperty("keepLtr",true);repository->setLayoutDirection(Qt::LeftToRight);repository->setPlaceholderText(t("Account / repository","الحساب / المستودع"));repository->setMaxLength(140);updateBox->addWidget(repository);
     QPushButton *checkUpdate=translatedButton("Check application update...","البحث عن تحديث البرنامج...","outlineButton",updates);updateBox->addWidget(checkUpdate);updateBox->addStretch();sections->addWidget(updates,1,1);
@@ -1072,6 +1073,7 @@ void MainWindow::updateReduceMotion(bool enabled)
 }
 void MainWindow::saveSettings()
 {
+    m_settings->setValue(QStringLiteral("installation/restorePointRequired"),m_drivers->createRestorePoint());m_settings->setValue(QStringLiteral("installation/rebootAfter"),m_drivers->rebootAfter());
     m_settings->setValue(QStringLiteral("language"),m_languageCode);
     m_settings->setValue(QStringLiteral("dark"),m_dark);
     m_settings->setValue(QStringLiteral("reduceMotion"),m_reduceMotion);

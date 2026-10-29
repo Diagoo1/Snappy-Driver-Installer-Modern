@@ -1,5 +1,14 @@
 # Changelog
 
+## 0.21.7 Beta
+
+- Equalize the five About actions and show an icon with every label.
+- Extend directly painted shadows and subtle bottom accents to settings, diagnostic, metric and comparison cards.
+- Group the driver toolbar and tree in one card, clarify the header and select alternatives by clicking any row cell; choosing the installed row removes the queued upgrade.
+- Paint rounded scrollbar thumbs throughout the Qt interface while retaining native scrolling behavior.
+- Explain Windows restore error 1058 concisely and open editable installation preferences when returning from a failed restore; never change the restore requirement automatically.
+- Keep the chosen restore/restart preferences across administrator restarts and subsequent sessions.
+
 ## 0.21.6 Beta
 
 - Detect SDI/SDIO library layouts, select the relevant index subtree and use an isolated application cache for native scans and maintenance. Compatible SDW 0x204/0x205 indexes are copied; unsupported caches are rebuilt from available local archives.

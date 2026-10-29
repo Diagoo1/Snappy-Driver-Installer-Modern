@@ -1,10 +1,10 @@
 # Validation scope
 
-Current application version: **0.21.6 Beta**. Hardware/Windows compatibility testing is ongoing. This document separates verified behavior from implementation that still needs hardware/VM testing.
+Current application version: **0.21.7 Beta**. Hardware/Windows compatibility testing is ongoing. This document separates verified behavior from implementation that still needs hardware/VM testing.
 
 | Area | Evidence |
 | --- | --- |
-| Interface, menus, RTL and instances | 219 regression checks at 100% and 150%; English/Arabic and light/dark visual review |
+| Interface, menus, RTL and instances | 221 regression checks at 100% and 150%; English/Arabic and light/dark visual review |
 | Structural/source integration | 83 checks; critical original source fingerprints and reviewed patches |
 | Current native matching | Read-only scan: 222 devices and 572 candidates on the development host |
 | Original engine workflows | Repeated scan, snapshot save/load, target-system preview and extraction of six INF files |
@@ -31,3 +31,5 @@ The repository provides a source-review workflow. Cloud CI is not counted as pas
 Restore callback permissions follow the [Windows System Restore guidance](https://learn.microsoft.com/en-us/windows/win32/sr/using-system-restore). System Protection is never enabled automatically, restore failure never silently disables the user's requirement, and the global restore-point frequency value is left untouched. Static archive dependencies were verified in the generated app Makefile.
 
 The final executable's `--gui-security-probe` returned `guiCom: 0` and `restoreCallbacks: 0`, with `installationRequested: false`. GUI startup initializes callback security before QApplication/Qt can establish COM defaults. This probe does not create a restore point or install a driver.
+
+0.21.7: 221 UI checks at 100%/150%, including equal About action widths/icons and selecting an alternative from its status cell. Gallery review covers the unified table card, expanded card shadows, bottom accents and rounded scrollbars. Windows 1058 means System Restore is disabled; the program preserves the requirement and offers System Protection or review of the explicit restore option. No Windows protection settings, restore creation or installation were changed during these checks.

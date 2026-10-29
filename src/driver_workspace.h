@@ -39,6 +39,8 @@ public:
     QStringList selectedNames() const;
     bool createRestorePoint() const;
     bool rebootAfter() const;
+    void openInstallOptions();
+    void setInstallationPreferences(bool restorePoint,bool rebootAfter);
     void applyLegacyDisplay(int filters,bool expert,bool packageNames);
 
 signals:

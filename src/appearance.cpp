@@ -6,6 +6,9 @@
 #include "sidebar.h"
 #include "ui_elements.h"
 #include <QApplication>
+#include <QScrollBar>
+#include <QStyleOptionSlider>
+#include <QCursor>
 #include <QAbstractButton>
 #include <QCheckBox>
 #include <QPainter>
@@ -105,7 +108,7 @@ void DialogHeader::mousePressEvent(QMouseEvent *e){if(e->button()==Qt::LeftButto
 void DialogHeader::mouseMoveEvent(QMouseEvent *e){if(m_dragging && (e->buttons()&Qt::LeftButton)){window()->move(e->globalPos()-m_offset);e->accept();}else QWidget::mouseMoveEvent(e);}
 void DialogHeader::mouseReleaseEvent(QMouseEvent *e){m_dragging=false;QWidget::mouseReleaseEvent(e);}
 void AccentCard::paintEvent(QPaintEvent*){QPainter p(this);p.setRenderHint(QPainter::Antialiasing);QLinearGradient g(0,0,width(),height());g.setColorAt(0,Theme::color("heroStart"));g.setColorAt(.65,Theme::color("heroMiddle"));g.setColorAt(1,Theme::color("heroEnd"));p.setPen(Qt::NoPen);p.setBrush(g);p.drawRoundedRect(QRectF(rect()),20,20);QPainterPath clip;clip.addRoundedRect(QRectF(rect()),20,20);p.setClipPath(clip);p.setBrush(QColor(255,255,255,9));p.drawEllipse(QPointF(width()-55,20),125,125);p.drawEllipse(QPointF(width()-50,20),80,80);}
-void SurfaceCard::paintEvent(QPaintEvent*){QPainter p(this);p.setRenderHint(QPainter::Antialiasing);const bool dark=darkSurface(this);const QRectF face=QRectF(rect()).adjusted(1,1,-1,-4);p.setPen(Qt::NoPen);for(int i=3;i>=1;--i){p.setBrush(QColor(0,0,0,dark?9:5));p.drawRoundedRect(face.translated(0,i).adjusted(-.3*i,0,.3*i,.2*i),16,16);}p.setPen(QPen(Theme::color("border",dark),1));p.setBrush(Theme::color("surface",dark));p.drawRoundedRect(face,16,16);}
+void SurfaceCard::paintEvent(QPaintEvent*){QPainter p(this);p.setRenderHint(QPainter::Antialiasing);const bool dark=darkSurface(this);const QRectF face=QRectF(rect()).adjusted(1,1,-1,-4);p.setPen(Qt::NoPen);for(int i=3;i>=1;--i){p.setBrush(QColor(0,0,0,dark?9:5));p.drawRoundedRect(face.translated(0,i).adjusted(-.3*i,0,.3*i,.2*i),16,16);}p.setPen(QPen(Theme::color("border",dark),1));p.setBrush(Theme::color("surface",dark));p.drawRoundedRect(face,16,16);const QString tone=property("tone").toString();if(!tone.isEmpty()){QColor color=tone==QStringLiteral("blue") || tone==QStringLiteral("system")?QColor("#309AC6"):tone==QStringLiteral("violet") || tone==QStringLiteral("firmware")?QColor("#9B80CB"):tone==QStringLiteral("amber") || tone==QStringLiteral("hardware")?QColor("#CC9743"):QColor("#14AA9D");QLinearGradient edge(face.left()+18,0,face.right()-18,0);QColor transparent=color;transparent.setAlpha(0);edge.setColorAt(0,transparent);edge.setColorAt(.22,color);edge.setColorAt(.78,color);edge.setColorAt(1,transparent);p.setPen(QPen(QBrush(edge),2.3,Qt::SolidLine,Qt::RoundCap));p.drawLine(QPointF(face.left()+18,face.bottom()-.6),QPointF(face.right()-18,face.bottom()-.6));}}
 ProjectMenu::ProjectMenu(QWidget *parent):QMenu(parent),m_highlightY(-1),m_slide(this,"highlightY",this){
     setMinimumWidth(240);
     setStyleSheet(QStringLiteral("QMenu{background:transparent;border:0;padding:8px;font-size:13px;font-weight:400;} QMenu::item{background:transparent;padding:11px 22px;} QMenu::separator{height:1px;background:%1;margin:5px 10px;}").arg(darkSurface(this)?QStringLiteral("#3B5868"):QStringLiteral("#E2EBEF")));
@@ -203,6 +206,10 @@ class InterfaceMotion : public QObject {
 public:
     explicit InterfaceMotion(QObject *p):QObject(p){}
     bool eventFilter(QObject *object,QEvent *event) Q_DECL_OVERRIDE {
+        if(QScrollBar *scroll=qobject_cast<QScrollBar*>(object)){
+            if(event->type()==QEvent::Polish){scroll->setAttribute(Qt::WA_OpaquePaintEvent,false);scroll->setAutoFillBackground(false);}
+            if(event->type()==QEvent::Paint){if(scroll->maximum()>scroll->minimum()){QStyleOptionSlider option;option.initFrom(scroll);option.orientation=scroll->orientation();option.minimum=scroll->minimum();option.maximum=scroll->maximum();option.sliderPosition=scroll->sliderPosition();option.sliderValue=scroll->value();option.pageStep=scroll->pageStep();option.singleStep=scroll->singleStep();option.upsideDown=scroll->invertedAppearance()^(scroll->orientation()==Qt::Horizontal && scroll->layoutDirection()==Qt::RightToLeft);option.direction=Qt::LeftToRight;if(scroll->orientation()==Qt::Horizontal)option.state|=QStyle::State_Horizontal;const QRect thumb=scroll->style()->subControlRect(QStyle::CC_ScrollBar,&option,QStyle::SC_ScrollBarSlider,scroll);QPainter painter(scroll);painter.setRenderHint(QPainter::Antialiasing);painter.setPen(Qt::NoPen);painter.setBrush(thumb.contains(scroll->mapFromGlobal(QCursor::pos()))?Theme::color("link",darkSurface(scroll)):Theme::color("scrollbar",darkSurface(scroll)));const QRectF shape=QRectF(thumb).adjusted(1,1,-1,-1);painter.drawRoundedRect(shape,qMin(shape.width(),shape.height())/2,qMin(shape.width(),shape.height())/2);}return true;}
+        }
         if(event->type()==QEvent::ContextMenu){QWidget *widget=qobject_cast<QWidget*>(object);if(widget && textContextMenu(widget,static_cast<QContextMenuEvent*>(event)))return true;}
         QWidget *button=qobject_cast<QAbstractButton*>(object);
         if(!button)button=qobject_cast<QComboBox*>(object);

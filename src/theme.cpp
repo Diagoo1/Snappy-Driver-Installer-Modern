@@ -46,17 +46,11 @@ QWidget#settingsBody {background:transparent;}
 QLabel#settingsHeroTitle {color:white;font-size:23px;font-weight:700;background:transparent;}
 QLabel#settingsHeroSubtitle {color:#C1EEEA;font-size:13px;background:transparent;}
 QWidget#settingsSectionHeader {background:transparent;}
-QWidget#settingsCard {background:%2;border:1px solid %6;border-radius:16px;}
-QWidget#settingsCard[tone="teal"] {border-top:3px solid #16B8A6;}
-QWidget#settingsCard[tone="blue"] {border-top:3px solid #419AC8;}
-QWidget#settingsCard[tone="violet"] {border-top:3px solid #9886D5;}
-QWidget#settingsCard[tone="amber"] {border-top:3px solid #D6A44E;}
+QWidget#settingsCard {background:transparent;border:0;border-radius:16px;}
 QWidget#softSurface { background: transparent; border: 0; border-radius: 16px; }
+QWidget#driverTableCard,QWidget#driverTableToolbar {background:transparent;border:0;}
 QWidget#driverSummaryStrip { background:transparent; border:0; }
-QFrame#metricCard {background:%2; border:1px solid %6; border-radius:10px; min-height:46px;}
-QFrame#metricCard[tone="blue"] {border-bottom:2px solid #2797CC;}
-QFrame#metricCard[tone="amber"] {border-bottom:2px solid #D7A346;}
-QFrame#metricCard[tone="green"] {border-bottom:2px solid #13B69C;}
+QFrame#metricCard {background:transparent; border:0; border-radius:10px; min-height:54px;}
 QLabel#metricValue {font-size:17px; font-weight:700; color:%4; background:transparent;}
 QLabel#metricCaption {font-size:12px; font-weight:500; color:%5; background:transparent;}
 QLabel#driverStats {color:%4; background:%3; padding:8px 13px; border:0; border-radius:6px;
@@ -67,10 +61,6 @@ QToolButton#quietTool:hover {color:%4;}
 QLabel#diagnosticsHeroTitle {color:white;font-size:23px;font-weight:700;background:transparent;}
 QLabel#diagnosticsHeroSubtitle {color:#C4EEEB;font-size:12px;background:transparent;}
 QWidget#diagnosticSectionHeader {background:transparent;}
-QFrame#diagnosticCard[tone="system"] {border-top:2px solid #309AC6;}
-QFrame#diagnosticCard[tone="performance"] {border-top:2px solid #14AA9D;}
-QFrame#diagnosticCard[tone="firmware"] {border-top:2px solid #9B80CB;}
-QFrame#diagnosticCard[tone="hardware"] {border-top:2px solid #CC9743;}
 QLabel#diagnosticSymbol {border-radius:11px;background:%3;}
 QProgressBar#diagnosticUsage {background:%3;border:0;border-radius:3px;}
 QProgressBar#diagnosticUsage::chunk {background:#14AA9D;border-radius:3px;}
@@ -79,7 +69,7 @@ QLabel#diagnosticSectionTitle {color:%4; font-size:17px; font-weight:600; backgr
 QLabel#diagCaption {color:%5; font-size:11px; font-weight:500; background:transparent;}
 QWidget#customTitleBar,QWidget#sidebar {background:transparent;}
 QFrame#diagnosticCard,QFrame#detailSection {
-    background: %2; border: 0; border-radius: 14px;
+    background: transparent; border: 0; border-radius: 14px;
 }
 QScrollArea#diagnosticScroll {background:%1;}
 QWidget#driverDetailsDialog,QWidget#projectDialog {background:transparent; color:%4;}
@@ -160,6 +150,7 @@ QTreeWidget#driverTree,QTreeWidget#installQueue,QScrollArea#diagnosticScroll,QSc
 }
 QTreeWidget#driverTree::item,QTreeWidget#installQueue::item {border-bottom:1px solid %6; padding:0px;}
 QTreeWidget#driverTree::item:hover {background:%3;}
+QTreeWidget#driverTree QHeaderView::section {background:%3;color:%4;border:0;border-bottom:1px solid %6;padding:12px 10px;font-weight:600;}
 QTreeWidget#driverTree::item:selected {background:%3; color:%4;}
 QTreeWidget#installQueue::item:selected {background:transparent; color:%4;}
 QTreeWidget#driverTree::indicator:unchecked { width:18px; height:18px; border-radius:3px; background:%2; border:1px solid %7; }

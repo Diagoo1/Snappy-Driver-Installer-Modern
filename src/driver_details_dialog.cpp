@@ -22,11 +22,11 @@
 #include <QDesktopWidget>
 #include <QtMath>
 
-class ComparisonCard : public QFrame {
-public:ComparisonCard(const QColor &accent,QWidget *parent):QFrame(parent),m_accent(accent){setSizePolicy(QSizePolicy::Preferred,QSizePolicy::Maximum);}
+class ComparisonCard : public SurfaceCard {
+public:ComparisonCard(const QColor &accent,QWidget *parent):SurfaceCard(parent),m_accent(accent){setSizePolicy(QSizePolicy::Preferred,QSizePolicy::Maximum);}
 protected:void paintEvent(QPaintEvent*) Q_DECL_OVERRIDE {
-    const bool dark=Theme::isDark(this);QPainter p(this);p.setRenderHint(QPainter::Antialiasing);const QRectF area=QRectF(rect()).adjusted(.5,.5,-.5,-.5);QPainterPath clip;clip.addRoundedRect(area,15,15);p.setClipPath(clip);
-    QLinearGradient fill(0,0,0,height());const QColor base=Theme::color("surface",dark);auto mix=[base,this](qreal a){return QColor(qRound(base.red()*(1-a)+m_accent.red()*a),qRound(base.green()*(1-a)+m_accent.green()*a),qRound(base.blue()*(1-a)+m_accent.blue()*a));};fill.setColorAt(0,mix(dark?.13:.065));fill.setColorAt(.65,base);p.fillPath(clip,fill);p.fillRect(QRectF(0,0,width(),3),m_accent);p.setClipping(false);p.setBrush(Qt::NoBrush);p.setPen(QPen(Theme::color("border",dark),1));p.drawRoundedRect(area,15,15);
+    SurfaceCard::paintEvent(0);const bool dark=Theme::isDark(this);QPainter p(this);p.setRenderHint(QPainter::Antialiasing);const QRectF area=QRectF(rect()).adjusted(1,1,-1,-4);QPainterPath clip;clip.addRoundedRect(area,15,15);p.setClipPath(clip);
+    QLinearGradient fill(0,0,0,height());const QColor base=Theme::color("surface",dark);auto mix=[base,this](qreal a){return QColor(qRound(base.red()*(1-a)+m_accent.red()*a),qRound(base.green()*(1-a)+m_accent.green()*a),qRound(base.blue()*(1-a)+m_accent.blue()*a));};fill.setColorAt(0,mix(dark?.13:.065));fill.setColorAt(.65,base);p.fillPath(clip,fill);p.setPen(QPen(m_accent,2.3,Qt::SolidLine,Qt::RoundCap));p.drawLine(QPointF(20,area.bottom()-1),QPointF(width()-20,area.bottom()-1));p.setClipping(false);p.setBrush(Qt::NoBrush);p.setPen(QPen(Theme::color("border",dark),1));p.drawRoundedRect(area,15,15);
 }
 private:QColor m_accent;
 };
