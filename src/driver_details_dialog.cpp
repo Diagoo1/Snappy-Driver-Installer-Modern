@@ -37,10 +37,15 @@ protected:void resizeEvent(QResizeEvent *event) Q_DECL_OVERRIDE {QTabWidget::res
 };
 
 class ComparisonCard : public SurfaceCard {
-public:ComparisonCard(const QColor &accent,QWidget *parent):SurfaceCard(parent),m_accent(accent){setSizePolicy(QSizePolicy::Preferred,QSizePolicy::Maximum);}
+public:ComparisonCard(const QColor &accent,QWidget *parent):SurfaceCard(parent),m_accent(accent){
+    setSizePolicy(QSizePolicy::Preferred,QSizePolicy::Maximum);
+    setProperty("tone",accent.blue()>accent.green()?QStringLiteral("violet"):accent.red()>accent.green()?QStringLiteral("amber"):accent.blue()>accent.red() && accent.blue()>accent.green()*.95?QStringLiteral("blue"):QStringLiteral("green"));
+    if(accent==QColor("#469DCD"))setProperty("tone",QStringLiteral("blue"));
+}
 protected:void paintEvent(QPaintEvent*) Q_DECL_OVERRIDE {
-    SurfaceCard::paintEvent(0);const bool dark=Theme::isDark(this);QPainter p(this);p.setRenderHint(QPainter::Antialiasing);const QRectF area=QRectF(rect()).adjusted(1,1,-1,-4);QPainterPath clip;clip.addRoundedRect(area,15,15);p.setClipPath(clip);
-    QLinearGradient fill(0,0,0,height());const QColor base=Theme::color("surface",dark);auto mix=[base,this](qreal a){return QColor(qRound(base.red()*(1-a)+m_accent.red()*a),qRound(base.green()*(1-a)+m_accent.green()*a),qRound(base.blue()*(1-a)+m_accent.blue()*a));};fill.setColorAt(0,mix(dark?.13:.065));fill.setColorAt(.65,base);p.fillPath(clip,fill);p.setPen(QPen(m_accent,2.3,Qt::SolidLine,Qt::RoundCap));p.drawLine(QPointF(20,area.bottom()-1),QPointF(width()-20,area.bottom()-1));p.setClipping(false);p.setBrush(Qt::NoBrush);p.setPen(QPen(Theme::color("border",dark),1));p.drawRoundedRect(area,15,15);
+    SurfaceCard::paintEvent(0);QPainter painter(this);painter.setRenderHint(QPainter::Antialiasing);
+    const QRectF face=QRectF(rect()).adjusted(2,2,-2,-7);QPainterPath clip;clip.addRoundedRect(face,14,14);painter.setClipPath(clip);
+    QLinearGradient tint(0,face.top(),0,qMin(qreal(160),face.bottom()));QColor color=m_accent;color.setAlpha(Theme::isDark(this)?17:10);tint.setColorAt(0,color);color.setAlpha(0);tint.setColorAt(1,color);painter.fillPath(clip,tint);
 }
 private:QColor m_accent;
 };

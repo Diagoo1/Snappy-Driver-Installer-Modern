@@ -112,7 +112,7 @@ void DriverCatalog::toggleIgnored(int row){
 
 bool DriverCatalog::setSelected(int row, bool selected)
 {
-    if (!canQueue(row)) return false;
+    if(row<0 || row>=m_entries.size() || (selected && !canQueue(row)))return false;
     DriverEntry &d=m_entries[row];
     if (selected && (d.chosenCandidate<=0 || d.chosenCandidate>=d.candidates.size())) return false;
     if (d.checked!=selected) { d.checked=selected; emit changed(); }
@@ -237,17 +237,17 @@ sdiomodern::InstallPlan DriverCatalog::buildPlan(bool restore,bool confirmed,boo
 void DriverCatalog::selectRows(const QVector<int> &rows,bool selected)
 {
     bool dirty=false;
-    for(int i=0;i<rows.size();++i){const int row=rows.at(i);if(!canQueue(row))continue;
-        DriverEntry &entry=m_entries[row];
-        // Bulk selection never silently installs a non-recommended alternative.
-        if(selected && m_native){
-            int recommended=-1;
-            for(int c=1;c<entry.candidates.size();++c)
-                if(entry.candidates[c].recommended && entry.candidates[c].valid && entry.candidates[c].local && !isReinstallCandidate(entry,c)){recommended=c;break;}
-            if(recommended<0)continue;
-            if(entry.chosenCandidate!=recommended){entry.chosenCandidate=recommended;dirty=true;}
+    for(int row:rows){
+        if(row<0 || row>=m_entries.size())continue;
+        DriverEntry &entry=m_entries[row];int recommended=-1;
+        if(selected && canQueue(row)){
+            for(int c=1;c<entry.candidates.size();++c){const DriverCandidate &candidate=entry.candidates[c];
+                if((candidate.recommended || (m_demo && candidate.status==QStringLiteral("recommended"))) && (m_demo || (candidate.valid && candidate.local))){recommended=c;break;}
+            }
         }
-        if(entry.checked!=selected){entry.checked=selected;dirty=true;}
+        const bool checked=selected && recommended>0;
+        if(checked && entry.chosenCandidate!=recommended){entry.chosenCandidate=recommended;dirty=true;}
+        if(entry.checked!=checked){entry.checked=checked;dirty=true;}
     }
     if(dirty)emit changed();
 }

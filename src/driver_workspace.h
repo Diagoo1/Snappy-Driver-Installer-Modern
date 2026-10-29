@@ -2,6 +2,7 @@
 #define SDIOMODERN_DRIVER_WORKSPACE_H
 
 #include <QWidget>
+#include <QElapsedTimer>
 #include <QVector>
 #include <QStringList>
 #include "device_types.h"
@@ -76,6 +77,7 @@ private:
     int rowOf(QTreeWidgetItem *item) const;
     DriverCatalog *m_catalog;
     bool m_arabic,m_dark,m_busy,m_demo,m_rebuilding;
+    int m_clickRow,m_clickCandidate,m_clickPriorChoice;bool m_clickPriorChecked;QElapsedTimer m_clickTime;
     QString m_originLocale;
     QWidget *m_controlBar;
     QLabel *m_title,*m_subtitle,*m_info,*m_stats,*m_listTitle;

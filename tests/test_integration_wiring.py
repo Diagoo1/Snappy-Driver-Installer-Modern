@@ -85,10 +85,6 @@ class SourceWiring(unittest.TestCase):
         self.assertIn('++m->generation;m->snapshot=Snapshot()',text('native/origin_native.cpp'))
         self.assertIn('m_catalog->invalidateNative()',text('src/main_window.cpp'))
 
-    def test_queue_filters_scope_bulk_selection(self):
-        self.assertIn('selectRows(',text('src/driver_workspace.cpp'))
-        self.assertIn('if(recommended<0)continue;',text('src/driver_catalog.cpp'))
-
     def test_http_updates_are_separate_from_native_torrent_backend(self):
         self.assertIn('c.downloads=false',text('native/origin_native.cpp'))
         self.assertIn('openOnlinePackages',text('src/main_window.cpp'))

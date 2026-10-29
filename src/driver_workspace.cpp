@@ -41,6 +41,8 @@
 #include <QPainter>
 #include <QItemSelectionModel>
 #include <QKeyEvent>
+#include <QElapsedTimer>
+#include <QEasingCurve>
 #include <functional>
 #include "driver_row_delegate.h"
 
@@ -69,8 +71,16 @@ protected:void paintEvent(QPaintEvent*) Q_DECL_OVERRIDE {
 // Populate before QTreeView measures the opening animation, including branch clicks.
 class DriverTree : public QTreeWidget {
 public:
-    explicit DriverTree(QWidget *parent):QTreeWidget(parent){}
-    std::function<void(QTreeWidgetItem*)> prepare;
+    explicit DriverTree(QWidget *parent):QTreeWidget(parent),m_arrowTimer(this),m_branchPress(false),m_suppressRelease(false){
+        m_clock.start();m_arrowTimer.setInterval(16);
+        connect(&m_arrowTimer,&QTimer::timeout,this,[this](){for(auto it=m_arrows.begin();it!=m_arrows.end();){if(m_clock.elapsed()-it.value().started>=160)it=m_arrows.erase(it);else ++it;}if(m_arrows.isEmpty()){m_arrowTimer.stop();setProperty("branchAnimationRunning",false);}viewport()->update();});
+        connect(this,&QTreeWidget::itemExpanded,this,[this](QTreeWidgetItem *item){animateArrow(item,true);});
+        connect(this,&QTreeWidget::itemCollapsed,this,[this](QTreeWidgetItem *item){animateArrow(item,false);});
+        connect(model(),&QAbstractItemModel::modelReset,this,[this](){stopArrowMotion();});
+    }
+    void setMotionEnabled(bool enabled){setAnimated(enabled);if(!enabled)stopArrowMotion();}
+    qreal arrowAngle(int row,qreal fallback)const {auto it=m_arrows.constFind(row);if(it==m_arrows.constEnd())return fallback;const qreal progress=qBound(qreal(0),(m_clock.elapsed()-it.value().started)/160.0,qreal(1));return it.value().from+(it.value().to-it.value().from)*QEasingCurve(QEasingCurve::OutCubic).valueForProgress(progress);}
+    std::function<void(QTreeWidgetItem*)> prepare,details;
     std::function<void(QTreeWidgetItem*,const QPoint&)> actions;
 protected:
     void mouseMoveEvent(QMouseEvent *event) Q_DECL_OVERRIDE {
@@ -88,15 +98,22 @@ protected:
     void drawBranches(QPainter *p,const QRect &rect,const QModelIndex &index)const Q_DECL_OVERRIDE {
         const bool dark=palette().color(QPalette::Base).lightness()<130;
         if(!index.parent().isValid() && model()->hasChildren(index)){
-            p->save();p->setRenderHint(QPainter::Antialiasing);p->translate(rect.center());if(isExpanded(index))p->rotate(90);else if(layoutDirection()==Qt::RightToLeft)p->rotate(180);
+            p->save();p->setRenderHint(QPainter::Antialiasing);p->translate(rect.center());const qreal angle=arrowAngle(index.data(Qt::UserRole).toInt(),isExpanded(index)?90:0);p->rotate(layoutDirection()==Qt::RightToLeft?180-angle:angle);
             VectorIcons::paint(p,QStringLiteral("chevron-right"),QRectF(-8,-8,16,16),dark?QColor("#A4C6D0"):QColor("#668594"));p->restore();
         }
     }
     void mousePressEvent(QMouseEvent *event) Q_DECL_OVERRIDE {
         if(event->button()==Qt::LeftButton && prepare)prepare(itemAt(event->pos()));
+        QTreeWidgetItem *item=itemAt(event->pos());
+        if(event->button()==Qt::LeftButton && item && !item->parent() && columnAt(event->pos().x())==0){const QRect row=visualItemRect(item);const bool branch=layoutDirection()==Qt::RightToLeft?event->pos().x()>row.right():event->pos().x()<row.left();if(branch){m_branchPress=true;item->setExpanded(!item->isExpanded());event->accept();return;}}
         QTreeWidget::mousePressEvent(event);
     }
+    void mouseDoubleClickEvent(QMouseEvent *event) Q_DECL_OVERRIDE {
+        if(event->button()==Qt::LeftButton){QTreeWidgetItem *item=itemAt(event->pos());const bool dots=columnAt(event->pos().x())==3 && (layoutDirection()==Qt::RightToLeft?event->pos().x()<header()->sectionViewportPosition(3)+32:event->pos().x()>=header()->sectionViewportPosition(3)+columnWidth(3)-32);if(item && details && !dots){m_suppressRelease=true;details(item);event->accept();return;}}
+        QTreeWidget::mouseDoubleClickEvent(event);
+    }
     void mouseReleaseEvent(QMouseEvent *event) Q_DECL_OVERRIDE {
+        if(m_suppressRelease || m_branchPress){m_suppressRelease=false;m_branchPress=false;event->accept();return;}
         if(event->button()==Qt::LeftButton && columnAt(event->pos().x())==3 &&
             (layoutDirection()==Qt::RightToLeft?event->pos().x()<header()->sectionViewportPosition(3)+32:event->pos().x()>=header()->sectionViewportPosition(3)+columnWidth(3)-32)){
             if(actions)actions(itemAt(event->pos()),viewport()->mapToGlobal(event->pos()));
@@ -109,6 +126,11 @@ protected:
         if((event->key()==Qt::Key_Right || event->key()==Qt::Key_Plus) && prepare)prepare(currentItem());
         QTreeWidget::keyPressEvent(event);
     }
+private:
+    struct ArrowMotion {qreal from,to;qint64 started;};
+    QElapsedTimer m_clock;QTimer m_arrowTimer;QMap<int,ArrowMotion> m_arrows;bool m_branchPress,m_suppressRelease;
+    void stopArrowMotion(){m_arrowTimer.stop();m_arrows.clear();setProperty("branchAnimationRunning",false);viewport()->update();}
+    void animateArrow(QTreeWidgetItem *item,bool open){if(!item || item->parent())return;if(!isAnimated() || qApp->property("reduceMotion").toBool()){stopArrowMotion();return;}const int row=item->data(0,Qt::UserRole).toInt();ArrowMotion motion;motion.from=arrowAngle(row,open?0:90);motion.to=open?90:0;motion.started=m_clock.elapsed();m_arrows.insert(row,motion);setProperty("branchAnimationRunning",true);m_arrowTimer.start();viewport()->update();}
 };
 
 static QLabel *label(const QString &text,const char *objectName,QWidget *parent)
@@ -126,7 +148,7 @@ static QPushButton *actionButton(const QString &text, const char *objectName, QW
 }
 
 DriverWorkspace::DriverWorkspace(DriverCatalog *catalog,QWidget *parent)
-  : QWidget(parent),m_catalog(catalog),m_arabic(false),m_dark(false),m_busy(false),m_demo(false),m_rebuilding(false)
+  : QWidget(parent),m_catalog(catalog),m_arabic(false),m_dark(false),m_busy(false),m_demo(false),m_rebuilding(false),m_clickRow(-1),m_clickCandidate(-1),m_clickPriorChoice(-1),m_clickPriorChecked(false)
 {
     setObjectName(QStringLiteral("page"));
     QVBoxLayout *root=new QVBoxLayout(this);
@@ -344,7 +366,7 @@ DriverWorkspace::DriverWorkspace(DriverCatalog *catalog,QWidget *parent)
     connect(m_catalog,&DriverCatalog::changed,this,&DriverWorkspace::updateCount);
     connect(m_tree,&QTreeWidget::itemChanged,this,&DriverWorkspace::handleChanged);
     connect(m_tree,&QTreeWidget::itemClicked,this,&DriverWorkspace::handleClick);
-    connect(m_tree,&QTreeWidget::itemDoubleClicked,this,&DriverWorkspace::showItemDetails);
+    tree->details=[this](QTreeWidgetItem *item){showItemDetails(item,0);};
     m_searchDebounce=new QTimer(this);
     m_searchDebounce->setSingleShot(true);
     m_searchDebounce->setInterval(135);
@@ -359,8 +381,7 @@ DriverWorkspace::DriverWorkspace(DriverCatalog *catalog,QWidget *parent)
     connect(m_showInstalled,&ToggleSwitch::toggled,this,&DriverWorkspace::rebuild);
     connect(m_showMore,&ToggleSwitch::toggled,this,&DriverWorkspace::rebuild);
     connect(m_expert,&QCheckBox::toggled,this,&DriverWorkspace::rebuild);
-    connect(m_all,&QPushButton::clicked,this,[this](){QVector<int> rows;for(int row=0;row<m_catalog->size();++row)if(matchesFilters(row))rows.append(row);
-        m_catalog->selectRows(rows,true);});
+    connect(m_all,&QPushButton::clicked,this,[this](){m_catalog->selectAll(true);});
     connect(m_none,&QPushButton::clicked,this,[this](){m_catalog->selectAll(false);});
     connect(m_scan,&QPushButton::clicked,this,[this](){
         if(m_busy)return;
@@ -586,11 +607,10 @@ void DriverWorkspace::handleClick(QTreeWidgetItem *item,int column)
     if (!item || m_rebuilding || m_busy) return;
     const int row=rowOf(item);
     const int candidate=item->data(0,Qt::UserRole+1).toInt();
-    if(candidate==0 && item->parent() && m_catalog->canQueue(row)){
-        if(!m_catalog->chooseCandidate(row,0))projectMessage(this,UiLanguage::text(QStringLiteral("Reinstall"),QString::fromUtf8("إعادة تثبيت")),UiLanguage::text(QStringLiteral("Reinstall requires a matching local driver package. Download or add that package, then scan again."),QString::fromUtf8("إعادة التثبيت تتطلب حزمة تعريف محلية مطابقة. أضف الحزمة أو نزّلها، ثم أعد الفحص.")),false,m_arabic);
-    }
-    else if(candidate>0 && m_catalog->canQueue(row)){
-        m_catalog->chooseCandidate(row,candidate);
+    if(candidate>=0 && item->parent() && m_catalog->canQueue(row)){
+        const DriverEntry &entry=m_catalog->entryRef(row);m_clickRow=row;m_clickCandidate=candidate;m_clickPriorChoice=entry.chosenCandidate;m_clickPriorChecked=entry.checked;m_clickTime.start();const int resolved=candidate==0?reinstallCandidateIndex(entry):candidate;
+        if(resolved>0 && entry.checked && entry.chosenCandidate==resolved)m_catalog->setSelected(row,false);
+        else if(!m_catalog->chooseCandidate(row,candidate) && candidate==0)projectMessage(this,UiLanguage::text(QStringLiteral("Reinstall"),QString::fromUtf8("إعادة تثبيت")),UiLanguage::text(QStringLiteral("Reinstall requires a matching local driver package. Download or add that package, then scan again."),QString::fromUtf8("إعادة التثبيت تتطلب حزمة تعريف محلية مطابقة. أضف الحزمة أو نزّلها، ثم أعد الفحص.")),false,m_arabic);
     }else if (candidate<0 && column==0){
         populateCandidates(item);
         item->setExpanded(!item->isExpanded());
@@ -599,7 +619,14 @@ void DriverWorkspace::handleClick(QTreeWidgetItem *item,int column)
     }
 }
 void DriverWorkspace::showItemDetails(QTreeWidgetItem *item,int)
-{ if(item) showEntry(rowOf(item)); }
+{
+    if(!item)return;const int row=rowOf(item),candidate=item->data(0,Qt::UserRole+1).toInt();
+    if(row==m_clickRow && candidate==m_clickCandidate && m_clickTime.isValid() && m_clickTime.elapsed()<=QApplication::doubleClickInterval()){
+        if(m_clickPriorChoice>0)m_catalog->chooseCandidate(row,m_clickPriorChoice);
+        if(!m_clickPriorChecked)m_catalog->setSelected(row,false);
+    }
+    m_clickRow=-1;showEntry(row);
+}
 int DriverWorkspace::rowOf(QTreeWidgetItem *item) const
 {
     if (!item) return -1;
@@ -654,8 +681,10 @@ void DriverWorkspace::updateCount()
         QStringLiteral("%1 drivers and %2 restore-point task(s). Requires confirmation and native preflight checks.").arg(selected).arg(m_restore->isChecked()?1:0):
         QStringLiteral("Scan using the original in-process Origin matcher. No simulated candidates."));
     m_scan->setEnabled(!m_busy);
+    m_all->setToolTip(UiLanguage::text(QStringLiteral("Select every eligible local Recommended driver, including devices hidden by search or filters."),QString::fromUtf8("تحديد كل ترشيحات المحرك المؤهلة والمتوفرة محليًا، بما فيها الأجهزة المخفية بالبحث أو الفلاتر.")));
+    m_none->setToolTip(UiLanguage::text(QStringLiteral("Clear every selection, including hidden devices and manually chosen versions."),QString::fromUtf8("إلغاء كل التحديدات، بما فيها الأجهزة المخفية والإصدارات المختارة يدويًا.")));
     m_all->setEnabled(canInstall && !m_busy);
-    m_none->setEnabled(canInstall && !m_busy);
+    m_none->setEnabled(m_catalog->size()>0 && !m_busy);
     m_restore->setEnabled(!m_busy);
     m_reboot->setEnabled(!m_busy);
     m_filters->setEnabled((m_demo || m_catalog->native()) && !m_busy);
@@ -669,7 +698,7 @@ void DriverWorkspace::setBusy(bool busy)
 { m_busy=busy;updateCount(); }
 void DriverWorkspace::setAnimations(bool enabled)
 {
-    m_tree->setAnimated(enabled);
+    static_cast<DriverTree*>(m_tree)->setMotionEnabled(enabled);
     m_scan->setMotionEnabled(enabled);
     m_showInstalled->setMotionEnabled(enabled);
     m_showMore->setMotionEnabled(enabled);

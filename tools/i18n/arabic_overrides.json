@@ -106,7 +106,7 @@
   "[Bug] ": "[مشكلة] ",
   "Dark": "داكن",
   "Light": "فاتح",
-  "Version: 0.21.9 (Beta)\nWindows: %1\nArchitecture: %2\nLanguage: %3\nTheme: %4": "الإصدار: 0.21.9 (بيتا)\nويندوز: %1\nالمعمارية: %2\nاللغة: %3\nالمظهر: %4",
+  "Version: 0.21.10 (Beta)\nWindows: %1\nArchitecture: %2\nLanguage: %3\nTheme: %4": "الإصدار: 0.21.10 (بيتا)\nويندوز: %1\nالمعمارية: %2\nاللغة: %3\nالمظهر: %4",
   "Completed": "مكتمل",
   "Failed": "فشل",
   "Installed -": "مثبّت -",
@@ -125,5 +125,7 @@
   "Device / installed version": "الجهاز / الإصدار المثبّت",
   "Actions": "الإجراءات",
   "Reinstall requires a matching local driver package. Download or add that package, then scan again.": "إعادة التثبيت تتطلب حزمة تعريف محلية مطابقة. أضف الحزمة أو نزّلها، ثم أعد الفحص.",
-  "Priority": "أولوية المطابقة"
+  "Priority": "أولوية المطابقة",
+  "Select every eligible local Recommended driver, including devices hidden by search or filters.": "تحديد كل ترشيحات المحرك المؤهلة والمتوفرة محليًا، بما فيها الأجهزة المخفية بالبحث أو الفلاتر.",
+  "Clear every selection, including hidden devices and manually chosen versions.": "إلغاء كل التحديدات، بما فيها الأجهزة المخفية والإصدارات المختارة يدويًا."
 }

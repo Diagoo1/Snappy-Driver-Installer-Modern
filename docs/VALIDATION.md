@@ -1,11 +1,11 @@
 # Validation scope
 
-Current application version: **0.21.9 Beta**. Hardware/Windows compatibility testing is ongoing. This document separates verified behavior from implementation that still needs hardware/VM testing.
+Current application version: **0.21.10 Beta**. Hardware/Windows compatibility testing is ongoing. This document separates verified behavior from implementation that still needs hardware/VM testing.
 
 | Area | Evidence |
 | --- | --- |
-| Interface, menus, RTL and instances | 234 regression checks at 100% and 150%; English/Arabic and light/dark visual review |
-| Structural/source integration | 83 checks; critical original source fingerprints and reviewed patches |
+| Interface, menus, RTL and instances | 243 regression checks at 100% and 150%; English/Arabic and light/dark visual review |
+| Structural/source integration | 82 checks; critical original source fingerprints and reviewed patches |
 | Current native matching | Read-only scan: 222 devices and 572 candidates on the development host |
 | Original engine workflows | Repeated scan, snapshot save/load, target-system preview and extraction of six INF files |
 | Index maintenance | Original rebuild, text export, deliberate damaged-cache recovery and reload |
@@ -37,3 +37,6 @@ The final executable's `--gui-security-probe` returned `guiCom: 0` and `restoreC
 0.21.8: explicit reinstallation resolves the installed metadata row to an eligible, locally available same/current Origin candidate. The plan retains the native token and ordinary validation. Bulk selection skips reinstallation. Regression coverage checks the consent warning and simulated running/completed reinstall statuses; no real driver installation or restore creation was performed. Detail tabs fill the width and have vector icons, device values use regular body type, quiet actions have resting surfaces, and the update activity strip is directly painted with rounded caps.
 
 0.21.9: 234 UI checks at 100% and 150%, including shared command dimensions/type/icon sizing and header corner pixels blending into the containing card. The five workspace commands share the same painter and state handling; header rendering bypasses native section backgrounds. No native driver/restore/reboot behavior changed or was executed.
+
+0.21.10: 243 UI checks at 100%/150%, including global Recommended selection under a hiding search, clear-all after page navigation, row toggling, details after a selection rebuild, finite chevron animation and reduced motion. Select-all now follows all eligible local engine recommendations, including a Recommended reinstall; operation-specific installation consent remains required. Native matching and installation code did not change and no actual installation was performed.
+The old static assertion requiring filter-scoped bulk selection was removed because that behavior was explicitly replaced; actual UI regression checks now cover global selection under hidden search results and page navigation.

@@ -1,12 +1,12 @@
 {
   "arabic": {
-    "translated": 906,
-    "total": 906,
+    "translated": 908,
+    "total": 908,
     "englishFallbacks": []
   },
   "armenian": {
     "translated": 855,
-    "total": 906,
+    "total": 908,
     "englishFallbacks": [
       "Actions",
       "Administrator access",
@@ -18,6 +18,7 @@
       "Browse releases",
       "Bug report",
       "Cannot open link",
+      "Clear every selection, including hidden devices and manually chosen versions.",
       "Coffee",
       "Completed",
       "Contact",
@@ -55,15 +56,16 @@
       "Review before installing",
       "Review install options",
       "Review these details before opening GitHub. Describe the problem and add steps or screenshots there. A GitHub account is required; reports are public.",
+      "Select every eligible local Recommended driver, including devices hidden by search or filters.",
       "System Protection is disabled (Windows 1058). Enable it for the Windows drive, or review your restore-point option before retrying.",
       "The administrator restart was cancelled or could not start. Your selection is unchanged. Windows error: %1",
-      "Version: 0.21.9 (Beta)\nWindows: %1\nArchitecture: %2\nLanguage: %3\nTheme: %4",
+      "Version: 0.21.10 (Beta)\nWindows: %1\nArchitecture: %2\nLanguage: %3\nTheme: %4",
       "[Bug] "
     ]
   },
   "azerbaijan": {
     "translated": 855,
-    "total": 906,
+    "total": 908,
     "englishFallbacks": [
       "Actions",
       "Administrator access",
@@ -75,6 +77,7 @@
       "Browse releases",
       "Bug report",
       "Cannot open link",
+      "Clear every selection, including hidden devices and manually chosen versions.",
       "Coffee",
       "Completed",
       "Contact",
@@ -112,15 +115,16 @@
       "Review before installing",
       "Review install options",
       "Review these details before opening GitHub. Describe the problem and add steps or screenshots there. A GitHub account is required; reports are public.",
+      "Select every eligible local Recommended driver, including devices hidden by search or filters.",
       "System Protection is disabled (Windows 1058). Enable it for the Windows drive, or review your restore-point option before retrying.",
       "The administrator restart was cancelled or could not start. Your selection is unchanged. Windows error: %1",
-      "Version: 0.21.9 (Beta)\nWindows: %1\nArchitecture: %2\nLanguage: %3\nTheme: %4",
+      "Version: 0.21.10 (Beta)\nWindows: %1\nArchitecture: %2\nLanguage: %3\nTheme: %4",
       "[Bug] "
     ]
   },
   "belarusian": {
     "translated": 855,
-    "total": 906,
+    "total": 908,
     "englishFallbacks": [
       "Actions",
       "Administrator access",
@@ -132,6 +136,7 @@
       "Browse releases",
       "Bug report",
       "Cannot open link",
+      "Clear every selection, including hidden devices and manually chosen versions.",
       "Coffee",
       "Completed",
       "Contact",
@@ -169,15 +174,16 @@
       "Review before installing",
       "Review install options",
       "Review these details before opening GitHub. Describe the problem and add steps or screenshots there. A GitHub account is required; reports are public.",
+      "Select every eligible local Recommended driver, including devices hidden by search or filters.",
       "System Protection is disabled (Windows 1058). Enable it for the Windows drive, or review your restore-point option before retrying.",
       "The administrator restart was cancelled or could not start. Your selection is unchanged. Windows error: %1",
-      "Version: 0.21.9 (Beta)\nWindows: %1\nArchitecture: %2\nLanguage: %3\nTheme: %4",
+      "Version: 0.21.10 (Beta)\nWindows: %1\nArchitecture: %2\nLanguage: %3\nTheme: %4",
       "[Bug] "
     ]
   },
   "brazilian": {
     "translated": 855,
-    "total": 906,
+    "total": 908,
     "englishFallbacks": [
       "Actions",
       "Administrator access",
@@ -189,6 +195,7 @@
       "Browse releases",
       "Bug report",
       "Cannot open link",
+      "Clear every selection, including hidden devices and manually chosen versions.",
       "Coffee",
       "Completed",
       "Contact",
@@ -226,15 +233,16 @@
       "Review before installing",
       "Review install options",
       "Review these details before opening GitHub. Describe the problem and add steps or screenshots there. A GitHub account is required; reports are public.",
+      "Select every eligible local Recommended driver, including devices hidden by search or filters.",
       "System Protection is disabled (Windows 1058). Enable it for the Windows drive, or review your restore-point option before retrying.",
       "The administrator restart was cancelled or could not start. Your selection is unchanged. Windows error: %1",
-      "Version: 0.21.9 (Beta)\nWindows: %1\nArchitecture: %2\nLanguage: %3\nTheme: %4",
+      "Version: 0.21.10 (Beta)\nWindows: %1\nArchitecture: %2\nLanguage: %3\nTheme: %4",
       "[Bug] "
     ]
   },
   "bulgarian": {
     "translated": 855,
-    "total": 906,
+    "total": 908,
     "englishFallbacks": [
       "Actions",
       "Administrator access",
@@ -246,6 +254,7 @@
       "Browse releases",
       "Bug report",
       "Cannot open link",
+      "Clear every selection, including hidden devices and manually chosen versions.",
       "Coffee",
       "Completed",
       "Contact",
@@ -283,15 +292,16 @@
       "Review before installing",
       "Review install options",
       "Review these details before opening GitHub. Describe the problem and add steps or screenshots there. A GitHub account is required; reports are public.",
+      "Select every eligible local Recommended driver, including devices hidden by search or filters.",
       "System Protection is disabled (Windows 1058). Enable it for the Windows drive, or review your restore-point option before retrying.",
       "The administrator restart was cancelled or could not start. Your selection is unchanged. Windows error: %1",
-      "Version: 0.21.9 (Beta)\nWindows: %1\nArchitecture: %2\nLanguage: %3\nTheme: %4",
+      "Version: 0.21.10 (Beta)\nWindows: %1\nArchitecture: %2\nLanguage: %3\nTheme: %4",
       "[Bug] "
     ]
   },
   "catalan": {
     "translated": 855,
-    "total": 906,
+    "total": 908,
     "englishFallbacks": [
       "Actions",
       "Administrator access",
@@ -303,6 +313,7 @@
       "Browse releases",
       "Bug report",
       "Cannot open link",
+      "Clear every selection, including hidden devices and manually chosen versions.",
       "Coffee",
       "Completed",
       "Contact",
@@ -340,15 +351,16 @@
       "Review before installing",
       "Review install options",
       "Review these details before opening GitHub. Describe the problem and add steps or screenshots there. A GitHub account is required; reports are public.",
+      "Select every eligible local Recommended driver, including devices hidden by search or filters.",
       "System Protection is disabled (Windows 1058). Enable it for the Windows drive, or review your restore-point option before retrying.",
       "The administrator restart was cancelled or could not start. Your selection is unchanged. Windows error: %1",
-      "Version: 0.21.9 (Beta)\nWindows: %1\nArchitecture: %2\nLanguage: %3\nTheme: %4",
+      "Version: 0.21.10 (Beta)\nWindows: %1\nArchitecture: %2\nLanguage: %3\nTheme: %4",
       "[Bug] "
     ]
   },
   "chinese_cn": {
     "translated": 855,
-    "total": 906,
+    "total": 908,
     "englishFallbacks": [
       "Actions",
       "Administrator access",
@@ -360,6 +372,7 @@
       "Browse releases",
       "Bug report",
       "Cannot open link",
+      "Clear every selection, including hidden devices and manually chosen versions.",
       "Coffee",
       "Completed",
       "Contact",
@@ -397,15 +410,16 @@
       "Review before installing",
       "Review install options",
       "Review these details before opening GitHub. Describe the problem and add steps or screenshots there. A GitHub account is required; reports are public.",
+      "Select every eligible local Recommended driver, including devices hidden by search or filters.",
       "System Protection is disabled (Windows 1058). Enable it for the Windows drive, or review your restore-point option before retrying.",
       "The administrator restart was cancelled or could not start. Your selection is unchanged. Windows error: %1",
-      "Version: 0.21.9 (Beta)\nWindows: %1\nArchitecture: %2\nLanguage: %3\nTheme: %4",
+      "Version: 0.21.10 (Beta)\nWindows: %1\nArchitecture: %2\nLanguage: %3\nTheme: %4",
       "[Bug] "
     ]
   },
   "chinese_tw": {
     "translated": 855,
-    "total": 906,
+    "total": 908,
     "englishFallbacks": [
       "Actions",
       "Administrator access",
@@ -417,6 +431,7 @@
       "Browse releases",
       "Bug report",
       "Cannot open link",
+      "Clear every selection, including hidden devices and manually chosen versions.",
       "Coffee",
       "Completed",
       "Contact",
@@ -454,15 +469,16 @@
       "Review before installing",
       "Review install options",
       "Review these details before opening GitHub. Describe the problem and add steps or screenshots there. A GitHub account is required; reports are public.",
+      "Select every eligible local Recommended driver, including devices hidden by search or filters.",
       "System Protection is disabled (Windows 1058). Enable it for the Windows drive, or review your restore-point option before retrying.",
       "The administrator restart was cancelled or could not start. Your selection is unchanged. Windows error: %1",
-      "Version: 0.21.9 (Beta)\nWindows: %1\nArchitecture: %2\nLanguage: %3\nTheme: %4",
+      "Version: 0.21.10 (Beta)\nWindows: %1\nArchitecture: %2\nLanguage: %3\nTheme: %4",
       "[Bug] "
     ]
   },
   "croatian": {
     "translated": 855,
-    "total": 906,
+    "total": 908,
     "englishFallbacks": [
       "Actions",
       "Administrator access",
@@ -474,6 +490,7 @@
       "Browse releases",
       "Bug report",
       "Cannot open link",
+      "Clear every selection, including hidden devices and manually chosen versions.",
       "Coffee",
       "Completed",
       "Contact",
@@ -511,15 +528,16 @@
       "Review before installing",
       "Review install options",
       "Review these details before opening GitHub. Describe the problem and add steps or screenshots there. A GitHub account is required; reports are public.",
+      "Select every eligible local Recommended driver, including devices hidden by search or filters.",
       "System Protection is disabled (Windows 1058). Enable it for the Windows drive, or review your restore-point option before retrying.",
       "The administrator restart was cancelled or could not start. Your selection is unchanged. Windows error: %1",
-      "Version: 0.21.9 (Beta)\nWindows: %1\nArchitecture: %2\nLanguage: %3\nTheme: %4",
+      "Version: 0.21.10 (Beta)\nWindows: %1\nArchitecture: %2\nLanguage: %3\nTheme: %4",
       "[Bug] "
     ]
   },
   "czech": {
     "translated": 855,
-    "total": 906,
+    "total": 908,
     "englishFallbacks": [
       "Actions",
       "Administrator access",
@@ -531,6 +549,7 @@
       "Browse releases",
       "Bug report",
       "Cannot open link",
+      "Clear every selection, including hidden devices and manually chosen versions.",
       "Coffee",
       "Completed",
       "Contact",
@@ -568,15 +587,16 @@
       "Review before installing",
       "Review install options",
       "Review these details before opening GitHub. Describe the problem and add steps or screenshots there. A GitHub account is required; reports are public.",
+      "Select every eligible local Recommended driver, including devices hidden by search or filters.",
       "System Protection is disabled (Windows 1058). Enable it for the Windows drive, or review your restore-point option before retrying.",
       "The administrator restart was cancelled or could not start. Your selection is unchanged. Windows error: %1",
-      "Version: 0.21.9 (Beta)\nWindows: %1\nArchitecture: %2\nLanguage: %3\nTheme: %4",
+      "Version: 0.21.10 (Beta)\nWindows: %1\nArchitecture: %2\nLanguage: %3\nTheme: %4",
       "[Bug] "
     ]
   },
   "danish": {
     "translated": 855,
-    "total": 906,
+    "total": 908,
     "englishFallbacks": [
       "Actions",
       "Administrator access",
@@ -588,6 +608,7 @@
       "Browse releases",
       "Bug report",
       "Cannot open link",
+      "Clear every selection, including hidden devices and manually chosen versions.",
       "Coffee",
       "Completed",
       "Contact",
@@ -625,15 +646,16 @@
       "Review before installing",
       "Review install options",
       "Review these details before opening GitHub. Describe the problem and add steps or screenshots there. A GitHub account is required; reports are public.",
+      "Select every eligible local Recommended driver, including devices hidden by search or filters.",
       "System Protection is disabled (Windows 1058). Enable it for the Windows drive, or review your restore-point option before retrying.",
       "The administrator restart was cancelled or could not start. Your selection is unchanged. Windows error: %1",
-      "Version: 0.21.9 (Beta)\nWindows: %1\nArchitecture: %2\nLanguage: %3\nTheme: %4",
+      "Version: 0.21.10 (Beta)\nWindows: %1\nArchitecture: %2\nLanguage: %3\nTheme: %4",
       "[Bug] "
     ]
   },
   "dutch": {
     "translated": 855,
-    "total": 906,
+    "total": 908,
     "englishFallbacks": [
       "Actions",
       "Administrator access",
@@ -645,6 +667,7 @@
       "Browse releases",
       "Bug report",
       "Cannot open link",
+      "Clear every selection, including hidden devices and manually chosen versions.",
       "Coffee",
       "Completed",
       "Contact",
@@ -682,20 +705,21 @@
       "Review before installing",
       "Review install options",
       "Review these details before opening GitHub. Describe the problem and add steps or screenshots there. A GitHub account is required; reports are public.",
+      "Select every eligible local Recommended driver, including devices hidden by search or filters.",
       "System Protection is disabled (Windows 1058). Enable it for the Windows drive, or review your restore-point option before retrying.",
       "The administrator restart was cancelled or could not start. Your selection is unchanged. Windows error: %1",
-      "Version: 0.21.9 (Beta)\nWindows: %1\nArchitecture: %2\nLanguage: %3\nTheme: %4",
+      "Version: 0.21.10 (Beta)\nWindows: %1\nArchitecture: %2\nLanguage: %3\nTheme: %4",
       "[Bug] "
     ]
   },
   "english": {
-    "translated": 906,
-    "total": 906,
+    "translated": 908,
+    "total": 908,
     "englishFallbacks": []
   },
   "estonian": {
     "translated": 855,
-    "total": 906,
+    "total": 908,
     "englishFallbacks": [
       "Actions",
       "Administrator access",
@@ -707,6 +731,7 @@
       "Browse releases",
       "Bug report",
       "Cannot open link",
+      "Clear every selection, including hidden devices and manually chosen versions.",
       "Coffee",
       "Completed",
       "Contact",
@@ -744,15 +769,16 @@
       "Review before installing",
       "Review install options",
       "Review these details before opening GitHub. Describe the problem and add steps or screenshots there. A GitHub account is required; reports are public.",
+      "Select every eligible local Recommended driver, including devices hidden by search or filters.",
       "System Protection is disabled (Windows 1058). Enable it for the Windows drive, or review your restore-point option before retrying.",
       "The administrator restart was cancelled or could not start. Your selection is unchanged. Windows error: %1",
-      "Version: 0.21.9 (Beta)\nWindows: %1\nArchitecture: %2\nLanguage: %3\nTheme: %4",
+      "Version: 0.21.10 (Beta)\nWindows: %1\nArchitecture: %2\nLanguage: %3\nTheme: %4",
       "[Bug] "
     ]
   },
   "farsi": {
     "translated": 855,
-    "total": 906,
+    "total": 908,
     "englishFallbacks": [
       "Actions",
       "Administrator access",
@@ -764,6 +790,7 @@
       "Browse releases",
       "Bug report",
       "Cannot open link",
+      "Clear every selection, including hidden devices and manually chosen versions.",
       "Coffee",
       "Completed",
       "Contact",
@@ -801,15 +828,16 @@
       "Review before installing",
       "Review install options",
       "Review these details before opening GitHub. Describe the problem and add steps or screenshots there. A GitHub account is required; reports are public.",
+      "Select every eligible local Recommended driver, including devices hidden by search or filters.",
       "System Protection is disabled (Windows 1058). Enable it for the Windows drive, or review your restore-point option before retrying.",
       "The administrator restart was cancelled or could not start. Your selection is unchanged. Windows error: %1",
-      "Version: 0.21.9 (Beta)\nWindows: %1\nArchitecture: %2\nLanguage: %3\nTheme: %4",
+      "Version: 0.21.10 (Beta)\nWindows: %1\nArchitecture: %2\nLanguage: %3\nTheme: %4",
       "[Bug] "
     ]
   },
   "french": {
     "translated": 855,
-    "total": 906,
+    "total": 908,
     "englishFallbacks": [
       "Actions",
       "Administrator access",
@@ -821,6 +849,7 @@
       "Browse releases",
       "Bug report",
       "Cannot open link",
+      "Clear every selection, including hidden devices and manually chosen versions.",
       "Coffee",
       "Completed",
       "Contact",
@@ -858,15 +887,16 @@
       "Review before installing",
       "Review install options",
       "Review these details before opening GitHub. Describe the problem and add steps or screenshots there. A GitHub account is required; reports are public.",
+      "Select every eligible local Recommended driver, including devices hidden by search or filters.",
       "System Protection is disabled (Windows 1058). Enable it for the Windows drive, or review your restore-point option before retrying.",
       "The administrator restart was cancelled or could not start. Your selection is unchanged. Windows error: %1",
-      "Version: 0.21.9 (Beta)\nWindows: %1\nArchitecture: %2\nLanguage: %3\nTheme: %4",
+      "Version: 0.21.10 (Beta)\nWindows: %1\nArchitecture: %2\nLanguage: %3\nTheme: %4",
       "[Bug] "
     ]
   },
   "georgian": {
     "translated": 855,
-    "total": 906,
+    "total": 908,
     "englishFallbacks": [
       "Actions",
       "Administrator access",
@@ -878,6 +908,7 @@
       "Browse releases",
       "Bug report",
       "Cannot open link",
+      "Clear every selection, including hidden devices and manually chosen versions.",
       "Coffee",
       "Completed",
       "Contact",
@@ -915,15 +946,16 @@
       "Review before installing",
       "Review install options",
       "Review these details before opening GitHub. Describe the problem and add steps or screenshots there. A GitHub account is required; reports are public.",
+      "Select every eligible local Recommended driver, including devices hidden by search or filters.",
       "System Protection is disabled (Windows 1058). Enable it for the Windows drive, or review your restore-point option before retrying.",
       "The administrator restart was cancelled or could not start. Your selection is unchanged. Windows error: %1",
-      "Version: 0.21.9 (Beta)\nWindows: %1\nArchitecture: %2\nLanguage: %3\nTheme: %4",
+      "Version: 0.21.10 (Beta)\nWindows: %1\nArchitecture: %2\nLanguage: %3\nTheme: %4",
       "[Bug] "
     ]
   },
   "german": {
     "translated": 855,
-    "total": 906,
+    "total": 908,
     "englishFallbacks": [
       "Actions",
       "Administrator access",
@@ -935,6 +967,7 @@
       "Browse releases",
       "Bug report",
       "Cannot open link",
+      "Clear every selection, including hidden devices and manually chosen versions.",
       "Coffee",
       "Completed",
       "Contact",
@@ -972,15 +1005,16 @@
       "Review before installing",
       "Review install options",
       "Review these details before opening GitHub. Describe the problem and add steps or screenshots there. A GitHub account is required; reports are public.",
+      "Select every eligible local Recommended driver, including devices hidden by search or filters.",
       "System Protection is disabled (Windows 1058). Enable it for the Windows drive, or review your restore-point option before retrying.",
       "The administrator restart was cancelled or could not start. Your selection is unchanged. Windows error: %1",
-      "Version: 0.21.9 (Beta)\nWindows: %1\nArchitecture: %2\nLanguage: %3\nTheme: %4",
+      "Version: 0.21.10 (Beta)\nWindows: %1\nArchitecture: %2\nLanguage: %3\nTheme: %4",
       "[Bug] "
     ]
   },
   "greek": {
     "translated": 855,
-    "total": 906,
+    "total": 908,
     "englishFallbacks": [
       "Actions",
       "Administrator access",
@@ -992,6 +1026,7 @@
       "Browse releases",
       "Bug report",
       "Cannot open link",
+      "Clear every selection, including hidden devices and manually chosen versions.",
       "Coffee",
       "Completed",
       "Contact",
@@ -1029,15 +1064,16 @@
       "Review before installing",
       "Review install options",
       "Review these details before opening GitHub. Describe the problem and add steps or screenshots there. A GitHub account is required; reports are public.",
+      "Select every eligible local Recommended driver, including devices hidden by search or filters.",
       "System Protection is disabled (Windows 1058). Enable it for the Windows drive, or review your restore-point option before retrying.",
       "The administrator restart was cancelled or could not start. Your selection is unchanged. Windows error: %1",
-      "Version: 0.21.9 (Beta)\nWindows: %1\nArchitecture: %2\nLanguage: %3\nTheme: %4",
+      "Version: 0.21.10 (Beta)\nWindows: %1\nArchitecture: %2\nLanguage: %3\nTheme: %4",
       "[Bug] "
     ]
   },
   "hungarian": {
     "translated": 855,
-    "total": 906,
+    "total": 908,
     "englishFallbacks": [
       "Actions",
       "Administrator access",
@@ -1049,6 +1085,7 @@
       "Browse releases",
       "Bug report",
       "Cannot open link",
+      "Clear every selection, including hidden devices and manually chosen versions.",
       "Coffee",
       "Completed",
       "Contact",
@@ -1086,15 +1123,16 @@
       "Review before installing",
       "Review install options",
       "Review these details before opening GitHub. Describe the problem and add steps or screenshots there. A GitHub account is required; reports are public.",
+      "Select every eligible local Recommended driver, including devices hidden by search or filters.",
       "System Protection is disabled (Windows 1058). Enable it for the Windows drive, or review your restore-point option before retrying.",
       "The administrator restart was cancelled or could not start. Your selection is unchanged. Windows error: %1",
-      "Version: 0.21.9 (Beta)\nWindows: %1\nArchitecture: %2\nLanguage: %3\nTheme: %4",
+      "Version: 0.21.10 (Beta)\nWindows: %1\nArchitecture: %2\nLanguage: %3\nTheme: %4",
       "[Bug] "
     ]
   },
   "indonesian": {
     "translated": 855,
-    "total": 906,
+    "total": 908,
     "englishFallbacks": [
       "Actions",
       "Administrator access",
@@ -1106,6 +1144,7 @@
       "Browse releases",
       "Bug report",
       "Cannot open link",
+      "Clear every selection, including hidden devices and manually chosen versions.",
       "Coffee",
       "Completed",
       "Contact",
@@ -1143,15 +1182,16 @@
       "Review before installing",
       "Review install options",
       "Review these details before opening GitHub. Describe the problem and add steps or screenshots there. A GitHub account is required; reports are public.",
+      "Select every eligible local Recommended driver, including devices hidden by search or filters.",
       "System Protection is disabled (Windows 1058). Enable it for the Windows drive, or review your restore-point option before retrying.",
       "The administrator restart was cancelled or could not start. Your selection is unchanged. Windows error: %1",
-      "Version: 0.21.9 (Beta)\nWindows: %1\nArchitecture: %2\nLanguage: %3\nTheme: %4",
+      "Version: 0.21.10 (Beta)\nWindows: %1\nArchitecture: %2\nLanguage: %3\nTheme: %4",
       "[Bug] "
     ]
   },
   "italian": {
     "translated": 855,
-    "total": 906,
+    "total": 908,
     "englishFallbacks": [
       "Actions",
       "Administrator access",
@@ -1163,6 +1203,7 @@
       "Browse releases",
       "Bug report",
       "Cannot open link",
+      "Clear every selection, including hidden devices and manually chosen versions.",
       "Coffee",
       "Completed",
       "Contact",
@@ -1200,15 +1241,16 @@
       "Review before installing",
       "Review install options",
       "Review these details before opening GitHub. Describe the problem and add steps or screenshots there. A GitHub account is required; reports are public.",
+      "Select every eligible local Recommended driver, including devices hidden by search or filters.",
       "System Protection is disabled (Windows 1058). Enable it for the Windows drive, or review your restore-point option before retrying.",
       "The administrator restart was cancelled or could not start. Your selection is unchanged. Windows error: %1",
-      "Version: 0.21.9 (Beta)\nWindows: %1\nArchitecture: %2\nLanguage: %3\nTheme: %4",
+      "Version: 0.21.10 (Beta)\nWindows: %1\nArchitecture: %2\nLanguage: %3\nTheme: %4",
       "[Bug] "
     ]
   },
   "japanese": {
     "translated": 855,
-    "total": 906,
+    "total": 908,
     "englishFallbacks": [
       "Actions",
       "Administrator access",
@@ -1220,6 +1262,7 @@
       "Browse releases",
       "Bug report",
       "Cannot open link",
+      "Clear every selection, including hidden devices and manually chosen versions.",
       "Coffee",
       "Completed",
       "Contact",
@@ -1257,15 +1300,16 @@
       "Review before installing",
       "Review install options",
       "Review these details before opening GitHub. Describe the problem and add steps or screenshots there. A GitHub account is required; reports are public.",
+      "Select every eligible local Recommended driver, including devices hidden by search or filters.",
       "System Protection is disabled (Windows 1058). Enable it for the Windows drive, or review your restore-point option before retrying.",
       "The administrator restart was cancelled or could not start. Your selection is unchanged. Windows error: %1",
-      "Version: 0.21.9 (Beta)\nWindows: %1\nArchitecture: %2\nLanguage: %3\nTheme: %4",
+      "Version: 0.21.10 (Beta)\nWindows: %1\nArchitecture: %2\nLanguage: %3\nTheme: %4",
       "[Bug] "
     ]
   },
   "korean": {
     "translated": 855,
-    "total": 906,
+    "total": 908,
     "englishFallbacks": [
       "Actions",
       "Administrator access",
@@ -1277,6 +1321,7 @@
       "Browse releases",
       "Bug report",
       "Cannot open link",
+      "Clear every selection, including hidden devices and manually chosen versions.",
       "Coffee",
       "Completed",
       "Contact",
@@ -1314,15 +1359,16 @@
       "Review before installing",
       "Review install options",
       "Review these details before opening GitHub. Describe the problem and add steps or screenshots there. A GitHub account is required; reports are public.",
+      "Select every eligible local Recommended driver, including devices hidden by search or filters.",
       "System Protection is disabled (Windows 1058). Enable it for the Windows drive, or review your restore-point option before retrying.",
       "The administrator restart was cancelled or could not start. Your selection is unchanged. Windows error: %1",
-      "Version: 0.21.9 (Beta)\nWindows: %1\nArchitecture: %2\nLanguage: %3\nTheme: %4",
+      "Version: 0.21.10 (Beta)\nWindows: %1\nArchitecture: %2\nLanguage: %3\nTheme: %4",
       "[Bug] "
     ]
   },
   "latvian": {
     "translated": 855,
-    "total": 906,
+    "total": 908,
     "englishFallbacks": [
       "Actions",
       "Administrator access",
@@ -1334,6 +1380,7 @@
       "Browse releases",
       "Bug report",
       "Cannot open link",
+      "Clear every selection, including hidden devices and manually chosen versions.",
       "Coffee",
       "Completed",
       "Contact",
@@ -1371,15 +1418,16 @@
       "Review before installing",
       "Review install options",
       "Review these details before opening GitHub. Describe the problem and add steps or screenshots there. A GitHub account is required; reports are public.",
+      "Select every eligible local Recommended driver, including devices hidden by search or filters.",
       "System Protection is disabled (Windows 1058). Enable it for the Windows drive, or review your restore-point option before retrying.",
       "The administrator restart was cancelled or could not start. Your selection is unchanged. Windows error: %1",
-      "Version: 0.21.9 (Beta)\nWindows: %1\nArchitecture: %2\nLanguage: %3\nTheme: %4",
+      "Version: 0.21.10 (Beta)\nWindows: %1\nArchitecture: %2\nLanguage: %3\nTheme: %4",
       "[Bug] "
     ]
   },
   "lithuanian": {
     "translated": 855,
-    "total": 906,
+    "total": 908,
     "englishFallbacks": [
       "Actions",
       "Administrator access",
@@ -1391,6 +1439,7 @@
       "Browse releases",
       "Bug report",
       "Cannot open link",
+      "Clear every selection, including hidden devices and manually chosen versions.",
       "Coffee",
       "Completed",
       "Contact",
@@ -1428,15 +1477,16 @@
       "Review before installing",
       "Review install options",
       "Review these details before opening GitHub. Describe the problem and add steps or screenshots there. A GitHub account is required; reports are public.",
+      "Select every eligible local Recommended driver, including devices hidden by search or filters.",
       "System Protection is disabled (Windows 1058). Enable it for the Windows drive, or review your restore-point option before retrying.",
       "The administrator restart was cancelled or could not start. Your selection is unchanged. Windows error: %1",
-      "Version: 0.21.9 (Beta)\nWindows: %1\nArchitecture: %2\nLanguage: %3\nTheme: %4",
+      "Version: 0.21.10 (Beta)\nWindows: %1\nArchitecture: %2\nLanguage: %3\nTheme: %4",
       "[Bug] "
     ]
   },
   "norwegian": {
     "translated": 855,
-    "total": 906,
+    "total": 908,
     "englishFallbacks": [
       "Actions",
       "Administrator access",
@@ -1448,6 +1498,7 @@
       "Browse releases",
       "Bug report",
       "Cannot open link",
+      "Clear every selection, including hidden devices and manually chosen versions.",
       "Coffee",
       "Completed",
       "Contact",
@@ -1485,15 +1536,16 @@
       "Review before installing",
       "Review install options",
       "Review these details before opening GitHub. Describe the problem and add steps or screenshots there. A GitHub account is required; reports are public.",
+      "Select every eligible local Recommended driver, including devices hidden by search or filters.",
       "System Protection is disabled (Windows 1058). Enable it for the Windows drive, or review your restore-point option before retrying.",
       "The administrator restart was cancelled or could not start. Your selection is unchanged. Windows error: %1",
-      "Version: 0.21.9 (Beta)\nWindows: %1\nArchitecture: %2\nLanguage: %3\nTheme: %4",
+      "Version: 0.21.10 (Beta)\nWindows: %1\nArchitecture: %2\nLanguage: %3\nTheme: %4",
       "[Bug] "
     ]
   },
   "polish": {
     "translated": 855,
-    "total": 906,
+    "total": 908,
     "englishFallbacks": [
       "Actions",
       "Administrator access",
@@ -1505,6 +1557,7 @@
       "Browse releases",
       "Bug report",
       "Cannot open link",
+      "Clear every selection, including hidden devices and manually chosen versions.",
       "Coffee",
       "Completed",
       "Contact",
@@ -1542,15 +1595,16 @@
       "Review before installing",
       "Review install options",
       "Review these details before opening GitHub. Describe the problem and add steps or screenshots there. A GitHub account is required; reports are public.",
+      "Select every eligible local Recommended driver, including devices hidden by search or filters.",
       "System Protection is disabled (Windows 1058). Enable it for the Windows drive, or review your restore-point option before retrying.",
       "The administrator restart was cancelled or could not start. Your selection is unchanged. Windows error: %1",
-      "Version: 0.21.9 (Beta)\nWindows: %1\nArchitecture: %2\nLanguage: %3\nTheme: %4",
+      "Version: 0.21.10 (Beta)\nWindows: %1\nArchitecture: %2\nLanguage: %3\nTheme: %4",
       "[Bug] "
     ]
   },
   "portuguese": {
     "translated": 855,
-    "total": 906,
+    "total": 908,
     "englishFallbacks": [
       "Actions",
       "Administrator access",
@@ -1562,6 +1616,7 @@
       "Browse releases",
       "Bug report",
       "Cannot open link",
+      "Clear every selection, including hidden devices and manually chosen versions.",
       "Coffee",
       "Completed",
       "Contact",
@@ -1599,15 +1654,16 @@
       "Review before installing",
       "Review install options",
       "Review these details before opening GitHub. Describe the problem and add steps or screenshots there. A GitHub account is required; reports are public.",
+      "Select every eligible local Recommended driver, including devices hidden by search or filters.",
       "System Protection is disabled (Windows 1058). Enable it for the Windows drive, or review your restore-point option before retrying.",
       "The administrator restart was cancelled or could not start. Your selection is unchanged. Windows error: %1",
-      "Version: 0.21.9 (Beta)\nWindows: %1\nArchitecture: %2\nLanguage: %3\nTheme: %4",
+      "Version: 0.21.10 (Beta)\nWindows: %1\nArchitecture: %2\nLanguage: %3\nTheme: %4",
       "[Bug] "
     ]
   },
   "romanian": {
     "translated": 855,
-    "total": 906,
+    "total": 908,
     "englishFallbacks": [
       "Actions",
       "Administrator access",
@@ -1619,6 +1675,7 @@
       "Browse releases",
       "Bug report",
       "Cannot open link",
+      "Clear every selection, including hidden devices and manually chosen versions.",
       "Coffee",
       "Completed",
       "Contact",
@@ -1656,15 +1713,16 @@
       "Review before installing",
       "Review install options",
       "Review these details before opening GitHub. Describe the problem and add steps or screenshots there. A GitHub account is required; reports are public.",
+      "Select every eligible local Recommended driver, including devices hidden by search or filters.",
       "System Protection is disabled (Windows 1058). Enable it for the Windows drive, or review your restore-point option before retrying.",
       "The administrator restart was cancelled or could not start. Your selection is unchanged. Windows error: %1",
-      "Version: 0.21.9 (Beta)\nWindows: %1\nArchitecture: %2\nLanguage: %3\nTheme: %4",
+      "Version: 0.21.10 (Beta)\nWindows: %1\nArchitecture: %2\nLanguage: %3\nTheme: %4",
       "[Bug] "
     ]
   },
   "russian": {
     "translated": 855,
-    "total": 906,
+    "total": 908,
     "englishFallbacks": [
       "Actions",
       "Administrator access",
@@ -1676,6 +1734,7 @@
       "Browse releases",
       "Bug report",
       "Cannot open link",
+      "Clear every selection, including hidden devices and manually chosen versions.",
       "Coffee",
       "Completed",
       "Contact",
@@ -1713,15 +1772,16 @@
       "Review before installing",
       "Review install options",
       "Review these details before opening GitHub. Describe the problem and add steps or screenshots there. A GitHub account is required; reports are public.",
+      "Select every eligible local Recommended driver, including devices hidden by search or filters.",
       "System Protection is disabled (Windows 1058). Enable it for the Windows drive, or review your restore-point option before retrying.",
       "The administrator restart was cancelled or could not start. Your selection is unchanged. Windows error: %1",
-      "Version: 0.21.9 (Beta)\nWindows: %1\nArchitecture: %2\nLanguage: %3\nTheme: %4",
+      "Version: 0.21.10 (Beta)\nWindows: %1\nArchitecture: %2\nLanguage: %3\nTheme: %4",
       "[Bug] "
     ]
   },
   "serbian": {
     "translated": 855,
-    "total": 906,
+    "total": 908,
     "englishFallbacks": [
       "Actions",
       "Administrator access",
@@ -1733,6 +1793,7 @@
       "Browse releases",
       "Bug report",
       "Cannot open link",
+      "Clear every selection, including hidden devices and manually chosen versions.",
       "Coffee",
       "Completed",
       "Contact",
@@ -1770,15 +1831,16 @@
       "Review before installing",
       "Review install options",
       "Review these details before opening GitHub. Describe the problem and add steps or screenshots there. A GitHub account is required; reports are public.",
+      "Select every eligible local Recommended driver, including devices hidden by search or filters.",
       "System Protection is disabled (Windows 1058). Enable it for the Windows drive, or review your restore-point option before retrying.",
       "The administrator restart was cancelled or could not start. Your selection is unchanged. Windows error: %1",
-      "Version: 0.21.9 (Beta)\nWindows: %1\nArchitecture: %2\nLanguage: %3\nTheme: %4",
+      "Version: 0.21.10 (Beta)\nWindows: %1\nArchitecture: %2\nLanguage: %3\nTheme: %4",
       "[Bug] "
     ]
   },
   "slovenian": {
     "translated": 855,
-    "total": 906,
+    "total": 908,
     "englishFallbacks": [
       "Actions",
       "Administrator access",
@@ -1790,6 +1852,7 @@
       "Browse releases",
       "Bug report",
       "Cannot open link",
+      "Clear every selection, including hidden devices and manually chosen versions.",
       "Coffee",
       "Completed",
       "Contact",
@@ -1827,15 +1890,16 @@
       "Review before installing",
       "Review install options",
       "Review these details before opening GitHub. Describe the problem and add steps or screenshots there. A GitHub account is required; reports are public.",
+      "Select every eligible local Recommended driver, including devices hidden by search or filters.",
       "System Protection is disabled (Windows 1058). Enable it for the Windows drive, or review your restore-point option before retrying.",
       "The administrator restart was cancelled or could not start. Your selection is unchanged. Windows error: %1",
-      "Version: 0.21.9 (Beta)\nWindows: %1\nArchitecture: %2\nLanguage: %3\nTheme: %4",
+      "Version: 0.21.10 (Beta)\nWindows: %1\nArchitecture: %2\nLanguage: %3\nTheme: %4",
       "[Bug] "
     ]
   },
   "spanish": {
     "translated": 855,
-    "total": 906,
+    "total": 908,
     "englishFallbacks": [
       "Actions",
       "Administrator access",
@@ -1847,6 +1911,7 @@
       "Browse releases",
       "Bug report",
       "Cannot open link",
+      "Clear every selection, including hidden devices and manually chosen versions.",
       "Coffee",
       "Completed",
       "Contact",
@@ -1884,15 +1949,16 @@
       "Review before installing",
       "Review install options",
       "Review these details before opening GitHub. Describe the problem and add steps or screenshots there. A GitHub account is required; reports are public.",
+      "Select every eligible local Recommended driver, including devices hidden by search or filters.",
       "System Protection is disabled (Windows 1058). Enable it for the Windows drive, or review your restore-point option before retrying.",
       "The administrator restart was cancelled or could not start. Your selection is unchanged. Windows error: %1",
-      "Version: 0.21.9 (Beta)\nWindows: %1\nArchitecture: %2\nLanguage: %3\nTheme: %4",
+      "Version: 0.21.10 (Beta)\nWindows: %1\nArchitecture: %2\nLanguage: %3\nTheme: %4",
       "[Bug] "
     ]
   },
   "swedish": {
     "translated": 855,
-    "total": 906,
+    "total": 908,
     "englishFallbacks": [
       "Actions",
       "Administrator access",
@@ -1904,6 +1970,7 @@
       "Browse releases",
       "Bug report",
       "Cannot open link",
+      "Clear every selection, including hidden devices and manually chosen versions.",
       "Coffee",
       "Completed",
       "Contact",
@@ -1941,15 +2008,16 @@
       "Review before installing",
       "Review install options",
       "Review these details before opening GitHub. Describe the problem and add steps or screenshots there. A GitHub account is required; reports are public.",
+      "Select every eligible local Recommended driver, including devices hidden by search or filters.",
       "System Protection is disabled (Windows 1058). Enable it for the Windows drive, or review your restore-point option before retrying.",
       "The administrator restart was cancelled or could not start. Your selection is unchanged. Windows error: %1",
-      "Version: 0.21.9 (Beta)\nWindows: %1\nArchitecture: %2\nLanguage: %3\nTheme: %4",
+      "Version: 0.21.10 (Beta)\nWindows: %1\nArchitecture: %2\nLanguage: %3\nTheme: %4",
       "[Bug] "
     ]
   },
   "thai": {
     "translated": 855,
-    "total": 906,
+    "total": 908,
     "englishFallbacks": [
       "Actions",
       "Administrator access",
@@ -1961,6 +2029,7 @@
       "Browse releases",
       "Bug report",
       "Cannot open link",
+      "Clear every selection, including hidden devices and manually chosen versions.",
       "Coffee",
       "Completed",
       "Contact",
@@ -1998,15 +2067,16 @@
       "Review before installing",
       "Review install options",
       "Review these details before opening GitHub. Describe the problem and add steps or screenshots there. A GitHub account is required; reports are public.",
+      "Select every eligible local Recommended driver, including devices hidden by search or filters.",
       "System Protection is disabled (Windows 1058). Enable it for the Windows drive, or review your restore-point option before retrying.",
       "The administrator restart was cancelled or could not start. Your selection is unchanged. Windows error: %1",
-      "Version: 0.21.9 (Beta)\nWindows: %1\nArchitecture: %2\nLanguage: %3\nTheme: %4",
+      "Version: 0.21.10 (Beta)\nWindows: %1\nArchitecture: %2\nLanguage: %3\nTheme: %4",
       "[Bug] "
     ]
   },
   "turkish": {
     "translated": 855,
-    "total": 906,
+    "total": 908,
     "englishFallbacks": [
       "Actions",
       "Administrator access",
@@ -2018,6 +2088,7 @@
       "Browse releases",
       "Bug report",
       "Cannot open link",
+      "Clear every selection, including hidden devices and manually chosen versions.",
       "Coffee",
       "Completed",
       "Contact",
@@ -2055,15 +2126,16 @@
       "Review before installing",
       "Review install options",
       "Review these details before opening GitHub. Describe the problem and add steps or screenshots there. A GitHub account is required; reports are public.",
+      "Select every eligible local Recommended driver, including devices hidden by search or filters.",
       "System Protection is disabled (Windows 1058). Enable it for the Windows drive, or review your restore-point option before retrying.",
       "The administrator restart was cancelled or could not start. Your selection is unchanged. Windows error: %1",
-      "Version: 0.21.9 (Beta)\nWindows: %1\nArchitecture: %2\nLanguage: %3\nTheme: %4",
+      "Version: 0.21.10 (Beta)\nWindows: %1\nArchitecture: %2\nLanguage: %3\nTheme: %4",
       "[Bug] "
     ]
   },
   "ukrainian": {
     "translated": 855,
-    "total": 906,
+    "total": 908,
     "englishFallbacks": [
       "Actions",
       "Administrator access",
@@ -2075,6 +2147,7 @@
       "Browse releases",
       "Bug report",
       "Cannot open link",
+      "Clear every selection, including hidden devices and manually chosen versions.",
       "Coffee",
       "Completed",
       "Contact",
@@ -2112,15 +2185,16 @@
       "Review before installing",
       "Review install options",
       "Review these details before opening GitHub. Describe the problem and add steps or screenshots there. A GitHub account is required; reports are public.",
+      "Select every eligible local Recommended driver, including devices hidden by search or filters.",
       "System Protection is disabled (Windows 1058). Enable it for the Windows drive, or review your restore-point option before retrying.",
       "The administrator restart was cancelled or could not start. Your selection is unchanged. Windows error: %1",
-      "Version: 0.21.9 (Beta)\nWindows: %1\nArchitecture: %2\nLanguage: %3\nTheme: %4",
+      "Version: 0.21.10 (Beta)\nWindows: %1\nArchitecture: %2\nLanguage: %3\nTheme: %4",
       "[Bug] "
     ]
   },
   "vietnamese": {
     "translated": 855,
-    "total": 906,
+    "total": 908,
     "englishFallbacks": [
       "Actions",
       "Administrator access",
@@ -2132,6 +2206,7 @@
       "Browse releases",
       "Bug report",
       "Cannot open link",
+      "Clear every selection, including hidden devices and manually chosen versions.",
       "Coffee",
       "Completed",
       "Contact",
@@ -2169,9 +2244,10 @@
       "Review before installing",
       "Review install options",
       "Review these details before opening GitHub. Describe the problem and add steps or screenshots there. A GitHub account is required; reports are public.",
+      "Select every eligible local Recommended driver, including devices hidden by search or filters.",
       "System Protection is disabled (Windows 1058). Enable it for the Windows drive, or review your restore-point option before retrying.",
       "The administrator restart was cancelled or could not start. Your selection is unchanged. Windows error: %1",
-      "Version: 0.21.9 (Beta)\nWindows: %1\nArchitecture: %2\nLanguage: %3\nTheme: %4",
+      "Version: 0.21.10 (Beta)\nWindows: %1\nArchitecture: %2\nLanguage: %3\nTheme: %4",
       "[Bug] "
     ]
   }

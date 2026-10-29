@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.21.10 Beta
+
+- Select all follows every eligible local engine Recommended candidate independently of search/filters; clear-all removes every mark, including hidden/manual choices. A Recommended current-version package is included and retains the reinstall warning.
+- Clicking a version row again toggles its radio/selection off. Choose and Selected are quiet status pills rather than prominent buttons.
+- Handle double-click details against the current row after selection rebuilds, preserving the selection from before the double-click.
+- Animate chevrons over a bounded 160 ms interval alongside the standard tree expansion; stop the timer when idle and respect reduced motion.
+- Use the shared card surface, lightweight shadow and faded bottom accent inside driver details, replacing the old solid stripe.
+
 ## 0.21.9 Beta
 
 - Use one shared renderer, height, type scale, border and hover treatment for the five driver-workspace commands; every command has a consistent vector icon.
