@@ -871,6 +871,13 @@
     "~MHz": "~MHz",
     "Made with": "Sukurta su",
     "by": "autorius:",
-    "Love": "Meilė"
+    "Love": "Meilė",
+    "Undo": "Atšaukti",
+    "Redo": "Grąžinti",
+    "Cut": "Iškirpti",
+    "Copy": "Kopijuoti",
+    "Paste": "Įklijuoti",
+    "Delete": "Ištrinti",
+    "Status": "Būsena"
   }
 }

@@ -15,6 +15,7 @@ def main():
         if name=='arabic':messages.update(catalog['arabic']);messages.update({'Installed':'مثبّت','Missing':'مفقود','Upgrade':'ترقية','Downgrade':'إصدار أقدم','Invalid':'غير صالح','Ignored':'متجاهل'})
         if name=='serbian':messages.update({'Installed':'Инсталирано','Missing':'Недостаје','Upgrade':'Надоградња','Downgrade':'Старија верзија','Invalid':'Неисправно','Ignored':'Игнорисано','Settings':'Подешавања','About':'О програму','Drivers':'Управљачки програми','Diagnostics':'Дијагностика','Cancel':'Откажи','Close':'Затвори','Continue':'Настави','Apply':'Примени','Yes':'Да','No':'Не','Automatic':'Аутоматски','Download':'Преузми','Pause':'Паузирај','Stop':'Заустави','Resume':'Настави','Recommended':'Препоручено'})
         messages.update(signature.get(name,{}))
+        messages.update(dict(zip(('Undo','Redo','Cut','Copy','Paste','Delete'),json.loads((ROOT/'tools/i18n/edit_translations.json').read_text('utf-8'))[name])))
         messages={key:value for key,value in messages.items() if key in keys and value.strip() and sorted(PLACEHOLDER.findall(key))==sorted(PLACEHOLDER.findall(value)) and not re.search(r'(?:ZZPH|ZXQ)\s*\d+',value,re.I)}
         missing=[key for key in keys if key not in messages]
         write(path,{'schema':1,'language':name,'tag':tag,'rtl':name in ('arabic','farsi'),'generated':'Upstream human translations, maintained Arabic, and build-time machine translation; native review recommended. Missing keys use English.','messages':messages})

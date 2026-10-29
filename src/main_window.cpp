@@ -26,6 +26,7 @@
 #include "appearance.h"
 #include "window_motion.h"
 #include <QWindowStateChangeEvent>
+#include <QStyle>
 #include "support_report.h"
 #include "online_dialog.h"
 #include <QSaveFile>
@@ -331,8 +332,11 @@ void MainWindow::changeEvent(QEvent *e)
     QWidget::changeEvent(e);
     if(e->type()==QEvent::WindowStateChange && m_titleBar){
         const bool restored=static_cast<QWindowStateChangeEvent*>(e)->oldState().testFlag(Qt::WindowMinimized) && !isMinimized();
+        const bool cornersChanged=property("maximized").toBool()!=isMaximized();
         m_titleBar->setMaximized(isMaximized());setProperty("maximized",isMaximized());
-        applyTheme();m_sidebar->update();update();
+        // A window-state change must not rebuild the entire application QSS.
+        // Only page corners depend on the maximized property.
+        if(cornersChanged){for(int i=0;m_pages && i<m_pages->count();++i){QWidget *page=m_pages->widget(i);page->style()->unpolish(page);page->style()->polish(page);page->update();}m_sidebar->update();update();}
         if(restored && m_windowMotion)m_windowMotion->restoredFromMinimized();
     }
 }

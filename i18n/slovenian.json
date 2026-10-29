@@ -871,6 +871,13 @@
     "Account / repository": "Račun / repozitorij",
     "Made with": "Ustvarjeno z",
     "by": "avtor:",
-    "Love": "Ljubezen"
+    "Love": "Ljubezen",
+    "Undo": "Razveljavi",
+    "Redo": "Uveljavi",
+    "Cut": "Izreži",
+    "Copy": "Kopiraj",
+    "Paste": "Prilepi",
+    "Delete": "Izbriši",
+    "Status": "Stanje"
   }
 }

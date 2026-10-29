@@ -213,6 +213,7 @@
     "Contact me",
     "Continue",
     "Control Panel",
+    "Copy",
     "Copy hardware ID",
     "Copy the program, packages and indexes to a USB drive or another folder. Unrelated files are kept. No drive is formatted.",
     "Copying and verifying files...",
@@ -231,6 +232,7 @@
     "Current",
     "Current Windows",
     "Current architecture",
+    "Cut",
     "DEMO - NO CHANGES",
     "DEMO - READ ONLY",
     "DEMO COMPLETE · A real install would now request reboot confirmation.",
@@ -251,6 +253,7 @@
     "Data copied from the in-process SDIO Origin matcher. Original order and raw score are shown; they are not security ratings. Windows installation is subject to build capabilities and preflight validation.",
     "Date",
     "Defaults are built in. Your preferences are saved in your Windows account without a configuration file beside the EXE.",
+    "Delete",
     "Demo candidate",
     "Demo inventory — not measured",
     "Demonstration mode was explicitly requested. No Windows changes.",
@@ -555,6 +558,7 @@
     "Package source",
     "Package updates",
     "Packages for this scan",
+    "Paste",
     "Path exceeds the original engine buffer.",
     "Pause",
     "Pause download",
@@ -604,6 +608,7 @@
     "Rebuild driver indexes",
     "Receiving verified blocks from download peers",
     "Recommended",
+    "Redo",
     "Reduce animations",
     "Refresh devices",
     "Refusing to replace a symbolic-link destination.",
@@ -706,6 +711,7 @@
     "Source read failed.",
     "Standard",
     "Starting verified package download",
+    "Status",
     "Stop",
     "Stop after current",
     "Stop after the current operation and close?",
@@ -779,6 +785,7 @@
     "UI by Tarek Sadek",
     "UI © 2026 Tarek Sadek",
     "USB controllers",
+    "Undo",
     "Unexpected HTTP content range.",
     "Unexpected downloaded block length.",
     "Unknown",
@@ -1170,7 +1177,15 @@
     "Appearance & language": "المظهر واللغة",
     "Preparing your workspace...": "جارٍ تجهيز مساحة العمل...",
     "UI © 2026 Tarek Sadek": "واجهة طارق صادق © 2026",
-    "Snappy Driver Installer | UI: Tarek Sadek": "مدير تعريفات الأجهزة | واجهة طارق صادق"
+    "Snappy Driver Installer | UI: Tarek Sadek": "مدير تعريفات الأجهزة | واجهة طارق صادق",
+    "SIMULATION ONLY": "محاكاة فقط",
+    "Restore point (simulated)": "نقطة استعادة (محاكاة)",
+    "%1 / %2 items completed · 0 real driver operations": "اكتمل %1 من %2 عنصرًا · لم تُنفّذ أي عملية تثبيت فعلية",
+    "INSTALLATION ITEMS": "عناصر التثبيت",
+    "PROCESS STAGES": "مراحل العملية",
+    "Completed (demo)": "اكتمل (محاكاة)",
+    "Queued": "في قائمة الانتظار",
+    "Simulating %1%": "محاكاة %1%"
   },
   "sources": {
     "\nDouble-click for details": [
@@ -1807,6 +1822,9 @@
     "Control Panel": [
       "src\\tools_drawer.cpp"
     ],
+    "Copy": [
+      "src\\appearance.cpp"
+    ],
     "Copy hardware ID": [
       "src\\driver_workspace.cpp"
     ],
@@ -1862,6 +1880,9 @@
     ],
     "Current architecture": [
       "src\\main_window.cpp"
+    ],
+    "Cut": [
+      "src\\appearance.cpp"
     ],
     "DEMO - NO CHANGES": [
       "src\\main_window.cpp"
@@ -1922,6 +1943,9 @@
     ],
     "Defaults are built in. Your preferences are saved in your Windows account without a configuration file beside the EXE.": [
       "src\\main_window.cpp"
+    ],
+    "Delete": [
+      "src\\appearance.cpp"
     ],
     "Demo candidate": [
       "src\\driver_details_dialog.cpp"
@@ -2067,6 +2091,7 @@
       "src\\driver_workspace.cpp"
     ],
     "Drivers": [
+      "src\\installation_workspace.cpp",
       "src\\sidebar.cpp"
     ],
     "Drivers for this computer": [
@@ -2851,6 +2876,9 @@
     "Packages for this scan": [
       "src\\online_dialog.cpp"
     ],
+    "Paste": [
+      "src\\appearance.cpp"
+    ],
     "Path exceeds the original engine buffer.": [
       "native\\origin_native.cpp"
     ],
@@ -2996,6 +3024,9 @@
     "Recommended": [
       "src\\driver_row_delegate.cpp",
       "src\\driver_workspace.cpp"
+    ],
+    "Redo": [
+      "src\\appearance.cpp"
     ],
     "Reduce animations": [
       "src\\main_window.cpp"
@@ -3188,6 +3219,7 @@
       "src\\driver_workspace.cpp"
     ],
     "Select all": [
+      "src\\appearance.cpp",
       "src\\driver_workspace.cpp"
     ],
     "Select at least one index or driver package.": [
@@ -3306,6 +3338,9 @@
     ],
     "Starting verified package download": [
       "src\\online_dialog.cpp"
+    ],
+    "Status": [
+      "src\\installation_workspace.cpp"
     ],
     "Stop": [],
     "Stop after current": [
@@ -3523,6 +3558,9 @@
     ],
     "USB controllers": [
       "src\\main_window.cpp"
+    ],
+    "Undo": [
+      "src\\appearance.cpp"
     ],
     "Unexpected HTTP content range.": [
       "src\\online_packages.cpp"

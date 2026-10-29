@@ -31,6 +31,7 @@
 #include <QTreeWidget>
 #include <QCheckBox>
 #include <QMenu>
+#include <QContextMenuEvent>
 #include <QScrollBar>
 #include "driver_workspace.h"
 #include "support_report.h"
@@ -51,6 +52,7 @@
 #include <QJsonArray>
 #include "ui_elements.h"
 #include <cstdio>
+int renderPublicationGallery(QApplication &app);
 #include <stdexcept>
 #include "main_window.h"
 #include "sidebar.h"
@@ -90,6 +92,7 @@ int main(int argc,char **argv){
     QApplication::setAttribute(Qt::AA_UseHighDpiPixmaps);
     for(int i=1;i<argc;++i)if(QByteArray(argv[i])==QByteArray("--zoom-probe"))UiScale::prepareEnvironment();
     QApplication app(argc,argv);app.setQuitOnLastWindowClosed(false);app.setOrganizationName(QStringLiteral("SDIO-UI-Regression"));UiFont::applyLanguage(QStringLiteral("english"));installInterfaceMotion();
+    if(app.arguments().contains(QStringLiteral("--publication-gallery")))return renderPublicationGallery(app);
     if(app.arguments().contains(QStringLiteral("--zoom-probe"))){QWidget probe;probe.resize(400,200);probe.show();QTest::qWait(30);QJsonObject report;report.insert(QStringLiteral("effectivePercent"),UiScale::effectivePercent());report.insert(QStringLiteral("deviceDpr"),probe.devicePixelRatioF());const QJsonObject rendering=probeFractionalRendering(QStringLiteral("zoom"));report.insert(QStringLiteral("rendering"),rendering);std::printf("%s\n",QJsonDocument(report).toJson(QJsonDocument::Compact).constData());return 0;}
     if(app.arguments().contains(QStringLiteral("--live-update-probe"))){std::atomic<bool> stop(false);const auto release=AppUpdate::latest(AppUpdate::projectRepository(),stop);const QString target=QDir(app.applicationDirPath()).filePath(QStringLiteral("verified-public-release.exe"));AppUpdate::downloadVerified(release,target,stop);QFile binary(target);if(!binary.open(QIODevice::ReadOnly))return 2;QJsonObject report;report.insert(QStringLiteral("version"),release.version);report.insert(QStringLiteral("sha256"),QString::fromLatin1(QCryptographicHash::hash(binary.readAll(),QCryptographicHash::Sha256).toHex()));report.insert(QStringLiteral("githubDigest"),QString::fromLatin1(release.sha256));report.insert(QStringLiteral("applied"),false);std::printf("%s\n",QJsonDocument(report).toJson(QJsonDocument::Compact).constData());return 0;}
     if(app.arguments().contains(QStringLiteral("--dpi-probe-before")) || app.arguments().contains(QStringLiteral("--dpi-probe-after"))){const QJsonObject result=probeFractionalRendering(app.arguments().contains(QStringLiteral("--dpi-probe-before"))?QStringLiteral("before"):QStringLiteral("after"));std::printf("%s\n",QJsonDocument(result).toJson(QJsonDocument::Compact).constData());return 0;}
@@ -391,7 +394,7 @@ int main(int argc,char **argv){
                 if(popup)popup->grab().save(QDir(app.applicationDirPath()).filePath(QStringLiteral("zoom-dark-premium.png")));zoom->hidePopup();
             }
             DriverEntry sample=many;sample.sdioVerified=true;sample.sdioDriverPresent=true;sample.device.name=QStringLiteral("Thunderbolt(TM) Controller - 1134");sample.device.manufacturer=QStringLiteral("Intel(R) Corporation");sample.device.deviceClass=QStringLiteral("System devices");sample.candidates.resize(3);sample.candidates[0].version=QStringLiteral("1.41.1420.0");sample.candidates[0].status=QStringLiteral("installed");sample.candidates[1].version=QStringLiteral("1.41.1423.0");sample.candidates[1].status=QStringLiteral("recommended");sample.candidates[1].engineToken=1;sample.candidates[1].matchStars=5;sample.candidates[1].originalOrder=1;sample.candidates[1].local=true;
-            bool versionStable=true,starStable=true;
+            bool versionStable=true,starStable=true,roundedTextMenus=true,correctMenuColors=true,selectAllWorks=true;
             for(int mode=0;mode<2;++mode)for(int rtl=0;rtl<2;++rtl){
                 language->setCurrentIndex(language->findData(rtl?QStringLiteral("arabic"):QStringLiteral("english")));QMetaObject::invokeMethod(&window,"updateDark",Q_ARG(bool,mode==1));QMetaObject::invokeMethod(&window,"navigate",Q_ARG(int,5));QTest::qWait(240);
                 const QString suffix=QStringLiteral("%1-%2").arg(mode?QStringLiteral("dark"):QStringLiteral("light"),rtl?QStringLiteral("arabic"):QStringLiteral("english"));
@@ -399,12 +402,18 @@ int main(int argc,char **argv){
                 DriverDetailsDialog redesigned(sample,false,rtl,&window);redesigned.show();QTest::qWait(220);
                 redesigned.grab().save(QDir(app.applicationDirPath()).filePath(QStringLiteral("premium-comparison-")+suffix+QStringLiteral(".png")));
                 redesigned.findChild<QTabWidget*>()->setCurrentIndex(1);QTest::qWait(30);redesigned.grab().save(QDir(app.applicationDirPath()).filePath(QStringLiteral("premium-device-")+suffix+QStringLiteral(".png")));redesigned.findChild<QTabWidget*>()->setCurrentIndex(0);
+                QLabel *identity=redesigned.findChild<QLabel*>(QStringLiteral("hardwareIdentityValue"));identity->setSelection(0,1);
+                QTimer::singleShot(40,[&](){QMenu *menu=qobject_cast<QMenu*>(app.activePopupWidget());if(!menu){roundedTextMenus=false;return;}const QImage pixels=menu->grab().toImage();const qreal dpr=pixels.width()/qreal(menu->width());roundedTextMenus=roundedTextMenus && qobject_cast<ProjectMenu*>(menu) && qAlpha(pixels.pixel(0,0))<30;const QColor surface=QColor::fromRgba(pixels.pixel(qRound(menu->width()/2*dpr),qRound(5*dpr))),expected=Theme::color("surface",mode==1);correctMenuColors=correctMenuColors && qAbs(surface.red()-expected.red())<5 && qAbs(surface.green()-expected.green())<5 && qAbs(surface.blue()-expected.blue())<5;menu->actions().last()->trigger();menu->close();});
+                QContextMenuEvent context(QContextMenuEvent::Mouse,QPoint(8,8),identity->mapToGlobal(QPoint(8,8)));QApplication::sendEvent(identity,&context);selectAllWorks=selectAllWorks && identity->selectedText()==identity->text();
                 for(QLabel *value:redesigned.findChildren<QLabel*>(QStringLiteral("detailVersion")))versionStable=versionStable && value->property("keepLtr").toBool() && value->layoutDirection()==Qt::LeftToRight;
                 QWidget *stars=redesigned.findChild<QWidget*>(QStringLiteral("comparisonStars"));starStable=starStable && stars && stars->property("matchPriority").toInt()==5;
                 redesigned.close();
             }
             check(versionStable,"comparison redesign preserves left-to-right technical versions in both interface directions");
             check(starStable,"comparison stars retain the selected engine candidate's match priority");
+            check(roundedTextMenus,"text context menus use rounded transparent project chrome in both languages and themes");
+            check(correctMenuColors,"text context menus paint the actual light or dark surface rather than black inherited backgrounds");
+            check(selectAllWorks,"project text context menus preserve select-all behavior without changing the technical value");
             language->setCurrentIndex(arabicIndex);QMetaObject::invokeMethod(&window,"updateDark",Q_ARG(bool,true));
         }
         bool cleanBranding=true;for(QLabel *label:window.findChildren<QLabel*>())if(label->text().contains(QStringLiteral("Release 17")) || label->text().contains(QStringLiteral("R17 UI UPDATE")))cleanBranding=false;
@@ -531,13 +540,13 @@ int main(int argc,char **argv){
         QWidget *signature=window.findChild<QWidget*>(QStringLiteral("developerSignature"));QStringList signatureWords;for(QLabel *word:signature->findChildren<QLabel*>())signatureWords<<word->text();
         check(signatureWords.contains(QStringLiteral("Made with")) && signatureWords.contains(QStringLiteral("by")) && signature->findChild<QWidget*>(QStringLiteral("signatureHeart")),"developer signature places the heart between made-with and by above the author name");
         qApp->setProperty("reduceMotion",false);
-        QMetaObject::invokeMethod(window.findChild<TitleBar*>(),"maximizeRequested");QMetaObject::invokeMethod(window.findChild<TitleBar*>(),"maximizeRequested");QTest::qWait(300);
-        check(window.isMaximized() && !window.property("windowMotionActive").toBool() && window.windowOpacity()>.99,"maximize completes and repeated clicks cannot queue conflicting transitions");
-        check(window.property("motionCapturePixels").toInt()<=960*640 && window.property("motionFrames").toInt()<=5,"window transition bounds raster memory and frame count independently of display scale");
+        for(int i=0;i<5;++i)QMetaObject::invokeMethod(window.findChild<TitleBar*>(),"maximizeRequested");QTest::qWait(100);
+        check(window.isMaximized() && window.windowOpacity()>.99,"repeated native window-state requests settle without hiding the live interface");
+        check(window.property("windowMotionBackend").toString()==QStringLiteral("native-window-manager") && !window.property("motionCapturePixels").isValid(),"window transitions delegate to Windows without raster capture or per-frame geometry work");
         QMetaObject::invokeMethod(window.findChild<TitleBar*>(),"maximizeRequested");QTest::qWait(300);check(!window.isMaximized() && window.windowOpacity()>.99,"restore from maximized completes with the live interface visible");
         QMetaObject::invokeMethod(window.findChild<TitleBar*>(),"minimizeRequested");QTest::qWait(280);check(window.isMinimized() && !window.property("windowMotionActive").toBool(),"minimize reaches the real window-manager state after its bounded transition");
         window.showNormal();QTest::qWait(300);bool ghostVisible=false;for(QWidget *top:app.topLevelWidgets())if(top->objectName()==QStringLiteral("windowMotionSnapshot") && top->isVisible())ghostVisible=true;
-        check(window.isVisible() && window.windowOpacity()>.99 && !ghostVisible,"taskbar-style restore releases the snapshot and restores window opacity");
+        check(window.isVisible() && window.windowOpacity()>.99 && !ghostVisible,"taskbar restore leaves the live window visible without a snapshot overlay");
         qApp->setProperty("reduceMotion",true);QMetaObject::invokeMethod(window.findChild<TitleBar*>(),"maximizeRequested");QTest::qWait(40);check(window.isMaximized() && !window.property("windowMotionActive").toBool(),"reduced-motion preference takes the direct native window-state path");window.showNormal();qApp->setProperty("reduceMotion",false);
         Splash splash;splash.begin();QTest::qWait(500);splash.grab().save(QDir(app.applicationDirPath()).filePath(QStringLiteral("splash.png")));
         check(splash.progress()>0 && splash.progress()<100,"startup progress animation runs");splash.close();

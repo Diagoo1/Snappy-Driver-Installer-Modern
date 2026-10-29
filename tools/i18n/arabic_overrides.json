@@ -94,5 +94,13 @@
   "Appearance & language": "المظهر واللغة",
   "Preparing your workspace...": "جارٍ تجهيز مساحة العمل...",
   "UI © 2026 Tarek Sadek": "واجهة طارق صادق © 2026",
-  "Snappy Driver Installer | UI: Tarek Sadek": "مدير تعريفات الأجهزة | واجهة طارق صادق"
+  "Snappy Driver Installer | UI: Tarek Sadek": "مدير تعريفات الأجهزة | واجهة طارق صادق",
+  "SIMULATION ONLY": "محاكاة فقط",
+  "Restore point (simulated)": "نقطة استعادة (محاكاة)",
+  "%1 / %2 items completed · 0 real driver operations": "اكتمل %1 من %2 عنصرًا · لم تُنفّذ أي عملية تثبيت فعلية",
+  "INSTALLATION ITEMS": "عناصر التثبيت",
+  "PROCESS STAGES": "مراحل العملية",
+  "Completed (demo)": "اكتمل (محاكاة)",
+  "Queued": "في قائمة الانتظار",
+  "Simulating %1%": "محاكاة %1%"
 }

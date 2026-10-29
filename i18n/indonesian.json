@@ -871,6 +871,13 @@
     "~MHz": "~MHz",
     "Made with": "Dibuat dengan",
     "by": "oleh",
-    "Love": "Cinta"
+    "Love": "Cinta",
+    "Undo": "Urungkan",
+    "Redo": "Ulangi",
+    "Cut": "Potong",
+    "Copy": "Salin",
+    "Paste": "Tempel",
+    "Delete": "Hapus",
+    "Status": "Keadaan"
   }
 }

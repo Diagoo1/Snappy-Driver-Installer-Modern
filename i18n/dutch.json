@@ -871,6 +871,13 @@
     "Account / repository": "Account / opslagplaats",
     "Made with": "Gemaakt met",
     "by": "door",
-    "Love": "Liefde"
+    "Love": "Liefde",
+    "Undo": "Ongedaan maken",
+    "Redo": "Opnieuw",
+    "Cut": "Knippen",
+    "Copy": "Kopiëren",
+    "Paste": "Plakken",
+    "Delete": "Verwijderen",
+    "Status": "Status"
   }
 }

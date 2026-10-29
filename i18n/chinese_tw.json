@@ -871,6 +871,13 @@
     "~MHz": "~MHz",
     "Made with": "用心製作",
     "by": "作者：",
-    "Love": "愛"
+    "Love": "愛",
+    "Undo": "復原",
+    "Redo": "重做",
+    "Cut": "剪下",
+    "Copy": "複製",
+    "Paste": "貼上",
+    "Delete": "刪除",
+    "Status": "狀態"
   }
 }

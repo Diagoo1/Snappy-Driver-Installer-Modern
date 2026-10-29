@@ -871,6 +871,13 @@
     "~MHz": "~ MHz",
     "Made with": "Được tạo với",
     "by": "bởi",
-    "Love": "Tình yêu"
+    "Love": "Tình yêu",
+    "Undo": "Hoàn tác",
+    "Redo": "Làm lại",
+    "Cut": "Cắt",
+    "Copy": "Sao chép",
+    "Paste": "Dán",
+    "Delete": "Xóa",
+    "Status": "Trạng thái"
   }
 }

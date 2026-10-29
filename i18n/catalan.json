@@ -871,6 +871,13 @@
     "~MHz": "~MHz",
     "Made with": "Fet amb",
     "by": "per",
-    "Love": "Amor"
+    "Love": "Amor",
+    "Undo": "Desfés",
+    "Redo": "Refés",
+    "Cut": "Retalla",
+    "Copy": "Copia",
+    "Paste": "Enganxa",
+    "Delete": "Suprimeix",
+    "Status": "Estat"
   }
 }

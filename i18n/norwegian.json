@@ -871,6 +871,13 @@
     "~MHz": "~MHz",
     "Made with": "Laget med",
     "by": "av",
-    "Love": "Kjærlighet"
+    "Love": "Kjærlighet",
+    "Undo": "Angre",
+    "Redo": "Gjør om",
+    "Cut": "Klipp ut",
+    "Copy": "Kopier",
+    "Paste": "Lim inn",
+    "Delete": "Slett",
+    "Status": "Status"
   }
 }

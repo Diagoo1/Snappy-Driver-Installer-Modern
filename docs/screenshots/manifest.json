@@ -1,0 +1,483 @@
+{
+    "images": [
+        {
+            "file": "en-light/01-drivers.png",
+            "installationSimulation": false,
+            "locale": "en",
+            "sampleData": true,
+            "theme": "light"
+        },
+        {
+            "file": "en-light/02-driver-versions.png",
+            "installationSimulation": false,
+            "locale": "en",
+            "sampleData": true,
+            "theme": "light"
+        },
+        {
+            "file": "en-light/03-diagnostics.png",
+            "installationSimulation": false,
+            "locale": "en",
+            "sampleData": true,
+            "theme": "light"
+        },
+        {
+            "file": "en-light/04-driver-packages.png",
+            "installationSimulation": false,
+            "locale": "en",
+            "sampleData": true,
+            "theme": "light"
+        },
+        {
+            "file": "en-light/05-settings.png",
+            "installationSimulation": false,
+            "locale": "en",
+            "sampleData": true,
+            "theme": "light"
+        },
+        {
+            "file": "en-light/06-settings-advanced.png",
+            "installationSimulation": false,
+            "locale": "en",
+            "sampleData": true,
+            "theme": "light"
+        },
+        {
+            "file": "en-light/07-about.png",
+            "installationSimulation": false,
+            "locale": "en",
+            "sampleData": true,
+            "theme": "light"
+        },
+        {
+            "file": "en-light/08-tools.png",
+            "installationSimulation": false,
+            "locale": "en",
+            "sampleData": true,
+            "theme": "light"
+        },
+        {
+            "file": "en-light/09-comparison.png",
+            "installationSimulation": false,
+            "locale": "en",
+            "sampleData": true,
+            "theme": "light"
+        },
+        {
+            "file": "en-light/10-device.png",
+            "installationSimulation": false,
+            "locale": "en",
+            "sampleData": true,
+            "theme": "light"
+        },
+        {
+            "file": "en-light/17-text-menu.png",
+            "installationSimulation": false,
+            "locale": "en",
+            "sampleData": true,
+            "theme": "light"
+        },
+        {
+            "file": "en-light/11-engine-details.png",
+            "installationSimulation": false,
+            "locale": "en",
+            "sampleData": true,
+            "theme": "light"
+        },
+        {
+            "file": "en-light/12-download-catalog.png",
+            "installationSimulation": false,
+            "locale": "en",
+            "sampleData": true,
+            "theme": "light"
+        },
+        {
+            "file": "en-light/13-installation-simulation.png",
+            "installationSimulation": true,
+            "locale": "en",
+            "sampleData": true,
+            "theme": "light"
+        },
+        {
+            "file": "en-light/14-installation-complete-simulation.png",
+            "installationSimulation": true,
+            "locale": "en",
+            "sampleData": true,
+            "theme": "light"
+        },
+        {
+            "file": "en-light/15-scan-preview.png",
+            "installationSimulation": false,
+            "locale": "en",
+            "sampleData": true,
+            "theme": "light"
+        },
+        {
+            "file": "en-light/16-startup.png",
+            "installationSimulation": false,
+            "locale": "en",
+            "sampleData": true,
+            "theme": "light"
+        },
+        {
+            "file": "en-dark/01-drivers.png",
+            "installationSimulation": false,
+            "locale": "en",
+            "sampleData": true,
+            "theme": "dark"
+        },
+        {
+            "file": "en-dark/02-driver-versions.png",
+            "installationSimulation": false,
+            "locale": "en",
+            "sampleData": true,
+            "theme": "dark"
+        },
+        {
+            "file": "en-dark/03-diagnostics.png",
+            "installationSimulation": false,
+            "locale": "en",
+            "sampleData": true,
+            "theme": "dark"
+        },
+        {
+            "file": "en-dark/04-driver-packages.png",
+            "installationSimulation": false,
+            "locale": "en",
+            "sampleData": true,
+            "theme": "dark"
+        },
+        {
+            "file": "en-dark/05-settings.png",
+            "installationSimulation": false,
+            "locale": "en",
+            "sampleData": true,
+            "theme": "dark"
+        },
+        {
+            "file": "en-dark/06-settings-advanced.png",
+            "installationSimulation": false,
+            "locale": "en",
+            "sampleData": true,
+            "theme": "dark"
+        },
+        {
+            "file": "en-dark/07-about.png",
+            "installationSimulation": false,
+            "locale": "en",
+            "sampleData": true,
+            "theme": "dark"
+        },
+        {
+            "file": "en-dark/08-tools.png",
+            "installationSimulation": false,
+            "locale": "en",
+            "sampleData": true,
+            "theme": "dark"
+        },
+        {
+            "file": "en-dark/09-comparison.png",
+            "installationSimulation": false,
+            "locale": "en",
+            "sampleData": true,
+            "theme": "dark"
+        },
+        {
+            "file": "en-dark/10-device.png",
+            "installationSimulation": false,
+            "locale": "en",
+            "sampleData": true,
+            "theme": "dark"
+        },
+        {
+            "file": "en-dark/17-text-menu.png",
+            "installationSimulation": false,
+            "locale": "en",
+            "sampleData": true,
+            "theme": "dark"
+        },
+        {
+            "file": "en-dark/11-engine-details.png",
+            "installationSimulation": false,
+            "locale": "en",
+            "sampleData": true,
+            "theme": "dark"
+        },
+        {
+            "file": "en-dark/12-download-catalog.png",
+            "installationSimulation": false,
+            "locale": "en",
+            "sampleData": true,
+            "theme": "dark"
+        },
+        {
+            "file": "en-dark/13-installation-simulation.png",
+            "installationSimulation": true,
+            "locale": "en",
+            "sampleData": true,
+            "theme": "dark"
+        },
+        {
+            "file": "en-dark/14-installation-complete-simulation.png",
+            "installationSimulation": true,
+            "locale": "en",
+            "sampleData": true,
+            "theme": "dark"
+        },
+        {
+            "file": "en-dark/15-scan-preview.png",
+            "installationSimulation": false,
+            "locale": "en",
+            "sampleData": true,
+            "theme": "dark"
+        },
+        {
+            "file": "en-dark/16-startup.png",
+            "installationSimulation": false,
+            "locale": "en",
+            "sampleData": true,
+            "theme": "dark"
+        },
+        {
+            "file": "ar-light/01-drivers.png",
+            "installationSimulation": false,
+            "locale": "ar",
+            "sampleData": true,
+            "theme": "light"
+        },
+        {
+            "file": "ar-light/02-driver-versions.png",
+            "installationSimulation": false,
+            "locale": "ar",
+            "sampleData": true,
+            "theme": "light"
+        },
+        {
+            "file": "ar-light/03-diagnostics.png",
+            "installationSimulation": false,
+            "locale": "ar",
+            "sampleData": true,
+            "theme": "light"
+        },
+        {
+            "file": "ar-light/04-driver-packages.png",
+            "installationSimulation": false,
+            "locale": "ar",
+            "sampleData": true,
+            "theme": "light"
+        },
+        {
+            "file": "ar-light/05-settings.png",
+            "installationSimulation": false,
+            "locale": "ar",
+            "sampleData": true,
+            "theme": "light"
+        },
+        {
+            "file": "ar-light/06-settings-advanced.png",
+            "installationSimulation": false,
+            "locale": "ar",
+            "sampleData": true,
+            "theme": "light"
+        },
+        {
+            "file": "ar-light/07-about.png",
+            "installationSimulation": false,
+            "locale": "ar",
+            "sampleData": true,
+            "theme": "light"
+        },
+        {
+            "file": "ar-light/08-tools.png",
+            "installationSimulation": false,
+            "locale": "ar",
+            "sampleData": true,
+            "theme": "light"
+        },
+        {
+            "file": "ar-light/09-comparison.png",
+            "installationSimulation": false,
+            "locale": "ar",
+            "sampleData": true,
+            "theme": "light"
+        },
+        {
+            "file": "ar-light/10-device.png",
+            "installationSimulation": false,
+            "locale": "ar",
+            "sampleData": true,
+            "theme": "light"
+        },
+        {
+            "file": "ar-light/17-text-menu.png",
+            "installationSimulation": false,
+            "locale": "ar",
+            "sampleData": true,
+            "theme": "light"
+        },
+        {
+            "file": "ar-light/11-engine-details.png",
+            "installationSimulation": false,
+            "locale": "ar",
+            "sampleData": true,
+            "theme": "light"
+        },
+        {
+            "file": "ar-light/12-download-catalog.png",
+            "installationSimulation": false,
+            "locale": "ar",
+            "sampleData": true,
+            "theme": "light"
+        },
+        {
+            "file": "ar-light/13-installation-simulation.png",
+            "installationSimulation": true,
+            "locale": "ar",
+            "sampleData": true,
+            "theme": "light"
+        },
+        {
+            "file": "ar-light/14-installation-complete-simulation.png",
+            "installationSimulation": true,
+            "locale": "ar",
+            "sampleData": true,
+            "theme": "light"
+        },
+        {
+            "file": "ar-light/15-scan-preview.png",
+            "installationSimulation": false,
+            "locale": "ar",
+            "sampleData": true,
+            "theme": "light"
+        },
+        {
+            "file": "ar-light/16-startup.png",
+            "installationSimulation": false,
+            "locale": "ar",
+            "sampleData": true,
+            "theme": "light"
+        },
+        {
+            "file": "ar-dark/01-drivers.png",
+            "installationSimulation": false,
+            "locale": "ar",
+            "sampleData": true,
+            "theme": "dark"
+        },
+        {
+            "file": "ar-dark/02-driver-versions.png",
+            "installationSimulation": false,
+            "locale": "ar",
+            "sampleData": true,
+            "theme": "dark"
+        },
+        {
+            "file": "ar-dark/03-diagnostics.png",
+            "installationSimulation": false,
+            "locale": "ar",
+            "sampleData": true,
+            "theme": "dark"
+        },
+        {
+            "file": "ar-dark/04-driver-packages.png",
+            "installationSimulation": false,
+            "locale": "ar",
+            "sampleData": true,
+            "theme": "dark"
+        },
+        {
+            "file": "ar-dark/05-settings.png",
+            "installationSimulation": false,
+            "locale": "ar",
+            "sampleData": true,
+            "theme": "dark"
+        },
+        {
+            "file": "ar-dark/06-settings-advanced.png",
+            "installationSimulation": false,
+            "locale": "ar",
+            "sampleData": true,
+            "theme": "dark"
+        },
+        {
+            "file": "ar-dark/07-about.png",
+            "installationSimulation": false,
+            "locale": "ar",
+            "sampleData": true,
+            "theme": "dark"
+        },
+        {
+            "file": "ar-dark/08-tools.png",
+            "installationSimulation": false,
+            "locale": "ar",
+            "sampleData": true,
+            "theme": "dark"
+        },
+        {
+            "file": "ar-dark/09-comparison.png",
+            "installationSimulation": false,
+            "locale": "ar",
+            "sampleData": true,
+            "theme": "dark"
+        },
+        {
+            "file": "ar-dark/10-device.png",
+            "installationSimulation": false,
+            "locale": "ar",
+            "sampleData": true,
+            "theme": "dark"
+        },
+        {
+            "file": "ar-dark/17-text-menu.png",
+            "installationSimulation": false,
+            "locale": "ar",
+            "sampleData": true,
+            "theme": "dark"
+        },
+        {
+            "file": "ar-dark/11-engine-details.png",
+            "installationSimulation": false,
+            "locale": "ar",
+            "sampleData": true,
+            "theme": "dark"
+        },
+        {
+            "file": "ar-dark/12-download-catalog.png",
+            "installationSimulation": false,
+            "locale": "ar",
+            "sampleData": true,
+            "theme": "dark"
+        },
+        {
+            "file": "ar-dark/13-installation-simulation.png",
+            "installationSimulation": true,
+            "locale": "ar",
+            "sampleData": true,
+            "theme": "dark"
+        },
+        {
+            "file": "ar-dark/14-installation-complete-simulation.png",
+            "installationSimulation": true,
+            "locale": "ar",
+            "sampleData": true,
+            "theme": "dark"
+        },
+        {
+            "file": "ar-dark/15-scan-preview.png",
+            "installationSimulation": false,
+            "locale": "ar",
+            "sampleData": true,
+            "theme": "dark"
+        },
+        {
+            "file": "ar-dark/16-startup.png",
+            "installationSimulation": false,
+            "locale": "ar",
+            "sampleData": true,
+            "theme": "dark"
+        }
+    ],
+    "privateMachineDataIncluded": false,
+    "realInstallationPerformed": false,
+    "schema": 1
+}

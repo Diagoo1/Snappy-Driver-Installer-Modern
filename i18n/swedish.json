@@ -871,6 +871,13 @@
     "~MHz": "~MHz",
     "Made with": "Skapat med",
     "by": "av",
-    "Love": "Kärlek"
+    "Love": "Kärlek",
+    "Undo": "Ångra",
+    "Redo": "Gör om",
+    "Cut": "Klipp ut",
+    "Copy": "Kopiera",
+    "Paste": "Klistra in",
+    "Delete": "Ta bort",
+    "Status": "Status"
   }
 }

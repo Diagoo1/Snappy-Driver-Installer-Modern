@@ -3,7 +3,7 @@
 #include <QDateTime>
 #include <QSysInfo>
 QJsonObject supportReport(const DriverCatalog &catalog,const sdiomodern::InstallReport &installation,const QString &lastError){
-    QJsonObject root;root.insert(QStringLiteral("schema"),1);root.insert(QStringLiteral("uiVersion"),QStringLiteral("0.21.2"));
+    QJsonObject root;root.insert(QStringLiteral("schema"),1);root.insert(QStringLiteral("uiVersion"),QStringLiteral("0.21.3"));
     root.insert(QStringLiteral("ignoredHardwareIds"),QJsonArray::fromStringList(catalog.ignoredHardwareIds()));
     root.insert(QStringLiteral("createdUtc"),QDateTime::currentDateTimeUtc().toString(Qt::ISODate));
     root.insert(QStringLiteral("windows"),QSysInfo::prettyProductName());root.insert(QStringLiteral("architecture"),QSysInfo::currentCpuArchitecture());

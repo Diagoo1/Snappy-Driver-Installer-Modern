@@ -871,6 +871,13 @@
     "~MHz": "~MHz",
     "Made with": "Vytvořeno s",
     "by": "autor:",
-    "Love": "Láska"
+    "Love": "Láska",
+    "Undo": "Zpět",
+    "Redo": "Znovu",
+    "Cut": "Vyjmout",
+    "Copy": "Kopírovat",
+    "Paste": "Vložit",
+    "Delete": "Odstranit",
+    "Status": "Stav"
   }
 }

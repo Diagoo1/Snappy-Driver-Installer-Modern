@@ -871,6 +871,13 @@
     "~MHz": "~MHz",
     "Made with": "Radīts ar",
     "by": "autors:",
-    "Love": "Mīlestība"
+    "Love": "Mīlestība",
+    "Undo": "Atsaukt",
+    "Redo": "Atcelt atsaukšanu",
+    "Cut": "Izgriezt",
+    "Copy": "Kopēt",
+    "Paste": "Ielīmēt",
+    "Delete": "Dzēst",
+    "Status": "Statuss"
   }
 }

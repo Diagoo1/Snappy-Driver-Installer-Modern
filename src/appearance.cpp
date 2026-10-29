@@ -24,6 +24,12 @@
 #include <QMouseEvent>
 #include <QLinearGradient>
 #include <QStyleOptionMenuItem>
+#include <QLineEdit>
+#include <QTextEdit>
+#include <QPlainTextEdit>
+#include <QContextMenuEvent>
+#include <QClipboard>
+#include <QScopedPointer>
 
 TitleButton::TitleButton(QWidget *parent):QToolButton(parent),m_hover(0),m_animation(this,"hoverAmount",this){
     m_animation.setDuration(155);m_animation.setEasingCurve(QEasingCurve::OutCubic);
@@ -100,12 +106,13 @@ void DialogHeader::mouseMoveEvent(QMouseEvent *e){if(m_dragging && (e->buttons()
 void DialogHeader::mouseReleaseEvent(QMouseEvent *e){m_dragging=false;QWidget::mouseReleaseEvent(e);}
 void AccentCard::paintEvent(QPaintEvent*){QPainter p(this);p.setRenderHint(QPainter::Antialiasing);QLinearGradient g(0,0,width(),height());g.setColorAt(0,Theme::color("heroStart"));g.setColorAt(.65,Theme::color("heroMiddle"));g.setColorAt(1,Theme::color("heroEnd"));p.setPen(Qt::NoPen);p.setBrush(g);p.drawRoundedRect(QRectF(rect()),20,20);p.setBrush(QColor(255,255,255,9));p.drawEllipse(QPointF(width()-55,20),125,125);p.drawEllipse(QPointF(width()-50,20),80,80);}
 ProjectMenu::ProjectMenu(QWidget *parent):QMenu(parent),m_highlightY(-1),m_slide(this,"highlightY",this){
-    setStyleSheet(QStringLiteral("QMenu{background:transparent;border:0;padding:8px;} QMenu::item{background:transparent;padding:11px 22px;} QMenu::separator{height:1px;background:%1;margin:5px 10px;}").arg(darkSurface(this)?QStringLiteral("#3B5868"):QStringLiteral("#E2EBEF")));
+    setMinimumWidth(240);
+    setStyleSheet(QStringLiteral("QMenu{background:transparent;border:0;padding:8px;font-size:13px;font-weight:400;} QMenu::item{background:transparent;padding:11px 22px;} QMenu::separator{height:1px;background:%1;margin:5px 10px;}").arg(darkSurface(this)?QStringLiteral("#3B5868"):QStringLiteral("#E2EBEF")));
     setWindowFlags(Qt::Popup|Qt::FramelessWindowHint|Qt::NoDropShadowWindowHint);setAttribute(Qt::WA_TranslucentBackground);m_slide.setDuration(120);m_slide.setEasingCurve(QEasingCurve::OutCubic);
     connect(this,&QMenu::hovered,this,[this](QAction *action){if(!action || !action->isEnabled() || action->isSeparator())return;const qreal y=actionGeometry(action).top();m_slide.stop();if(m_highlightY<0 || qApp->property("reduceMotion").toBool()){setHighlightY(y);return;}m_slide.setStartValue(m_highlightY);m_slide.setEndValue(y);m_slide.start();});
 }
 void ProjectMenu::paintEvent(QPaintEvent*){
-    QPainter p(this);p.setRenderHint(QPainter::Antialiasing);const bool dark=darkSurface(this);p.setPen(QPen(dark?QColor("#3B5868"):QColor("#D8E6EA"),1));p.setBrush(dark?QColor("#1D3646"):QColor("#FFFFFF"));p.drawRoundedRect(QRectF(rect()).adjusted(.5,.5,-.5,-.5),14,14);
+    QPainter p(this);p.setRenderHint(QPainter::Antialiasing);const bool dark=darkSurface(this);p.setPen(QPen(Theme::color("border",dark),1));p.setBrush(Theme::color("surface",dark));p.drawRoundedRect(QRectF(rect()).adjusted(.5,.5,-.5,-.5),14,14);
     QAction *active=activeAction();if(active && active->isEnabled() && !active->isSeparator()){QRectF target=actionGeometry(active).adjusted(4,1,-4,-1);if(m_highlightY>=0)target.moveTop(m_highlightY+1);p.setPen(Qt::NoPen);p.setBrush(dark?QColor("#2B5264"):QColor("#E4F3EF"));p.drawRoundedRect(target,8,8);}
     for(QAction *action:actions()){
         if(!action->isVisible())continue;const QRect area=actionGeometry(action);
@@ -113,7 +120,10 @@ void ProjectMenu::paintEvent(QPaintEvent*){
         QFont face=font();face.setFamily(UiFont::family());face.setStyleHint(QFont::SansSerif);face.setStyleStrategy(QFont::PreferAntialias);p.setFont(face);
         p.setPen(action->isEnabled()?(dark?QColor("#E7F3F7"):QColor("#234A58")):(dark?QColor("#91ACBA"):QColor("#8196A3")));
         const bool rtl=layoutDirection()==Qt::RightToLeft;QRect label=area.adjusted(22,0,-22,0);
-        p.drawText(label,Qt::AlignAbsolute|(rtl?Qt::AlignRight:Qt::AlignLeft)|Qt::AlignVCenter,action->text().remove(QLatin1Char('&')));
+        const QString text=action->text().section(QLatin1Char('\t'),0,0).remove(QLatin1Char('&'));
+        const QString shortcut=action->text().contains(QLatin1Char('\t'))?action->text().section(QLatin1Char('\t'),1):action->shortcut().toString(QKeySequence::NativeText);
+        if(!shortcut.isEmpty()){const int reserve=p.fontMetrics().width(shortcut)+24;QRect key=label;if(rtl){label.adjust(reserve,0,0,0);key.setRight(label.left()-12);}else{label.adjust(0,0,-reserve,0);key.setLeft(label.right()+12);}p.save();p.setPen(Theme::color("muted",dark));p.drawText(key,Qt::AlignAbsolute|(rtl?Qt::AlignLeft:Qt::AlignRight)|Qt::AlignVCenter,shortcut);p.restore();}
+        p.drawText(label,Qt::AlignAbsolute|(rtl?Qt::AlignRight:Qt::AlignLeft)|Qt::AlignVCenter,text);
         if(action->isCheckable() && action->isChecked())VectorIcons::paint(&p,QStringLiteral("check"),QRectF(rtl?area.right()-19:area.left()+3,area.center().y()-7,14,14),QColor("#00A99E"));
     }
 }
@@ -167,10 +177,32 @@ void HoverSurface::paintEvent(QPaintEvent*){
     }
     p.drawRoundedRect(area,5,5);
 }
+static bool textContextMenu(QWidget *widget,QContextMenuEvent *event){
+    if(!widget || widget->contextMenuPolicy()!=Qt::DefaultContextMenu)return false;
+    if(widget->parentWidget() && (qobject_cast<QTextEdit*>(widget->parentWidget()) || qobject_cast<QPlainTextEdit*>(widget->parentWidget())))widget=widget->parentWidget();
+    QScopedPointer<QMenu> standard;QLabel *label=qobject_cast<QLabel*>(widget);
+    if(QLineEdit *edit=qobject_cast<QLineEdit*>(widget))standard.reset(edit->createStandardContextMenu());
+    else if(QTextEdit *edit=qobject_cast<QTextEdit*>(widget))standard.reset(edit->createStandardContextMenu());
+    else if(QPlainTextEdit *edit=qobject_cast<QPlainTextEdit*>(widget))standard.reset(edit->createStandardContextMenu());
+    else if(!label || !(label->textInteractionFlags()&(Qt::TextSelectableByMouse|Qt::TextSelectableByKeyboard)))return false;
+    ProjectMenu menu(widget);menu.setObjectName(QStringLiteral("textContextMenu"));menu.setLayoutDirection(UiLanguage::isRtl()?Qt::RightToLeft:Qt::LeftToRight);
+    if(standard){for(QAction *action:standard->actions()){
+        const QString original=action->text(),name=original.section(QLatin1Char('\t'),0,0).remove(QLatin1Char('&'));
+        const QStringList keys=QStringList()<<QStringLiteral("Undo")<<QStringLiteral("Redo")<<QStringLiteral("Cut")<<QStringLiteral("Copy")<<QStringLiteral("Paste")<<QStringLiteral("Delete")<<QStringLiteral("Select all");
+        for(const QString &key:keys)if(name.compare(key,Qt::CaseInsensitive)==0){action->setText(UiLanguage::text(key)+(original.contains(QLatin1Char('\t'))?QLatin1Char('\t')+original.section(QLatin1Char('\t'),1):QString()));break;}
+        menu.addAction(action);
+    }}
+    else {
+        QAction *copy=menu.addAction(UiLanguage::text(QStringLiteral("Copy"),QString::fromUtf8("نسخ")));copy->setShortcut(QKeySequence::Copy);copy->setEnabled(label->hasSelectedText());QObject::connect(copy,&QAction::triggered,label,[label](){qApp->clipboard()->setText(label->selectedText());});
+        menu.addSeparator();QAction *all=menu.addAction(UiLanguage::text(QStringLiteral("Select all"),QString::fromUtf8("تحديد الكل")));all->setShortcut(QKeySequence::SelectAll);all->setEnabled(!label->text().isEmpty());QObject::connect(all,&QAction::triggered,label,[label](){label->setSelection(0,label->text().size());});
+    }
+    menu.exec(event->globalPos());event->accept();return true;
+}
 class InterfaceMotion : public QObject {
 public:
     explicit InterfaceMotion(QObject *p):QObject(p){}
     bool eventFilter(QObject *object,QEvent *event) Q_DECL_OVERRIDE {
+        if(event->type()==QEvent::ContextMenu){QWidget *widget=qobject_cast<QWidget*>(object);if(widget && textContextMenu(widget,static_cast<QContextMenuEvent*>(event)))return true;}
         QWidget *button=qobject_cast<QAbstractButton*>(object);
         if(!button)button=qobject_cast<QComboBox*>(object);
         if(!button || qobject_cast<ActionButton*>(button) || qobject_cast<TitleButton*>(button) || qobject_cast<SidebarItem*>(button) ||

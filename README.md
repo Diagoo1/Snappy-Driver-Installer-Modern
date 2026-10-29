@@ -4,6 +4,16 @@ A modern native Windows interface by **Tarek Sadek (Diagoo1)** for a pinned Snap
 
 [العربية](README_AR.md) · [Downloads](https://github.com/Diagoo1/Snappy-Driver-Installer-Modern/releases) · [Engine comparison](docs/SOURCE_PARITY_AUDIT_AR.md)
 
+## Screenshots
+
+[Explore all 68 screenshots](docs/GALLERY.md): English, Arabic, light and dark, including dialogs and **explicit installation simulations**. Screenshots use sample data; they do not demonstrate a real driver installation.
+
+| English · Light | English · Dark |
+| --- | --- |
+| [![English light](docs/screenshots/en-light/01-drivers.png)](docs/screenshots/en-light/01-drivers.png) | [![English dark](docs/screenshots/en-dark/01-drivers.png)](docs/screenshots/en-dark/01-drivers.png) |
+| العربية · فاتح | العربية · داكن |
+| [![Arabic light](docs/screenshots/ar-light/01-drivers.png)](docs/screenshots/ar-light/01-drivers.png) | [![Arabic dark](docs/screenshots/ar-dark/01-drivers.png)](docs/screenshots/ar-dark/01-drivers.png) |
+
 ## Features
 
 - Original device matching and candidate ordering; alternative versions, relative five-star match priority, selection and installation workflow.

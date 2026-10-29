@@ -871,6 +871,13 @@
     "~MHz": "~ MHz",
     "Made with": "Créé avec",
     "by": "par",
-    "Love": "Amour"
+    "Love": "Amour",
+    "Undo": "Annuler",
+    "Redo": "Rétablir",
+    "Cut": "Couper",
+    "Copy": "Copier",
+    "Paste": "Coller",
+    "Delete": "Supprimer",
+    "Status": "Etat"
   }
 }

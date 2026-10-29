@@ -871,6 +871,13 @@
     "~MHz": "~MHz",
     "Made with": "Loodud",
     "by": "autor:",
-    "Love": "Armastus"
+    "Love": "Armastus",
+    "Undo": "Võta tagasi",
+    "Redo": "Tee uuesti",
+    "Cut": "Lõika",
+    "Copy": "Kopeeri",
+    "Paste": "Kleebi",
+    "Delete": "Kustuta",
+    "Status": "Staatus"
   }
 }

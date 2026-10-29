@@ -871,6 +871,13 @@
     "~MHz": "~ MHz",
     "Made with": "Hazırlandı",
     "by": "müəllif:",
-    "Love": "Sevgi"
+    "Love": "Sevgi",
+    "Undo": "Geri al",
+    "Redo": "Yenidən et",
+    "Cut": "Kəs",
+    "Copy": "Kopyala",
+    "Paste": "Yapışdır",
+    "Delete": "Sil",
+    "Status": "Vəziyyət"
   }
 }

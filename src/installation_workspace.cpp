@@ -1,5 +1,6 @@
 #include "installation_workspace.h"
 #include "vector_icons.h"
+#include "ui_language.h"
 #include <QVBoxLayout>
 #include <QHBoxLayout>
 #include <QGridLayout>
@@ -36,6 +37,7 @@ InstallationWorkspace::InstallationWorkspace(QWidget *parent)
     titles->addWidget(m_title);titles->addWidget(m_sub);
     top->addLayout(titles,1);
     m_badge=textLabel(QStringLiteral("INSTALLATION LOCKED IN SCAN BUILD"),"simulationBadge",this);
+    m_badge->setWordWrap(false);
     top->addWidget(m_badge);
     outer->addLayout(top);
 
@@ -82,7 +84,7 @@ InstallationWorkspace::InstallationWorkspace(QWidget *parent)
     m_queue=new QTreeWidget(operations);
     m_queue->setObjectName(QStringLiteral("installQueue"));
     m_queue->setColumnCount(2);
-    m_queue->setHeaderLabels(QStringList()<<QStringLiteral("ITEM")<<QStringLiteral("STATUS"));
+    m_queue->setHeaderLabels(QStringList()<<QStringLiteral("Drivers")<<QStringLiteral("Status"));
     m_queue->setRootIsDecorated(false);
     m_queue->setIndentation(0);
     m_queue->setUniformRowHeights(true);
@@ -180,7 +182,7 @@ void InstallationWorkspace::updateProgress()
         if(m_percent>=finish) {++completed;row->setForeground(1,QColor("#31B273"));}
         else if(m_percent>=start)row->setForeground(1,QColor("#159FAC"));
     }
-    m_summary->setText(QStringLiteral("%1 / %2 items completed · 0 real driver operations")
+    m_summary->setText(UiLanguage::text(QStringLiteral("%1 / %2 items completed · 0 real driver operations"))
         .arg(completed).arg(total));
     const int stage=m_percent<18 && m_hasRestore?0:(m_percent<30?1:(m_percent<95?2:3));
     if(stage!=m_currentStage){
@@ -212,6 +214,7 @@ void InstallationWorkspace::stopDemo()
 void InstallationWorkspace::setArabic(bool arabic)
 {
     m_arabic=arabic;
+    m_queue->setHeaderLabels(QStringList()<<UiLanguage::text(QStringLiteral("Drivers"))<<UiLanguage::text(QStringLiteral("Status")));
     m_title->setText(arabic?QString::fromUtf8("متابعة التثبيت"):QStringLiteral("Installation progress"));
     m_sub->setText(arabic?QString::fromUtf8("مراحل العملية والعناصر في شاشة واحدة"):QStringLiteral("One-screen operation center"));
     m_back->setText(arabic?QString::fromUtf8("العودة للتعريفات"):QStringLiteral("Back to drivers"));

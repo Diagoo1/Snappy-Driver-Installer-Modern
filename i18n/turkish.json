@@ -871,6 +871,13 @@
     "~MHz": "~MHz",
     "Made with": "Sevgiyle yapıldı",
     "by": "geliştiren:",
-    "Love": "Sevgi"
+    "Love": "Sevgi",
+    "Undo": "Geri al",
+    "Redo": "Yinele",
+    "Cut": "Kes",
+    "Copy": "Kopyala",
+    "Paste": "Yapıştır",
+    "Delete": "Sil",
+    "Status": "Durum"
   }
 }

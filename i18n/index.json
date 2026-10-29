@@ -6,7 +6,7 @@
       "tag": "ar",
       "name": "العربية",
       "rtl": true,
-      "messages": 867,
+      "messages": 874,
       "englishFallbacks": 0
     },
     {
@@ -14,7 +14,7 @@
       "tag": "hy",
       "name": "Հայերեն",
       "rtl": false,
-      "messages": 867,
+      "messages": 874,
       "englishFallbacks": 0
     },
     {
@@ -22,7 +22,7 @@
       "tag": "az",
       "name": "Azərbaycanca",
       "rtl": false,
-      "messages": 867,
+      "messages": 874,
       "englishFallbacks": 0
     },
     {
@@ -30,7 +30,7 @@
       "tag": "be",
       "name": "Беларуская",
       "rtl": false,
-      "messages": 867,
+      "messages": 874,
       "englishFallbacks": 0
     },
     {
@@ -38,7 +38,7 @@
       "tag": "pt-BR",
       "name": "Português Brasileiro",
       "rtl": false,
-      "messages": 867,
+      "messages": 874,
       "englishFallbacks": 0
     },
     {
@@ -46,7 +46,7 @@
       "tag": "bg",
       "name": "Български",
       "rtl": false,
-      "messages": 867,
+      "messages": 874,
       "englishFallbacks": 0
     },
     {
@@ -54,7 +54,7 @@
       "tag": "ca",
       "name": "Català",
       "rtl": false,
-      "messages": 867,
+      "messages": 874,
       "englishFallbacks": 0
     },
     {
@@ -62,7 +62,7 @@
       "tag": "zh-CN",
       "name": "简体中文",
       "rtl": false,
-      "messages": 867,
+      "messages": 874,
       "englishFallbacks": 0
     },
     {
@@ -70,7 +70,7 @@
       "tag": "zh-TW",
       "name": "正體中文",
       "rtl": false,
-      "messages": 867,
+      "messages": 874,
       "englishFallbacks": 0
     },
     {
@@ -78,7 +78,7 @@
       "tag": "hr",
       "name": "Hrvatski",
       "rtl": false,
-      "messages": 867,
+      "messages": 874,
       "englishFallbacks": 0
     },
     {
@@ -86,7 +86,7 @@
       "tag": "cs",
       "name": "Čeština",
       "rtl": false,
-      "messages": 867,
+      "messages": 874,
       "englishFallbacks": 0
     },
     {
@@ -94,7 +94,7 @@
       "tag": "da",
       "name": "Dansk",
       "rtl": false,
-      "messages": 867,
+      "messages": 874,
       "englishFallbacks": 0
     },
     {
@@ -102,7 +102,7 @@
       "tag": "nl",
       "name": "Nederlands",
       "rtl": false,
-      "messages": 867,
+      "messages": 874,
       "englishFallbacks": 0
     },
     {
@@ -110,7 +110,7 @@
       "tag": "en",
       "name": "English",
       "rtl": false,
-      "messages": 867,
+      "messages": 874,
       "englishFallbacks": 0
     },
     {
@@ -118,7 +118,7 @@
       "tag": "et",
       "name": "Eesti",
       "rtl": false,
-      "messages": 867,
+      "messages": 874,
       "englishFallbacks": 0
     },
     {
@@ -126,7 +126,7 @@
       "tag": "fa",
       "name": "فارسی",
       "rtl": true,
-      "messages": 867,
+      "messages": 874,
       "englishFallbacks": 0
     },
     {
@@ -134,7 +134,7 @@
       "tag": "fr",
       "name": "Français",
       "rtl": false,
-      "messages": 867,
+      "messages": 874,
       "englishFallbacks": 0
     },
     {
@@ -142,7 +142,7 @@
       "tag": "ka",
       "name": "ქართული",
       "rtl": false,
-      "messages": 867,
+      "messages": 874,
       "englishFallbacks": 0
     },
     {
@@ -150,7 +150,7 @@
       "tag": "de",
       "name": "Deutsch",
       "rtl": false,
-      "messages": 867,
+      "messages": 874,
       "englishFallbacks": 0
     },
     {
@@ -158,7 +158,7 @@
       "tag": "el",
       "name": "Ελληνικά",
       "rtl": false,
-      "messages": 867,
+      "messages": 874,
       "englishFallbacks": 0
     },
     {
@@ -166,7 +166,7 @@
       "tag": "hu",
       "name": "Magyar",
       "rtl": false,
-      "messages": 867,
+      "messages": 874,
       "englishFallbacks": 0
     },
     {
@@ -174,7 +174,7 @@
       "tag": "id",
       "name": "Bahasa Indonesia",
       "rtl": false,
-      "messages": 867,
+      "messages": 874,
       "englishFallbacks": 0
     },
     {
@@ -182,7 +182,7 @@
       "tag": "it",
       "name": "Italiano",
       "rtl": false,
-      "messages": 867,
+      "messages": 874,
       "englishFallbacks": 0
     },
     {
@@ -190,7 +190,7 @@
       "tag": "ja",
       "name": "日本語",
       "rtl": false,
-      "messages": 867,
+      "messages": 874,
       "englishFallbacks": 0
     },
     {
@@ -198,7 +198,7 @@
       "tag": "ko",
       "name": "한국어",
       "rtl": false,
-      "messages": 867,
+      "messages": 874,
       "englishFallbacks": 0
     },
     {
@@ -206,7 +206,7 @@
       "tag": "lv",
       "name": "Latviešu",
       "rtl": false,
-      "messages": 867,
+      "messages": 874,
       "englishFallbacks": 0
     },
     {
@@ -214,7 +214,7 @@
       "tag": "lt",
       "name": "Lietuvių",
       "rtl": false,
-      "messages": 867,
+      "messages": 874,
       "englishFallbacks": 0
     },
     {
@@ -222,7 +222,7 @@
       "tag": "no",
       "name": "Norsk",
       "rtl": false,
-      "messages": 867,
+      "messages": 874,
       "englishFallbacks": 0
     },
     {
@@ -230,7 +230,7 @@
       "tag": "pl",
       "name": "Polski",
       "rtl": false,
-      "messages": 867,
+      "messages": 874,
       "englishFallbacks": 0
     },
     {
@@ -238,7 +238,7 @@
       "tag": "pt-PT",
       "name": "Português Europeu",
       "rtl": false,
-      "messages": 867,
+      "messages": 874,
       "englishFallbacks": 0
     },
     {
@@ -246,7 +246,7 @@
       "tag": "ro",
       "name": "Română",
       "rtl": false,
-      "messages": 867,
+      "messages": 874,
       "englishFallbacks": 0
     },
     {
@@ -254,7 +254,7 @@
       "tag": "ru",
       "name": "Русский",
       "rtl": false,
-      "messages": 867,
+      "messages": 874,
       "englishFallbacks": 0
     },
     {
@@ -262,7 +262,7 @@
       "tag": "sr",
       "name": "Српски",
       "rtl": false,
-      "messages": 867,
+      "messages": 874,
       "englishFallbacks": 0
     },
     {
@@ -270,7 +270,7 @@
       "tag": "sl",
       "name": "Slovenščina",
       "rtl": false,
-      "messages": 867,
+      "messages": 874,
       "englishFallbacks": 0
     },
     {
@@ -278,7 +278,7 @@
       "tag": "es",
       "name": "Español",
       "rtl": false,
-      "messages": 867,
+      "messages": 874,
       "englishFallbacks": 0
     },
     {
@@ -286,7 +286,7 @@
       "tag": "sv",
       "name": "Svenska",
       "rtl": false,
-      "messages": 867,
+      "messages": 874,
       "englishFallbacks": 0
     },
     {
@@ -294,7 +294,7 @@
       "tag": "th",
       "name": "ภาษาไทย",
       "rtl": false,
-      "messages": 867,
+      "messages": 874,
       "englishFallbacks": 0
     },
     {
@@ -302,7 +302,7 @@
       "tag": "tr",
       "name": "Türkçe",
       "rtl": false,
-      "messages": 867,
+      "messages": 874,
       "englishFallbacks": 0
     },
     {
@@ -310,7 +310,7 @@
       "tag": "uk",
       "name": "Українська",
       "rtl": false,
-      "messages": 867,
+      "messages": 874,
       "englishFallbacks": 0
     },
     {
@@ -318,7 +318,7 @@
       "tag": "vi",
       "name": "Tiếng Việt",
       "rtl": false,
-      "messages": 867,
+      "messages": 874,
       "englishFallbacks": 0
     }
   ],

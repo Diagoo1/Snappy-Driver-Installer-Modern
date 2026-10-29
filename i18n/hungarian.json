@@ -871,6 +871,13 @@
     "~MHz": "~MHz",
     "Made with": "Szeretettel készült",
     "by": "készítette:",
-    "Love": "Szeretet"
+    "Love": "Szeretet",
+    "Undo": "Visszavonás",
+    "Redo": "Újra",
+    "Cut": "Kivágás",
+    "Copy": "Másolás",
+    "Paste": "Beillesztés",
+    "Delete": "Törlés",
+    "Status": "Állapot :"
   }
 }

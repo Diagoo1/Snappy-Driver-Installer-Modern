@@ -871,6 +871,13 @@
     "~MHz": "~MHz",
     "Made with": "Lavet med",
     "by": "af",
-    "Love": "Kærlighed"
+    "Love": "Kærlighed",
+    "Undo": "Fortryd",
+    "Redo": "Annuller fortryd",
+    "Cut": "Klip",
+    "Copy": "Kopiér",
+    "Paste": "Sæt ind",
+    "Delete": "Slet",
+    "Status": "Status"
   }
 }
