@@ -3,6 +3,9 @@
 #include "ui_language.h"
 #include "appearance.h"
 #include "theme.h"
+#include "ui_font.h"
+#include <QPainterPath>
+#include <QResizeEvent>
 #include <QListWidget>
 
 #include <QVBoxLayout>
@@ -20,6 +23,23 @@
 #include <QAbstractItemView>
 #include <QStyledItemDelegate>
 #include <QPainter>
+
+// Draw the band once, with the same rounded gradient and icon hierarchy as the driver table.
+class InstallationHeader : public QHeaderView {
+public:explicit InstallationHeader(QWidget *parent):QHeaderView(Qt::Horizontal,parent){setFixedHeight(60);viewport()->setAutoFillBackground(false);}
+protected:void paintEvent(QPaintEvent*) Q_DECL_OVERRIDE {
+    QPainter p(viewport());p.setRenderHint(QPainter::Antialiasing);const bool dark=Theme::isDark(this),rtl=layoutDirection()==Qt::RightToLeft;
+    p.fillRect(viewport()->rect(),Theme::color("surface",dark));const QRectF band=QRectF(viewport()->rect()).adjusted(.5,3.5,-.5,-3.5);QLinearGradient gradient(band.topLeft(),band.topRight());gradient.setColorAt(0,Theme::color("headerStart",dark));gradient.setColorAt(1,Theme::color("headerEnd",dark));p.setPen(Qt::NoPen);p.setBrush(gradient);p.drawRoundedRect(band,12,12);
+    QPainterPath clip;clip.addRoundedRect(band,12,12);p.setClipPath(clip);QFont face(UiFont::family());face.setPixelSize(14);face.setWeight(QFont::DemiBold);p.setFont(face);const char *symbols[]={"chip","check-circle","clock"};
+    for(int section=0;section<count();++section){const QRect area(sectionViewportPosition(section),4,sectionSize(section),height()-8);if(section>0){const int x=rtl?area.right():area.left();p.setPen(QPen(QColor(255,255,255,35),1));p.drawLine(QPointF(x,band.top()+12),QPointF(x,band.bottom()-12));}const QString label=p.fontMetrics().elidedText(model()->headerData(section,Qt::Horizontal).toString(),Qt::ElideRight,qMax(0,area.width()-44));const int textWidth=p.fontMetrics().width(label),total=textWidth+26;const int left=section==0?(rtl?area.right()-total-14:area.left()+14):area.center().x()-total/2;VectorIcons::icon(QString::fromLatin1(symbols[section%3]),QColor("#B6F3ED"),20).paint(&p,QRect(rtl?left+total-20:left,area.center().y()-10,20,20));p.setPen(Qt::white);p.drawText(QRect(rtl?left:left+26,area.top(),textWidth,area.height()),Qt::AlignAbsolute|(rtl?Qt::AlignRight:Qt::AlignLeft)|Qt::AlignVCenter,label);}
+}
+};
+class InstallationTree : public QTreeWidget {
+public:explicit InstallationTree(QWidget *parent):QTreeWidget(parent){setHeader(new InstallationHeader(this));}
+protected:void drawRow(QPainter *p,const QStyleOptionViewItem &option,const QModelIndex &index)const Q_DECL_OVERRIDE {QTreeWidget::drawRow(p,option,index);p->save();p->setPen(QPen(Theme::color("border",Theme::isDark(this)),1));p->drawLine(QPointF(8,option.rect.bottom()+.5),QPointF(viewport()->width()-8,option.rect.bottom()+.5));p->restore();}
+    void resizeEvent(QResizeEvent *event) Q_DECL_OVERRIDE {QTreeWidget::resizeEvent(event);header()->resizeSection(1,qBound(140,viewport()->width()/4,260));header()->resizeSection(2,110);}
+};
+static QString elapsedText(qint64 milliseconds){const qint64 seconds=qMax(qint64(0),milliseconds)/1000;return QStringLiteral("%1:%2:%3").arg(seconds/3600,2,10,QLatin1Char('0')).arg(seconds/60%60,2,10,QLatin1Char('0')).arg(seconds%60,2,10,QLatin1Char('0'));}
 
 class InstallationStatusDelegate : public QStyledItemDelegate {
 public:explicit InstallationStatusDelegate(QObject *parent):QStyledItemDelegate(parent){}
@@ -64,6 +84,7 @@ static QLabel *textLabel(const QString &s,const char *name,QWidget *parent)
 InstallationWorkspace::InstallationWorkspace(QWidget *parent)
     : QWidget(parent),m_arabic(false),m_active(false),m_reboot(false),m_hasRestore(false),m_live(false),m_percent(0),m_currentStage(-1),m_timer(new QTimer(this))
 {
+    m_duration=0;m_clockRunning=false;m_queue=0;m_clockTimer=new QTimer(this);m_clockTimer->setInterval(1000);connect(m_clockTimer,&QTimer::timeout,this,&InstallationWorkspace::updateTimes);
     setObjectName(QStringLiteral("page"));
     QVBoxLayout *outer=new QVBoxLayout(this);
     outer->setContentsMargins(32,28,30,22);
@@ -96,7 +117,8 @@ InstallationWorkspace::InstallationWorkspace(QWidget *parent)
     mp->addWidget(m_progress);
     m_summary=textLabel(QStringLiteral("No tasks scheduled"),"subText",mainProgress);
     m_summary->setStyleSheet(QStringLiteral("color:#D4F1F0;background:transparent;font-size:13px;"));
-    mp->addWidget(m_summary);
+    QHBoxLayout *progressFooter=new QHBoxLayout;progressFooter->addWidget(m_summary,1);
+    m_elapsed=textLabel(QString(),"installationElapsed",mainProgress);m_elapsed->setWordWrap(false);m_elapsed->setStyleSheet(QStringLiteral("color:#D4F1F0;background:transparent;font-size:13px;font-weight:500;"));progressFooter->addWidget(m_elapsed);mp->addLayout(progressFooter);updateTimes();
     outer->addWidget(mainProgress);
 
     QHBoxLayout *center=new QHBoxLayout();center->setSpacing(15);
@@ -123,11 +145,11 @@ InstallationWorkspace::InstallationWorkspace(QWidget *parent)
     QVBoxLayout *olist=new QVBoxLayout(operations);
     olist->setContentsMargins(18,18,18,15);olist->setSpacing(9);
     olist->addWidget(textLabel(QStringLiteral("INSTALLATION ITEMS"),"detailHeading",operations));
-    m_queue=new QTreeWidget(operations);
+    m_queue=new InstallationTree(operations);
     m_queue->setObjectName(QStringLiteral("installQueue"));
     m_queue->setItemDelegate(new InstallationStatusDelegate(m_queue));
-    m_queue->setColumnCount(2);
-    m_queue->setHeaderLabels(QStringList()<<QStringLiteral("Drivers")<<QStringLiteral("Status"));
+    m_queue->setColumnCount(3);
+    m_queue->setHeaderLabels(QStringList()<<QStringLiteral("Drivers")<<QStringLiteral("Status")<<UiLanguage::text(QStringLiteral("Elapsed"),QString::fromUtf8("المنقضي")));
     m_queue->setRootIsDecorated(false);
     m_queue->setIndentation(0);
     m_queue->setUniformRowHeights(true);
@@ -136,7 +158,8 @@ InstallationWorkspace::InstallationWorkspace(QWidget *parent)
     m_queue->setFocusPolicy(Qt::NoFocus);
     m_queue->header()->setSectionResizeMode(0,QHeaderView::Stretch);
     m_queue->header()->setSectionResizeMode(1,QHeaderView::Fixed);
-    m_queue->header()->resizeSection(1,175);
+    m_queue->header()->resizeSection(1,220);
+    m_queue->header()->setSectionResizeMode(2,QHeaderView::Fixed);m_queue->header()->resizeSection(2,110);
     m_queue->setVerticalScrollMode(QAbstractItemView::ScrollPerPixel);
     m_queue->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
     olist->addWidget(m_queue,1);
@@ -193,7 +216,7 @@ void InstallationWorkspace::beginDemo(const QStringList &drivers,bool restorePoi
     m_stop->setVisible(true);
     m_stage->setText(QStringLiteral("Simulating installation flow..."));
     m_complete->setText(QStringLiteral("DEMO: no restore point, install, download or reboot is performed."));
-    updateProgress();
+    startTiming();updateProgress();
     emit activeChanged(true);
     m_timer->start();
 }
@@ -203,7 +226,7 @@ void InstallationWorkspace::step()
     m_percent=qMin(100,m_percent+1);
     updateProgress();
     if(m_percent>=100){
-        m_timer->stop();
+        m_timer->stop();stopTiming();
         m_active=false;
         m_back->setEnabled(true);
         m_stop->setVisible(false);
@@ -226,7 +249,7 @@ void InstallationWorkspace::updateProgress()
         const QString state=m_percent>=finish?QStringLiteral("Completed (demo)"):
            (m_percent>=start && m_percent<finish?QStringLiteral("Simulating %1%").arg(
                  qBound(0,(m_percent-start)*100/qMax(1,finish-start),99)):QStringLiteral("Queued"));
-        queueStatus(row,state);
+        timeRow(row,m_percent>=start && m_percent<finish);queueStatus(row,state);
         if(m_percent>=finish) {++completed;row->setForeground(1,QColor("#31B273"));}
         else if(m_percent>=start)row->setForeground(1,QColor("#159FAC"));
     }
@@ -253,7 +276,7 @@ void InstallationWorkspace::updateProgress()
 void InstallationWorkspace::stopDemo()
 {
     if(!m_active || m_live)return;
-    m_timer->stop();m_active=false;
+    m_timer->stop();stopTiming();m_active=false;
     m_back->setEnabled(true);m_stop->setVisible(false);
     m_stage->setText(QStringLiteral("Simulation stopped"));
     m_complete->setText(QStringLiteral("No driver changes were performed."));
@@ -262,7 +285,8 @@ void InstallationWorkspace::stopDemo()
 void InstallationWorkspace::setArabic(bool arabic)
 {
     m_arabic=arabic;
-    m_queue->setHeaderLabels(QStringList()<<UiLanguage::text(QStringLiteral("Drivers"))<<UiLanguage::text(QStringLiteral("Status")));
+    m_queue->setHeaderLabels(QStringList()<<UiLanguage::text(QStringLiteral("Drivers"))<<UiLanguage::text(QStringLiteral("Status"))<<UiLanguage::text(QStringLiteral("Elapsed"),QString::fromUtf8("المنقضي")));
+    updateTimes();
     m_title->setText(arabic?QString::fromUtf8("متابعة التثبيت"):QStringLiteral("Installation progress"));
     m_sub->setText(arabic?QString::fromUtf8("مراحل العملية والعناصر في شاشة واحدة"):QStringLiteral("One-screen operation center"));
     m_back->setText(arabic?QString::fromUtf8("العودة للتعريفات"):QStringLiteral("Back to drivers"));
@@ -297,11 +321,11 @@ void InstallationWorkspace::beginNative(const QStringList &names,const QStringLi
     m_progress->setRange(0,names.size());m_progress->setValue(0);m_progress->setFormat(QChar(0x202a)+QStringLiteral("%v / %m")+QChar(0x202c));
     m_stage->setText(QStringLiteral("Validating selected candidates and local packages"));
     m_summary->setText(QStringLiteral("0 / %1 drivers completed").arg(names.size()));
-    m_complete->setText(QStringLiteral("Results and errors below come from the native installer, not a simulation."));emit activeChanged(true);
+    m_complete->setText(QStringLiteral("Results and errors below come from the native installer, not a simulation."));startTiming();emit activeChanged(true);
 }
 void InstallationWorkspace::applyNativeEvent(const sdiomodern::Event &e)
 {
-    if(!m_live)return;
+    if(!m_live || !m_active)return;
     m_stage->setText(QString::fromStdWString(e.message));
     const int stage=e.stage==sdiomodern::Stage::RestorePoint?0:(e.stage==sdiomodern::Stage::Install?2:(e.stage==sdiomodern::Stage::Finished?3:1));
     m_currentStage=stage;QLabel *steps[]={m_stepRestore,m_stepPrep,m_stepInstall,m_stepFinish};
@@ -319,7 +343,7 @@ void InstallationWorkspace::applyNativeEvent(const sdiomodern::Event &e)
     default:status=e.stage==sdiomodern::Stage::Extract?QStringLiteral("Extracting"):QStringLiteral("Working...");break;
     }
     for(int i=0;i<m_queue->topLevelItemCount();++i){QTreeWidgetItem *row=m_queue->topLevelItem(i);
-        if(!id.isEmpty() && row->data(0,Qt::UserRole).toString().compare(id,Qt::CaseInsensitive)==0){if(row->data(0,Qt::UserRole+10).toBool() && e.stage==sdiomodern::Stage::Install){if(e.outcome==sdiomodern::Outcome::Success)status=QStringLiteral("Reinstalled");else if(e.outcome==sdiomodern::Outcome::Running)status=QStringLiteral("Reinstalling");}queueStatus(row,status);row->setToolTip(1,QString::fromStdWString(e.message));}}
+        if(!id.isEmpty() && row->data(0,Qt::UserRole).toString().compare(id,Qt::CaseInsensitive)==0){if(row->data(0,Qt::UserRole+10).toBool() && e.stage==sdiomodern::Stage::Install){if(e.outcome==sdiomodern::Outcome::Success)status=QStringLiteral("Reinstalled");else if(e.outcome==sdiomodern::Outcome::Running)status=QStringLiteral("Reinstalling");}if(e.stage==sdiomodern::Stage::Extract || e.stage==sdiomodern::Stage::Install)timeRow(row,e.outcome==sdiomodern::Outcome::Running);queueStatus(row,status);row->setToolTip(1,QString::fromStdWString(e.message));}}
     m_summary->setText(QStringLiteral("%1 / %2 drivers processed").arg(static_cast<qulonglong>(e.done)).arg(static_cast<qulonglong>(e.total)));
 }
 void InstallationWorkspace::finishNative(const sdiomodern::InstallReport &report)
@@ -336,7 +360,7 @@ void InstallationWorkspace::finishNative(const sdiomodern::InstallReport &report
     }
     for(int j=0;j<m_queue->topLevelItemCount();++j){QTreeWidgetItem *row=m_queue->topLevelItem(j);
         if(row->data(1,Qt::UserRole+4).toString()==QStringLiteral("Pending")){queueStatus(row,QStringLiteral("Not started"));++skipped;}}
-    m_active=false;m_live=false;m_stop->setVisible(false);m_back->setEnabled(true);
+    stopTiming();m_active=false;m_live=false;m_stop->setVisible(false);m_back->setEnabled(true);
     const int finalStage=report.restoreFailed && !report.error.empty()?0:3;
     QLabel *steps[]={m_stepRestore,m_stepPrep,m_stepInstall,m_stepFinish};for(int i=0;i<4;++i){steps[i]->setObjectName(i==finalStage?QStringLiteral("activeStage"):QStringLiteral("stageItem"));steps[i]->style()->unpolish(steps[i]);steps[i]->style()->polish(steps[i]);}
     m_stage->setText(report.cancelled?QStringLiteral("Stopped safely after the active operation"):
@@ -353,7 +377,7 @@ void InstallationWorkspace::finishNative(const sdiomodern::InstallReport &report
 }
 void InstallationWorkspace::failNative(const QString &reason)
 {
-    if(!m_live)return;m_active=false;m_live=false;m_stop->setVisible(false);m_back->setEnabled(true);
+    if(!m_live)return;stopTiming();m_active=false;m_live=false;m_stop->setVisible(false);m_back->setEnabled(true);
     m_stage->setText(UiLanguage::text(QStringLiteral("Installation needs attention"),QString::fromUtf8("التثبيت يحتاج مراجعة")));m_complete->setText(reason);m_complete->setProperty("tone",QStringLiteral("error"));m_complete->style()->unpolish(m_complete);m_complete->style()->polish(m_complete);
     for(int i=0;i<m_queue->topLevelItemCount();++i){QTreeWidgetItem *row=m_queue->topLevelItem(i);
         if(row->data(1,Qt::UserRole+4).toString()==QStringLiteral("Pending"))queueStatus(row,QStringLiteral("Not started"));}
@@ -379,3 +403,8 @@ void InstallationWorkspace::setAvailability(bool canInstall,bool demo)
     }
     m_complete->setText(QStringLiteral("No changes have been made to Windows."));
 }
+
+void InstallationWorkspace::startTiming(){m_clock.restart();m_duration=0;m_clockRunning=true;for(int i=0;i<m_queue->topLevelItemCount();++i){QTreeWidgetItem *row=m_queue->topLevelItem(i);row->setData(0,Qt::UserRole+11,QVariant());row->setData(0,Qt::UserRole+12,qint64(0));row->setText(2,QString::fromUtf8("—"));row->setTextAlignment(2,Qt::AlignCenter);row->setToolTip(2,UiLanguage::text(QStringLiteral("Measured processing time; waiting in the queue is excluded."),QString::fromUtf8("وقت المعالجة المقاس؛ لا يشمل الانتظار في القائمة.")));}updateTimes();m_clockTimer->start();}
+void InstallationWorkspace::timeRow(QTreeWidgetItem *row,bool running){if(!m_clockRunning)return;const QVariant started=row->data(0,Qt::UserRole+11);if(running && !started.isValid())row->setData(0,Qt::UserRole+11,m_clock.elapsed());else if(!running && started.isValid()){row->setData(0,Qt::UserRole+12,row->data(0,Qt::UserRole+12).toLongLong()+m_clock.elapsed()-started.toLongLong());row->setData(0,Qt::UserRole+11,QVariant());row->setText(2,elapsedText(row->data(0,Qt::UserRole+12).toLongLong()));}if(running)row->setText(2,elapsedText(row->data(0,Qt::UserRole+12).toLongLong()+m_clock.elapsed()-row->data(0,Qt::UserRole+11).toLongLong()));}
+void InstallationWorkspace::updateTimes(){if(m_clockRunning)m_duration=m_clock.elapsed();m_elapsed->setText(UiLanguage::text(QStringLiteral("Total elapsed: %1"),QString::fromUtf8("الوقت الإجمالي: %1")).arg(QChar(0x202a)+elapsedText(m_duration)+QChar(0x202c)));for(int i=0;i<(m_queue?m_queue->topLevelItemCount():0);++i){QTreeWidgetItem *row=m_queue->topLevelItem(i);if(m_clockRunning && row->data(0,Qt::UserRole+11).isValid())row->setText(2,elapsedText(row->data(0,Qt::UserRole+12).toLongLong()+m_clock.elapsed()-row->data(0,Qt::UserRole+11).toLongLong()));}}
+void InstallationWorkspace::stopTiming(){if(!m_clockRunning)return;for(int i=0;i<m_queue->topLevelItemCount();++i)timeRow(m_queue->topLevelItem(i),false);m_duration=m_clock.elapsed();m_clockRunning=false;m_clockTimer->stop();updateTimes();}

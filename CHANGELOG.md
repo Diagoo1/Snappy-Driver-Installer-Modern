@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.23.8 Beta
+
+- Give the installation queue a rounded gradient header with driver/status/time icons and responsive column widths.
+- Draw one continuous installation-row divider below all columns, including status pills.
+- Measure total operation and per-driver active processing time with a monotonic clock; freeze on finish/failure/cancellation and reset on retry. Waiting rows have no invented duration or ETA.
+
 ## 0.23.7 Beta
 
 - Remove horizontal separators from the main driver list while keeping download-table separators.

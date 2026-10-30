@@ -2,10 +2,12 @@
 #define SDIOMODERN_INSTALLATION_WORKSPACE_H
 #include <QWidget>
 #include <QStringList>
+#include <QElapsedTimer>
 #include "../native/origin_api.h"
 class QLabel;
 class QProgressBar;
 class QTreeWidget;
+class QTreeWidgetItem;
 class QPushButton;
 class QTimer;
 bool confirmDriverInstallation(QWidget *parent,const QStringList &drivers,bool restore,bool alternative,bool reboot,bool administrator,bool arabic,bool reinstall=false);
@@ -39,6 +41,15 @@ private slots:
 
 private:
     void updateProgress();
+    void startTiming();
+    void stopTiming();
+    void updateTimes();
+    void timeRow(QTreeWidgetItem *row,bool running);
+    QElapsedTimer m_clock;
+    QTimer *m_clockTimer;
+    qint64 m_duration;
+    bool m_clockRunning;
+    QLabel *m_elapsed;
     bool m_arabic,m_active,m_reboot,m_hasRestore,m_live;
     int m_percent;
     int m_currentStage;

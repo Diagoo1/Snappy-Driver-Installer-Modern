@@ -153,7 +153,7 @@ QTreeWidget#driverTree,QTreeWidget#installQueue,QScrollArea#diagnosticScroll,QSc
  background:%2; color:%4; border:0; border-radius:9px; outline:0;
 }
 QTreeWidget#driverTree::item {border:0; padding:0px;}
-QTreeWidget#installQueue::item {border-bottom:1px solid %6; padding:0px;}
+QTreeWidget#installQueue::item {border:0; padding:0px;}
 QTreeWidget#driverTree::item:hover {background:transparent;}
 QTreeWidget#driverTree QHeaderView::section {background:%3;color:%4;border:0;border-bottom:1px solid %6;padding:12px 10px;font-weight:600;}
 QTreeWidget#driverTree::item:selected {background:transparent; color:%4;}
