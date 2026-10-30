@@ -149,7 +149,7 @@ QLabel#installNotice {background:%3;color:%4;border:1px solid %6;border-radius:1
 QLabel#installNotice[tone="error"] {background:rgba(208,71,94,20);color:#D0475E;border:1px solid rgba(208,71,94,90);}
 QWidget#installationHero QProgressBar#mainProgress {background:rgba(255,255,255,32);color:white;min-height:28px;border-radius:10px;}
 QWidget#installationHero QProgressBar#mainProgress::chunk {background:qlineargradient(x1:0,y1:0,x2:1,y2:0,stop:0 #27B4BF,stop:1 #42D9BC);border-radius:10px;}
-QTreeWidget#driverTree,QTreeWidget#installQueue,QScrollArea#diagnosticScroll,QScrollArea#dialogScroll {
+QTreeWidget#driverTree,QTreeWidget#installQueue,QScrollArea#diagnosticScroll,QScrollArea#dialogScroll,QScrollArea#onlineBodyScroll {
  background:%2; color:%4; border:0; border-radius:9px; outline:0;
 }
 QTreeWidget#driverTree::item,QTreeWidget#installQueue::item {border-bottom:1px solid %6; padding:0px;}
@@ -213,7 +213,7 @@ QMenu::section {color:%5; font-size:10px; padding:7px 12px;}
 QProgressBar#mainProgress {background:%3; color:%4; border:0; border-radius:7px; text-align:center;}
 QProgressBar#mainProgress::chunk {background:qlineargradient(x1:0,y1:0,x2:1,y2:0,stop:0 #147CA7,stop:1 #00BDB1); border-radius:7px;}
 QWidget#aboutBody {background:transparent;}
-QTreeWidget#onlineFiles {background:%2;alternate-background-color:%1;color:%4;border:1px solid %6;border-radius:13px;outline:0;padding:8px;selection-background-color:%3;selection-color:%4;}
+QTreeWidget#onlineFiles {background:%2;alternate-background-color:%1;color:%4;border:0;border-radius:13px;outline:0;padding:8px;selection-background-color:%3;selection-color:%4;}
 QTreeWidget#onlineFiles::item {padding:11px 8px;border-bottom:1px solid %6;min-height:24px;}
 QTreeWidget#onlineFiles::item:hover {background:transparent;}
 QTreeWidget#onlineFiles::indicator:unchecked {width:18px;height:18px;background:%2;border:1px solid %7;border-radius:4px;}
@@ -230,7 +230,7 @@ QMessageBox QLabel {color:%4;}
         .arg(blend(dark?.17:.09)).arg(blend(dark?.29:.16)).arg(primary).arg(blend(dark?.50:.38));
     result+=QStringLiteral("QTabWidget#comparisonTabs::pane {background:transparent;border:0;} QTabWidget#comparisonTabs QTabBar::tab {background:%1;color:%2;border:1px solid %5;border-radius:11px;margin:0 4px 8px 4px;padding:12px 8px;font-weight:500;} QTabWidget#comparisonTabs QTabBar::tab:hover {color:%3;background:%4;} QTabWidget#comparisonTabs QTabBar::tab:selected {background:%4;color:%3;border-color:%5;} QWidget#comparisonPage,QWidget#candidateHost {background:transparent;} QLabel#detailVersion {font-size:24px;font-weight:600;color:%3;background:transparent;} QLabel#detailHeading {font-size:11px;font-weight:700;background:transparent;} QWidget#comparisonPickerSurface {background:%1;border:1px solid %5;border-radius:13px;}")
         .arg(surface).arg(secondary).arg(primary).arg(blend(dark?.19:.09)).arg(stroke);
-    result+=QStringLiteral("QTabWidget#comparisonTabs QScrollArea#dialogScroll {background:transparent;border:0;} QWidget#comparisonViewport {background:transparent;}");
+    result+=QStringLiteral("QTabWidget#comparisonTabs QScrollArea#dialogScroll,QScrollArea#onlineBodyScroll {background:transparent;border:0;} QWidget#comparisonViewport {background:transparent;}");
     for(const char *value:{"#00AFA5","#00BDB1","#00A99E","#12AAB5","#0EAAA7","#09B5A8"})result.replace(QLatin1String(value),accent,Qt::CaseInsensitive);
     for(const char *value:{"#008B85","#008C85"})result.replace(QLatin1String(value),hover,Qt::CaseInsensitive);
     for(const char *value:{"#0BAEA5","#03AFA7","#08D2C3","#009A92"})result.replace(QLatin1String(value),link,Qt::CaseInsensitive);

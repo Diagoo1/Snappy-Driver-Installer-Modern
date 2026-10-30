@@ -985,9 +985,9 @@
     "yyyy-MM-dd  HH:mm": "yyyy-MM-dd  HH:mm",
     "Never show update notices": "عدم إظهار إشعارات التحديث مطلقًا",
     "Catalog check complete. Select files to download.": "اكتمل فحص القائمة. حدد الملفات المطلوب تنزيلها.",
-    "Version: 0.23.2 (Beta)\nWindows: %1\nArchitecture: %2\nLanguage: %3\nTheme: %4": "الإصدار: 0.23.2 (بيتا)\nويندوز: %1\nالمعمارية: %2\nاللغة: %3\nالمظهر: %4",
     "Opening the download center to check the saved source.": "فتح مركز التنزيل لفحص المصدر المحفوظ.",
     "Available updates: %1 driver packs · %2 indexes. Select what you need.": "التحديثات المتاحة: %1 حزمة تعريفات · %2 فهرس. حدد المطلوب تنزيله.",
-    "Wait for the current operation to finish, then check again.": "انتظر انتهاء العملية الحالية ثم أعد الفحص."
+    "Wait for the current operation to finish, then check again.": "انتظر انتهاء العملية الحالية ثم أعد الفحص.",
+    "Version: 0.23.3 (Beta)\nWindows: %1\nArchitecture: %2\nLanguage: %3\nTheme: %4": "الإصدار: 0.23.3 (بيتا)\nويندوز: %1\nالمعمارية: %2\nاللغة: %3\nالمظهر: %4"
   }
 }

@@ -36,6 +36,7 @@
 #include <QMenu>
 #include <QContextMenuEvent>
 #include <QScrollBar>
+#include <QScrollArea>
 #include "driver_workspace.h"
 #include "support_report.h"
 #include "offline_paths.h"
@@ -427,14 +428,14 @@ int main(int argc,char **argv){
         DriverDetailsDialog archiveDetails(nativeCatalog.entry(0),false,false,&window);archiveDetails.show();QTest::qWait(30);bool archiveShown=false;for(QLabel *label:archiveDetails.findChildren<QLabel*>())if(label->text()==QStringLiteral("DP_Test.7z"))archiveShown=true;check(archiveShown,"comparison details identify the actual 7z package");archiveDetails.close();
         check(VectorIcons::forDeviceClass(QStringLiteral("System Intel Smart Sound"))==QStringLiteral("audio") && VectorIcons::forDeviceClass(QStringLiteral("Camera"))==QStringLiteral("camera") && VectorIcons::forDeviceClass(QStringLiteral("Display"))==QStringLiteral("monitor"),"device icons distinguish sound, camera and graphics components");
         reinstallFixture.devices[0].candidates[0].local=true;reinstallCatalog.replaceNative(reinstallFixture);reinstallCatalog.chooseCandidate(0,0);
-        DriverWorkspace reinstallBoard(&reinstallCatalog);reinstallBoard.setStyleSheet(Theme::styleSheet(false));reinstallBoard.resize(1000,760);reinstallBoard.show();QTest::qWait(40);
+        DriverWorkspace reinstallBoard(&reinstallCatalog);reinstallBoard.setStyleSheet(Theme::styleSheet(false));reinstallBoard.resize(1000,760);reinstallBoard.show();QTest::qWait(220);
         check(reinstallBoard.createRestorePoint() && reinstallCatalog.buildPlan(reinstallBoard.createRestorePoint(),true,true).createRestorePoint,"reinstallation uses the same required-restore-point engine plan");
         QWidget *notice=reinstallBoard.findChild<QWidget*>(QStringLiteral("reinstallNotice"));QLabel *noticeText=reinstallBoard.findChild<QLabel*>(QStringLiteral("reinstallNoticeText"));
         check(notice && notice->isVisible() && notice->height()>=68 && noticeText && noticeText->text().contains(QStringLiteral("restore point")),"reinstall selection has a padded card with the actual restore requirement");
         reinstallBoard.grab().save(QDir(app.applicationDirPath()).filePath(QStringLiteral("reinstall-notice.png")));
         reinstallBoard.setInstallationPreferences(false,false);check(noticeText->text().contains(QStringLiteral("off")),"reinstall notice reflects disabling the restore-point requirement");
-        QTest::qWait(3100);check(!notice->isVisible(),"reinstall warning expires after three seconds");reinstallBoard.setInstallationPreferences(false,false);check(!notice->isVisible(),"ordinary refreshes do not re-show an expired reinstall notice");
-        reinstallCatalog.selectAll(false);QTest::qWait(30);check(!notice->isVisible(),"reinstall notice clears with the selection");reinstallBoard.close();
+        QTest::qWait(3250);check(!notice->isVisible(),"reinstall warning expires after three seconds");reinstallBoard.setInstallationPreferences(false,false);check(!notice->isVisible(),"ordinary refreshes do not re-show an expired reinstall notice");
+        reinstallCatalog.selectAll(false);QTest::qWait(220);check(!notice->isVisible(),"reinstall notice clears with the selection");reinstallBoard.setAnimations(true);reinstallCatalog.chooseCandidate(0,1);QTest::qWait(45);check(notice->property("noticeAnimating").toBool() && notice->height()>0 && notice->height()<68,"reinstall notice reveals through a finite intermediate height");QTest::qWait(200);reinstallCatalog.selectAll(false);QTest::qWait(45);check(notice->property("noticeAnimating").toBool() && notice->height()>0 && notice->height()<68,"reinstall notice collapses smoothly rather than disappearing in one frame");QTest::qWait(220);check(notice->isHidden() && !notice->property("noticeAnimating").toBool(),"reinstall exit motion settles and hides its layout slot");reinstallBoard.setAnimations(false);reinstallCatalog.chooseCandidate(0,1);check(!notice->property("noticeAnimating").toBool() && notice->height()==68,"reduced motion reveals the notice immediately");reinstallCatalog.selectAll(false);reinstallBoard.close();
         smartView->setChecked(true);QTest::qWait(30);nativeCatalog.chooseCandidate(0,12);QTest::qWait(30);nativeRoot=deviceItem(nativeTree);
         bool selectedVisible=false;for(int i=0;i<nativeRoot->childCount();++i)if(nativeRoot->child(i)->data(0,Qt::UserRole+1).toInt()==12)selectedVisible=true;
         check(selectedVisible,"recommended view keeps a manually selected alternative visible");smartView->setChecked(false);QTest::qWait(30);
@@ -464,6 +465,7 @@ int main(int argc,char **argv){
         OnlineDialog online(QDir(app.applicationDirPath()).filePath(QStringLiteral("test-drivers")),QDir(app.applicationDirPath()).filePath(QStringLiteral("test-indexes")),QStringList()<<QStringLiteral("DP_Missing.7z"),false,&nativeBoard);
         online.setCatalogSource(OnlinePackages::officialMetadataUrl(QStringLiteral("SDI")));check(online.catalogSource().host()==QStringLiteral("sdi-tool.org"),"standalone download center accepts the saved SDI source before loading metadata");
         online.setProperty("darkMode",false);online.setStyleSheet(Theme::styleSheet(false));online.setCatalog(onlineCatalog);online.show();QTest::qWait(200);
+        check(nativeBoard.frameGeometry().contains(online.frameGeometry()),"download popup stays entirely inside its parent window");check(online.findChild<QWidget*>(QStringLiteral("onlineTableCard"))!=0,"download table lives inside a painted shadow card");
         QTreeWidget *onlineFiles=online.findChild<QTreeWidget*>();check(onlineFiles && onlineFiles->topLevelItemCount()==2,"online dialog lists approved indexes and packages");
         for(QPushButton *button:online.findChildren<QPushButton*>())if(button->text()==QStringLiteral("Select indexes"))button->click();
         check(onlineFiles->topLevelItem(0)->checkState(0)==Qt::Checked && onlineFiles->topLevelItem(1)->checkState(0)==Qt::Unchecked,"index selection does not download driver packages");
@@ -472,6 +474,8 @@ int main(int argc,char **argv){
         check(!online.catalogCheckedAt().isValid(),"opening cached metadata does not postpone the next scheduled network check");
         check(onlineFiles->columnCount()==7,"download center exposes size, progress, available/local versions, relevance and status");
         check(onlineFiles->columnWidth(2)>=onlineFiles->viewport()->width()*0.16 && onlineFiles->columnWidth(0)<onlineFiles->viewport()->width()*0.42,"download table allocates a readable progress column and bounds package-name width");
+        {QProgressBar *bar=online.findChild<QProgressBar*>(QStringLiteral("mainProgress"));const QVariant reduced=qApp->property("reduceMotion");qApp->setProperty("reduceMotion",true);bar->setRange(0,0);const QImage fill=bar->grab().toImage();fill.save(QDir(app.applicationDirPath()).filePath(QStringLiteral("rounded-busy-bar.png")));auto filled=[](QRgb pixel){const QColor c=QColor::fromRgba(pixel);return c.red()<70 && c.green()>95 && c.blue()>70;};int left=-1,right=-1;for(int x=0;x<fill.width();++x)if(filled(fill.pixel(x,fill.height()/2))){if(left<0)left=x;right=x;}check(left>10 && right<fill.width()-10 && !filled(fill.pixel(left+1,1)),"busy segment has rounded exposed end corners rather than a rectangular fill");bar->setRange(0,1000);bar->setValue(0);qApp->setProperty("reduceMotion",reduced);}
+
         OnlineWorker *transferWorker=online.findChild<OnlineWorker*>();QMetaObject::invokeMethod(transferWorker,"activity",Q_ARG(QString,QStringLiteral("fixture download")),Q_ARG(qint64,4000),Q_ARG(qint64,10000),Q_ARG(int,0));QMetaObject::invokeMethod(transferWorker,"transferStats",Q_ARG(qint64,5000),Q_ARG(qint64,2000),Q_ARG(qint64,100),Q_ARG(int,3));QMetaObject::invokeMethod(transferWorker,"fileProgress",Q_ARG(int,1),Q_ARG(qint64,5000),Q_ARG(qint64,10000));QTest::qWait(30);
         check(online.findChild<QLabel*>(QStringLiteral("downloadSpeed"))->text().contains(QStringLiteral("/s")) && online.findChild<QLabel*>(QStringLiteral("downloadPeers"))->text()==QStringLiteral("3") && online.findChild<QLabel*>(QStringLiteral("downloadEta"))->text()!=QStringLiteral("—"),"transfer telemetry updates measured speed, peers and ETA");
         check(onlineFiles->topLevelItem(1)->text(2)==QStringLiteral("50%"),"per-file verified bytes update the row progress");
@@ -501,8 +505,8 @@ int main(int argc,char **argv){
             QComboBox *zoom=window.findChild<QComboBox*>(QStringLiteral("interfaceZoom"));
             check(zoom && zoom->property("projectCombo").toBool(),"interface zoom shares the themed project combo styling");
             check(zoom && Theme::isDark(zoom),"combo theme follows the dark application instead of the Windows palette");
-            if(zoom){zoom->showPopup();QTest::qWait(180);QWidget *popup=app.activePopupWidget();
-                check(popup && popup->property("darkMode").toBool(),"dark zoom popup paints a dark rounded frame");
+            if(zoom){QMetaObject::invokeMethod(&window,"navigate",Q_ARG(int,3));window.activateWindow();QApplication::setActiveWindow(&window);for(QScrollArea *scroll:pages->widget(3)->findChildren<QScrollArea*>())scroll->ensureWidgetVisible(zoom);QTest::qWait(220);zoom->showPopup();QTest::qWait(180);QWidget *popup=zoom->findChild<QWidget*>(QStringLiteral("languagePopup"));
+                check(popup && popup->isVisible() && popup->property("darkMode").toBool(),"dark zoom popup paints a dark rounded frame");
                 QListWidget *choices=popup?popup->findChild<QListWidget*>(QStringLiteral("languageChoices")):0;
                 bool sameFlags=choices && choices->count()==zoom->count();for(int i=0;choices && i<choices->count();++i)sameFlags=sameFlags && bool(choices->item(i)->flags()&Qt::ItemIsEnabled)==bool(zoom->model()->flags(zoom->model()->index(i,0))&Qt::ItemIsEnabled);
                 check(sameFlags,"popup preserves disabled zoom levels from the source model");

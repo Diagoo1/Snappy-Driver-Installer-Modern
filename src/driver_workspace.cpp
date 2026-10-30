@@ -44,6 +44,8 @@
 #include <QElapsedTimer>
 #include <QTreeWidgetItemIterator>
 #include <QEasingCurve>
+#include <QVariantAnimation>
+#include <QGraphicsOpacityEffect>
 #include <functional>
 #include <algorithm>
 #include "driver_row_delegate.h"
@@ -139,8 +141,12 @@ private:
 };
 
 class ReinstallNotice : public QWidget {
-public:explicit ReinstallNotice(QWidget *parent):QWidget(parent){setMinimumHeight(68);setSizePolicy(QSizePolicy::Expanding,QSizePolicy::Minimum);}
-protected:void paintEvent(QPaintEvent*) Q_DECL_OVERRIDE {QPainter p(this);p.setRenderHint(QPainter::Antialiasing);const bool dark=Theme::isDark(this);const QRectF area=QRectF(rect()).adjusted(.5,.5,-.5,-.5);p.setBrush(dark?QColor("#344339"):QColor("#FFF8E9"));p.setPen(QPen(dark?QColor("#87734A"):QColor("#EBD5A9"),1));p.drawRoundedRect(area,13,13);}
+public:explicit ReinstallNotice(QWidget *parent):QWidget(parent),m_body(new QWidget(this)),m_fade(new QGraphicsOpacityEffect(m_body)),m_motion(this),m_target(false){m_body->setGraphicsEffect(m_fade);m_body->setFixedHeight(68);setFixedHeight(0);setSizePolicy(QSizePolicy::Expanding,QSizePolicy::Fixed);m_motion.setDuration(180);m_motion.setEasingCurve(QEasingCurve::OutCubic);connect(&m_motion,&QVariantAnimation::valueChanged,this,[this](const QVariant &value){const qreal amount=value.toReal();setFixedHeight(qRound(68*amount));m_fade->setOpacity(amount);update();});connect(&m_motion,&QVariantAnimation::finished,this,[this](){setProperty("noticeAnimating",false);if(!m_target)hide();});}
+ QWidget *content()const{return m_body;}
+ void reveal(bool shown,bool animate=true){if(animate && m_target==shown && (m_motion.state()==QAbstractAnimation::Running || (shown?!isHidden():isHidden())))return;m_target=shown;m_motion.stop();if(!animate || qApp->property("reduceMotion").toBool() || property("reduceMotion").toBool()){setFixedHeight(shown?68:0);m_fade->setOpacity(shown?1:0);setVisible(shown);setProperty("noticeAnimating",false);return;}const qreal from=height()/68.0;if(shown)show();setProperty("noticeAnimating",true);m_motion.setStartValue(from);m_motion.setEndValue(shown?1.0:0.0);m_motion.start();}
+protected:void resizeEvent(QResizeEvent *event) Q_DECL_OVERRIDE {QWidget::resizeEvent(event);m_body->setGeometry(0,0,width(),68);}
+ void paintEvent(QPaintEvent*) Q_DECL_OVERRIDE {QPainter p(this);p.setRenderHint(QPainter::Antialiasing);const bool dark=Theme::isDark(this);const QRectF area=QRectF(rect()).adjusted(.5,.5,-.5,-.5);p.setOpacity(qBound(0.0,height()/68.0,1.0));p.setBrush(dark?QColor("#344339"):QColor("#FFF8E9"));p.setPen(QPen(dark?QColor("#87734A"):QColor("#EBD5A9"),1));p.drawRoundedRect(area,13,13);}
+private:QWidget *m_body;QGraphicsOpacityEffect *m_fade;QVariantAnimation m_motion;bool m_target;
 };
 
 static QLabel *label(const QString &text,const char *objectName,QWidget *parent)
@@ -221,9 +227,9 @@ DriverWorkspace::DriverWorkspace(DriverCatalog *catalog,QWidget *parent)
     m_info=label(QStringLiteral("DEMO — matches are illustrative. No changes to your system."),"demoText",this);
     m_info->setWordWrap(true);
     titleBox->addWidget(m_info);
-    m_reinstallTimer=new QTimer(this);m_reinstallTimer->setObjectName(QStringLiteral("reinstallNoticeTimer"));m_reinstallTimer->setSingleShot(true);m_reinstallTimer->setInterval(3000);connect(m_reinstallTimer,&QTimer::timeout,this,[this](){m_reinstallNotice->hide();});
+    m_reinstallTimer=new QTimer(this);m_reinstallTimer->setObjectName(QStringLiteral("reinstallNoticeTimer"));m_reinstallTimer->setSingleShot(true);m_reinstallTimer->setInterval(3000);connect(m_reinstallTimer,&QTimer::timeout,this,[this](){static_cast<ReinstallNotice*>(m_reinstallNotice)->reveal(false);});
     m_reinstallNotice=new ReinstallNotice(this);m_reinstallNotice->setObjectName(QStringLiteral("reinstallNotice"));
-    QHBoxLayout *noticeLayout=new QHBoxLayout(m_reinstallNotice);noticeLayout->setContentsMargins(16,12,16,12);noticeLayout->setSpacing(12);
+    QHBoxLayout *noticeLayout=new QHBoxLayout(static_cast<ReinstallNotice*>(m_reinstallNotice)->content());noticeLayout->setContentsMargins(16,12,16,12);noticeLayout->setSpacing(12);
     QLabel *noticeIcon=new QLabel(m_reinstallNotice);noticeIcon->setPixmap(VectorIcons::icon(QStringLiteral("shield"),QColor("#B78A35"),24).pixmap(24,24));noticeLayout->addWidget(noticeIcon,0,Qt::AlignVCenter);
     m_reinstallText=label(QString(),"reinstallNoticeText",m_reinstallNotice);m_reinstallText->setWordWrap(true);m_reinstallText->setTextFormat(Qt::PlainText);noticeLayout->addWidget(m_reinstallText,1);m_reinstallNotice->hide();root->insertWidget(1,m_reinstallNotice);
 
@@ -690,8 +696,8 @@ void DriverWorkspace::updateCount()
     const int selected=m_catalog->selectedDrivers();
     const int reinstalls=m_catalog->selectedReinstalls();
     QString signature;for(int row=0;row<m_catalog->size();++row){const DriverEntry &entry=m_catalog->entryRef(row);if(entry.checked && isReinstallCandidate(entry,entry.chosenCandidate))signature+=QString::number(row)+QLatin1Char(':')+QString::number(entry.chosenCandidate)+QLatin1Char(';');}if(!signature.isEmpty())signature+=m_restore->isChecked()?QLatin1Char('1'):QLatin1Char('0');
-    if(signature!=m_reinstallSignature){m_reinstallSignature=signature;m_reinstallTimer->stop();m_reinstallNotice->setVisible(!signature.isEmpty() && !m_busy);if(!signature.isEmpty() && !m_busy)m_reinstallTimer->start();}
-    if(reinstalls==0 || m_busy){m_reinstallTimer->stop();m_reinstallNotice->hide();}
+    if(signature!=m_reinstallSignature){m_reinstallSignature=signature;m_reinstallTimer->stop();static_cast<ReinstallNotice*>(m_reinstallNotice)->reveal(!signature.isEmpty() && !m_busy);if(!signature.isEmpty() && !m_busy)m_reinstallTimer->start();}
+    if(reinstalls==0 || m_busy){m_reinstallTimer->stop();static_cast<ReinstallNotice*>(m_reinstallNotice)->reveal(false,!m_busy);}
     if(reinstalls>0){
         const QString heading=UiLanguage::text(QStringLiteral("Reinstallation selected: %1"),QString::fromUtf8("إعادة تثبيت: %1")).arg(reinstalls);
         const QString protection=UiLanguage::text(m_restore->isChecked()?QStringLiteral("A restore point is required before reinstalling. If creation fails, installation stops."):QStringLiteral("Restore point is off. Enable it in Install options before continuing."));
@@ -762,6 +768,7 @@ void DriverWorkspace::setBusy(bool busy)
 { m_busy=busy;updateCount(); }
 void DriverWorkspace::setAnimations(bool enabled)
 {
+    m_reinstallNotice->setProperty("reduceMotion",!enabled);if(!enabled && m_reinstallNotice->property("noticeAnimating").toBool())static_cast<ReinstallNotice*>(m_reinstallNotice)->reveal(!m_reinstallSignature.isEmpty() && !m_busy,false);
     static_cast<DriverTree*>(m_tree)->setMotionEnabled(enabled);
     m_scan->setMotionEnabled(enabled);
     m_showInstalled->setMotionEnabled(enabled);

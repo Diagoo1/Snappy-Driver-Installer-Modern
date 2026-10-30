@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.23.3 Beta
+
+- Bound and center the Download center within the main window and available screen; scroll the content when the parent is compact.
+- Reveal and dismiss the reinstall notice with a finite 180 ms height/fade animation, stable inner text layout, rapid retargeting and a direct reduced-motion path.
+- Place the download table in a painted shadow card. Round exposed ends of both the moving overall segment and per-file progress fills.
+
 ## 0.23.2 Beta
 
 - Keep the selected sidebar background in place with an independent quiet animated hover; clip hover out of the selected surface.
