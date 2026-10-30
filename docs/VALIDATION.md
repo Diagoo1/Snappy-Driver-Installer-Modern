@@ -1,10 +1,10 @@
 # Validation scope
 
-Current application version: **0.23.3 Beta**. Hardware/Windows compatibility testing is ongoing. This document separates verified behavior from implementation that still needs hardware/VM testing.
+Current application version: **0.23.4 Beta**. Hardware/Windows compatibility testing is ongoing. This document separates verified behavior from implementation that still needs hardware/VM testing.
 
 | Area | Evidence |
 | --- | --- |
-| Interface, menus, RTL and instances | 319 regression checks at 100% and 150%; English/Arabic and light/dark visual review |
+| Interface, menus, RTL and instances | 323 regression checks at 100% and 150%; English/Arabic and light/dark visual review |
 | Structural/source integration | 82 checks; critical original source fingerprints and reviewed patches |
 | Current native matching | Read-only scan: 216 devices and 567 candidates on the development host |
 | Original engine workflows | Repeated scan, snapshot save/load, target-system preview and extraction of six INF files |
@@ -58,3 +58,5 @@ The final sidebar marker is paint-only: its short inset rounded pill and rounded
 0.23.2: 312 UI checks passed at 100%/150%, including selected-sidebar background persistence under an independent quiet hover, a three-row popup fitting its items, the real three-second reinstall notice timeout, refreshes not re-showing that notice, and Manual/Never notice policy. The 84-image gallery was refreshed and metric-card paint/shadows reviewed in light/dark. Settings Check now is wired to a forced catalog refresh in the Download center; live public network transfer and hardware installation remain outside these fixture checks. No new restore points, driver installations or reboots were performed.
 
 0.23.3: 319 UI checks at 100%/150% include parent-window containment, the download table card, intermediate notice entry/exit heights, reduced-motion snapping and pixel checks for the exposed rounded busy-segment end. The dark zoom test now opens the visible Settings control and inspects its owned popup instead of relying on whichever popup owns global focus. The updated four-mode gallery retains transparent dialog corners. Small parent windows use content scrolling. Notice animation is finite and affects only the small notice; no window minimize/maximize animation was added. Hardware installation/restore/reboot remain untested.
+
+0.23.4: 323 UI checks at 100%/150%, including pixel comparisons proving that both the hovered per-file progress track and status pill remain distinct from the row background in light and dark themes. Rounded shapes, progress values and existing download behavior are preserved. The 82 source checks and static x86 import audit passed. No actual driver installation/restore/reboot was performed.

@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.23.4 Beta
+
+- Keep per-file progress tracks and status pills distinct from the hovered package row in light and dark themes, using a contrasting surface and thin rounded border. Retain the actual progress fill and text.
+
 ## 0.23.3 Beta
 
 - Bound and center the Download center within the main window and available screen; scroll the content when the parent is compact.
