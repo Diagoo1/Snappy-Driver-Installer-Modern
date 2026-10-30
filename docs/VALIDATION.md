@@ -1,10 +1,10 @@
 # Validation scope
 
-Current application version: **0.23.0 Beta**. Hardware/Windows compatibility testing is ongoing. This document separates verified behavior from implementation that still needs hardware/VM testing.
+Current application version: **0.23.1 Beta**. Hardware/Windows compatibility testing is ongoing. This document separates verified behavior from implementation that still needs hardware/VM testing.
 
 | Area | Evidence |
 | --- | --- |
-| Interface, menus, RTL and instances | 288 regression checks at 100% and 150%; English/Arabic and light/dark visual review |
+| Interface, menus, RTL and instances | 305 regression checks at 100% and 150%; English/Arabic and light/dark visual review |
 | Structural/source integration | 82 checks; critical original source fingerprints and reviewed patches |
 | Current native matching | Read-only scan: 216 devices and 567 candidates on the development host |
 | Original engine workflows | Repeated scan, snapshot save/load, target-system preview and extraction of six INF files |
@@ -52,3 +52,5 @@ The final sidebar marker is paint-only: its short inset rounded pill and rounded
 0.22.1: 277 UI checks passed at both 100% and 150%, including intermediate shared hover/selection positions, rapid retargeting, immediate reduced-motion behavior and highlight alignment after compact footer/layout changes. Shared selection/marker and hover surfaces use finite property animations; item text/icons remain directly rendered. Resize/show synchronization and hide-time cancellation are implemented. The final four-mode gallery and static x86 import audit were reviewed. No new real hardware operations were performed.
 
 0.23.0: 288 UI regression checks at 100% and 150% cover single-surface sidebar motion, repeated active-page clicks, update notices, download columns/metrics/filtering and classic Index directory resolution. The 38 offline transfer checks include cross-file verified progress and local-version availability. The loopback peer test transferred 95,000 verified bytes to an independent downloader. HTTPS metadata-only probes parsed 68 packs + 68 indexes from SDI and 109 packs + 109 indexes from SDIO at validation time. These changing catalog counts are observations, not hard-coded application values. Full public driver-pack downloads and real installation/restore/reboot were not performed. The 84-image four-mode gallery uses labeled sample data.
+
+0.23.1: 305 UI checks at 100%/150% cover standalone catalog routing, progress-column proportions, staged source/schedule settings, startup vs timer behavior, elapsed hours, launch thresholds, retry cooldown and dated checks completing once. Opening cached metadata does not advance the successful network-check timestamp. Automatic checks run only while the app is open; no background service or OS scheduled task was installed. English/Arabic have no collected-key fallbacks. Actual multi-hour/day waits and sleep/wake behavior were not tested; date/time rules were checked with deterministic timestamps. No real driver installation/restore/reboot was performed.

@@ -1,12 +1,20 @@
 # Driver-pack and index updates
 
-The Drivers page shows a compact update notice. Open it to review the Download center. The optional startup check reads catalog metadata only; disable it on the Driver packages page. It does not start a package download or install a driver.
+The Drivers page shows a compact update notice. Open it to review the Download center. Configure automatic checks on Settings → Driver library updates. Checks read catalog metadata only. It does not start a package download or install a driver.
 
 ## Library and source
 
 The detected SDI library uses the official `sdi-tool.org/releases/SDI_Update.torrent` catalog; SDIO uses `www.glenn.delahoy.com/downloads/sdio/SDIO_Update.torrent`. Classic `Drivers` and `Index/SDI` paths and SDIO `drivers` / `indexes/SDIO` paths are recognized. A manually imported catalog is not cached as an official feed. Errors are displayed without pretending that the library is current.
 
 Scanning uses a private index cache and preserves source indexes. Explicitly selected downloads intentionally save the chosen packages/indexes in the configured library. Older archives are not deleted automatically.
+
+## Source and schedule settings
+
+Select Automatic, SDI or SDIO, then Apply schedule. An explicit source works without an existing offline library and overrides detection for catalog checks and the Download center. Automatic detects the configured library and falls back to SDIO when none is detected. This chooses the update catalog; it does not replace the embedded matching engine.
+
+Choose manual checks, every application launch, every 1–720 hours, every 1–100 launches, or one local date/time. Hourly checks use the last successful check per source. The date/time is stored in UTC and displayed locally; a successful check completes that date. Launch counters reset after a successful catalog check. Check now uses saved settings; Apply saves staged changes.
+
+The schedule runs while the application is open. It installs no service or Windows scheduled task. Overdue hourly/date checks run after reopening; startup checks wait if the engine is busy. A failed scheduled interval/date check waits at least 15 minutes before retrying. The driver home page shows availability or a connection error. No package download or driver installation starts automatically.
 
 ## Choosing files
 

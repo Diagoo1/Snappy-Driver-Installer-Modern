@@ -69,6 +69,9 @@ private slots:
 
 private:
     void checkLibraryUpdates();
+    void evaluateLibrarySchedule(bool startup=false);
+    QString updateLibraryFamily()const;
+    QWidget *createLibraryUpdateSettings();
     void refreshLibraryNotice();
     QStringList matchingPackages()const;
     void openOnlinePackages(const QString &package=QString());

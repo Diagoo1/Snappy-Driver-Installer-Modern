@@ -22,9 +22,9 @@ QWidget {font-family:"Segoe UI";}
 QWidget#root {background:transparent;}
 QScrollArea {background:transparent;border:0;}
 QScrollArea>QWidget>QWidget {background:transparent;}
-QSpinBox {background:%2;color:%4;border:1px solid %6;border-radius:9px;padding:8px 25px 8px 11px;min-height:20px;}
-QSpinBox::up-button,QSpinBox::down-button {background:transparent;border:0;width:22px;}
-QSpinBox::up-button:hover,QSpinBox::down-button:hover {background:%3;}
+QSpinBox,QDateTimeEdit {background:%2;color:%4;border:1px solid %6;border-radius:9px;padding:8px 25px 8px 11px;min-height:20px;}
+QSpinBox::up-button,QSpinBox::down-button,QDateTimeEdit::up-button,QDateTimeEdit::down-button {background:transparent;border:0;width:22px;}
+QSpinBox::up-button:hover,QSpinBox::down-button:hover,QDateTimeEdit::up-button:hover,QDateTimeEdit::down-button:hover {background:%3;}
 QTabWidget::pane {border:0; background:transparent;}
 QTabBar::tab {color:%5; background:transparent; padding:10px 18px; border-bottom:2px solid transparent;}
 QTabBar::tab:selected {color:%4; border-bottom:2px solid #00AFA5;}

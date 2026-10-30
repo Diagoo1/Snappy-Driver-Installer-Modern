@@ -1,5 +1,12 @@
 # Changelog
 
+## 0.23.1 Beta
+
+- Add saved Automatic / SDI / SDIO catalog selection, including standalone use without an offline library.
+- Schedule metadata checks manually, at startup, by elapsed hours, by launch count or at one local date/time; retain successful-check history and show results on the driver home page.
+- Enlarge the download table, allocate a wider per-file progress column and rebalance package/version/status columns across the window.
+- Move library update preferences into a dedicated bilingual settings card with Apply and Check now. Schedules run while the application is open and catch overdue time-based checks after reopening.
+
 ## 0.23.0 Beta
 
 - Use one interpolated sidebar highlight during hover/click transitions; keep the active page checked and bold on repeated clicks or keyboard activation.

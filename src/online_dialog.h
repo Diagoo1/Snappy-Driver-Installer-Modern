@@ -4,6 +4,7 @@
 #include "online_packages.h"
 #include <QThread>
 #include <QElapsedTimer>
+#include <QDateTime>
 class QTreeWidget;
 class QLabel;
 class QPushButton;
@@ -39,7 +40,9 @@ public:
     bool filesChanged()const{return m_changed;}
     void setCatalog(const OnlinePackages::Catalog &catalog);
     void refreshCatalog(){check();}
+    void setCatalogSource(const QUrl &source);
     OnlinePackages::Catalog catalog()const{return m_catalog;}
+    QDateTime catalogCheckedAt()const{return m_catalogCheckedAt;}
     QUrl catalogSource()const{return m_worker->imported.isEmpty()?m_worker->metadataUrl:QUrl();}
 protected:
     void closeEvent(QCloseEvent*) Q_DECL_OVERRIDE;
@@ -56,6 +59,7 @@ private:
     QStringList m_needed;
     OnlineWorker *m_worker;
     OnlinePackages::Catalog m_catalog;
+    QDateTime m_catalogCheckedAt;
     QVector<OnlinePackages::Availability> m_availability;
     QTreeWidget *m_files;
     QLabel *m_status,*m_summary;
