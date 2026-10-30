@@ -7,6 +7,7 @@
 #include <QLabel>
 #include <QPainter>
 #include <QMouseEvent>
+#include <QResizeEvent>
 #include <QHBoxLayout>
 #include <QLinearGradient>
 #include <QFont>
@@ -16,7 +17,7 @@
 #include <QGraphicsOpacityEffect>
 
 TitleBar::TitleBar(QWidget *parent)
-  : QWidget(parent),m_menu(0),m_collapse(0),m_refresh(0),m_min(0),m_max(0),m_close(0),
+  : QWidget(parent),m_menu(0),m_collapse(0),m_refresh(0),m_theme(0),m_min(0),m_max(0),m_close(0),
     m_status(0),m_dragging(false),m_arabic(false),m_maximized(false),m_workflowLocked(false)
 {
     setObjectName(QStringLiteral("customTitleBar"));
@@ -51,7 +52,7 @@ TitleBar::TitleBar(QWidget *parent)
     m_status->setObjectName(QStringLiteral("headerStatus"));
     m_status->setAttribute(Qt::WA_TransparentForMouseEvents);
     l->addWidget(m_status);
-    m_status->setMinimumWidth(180);m_status->setMaximumWidth(260);m_status->setAlignment(Qt::AlignRight|Qt::AlignVCenter);
+    m_status->setMinimumWidth(120);m_status->setMaximumWidth(260);m_status->setAlignment(Qt::AlignRight|Qt::AlignVCenter);
     QGraphicsOpacityEffect *statusFade=new QGraphicsOpacityEffect(m_status);statusFade->setOpacity(1);m_status->setGraphicsEffect(statusFade);
     QTimer *messages=new QTimer(this);messages->setObjectName(QStringLiteral("headerPhraseTimer"));messages->setInterval(6500);
     connect(messages,&QTimer::timeout,this,[this,statusFade](){
@@ -64,6 +65,7 @@ TitleBar::TitleBar(QWidget *parent)
         connect(out,&QPropertyAnimation::finished,this,[this,statusFade,next](){m_status->setText(next);QPropertyAnimation *in=new QPropertyAnimation(statusFade,"opacity",m_status);in->setDuration(180);in->setStartValue(0.0);in->setEndValue(1.0);in->start(QAbstractAnimation::DeleteWhenStopped);});out->start(QAbstractAnimation::DeleteWhenStopped);
     });messages->start();
     l->addSpacing(12);
+    m_theme=createButton(QStringLiteral("moon"),QStringLiteral("titleAction"),QStringLiteral("Switch to dark mode"));m_theme->setObjectName(QStringLiteral("titleThemeToggle"));m_theme->setCheckable(true);l->addWidget(m_theme);
     m_refresh = createButton(QStringLiteral("refresh"),QStringLiteral("titleAction"),QStringLiteral("Refresh devices"));
     l->addWidget(m_refresh);
     m_collapse = createButton(QStringLiteral("panel-left"),QStringLiteral("titleAction"),QStringLiteral("Collapse sidebar"));
@@ -78,6 +80,7 @@ TitleBar::TitleBar(QWidget *parent)
     m_close = createButton(QStringLiteral("close"),QStringLiteral("windowClose"),QStringLiteral("Close"));
     l->addWidget(m_close);
 
+    connect(m_theme,&QToolButton::clicked,this,&TitleBar::themeRequested);
     connect(m_refresh,&QToolButton::clicked,this,&TitleBar::refreshRequested);
     connect(m_menu,&QToolButton::clicked,this,&TitleBar::menuRequested);
     connect(m_collapse,&QToolButton::clicked,this,&TitleBar::sidebarRequested);
@@ -101,6 +104,8 @@ QToolButton *TitleBar::createButton(const QString &symbol,const QString &objectN
     b->setIconSize(QSize(20,20));
     return b;
 }
+
+void TitleBar::resizeEvent(QResizeEvent *event){QWidget::resizeEvent(event);if(m_status)m_status->setVisible(width()>=1050);}
 
 void TitleBar::paintEvent(QPaintEvent *)
 {
@@ -126,12 +131,14 @@ void TitleBar::setMaximized(bool maximized)
                                     QColor("#E3F4F6"),20));
     updateTooltips();
 }
+void TitleBar::setDark(bool dark){m_dark=dark;m_theme->setChecked(dark);m_theme->setIcon(VectorIcons::icon(dark?QStringLiteral("sun"):QStringLiteral("moon"),QColor("#E3F4F6"),20));updateTooltips();}
 void TitleBar::setArabic(bool arabic) { m_arabic=arabic;
     findChild<QLabel*>(QStringLiteral("headerTitle"))->setText(arabic?QString::fromUtf8("مدير تعريفات الأجهزة"):QStringLiteral("Snappy Driver Installer"));
     findChild<QLabel*>(QStringLiteral("headerSub"))->setText(arabic?QString::fromUtf8("واجهة طارق صادق"):QStringLiteral("UI by Tarek Sadek"));
     updateTooltips(); }
 void TitleBar::updateTooltips()
 {
+    m_theme->setToolTip(m_dark?(m_arabic?QString::fromUtf8("التبديل إلى الوضع الفاتح"):QStringLiteral("Switch to light mode")):(m_arabic?QString::fromUtf8("التبديل إلى الوضع الداكن"):QStringLiteral("Switch to dark mode")));m_theme->setAccessibleName(m_theme->toolTip());
     m_refresh->setToolTip(m_arabic ? QString::fromUtf8("تحديث قائمة الأجهزة") : QStringLiteral("Refresh devices"));
     m_menu->setToolTip(m_arabic ? QString::fromUtf8("الأدوات والقائمة") : QStringLiteral("Tools and utilities"));
     m_collapse->setToolTip(m_arabic ? QString::fromUtf8("طي أو فتح القائمة الجانبية") : QStringLiteral("Collapse / expand sidebar"));

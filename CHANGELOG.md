@@ -1,5 +1,12 @@
 # Changelog
 
+## 0.23.6 Beta
+
+- Paint one continuous download-row separator across all seven columns, including progress and status cells.
+- Add a vector moon/sun action to the titlebar, synchronized with the Settings dark-mode switch and saved preferences.
+- Default to Follow Windows theme when no explicit theme mode exists. Windows 10/11 read the current app theme; older Windows uses light in automatic mode.
+- React to Windows theme notifications and application activation; manual controls exit automatic mode and preserve the chosen palette.
+
 ## 0.23.5 Beta
 
 - Toggle a download package checkbox by clicking anywhere in its row, including progress/version/status cells. Handle the checkbox through the same single toggle path.

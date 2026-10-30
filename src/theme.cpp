@@ -214,7 +214,7 @@ QProgressBar#mainProgress {background:%3; color:%4; border:0; border-radius:7px;
 QProgressBar#mainProgress::chunk {background:qlineargradient(x1:0,y1:0,x2:1,y2:0,stop:0 #147CA7,stop:1 #00BDB1); border-radius:7px;}
 QWidget#aboutBody {background:transparent;}
 QTreeWidget#onlineFiles {background:%2;alternate-background-color:%1;color:%4;border:0;border-radius:13px;outline:0;padding:8px;selection-background-color:%3;selection-color:%4;}
-QTreeWidget#onlineFiles::item {padding:11px 8px;border-bottom:1px solid %6;min-height:24px;}
+QTreeWidget#onlineFiles::item {padding:11px 8px;border:0;min-height:24px;}
 QTreeWidget#onlineFiles::item:hover {background:transparent;}
 QTreeWidget#onlineFiles::indicator:unchecked {width:18px;height:18px;background:%2;border:1px solid %7;border-radius:4px;}
 QTreeWidget#onlineFiles::indicator:checked {width:18px;height:18px;background:#10AAA0;border:1px solid #10AAA0;border-radius:4px;image:url(:/sdio/assets/icons/check.svg);}

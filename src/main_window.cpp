@@ -37,6 +37,7 @@
 #include <QSignalBlocker>
 #include <QJsonDocument>
 #include "theme.h"
+#include "theme_preference.h"
 #include <QApplication>
 #include <QCloseEvent>
 #include <QDialog>
@@ -141,7 +142,7 @@ MainWindow::MainWindow(bool demo,QWidget *parent)
     if(m_languageCode==QStringLiteral("hebrew"))m_languageCode=QStringLiteral("english");
     m_arabic=m_languageCode==QStringLiteral("arabic");
     UiLanguage::setLanguage(m_languageCode);
-    m_dark=m_settings->value(QStringLiteral("dark"),false).toBool();
+    m_themeMode=ThemePreference::mode(*m_settings);m_dark=ThemePreference::effective(m_themeMode);
     m_reduceMotion=m_settings->value(QStringLiteral("reduceMotion"),false).toBool();
     // Restore motion once for this upgrade; keep subsequent accessibility choices.
     if(m_settings->value(QStringLiteral("motionProfile"),0).toInt()<2){
@@ -197,6 +198,7 @@ MainWindow::MainWindow(bool demo,QWidget *parent)
     connect(m_installation,&InstallationWorkspace::systemProtectionRequested,this,[this](){dispatchTool(QStringLiteral("system-protection"));});
 
     connect(m_sidebar,&Sidebar::pageRequested,this,&MainWindow::navigate);
+    connect(m_titleBar,&TitleBar::themeRequested,this,&MainWindow::updateDark);
     connect(m_titleBar,&TitleBar::refreshRequested,this,&MainWindow::beginScan);
     connect(m_titleBar,&TitleBar::sidebarRequested,m_sidebar,&Sidebar::toggleCollapsed);
     connect(m_titleBar,&TitleBar::menuRequested,this,&MainWindow::openToolsMenu);
@@ -344,6 +346,7 @@ void MainWindow::resizeEvent(QResizeEvent *event)
 void MainWindow::changeEvent(QEvent *e)
 {
     QWidget::changeEvent(e);
+    if(e->type()==QEvent::ActivationChange && isActiveWindow() && m_autoTheme)QTimer::singleShot(0,this,[this](){refreshSystemTheme();});
     if(e->type()==QEvent::WindowStateChange && m_titleBar){
         const bool restored=static_cast<QWindowStateChangeEvent*>(e)->oldState().testFlag(Qt::WindowMinimized) && !isMinimized();
         const bool cornersChanged=property("maximized").toBool()!=isMaximized();
@@ -357,6 +360,7 @@ void MainWindow::changeEvent(QEvent *e)
 #ifdef Q_OS_WIN
 bool MainWindow::nativeEvent(const QByteArray &eventType,void *message,long *result)
 {
+    if(eventType==QByteArray("windows_generic_MSG")){MSG *themeMessage=static_cast<MSG*>(message);if(themeMessage && (themeMessage->message==WM_SETTINGCHANGE || themeMessage->message==WM_THEMECHANGED) && m_themeMode==QStringLiteral("system"))QTimer::singleShot(50,this,[this](){refreshSystemTheme();});}
     if(eventType==QByteArray("windows_generic_MSG") && !isMaximized() && !isFullScreen()){
         MSG *msg=static_cast<MSG*>(message);
         if(msg && msg->message==WM_NCHITTEST){
@@ -830,25 +834,26 @@ QWidget *MainWindow::createSettings()
     m_language->setFocusPolicy(Qt::ClickFocus);
     m_language->setMinimumWidth(174);
     m_darkLabel=newLabel(QStringLiteral("Dark mode"),"bodyText",panel);
-    m_darkSwitch=new ToggleSwitch(panel);
+    m_darkSwitch=new ToggleSwitch(panel);m_darkSwitch->setObjectName(QStringLiteral("darkModeSwitch"));
     m_motionLabel=newLabel(QStringLiteral("Reduce animations"),"bodyText",panel);
     m_motionSwitch=new ToggleSwitch(panel);
     grid->addWidget(m_langLabel,1,0);grid->addWidget(m_language,1,1);
     grid->addWidget(m_darkLabel,2,0);grid->addWidget(m_darkSwitch,2,1,Qt::AlignRight);
-    grid->addWidget(m_motionLabel,3,0);grid->addWidget(m_motionSwitch,3,1,Qt::AlignRight);
+    grid->addWidget(m_motionLabel,4,0);grid->addWidget(m_motionSwitch,4,1,Qt::AlignRight);
+    m_autoTheme=new QCheckBox(t("Follow Windows theme automatically","اتباع ثيم ويندوز تلقائيًا"),panel);m_autoTheme->setObjectName(QStringLiteral("followSystemTheme"));m_autoTheme->setChecked(m_themeMode==QStringLiteral("system"));m_autoTheme->setToolTip(t("Uses the Windows 10/11 app theme. Older Windows defaults to light. Manual toggles turn automatic mode off.","يتبع ثيم التطبيقات في ويندوز 10 و11. الإصدارات الأقدم تبدأ بالفاتح. التبديل اليدوي يلغي الوضع التلقائي."));grid->addWidget(m_autoTheme,3,0,1,2);connect(m_autoTheme,&QCheckBox::toggled,this,[this](bool automatic){if(automatic){m_themeMode=QStringLiteral("system");const bool dark=ThemePreference::systemDark();m_dark=dark;saveSettings();applyTheme();}else updateDark(m_dark);});
     m_langNotice=newLabel(QString(),"subText",panel);
     m_langNotice->setWordWrap(true);
-    grid->addWidget(translatedLabel("Interface size","حجم الواجهة","bodyText",panel),4,0);
+    grid->addWidget(translatedLabel("Interface size","حجم الواجهة","bodyText",panel),5,0);
     QComboBox *zoom=new SearchableLanguageCombo(panel);zoom->setObjectName(QStringLiteral("interfaceZoom"));
     const int current=UiScale::effectivePercent();const QSize base=qApp->desktop()->availableGeometry(this).size()*current/100;
     const int levels[]={75,85,90,100,110,125,150,175,200};for(int percent:levels){zoom->addItem(QString::number(percent)+QLatin1Char('%'),percent);QStandardItemModel *model=qobject_cast<QStandardItemModel*>(zoom->model());if(model && UiScale::fitPercent(percent,base)<percent)model->item(zoom->count()-1)->setEnabled(false);}
-    if(zoom->findData(current)<0)zoom->addItem(QString::number(current)+QLatin1Char('%'),current);zoom->setCurrentIndex(zoom->findData(current));grid->addWidget(zoom,4,1);
-    QPushButton *applyZoom=translatedButton("Apply size & reopen","تطبيق الحجم وإعادة الفتح","outlineButton",panel);applyZoom->setObjectName(QStringLiteral("applyInterfaceZoom"));grid->addWidget(applyZoom,5,0,1,2);
+    if(zoom->findData(current)<0)zoom->addItem(QString::number(current)+QLatin1Char('%'),current);zoom->setCurrentIndex(zoom->findData(current));grid->addWidget(zoom,5,1);
+    QPushButton *applyZoom=translatedButton("Apply size & reopen","تطبيق الحجم وإعادة الفتح","outlineButton",panel);applyZoom->setObjectName(QStringLiteral("applyInterfaceZoom"));grid->addWidget(applyZoom,6,0,1,2);
     connect(applyZoom,&QPushButton::clicked,this,[this,zoom](){if(m_engine->isBusy() || m_installation->isActive())return;const int percent=zoom->currentData().toInt();if(percent==UiScale::effectivePercent())return;
         if(!projectMessage(this,t("Interface size","حجم الواجهة"),t("Reopen the application to apply the selected size? Windows display settings stay as they are.","إعادة فتح البرنامج لتطبيق الحجم المختار؟ إعدادات عرض ويندوز ستبقى كما هي."),true,m_arabic))return;
         m_settings->setValue(QStringLiteral("ui/scalePercent"),percent);m_settings->sync();QStringList arguments;arguments<<QStringLiteral("--restart-after")<<QString::number(QCoreApplication::applicationPid())<<QStringLiteral("--no-splash");if(m_demo)arguments<<QStringLiteral("--demo");if(QProcess::startDetached(QCoreApplication::applicationFilePath(),arguments))qApp->quit();
     });
-    grid->addWidget(m_langNotice,6,0,1,2);
+    grid->addWidget(m_langNotice,7,0,1,2);
     grid->setColumnStretch(0,1);
     sections->addWidget(panel,0,0);
     QWidget *preview=new SurfaceCard(page);preview->setObjectName(QStringLiteral("settingsCard"));preview->setProperty("tone",QStringLiteral("blue"));QGridLayout *previewGrid=new QGridLayout(preview);previewGrid->setContentsMargins(24,20,24,20);previewGrid->setHorizontalSpacing(20);previewGrid->setVerticalSpacing(12);
@@ -1081,7 +1086,9 @@ void MainWindow::updateLanguage(int index)
     saveSettings();translateUi();
 }
 void MainWindow::updateDark(bool enabled)
-{ m_dark=enabled;saveSettings();applyTheme(); }
+{m_themeMode=enabled?QStringLiteral("dark"):QStringLiteral("light");m_dark=enabled;saveSettings();applyTheme();}
+void MainWindow::refreshSystemTheme(){if(m_themeMode!=QStringLiteral("system"))return;const bool dark=ThemePreference::systemDark();if(dark!=m_dark){m_dark=dark;applyTheme();saveSettings();}}
+
 void MainWindow::updateReduceMotion(bool enabled)
 {
     m_reduceMotion=enabled;saveSettings();
@@ -1097,6 +1104,7 @@ void MainWindow::saveSettings()
     m_settings->setValue(QStringLiteral("installation/restorePointRequired"),m_drivers->createRestorePoint());m_settings->setValue(QStringLiteral("installation/rebootAfter"),m_drivers->rebootAfter());
     m_settings->setValue(QStringLiteral("language"),m_languageCode);
     m_settings->setValue(QStringLiteral("dark"),m_dark);
+    m_settings->setValue(QStringLiteral("theme/mode"),m_themeMode);
     m_settings->setValue(QStringLiteral("reduceMotion"),m_reduceMotion);
     m_settings->sync();
 }
@@ -1105,6 +1113,10 @@ void MainWindow::applyTheme()
     setProperty("darkMode",m_dark);
     setStyleSheet(Theme::styleSheet(m_dark));
     m_drivers->setDark(m_dark);
+    if(m_darkSwitch->isChecked()!=m_dark){QSignalBlocker blocked(m_darkSwitch);m_darkSwitch->setMotionEnabled(false);m_darkSwitch->setChecked(m_dark);m_darkSwitch->setPosition(m_dark?1.0:0.0);m_darkSwitch->setMotionEnabled(!m_reduceMotion);}
+    if(m_autoTheme){QSignalBlocker blocked(m_autoTheme);m_autoTheme->setChecked(m_themeMode==QStringLiteral("system"));}
+    m_titleBar->setDark(m_dark);
+    for(QWidget *top:QApplication::topLevelWidgets()){if(top==this)continue;bool owned=false;for(QWidget *owner=top->parentWidget();owner;owner=owner->parentWidget())if(owner==this){owned=true;break;}if(!owned)continue;if(top->property("darkMode").isValid())top->setProperty("darkMode",m_dark);if(dynamic_cast<RoundedDialog*>(top))top->setStyleSheet(Theme::styleSheet(m_dark));top->update();}
     m_darkSwitch->setDark(m_dark);
     m_motionSwitch->setDark(m_dark);
 }

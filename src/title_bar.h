@@ -18,6 +18,7 @@ public:
     void setStatus(const QString &status);
     void setRefreshEnabled(bool enabled);
     void setArabic(bool arabic);
+    void setDark(bool dark);
     void setWorkflowLocked(bool locked);
     bool isDragArea(const QPoint &position) const;
 
@@ -28,9 +29,11 @@ signals:
     void menuRequested();
     void sidebarRequested();
     void refreshRequested();
+    void themeRequested(bool dark);
 
 protected:
     void paintEvent(QPaintEvent *event) Q_DECL_OVERRIDE;
+    void resizeEvent(QResizeEvent *event) Q_DECL_OVERRIDE;
     void mousePressEvent(QMouseEvent *event) Q_DECL_OVERRIDE;
     void mouseMoveEvent(QMouseEvent *event) Q_DECL_OVERRIDE;
     void mouseReleaseEvent(QMouseEvent *event) Q_DECL_OVERRIDE;
@@ -43,6 +46,7 @@ private:
     QToolButton *m_menu;
     QToolButton *m_collapse;
     QToolButton *m_refresh;
+    QToolButton *m_theme;
     QToolButton *m_min;
     QToolButton *m_max;
     QToolButton *m_close;
@@ -52,6 +56,7 @@ private:
     bool m_arabic;
     bool m_maximized;
     bool m_workflowLocked;
+    bool m_dark=false;
 };
 
 #endif

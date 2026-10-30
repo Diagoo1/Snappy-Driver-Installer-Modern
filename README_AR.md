@@ -3,7 +3,7 @@
   <h1>مدير تعريفات الأجهزة — الواجهة الحديثة</h1>
   <p><strong>مكتبة تعريفاتك، ومحرك المطابقة الأصلي، وتجربة Windows حديثة.</strong></p>
   <p>فحص ومقارنة وإدارة التعريفات من برنامج محمول واحد.<br>من تطوير <strong>طارق صادق · Diagoo1</strong></p>
-  <p><a href="https://github.com/Diagoo1/Snappy-Driver-Installer-Modern/releases/tag/v0.23.5"><img src="https://img.shields.io/badge/Download-0.23.5_Beta-008D86?style=for-the-badge" alt="تحميل البيتا"></a> <img src="https://img.shields.io/badge/License-GPL--3.0-075266?style=for-the-badge" alt="GPL 3"></p>
+  <p><a href="https://github.com/Diagoo1/Snappy-Driver-Installer-Modern/releases/tag/v0.23.6"><img src="https://img.shields.io/badge/Download-0.23.6_Beta-008D86?style=for-the-badge" alt="تحميل البيتا"></a> <img src="https://img.shields.io/badge/License-GPL--3.0-075266?style=for-the-badge" alt="GPL 3"></p>
   <p><a href="README.md">English</a> · <a href="#جولة-بالصور">الصور</a> · <a href="#ابدأ-الاستخدام">ابدأ الاستخدام</a> · <a href="https://github.com/Diagoo1/Snappy-Driver-Installer-Modern/issues/new?template=bug_report.yml">الإبلاغ عن مشكلة</a></p>
 </div>
 
@@ -15,7 +15,7 @@
 
 الواجهة والخطوط والمحرك داخل ملف تنفيذي واحد. تظل الحزم والفهارس في مجلدات منفصلة، فتستخدم مكتبتك الأوفلاين الموجودة دون تضخيم البرنامج بحزم التعريفات.
 
-> **بيتا عامة · 0.23.5** — إصدار موحّد يجمع تعديلات الواجهة وربط المحرك المتراكمة. اختبار الأجهزة وإصدارات Windows مستمر. هذا مشروع مجتمعي مستقل، مع حفظ حقوق المحرك الأصلي ومساهميه.
+> **بيتا عامة · 0.23.6** — إصدار موحّد يجمع تعديلات الواجهة وربط المحرك المتراكمة. اختبار الأجهزة وإصدارات Windows مستمر. هذا مشروع مجتمعي مستقل، مع حفظ حقوق المحرك الأصلي ومساهميه.
 
 ## المزايا بنظرة واحدة
 
@@ -67,7 +67,7 @@
 
 ## ابدأ الاستخدام
 
-1. حمّل **ملف EXE** أو **الحزمة المحمولة ZIP** من [0.23.5 Beta](https://github.com/Diagoo1/Snappy-Driver-Installer-Modern/releases/tag/v0.23.5).
+1. حمّل **ملف EXE** أو **الحزمة المحمولة ZIP** من [0.23.6 Beta](https://github.com/Diagoo1/Snappy-Driver-Installer-Modern/releases/tag/v0.23.6).
 2. ضع البرنامج بجوار المكتبة أو حدّد مجلداتها من الإعدادات:
 
 ```text
@@ -83,11 +83,11 @@ Your driver library/
 
 | التنزيل | المحتوى |
 | --- | --- |
-| [الحزمة المحمولة](https://github.com/Diagoo1/Snappy-Driver-Installer-Modern/releases/download/v0.23.5/SnappyDriverInstaller-Modern-0.23.5-Beta-portable.zip) | ملف تشغيل واحد مع التراخيص ودليل بدء مختصر، دون DLL تشغيل بجواره. |
-| [ملف EXE](https://github.com/Diagoo1/Snappy-Driver-Installer-Modern/releases/download/v0.23.5/SnappyDriverInstaller-TS.exe) | نفس ملف البرنامج التنفيذي. |
-| [السورس](https://github.com/Diagoo1/Snappy-Driver-Installer-Modern/releases/download/v0.23.5/SnappyDriverInstaller-Modern-0.23.5-source.zip) | نسخة المصدر المطابقة للإصدار. |
-| [الصور](https://github.com/Diagoo1/Snappy-Driver-Installer-Modern/releases/download/v0.23.5/SnappyDriverInstaller-Modern-0.23.5-screenshots.zip) | معرض العربي والإنجليزي بالوضعين. |
-| [بصمات SHA-256](https://github.com/Diagoo1/Snappy-Driver-Installer-Modern/releases/download/v0.23.5/SHA256SUMS.txt) | للتحقق من سلامة التنزيلات المنشورة. |
+| [الحزمة المحمولة](https://github.com/Diagoo1/Snappy-Driver-Installer-Modern/releases/download/v0.23.6/SnappyDriverInstaller-Modern-0.23.6-Beta-portable.zip) | ملف تشغيل واحد مع التراخيص ودليل بدء مختصر، دون DLL تشغيل بجواره. |
+| [ملف EXE](https://github.com/Diagoo1/Snappy-Driver-Installer-Modern/releases/download/v0.23.6/SnappyDriverInstaller-TS.exe) | نفس ملف البرنامج التنفيذي. |
+| [السورس](https://github.com/Diagoo1/Snappy-Driver-Installer-Modern/releases/download/v0.23.6/SnappyDriverInstaller-Modern-0.23.6-source.zip) | نسخة المصدر المطابقة للإصدار. |
+| [الصور](https://github.com/Diagoo1/Snappy-Driver-Installer-Modern/releases/download/v0.23.6/SnappyDriverInstaller-Modern-0.23.6-screenshots.zip) | معرض العربي والإنجليزي بالوضعين. |
+| [بصمات SHA-256](https://github.com/Diagoo1/Snappy-Driver-Installer-Modern/releases/download/v0.23.6/SHA256SUMS.txt) | للتحقق من سلامة التنزيلات المنشورة. |
 
 ## التوافق وحالة البيتا
 
@@ -141,3 +141,7 @@ BUILD.cmd -Help
 من **الإعدادات ← تحديثات مكتبة التعريفات** اختَر تلقائي / SDI / SDIO، وحدد الفحص يدويًا أو عند التشغيل أو كل عدد ساعات أو مرات تشغيل أو في تاريخ ووقت محددين. الاختيار يعمل بدون مكتبة سابقة. الجدولة تعمل أثناء فتح البرنامج، وتلحق المواعيد الزمنية الفائتة عند إعادة فتحه.
 
 **يدوي** يخفي شريط التحديث عند إعادة الفتح حتى تفحص مجددًا، و**عدم إظهار إشعارات التحديث مطلقًا** يخفيه بالكامل. زر «افحص الآن» في الإعدادات يفتح مركز التنزيل ويفحص بيانات جديدة.
+
+### المظهر التلقائي
+
+زر القمر/الشمس في الشريط العلوي وسويتش الوضع الداكن في الإعدادات متزامنان. **اتباع ثيم ويندوز تلقائيًا** هو الافتراضي عند عدم وجود وضع مظهر صريح: ويندوز 10 و11 يتبعان ثيم التطبيقات الحالي، والإصدارات الأقدم تستخدم الفاتح. التبديل اليدوي من أي زر يحفظ اختيارك ويلغي التلقائي. أعد تفعيل التلقائي من الإعدادات ليتبع ويندوز مجددًا.

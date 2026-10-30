@@ -65,6 +65,7 @@ private slots:
     void onEngineError(const QString &reason);
     void updateLanguage(int index);
     void updateDark(bool enabled);
+    void refreshSystemTheme();
     void updateReduceMotion(bool enabled);
 
 private:
@@ -124,7 +125,8 @@ private:
     QString m_updateError;
     class SharingRestore *m_sharingRestore=0;
     QLabel *m_themeName;
-    QString m_languageCode;
+    QString m_languageCode,m_themeMode;
+    class QCheckBox *m_autoTheme=0;
     QComboBox *m_language,*m_targetVersion,*m_targetArchitecture;
     ToggleSwitch *m_darkSwitch,*m_motionSwitch;
     QPushButton *m_driversBrowse,*m_indexesBrowse,*m_probeButton,*m_onlineButton;
