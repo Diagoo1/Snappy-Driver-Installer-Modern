@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.23.7 Beta
+
+- Remove horizontal separators from the main driver list while keeping download-table separators.
+- Composite the scan snapshot over the resolved project background rather than the native light Window palette, preserving fractional DPI.
+- Keep the saved manual Light/Dark preference on later launches; Auto remains available explicitly.
+
 ## 0.23.6 Beta
 
 - Paint one continuous download-row separator across all seven columns, including progress and status cells.

@@ -990,8 +990,8 @@
     "Wait for the current operation to finish, then check again.": "انتظر انتهاء العملية الحالية ثم أعد الفحص.",
     "Follow Windows theme automatically": "اتباع ثيم ويندوز تلقائيًا",
     "Uses the Windows 10/11 app theme. Older Windows defaults to light. Manual toggles turn automatic mode off.": "يتبع ثيم التطبيقات في ويندوز 10 و11. الإصدارات الأقدم تبدأ بالفاتح. التبديل اليدوي يلغي الوضع التلقائي.",
-    "Version: 0.23.6 (Beta)\nWindows: %1\nArchitecture: %2\nLanguage: %3\nTheme: %4": "الإصدار: 0.23.6 (بيتا)\nويندوز: %1\nالمعمارية: %2\nاللغة: %3\nالمظهر: %4",
     "Switch to light mode": "التبديل إلى الوضع الفاتح",
-    "Switch to dark mode": "التبديل إلى الوضع الداكن"
+    "Switch to dark mode": "التبديل إلى الوضع الداكن",
+    "Version: 0.23.7 (Beta)\nWindows: %1\nArchitecture: %2\nLanguage: %3\nTheme: %4": "الإصدار: 0.23.7 (بيتا)\nويندوز: %1\nالمعمارية: %2\nاللغة: %3\nالمظهر: %4"
   }
 }

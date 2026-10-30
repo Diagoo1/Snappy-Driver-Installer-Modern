@@ -1,10 +1,10 @@
 # Validation scope
 
-Current application version: **0.23.6 Beta**. Hardware/Windows compatibility testing is ongoing. This document separates verified behavior from implementation that still needs hardware/VM testing.
+Current application version: **0.23.7 Beta**. Hardware/Windows compatibility testing is ongoing. This document separates verified behavior from implementation that still needs hardware/VM testing.
 
 | Area | Evidence |
 | --- | --- |
-| Interface, menus, RTL and instances | 341 regression checks at 100% and 150%; English/Arabic and light/dark visual review |
+| Interface, menus, RTL and instances | 343 regression checks at 100% and 150%; English/Arabic and light/dark visual review |
 | Structural/source integration | 82 checks; critical original source fingerprints and reviewed patches |
 | Current native matching | Read-only scan: 216 devices and 567 candidates on the development host |
 | Original engine workflows | Repeated scan, snapshot save/load, target-system preview and extraction of six INF files |
@@ -64,3 +64,5 @@ The final sidebar marker is paint-only: its short inset rounded pill and rounded
 0.23.5: 328 UI checks at 100%/150% include clicking each of the seven package columns, a single checkbox toggle, drag cancellation, transfer-time mouse/Space locks and idle keyboard selection. Application settings use QSettings NativeFormat under the current-user Registry key. The embedded engine sets FLAG_PRESERVECFG before use; the supplied classic SDI sdi.cfg was inspected read-only and preserved. These changes do not alter matching or installation behavior. No actual installation/restore/reboot was performed.
 
 0.23.6: 341 UI checks at 100%/150% cover two-way header/settings synchronization, rapid toggles, saved manual/automatic modes, reopening automatic mode, modeled modern/older-Windows decisions, and continuous separator pixels under all seven download columns in both themes. Current-host automatic detection is read-only; the tests do not change Windows personalization. Windows theme notifications and activation refresh are implemented; no VM matrix or real OS theme toggle across Windows versions was performed. Registry AppsUseLightTheme follows [Microsoft’s Windows settings reference](https://learn.microsoft.com/en-us/windows/apps/develop/settings/settings-common). Profiles without theme/mode default to System rather than the older cached dark boolean.
+
+0.23.7: 343 UI checks at 100%/150% include dark/light scan snapshots over a deliberately white native Window palette. Captured child content is composited on the resolved application background at fractional DPI. Main driver row separators are removed; download separators remain. Manual theme preferences persist independently from Auto. No hardware installation/restore/reboot was performed.

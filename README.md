@@ -4,7 +4,7 @@
   <p><strong>Your driver library. The original matching engine. A modern Windows experience.</strong></p>
   <p>Scan, compare and manage drivers from one portable application.<br>Created by <strong>Tarek Sadek · Diagoo1</strong></p>
   <p>
-    <a href="https://github.com/Diagoo1/Snappy-Driver-Installer-Modern/releases/tag/v0.23.6"><img src="https://img.shields.io/badge/Download-0.23.6_Beta-008D86?style=for-the-badge" alt="Download Beta"></a>
+    <a href="https://github.com/Diagoo1/Snappy-Driver-Installer-Modern/releases/tag/v0.23.7"><img src="https://img.shields.io/badge/Download-0.23.7_Beta-008D86?style=for-the-badge" alt="Download Beta"></a>
     <img src="https://img.shields.io/badge/License-GPL--3.0-075266?style=for-the-badge" alt="GPL 3">
     <img src="https://img.shields.io/badge/Desktop-C%2B%2B_%2F_Qt-075266?style=for-the-badge" alt="C++ and Qt">
   </p>
@@ -19,7 +19,7 @@
 
 One executable contains the interface, fonts and engine. Your driver packs and indexes stay in separate folders, so an existing offline library can be reused without bundling gigabytes of drivers into the application.
 
-> **Public Beta · 0.23.6** — This consolidated release contains the accumulated engine integration and interface improvements. Hardware and Windows compatibility testing is ongoing. This is an independent community project, with original engine and contributor credits preserved.
+> **Public Beta · 0.23.7** — This consolidated release contains the accumulated engine integration and interface improvements. Hardware and Windows compatibility testing is ongoing. This is an independent community project, with original engine and contributor credits preserved.
 
 ## Features at a glance
 
@@ -75,7 +75,7 @@ Settings include language/RTL, theme, motion, interface size and the project's r
 
 ## Get started
 
-1. Download the **EXE** or **portable ZIP** from [0.23.6 Beta](https://github.com/Diagoo1/Snappy-Driver-Installer-Modern/releases/tag/v0.23.6).
+1. Download the **EXE** or **portable ZIP** from [0.23.7 Beta](https://github.com/Diagoo1/Snappy-Driver-Installer-Modern/releases/tag/v0.23.7).
 2. Place the application beside your library, or select its folders in Settings:
 
 ```text
@@ -91,11 +91,11 @@ Your driver library/
 
 | Download | Contents |
 | --- | --- |
-| [Portable application](https://github.com/Diagoo1/Snappy-Driver-Installer-Modern/releases/download/v0.23.6/SnappyDriverInstaller-Modern-0.23.6-Beta-portable.zip) | One EXE with the license notices and quick-start text. No adjacent runtime DLLs. |
-| [Standalone EXE](https://github.com/Diagoo1/Snappy-Driver-Installer-Modern/releases/download/v0.23.6/SnappyDriverInstaller-TS.exe) | The same application executable. |
-| [Source code](https://github.com/Diagoo1/Snappy-Driver-Installer-Modern/releases/download/v0.23.6/SnappyDriverInstaller-Modern-0.23.6-source.zip) | The source snapshot for this release. |
-| [Screenshots](https://github.com/Diagoo1/Snappy-Driver-Installer-Modern/releases/download/v0.23.6/SnappyDriverInstaller-Modern-0.23.6-screenshots.zip) | The English/Arabic light/dark gallery. |
-| [SHA-256 checksums](https://github.com/Diagoo1/Snappy-Driver-Installer-Modern/releases/download/v0.23.6/SHA256SUMS.txt) | Integrity hashes for the published downloads. |
+| [Portable application](https://github.com/Diagoo1/Snappy-Driver-Installer-Modern/releases/download/v0.23.7/SnappyDriverInstaller-Modern-0.23.7-Beta-portable.zip) | One EXE with the license notices and quick-start text. No adjacent runtime DLLs. |
+| [Standalone EXE](https://github.com/Diagoo1/Snappy-Driver-Installer-Modern/releases/download/v0.23.7/SnappyDriverInstaller-TS.exe) | The same application executable. |
+| [Source code](https://github.com/Diagoo1/Snappy-Driver-Installer-Modern/releases/download/v0.23.7/SnappyDriverInstaller-Modern-0.23.7-source.zip) | The source snapshot for this release. |
+| [Screenshots](https://github.com/Diagoo1/Snappy-Driver-Installer-Modern/releases/download/v0.23.7/SnappyDriverInstaller-Modern-0.23.7-screenshots.zip) | The English/Arabic light/dark gallery. |
+| [SHA-256 checksums](https://github.com/Diagoo1/Snappy-Driver-Installer-Modern/releases/download/v0.23.7/SHA256SUMS.txt) | Integrity hashes for the published downloads. |
 
 ## Compatibility & Beta status
 

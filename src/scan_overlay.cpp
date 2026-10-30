@@ -1,6 +1,7 @@
 #include "ui_font.h"
 #include "ui_language.h"
 #include "scan_overlay.h"
+#include "theme.h"
 #include <QLabel>
 #include <QTimer>
 #include <QPainter>
@@ -45,7 +46,13 @@ void ScanOverlay::start(const QString &message,bool reducedMotion)
     if(!m_active) {
         // Two-pass downsample gives a subtle frosted background without a
         // costly live blur of the complete UI at every animation frame.
-        const QImage source=parentWidget()->grab().toImage();
+        // A transparent stack has no painted window background of its own.
+        // grab() would fill it from the native (often light) Window palette.
+        // Composite its children over our resolved theme instead, at native DPI.
+        const qreal dpr=parentWidget()->devicePixelRatioF();
+        QImage source(QSize(qCeil(parentWidget()->width()*dpr),qCeil(parentWidget()->height()*dpr)),QImage::Format_ARGB32_Premultiplied);
+        source.setDevicePixelRatio(dpr);source.fill(Theme::color("background",Theme::isDark(this)));
+        {QPainter snapshot(&source);parentWidget()->render(&snapshot,QPoint(),QRegion(),QWidget::DrawChildren);}
         const QImage small=source.scaled(qMax(1,source.width()/10),
                                         qMax(1,source.height()/10),Qt::IgnoreAspectRatio,Qt::SmoothTransformation);
         m_snapshot=QPixmap::fromImage(small.scaled(source.size(),Qt::IgnoreAspectRatio,Qt::SmoothTransformation));

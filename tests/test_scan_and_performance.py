@@ -15,7 +15,9 @@ class ScanAndPerformanceWiring(unittest.TestCase):
         self.assertNotIn('OfflineRoot',read('tools/build.ps1'))
     def test_overlay_is_actual_progress_not_fake_progress(self):
         overlay=read('src/scan_overlay.cpp')
-        self.assertIn('parentWidget()->grab()',overlay)
+        # Capture once at start; animation must not render the widget tree per frame.
+        self.assertIn('parentWidget()->render(',overlay.split('void ScanOverlay::setStage')[0])
+        self.assertNotIn('parentWidget()->render(',overlay.split('void ScanOverlay::paintEvent')[1])
         self.assertIn('small.scaled(source.size()',overlay)
         self.assertIn('QPainter p(this)',overlay)
         self.assertIn('m_timer->setInterval(33)',overlay)
