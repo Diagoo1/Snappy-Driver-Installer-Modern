@@ -50,13 +50,13 @@
 
 // Paint the entire header once so native section backgrounds cannot leave square corners.
 class DriverHeader : public QHeaderView {
-public:explicit DriverHeader(QWidget *parent):QHeaderView(Qt::Horizontal,parent){setFixedHeight(48);viewport()->setAutoFillBackground(false);viewport()->setAttribute(Qt::WA_OpaquePaintEvent,false);}
+public:explicit DriverHeader(QWidget *parent):QHeaderView(Qt::Horizontal,parent){setFixedHeight(56);viewport()->setAutoFillBackground(false);viewport()->setAttribute(Qt::WA_OpaquePaintEvent,false);}
 protected:void paintEvent(QPaintEvent*) Q_DECL_OVERRIDE {
     QPainter p(viewport());p.setRenderHint(QPainter::Antialiasing);const bool dark=Theme::isDark(this),rtl=layoutDirection()==Qt::RightToLeft;
     p.fillRect(viewport()->rect(),Theme::color("surface",dark));
     const QRectF band=QRectF(viewport()->rect()).adjusted(.5,3.5,-.5,-3.5);QLinearGradient fill(band.topLeft(),band.topRight());fill.setColorAt(0,Theme::color("headerStart",dark));fill.setColorAt(1,Theme::color("headerEnd",dark));p.setPen(Qt::NoPen);p.setBrush(fill);p.drawRoundedRect(band,12,12);
     QPainterPath clip;clip.addRoundedRect(band,12,12);p.setClipPath(clip);
-    QFont face=font();face.setFamily(UiFont::family());face.setPixelSize(12);face.setWeight(QFont::DemiBold);p.setFont(face);
+    QFont face=font();face.setFamily(UiFont::family());face.setPixelSize(13);face.setWeight(QFont::DemiBold);p.setFont(face);
     const char *symbols[]={"monitor","shield","layers","check-circle"};
     for(int section=0;section<count();++section){
         if(isSectionHidden(section))continue;const QRect area(sectionViewportPosition(section),4,sectionSize(section),height()-8);
@@ -64,7 +64,7 @@ protected:void paintEvent(QPaintEvent*) Q_DECL_OVERRIDE {
         const QString label=p.fontMetrics().elidedText(model()->headerData(section,Qt::Horizontal).toString(),Qt::ElideRight,qMax(0,area.width()-48));
         const int textWidth=p.fontMetrics().width(label),total=textWidth+25;
         const int left=section==0?(rtl?area.right()-total-14:area.left()+14):area.center().x()-total/2;
-        VectorIcons::icon(QString::fromLatin1(symbols[section%4]),QColor("#B6F3ED"),17).paint(&p,QRect(rtl?left+total-17:left,area.center().y()-8,17,17));
+        VectorIcons::icon(QString::fromLatin1(symbols[section%4]),QColor("#B6F3ED"),18).paint(&p,QRect(rtl?left+total-18:left,area.center().y()-9,18,18));
         p.setPen(Qt::white);p.drawText(QRect(rtl?left:left+25,area.top(),textWidth,area.height()),Qt::AlignAbsolute|(rtl?Qt::AlignRight:Qt::AlignLeft)|Qt::AlignVCenter,label);
     }
 }
@@ -511,7 +511,7 @@ void DriverWorkspace::rebuild()
         if (!matchesFilters(row)) continue;
         const DriverEntry &d=m_catalog->entryRef(row);
         const QString category=VectorIcons::deviceCategory(d.device.deviceClass,d.device.name);
-        if(!categories.contains(category)){QTreeWidgetItem *group=new QTreeWidgetItem(m_tree);group->setData(0,Qt::UserRole,-10-categories.size());group->setData(0,Qt::UserRole+1,-2);group->setData(0,Qt::UserRole+13,true);group->setData(0,Qt::UserRole+14,category);group->setFlags(Qt::ItemIsEnabled);group->setSizeHint(0,QSize(0,44));group->setFirstColumnSpanned(true);categories.insert(category,group);}
+        if(!categories.contains(category)){QTreeWidgetItem *group=new QTreeWidgetItem(m_tree);group->setData(0,Qt::UserRole,-10-categories.size());group->setData(0,Qt::UserRole+1,-2);group->setData(0,Qt::UserRole+13,true);group->setData(0,Qt::UserRole+14,category);group->setFlags(Qt::ItemIsEnabled);group->setSizeHint(0,QSize(0,52));group->setFirstColumnSpanned(true);categories.insert(category,group);}
         QTreeWidgetItem *root=new QTreeWidgetItem(categories.value(category));
         root->setData(0,Qt::UserRole,row);
         root->setData(0,Qt::UserRole+1,-1);
