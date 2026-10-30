@@ -25,7 +25,7 @@ SearchableLanguageCombo::SearchableLanguageCombo(QWidget *parent)
     m_popup->setMinimumWidth(290);
     m_popup->setFocusPolicy(Qt::StrongFocus);
     QVBoxLayout *layout=new QVBoxLayout(m_popup);
-    layout->setContentsMargins(10,10,10,10);layout->setSpacing(8);
+    layout->setContentsMargins(4,4,4,4);layout->setSpacing(8);
     m_filter->setObjectName(QStringLiteral("languageSearch"));
     m_filter->setPlaceholderText(UiLanguage::text(QStringLiteral("Search..."),QString::fromUtf8("ابحث...")));
     m_filter->setClearButtonEnabled(true);
@@ -85,7 +85,7 @@ void SearchableLanguageCombo::showPopup()
     int w=qMax(width(),330);
     const QRect screen=QApplication::desktop()->availableGeometry(this);
     w=qMin(w,screen.width()-24);
-    const int h=qMin(420,qMin(screen.height()-24,qMax(64,count()*44+20+(m_filter->isHidden()?0:m_filter->sizeHint().height()+8))));
+    const int h=qMin(420,qMin(screen.height()-24,qMax(64,count()*44+22+(m_filter->isHidden()?0:m_filter->sizeHint().height()+8))));
     QPoint pos=mapToGlobal(QPoint(0,height()+6));
     if(pos.y()+h>screen.bottom()-4)pos=mapToGlobal(QPoint(0,-h-6));
     if(pos.y()<screen.top()+4)pos.setY(screen.top()+4);

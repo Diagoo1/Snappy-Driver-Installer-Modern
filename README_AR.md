@@ -3,7 +3,7 @@
   <h1>مدير تعريفات الأجهزة — الواجهة الحديثة</h1>
   <p><strong>مكتبة تعريفاتك، ومحرك المطابقة الأصلي، وتجربة Windows حديثة.</strong></p>
   <p>فحص ومقارنة وإدارة التعريفات من برنامج محمول واحد.<br>من تطوير <strong>طارق صادق · Diagoo1</strong></p>
-  <p><a href="https://github.com/Diagoo1/Snappy-Driver-Installer-Modern/releases/tag/v0.23.8"><img src="https://img.shields.io/badge/Download-0.23.8_Beta-008D86?style=for-the-badge" alt="تحميل البيتا"></a> <img src="https://img.shields.io/badge/License-GPL--3.0-075266?style=for-the-badge" alt="GPL 3"></p>
+  <p><a href="https://github.com/Diagoo1/Snappy-Driver-Installer-Modern/releases/tag/v0.23.9"><img src="https://img.shields.io/badge/Download-0.23.9_Beta-008D86?style=for-the-badge" alt="تحميل البيتا"></a> <img src="https://img.shields.io/badge/License-GPL--3.0-075266?style=for-the-badge" alt="GPL 3"></p>
   <p><a href="README.md">English</a> · <a href="#جولة-بالصور">الصور</a> · <a href="#ابدأ-الاستخدام">ابدأ الاستخدام</a> · <a href="https://github.com/Diagoo1/Snappy-Driver-Installer-Modern/issues/new?template=bug_report.yml">الإبلاغ عن مشكلة</a></p>
 </div>
 
@@ -15,7 +15,7 @@
 
 الواجهة والخطوط والمحرك داخل ملف تنفيذي واحد. تظل الحزم والفهارس في مجلدات منفصلة، فتستخدم مكتبتك الأوفلاين الموجودة دون تضخيم البرنامج بحزم التعريفات.
 
-> **بيتا عامة · 0.23.8** — إصدار موحّد يجمع تعديلات الواجهة وربط المحرك المتراكمة. اختبار الأجهزة وإصدارات Windows مستمر. هذا مشروع مجتمعي مستقل، مع حفظ حقوق المحرك الأصلي ومساهميه.
+> **بيتا عامة · 0.23.9** — إصدار موحّد يجمع تعديلات الواجهة وربط المحرك المتراكمة. اختبار الأجهزة وإصدارات Windows مستمر. هذا مشروع مجتمعي مستقل، مع حفظ حقوق المحرك الأصلي ومساهميه.
 
 ## المزايا بنظرة واحدة
 
@@ -67,7 +67,7 @@
 
 ## ابدأ الاستخدام
 
-1. حمّل **ملف EXE** أو **الحزمة المحمولة ZIP** من [0.23.8 Beta](https://github.com/Diagoo1/Snappy-Driver-Installer-Modern/releases/tag/v0.23.8).
+1. حمّل **ملف EXE** أو **الحزمة المحمولة ZIP** من [0.23.9 Beta](https://github.com/Diagoo1/Snappy-Driver-Installer-Modern/releases/tag/v0.23.9).
 2. ضع البرنامج بجوار المكتبة أو حدّد مجلداتها من الإعدادات:
 
 ```text
@@ -83,11 +83,11 @@ Your driver library/
 
 | التنزيل | المحتوى |
 | --- | --- |
-| [الحزمة المحمولة](https://github.com/Diagoo1/Snappy-Driver-Installer-Modern/releases/download/v0.23.8/SnappyDriverInstaller-Modern-0.23.8-Beta-portable.zip) | ملف تشغيل واحد مع التراخيص ودليل بدء مختصر، دون DLL تشغيل بجواره. |
-| [ملف EXE](https://github.com/Diagoo1/Snappy-Driver-Installer-Modern/releases/download/v0.23.8/SnappyDriverInstaller-TS.exe) | نفس ملف البرنامج التنفيذي. |
-| [السورس](https://github.com/Diagoo1/Snappy-Driver-Installer-Modern/releases/download/v0.23.8/SnappyDriverInstaller-Modern-0.23.8-source.zip) | نسخة المصدر المطابقة للإصدار. |
-| [الصور](https://github.com/Diagoo1/Snappy-Driver-Installer-Modern/releases/download/v0.23.8/SnappyDriverInstaller-Modern-0.23.8-screenshots.zip) | معرض العربي والإنجليزي بالوضعين. |
-| [بصمات SHA-256](https://github.com/Diagoo1/Snappy-Driver-Installer-Modern/releases/download/v0.23.8/SHA256SUMS.txt) | للتحقق من سلامة التنزيلات المنشورة. |
+| [الحزمة المحمولة](https://github.com/Diagoo1/Snappy-Driver-Installer-Modern/releases/download/v0.23.9/SnappyDriverInstaller-Modern-0.23.9-Beta-portable.zip) | ملف تشغيل واحد مع التراخيص ودليل بدء مختصر، دون DLL تشغيل بجواره. |
+| [ملف EXE](https://github.com/Diagoo1/Snappy-Driver-Installer-Modern/releases/download/v0.23.9/SnappyDriverInstaller-TS.exe) | نفس ملف البرنامج التنفيذي. |
+| [السورس](https://github.com/Diagoo1/Snappy-Driver-Installer-Modern/releases/download/v0.23.9/SnappyDriverInstaller-Modern-0.23.9-source.zip) | نسخة المصدر المطابقة للإصدار. |
+| [الصور](https://github.com/Diagoo1/Snappy-Driver-Installer-Modern/releases/download/v0.23.9/SnappyDriverInstaller-Modern-0.23.9-screenshots.zip) | معرض العربي والإنجليزي بالوضعين. |
+| [بصمات SHA-256](https://github.com/Diagoo1/Snappy-Driver-Installer-Modern/releases/download/v0.23.9/SHA256SUMS.txt) | للتحقق من سلامة التنزيلات المنشورة. |
 
 ## التوافق وحالة البيتا
 
@@ -131,7 +131,7 @@ BUILD.cmd -Help
   <h3>صُنع بكل ❤️ بواسطة طارق صادق</h3>
   <p>تصميم وتطوير الواجهة · <a href="https://github.com/Diagoo1">Diagoo1</a><br>مطوّر <a href="https://github.com/Diagoo1/Dreams-Software-Collection">مجموعة دريمز للبرامج</a></p>
   <p><a href="https://ko-fi.com/diagoo1">☕ ادعم المشروع بقهوة</a> · <a href="https://paypal.me/Diagoo1">PayPal</a> · <a href="mailto:tarek.sadek44@gmail.com">تواصل معي</a></p>
-  <p>GPL-3.0 · المطابقة والتثبيت مبنيان على عمل مساهمي SDIO.<br>جميع حقوق المحرك والمكونات الأصلية محفوظة. <a href="LICENSE-GPL-3.0.txt">الترخيص</a>.</p>
+  <p>GPL-3.0 · المطابقة والتثبيت مبنيان على عمل مساهمي SDIO.<br>تصميم الواجهة الحديثة وربطها وتعديلاتها وتصميم الأيقونة الرئيسية: طارق صادق (Diagoo1).<br>حقوق مطوّري SDI/SDIO ومساهمي المحرك والمكونات الخارجية محفوظة. <a href="LICENSE-GPL-3.0.txt">الترخيص</a>.</p>
 </div>
 
 ### تحديث الحزم والفهارس

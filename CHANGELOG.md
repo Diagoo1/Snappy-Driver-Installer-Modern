@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.23.9 Beta
+
+- Add subtle alpha shadows around project messages, dialogs, menus, dropdowns and options popovers, with reserved transparent gutters and no live blur effect.
+- Credit Tarek Sadek for the application icon in About and repository attribution, alongside preserved original-engine/component rights.
+- Add a ready-to-copy Arabic forum announcement using GitHub-hosted gallery images and clearly identified Beta/testing limits.
+
 ## 0.23.8 Beta
 
 - Give the installation queue a rounded gradient header with driver/status/time icons and responsive column widths.

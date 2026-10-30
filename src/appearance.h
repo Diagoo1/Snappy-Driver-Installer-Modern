@@ -11,6 +11,8 @@
 #include <QTimer>
 #include <QPropertyAnimation>
 
+class QPainter;
+
 class RoundedActivityBar : public QProgressBar {
 public:explicit RoundedActivityBar(QWidget *parent=0);
 protected:void paintEvent(QPaintEvent*) Q_DECL_OVERRIDE;void showEvent(QShowEvent*) Q_DECL_OVERRIDE;void hideEvent(QHideEvent*) Q_DECL_OVERRIDE;
@@ -51,6 +53,7 @@ protected:
 };
 
 QPainterPath windowClip(QWidget *widget,qreal radius=20);
+void paintPopupShadow(QPainter *painter,const QRectF &face,qreal radius,bool dark);
 // Uses the same command surface and sizing as ActionButton in workspace toolbars.
 class CommandToolButton : public QToolButton {
     Q_OBJECT

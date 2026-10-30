@@ -129,12 +129,12 @@ void AccentCard::paintEvent(QPaintEvent*){QPainter p(this);p.setRenderHint(QPain
 void SurfaceCard::paintEvent(QPaintEvent*){QPainter p(this);p.setRenderHint(QPainter::Antialiasing);const bool dark=darkSurface(this);const QRectF face=QRectF(rect()).adjusted(1,1,-1,-4);p.setPen(Qt::NoPen);for(int i=3;i>=1;--i){p.setBrush(QColor(0,0,0,dark?9:5));p.drawRoundedRect(face.translated(0,i).adjusted(-.3*i,0,.3*i,.2*i),16,16);}p.setPen(QPen(Theme::color("border",dark),1));p.setBrush(Theme::color("surface",dark));p.drawRoundedRect(face,16,16);QColor tint=property("cardTint").value<QColor>();if(tint.isValid()){tint.setAlpha(dark?30:18);QLinearGradient wash(face.topLeft(),face.bottomRight());wash.setColorAt(0,tint);tint.setAlpha(0);wash.setColorAt(1,tint);p.setPen(Qt::NoPen);p.setBrush(wash);p.drawRoundedRect(face,16,16);}const QString tone=property("tone").toString();if(!tone.isEmpty()){QColor color=tone==QStringLiteral("blue") || tone==QStringLiteral("system")?QColor("#309AC6"):tone==QStringLiteral("violet") || tone==QStringLiteral("firmware")?QColor("#9B80CB"):tone==QStringLiteral("amber") || tone==QStringLiteral("hardware")?QColor("#CC9743"):QColor("#14AA9D");QLinearGradient edge(face.left()+18,0,face.right()-18,0);QColor transparent=color;transparent.setAlpha(0);edge.setColorAt(0,transparent);edge.setColorAt(.22,color);edge.setColorAt(.78,color);edge.setColorAt(1,transparent);p.setPen(QPen(QBrush(edge),2.3,Qt::SolidLine,Qt::RoundCap));p.drawLine(QPointF(face.left()+18,face.bottom()-.6),QPointF(face.right()-18,face.bottom()-.6));}}
 ProjectMenu::ProjectMenu(QWidget *parent):QMenu(parent),m_highlightY(-1),m_slide(this,"highlightY",this){
     setMinimumWidth(240);
-    setStyleSheet(QStringLiteral("QMenu{background:transparent;border:0;padding:8px;font-size:13px;font-weight:400;} QMenu::item{background:transparent;padding:11px 22px;} QMenu::separator{height:1px;background:%1;margin:5px 10px;}").arg(darkSurface(this)?QStringLiteral("#3B5868"):QStringLiteral("#E2EBEF")));
+    setStyleSheet(QStringLiteral("QMenu{background:transparent;border:0;padding:14px;font-size:13px;font-weight:400;} QMenu::item{background:transparent;padding:11px 22px;} QMenu::separator{height:1px;background:%1;margin:5px 10px;}").arg(darkSurface(this)?QStringLiteral("#3B5868"):QStringLiteral("#E2EBEF")));
     setWindowFlags(Qt::Popup|Qt::FramelessWindowHint|Qt::NoDropShadowWindowHint);setAttribute(Qt::WA_TranslucentBackground);m_slide.setDuration(120);m_slide.setEasingCurve(QEasingCurve::OutCubic);
     connect(this,&QMenu::hovered,this,[this](QAction *action){if(!action || !action->isEnabled() || action->isSeparator())return;const qreal y=actionGeometry(action).top();m_slide.stop();if(m_highlightY<0 || qApp->property("reduceMotion").toBool()){setHighlightY(y);return;}m_slide.setStartValue(m_highlightY);m_slide.setEndValue(y);m_slide.start();});
 }
 void ProjectMenu::paintEvent(QPaintEvent*){
-    QPainter p(this);p.setRenderHint(QPainter::Antialiasing);const bool dark=darkSurface(this);p.setPen(QPen(Theme::color("border",dark),1));p.setBrush(Theme::color("surface",dark));p.drawRoundedRect(QRectF(rect()).adjusted(.5,.5,-.5,-.5),14,14);
+    QPainter p(this);p.setRenderHint(QPainter::Antialiasing);const bool dark=darkSurface(this);const QRectF face=QRectF(rect()).adjusted(6.5,6.5,-6.5,-8.5);paintPopupShadow(&p,face,14,dark);p.setPen(QPen(Theme::color("border",dark),1));p.setBrush(Theme::color("surface",dark));p.drawRoundedRect(face,14,14);
     QAction *active=activeAction();if(active && active->isEnabled() && !active->isSeparator()){QRectF target=actionGeometry(active).adjusted(4,1,-4,-1);if(m_highlightY>=0)target.moveTop(m_highlightY+1);p.setPen(Qt::NoPen);p.setBrush(dark?QColor("#2B5264"):QColor("#E4F3EF"));p.drawRoundedRect(target,8,8);}
     for(QAction *action:actions()){
         if(!action->isVisible())continue;const QRect area=actionGeometry(action);
@@ -149,19 +149,23 @@ void ProjectMenu::paintEvent(QPaintEvent*){
         if(action->isCheckable() && action->isChecked())VectorIcons::paint(&p,QStringLiteral("check"),QRectF(rtl?area.right()-19:area.left()+3,area.center().y()-7,14,14),QColor("#00A99E"));
     }
 }
-RoundedPanel::RoundedPanel(QWidget *p):QWidget(p){setAttribute(Qt::WA_TranslucentBackground);}
+// A few translucent rounded layers in a reserved gutter; no live blur or graphics effect.
+void paintPopupShadow(QPainter *painter,const QRectF &face,qreal radius,bool dark){painter->save();painter->setRenderHint(QPainter::Antialiasing);painter->setPen(Qt::NoPen);for(int spread=6;spread>=1;--spread){painter->setBrush(QColor(0,0,0,dark?9:5));painter->drawRoundedRect(face.translated(0,1).adjusted(-spread,-spread,spread,spread),radius+spread,radius+spread);}painter->restore();}
+RoundedPanel::RoundedPanel(QWidget *p):QWidget(p){setAttribute(Qt::WA_TranslucentBackground);setContentsMargins(6,6,6,8);}
 void RoundedPanel::paintEvent(QPaintEvent*){
     QPainter p(this);p.setRenderHint(QPainter::Antialiasing);
+    const QRectF face=QRectF(contentsRect()).adjusted(.5,.5,-.5,-.5);paintPopupShadow(&p,face,16,darkSurface(this));
     p.setPen(QPen(Theme::color("border",darkSurface(this)),1));
     p.setBrush(Theme::color("surface",darkSurface(this)));
-    p.drawRoundedRect(QRectF(rect()).adjusted(.5,.5,-.5,-.5),16,16);
+    p.drawRoundedRect(face,16,16);
 }
 RoundedDialog::RoundedDialog(QWidget *p):QDialog(p,Qt::Dialog|Qt::FramelessWindowHint){
-    setAttribute(Qt::WA_TranslucentBackground);setModal(true);
+    setAttribute(Qt::WA_TranslucentBackground);setContentsMargins(6,6,6,8);setModal(true);
 }
 void RoundedDialog::paintEvent(QPaintEvent*){
     QPainter p(this);p.setRenderHint(QPainter::Antialiasing);
-    QPainterPath frame;frame.addRoundedRect(QRectF(rect()),22,22);p.setPen(Qt::NoPen);
+    const QRectF face=QRectF(contentsRect());paintPopupShadow(&p,face,22,darkSurface(this));
+    QPainterPath frame;frame.addRoundedRect(face,22,22);p.setPen(Qt::NoPen);
     QWidget *header=findChild<QWidget*>(QStringLiteral("dialogHeader"));
     if(header){const QRect bar=header->geometry();p.save();p.setClipRect(QRect(0,bar.bottom()+1,width(),height()-bar.height()));p.setBrush(Theme::color("background",darkSurface(this)));p.drawPath(frame);p.restore();QLinearGradient g(0,0,width(),0);g.setColorAt(0,Theme::color("headerStart"));g.setColorAt(1,Theme::color("headerEnd"));p.save();p.setClipRect(bar);p.setBrush(g);p.drawPath(frame);p.restore();}
     else {p.setBrush(Theme::color("background",darkSurface(this)));p.drawPath(frame);}

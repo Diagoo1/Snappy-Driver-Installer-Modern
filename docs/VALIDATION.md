@@ -1,10 +1,10 @@
 # Validation scope
 
-Current application version: **0.23.8 Beta**. Hardware/Windows compatibility testing is ongoing. This document separates verified behavior from implementation that still needs hardware/VM testing.
+Current application version: **0.23.9 Beta**. Hardware/Windows compatibility testing is ongoing. This document separates verified behavior from implementation that still needs hardware/VM testing.
 
 | Area | Evidence |
 | --- | --- |
-| Interface, menus, RTL and instances | 353 regression checks at 100% and 150%; English/Arabic and light/dark visual review |
+| Interface, menus, RTL and instances | 356 regression checks at 100% and 150%; English/Arabic and light/dark visual review |
 | Structural/source integration | 82 checks; critical original source fingerprints and reviewed patches |
 | Current native matching | Read-only scan: 216 devices and 567 candidates on the development host |
 | Original engine workflows | Repeated scan, snapshot save/load, target-system preview and extraction of six INF files |
@@ -68,3 +68,5 @@ The final sidebar marker is paint-only: its short inset rounded pill and rounded
 0.23.7: 343 UI checks at 100%/150% include dark/light scan snapshots over a deliberately white native Window palette. Captured child content is composited on the resolved application background at fractional DPI. Main driver row separators are removed; download separators remain. Manual theme preferences persist independently from Auto. No hardware installation/restore/reboot was performed.
 
 0.23.8: 353 UI checks at 100%/150% include per-driver monotonic timing from native activity, untimed queued rows, frozen completed times, stopped total clocks on finish/failure and retry resets. Installation header and continuous divider pixels are checked in both themes. Events are synthetic; these timing checks do not install drivers. The total includes restore/preparation and processing; per-driver time excludes waiting. No ETA is fabricated. The four-mode 84-image gallery was refreshed.
+
+0.23.9: 356 UI checks at 100%/150% include translucent shadow gutters surrounding opaque project dialogs, menus, dropdown panels and small options popovers in both palettes. Existing corner alpha, text-menu colors, short-dropdown sizing and parent containment checks remain active. Shadows use six painted rounded layers, without graphics blur effects or additional windows. Application-icon attribution appears in About and both READMEs. The Arabic forum draft uses GitHub-hosted images; no forum post was published.

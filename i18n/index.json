@@ -6,7 +6,7 @@
       "tag": "ar",
       "name": "العربية",
       "rtl": true,
-      "messages": 991,
+      "messages": 992,
       "englishFallbacks": 0
     },
     {
@@ -15,7 +15,7 @@
       "name": "Հայերեն",
       "rtl": false,
       "messages": 852,
-      "englishFallbacks": 139
+      "englishFallbacks": 140
     },
     {
       "id": "azerbaijan",
@@ -23,7 +23,7 @@
       "name": "Azərbaycanca",
       "rtl": false,
       "messages": 852,
-      "englishFallbacks": 139
+      "englishFallbacks": 140
     },
     {
       "id": "belarusian",
@@ -31,7 +31,7 @@
       "name": "Беларуская",
       "rtl": false,
       "messages": 852,
-      "englishFallbacks": 139
+      "englishFallbacks": 140
     },
     {
       "id": "brazilian",
@@ -39,7 +39,7 @@
       "name": "Português Brasileiro",
       "rtl": false,
       "messages": 852,
-      "englishFallbacks": 139
+      "englishFallbacks": 140
     },
     {
       "id": "bulgarian",
@@ -47,7 +47,7 @@
       "name": "Български",
       "rtl": false,
       "messages": 852,
-      "englishFallbacks": 139
+      "englishFallbacks": 140
     },
     {
       "id": "catalan",
@@ -55,7 +55,7 @@
       "name": "Català",
       "rtl": false,
       "messages": 852,
-      "englishFallbacks": 139
+      "englishFallbacks": 140
     },
     {
       "id": "chinese_cn",
@@ -63,7 +63,7 @@
       "name": "简体中文",
       "rtl": false,
       "messages": 852,
-      "englishFallbacks": 139
+      "englishFallbacks": 140
     },
     {
       "id": "chinese_tw",
@@ -71,7 +71,7 @@
       "name": "正體中文",
       "rtl": false,
       "messages": 852,
-      "englishFallbacks": 139
+      "englishFallbacks": 140
     },
     {
       "id": "croatian",
@@ -79,7 +79,7 @@
       "name": "Hrvatski",
       "rtl": false,
       "messages": 852,
-      "englishFallbacks": 139
+      "englishFallbacks": 140
     },
     {
       "id": "czech",
@@ -87,7 +87,7 @@
       "name": "Čeština",
       "rtl": false,
       "messages": 852,
-      "englishFallbacks": 139
+      "englishFallbacks": 140
     },
     {
       "id": "danish",
@@ -95,7 +95,7 @@
       "name": "Dansk",
       "rtl": false,
       "messages": 852,
-      "englishFallbacks": 139
+      "englishFallbacks": 140
     },
     {
       "id": "dutch",
@@ -103,14 +103,14 @@
       "name": "Nederlands",
       "rtl": false,
       "messages": 852,
-      "englishFallbacks": 139
+      "englishFallbacks": 140
     },
     {
       "id": "english",
       "tag": "en",
       "name": "English",
       "rtl": false,
-      "messages": 991,
+      "messages": 992,
       "englishFallbacks": 0
     },
     {
@@ -119,7 +119,7 @@
       "name": "Eesti",
       "rtl": false,
       "messages": 852,
-      "englishFallbacks": 139
+      "englishFallbacks": 140
     },
     {
       "id": "farsi",
@@ -127,7 +127,7 @@
       "name": "فارسی",
       "rtl": true,
       "messages": 852,
-      "englishFallbacks": 139
+      "englishFallbacks": 140
     },
     {
       "id": "french",
@@ -135,7 +135,7 @@
       "name": "Français",
       "rtl": false,
       "messages": 852,
-      "englishFallbacks": 139
+      "englishFallbacks": 140
     },
     {
       "id": "georgian",
@@ -143,7 +143,7 @@
       "name": "ქართული",
       "rtl": false,
       "messages": 852,
-      "englishFallbacks": 139
+      "englishFallbacks": 140
     },
     {
       "id": "german",
@@ -151,7 +151,7 @@
       "name": "Deutsch",
       "rtl": false,
       "messages": 852,
-      "englishFallbacks": 139
+      "englishFallbacks": 140
     },
     {
       "id": "greek",
@@ -159,7 +159,7 @@
       "name": "Ελληνικά",
       "rtl": false,
       "messages": 852,
-      "englishFallbacks": 139
+      "englishFallbacks": 140
     },
     {
       "id": "hungarian",
@@ -167,7 +167,7 @@
       "name": "Magyar",
       "rtl": false,
       "messages": 852,
-      "englishFallbacks": 139
+      "englishFallbacks": 140
     },
     {
       "id": "indonesian",
@@ -175,7 +175,7 @@
       "name": "Bahasa Indonesia",
       "rtl": false,
       "messages": 852,
-      "englishFallbacks": 139
+      "englishFallbacks": 140
     },
     {
       "id": "italian",
@@ -183,7 +183,7 @@
       "name": "Italiano",
       "rtl": false,
       "messages": 852,
-      "englishFallbacks": 139
+      "englishFallbacks": 140
     },
     {
       "id": "japanese",
@@ -191,7 +191,7 @@
       "name": "日本語",
       "rtl": false,
       "messages": 852,
-      "englishFallbacks": 139
+      "englishFallbacks": 140
     },
     {
       "id": "korean",
@@ -199,7 +199,7 @@
       "name": "한국어",
       "rtl": false,
       "messages": 852,
-      "englishFallbacks": 139
+      "englishFallbacks": 140
     },
     {
       "id": "latvian",
@@ -207,7 +207,7 @@
       "name": "Latviešu",
       "rtl": false,
       "messages": 852,
-      "englishFallbacks": 139
+      "englishFallbacks": 140
     },
     {
       "id": "lithuanian",
@@ -215,7 +215,7 @@
       "name": "Lietuvių",
       "rtl": false,
       "messages": 852,
-      "englishFallbacks": 139
+      "englishFallbacks": 140
     },
     {
       "id": "norwegian",
@@ -223,7 +223,7 @@
       "name": "Norsk",
       "rtl": false,
       "messages": 852,
-      "englishFallbacks": 139
+      "englishFallbacks": 140
     },
     {
       "id": "polish",
@@ -231,7 +231,7 @@
       "name": "Polski",
       "rtl": false,
       "messages": 852,
-      "englishFallbacks": 139
+      "englishFallbacks": 140
     },
     {
       "id": "portuguese",
@@ -239,7 +239,7 @@
       "name": "Português Europeu",
       "rtl": false,
       "messages": 852,
-      "englishFallbacks": 139
+      "englishFallbacks": 140
     },
     {
       "id": "romanian",
@@ -247,7 +247,7 @@
       "name": "Română",
       "rtl": false,
       "messages": 852,
-      "englishFallbacks": 139
+      "englishFallbacks": 140
     },
     {
       "id": "russian",
@@ -255,7 +255,7 @@
       "name": "Русский",
       "rtl": false,
       "messages": 852,
-      "englishFallbacks": 139
+      "englishFallbacks": 140
     },
     {
       "id": "serbian",
@@ -263,7 +263,7 @@
       "name": "Српски",
       "rtl": false,
       "messages": 852,
-      "englishFallbacks": 139
+      "englishFallbacks": 140
     },
     {
       "id": "slovenian",
@@ -271,7 +271,7 @@
       "name": "Slovenščina",
       "rtl": false,
       "messages": 852,
-      "englishFallbacks": 139
+      "englishFallbacks": 140
     },
     {
       "id": "spanish",
@@ -279,7 +279,7 @@
       "name": "Español",
       "rtl": false,
       "messages": 852,
-      "englishFallbacks": 139
+      "englishFallbacks": 140
     },
     {
       "id": "swedish",
@@ -287,7 +287,7 @@
       "name": "Svenska",
       "rtl": false,
       "messages": 852,
-      "englishFallbacks": 139
+      "englishFallbacks": 140
     },
     {
       "id": "thai",
@@ -295,7 +295,7 @@
       "name": "ภาษาไทย",
       "rtl": false,
       "messages": 852,
-      "englishFallbacks": 139
+      "englishFallbacks": 140
     },
     {
       "id": "turkish",
@@ -303,7 +303,7 @@
       "name": "Türkçe",
       "rtl": false,
       "messages": 852,
-      "englishFallbacks": 139
+      "englishFallbacks": 140
     },
     {
       "id": "ukrainian",
@@ -311,7 +311,7 @@
       "name": "Українська",
       "rtl": false,
       "messages": 852,
-      "englishFallbacks": 139
+      "englishFallbacks": 140
     },
     {
       "id": "vietnamese",
@@ -319,7 +319,7 @@
       "name": "Tiếng Việt",
       "rtl": false,
       "messages": 852,
-      "englishFallbacks": 139
+      "englishFallbacks": 140
     }
   ],
   "nativeReviewRequired": true

@@ -992,9 +992,10 @@
     "Uses the Windows 10/11 app theme. Older Windows defaults to light. Manual toggles turn automatic mode off.": "يتبع ثيم التطبيقات في ويندوز 10 و11. الإصدارات الأقدم تبدأ بالفاتح. التبديل اليدوي يلغي الوضع التلقائي.",
     "Switch to light mode": "التبديل إلى الوضع الفاتح",
     "Switch to dark mode": "التبديل إلى الوضع الداكن",
-    "Version: 0.23.8 (Beta)\nWindows: %1\nArchitecture: %2\nLanguage: %3\nTheme: %4": "الإصدار: 0.23.8 (بيتا)\nويندوز: %1\nالمعمارية: %2\nاللغة: %3\nالمظهر: %4",
     "Elapsed": "المنقضي",
     "Total elapsed: %1": "الوقت الإجمالي: %1",
-    "Measured processing time; waiting in the queue is excluded.": "وقت المعالجة المقاس؛ لا يشمل الانتظار في القائمة."
+    "Measured processing time; waiting in the queue is excluded.": "وقت المعالجة المقاس؛ لا يشمل الانتظار في القائمة.",
+    "Application icon designed by Tarek Sadek.": "تصميم الأيقونة الرئيسية للبرنامج: طارق صادق.",
+    "Version: 0.23.9 (Beta)\nWindows: %1\nArchitecture: %2\nLanguage: %3\nTheme: %4": "الإصدار: 0.23.9 (بيتا)\nويندوز: %1\nالمعمارية: %2\nاللغة: %3\nالمظهر: %4"
   }
 }

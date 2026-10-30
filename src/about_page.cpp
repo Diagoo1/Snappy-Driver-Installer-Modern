@@ -77,5 +77,6 @@ void AboutPage::setArabic(bool ar){
     QWidget *credits=new SurfaceCard(body);credits->setObjectName(QStringLiteral("softSurface"));QVBoxLayout *creditBox=new QVBoxLayout(credits);creditBox->setContentsMargins(24,18,24,18);creditBox->setSpacing(9);
     creditBox->addWidget(text(t("Built on open source","مبني على برمجيات مفتوحة المصدر"),"sectionTitle",credits));
     creditBox->addWidget(text(t("Driver matching and installation: Snappy Driver Installer Origin contributors. Modern interface: Tarek Sadek. Distributed under GPL v3 or later.","مطابقة التعريفات وتثبيتها: مساهمو Snappy Driver Installer Origin. الواجهة الحديثة: طارق صادق. التوزيع وفق GPL الإصدار الثالث أو أحدث."),"bodyText",credits));
+    creditBox->addWidget(text(t("Application icon designed by Tarek Sadek.","تصميم الأيقونة الرئيسية للبرنامج: طارق صادق."),"bodyText",credits));
     creditBox->addWidget(text(t("Inspired by the developer card in Dreams Software Collection.","مستوحى من بطاقة المطوّر في مجموعة دريمز للبرامج."),"mutedText",credits));box->addWidget(credits);box->addStretch(1);m_scroll->setWidget(body);
 }

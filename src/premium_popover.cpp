@@ -31,7 +31,7 @@ PremiumPopover::PremiumPopover(QWidget *parent)
     setMinimumWidth(286);
     setMaximumWidth(366);
     QVBoxLayout *outer=new QVBoxLayout(this);
-    outer->setContentsMargins(1,1,1,1);
+    outer->setContentsMargins(7,7,7,9);
     outer->setSpacing(0);
     m_card=new QFrame(this);
     m_card->setObjectName(QStringLiteral("premiumPopupCard"));
@@ -86,7 +86,7 @@ void PremiumPopover::openAt(QWidget *anchor)
     if(!anchor)return;
     adjustSize();
     const QRect screen=QApplication::desktop()->availableGeometry(anchor);
-    setFixedHeight(qMin(m_content->sizeHint().height()+4,screen.height()-24));
+    setFixedHeight(qMin(m_content->sizeHint().height()+18,screen.height()-24));
     QPoint spot=anchor->mapToGlobal(QPoint(anchor->width()-width(),anchor->height()+8));
     if(spot.x()+width()>screen.right())spot.setX(screen.right()-width()-4);
     if(spot.x()<screen.left()+4)spot.setX(screen.left()+4);
@@ -117,9 +117,10 @@ void PremiumPopover::paintEvent(QPaintEvent *)
 {
     QPainter painter(this);
     painter.setRenderHint(QPainter::Antialiasing,true);
+    const QRectF face=QRectF(rect()).adjusted(6.5,6.5,-6.5,-8.5);paintPopupShadow(&painter,face,16,m_dark);
     painter.setPen(QPen(m_dark?QColor("#3B5360"):QColor("#D9E5E8"),1));
     painter.setBrush(m_dark?QColor("#203B4A"):QColor("#FFFFFF"));
-    painter.drawRoundedRect(QRectF(rect()).adjusted(.5,.5,-.5,-.5),16,16);
+    painter.drawRoundedRect(face,16,16);
 }
 
 void PremiumPopover::setCompact()
