@@ -79,7 +79,8 @@ private:
     bool m_arabic,m_dark,m_busy,m_demo,m_rebuilding;
     int m_clickRow,m_clickCandidate,m_clickPriorChoice;bool m_clickPriorChecked;QElapsedTimer m_clickTime;
     QString m_originLocale;
-    QWidget *m_controlBar;
+    QWidget *m_controlBar,*m_reinstallNotice;
+    QLabel *m_reinstallText;
     QLabel *m_title,*m_subtitle,*m_info,*m_stats,*m_listTitle;
     QLabel *m_devicesNumber,*m_warningsNumber,*m_selectedNumber;
     QTreeWidget *m_tree;
@@ -87,7 +88,7 @@ private:
     QTimer *m_searchDebounce,*m_catalogRefresh;
     GradientButton *m_scan;
     QPushButton *m_all,*m_none;
-    QCheckBox *m_restore,*m_reboot,*m_onlyProblems,*m_expert,*m_showIgnored,*m_filterVersions;
+    QCheckBox *m_restore,*m_reboot,*m_onlyProblems,*m_expert,*m_showIgnored,*m_filterVersions,*m_smartView;
     ToggleSwitch *m_showInstalled,*m_showMore;
     QLabel *m_installedLabel,*m_moreLabel;
     QToolButton *m_filters,*m_tools,*m_installOptions;

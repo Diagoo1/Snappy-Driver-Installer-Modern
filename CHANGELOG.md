@@ -1,5 +1,12 @@
 # Changelog
 
+## 0.21.12 Beta
+
+- Distinguish the rounded column header with a deep gradient and bright text, separate from quiet category bands.
+- Default to eligible local engine recommendations and preserve manual selections in the view. Turn Recommended view off to browse all matches; advanced and explicit legacy filters switch to custom mode. Reset filters restores the recommended preset.
+- Replace the thin heading-label warning with a separate padded, rounded reinstall notice. It reflects the actual required/off restore-point preference and disappears when the selection clears.
+- Add in-app reinstall instructions: use the installed-version row with a matching local package, review the plan and request the same restore-point prerequisite used for other installations. No protection settings are silently changed.
+
 ## 0.21.11 Beta
 
 - Stage compatibility choices until Apply; add project-styled help, compact paired selectors and Restore default with an automatic scan of the current PC.

@@ -918,7 +918,6 @@
     "This view helps technicians prepare an offline driver library for another Windows version or architecture. It does not change Windows. Press Apply to scan that target; installation is disabled in preview. Restore default returns to this computer and refreshes its matches.": "تساعد هذه المعاينة الفني على تجهيز مكتبة تعريفات لويندوز أو معمارية مختلفة، دون تغيير ويندوز نفسه. اضغط تطبيق لفحص الهدف المختار؛ التثبيت معطّل في المعاينة. استعادة الافتراضي ترجع لهذا الجهاز وتحدّث مطابقة تعريفاته.",
     "Windows requested a restart. Some installed versions are reported only after reboot.": "طلب ويندوز إعادة تشغيل الجهاز؛ بعض الإصدارات المثبّتة لا تظهر إلا بعد إعادة التشغيل.",
     "Refreshing matches after installation...": "تحديث المطابقة بعد التثبيت...",
-    "Version: 0.21.11 (Beta)\nWindows: %1\nArchitecture: %2\nLanguage: %3\nTheme: %4": "الإصدار: 0.21.11 (بيتا)\nويندوز: %1\nالمعمارية: %2\nاللغة: %3\nالمظهر: %4",
     "Graphics": "كروت الشاشة",
     "Chipset and system": "الشيبست والنظام",
     "Audio": "الصوت",
@@ -928,8 +927,14 @@
     "Cameras and biometrics": "الكاميرات والقياسات الحيوية",
     "Other devices": "أجهزة أخرى",
     "Filter alternative versions": "تطبيق الفلاتر على الإصدارات البديلة",
-    "%1 installed driver(s) selected for reinstallation. Review the versions before confirming installation.": "تم تحديد %1 تعريفات مثبّتة لإعادة تثبيتها. راجع الإصدارات قبل تأكيد التثبيت.",
     "Bluetooth": "بلوتوث",
-    "Interface design & development: Tarek Sadek · © 2026": "تصميم وتطوير الواجهة: طارق صادق · جميع الحقوق محفوظة © 2026"
+    "Interface design & development: Tarek Sadek · © 2026": "تصميم وتطوير الواجهة: طارق صادق · جميع الحقوق محفوظة © 2026",
+    "Recommended view": "العرض الموصى به",
+    "Show eligible local recommendations and your selections. Turn off to browse every match, including unavailable alternatives.": "عرض الترشيحات المؤهلة المتوفرة محليًا واختياراتك. أوقفه لعرض كل المطابقات، بما فيها البدائل غير المتوفرة.",
+    "Reinstallation selected: %1": "إعادة تثبيت: %1",
+    "A restore point is required before reinstalling. If creation fails, installation stops.": "يلزم إنشاء نقطة استعادة قبل إعادة التثبيت. إذا فشلت، يتوقف التثبيت.",
+    "Restore point is off. Enable it in Install options before continuing.": "نقطة الاستعادة معطّلة. يمكنك تفعيلها من خيارات التثبيت قبل المتابعة.",
+    "How to reinstall a driver": "كيفية إعادة تثبيت تعريف",
+    "To reinstall the same version, expand the device and select its installed version. The exact version must have an eligible local 7z package; Windows' installed-driver information alone is not an installation package. If it is absent, add or download that version's package and scan again. Turn off Recommended view in Match filters to browse installed devices without a recommended update. Create restore point in Install options applies to reinstallation too. Windows System Protection must be enabled; a required restore-point failure stops installation.": "لإعادة تثبيت نفس الإصدار، افتح إصدارات الجهاز وحدّد الإصدار المثبّت. يلزم وجود حزمة 7z محلية مؤهلة لنفس الإصدار؛ بيانات التعريف المثبّت في ويندوز وحدها ليست حزمة تثبيت. إذا كانت غير موجودة، أضف حزمة ذلك الإصدار أو نزّلها ثم أعد الفحص. أوقف العرض الموصى به من فلاتر المطابقة لتصفّح الأجهزة المثبّتة التي لا تحتاج تحديثًا. خيار إنشاء نقطة استعادة في خيارات التثبيت يسري على إعادة التثبيت أيضًا. يجب تفعيل حماية النظام في ويندوز؛ إذا فشل إنشاء النقطة المطلوبة يتوقف التثبيت."
   }
 }

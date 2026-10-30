@@ -54,18 +54,18 @@ public:explicit DriverHeader(QWidget *parent):QHeaderView(Qt::Horizontal,parent)
 protected:void paintEvent(QPaintEvent*) Q_DECL_OVERRIDE {
     QPainter p(viewport());p.setRenderHint(QPainter::Antialiasing);const bool dark=Theme::isDark(this),rtl=layoutDirection()==Qt::RightToLeft;
     p.fillRect(viewport()->rect(),Theme::color("surface",dark));
-    const QRectF band=QRectF(viewport()->rect()).adjusted(.5,3.5,-.5,-3.5);p.setPen(QPen(Theme::color("border",dark),1));p.setBrush(Theme::color("elevated",dark));p.drawRoundedRect(band,12,12);
+    const QRectF band=QRectF(viewport()->rect()).adjusted(.5,3.5,-.5,-3.5);QLinearGradient fill(band.topLeft(),band.topRight());fill.setColorAt(0,Theme::color("headerStart",dark));fill.setColorAt(1,Theme::color("headerEnd",dark));p.setPen(Qt::NoPen);p.setBrush(fill);p.drawRoundedRect(band,12,12);
     QPainterPath clip;clip.addRoundedRect(band,12,12);p.setClipPath(clip);
     QFont face=font();face.setFamily(UiFont::family());face.setPixelSize(12);face.setWeight(QFont::DemiBold);p.setFont(face);
     const char *symbols[]={"monitor","shield","layers","check-circle"};
     for(int section=0;section<count();++section){
         if(isSectionHidden(section))continue;const QRect area(sectionViewportPosition(section),4,sectionSize(section),height()-8);
-        if(section>0){const int x=rtl?area.right():area.left();p.setPen(QPen(Theme::color("border",dark),1));p.drawLine(QPointF(x,band.top()+11),QPointF(x,band.bottom()-11));}
+        if(section>0){const int x=rtl?area.right():area.left();p.setPen(QPen(QColor(255,255,255,35),1));p.drawLine(QPointF(x,band.top()+11),QPointF(x,band.bottom()-11));}
         const QString label=p.fontMetrics().elidedText(model()->headerData(section,Qt::Horizontal).toString(),Qt::ElideRight,qMax(0,area.width()-48));
         const int textWidth=p.fontMetrics().width(label),total=textWidth+25;
         const int left=section==0?(rtl?area.right()-total-14:area.left()+14):area.center().x()-total/2;
-        VectorIcons::icon(QString::fromLatin1(symbols[section%4]),Theme::color("link",dark),17).paint(&p,QRect(rtl?left+total-17:left,area.center().y()-8,17,17));
-        p.setPen(Theme::color("text",dark));p.drawText(QRect(rtl?left:left+25,area.top(),textWidth,area.height()),Qt::AlignAbsolute|(rtl?Qt::AlignRight:Qt::AlignLeft)|Qt::AlignVCenter,label);
+        VectorIcons::icon(QString::fromLatin1(symbols[section%4]),QColor("#B6F3ED"),17).paint(&p,QRect(rtl?left+total-17:left,area.center().y()-8,17,17));
+        p.setPen(Qt::white);p.drawText(QRect(rtl?left:left+25,area.top(),textWidth,area.height()),Qt::AlignAbsolute|(rtl?Qt::AlignRight:Qt::AlignLeft)|Qt::AlignVCenter,label);
     }
 }
 };
@@ -133,6 +133,11 @@ private:
     QElapsedTimer m_clock;QTimer m_arrowTimer;QMap<int,ArrowMotion> m_arrows;bool m_branchPress,m_suppressRelease;
     void stopArrowMotion(){m_arrowTimer.stop();m_arrows.clear();setProperty("branchAnimationRunning",false);viewport()->update();}
     void animateArrow(QTreeWidgetItem *item,bool open){if(!item || item->data(0,Qt::UserRole+1).toInt()>=0)return;if(!isAnimated() || qApp->property("reduceMotion").toBool()){stopArrowMotion();return;}const int row=item->data(0,Qt::UserRole).toInt();ArrowMotion motion;motion.from=arrowAngle(row,open?0:90);motion.to=open?90:0;motion.started=m_clock.elapsed();m_arrows.insert(row,motion);setProperty("branchAnimationRunning",true);m_arrowTimer.start();viewport()->update();}
+};
+
+class ReinstallNotice : public QWidget {
+public:explicit ReinstallNotice(QWidget *parent):QWidget(parent){setMinimumHeight(68);setSizePolicy(QSizePolicy::Expanding,QSizePolicy::Minimum);}
+protected:void paintEvent(QPaintEvent*) Q_DECL_OVERRIDE {QPainter p(this);p.setRenderHint(QPainter::Antialiasing);const bool dark=Theme::isDark(this);const QRectF area=QRectF(rect()).adjusted(.5,.5,-.5,-.5);p.setBrush(dark?QColor("#344339"):QColor("#FFF8E9"));p.setPen(QPen(dark?QColor("#87734A"):QColor("#EBD5A9"),1));p.drawRoundedRect(area,13,13);}
 };
 
 static QLabel *label(const QString &text,const char *objectName,QWidget *parent)
@@ -213,6 +218,10 @@ DriverWorkspace::DriverWorkspace(DriverCatalog *catalog,QWidget *parent)
     m_info=label(QStringLiteral("DEMO — matches are illustrative. No changes to your system."),"demoText",this);
     m_info->setWordWrap(true);
     titleBox->addWidget(m_info);
+    m_reinstallNotice=new ReinstallNotice(this);m_reinstallNotice->setObjectName(QStringLiteral("reinstallNotice"));
+    QHBoxLayout *noticeLayout=new QHBoxLayout(m_reinstallNotice);noticeLayout->setContentsMargins(16,12,16,12);noticeLayout->setSpacing(12);
+    QLabel *noticeIcon=new QLabel(m_reinstallNotice);noticeIcon->setPixmap(VectorIcons::icon(QStringLiteral("shield"),QColor("#B78A35"),24).pixmap(24,24));noticeLayout->addWidget(noticeIcon,0,Qt::AlignVCenter);
+    m_reinstallText=label(QString(),"reinstallNoticeText",m_reinstallNotice);m_reinstallText->setWordWrap(true);m_reinstallText->setTextFormat(Qt::PlainText);noticeLayout->addWidget(m_reinstallText,1);m_reinstallNotice->hide();root->insertWidget(1,m_reinstallNotice);
 
     // A single summary/action strip: no competing control panels around the hero.
     QWidget *summary=new QWidget(this);
@@ -266,6 +275,8 @@ DriverWorkspace::DriverWorkspace(DriverCatalog *catalog,QWidget *parent)
     m_installHeading=m_installPopup->addHeading(QStringLiteral("INSTALL PREFERENCES"));
     m_restore=m_installPopup->addOption(QStringLiteral("Create restore point"),true);
     m_reboot=m_installPopup->addOption(QStringLiteral("Restart automatically if required"),false);
+    QPushButton *reinstallHelp=m_installPopup->addLink(QStringLiteral("How to reinstall a driver"));
+    connect(reinstallHelp,&QPushButton::clicked,this,[this](){m_installPopup->hide();projectMessage(this,UiLanguage::text(QStringLiteral("Reinstall")),UiLanguage::text(QStringLiteral("To reinstall the same version, expand the device and select its installed version. The exact version must have an eligible local 7z package; Windows' installed-driver information alone is not an installation package. If it is absent, add or download that version's package and scan again. Turn off Recommended view in Match filters to browse installed devices without a recommended update. Create restore point in Install options applies to reinstallation too. Windows System Protection must be enabled; a required restore-point failure stops installation.")),false,m_arabic);});
     connect(m_installOptions,&QToolButton::clicked,this,[this](){
         m_installPopup->toggleAt(m_installOptions);
     });
@@ -293,8 +304,11 @@ DriverWorkspace::DriverWorkspace(DriverCatalog *catalog,QWidget *parent)
     m_filterPopup=new PremiumPopover(this);
     m_filterViewHeading=m_filterPopup->addHeading(QStringLiteral("VIEW OPTIONS"));
     m_expert=m_filterPopup->addOption(QStringLiteral("Expert mode"),true);
+    m_smartView=m_filterPopup->addOption(QStringLiteral("Recommended view"),true);m_smartView->setObjectName(QStringLiteral("recommendedView"));
+    m_smartView->setToolTip(UiLanguage::text(QStringLiteral("Show eligible local recommendations and your selections. Turn off to browse every match, including unavailable alternatives.")));
+    connect(m_smartView,&QCheckBox::toggled,this,[this](bool checked){if(checked){QSignalBlocker versions(m_filterVersions);m_filterVersions->setChecked(false);}rebuild();});
     m_onlyProblems=m_filterPopup->addOption(QStringLiteral("Only problems"),false);
-    m_filterVersions=m_filterPopup->addOption(QStringLiteral("Filter alternative versions"),false);connect(m_filterVersions,&QCheckBox::toggled,this,&DriverWorkspace::rebuild);
+    m_filterVersions=m_filterPopup->addOption(QStringLiteral("Filter alternative versions"),false);connect(m_filterVersions,&QCheckBox::toggled,this,[this](bool checked){if(checked){QSignalBlocker block(m_smartView);m_smartView->setChecked(false);}rebuild();});
     m_showIgnored=m_filterPopup->addOption(QStringLiteral("Show ignored devices"),false);
     connect(m_showIgnored,&QCheckBox::toggled,this,&DriverWorkspace::rebuild);
     m_filterPopup->addDivider();
@@ -405,7 +419,7 @@ void DriverWorkspace::buildFilterMenu()
     for(int i=0;i<found.size();++i){
         QCheckBox *option=m_filterPopup->addOption(found.at(i),i==0 || i==1 || i==4);
         m_matchFilters.append(option);
-        connect(option,&QCheckBox::toggled,this,&DriverWorkspace::rebuild);
+        connect(option,&QCheckBox::toggled,this,[this](){QSignalBlocker smart(m_smartView),versions(m_filterVersions);m_smartView->setChecked(false);m_filterVersions->setChecked(true);rebuild();});
     }
     m_filterPopup->addDivider();
     m_filterAbsentHeading=m_filterPopup->addHeading(QStringLiteral("NO LOCAL PACKAGE MATCH"));
@@ -413,14 +427,15 @@ void DriverWorkspace::buildFilterMenu()
     for(int i=0;i<absent.size();++i){
         QCheckBox *option=m_filterPopup->addOption(absent.at(i),i==0);
         m_matchFilters.append(option);
-        connect(option,&QCheckBox::toggled,this,&DriverWorkspace::rebuild);
+        connect(option,&QCheckBox::toggled,this,[this](){QSignalBlocker smart(m_smartView),versions(m_filterVersions);m_smartView->setChecked(false);m_filterVersions->setChecked(true);rebuild();});
     }
     m_filterPopup->addDivider();
     m_filterPopup->addHeading(QStringLiteral("ADVANCED MATCH VISIBILITY"));
     const QStringList advanced=QStringList()<<QStringLiteral("Best match only")<<QStringLiteral("Show duplicates")<<QStringLiteral("Show invalid matches");
-    for(int i=0;i<advanced.size();++i){QCheckBox *option=m_filterPopup->addOption(advanced[i],i==0);m_matchFilters.append(option);connect(option,&QCheckBox::toggled,this,&DriverWorkspace::rebuild);}
+    for(int i=0;i<advanced.size();++i){QCheckBox *option=m_filterPopup->addOption(advanced[i],i==0);m_matchFilters.append(option);connect(option,&QCheckBox::toggled,this,[this](){QSignalBlocker smart(m_smartView),versions(m_filterVersions);m_smartView->setChecked(false);m_filterVersions->setChecked(true);rebuild();});}
     m_filterReset=m_filterPopup->addLink(QStringLiteral("Reset filters"));
     connect(m_filterReset,&QPushButton::clicked,this,[this](){
+        {QSignalBlocker smart(m_smartView),versions(m_filterVersions);m_smartView->setChecked(true);m_filterVersions->setChecked(false);}
         for(int i=0;i<m_matchFilters.size();++i){
             QSignalBlocker block(m_matchFilters.at(i));
             m_matchFilters.at(i)->setChecked(i==0 || i==1 || i==4 || i==6 || i==9);
@@ -462,6 +477,12 @@ bool DriverWorkspace::matchesFilters(int index) const
     if(m_demo && matched)return entry.device.hasProblem?m_matchFilters.at(0)->isChecked():
         (m_matchFilters.at(1)->isChecked() || m_matchFilters.at(4)->isChecked());
     if(m_catalog->native()){
+        if(m_smartView->isChecked()){
+            if(entry.checked)return true;
+            for(int c=1;c<entry.candidates.size();++c){const DriverCandidate &candidate=entry.candidates[c];if(candidate.valid && candidate.local && candidate.recommended)return true;}
+            return false;
+        }
+        if(!m_filterVersions->isChecked())return true;
         for(int c=1;c<entry.candidates.size();++c)
             if(matchesCandidate(entry.candidates[c]))return true;
         if(matched)return false;
@@ -564,7 +585,8 @@ void DriverWorkspace::populateCandidates(QTreeWidgetItem *root)
     for(int c=0;c<d.candidates.size();++c) {
         const DriverCandidate &candidate=d.candidates.at(c);
                 if(c>0 && c==reinstallCandidateIndex(d))continue;
-                if(m_catalog->native() && c>0 && m_filterVersions->isChecked() && !matchesCandidate(candidate))continue;
+                if(m_catalog->native() && c>0 && m_smartView->isChecked() && !(d.checked && c==d.chosenCandidate) && !(candidate.valid && candidate.local && candidate.recommended))continue;
+                if(m_catalog->native() && c>0 && m_filterVersions->isChecked() && !(d.checked && c==d.chosenCandidate) && !matchesCandidate(candidate))continue;
                 if(m_catalog->native() && c==0 && !d.sdioDriverPresent)continue;
                 if (c==0 && !m_showInstalled->isChecked()) continue;
                 if (m_demo) {
@@ -648,10 +670,16 @@ void DriverWorkspace::showEntry(int row)
 void DriverWorkspace::updateCount()
 {
     const int selected=m_catalog->selectedDrivers();
-    const int reinstalls=m_catalog->selectedReinstalls();if(reinstalls>0 && !m_busy){m_info->setProperty("reinstallNotice",true);m_info->setObjectName(QStringLiteral("selectionNotice"));m_info->setText(UiLanguage::text(QStringLiteral("%1 installed driver(s) selected for reinstallation. Review the versions before confirming installation."),QString::fromUtf8("تم تحديد %1 تعريفات مثبّتة لإعادة تثبيتها. راجع الإصدارات قبل تأكيد التثبيت.")).arg(reinstalls));m_info->show();m_info->style()->unpolish(m_info);m_info->style()->polish(m_info);}else if(m_info->property("reinstallNotice").toBool()){m_info->setProperty("reinstallNotice",false);m_info->setObjectName(QStringLiteral("demoText"));m_info->clear();m_info->hide();}
+    const int reinstalls=m_catalog->selectedReinstalls();
+    m_reinstallNotice->setVisible(reinstalls>0 && !m_busy);
+    if(reinstalls>0){
+        const QString heading=UiLanguage::text(QStringLiteral("Reinstallation selected: %1"),QString::fromUtf8("إعادة تثبيت: %1")).arg(reinstalls);
+        const QString protection=UiLanguage::text(m_restore->isChecked()?QStringLiteral("A restore point is required before reinstalling. If creation fails, installation stops."):QStringLiteral("Restore point is off. Enable it in Install options before continuing."));
+        m_reinstallText->setText(heading+QLatin1Char('\n')+protection);
+    }
 
     int recommendedCount=0;
-    for(int row=0;row<m_catalog->size();++row){if(m_catalog->isIgnored(row))continue;const DriverEntry &entry=m_catalog->entryRef(row);bool recommended=m_demo && entry.selectable;for(const DriverCandidate &candidate:entry.candidates)if(candidate.recommended && candidate.valid)recommended=true;if(recommended)++recommendedCount;}
+    for(int row=0;row<m_catalog->size();++row){if(m_catalog->isIgnored(row))continue;const DriverEntry &entry=m_catalog->entryRef(row);bool recommended=m_demo && entry.selectable;for(const DriverCandidate &candidate:entry.candidates)if(candidate.recommended && candidate.valid && candidate.local)recommended=true;if(recommended)++recommendedCount;}
     m_devicesNumber->setText(QString::number(recommendedCount));
     m_warningsNumber->setText(QString::number(m_catalog->problems()));
     m_selectedNumber->setText(QString::number(selected));
@@ -699,7 +727,7 @@ void DriverWorkspace::updateCount()
     m_tree->setEnabled(!m_busy);
 }
 void DriverWorkspace::setStatus(const QString &status)
-{ m_info->setProperty("reinstallNotice",false);m_info->setObjectName(QStringLiteral("demoText"));m_info->setText(status);m_info->setVisible(!status.trimmed().isEmpty()); }
+{ m_info->setText(status);m_info->setVisible(!status.trimmed().isEmpty()); }
 void DriverWorkspace::openInstallOptions(){if(!m_busy)m_installOptions->click();}
 void DriverWorkspace::setInstallationPreferences(bool restorePoint,bool rebootAfter){QSignalBlocker restoreSignals(m_restore),rebootSignals(m_reboot);m_restore->setChecked(restorePoint);m_reboot->setChecked(rebootAfter);updateCount();}
 void DriverWorkspace::setBusy(bool busy)
@@ -769,6 +797,7 @@ void DriverWorkspace::setArabic(bool arabic)
 }
 int DriverWorkspace::selectedDrivers() const{return m_catalog->selectedDrivers();}
 void DriverWorkspace::applyLegacyDisplay(int filters,bool expert,bool packageNames){
+    if(filters>=0){QSignalBlocker smart(m_smartView),versions(m_filterVersions);m_smartView->setChecked(false);m_filterVersions->setChecked(true);}
     if(filters>=0)for(int i=0;i<m_matchFilters.size();++i){QSignalBlocker block(m_matchFilters[i]);m_matchFilters[i]->setChecked((unsigned(filters>>1)&(1u<<i))!=0);}
     if(expert)m_expert->setChecked(true);if(packageNames)m_showMore->setChecked(true);rebuild();
 }

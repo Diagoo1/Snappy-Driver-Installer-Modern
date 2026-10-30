@@ -4,11 +4,11 @@
   <p><strong>Original matching. A modern interface. A clearer driver workflow.</strong></p>
   <p>A community project by <strong>Tarek Sadek · Diagoo1</strong></p>
   <p>
-    <img src="https://img.shields.io/badge/release-0.21.11_Beta-E9A23B" alt="Beta">
+    <img src="https://img.shields.io/badge/release-0.21.12_Beta-E9A23B" alt="Beta">
     <img src="https://img.shields.io/badge/license-GPL--3.0-00857D" alt="GPL 3">
     <img src="https://img.shields.io/badge/built_with-C%2B%2B_%2F_Qt-075266" alt="C++ and Qt">
   </p>
-  <p><a href="README_AR.md">العربية</a> · <a href="https://github.com/Diagoo1/Snappy-Driver-Installer-Modern/releases/tag/v0.21.11">Download Beta</a> · <a href="docs/GALLERY.md">Screenshots</a> · <a href="https://github.com/Diagoo1/Snappy-Driver-Installer-Modern/issues/new?template=bug_report.yml">Report a bug</a></p>
+  <p><a href="README_AR.md">العربية</a> · <a href="https://github.com/Diagoo1/Snappy-Driver-Installer-Modern/releases/tag/v0.21.12">Download Beta</a> · <a href="docs/GALLERY.md">Screenshots</a> · <a href="https://github.com/Diagoo1/Snappy-Driver-Installer-Modern/issues/new?template=bug_report.yml">Report a bug</a></p>
 </div>
 
 ## Meet the project
@@ -43,13 +43,13 @@ Stars indicate **relative matching priority**, not safety. Forty locales are emb
 
 ## Get started
 
-1. Download the EXE or portable archive from [0.21.11 Beta](https://github.com/Diagoo1/Snappy-Driver-Installer-Modern/releases/tag/v0.21.11).
+1. Download the EXE or portable archive from [0.21.12 Beta](https://github.com/Diagoo1/Snappy-Driver-Installer-Modern/releases/tag/v0.21.12).
 2. Place `drivers` and `indexes` beside it, or choose their locations in Settings. Packs are not included.
 3. Scan, compare versions and review your selection. If administrator access is needed, the app offers to reopen; scan and confirm again afterward. No selection is installed automatically after elevation.
 
 To reinstall, select the installed version when its matching local package is available. The review and queue identify it as **Reinstall**; bulk selection follows the engine Recommended candidate, and reinstall operations remain clearly identified in the review.
 
-Device categories can be expanded or collapsed. Alternative versions show the complete native candidate list by default; applying device filters to alternatives is optional. Compatibility target changes require **Apply**, and **Restore default** returns to this PC and rescans. After installation, the app refreshes matching automatically; Windows may still require a reboot to publish some installed versions.
+Device categories can be expanded or collapsed. Recommended view defaults to eligible local engine recommendations and your manual selections. Turn it off in Match filters to browse the full candidate list; changing an advanced filter switches to custom filtering. Compatibility target changes require **Apply**, and **Restore default** returns to this PC and rescans. After installation, the app refreshes matching automatically; Windows may still require a reboot to publish some installed versions.
 
 Settings use your Windows Registry. No adjacent DLLs or INI are required. Automatic application updates follow the stable release channel; Beta downloads use their explicit release links.
 

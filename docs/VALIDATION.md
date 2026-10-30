@@ -1,10 +1,10 @@
 # Validation scope
 
-Current application version: **0.21.11 Beta**. Hardware/Windows compatibility testing is ongoing. This document separates verified behavior from implementation that still needs hardware/VM testing.
+Current application version: **0.21.12 Beta**. Hardware/Windows compatibility testing is ongoing. This document separates verified behavior from implementation that still needs hardware/VM testing.
 
 | Area | Evidence |
 | --- | --- |
-| Interface, menus, RTL and instances | 258 regression checks at 100% and 150%; English/Arabic and light/dark visual review |
+| Interface, menus, RTL and instances | 268 regression checks at 100% and 150%; English/Arabic and light/dark visual review |
 | Structural/source integration | 82 checks; critical original source fingerprints and reviewed patches |
 | Current native matching | Read-only scan: 216 devices and 567 candidates on the development host |
 | Original engine workflows | Repeated scan, snapshot save/load, target-system preview and extraction of six INF files |
@@ -42,3 +42,5 @@ The final executable's `--gui-security-probe` returned `guiCom: 0` and `restoreC
 The old static assertion requiring filter-scoped bulk selection was removed because that behavior was explicitly replaced; actual UI regression checks now cover global selection under hidden search results and page navigation.
 
 0.21.11: 258 UI checks at 100%/150% cover category persistence, complete and opt-in filtered alternatives, archive names, reinstall version handling, specific icons, Apply/Restore default/help, gradient rendering and cursors. Fresh read-only SDI/SDIO-layout scans both returned 216 devices/567 candidates; original index hashes remained unchanged. The current library exposes 12 Thunderbolt candidates and 14 Generic Participant candidates. Automatic post-install rescan is implemented, but was not exercised after real hardware installation; install/restore/reboot and old-Windows execution remain unverified. See RESTORE_BEHAVIOR.md for the inspected DriverPack restore code.
+
+0.21.12: the UI fixture suite additionally verifies the default recommended view, exposing all matches, custom/legacy filter switching, keeping manual choices visible, a padded reinstall notice, actual restore preference changes, and the reinstall plan carrying its restore prerequisite. Visual captures were reviewed for the column/category contrast and notice geometry. These are UI/plan checks, not evidence of a restore point or driver installation on hardware.

@@ -142,7 +142,7 @@ QPlainTextEdit,QTextEdit {background:%2;color:%4;border:1px solid %6;border-radi
 QListWidget#installConsentList {background:%2;color:%4;border:1px solid %6;border-radius:14px;padding:8px;}
 QListWidget#installConsentList::item {padding:8px;border-bottom:1px solid %6;}
 QLabel#installOptionTag {background:%3;color:%4;border:1px solid %6;border-radius:12px;padding:11px;font-weight:600;}
-QLabel#selectionNotice {background:rgba(210,156,53,22);color:%4;border:1px solid rgba(210,156,53,85);border-radius:11px;padding:11px;font-size:13px;}
+QWidget#reinstallNotice QLabel {background:transparent;color:%4;border:0;font-size:13px;}
 QLabel#installNotice {background:%3;color:%4;border:1px solid %6;border-radius:13px;padding:14px;font-size:13px;}
 QLabel#installNotice[tone="error"] {background:rgba(208,71,94,20);color:#D0475E;border:1px solid rgba(208,71,94,90);}
 QWidget#installationHero QProgressBar#mainProgress {background:rgba(255,255,255,32);color:white;min-height:28px;border-radius:10px;}
@@ -193,11 +193,11 @@ QListWidget#languageChoices::item:disabled {color:%5;background:transparent;}
 
 QFrame#premiumPopupCard {background:transparent; color:%4; border:none;}
 QLabel#popoverSection {color:%5; background:transparent; font-size:10px; font-weight:700;}
-QCheckBox#popoverCheck {color:%4; background:transparent; border:0; border-radius:9px;
+QCheckBox#popoverCheck, QCheckBox#recommendedView {color:%4; background:transparent; border:0; border-radius:9px;
  padding:10px 8px; spacing:12px; font-size:12px;}
-QFrame#premiumPopover[compact="true"] QCheckBox#popoverCheck {padding:6px 8px;}
-QCheckBox#popoverCheck:hover {background:transparent;}
-QCheckBox#popoverCheck::indicator {height:18px; width:18px;}
+QFrame#premiumPopover[compact="true"] QCheckBox#popoverCheck, QFrame#premiumPopover[compact="true"] QCheckBox#recommendedView {padding:6px 8px;}
+QCheckBox#popoverCheck:hover, QCheckBox#recommendedView:hover {background:transparent;}
+QCheckBox#popoverCheck::indicator, QCheckBox#recommendedView::indicator {height:18px; width:18px;}
 QPushButton#popoverLink {background:%3; border:0; border-radius:7px; padding:10px;
  color:#03AFA7; font-size:12px; font-weight:600;}
 QPushButton#popoverLink:hover {background:%3;}
