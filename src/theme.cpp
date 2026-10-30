@@ -64,7 +64,7 @@ QLabel#diagnosticsHeroSubtitle {color:#C4EEEB;font-size:12px;background:transpar
 QWidget#diagnosticSectionHeader {background:transparent;}
 QLabel#diagnosticSymbol {border-radius:11px;background:%3;}
 QProgressBar#diagnosticUsage {background:%3;border:0;border-radius:3px;}
-QProgressBar#diagnosticUsage::chunk {background:#14AA9D;border-radius:3px;}
+QProgressBar#diagnosticUsage::chunk {background:qlineargradient(x1:0,y1:0,x2:1,y2:0,stop:0 #167DAB,stop:1 #14AA9D);border-radius:3px;}
 QWidget#diagnosticBody {background:%1; border:0;}
 QLabel#diagnosticSectionTitle {color:%4; font-size:17px; font-weight:600; background:transparent;}
 QLabel#diagCaption {color:%5; font-size:11px; font-weight:500; background:transparent;}
@@ -142,10 +142,11 @@ QPlainTextEdit,QTextEdit {background:%2;color:%4;border:1px solid %6;border-radi
 QListWidget#installConsentList {background:%2;color:%4;border:1px solid %6;border-radius:14px;padding:8px;}
 QListWidget#installConsentList::item {padding:8px;border-bottom:1px solid %6;}
 QLabel#installOptionTag {background:%3;color:%4;border:1px solid %6;border-radius:12px;padding:11px;font-weight:600;}
+QLabel#selectionNotice {background:rgba(210,156,53,22);color:%4;border:1px solid rgba(210,156,53,85);border-radius:11px;padding:11px;font-size:13px;}
 QLabel#installNotice {background:%3;color:%4;border:1px solid %6;border-radius:13px;padding:14px;font-size:13px;}
 QLabel#installNotice[tone="error"] {background:rgba(208,71,94,20);color:#D0475E;border:1px solid rgba(208,71,94,90);}
 QWidget#installationHero QProgressBar#mainProgress {background:rgba(255,255,255,32);color:white;min-height:28px;border-radius:10px;}
-QWidget#installationHero QProgressBar#mainProgress::chunk {background:#42D9BC;border-radius:10px;}
+QWidget#installationHero QProgressBar#mainProgress::chunk {background:qlineargradient(x1:0,y1:0,x2:1,y2:0,stop:0 #27B4BF,stop:1 #42D9BC);border-radius:10px;}
 QTreeWidget#driverTree,QTreeWidget#installQueue,QScrollArea#diagnosticScroll,QScrollArea#dialogScroll {
  background:%2; color:%4; border:0; border-radius:9px; outline:0;
 }
@@ -208,7 +209,7 @@ QMenu::item:disabled {color:%5;}
 QMenu::separator {height:1px; background:%6; margin:6px;}
 QMenu::section {color:%5; font-size:10px; padding:7px 12px;}
 QProgressBar#mainProgress {background:%3; color:%4; border:0; border-radius:7px; text-align:center;}
-QProgressBar#mainProgress::chunk {background:#00BDB1; border-radius:7px;}
+QProgressBar#mainProgress::chunk {background:qlineargradient(x1:0,y1:0,x2:1,y2:0,stop:0 #147CA7,stop:1 #00BDB1); border-radius:7px;}
 QWidget#aboutBody {background:transparent;}
 QTreeWidget#onlineFiles {background:%2;alternate-background-color:%1;color:%4;border:1px solid %6;border-radius:13px;outline:0;padding:8px;selection-background-color:%3;selection-color:%4;}
 QTreeWidget#onlineFiles::item {padding:11px 8px;border-bottom:1px solid %6;min-height:24px;}

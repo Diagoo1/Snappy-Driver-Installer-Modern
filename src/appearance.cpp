@@ -24,6 +24,7 @@
 #include <QEasingCurve>
 #include <QScrollArea>
 #include <QComboBox>
+#include <QTabBar>
 #include <QStyleOptionButton>
 #include <QCursor>
 #include <QMouseEvent>
@@ -70,7 +71,7 @@ QPainterPath windowClip(QWidget *widget,qreal radius){
 RoundedActivityBar::RoundedActivityBar(QWidget *parent):QProgressBar(parent),m_tick(this),m_phase(0){setRange(0,0);setTextVisible(false);setFixedHeight(10);m_tick.setInterval(40);connect(&m_tick,&QTimer::timeout,this,[this](){m_phase=(m_phase+1)%55;update();});}
 void RoundedActivityBar::showEvent(QShowEvent *event){QProgressBar::showEvent(event);if(!qApp->property("reduceMotion").toBool())m_tick.start();}
 void RoundedActivityBar::hideEvent(QHideEvent *event){m_tick.stop();QProgressBar::hideEvent(event);}
-void RoundedActivityBar::paintEvent(QPaintEvent*){QPainter p(this);p.setRenderHint(QPainter::Antialiasing);const bool dark=darkSurface(this);const QRectF track=QRectF(rect()).adjusted(.5,.5,-.5,-.5);QPainterPath clip;clip.addRoundedRect(track,track.height()/2,track.height()/2);p.fillPath(clip,Theme::color("elevated",dark));p.setClipPath(clip);const qreal segment=width()*.36,travel=width()+segment;const qreal x=qApp->property("reduceMotion").toBool()?(width()-segment)/2:travel*m_phase/54-segment;p.setPen(Qt::NoPen);p.setBrush(Theme::color("accent",dark));p.drawRoundedRect(QRectF(x,track.top(),segment,track.height()),track.height()/2,track.height()/2);}
+void RoundedActivityBar::paintEvent(QPaintEvent*){QPainter p(this);p.setRenderHint(QPainter::Antialiasing);const bool dark=darkSurface(this);const QRectF track=QRectF(rect()).adjusted(.5,.5,-.5,-.5);QPainterPath clip;clip.addRoundedRect(track,track.height()/2,track.height()/2);p.fillPath(clip,Theme::color("elevated",dark));p.setClipPath(clip);const qreal segment=width()*.36,travel=width()+segment;const qreal x=qApp->property("reduceMotion").toBool()?(width()-segment)/2:travel*m_phase/54-segment;p.setPen(Qt::NoPen);QLinearGradient gradient(x,0,x+segment,0);gradient.setColorAt(0,Theme::color("headerStart",dark));gradient.setColorAt(1,Theme::color("accent",dark));p.setBrush(gradient);p.drawRoundedRect(QRectF(x,track.top(),segment,track.height()),track.height()/2,track.height()/2);}
 
 ActionButton::ActionButton(const QString &text,QWidget *parent):QPushButton(text,parent),m_hover(0),m_animation(this,"hoverAmount",this){
     setCursor(Qt::PointingHandCursor);setMinimumHeight(38);m_animation.setDuration(155);m_animation.setEasingCurve(QEasingCurve::OutCubic);
@@ -83,7 +84,7 @@ void ActionButton::leaveEvent(QEvent *event){animate(0);QPushButton::leaveEvent(
 static void paintActionSurface(QAbstractButton *button,qreal hoverAmount){
     QPainter p(button);p.setRenderHint(QPainter::Antialiasing);const bool dark=darkSurface(button);
     const bool command=button->property("workspaceCommand").toBool();
-    const bool primary=button->objectName()==QStringLiteral("primaryButton");
+    const bool primary=button->objectName()==QStringLiteral("primaryButton") || button->property("primaryAction").toBool();
     const bool quiet=button->objectName().contains(QStringLiteral("Link"),Qt::CaseInsensitive);
     const qreal amount=button->isEnabled()?(button->isDown()?1:hoverAmount):0;
     QColor base=primary?Theme::color("accent",dark):Theme::color(command?"elevated":"surface",dark);
@@ -228,6 +229,8 @@ public:
             if(event->type()==QEvent::Paint){if(scroll->maximum()>scroll->minimum()){QStyleOptionSlider option;option.initFrom(scroll);option.orientation=scroll->orientation();option.minimum=scroll->minimum();option.maximum=scroll->maximum();option.sliderPosition=scroll->sliderPosition();option.sliderValue=scroll->value();option.pageStep=scroll->pageStep();option.singleStep=scroll->singleStep();option.upsideDown=scroll->invertedAppearance()^(scroll->orientation()==Qt::Horizontal && scroll->layoutDirection()==Qt::RightToLeft);option.direction=Qt::LeftToRight;if(scroll->orientation()==Qt::Horizontal)option.state|=QStyle::State_Horizontal;const QRect thumb=scroll->style()->subControlRect(QStyle::CC_ScrollBar,&option,QStyle::SC_ScrollBarSlider,scroll);QPainter painter(scroll);painter.setRenderHint(QPainter::Antialiasing);painter.setPen(Qt::NoPen);painter.setBrush(thumb.contains(scroll->mapFromGlobal(QCursor::pos()))?Theme::color("link",darkSurface(scroll)):Theme::color("scrollbar",darkSurface(scroll)));const QRectF shape=QRectF(thumb).adjusted(1,1,-1,-1);painter.drawRoundedRect(shape,qMin(shape.width(),shape.height())/2,qMin(shape.width(),shape.height())/2);}return true;}
         }
         if(event->type()==QEvent::ContextMenu){QWidget *widget=qobject_cast<QWidget*>(object);if(widget && textContextMenu(widget,static_cast<QContextMenuEvent*>(event)))return true;}
+        if(QAbstractButton *action=qobject_cast<QAbstractButton*>(object))if(event->type()==QEvent::Polish || event->type()==QEvent::EnabledChange)action->setCursor(action->isEnabled()?Qt::PointingHandCursor:Qt::ArrowCursor);
+        if(event->type()==QEvent::Polish || event->type()==QEvent::EnabledChange){QWidget *interactive=qobject_cast<QComboBox*>(object);if(!interactive)interactive=qobject_cast<QTabBar*>(object);if(interactive)interactive->setCursor(interactive->isEnabled()?Qt::PointingHandCursor:Qt::ArrowCursor);}
         QWidget *button=qobject_cast<QAbstractButton*>(object);
         if(!button)button=qobject_cast<QComboBox*>(object);
         if(!button || qobject_cast<CommandToolButton*>(button) || qobject_cast<ActionButton*>(button) || qobject_cast<TitleButton*>(button) || qobject_cast<SidebarItem*>(button) ||

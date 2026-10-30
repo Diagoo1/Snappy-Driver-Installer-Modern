@@ -49,19 +49,35 @@ void VectorIcons::paint(QPainter *p,const QString &name,const QRectF &rect,const
     renderer(name,color)->render(p,rect);p->restore();
 }
 
+QString VectorIcons::deviceCategory(const QString &deviceClass,const QString &name){
+    const QString c=deviceClass.toLower(),n=name.toLower();
+    if(c.contains(QStringLiteral("display")) || c.contains(QStringLiteral("monitor")) || n.contains(QStringLiteral("graphics")))return QStringLiteral("Graphics");
+    if(c.contains(QStringLiteral("media")) || c.contains(QStringLiteral("audio")) || n.contains(QStringLiteral("audio")) || n.contains(QStringLiteral("sound")))return QStringLiteral("Audio");
+    if(c.contains(QStringLiteral("net")) || n.contains(QStringLiteral("ethernet")) || n.contains(QStringLiteral("wi-fi")) || n.contains(QStringLiteral("wireless")))return QStringLiteral("Network");
+    if(c.contains(QStringLiteral("bluetooth")))return QStringLiteral("Bluetooth");
+    if(c.contains(QStringLiteral("scsi")) || c.contains(QStringLiteral("disk")) || c.contains(QStringLiteral("storage")))return QStringLiteral("Storage");
+    if(c.contains(QStringLiteral("camera")) || c.contains(QStringLiteral("image")) || c.contains(QStringLiteral("biometric")))return QStringLiteral("Cameras and biometrics");
+    if(c.contains(QStringLiteral("usb")))return QStringLiteral("USB");
+    if(c.contains(QStringLiteral("hid")) || c.contains(QStringLiteral("keyboard")) || c.contains(QStringLiteral("mouse")))return QStringLiteral("Input devices");
+    if(c.contains(QStringLiteral("system")) || c.contains(QStringLiteral("processor")) || c.contains(QStringLiteral("software")) || n.contains(QStringLiteral("intel(r)")))return QStringLiteral("Chipset and system");
+    return QStringLiteral("Other devices");
+}
+
 QString VectorIcons::forDeviceClass(const QString &original)
 {
     const QString d=original.toLower();
     if (d.contains(QStringLiteral("net")) || d.contains(QStringLiteral("wifi"))) return QStringLiteral("network");
     if (d.contains(QStringLiteral("media")) || d.contains(QStringLiteral("audio")) || d.contains(QStringLiteral("sound"))) return QStringLiteral("audio");
-    if (d.contains(QStringLiteral("display")) || d.contains(QStringLiteral("monitor"))) return QStringLiteral("monitor");
+    if (d.contains(QStringLiteral("display")) || d.contains(QStringLiteral("monitor")) || d.contains(QStringLiteral("graphics"))) return QStringLiteral("monitor");
     if (d.contains(QStringLiteral("disk")) || d.contains(QStringLiteral("storage")) || d.contains(QStringLiteral("hdd")) || d.contains(QStringLiteral("scsi"))) return QStringLiteral("storage");
     if (d.contains(QStringLiteral("usb"))) return QStringLiteral("usb");
     if (d.contains(QStringLiteral("bluetooth"))) return QStringLiteral("bluetooth");
-    if (d.contains(QStringLiteral("keyboard"))) return QStringLiteral("keyboard");
+    if (d.contains(QStringLiteral("keyboard")) || d.contains(QStringLiteral("input"))) return QStringLiteral("keyboard");
     if (d.contains(QStringLiteral("mouse")) || d.contains(QStringLiteral("pointing"))) return QStringLiteral("mouse");
     if (d.contains(QStringLiteral("battery"))) return QStringLiteral("battery");
     if (d.contains(QStringLiteral("print"))) return QStringLiteral("printer");
-    if (d.contains(QStringLiteral("processor")) || d.contains(QStringLiteral("system"))) return QStringLiteral("chip");
+    if (d.contains(QStringLiteral("camera")) || d.contains(QStringLiteral("image")) || d.contains(QStringLiteral("biometric"))) return QStringLiteral("camera");
+    if (d.contains(QStringLiteral("security")) || d.contains(QStringLiteral("tpm"))) return QStringLiteral("shield");
+    if (d.contains(QStringLiteral("processor")) || d.contains(QStringLiteral("system")) || d.contains(QStringLiteral("software"))) return QStringLiteral("chip");
     return QStringLiteral("computer");
 }

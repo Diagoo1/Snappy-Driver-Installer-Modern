@@ -87,7 +87,7 @@ private:
     QTimer *m_searchDebounce,*m_catalogRefresh;
     GradientButton *m_scan;
     QPushButton *m_all,*m_none;
-    QCheckBox *m_restore,*m_reboot,*m_onlyProblems,*m_expert,*m_showIgnored;
+    QCheckBox *m_restore,*m_reboot,*m_onlyProblems,*m_expert,*m_showIgnored,*m_filterVersions;
     ToggleSwitch *m_showInstalled,*m_showMore;
     QLabel *m_installedLabel,*m_moreLabel;
     QToolButton *m_filters,*m_tools,*m_installOptions;

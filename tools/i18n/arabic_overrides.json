@@ -106,7 +106,7 @@
   "[Bug] ": "[مشكلة] ",
   "Dark": "داكن",
   "Light": "فاتح",
-  "Version: 0.21.10 (Beta)\nWindows: %1\nArchitecture: %2\nLanguage: %3\nTheme: %4": "الإصدار: 0.21.10 (بيتا)\nويندوز: %1\nالمعمارية: %2\nاللغة: %3\nالمظهر: %4",
+  "Version: 0.21.11 (Beta)\nWindows: %1\nArchitecture: %2\nLanguage: %3\nTheme: %4": "الإصدار: 0.21.11 (بيتا)\nويندوز: %1\nالمعمارية: %2\nاللغة: %3\nالمظهر: %4",
   "Completed": "مكتمل",
   "Failed": "فشل",
   "Installed -": "مثبّت -",
@@ -127,5 +127,17 @@
   "Reinstall requires a matching local driver package. Download or add that package, then scan again.": "إعادة التثبيت تتطلب حزمة تعريف محلية مطابقة. أضف الحزمة أو نزّلها، ثم أعد الفحص.",
   "Priority": "أولوية المطابقة",
   "Select every eligible local Recommended driver, including devices hidden by search or filters.": "تحديد كل ترشيحات المحرك المؤهلة والمتوفرة محليًا، بما فيها الأجهزة المخفية بالبحث أو الفلاتر.",
-  "Clear every selection, including hidden devices and manually chosen versions.": "إلغاء كل التحديدات، بما فيها الأجهزة المخفية والإصدارات المختارة يدويًا."
+  "Clear every selection, including hidden devices and manually chosen versions.": "إلغاء كل التحديدات، بما فيها الأجهزة المخفية والإصدارات المختارة يدويًا.",
+  "Graphics": "كروت الشاشة",
+  "Chipset and system": "الشيبست والنظام",
+  "Audio": "الصوت",
+  "Network": "الشبكات",
+  "Storage": "التخزين",
+  "Input devices": "أجهزة الإدخال",
+  "Cameras and biometrics": "الكاميرات والقياسات الحيوية",
+  "Other devices": "أجهزة أخرى",
+  "Filter alternative versions": "تطبيق الفلاتر على الإصدارات البديلة",
+  "%1 installed driver(s) selected for reinstallation. Review the versions before confirming installation.": "تم تحديد %1 تعريفات مثبّتة لإعادة تثبيتها. راجع الإصدارات قبل تأكيد التثبيت.",
+  "Bluetooth": "بلوتوث",
+  "Interface design & development: Tarek Sadek · © 2026": "تصميم وتطوير الواجهة: طارق صادق · جميع الحقوق محفوظة © 2026"
 }

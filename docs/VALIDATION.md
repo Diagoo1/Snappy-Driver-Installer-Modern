@@ -1,12 +1,12 @@
 # Validation scope
 
-Current application version: **0.21.10 Beta**. Hardware/Windows compatibility testing is ongoing. This document separates verified behavior from implementation that still needs hardware/VM testing.
+Current application version: **0.21.11 Beta**. Hardware/Windows compatibility testing is ongoing. This document separates verified behavior from implementation that still needs hardware/VM testing.
 
 | Area | Evidence |
 | --- | --- |
-| Interface, menus, RTL and instances | 243 regression checks at 100% and 150%; English/Arabic and light/dark visual review |
+| Interface, menus, RTL and instances | 258 regression checks at 100% and 150%; English/Arabic and light/dark visual review |
 | Structural/source integration | 82 checks; critical original source fingerprints and reviewed patches |
-| Current native matching | Read-only scan: 222 devices and 572 candidates on the development host |
+| Current native matching | Read-only scan: 216 devices and 567 candidates on the development host |
 | Original engine workflows | Repeated scan, snapshot save/load, target-system preview and extraction of six INF files |
 | Index maintenance | Original rebuild, text export, deliberate damaged-cache recovery and reload |
 | Legacy automation | Read-only script/device-list output, parse-only validation of effectful scripts and installed-ID queries |
@@ -40,3 +40,5 @@ The final executable's `--gui-security-probe` returned `guiCom: 0` and `restoreC
 
 0.21.10: 243 UI checks at 100%/150%, including global Recommended selection under a hiding search, clear-all after page navigation, row toggling, details after a selection rebuild, finite chevron animation and reduced motion. Select-all now follows all eligible local engine recommendations, including a Recommended reinstall; operation-specific installation consent remains required. Native matching and installation code did not change and no actual installation was performed.
 The old static assertion requiring filter-scoped bulk selection was removed because that behavior was explicitly replaced; actual UI regression checks now cover global selection under hidden search results and page navigation.
+
+0.21.11: 258 UI checks at 100%/150% cover category persistence, complete and opt-in filtered alternatives, archive names, reinstall version handling, specific icons, Apply/Restore default/help, gradient rendering and cursors. Fresh read-only SDI/SDIO-layout scans both returned 216 devices/567 candidates; original index hashes remained unchanged. The current library exposes 12 Thunderbolt candidates and 14 Generic Participant candidates. Automatic post-install rescan is implemented, but was not exercised after real hardware installation; install/restore/reboot and old-Windows execution remain unverified. See RESTORE_BEHAVIOR.md for the inspected DriverPack restore code.

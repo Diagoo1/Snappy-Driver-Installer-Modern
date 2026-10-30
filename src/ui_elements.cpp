@@ -226,6 +226,7 @@ void Splash::paintEvent(QPaintEvent *)
     p.drawText(QRect(0,385,width(),25),Qt::AlignCenter,UiLanguage::text(QStringLiteral("Preparing your workspace...")));
     const QRect bar(194,436,462,9);
     p.setPen(Qt::NoPen); p.setBrush(QColor("#08708C")); p.drawRoundedRect(bar,4,4);
-    p.setBrush(QColor("#00DBCF"));
+    QLinearGradient progress(bar.topLeft(),bar.topRight());progress.setColorAt(0,QColor("#5DE8EE"));progress.setColorAt(1,QColor("#4BE3A8"));p.setBrush(progress);
     p.drawRoundedRect(QRect(bar.x(),bar.y(),qMax(10,bar.width()*m_progress/100),bar.height()),4,4);
+    QFont credit=font();credit.setPixelSize(13);credit.setWeight(QFont::Medium);p.setFont(credit);p.setPen(QColor("#DCF8F3"));p.drawText(QRect(0,467,width(),24),Qt::AlignCenter,UiLanguage::language()==QStringLiteral("arabic")?QString::fromUtf8("تصميم وتطوير الواجهة: طارق صادق · جميع الحقوق محفوظة © 2026"):QStringLiteral("Interface design & development: Tarek Sadek · © 2026"));
 }

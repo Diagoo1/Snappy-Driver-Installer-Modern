@@ -1,5 +1,15 @@
 # Changelog
 
+## 0.21.11 Beta
+
+- Stage compatibility choices until Apply; add project-styled help, compact paired selectors and Restore default with an automatic scan of the current PC.
+- Refresh actual Windows matching after installation or a restore-blocked session, waiting for the engine to become idle. Explain pending reboot state.
+- Group devices under collapsible category headings, preserve expanded states and use more specific device/category vector icons.
+- Show all native alternatives by default; applying the original visibility filters to alternatives is a separate opt-in setting.
+- Match reinstalls by normalized installed version rather than requiring identical rank flags; show a selection warning and the 7z package in comparison details. Missing archives still cannot be installed from metadata alone.
+- Use quiet Details tags, hand cursors, gradient progress fills and startup interface credits.
+- Document the inspected DriverPack restore implementation and Windows' protection requirements without changing OS settings during validation.
+
 ## 0.21.10 Beta
 
 - Select all follows every eligible local engine Recommended candidate independently of search/filters; clear-all removes every mark, including hidden/manual choices. A Recommended current-version package is included and retains the reinstall warning.

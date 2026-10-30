@@ -101,6 +101,7 @@ static QFrame *candidatePanel(const DriverCandidate &d,bool demo,bool verified,Q
     addRow(fields,2,QStringLiteral("INF"),d.inf,card);
     fields->setColumnStretch(0,0);fields->setColumnStretch(1,1);
     if(!technical){
+        addRow(fields,4,tr("Driver pack (.7z)","حزمة التعريف (.7z)"),d.packageSource.isEmpty()?tr("No matching archive in this library","لا توجد حزمة مطابقة في هذه المكتبة"):d.packageSource,card);
         addRow(fields,3,tr("Availability","التوفر"),d.status==QStringLiteral("installed")?tr("Installed on this computer","مثبت على هذا الجهاز"):
             (demo?tr("Demo candidate","إصدار توضيحي"):(d.local?tr("Local package present","الحزمة متوفرة محليًا"):tr("Package missing","الحزمة غير متوفرة"))),card);
         if(d.engineToken){
@@ -143,7 +144,7 @@ DriverDetailsDialog::DriverDetailsDialog(const DriverEntry &entry,bool demo,bool
     content->setSpacing(13);
     QHBoxLayout *header=new QHBoxLayout();
     QLabel *icon=new QLabel(body);
-    icon->setPixmap(VectorIcons::pixmap(VectorIcons::forDeviceClass(entry.device.deviceClass),QColor("#18A9B6"),36));
+    icon->setPixmap(VectorIcons::pixmap(VectorIcons::forDeviceClass(entry.device.deviceClass+QStringLiteral(" ")+entry.device.name),QColor("#18A9B6"),36));
     header->addWidget(icon);
     QVBoxLayout *headText=new QVBoxLayout();
     headText->setSpacing(4);
@@ -177,7 +178,8 @@ DriverDetailsDialog::DriverDetailsDialog(const DriverEntry &entry,bool demo,bool
     };
     QWidget *overview=page(arabic?QString::fromUtf8("المقارنة"):QStringLiteral("Comparison"));
     QHBoxLayout *compare=new QHBoxLayout(overview);compare->setContentsMargins(0,12,0,0);compare->setSpacing(14);
-    QFrame *installedCard=entry.candidates.isEmpty()?0:candidatePanel(entry.candidates[0],demo,entry.sdioDriverPresent,overview,false,arabic);
+    DriverCandidate installedData=entry.candidates.isEmpty()?DriverCandidate():entry.candidates[0];const int reinstallSource=reinstallCandidateIndex(entry);if(reinstallSource>0)installedData.packageSource=entry.candidates[reinstallSource].packageSource;
+    QFrame *installedCard=entry.candidates.isEmpty()?0:candidatePanel(installedData,demo,entry.sdioDriverPresent,overview,false,arabic);
     if(installedCard)compare->addWidget(installedCard,1,Qt::AlignTop);
     QWidget *candidateHost=new QWidget(overview);candidateHost->setObjectName(QStringLiteral("candidateHost"));candidateHost->setSizePolicy(QSizePolicy::Preferred,QSizePolicy::Maximum);QVBoxLayout *candidateBox=new QVBoxLayout(candidateHost);candidateBox->setContentsMargins(0,0,0,0);candidateBox->setAlignment(Qt::AlignTop);
     compare->addWidget(candidateHost,1,Qt::AlignTop);

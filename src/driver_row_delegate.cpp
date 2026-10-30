@@ -1,4 +1,5 @@
 #include "ui_font.h"
+#include "vector_icons.h"
 #include "driver_row_delegate.h"
 #include <QPainter>
 #include <QPainterPath>
@@ -27,9 +28,10 @@ static QPainterPath starPath(const QPointF &center,qreal outer,qreal inner)
 void DriverRowDelegate::paint(QPainter *p,const QStyleOptionViewItem &option,
                              const QModelIndex &index) const
 {
-    const bool child=index.parent().isValid(),rtl=option.direction==Qt::RightToLeft;
+    const bool child=index.sibling(index.row(),0).data(Qt::UserRole+1).toInt()>=0,rtl=option.direction==Qt::RightToLeft;
     const int align=Qt::AlignAbsolute|(rtl?Qt::AlignRight:Qt::AlignLeft);
     const int col=index.column();
+    if(index.data(Qt::UserRole+13).toBool()){p->save();p->setRenderHint(QPainter::Antialiasing);const bool dark=option.palette.color(QPalette::Base).lightness()<130;const QRect area=option.rect.adjusted(2,5,-2,-5);p->setPen(Qt::NoPen);p->setBrush(dark?QColor("#244555"):QColor("#EAF4F6"));p->drawRoundedRect(area,9,9);QFont face=option.font;face.setFamily(UiFont::family());face.setPixelSize(13);face.setWeight(QFont::DemiBold);p->setFont(face);p->setPen(dark?QColor("#A9E4DE"):QColor("#206477"));const QString category=index.data(Qt::UserRole+14).toString();VectorIcons::icon(VectorIcons::forDeviceClass(category),dark?QColor("#7AD4CA"):QColor("#168D9B"),18).paint(p,QRect(rtl?area.right()-30:area.left()+12,area.center().y()-9,18,18));p->drawText(area.adjusted(rtl?12:38,0,rtl?-38:-12,0),align|Qt::AlignVCenter,index.data().toString());p->restore();return;}
     QStyleOptionViewItem rowOption(option);
     // The tree paints a single rounded full-row surface, including branches and actions.
     rowOption.state &= ~(QStyle::State_MouseOver|QStyle::State_Selected|QStyle::State_HasFocus);
@@ -37,7 +39,7 @@ void DriverRowDelegate::paint(QPainter *p,const QStyleOptionViewItem &option,
         QStyleOptionViewItem opt(rowOption);opt.state &= ~QStyle::State_HasFocus;
         opt.text.clear();opt.icon=QIcon();opt.features=QStyleOptionViewItem::None;
         (option.widget?option.widget->style():QApplication::style())->drawControl(QStyle::CE_ItemViewItem,&opt,p,option.widget);
-        if(child){
+        if(child || (index.data(Qt::CheckStateRole).isNull() && index.data(Qt::UserRole+12).toBool())){
             const bool dark=option.palette.color(QPalette::Base).lightness()<130,selected=index.sibling(index.row(),0).data(Qt::UserRole+2).toBool();const QRect slot=option.rect.adjusted(rtl?34:5,0,rtl?-5:-34,0);QFont face=option.font;face.setFamily(UiFont::family());face.setPointSizeF(9);face.setWeight(QFont::Medium);const QFontMetrics metrics(face);const QString label=metrics.elidedText(index.data().toString(),Qt::ElideRight,slot.width()-20);const int width=qMin(slot.width(),metrics.width(label)+20);const QRect tag(slot.center().x()-width/2,slot.center().y()-14,width,28);p->save();p->setRenderHint(QPainter::Antialiasing);p->setPen(Qt::NoPen);QColor fill=selected?QColor("#13A98D"):option.palette.color(QPalette::Mid);fill.setAlpha(selected?(dark?45:20):(dark?15:9));p->setBrush(fill);p->drawRoundedRect(tag,14,14);p->setFont(face);p->setPen(selected?(dark?QColor("#77DCC9"):QColor("#168974")):option.palette.color(QPalette::Mid));p->drawText(tag,Qt::AlignCenter,label);p->restore();
         }else         if(index.data(Qt::CheckStateRole).isNull() && index.data(Qt::UserRole+12).toBool()){
             const bool dark=option.palette.color(QPalette::Base).lightness()<130;const QRect action=option.rect.adjusted(rtl?36:7,22,rtl?-7:-36,-22);p->save();p->setRenderHint(QPainter::Antialiasing);p->setPen(QPen(dark?QColor("#426474"):QColor("#C9DDE3"),1));p->setBrush(dark?QColor("#234858"):QColor("#EDF6F8"));p->drawRoundedRect(action,9,9);p->setPen(option.palette.color(QPalette::Text));QFont face=option.font;face.setFamily(UiFont::family());face.setWeight(QFont::Medium);p->setFont(face);p->drawText(action.adjusted(6,0,-6,0),Qt::AlignCenter,option.fontMetrics.elidedText(index.data().toString(),Qt::ElideRight,action.width()-12));p->restore();

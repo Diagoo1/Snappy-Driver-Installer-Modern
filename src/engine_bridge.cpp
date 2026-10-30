@@ -36,6 +36,8 @@ void EngineBridge::requestInventory(bool demo){
     m_worker->paths.snapshotFile.clear();
     m_worker->resetRequest();m_worker->job=OriginWorker::Scan;m_pending=true;m_worker->start(QThread::NormalPriority);
 }
+int EngineBridge::previewVersion()const{return m_worker->paths.targetVersion;}
+int EngineBridge::previewArchitecture()const{return m_worker->paths.targetArchitecture;}
 void EngineBridge::setPreviewTarget(int version,int architecture){if(isBusy())return;m_worker->paths.targetVersion=version;m_worker->paths.targetArchitecture=architecture;}
 void EngineBridge::requestLoadSnapshot(const QString &file){
     if(isBusy())return;

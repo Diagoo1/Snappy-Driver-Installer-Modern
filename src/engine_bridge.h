@@ -15,6 +15,8 @@ public:
     void configure(const QString& drivers,const QString& indexes,const QString& logs);
     void requestInventory(bool demo);
     void setPreviewTarget(int version,int architecture);
+    int previewVersion()const;
+    int previewArchitecture()const;
     void requestLoadSnapshot(const QString &file);
     bool requestInstallation(const sdiomodern::InstallPlan& plan);
     void requestStopAfterCurrent();

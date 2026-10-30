@@ -9,6 +9,7 @@
 #include <QLineEdit>
 #include <QComboBox>
 #include <QTreeWidget>
+#include <QTreeWidgetItemIterator>
 #include <QTabWidget>
 #include <QStackedWidget>
 #include <QScrollArea>
@@ -37,6 +38,8 @@
 #include <stdexcept>
 #include <cstdio>
 
+static QTreeWidgetItem *deviceItem(QTreeWidget *tree,int row=0){for(QTreeWidgetItemIterator it(tree);*it;++it)if((*it)->data(0,Qt::UserRole+1).toInt()==-1 && (*it)->data(0,Qt::UserRole).toInt()==row)return *it;return 0;}
+static void collapseDevices(QTreeWidget *tree){for(QTreeWidgetItemIterator it(tree);*it;++it)if((*it)->data(0,Qt::UserRole+1).toInt()==-1)(*it)->setExpanded(false);}
 int renderPublicationGallery(QApplication &app){
     const int flag=app.arguments().indexOf(QStringLiteral("--publication-gallery"));
     const QString output=flag>=0?app.arguments().value(flag+1):QString();
@@ -63,7 +66,7 @@ int renderPublicationGallery(QApplication &app){
         };
         auto shot=[&](QWidget *widget,const QString &name,bool installation=false){UiLanguage::refresh();sanitize();QTest::qWait(35);const QString relative=variant+QLatin1Char('/')+name+QStringLiteral(".png");if(!widget->grab().save(QDir(output).filePath(relative)))throw std::runtime_error("Gallery image could not be saved.");QJsonObject item;item.insert(QStringLiteral("file"),relative);item.insert(QStringLiteral("locale"),ar?QStringLiteral("ar"):QStringLiteral("en"));item.insert(QStringLiteral("theme"),dark?QStringLiteral("dark"):QStringLiteral("light"));item.insert(QStringLiteral("sampleData"),true);item.insert(QStringLiteral("installationSimulation"),installation);manifest.append(item);};
         auto page=[&](int index){QMetaObject::invokeMethod(&window,"navigate",Q_ARG(int,index));QTest::qWait(120);sanitize();};
-        page(0);shot(&window,QStringLiteral("01-drivers"));QTreeWidget *tree=board->findChild<QTreeWidget*>(QStringLiteral("driverTree"));if(tree && tree->topLevelItemCount()){tree->expandItem(tree->topLevelItem(0));QTest::qWait(50);}shot(&window,QStringLiteral("02-driver-versions"));if(tree)tree->collapseAll();
+        page(0);shot(&window,QStringLiteral("01-drivers"));QTreeWidget *tree=board->findChild<QTreeWidget*>(QStringLiteral("driverTree"));if(tree && tree->topLevelItemCount()){tree->expandItem(deviceItem(tree));QTest::qWait(50);}shot(&window,QStringLiteral("02-driver-versions"));if(tree)collapseDevices(tree);
         page(1);shot(&window,QStringLiteral("03-diagnostics"));
         page(2);shot(&window,QStringLiteral("04-driver-packages"));
         page(3);shot(&window,QStringLiteral("05-settings"));

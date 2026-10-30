@@ -14,6 +14,7 @@ namespace VectorIcons {
     QPixmap pixmap(const QString &name,const QColor &color,int logicalSize=24);
     void paint(QPainter *painter, const QString &name, const QRectF &rect, const QColor &color);
     QString forDeviceClass(const QString &deviceClass);
+    QString deviceCategory(const QString &deviceClass,const QString &name);
 }
 
 #endif

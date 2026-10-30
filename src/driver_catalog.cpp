@@ -17,10 +17,11 @@ int matchPriorityStars(const DriverEntry &entry,int candidateIndex){
 }
 
 DriverCatalog::DriverCatalog(QObject *parent) : QObject(parent), m_demo(false), m_native(false) {}
+static QString normalizedVersion(QString value){QStringList parts=value.trimmed().split(QLatin1Char('.'));if(parts.isEmpty() || parts.size()>4)return QString();for(QString &part:parts){bool valid=false;const uint number=part.toUInt(&valid);if(!valid || number>65535)return QString();part=QString::number(number);}while(parts.size()<4)parts.append(QStringLiteral("0"));return parts.join(QLatin1Char('.'));}
 bool isReinstallCandidate(const DriverEntry &entry,int index){
     if(index<=0 || index>=entry.candidates.size() || !entry.sdioDriverPresent)return false;
     const DriverCandidate &candidate=entry.candidates[index];
-    return candidate.valid && (candidate.statusBits&0x042u)==0x042u;
+    const QString installed=normalizedVersion(entry.device.driverVersion),available=normalizedVersion(candidate.version);return candidate.valid && ((!installed.isEmpty() && installed==available) || ((installed.isEmpty() || available.isEmpty()) && (candidate.statusBits&0x040u)!=0));
 }
 int reinstallCandidateIndex(const DriverEntry &entry){
     for(int i=1;i<entry.candidates.size();++i)if(isReinstallCandidate(entry,i) && entry.candidates[i].local)return i;
