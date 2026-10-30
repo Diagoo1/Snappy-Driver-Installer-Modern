@@ -3,7 +3,7 @@
     "translated": 932,
     "total": 933,
     "englishFallbacks": [
-      "Version: 0.22.0 (Beta)\nWindows: %1\nArchitecture: %2\nLanguage: %3\nTheme: %4"
+      "Version: 0.22.1 (Beta)\nWindows: %1\nArchitecture: %2\nLanguage: %3\nTheme: %4"
     ]
   },
   "armenian": {
@@ -86,7 +86,7 @@
       "The administrator restart was cancelled or could not start. Your selection is unchanged. Windows error: %1",
       "This view helps technicians prepare an offline driver library for another Windows version or architecture. It does not change Windows. Press Apply to scan that target; installation is disabled in preview. Restore default returns to this computer and refreshes its matches.",
       "To reinstall the same version, expand the device and select its installed version. The exact version must have an eligible local 7z package; Windows' installed-driver information alone is not an installation package. If it is absent, add or download that version's package and scan again. Turn off Recommended view in Match filters to browse installed devices without a recommended update. Create restore point in Install options applies to reinstallation too. Windows System Protection must be enabled; a required restore-point failure stops installation.",
-      "Version: 0.22.0 (Beta)\nWindows: %1\nArchitecture: %2\nLanguage: %3\nTheme: %4",
+      "Version: 0.22.1 (Beta)\nWindows: %1\nArchitecture: %2\nLanguage: %3\nTheme: %4",
       "Windows requested a restart. Some installed versions are reported only after reboot.",
       "[Bug] "
     ]
@@ -171,7 +171,7 @@
       "The administrator restart was cancelled or could not start. Your selection is unchanged. Windows error: %1",
       "This view helps technicians prepare an offline driver library for another Windows version or architecture. It does not change Windows. Press Apply to scan that target; installation is disabled in preview. Restore default returns to this computer and refreshes its matches.",
       "To reinstall the same version, expand the device and select its installed version. The exact version must have an eligible local 7z package; Windows' installed-driver information alone is not an installation package. If it is absent, add or download that version's package and scan again. Turn off Recommended view in Match filters to browse installed devices without a recommended update. Create restore point in Install options applies to reinstallation too. Windows System Protection must be enabled; a required restore-point failure stops installation.",
-      "Version: 0.22.0 (Beta)\nWindows: %1\nArchitecture: %2\nLanguage: %3\nTheme: %4",
+      "Version: 0.22.1 (Beta)\nWindows: %1\nArchitecture: %2\nLanguage: %3\nTheme: %4",
       "Windows requested a restart. Some installed versions are reported only after reboot.",
       "[Bug] "
     ]
@@ -256,7 +256,7 @@
       "The administrator restart was cancelled or could not start. Your selection is unchanged. Windows error: %1",
       "This view helps technicians prepare an offline driver library for another Windows version or architecture. It does not change Windows. Press Apply to scan that target; installation is disabled in preview. Restore default returns to this computer and refreshes its matches.",
       "To reinstall the same version, expand the device and select its installed version. The exact version must have an eligible local 7z package; Windows' installed-driver information alone is not an installation package. If it is absent, add or download that version's package and scan again. Turn off Recommended view in Match filters to browse installed devices without a recommended update. Create restore point in Install options applies to reinstallation too. Windows System Protection must be enabled; a required restore-point failure stops installation.",
-      "Version: 0.22.0 (Beta)\nWindows: %1\nArchitecture: %2\nLanguage: %3\nTheme: %4",
+      "Version: 0.22.1 (Beta)\nWindows: %1\nArchitecture: %2\nLanguage: %3\nTheme: %4",
       "Windows requested a restart. Some installed versions are reported only after reboot.",
       "[Bug] "
     ]
@@ -341,7 +341,7 @@
       "The administrator restart was cancelled or could not start. Your selection is unchanged. Windows error: %1",
       "This view helps technicians prepare an offline driver library for another Windows version or architecture. It does not change Windows. Press Apply to scan that target; installation is disabled in preview. Restore default returns to this computer and refreshes its matches.",
       "To reinstall the same version, expand the device and select its installed version. The exact version must have an eligible local 7z package; Windows' installed-driver information alone is not an installation package. If it is absent, add or download that version's package and scan again. Turn off Recommended view in Match filters to browse installed devices without a recommended update. Create restore point in Install options applies to reinstallation too. Windows System Protection must be enabled; a required restore-point failure stops installation.",
-      "Version: 0.22.0 (Beta)\nWindows: %1\nArchitecture: %2\nLanguage: %3\nTheme: %4",
+      "Version: 0.22.1 (Beta)\nWindows: %1\nArchitecture: %2\nLanguage: %3\nTheme: %4",
       "Windows requested a restart. Some installed versions are reported only after reboot.",
       "[Bug] "
     ]
@@ -426,7 +426,7 @@
       "The administrator restart was cancelled or could not start. Your selection is unchanged. Windows error: %1",
       "This view helps technicians prepare an offline driver library for another Windows version or architecture. It does not change Windows. Press Apply to scan that target; installation is disabled in preview. Restore default returns to this computer and refreshes its matches.",
       "To reinstall the same version, expand the device and select its installed version. The exact version must have an eligible local 7z package; Windows' installed-driver information alone is not an installation package. If it is absent, add or download that version's package and scan again. Turn off Recommended view in Match filters to browse installed devices without a recommended update. Create restore point in Install options applies to reinstallation too. Windows System Protection must be enabled; a required restore-point failure stops installation.",
-      "Version: 0.22.0 (Beta)\nWindows: %1\nArchitecture: %2\nLanguage: %3\nTheme: %4",
+      "Version: 0.22.1 (Beta)\nWindows: %1\nArchitecture: %2\nLanguage: %3\nTheme: %4",
       "Windows requested a restart. Some installed versions are reported only after reboot.",
       "[Bug] "
     ]
@@ -511,7 +511,7 @@
       "The administrator restart was cancelled or could not start. Your selection is unchanged. Windows error: %1",
       "This view helps technicians prepare an offline driver library for another Windows version or architecture. It does not change Windows. Press Apply to scan that target; installation is disabled in preview. Restore default returns to this computer and refreshes its matches.",
       "To reinstall the same version, expand the device and select its installed version. The exact version must have an eligible local 7z package; Windows' installed-driver information alone is not an installation package. If it is absent, add or download that version's package and scan again. Turn off Recommended view in Match filters to browse installed devices without a recommended update. Create restore point in Install options applies to reinstallation too. Windows System Protection must be enabled; a required restore-point failure stops installation.",
-      "Version: 0.22.0 (Beta)\nWindows: %1\nArchitecture: %2\nLanguage: %3\nTheme: %4",
+      "Version: 0.22.1 (Beta)\nWindows: %1\nArchitecture: %2\nLanguage: %3\nTheme: %4",
       "Windows requested a restart. Some installed versions are reported only after reboot.",
       "[Bug] "
     ]
@@ -596,7 +596,7 @@
       "The administrator restart was cancelled or could not start. Your selection is unchanged. Windows error: %1",
       "This view helps technicians prepare an offline driver library for another Windows version or architecture. It does not change Windows. Press Apply to scan that target; installation is disabled in preview. Restore default returns to this computer and refreshes its matches.",
       "To reinstall the same version, expand the device and select its installed version. The exact version must have an eligible local 7z package; Windows' installed-driver information alone is not an installation package. If it is absent, add or download that version's package and scan again. Turn off Recommended view in Match filters to browse installed devices without a recommended update. Create restore point in Install options applies to reinstallation too. Windows System Protection must be enabled; a required restore-point failure stops installation.",
-      "Version: 0.22.0 (Beta)\nWindows: %1\nArchitecture: %2\nLanguage: %3\nTheme: %4",
+      "Version: 0.22.1 (Beta)\nWindows: %1\nArchitecture: %2\nLanguage: %3\nTheme: %4",
       "Windows requested a restart. Some installed versions are reported only after reboot.",
       "[Bug] "
     ]
@@ -681,7 +681,7 @@
       "The administrator restart was cancelled or could not start. Your selection is unchanged. Windows error: %1",
       "This view helps technicians prepare an offline driver library for another Windows version or architecture. It does not change Windows. Press Apply to scan that target; installation is disabled in preview. Restore default returns to this computer and refreshes its matches.",
       "To reinstall the same version, expand the device and select its installed version. The exact version must have an eligible local 7z package; Windows' installed-driver information alone is not an installation package. If it is absent, add or download that version's package and scan again. Turn off Recommended view in Match filters to browse installed devices without a recommended update. Create restore point in Install options applies to reinstallation too. Windows System Protection must be enabled; a required restore-point failure stops installation.",
-      "Version: 0.22.0 (Beta)\nWindows: %1\nArchitecture: %2\nLanguage: %3\nTheme: %4",
+      "Version: 0.22.1 (Beta)\nWindows: %1\nArchitecture: %2\nLanguage: %3\nTheme: %4",
       "Windows requested a restart. Some installed versions are reported only after reboot.",
       "[Bug] "
     ]
@@ -766,7 +766,7 @@
       "The administrator restart was cancelled or could not start. Your selection is unchanged. Windows error: %1",
       "This view helps technicians prepare an offline driver library for another Windows version or architecture. It does not change Windows. Press Apply to scan that target; installation is disabled in preview. Restore default returns to this computer and refreshes its matches.",
       "To reinstall the same version, expand the device and select its installed version. The exact version must have an eligible local 7z package; Windows' installed-driver information alone is not an installation package. If it is absent, add or download that version's package and scan again. Turn off Recommended view in Match filters to browse installed devices without a recommended update. Create restore point in Install options applies to reinstallation too. Windows System Protection must be enabled; a required restore-point failure stops installation.",
-      "Version: 0.22.0 (Beta)\nWindows: %1\nArchitecture: %2\nLanguage: %3\nTheme: %4",
+      "Version: 0.22.1 (Beta)\nWindows: %1\nArchitecture: %2\nLanguage: %3\nTheme: %4",
       "Windows requested a restart. Some installed versions are reported only after reboot.",
       "[Bug] "
     ]
@@ -851,7 +851,7 @@
       "The administrator restart was cancelled or could not start. Your selection is unchanged. Windows error: %1",
       "This view helps technicians prepare an offline driver library for another Windows version or architecture. It does not change Windows. Press Apply to scan that target; installation is disabled in preview. Restore default returns to this computer and refreshes its matches.",
       "To reinstall the same version, expand the device and select its installed version. The exact version must have an eligible local 7z package; Windows' installed-driver information alone is not an installation package. If it is absent, add or download that version's package and scan again. Turn off Recommended view in Match filters to browse installed devices without a recommended update. Create restore point in Install options applies to reinstallation too. Windows System Protection must be enabled; a required restore-point failure stops installation.",
-      "Version: 0.22.0 (Beta)\nWindows: %1\nArchitecture: %2\nLanguage: %3\nTheme: %4",
+      "Version: 0.22.1 (Beta)\nWindows: %1\nArchitecture: %2\nLanguage: %3\nTheme: %4",
       "Windows requested a restart. Some installed versions are reported only after reboot.",
       "[Bug] "
     ]
@@ -936,7 +936,7 @@
       "The administrator restart was cancelled or could not start. Your selection is unchanged. Windows error: %1",
       "This view helps technicians prepare an offline driver library for another Windows version or architecture. It does not change Windows. Press Apply to scan that target; installation is disabled in preview. Restore default returns to this computer and refreshes its matches.",
       "To reinstall the same version, expand the device and select its installed version. The exact version must have an eligible local 7z package; Windows' installed-driver information alone is not an installation package. If it is absent, add or download that version's package and scan again. Turn off Recommended view in Match filters to browse installed devices without a recommended update. Create restore point in Install options applies to reinstallation too. Windows System Protection must be enabled; a required restore-point failure stops installation.",
-      "Version: 0.22.0 (Beta)\nWindows: %1\nArchitecture: %2\nLanguage: %3\nTheme: %4",
+      "Version: 0.22.1 (Beta)\nWindows: %1\nArchitecture: %2\nLanguage: %3\nTheme: %4",
       "Windows requested a restart. Some installed versions are reported only after reboot.",
       "[Bug] "
     ]
@@ -1021,7 +1021,7 @@
       "The administrator restart was cancelled or could not start. Your selection is unchanged. Windows error: %1",
       "This view helps technicians prepare an offline driver library for another Windows version or architecture. It does not change Windows. Press Apply to scan that target; installation is disabled in preview. Restore default returns to this computer and refreshes its matches.",
       "To reinstall the same version, expand the device and select its installed version. The exact version must have an eligible local 7z package; Windows' installed-driver information alone is not an installation package. If it is absent, add or download that version's package and scan again. Turn off Recommended view in Match filters to browse installed devices without a recommended update. Create restore point in Install options applies to reinstallation too. Windows System Protection must be enabled; a required restore-point failure stops installation.",
-      "Version: 0.22.0 (Beta)\nWindows: %1\nArchitecture: %2\nLanguage: %3\nTheme: %4",
+      "Version: 0.22.1 (Beta)\nWindows: %1\nArchitecture: %2\nLanguage: %3\nTheme: %4",
       "Windows requested a restart. Some installed versions are reported only after reboot.",
       "[Bug] "
     ]
@@ -1111,7 +1111,7 @@
       "The administrator restart was cancelled or could not start. Your selection is unchanged. Windows error: %1",
       "This view helps technicians prepare an offline driver library for another Windows version or architecture. It does not change Windows. Press Apply to scan that target; installation is disabled in preview. Restore default returns to this computer and refreshes its matches.",
       "To reinstall the same version, expand the device and select its installed version. The exact version must have an eligible local 7z package; Windows' installed-driver information alone is not an installation package. If it is absent, add or download that version's package and scan again. Turn off Recommended view in Match filters to browse installed devices without a recommended update. Create restore point in Install options applies to reinstallation too. Windows System Protection must be enabled; a required restore-point failure stops installation.",
-      "Version: 0.22.0 (Beta)\nWindows: %1\nArchitecture: %2\nLanguage: %3\nTheme: %4",
+      "Version: 0.22.1 (Beta)\nWindows: %1\nArchitecture: %2\nLanguage: %3\nTheme: %4",
       "Windows requested a restart. Some installed versions are reported only after reboot.",
       "[Bug] "
     ]
@@ -1196,7 +1196,7 @@
       "The administrator restart was cancelled or could not start. Your selection is unchanged. Windows error: %1",
       "This view helps technicians prepare an offline driver library for another Windows version or architecture. It does not change Windows. Press Apply to scan that target; installation is disabled in preview. Restore default returns to this computer and refreshes its matches.",
       "To reinstall the same version, expand the device and select its installed version. The exact version must have an eligible local 7z package; Windows' installed-driver information alone is not an installation package. If it is absent, add or download that version's package and scan again. Turn off Recommended view in Match filters to browse installed devices without a recommended update. Create restore point in Install options applies to reinstallation too. Windows System Protection must be enabled; a required restore-point failure stops installation.",
-      "Version: 0.22.0 (Beta)\nWindows: %1\nArchitecture: %2\nLanguage: %3\nTheme: %4",
+      "Version: 0.22.1 (Beta)\nWindows: %1\nArchitecture: %2\nLanguage: %3\nTheme: %4",
       "Windows requested a restart. Some installed versions are reported only after reboot.",
       "[Bug] "
     ]
@@ -1281,7 +1281,7 @@
       "The administrator restart was cancelled or could not start. Your selection is unchanged. Windows error: %1",
       "This view helps technicians prepare an offline driver library for another Windows version or architecture. It does not change Windows. Press Apply to scan that target; installation is disabled in preview. Restore default returns to this computer and refreshes its matches.",
       "To reinstall the same version, expand the device and select its installed version. The exact version must have an eligible local 7z package; Windows' installed-driver information alone is not an installation package. If it is absent, add or download that version's package and scan again. Turn off Recommended view in Match filters to browse installed devices without a recommended update. Create restore point in Install options applies to reinstallation too. Windows System Protection must be enabled; a required restore-point failure stops installation.",
-      "Version: 0.22.0 (Beta)\nWindows: %1\nArchitecture: %2\nLanguage: %3\nTheme: %4",
+      "Version: 0.22.1 (Beta)\nWindows: %1\nArchitecture: %2\nLanguage: %3\nTheme: %4",
       "Windows requested a restart. Some installed versions are reported only after reboot.",
       "[Bug] "
     ]
@@ -1366,7 +1366,7 @@
       "The administrator restart was cancelled or could not start. Your selection is unchanged. Windows error: %1",
       "This view helps technicians prepare an offline driver library for another Windows version or architecture. It does not change Windows. Press Apply to scan that target; installation is disabled in preview. Restore default returns to this computer and refreshes its matches.",
       "To reinstall the same version, expand the device and select its installed version. The exact version must have an eligible local 7z package; Windows' installed-driver information alone is not an installation package. If it is absent, add or download that version's package and scan again. Turn off Recommended view in Match filters to browse installed devices without a recommended update. Create restore point in Install options applies to reinstallation too. Windows System Protection must be enabled; a required restore-point failure stops installation.",
-      "Version: 0.22.0 (Beta)\nWindows: %1\nArchitecture: %2\nLanguage: %3\nTheme: %4",
+      "Version: 0.22.1 (Beta)\nWindows: %1\nArchitecture: %2\nLanguage: %3\nTheme: %4",
       "Windows requested a restart. Some installed versions are reported only after reboot.",
       "[Bug] "
     ]
@@ -1451,7 +1451,7 @@
       "The administrator restart was cancelled or could not start. Your selection is unchanged. Windows error: %1",
       "This view helps technicians prepare an offline driver library for another Windows version or architecture. It does not change Windows. Press Apply to scan that target; installation is disabled in preview. Restore default returns to this computer and refreshes its matches.",
       "To reinstall the same version, expand the device and select its installed version. The exact version must have an eligible local 7z package; Windows' installed-driver information alone is not an installation package. If it is absent, add or download that version's package and scan again. Turn off Recommended view in Match filters to browse installed devices without a recommended update. Create restore point in Install options applies to reinstallation too. Windows System Protection must be enabled; a required restore-point failure stops installation.",
-      "Version: 0.22.0 (Beta)\nWindows: %1\nArchitecture: %2\nLanguage: %3\nTheme: %4",
+      "Version: 0.22.1 (Beta)\nWindows: %1\nArchitecture: %2\nLanguage: %3\nTheme: %4",
       "Windows requested a restart. Some installed versions are reported only after reboot.",
       "[Bug] "
     ]
@@ -1536,7 +1536,7 @@
       "The administrator restart was cancelled or could not start. Your selection is unchanged. Windows error: %1",
       "This view helps technicians prepare an offline driver library for another Windows version or architecture. It does not change Windows. Press Apply to scan that target; installation is disabled in preview. Restore default returns to this computer and refreshes its matches.",
       "To reinstall the same version, expand the device and select its installed version. The exact version must have an eligible local 7z package; Windows' installed-driver information alone is not an installation package. If it is absent, add or download that version's package and scan again. Turn off Recommended view in Match filters to browse installed devices without a recommended update. Create restore point in Install options applies to reinstallation too. Windows System Protection must be enabled; a required restore-point failure stops installation.",
-      "Version: 0.22.0 (Beta)\nWindows: %1\nArchitecture: %2\nLanguage: %3\nTheme: %4",
+      "Version: 0.22.1 (Beta)\nWindows: %1\nArchitecture: %2\nLanguage: %3\nTheme: %4",
       "Windows requested a restart. Some installed versions are reported only after reboot.",
       "[Bug] "
     ]
@@ -1621,7 +1621,7 @@
       "The administrator restart was cancelled or could not start. Your selection is unchanged. Windows error: %1",
       "This view helps technicians prepare an offline driver library for another Windows version or architecture. It does not change Windows. Press Apply to scan that target; installation is disabled in preview. Restore default returns to this computer and refreshes its matches.",
       "To reinstall the same version, expand the device and select its installed version. The exact version must have an eligible local 7z package; Windows' installed-driver information alone is not an installation package. If it is absent, add or download that version's package and scan again. Turn off Recommended view in Match filters to browse installed devices without a recommended update. Create restore point in Install options applies to reinstallation too. Windows System Protection must be enabled; a required restore-point failure stops installation.",
-      "Version: 0.22.0 (Beta)\nWindows: %1\nArchitecture: %2\nLanguage: %3\nTheme: %4",
+      "Version: 0.22.1 (Beta)\nWindows: %1\nArchitecture: %2\nLanguage: %3\nTheme: %4",
       "Windows requested a restart. Some installed versions are reported only after reboot.",
       "[Bug] "
     ]
@@ -1706,7 +1706,7 @@
       "The administrator restart was cancelled or could not start. Your selection is unchanged. Windows error: %1",
       "This view helps technicians prepare an offline driver library for another Windows version or architecture. It does not change Windows. Press Apply to scan that target; installation is disabled in preview. Restore default returns to this computer and refreshes its matches.",
       "To reinstall the same version, expand the device and select its installed version. The exact version must have an eligible local 7z package; Windows' installed-driver information alone is not an installation package. If it is absent, add or download that version's package and scan again. Turn off Recommended view in Match filters to browse installed devices without a recommended update. Create restore point in Install options applies to reinstallation too. Windows System Protection must be enabled; a required restore-point failure stops installation.",
-      "Version: 0.22.0 (Beta)\nWindows: %1\nArchitecture: %2\nLanguage: %3\nTheme: %4",
+      "Version: 0.22.1 (Beta)\nWindows: %1\nArchitecture: %2\nLanguage: %3\nTheme: %4",
       "Windows requested a restart. Some installed versions are reported only after reboot.",
       "[Bug] "
     ]
@@ -1791,7 +1791,7 @@
       "The administrator restart was cancelled or could not start. Your selection is unchanged. Windows error: %1",
       "This view helps technicians prepare an offline driver library for another Windows version or architecture. It does not change Windows. Press Apply to scan that target; installation is disabled in preview. Restore default returns to this computer and refreshes its matches.",
       "To reinstall the same version, expand the device and select its installed version. The exact version must have an eligible local 7z package; Windows' installed-driver information alone is not an installation package. If it is absent, add or download that version's package and scan again. Turn off Recommended view in Match filters to browse installed devices without a recommended update. Create restore point in Install options applies to reinstallation too. Windows System Protection must be enabled; a required restore-point failure stops installation.",
-      "Version: 0.22.0 (Beta)\nWindows: %1\nArchitecture: %2\nLanguage: %3\nTheme: %4",
+      "Version: 0.22.1 (Beta)\nWindows: %1\nArchitecture: %2\nLanguage: %3\nTheme: %4",
       "Windows requested a restart. Some installed versions are reported only after reboot.",
       "[Bug] "
     ]
@@ -1876,7 +1876,7 @@
       "The administrator restart was cancelled or could not start. Your selection is unchanged. Windows error: %1",
       "This view helps technicians prepare an offline driver library for another Windows version or architecture. It does not change Windows. Press Apply to scan that target; installation is disabled in preview. Restore default returns to this computer and refreshes its matches.",
       "To reinstall the same version, expand the device and select its installed version. The exact version must have an eligible local 7z package; Windows' installed-driver information alone is not an installation package. If it is absent, add or download that version's package and scan again. Turn off Recommended view in Match filters to browse installed devices without a recommended update. Create restore point in Install options applies to reinstallation too. Windows System Protection must be enabled; a required restore-point failure stops installation.",
-      "Version: 0.22.0 (Beta)\nWindows: %1\nArchitecture: %2\nLanguage: %3\nTheme: %4",
+      "Version: 0.22.1 (Beta)\nWindows: %1\nArchitecture: %2\nLanguage: %3\nTheme: %4",
       "Windows requested a restart. Some installed versions are reported only after reboot.",
       "[Bug] "
     ]
@@ -1961,7 +1961,7 @@
       "The administrator restart was cancelled or could not start. Your selection is unchanged. Windows error: %1",
       "This view helps technicians prepare an offline driver library for another Windows version or architecture. It does not change Windows. Press Apply to scan that target; installation is disabled in preview. Restore default returns to this computer and refreshes its matches.",
       "To reinstall the same version, expand the device and select its installed version. The exact version must have an eligible local 7z package; Windows' installed-driver information alone is not an installation package. If it is absent, add or download that version's package and scan again. Turn off Recommended view in Match filters to browse installed devices without a recommended update. Create restore point in Install options applies to reinstallation too. Windows System Protection must be enabled; a required restore-point failure stops installation.",
-      "Version: 0.22.0 (Beta)\nWindows: %1\nArchitecture: %2\nLanguage: %3\nTheme: %4",
+      "Version: 0.22.1 (Beta)\nWindows: %1\nArchitecture: %2\nLanguage: %3\nTheme: %4",
       "Windows requested a restart. Some installed versions are reported only after reboot.",
       "[Bug] "
     ]
@@ -2046,7 +2046,7 @@
       "The administrator restart was cancelled or could not start. Your selection is unchanged. Windows error: %1",
       "This view helps technicians prepare an offline driver library for another Windows version or architecture. It does not change Windows. Press Apply to scan that target; installation is disabled in preview. Restore default returns to this computer and refreshes its matches.",
       "To reinstall the same version, expand the device and select its installed version. The exact version must have an eligible local 7z package; Windows' installed-driver information alone is not an installation package. If it is absent, add or download that version's package and scan again. Turn off Recommended view in Match filters to browse installed devices without a recommended update. Create restore point in Install options applies to reinstallation too. Windows System Protection must be enabled; a required restore-point failure stops installation.",
-      "Version: 0.22.0 (Beta)\nWindows: %1\nArchitecture: %2\nLanguage: %3\nTheme: %4",
+      "Version: 0.22.1 (Beta)\nWindows: %1\nArchitecture: %2\nLanguage: %3\nTheme: %4",
       "Windows requested a restart. Some installed versions are reported only after reboot.",
       "[Bug] "
     ]
@@ -2131,7 +2131,7 @@
       "The administrator restart was cancelled or could not start. Your selection is unchanged. Windows error: %1",
       "This view helps technicians prepare an offline driver library for another Windows version or architecture. It does not change Windows. Press Apply to scan that target; installation is disabled in preview. Restore default returns to this computer and refreshes its matches.",
       "To reinstall the same version, expand the device and select its installed version. The exact version must have an eligible local 7z package; Windows' installed-driver information alone is not an installation package. If it is absent, add or download that version's package and scan again. Turn off Recommended view in Match filters to browse installed devices without a recommended update. Create restore point in Install options applies to reinstallation too. Windows System Protection must be enabled; a required restore-point failure stops installation.",
-      "Version: 0.22.0 (Beta)\nWindows: %1\nArchitecture: %2\nLanguage: %3\nTheme: %4",
+      "Version: 0.22.1 (Beta)\nWindows: %1\nArchitecture: %2\nLanguage: %3\nTheme: %4",
       "Windows requested a restart. Some installed versions are reported only after reboot.",
       "[Bug] "
     ]
@@ -2216,7 +2216,7 @@
       "The administrator restart was cancelled or could not start. Your selection is unchanged. Windows error: %1",
       "This view helps technicians prepare an offline driver library for another Windows version or architecture. It does not change Windows. Press Apply to scan that target; installation is disabled in preview. Restore default returns to this computer and refreshes its matches.",
       "To reinstall the same version, expand the device and select its installed version. The exact version must have an eligible local 7z package; Windows' installed-driver information alone is not an installation package. If it is absent, add or download that version's package and scan again. Turn off Recommended view in Match filters to browse installed devices without a recommended update. Create restore point in Install options applies to reinstallation too. Windows System Protection must be enabled; a required restore-point failure stops installation.",
-      "Version: 0.22.0 (Beta)\nWindows: %1\nArchitecture: %2\nLanguage: %3\nTheme: %4",
+      "Version: 0.22.1 (Beta)\nWindows: %1\nArchitecture: %2\nLanguage: %3\nTheme: %4",
       "Windows requested a restart. Some installed versions are reported only after reboot.",
       "[Bug] "
     ]
@@ -2301,7 +2301,7 @@
       "The administrator restart was cancelled or could not start. Your selection is unchanged. Windows error: %1",
       "This view helps technicians prepare an offline driver library for another Windows version or architecture. It does not change Windows. Press Apply to scan that target; installation is disabled in preview. Restore default returns to this computer and refreshes its matches.",
       "To reinstall the same version, expand the device and select its installed version. The exact version must have an eligible local 7z package; Windows' installed-driver information alone is not an installation package. If it is absent, add or download that version's package and scan again. Turn off Recommended view in Match filters to browse installed devices without a recommended update. Create restore point in Install options applies to reinstallation too. Windows System Protection must be enabled; a required restore-point failure stops installation.",
-      "Version: 0.22.0 (Beta)\nWindows: %1\nArchitecture: %2\nLanguage: %3\nTheme: %4",
+      "Version: 0.22.1 (Beta)\nWindows: %1\nArchitecture: %2\nLanguage: %3\nTheme: %4",
       "Windows requested a restart. Some installed versions are reported only after reboot.",
       "[Bug] "
     ]
@@ -2386,7 +2386,7 @@
       "The administrator restart was cancelled or could not start. Your selection is unchanged. Windows error: %1",
       "This view helps technicians prepare an offline driver library for another Windows version or architecture. It does not change Windows. Press Apply to scan that target; installation is disabled in preview. Restore default returns to this computer and refreshes its matches.",
       "To reinstall the same version, expand the device and select its installed version. The exact version must have an eligible local 7z package; Windows' installed-driver information alone is not an installation package. If it is absent, add or download that version's package and scan again. Turn off Recommended view in Match filters to browse installed devices without a recommended update. Create restore point in Install options applies to reinstallation too. Windows System Protection must be enabled; a required restore-point failure stops installation.",
-      "Version: 0.22.0 (Beta)\nWindows: %1\nArchitecture: %2\nLanguage: %3\nTheme: %4",
+      "Version: 0.22.1 (Beta)\nWindows: %1\nArchitecture: %2\nLanguage: %3\nTheme: %4",
       "Windows requested a restart. Some installed versions are reported only after reboot.",
       "[Bug] "
     ]
@@ -2471,7 +2471,7 @@
       "The administrator restart was cancelled or could not start. Your selection is unchanged. Windows error: %1",
       "This view helps technicians prepare an offline driver library for another Windows version or architecture. It does not change Windows. Press Apply to scan that target; installation is disabled in preview. Restore default returns to this computer and refreshes its matches.",
       "To reinstall the same version, expand the device and select its installed version. The exact version must have an eligible local 7z package; Windows' installed-driver information alone is not an installation package. If it is absent, add or download that version's package and scan again. Turn off Recommended view in Match filters to browse installed devices without a recommended update. Create restore point in Install options applies to reinstallation too. Windows System Protection must be enabled; a required restore-point failure stops installation.",
-      "Version: 0.22.0 (Beta)\nWindows: %1\nArchitecture: %2\nLanguage: %3\nTheme: %4",
+      "Version: 0.22.1 (Beta)\nWindows: %1\nArchitecture: %2\nLanguage: %3\nTheme: %4",
       "Windows requested a restart. Some installed versions are reported only after reboot.",
       "[Bug] "
     ]
@@ -2556,7 +2556,7 @@
       "The administrator restart was cancelled or could not start. Your selection is unchanged. Windows error: %1",
       "This view helps technicians prepare an offline driver library for another Windows version or architecture. It does not change Windows. Press Apply to scan that target; installation is disabled in preview. Restore default returns to this computer and refreshes its matches.",
       "To reinstall the same version, expand the device and select its installed version. The exact version must have an eligible local 7z package; Windows' installed-driver information alone is not an installation package. If it is absent, add or download that version's package and scan again. Turn off Recommended view in Match filters to browse installed devices without a recommended update. Create restore point in Install options applies to reinstallation too. Windows System Protection must be enabled; a required restore-point failure stops installation.",
-      "Version: 0.22.0 (Beta)\nWindows: %1\nArchitecture: %2\nLanguage: %3\nTheme: %4",
+      "Version: 0.22.1 (Beta)\nWindows: %1\nArchitecture: %2\nLanguage: %3\nTheme: %4",
       "Windows requested a restart. Some installed versions are reported only after reboot.",
       "[Bug] "
     ]
@@ -2641,7 +2641,7 @@
       "The administrator restart was cancelled or could not start. Your selection is unchanged. Windows error: %1",
       "This view helps technicians prepare an offline driver library for another Windows version or architecture. It does not change Windows. Press Apply to scan that target; installation is disabled in preview. Restore default returns to this computer and refreshes its matches.",
       "To reinstall the same version, expand the device and select its installed version. The exact version must have an eligible local 7z package; Windows' installed-driver information alone is not an installation package. If it is absent, add or download that version's package and scan again. Turn off Recommended view in Match filters to browse installed devices without a recommended update. Create restore point in Install options applies to reinstallation too. Windows System Protection must be enabled; a required restore-point failure stops installation.",
-      "Version: 0.22.0 (Beta)\nWindows: %1\nArchitecture: %2\nLanguage: %3\nTheme: %4",
+      "Version: 0.22.1 (Beta)\nWindows: %1\nArchitecture: %2\nLanguage: %3\nTheme: %4",
       "Windows requested a restart. Some installed versions are reported only after reboot.",
       "[Bug] "
     ]
@@ -2726,7 +2726,7 @@
       "The administrator restart was cancelled or could not start. Your selection is unchanged. Windows error: %1",
       "This view helps technicians prepare an offline driver library for another Windows version or architecture. It does not change Windows. Press Apply to scan that target; installation is disabled in preview. Restore default returns to this computer and refreshes its matches.",
       "To reinstall the same version, expand the device and select its installed version. The exact version must have an eligible local 7z package; Windows' installed-driver information alone is not an installation package. If it is absent, add or download that version's package and scan again. Turn off Recommended view in Match filters to browse installed devices without a recommended update. Create restore point in Install options applies to reinstallation too. Windows System Protection must be enabled; a required restore-point failure stops installation.",
-      "Version: 0.22.0 (Beta)\nWindows: %1\nArchitecture: %2\nLanguage: %3\nTheme: %4",
+      "Version: 0.22.1 (Beta)\nWindows: %1\nArchitecture: %2\nLanguage: %3\nTheme: %4",
       "Windows requested a restart. Some installed versions are reported only after reboot.",
       "[Bug] "
     ]
@@ -2811,7 +2811,7 @@
       "The administrator restart was cancelled or could not start. Your selection is unchanged. Windows error: %1",
       "This view helps technicians prepare an offline driver library for another Windows version or architecture. It does not change Windows. Press Apply to scan that target; installation is disabled in preview. Restore default returns to this computer and refreshes its matches.",
       "To reinstall the same version, expand the device and select its installed version. The exact version must have an eligible local 7z package; Windows' installed-driver information alone is not an installation package. If it is absent, add or download that version's package and scan again. Turn off Recommended view in Match filters to browse installed devices without a recommended update. Create restore point in Install options applies to reinstallation too. Windows System Protection must be enabled; a required restore-point failure stops installation.",
-      "Version: 0.22.0 (Beta)\nWindows: %1\nArchitecture: %2\nLanguage: %3\nTheme: %4",
+      "Version: 0.22.1 (Beta)\nWindows: %1\nArchitecture: %2\nLanguage: %3\nTheme: %4",
       "Windows requested a restart. Some installed versions are reported only after reboot.",
       "[Bug] "
     ]
@@ -2896,7 +2896,7 @@
       "The administrator restart was cancelled or could not start. Your selection is unchanged. Windows error: %1",
       "This view helps technicians prepare an offline driver library for another Windows version or architecture. It does not change Windows. Press Apply to scan that target; installation is disabled in preview. Restore default returns to this computer and refreshes its matches.",
       "To reinstall the same version, expand the device and select its installed version. The exact version must have an eligible local 7z package; Windows' installed-driver information alone is not an installation package. If it is absent, add or download that version's package and scan again. Turn off Recommended view in Match filters to browse installed devices without a recommended update. Create restore point in Install options applies to reinstallation too. Windows System Protection must be enabled; a required restore-point failure stops installation.",
-      "Version: 0.22.0 (Beta)\nWindows: %1\nArchitecture: %2\nLanguage: %3\nTheme: %4",
+      "Version: 0.22.1 (Beta)\nWindows: %1\nArchitecture: %2\nLanguage: %3\nTheme: %4",
       "Windows requested a restart. Some installed versions are reported only after reboot.",
       "[Bug] "
     ]
@@ -2981,7 +2981,7 @@
       "The administrator restart was cancelled or could not start. Your selection is unchanged. Windows error: %1",
       "This view helps technicians prepare an offline driver library for another Windows version or architecture. It does not change Windows. Press Apply to scan that target; installation is disabled in preview. Restore default returns to this computer and refreshes its matches.",
       "To reinstall the same version, expand the device and select its installed version. The exact version must have an eligible local 7z package; Windows' installed-driver information alone is not an installation package. If it is absent, add or download that version's package and scan again. Turn off Recommended view in Match filters to browse installed devices without a recommended update. Create restore point in Install options applies to reinstallation too. Windows System Protection must be enabled; a required restore-point failure stops installation.",
-      "Version: 0.22.0 (Beta)\nWindows: %1\nArchitecture: %2\nLanguage: %3\nTheme: %4",
+      "Version: 0.22.1 (Beta)\nWindows: %1\nArchitecture: %2\nLanguage: %3\nTheme: %4",
       "Windows requested a restart. Some installed versions are reported only after reboot.",
       "[Bug] "
     ]
@@ -3066,7 +3066,7 @@
       "The administrator restart was cancelled or could not start. Your selection is unchanged. Windows error: %1",
       "This view helps technicians prepare an offline driver library for another Windows version or architecture. It does not change Windows. Press Apply to scan that target; installation is disabled in preview. Restore default returns to this computer and refreshes its matches.",
       "To reinstall the same version, expand the device and select its installed version. The exact version must have an eligible local 7z package; Windows' installed-driver information alone is not an installation package. If it is absent, add or download that version's package and scan again. Turn off Recommended view in Match filters to browse installed devices without a recommended update. Create restore point in Install options applies to reinstallation too. Windows System Protection must be enabled; a required restore-point failure stops installation.",
-      "Version: 0.22.0 (Beta)\nWindows: %1\nArchitecture: %2\nLanguage: %3\nTheme: %4",
+      "Version: 0.22.1 (Beta)\nWindows: %1\nArchitecture: %2\nLanguage: %3\nTheme: %4",
       "Windows requested a restart. Some installed versions are reported only after reboot.",
       "[Bug] "
     ]
@@ -3151,7 +3151,7 @@
       "The administrator restart was cancelled or could not start. Your selection is unchanged. Windows error: %1",
       "This view helps technicians prepare an offline driver library for another Windows version or architecture. It does not change Windows. Press Apply to scan that target; installation is disabled in preview. Restore default returns to this computer and refreshes its matches.",
       "To reinstall the same version, expand the device and select its installed version. The exact version must have an eligible local 7z package; Windows' installed-driver information alone is not an installation package. If it is absent, add or download that version's package and scan again. Turn off Recommended view in Match filters to browse installed devices without a recommended update. Create restore point in Install options applies to reinstallation too. Windows System Protection must be enabled; a required restore-point failure stops installation.",
-      "Version: 0.22.0 (Beta)\nWindows: %1\nArchitecture: %2\nLanguage: %3\nTheme: %4",
+      "Version: 0.22.1 (Beta)\nWindows: %1\nArchitecture: %2\nLanguage: %3\nTheme: %4",
       "Windows requested a restart. Some installed versions are reported only after reboot.",
       "[Bug] "
     ]
@@ -3236,7 +3236,7 @@
       "The administrator restart was cancelled or could not start. Your selection is unchanged. Windows error: %1",
       "This view helps technicians prepare an offline driver library for another Windows version or architecture. It does not change Windows. Press Apply to scan that target; installation is disabled in preview. Restore default returns to this computer and refreshes its matches.",
       "To reinstall the same version, expand the device and select its installed version. The exact version must have an eligible local 7z package; Windows' installed-driver information alone is not an installation package. If it is absent, add or download that version's package and scan again. Turn off Recommended view in Match filters to browse installed devices without a recommended update. Create restore point in Install options applies to reinstallation too. Windows System Protection must be enabled; a required restore-point failure stops installation.",
-      "Version: 0.22.0 (Beta)\nWindows: %1\nArchitecture: %2\nLanguage: %3\nTheme: %4",
+      "Version: 0.22.1 (Beta)\nWindows: %1\nArchitecture: %2\nLanguage: %3\nTheme: %4",
       "Windows requested a restart. Some installed versions are reported only after reboot.",
       "[Bug] "
     ]

@@ -1,10 +1,10 @@
 # Validation scope
 
-Current application version: **0.22.0 Beta**. Hardware/Windows compatibility testing is ongoing. This document separates verified behavior from implementation that still needs hardware/VM testing.
+Current application version: **0.22.1 Beta**. Hardware/Windows compatibility testing is ongoing. This document separates verified behavior from implementation that still needs hardware/VM testing.
 
 | Area | Evidence |
 | --- | --- |
-| Interface, menus, RTL and instances | 271 regression checks at 100% and 150%; English/Arabic and light/dark visual review |
+| Interface, menus, RTL and instances | 277 regression checks at 100% and 150%; English/Arabic and light/dark visual review |
 | Structural/source integration | 82 checks; critical original source fingerprints and reviewed patches |
 | Current native matching | Read-only scan: 216 devices and 567 candidates on the development host |
 | Original engine workflows | Repeated scan, snapshot save/load, target-system preview and extraction of six INF files |
@@ -48,3 +48,5 @@ The old static assertion requiring filter-scoped bulk selection was removed beca
 0.22.0 consolidates the previous project releases. The 271-check UI suite passed at 100% and 150%, including real checkbox input far down a 48-device fixture and twelve repeated selection changes without losing scroll position. List geometry is completed before restoring the scrollbar; rebuilds suppress transient expansion animation. Category and device branches use a 36px indentation, with category surfaces spanning the branch gutter. The refreshed English/Arabic gallery and static x86 import audit were reviewed. No real install, restore creation or reboot was performed. Only the consolidated Beta is published; stable automatic updates remain unavailable until a stable release is published.
 
 The final sidebar marker is paint-only: its short inset rounded pill and rounded pressed state were rebuilt and reviewed visually in the refreshed four-mode gallery. The 271-check runs above validate the scroll/branch fixes before that final cosmetic adjustment.
+
+0.22.1: 277 UI checks passed at both 100% and 150%, including intermediate shared hover/selection positions, rapid retargeting, immediate reduced-motion behavior and highlight alignment after compact footer/layout changes. Shared selection/marker and hover surfaces use finite property animations; item text/icons remain directly rendered. Resize/show synchronization and hide-time cancellation are implemented. The final four-mode gallery and static x86 import audit were reviewed. No new real hardware operations were performed.

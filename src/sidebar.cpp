@@ -14,6 +14,10 @@
 #include <QFontMetrics>
 #include <QEvent>
 #include <QPainterPath>
+#include <QApplication>
+#include <QResizeEvent>
+#include <QShowEvent>
+#include <QHideEvent>
 
 SidebarItem::SidebarItem(const QString &symbol,QWidget *parent)
   : QAbstractButton(parent),m_iconName(symbol),m_compact(false),m_motion(true),
@@ -54,12 +58,13 @@ void SidebarItem::paintEvent(QPaintEvent *)
     QPainter p(this);
     p.setRenderHint(QPainter::Antialiasing,true);
     const bool active=isChecked(),rtl=layoutDirection()==Qt::RightToLeft;
-    if (active) {
+    const bool shared=property("sharedNavigation").toBool();
+    if (active && !shared) {
         p.setPen(Qt::NoPen);p.setBrush(Theme::color("sidebarMiddle").lighter(145));p.drawRoundedRect(rect().adjusted(8,4,-8,-4),12,12);
         p.setBrush(Theme::color("accentSoft"));
         p.drawRoundedRect(QRectF(rtl?width()-6:2,(height()-32)/2.0,4,32),2,2);
     }
-    if (m_hover>0.001) {
+    if (m_hover>0.001 && !shared) {
         QColor hover=Theme::color("accentSoft");hover.setAlphaF(m_hover * (active ? 0.18 : 0.29));
         p.setPen(Qt::NoPen);p.setBrush(hover);p.drawRoundedRect(rect().adjusted(8,4,-8,-4),12,12);
     }
@@ -88,8 +93,14 @@ void SidebarItem::paintEvent(QPaintEvent *)
 Sidebar::Sidebar(QWidget *parent)
   : QWidget(parent),m_slide(new QPropertyAnimation(this,"menuWidth",this)),
     m_layout(new QVBoxLayout(this)),m_footer(0),m_collapsed(false),m_arabicEnabled(false),
-    m_animationsEnabled(true),m_labelsHidden(false),m_current(0)
+    m_animationsEnabled(true),m_labelsHidden(false),m_current(0),
+    m_activeY(-1),m_hoverY(-1),m_hoverOpacity(0),m_hoverButton(0),
+    m_activeMove(new QPropertyAnimation(this,"activeY",this)),
+    m_hoverMove(new QPropertyAnimation(this,"hoverY",this)),
+    m_hoverFade(new QPropertyAnimation(this,"hoverOpacity",this))
 {
+    m_activeMove->setDuration(200);m_hoverMove->setDuration(170);m_hoverFade->setDuration(120);
+    m_activeMove->setEasingCurve(QEasingCurve::OutCubic);m_hoverMove->setEasingCurve(QEasingCurve::OutCubic);m_hoverFade->setEasingCurve(QEasingCurve::OutCubic);
     setObjectName(QStringLiteral("sidebar"));
     setFixedWidth(224);
     m_layout->setContentsMargins(0,18,0,10);
@@ -119,11 +130,13 @@ SidebarItem *Sidebar::makeButton(int index,const QString &en,const QString &ar,c
     SidebarItem *button=new SidebarItem(symbol,this);
     button->setText(en);
     button->setProperty("pageIndex",index);
+    button->setProperty("sharedNavigation",true);
+    button->installEventFilter(this);
     button->setToolTip(en);
     m_buttons.append(button);
     m_english.append(en);
     m_arabic.append(ar);
-    connect(button,&SidebarItem::clicked,this,[this,index](){updateActive();emit pageRequested(index);});
+    connect(button,&SidebarItem::clicked,this,[this,index](){emit pageRequested(index);});
     m_layout->addWidget(button);
     return button;
 }
@@ -132,11 +145,46 @@ void Sidebar::paintEvent(QPaintEvent *)
 {
     QPainter p(this);
     p.setRenderHint(QPainter::Antialiasing);
+    p.setPen(Qt::NoPen);
+    if(m_activeY>=0){
+        p.setBrush(Theme::color("sidebarMiddle").lighter(145));p.drawRoundedRect(QRectF(8,m_activeY+4,width()-16,58),12,12);
+        p.setBrush(Theme::color("accentSoft"));p.drawRoundedRect(QRectF(layoutDirection()==Qt::RightToLeft?width()-6:2,m_activeY+17,4,32),2,2);
+    }
+    if(m_hoverY>=0 && m_hoverOpacity>.001){QColor hover=Theme::color("accentSoft");hover.setAlphaF(qBound(0.0,m_hoverOpacity*.23,1.0));p.setBrush(hover);p.drawRoundedRect(QRectF(8,m_hoverY+4,width()-16,58),12,12);}
     // The top-level window paints the sidebar surface once at the outer edge.
     p.setPen(QColor(255,255,255,18));
     const int x=layoutDirection()==Qt::RightToLeft?0:width()-1;
     p.drawLine(x,0,x,height());
 }
+bool Sidebar::motionEnabled()const{return m_animationsEnabled && !qApp->property("reduceMotion").toBool() && isVisible();}
+void Sidebar::animatePosition(QPropertyAnimation *animation,qreal from,qreal to){
+    animation->stop();
+    if(!motionEnabled() || from<0 || qAbs(from-to)<.1){animation->targetObject()->setProperty(animation->propertyName().constData(),to);return;}
+    animation->setStartValue(from);animation->setEndValue(to);animation->start();
+}
+void Sidebar::moveHover(SidebarItem *button){
+    m_hoverButton=button;m_hoverFade->stop();
+    if(button){if(m_hoverOpacity<.01)setHoverY(button->y());animatePosition(m_hoverMove,m_hoverY,button->y());}
+    else m_hoverMove->stop();
+    if(!motionEnabled()){setHoverOpacity(button?1:0);return;}
+    m_hoverFade->setStartValue(m_hoverOpacity);m_hoverFade->setEndValue(button?1.0:0.0);m_hoverFade->start();
+}
+bool Sidebar::eventFilter(QObject *watched,QEvent *event){
+    SidebarItem *button=qobject_cast<SidebarItem*>(watched);
+    if(button && button->isEnabled()){
+        if(event->type()==QEvent::Enter)moveHover(button);
+        else if(event->type()==QEvent::Leave && m_hoverButton==button)moveHover(0);
+    }
+    return QWidget::eventFilter(watched,event);
+}
+void Sidebar::syncHighlights(){
+    m_activeMove->stop();m_hoverMove->stop();
+    for(SidebarItem *button:m_buttons)if(button->property("pageIndex").toInt()==m_current){setActiveY(button->y());break;}
+    if(m_hoverButton)setHoverY(m_hoverButton->y());
+}
+void Sidebar::resizeEvent(QResizeEvent *event){QWidget::resizeEvent(event);m_layout->activate();syncHighlights();}
+void Sidebar::showEvent(QShowEvent *event){QWidget::showEvent(event);m_layout->activate();syncHighlights();}
+void Sidebar::hideEvent(QHideEvent *event){m_activeMove->stop();m_hoverMove->stop();m_hoverFade->stop();m_hoverButton=0;setHoverOpacity(0);QWidget::hideEvent(event);}
 int Sidebar::menuWidth() const {return width();}
 void Sidebar::setMenuWidth(int value)
 {
@@ -147,6 +195,8 @@ void Sidebar::setMenuWidth(int value)
         if (m_footer) m_footer->setVisible(!compact);
         refreshLabels();
     }
+    m_layout->activate();
+    syncHighlights();
 }
 void Sidebar::toggleCollapsed()
 {
@@ -164,6 +214,7 @@ void Sidebar::setAnimations(bool enabled)
     if(!enabled){
         m_slide->stop();
         setMenuWidth(m_collapsed?84:224);
+        m_hoverFade->stop();syncHighlights();setHoverOpacity(m_hoverButton?1:0);
     }
     for (int i=0;i<m_buttons.size();++i) m_buttons.at(i)->setMotionEnabled(enabled);
 }
@@ -200,10 +251,13 @@ void Sidebar::refreshLabels()
 }
 void Sidebar::updateActive()
 {
+    SidebarItem *active=0;
     for (int i=0;i<m_buttons.size();++i) {
         m_buttons.at(i)->setChecked(m_buttons.at(i)->property("pageIndex").toInt()==m_current);
         m_buttons.at(i)->update();
+        if(m_buttons.at(i)->isChecked())active=m_buttons.at(i);
     }
+    if(active)animatePosition(m_activeMove,m_activeY,active->y());
 }
 
 void Sidebar::setInstallationAvailable(bool enabled)

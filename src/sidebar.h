@@ -35,6 +35,9 @@ class Sidebar : public QWidget
 {
     Q_OBJECT
     Q_PROPERTY(int menuWidth READ menuWidth WRITE setMenuWidth)
+    Q_PROPERTY(qreal activeY READ activeY WRITE setActiveY)
+    Q_PROPERTY(qreal hoverY READ hoverY WRITE setHoverY)
+    Q_PROPERTY(qreal hoverOpacity READ hoverOpacity WRITE setHoverOpacity)
 public:
     explicit Sidebar(QWidget *parent=0);
     int menuWidth() const;
@@ -44,6 +47,12 @@ public:
     void applyOriginLanguage(const QString &directory,const QString &code);
     void setInstallationAvailable(bool enabled);
     void setAnimations(bool enabled);
+    qreal activeY() const {return m_activeY;}
+    qreal hoverY() const {return m_hoverY;}
+    qreal hoverOpacity() const {return m_hoverOpacity;}
+    void setActiveY(qreal value){m_activeY=value;update();}
+    void setHoverY(qreal value){m_hoverY=value;update();}
+    void setHoverOpacity(qreal value){m_hoverOpacity=value;update();}
 
 signals:
     void pageRequested(int index);
@@ -53,11 +62,19 @@ public slots:
 
 protected:
     void paintEvent(QPaintEvent *event) Q_DECL_OVERRIDE;
+    bool eventFilter(QObject *watched,QEvent *event) Q_DECL_OVERRIDE;
+    void resizeEvent(QResizeEvent *event) Q_DECL_OVERRIDE;
+    void showEvent(QShowEvent *event) Q_DECL_OVERRIDE;
+    void hideEvent(QHideEvent *event) Q_DECL_OVERRIDE;
 
 private:
     SidebarItem *makeButton(int index,const QString &en,const QString &ar,const QString &iconName);
     void refreshLabels();
     void updateActive();
+    void syncHighlights();
+    void moveHover(SidebarItem *button);
+    void animatePosition(QPropertyAnimation *animation,qreal from,qreal to);
+    bool motionEnabled() const;
     QVector<SidebarItem*> m_buttons;
     QVector<QString> m_english;
     QVector<QString> m_arabic;
@@ -69,6 +86,9 @@ private:
     bool m_animationsEnabled;
     bool m_labelsHidden;
     int m_current;
+    qreal m_activeY,m_hoverY,m_hoverOpacity;
+    SidebarItem *m_hoverButton;
+    QPropertyAnimation *m_activeMove,*m_hoverMove,*m_hoverFade;
 };
 
 #endif

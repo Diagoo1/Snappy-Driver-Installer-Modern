@@ -3,7 +3,7 @@
   <h1>مدير تعريفات الأجهزة — الواجهة الحديثة</h1>
   <p><strong>مكتبة تعريفاتك، ومحرك المطابقة الأصلي، وتجربة Windows حديثة.</strong></p>
   <p>فحص ومقارنة وإدارة التعريفات من برنامج محمول واحد.<br>من تطوير <strong>طارق صادق · Diagoo1</strong></p>
-  <p><a href="https://github.com/Diagoo1/Snappy-Driver-Installer-Modern/releases/tag/v0.22.0"><img src="https://img.shields.io/badge/Download-0.22.0_Beta-008D86?style=for-the-badge" alt="تحميل البيتا"></a> <img src="https://img.shields.io/badge/License-GPL--3.0-075266?style=for-the-badge" alt="GPL 3"></p>
+  <p><a href="https://github.com/Diagoo1/Snappy-Driver-Installer-Modern/releases/tag/v0.22.1"><img src="https://img.shields.io/badge/Download-0.22.1_Beta-008D86?style=for-the-badge" alt="تحميل البيتا"></a> <img src="https://img.shields.io/badge/License-GPL--3.0-075266?style=for-the-badge" alt="GPL 3"></p>
   <p><a href="README.md">English</a> · <a href="#جولة-بالصور">الصور</a> · <a href="#ابدأ-الاستخدام">ابدأ الاستخدام</a> · <a href="https://github.com/Diagoo1/Snappy-Driver-Installer-Modern/issues/new?template=bug_report.yml">الإبلاغ عن مشكلة</a></p>
 </div>
 
@@ -15,7 +15,7 @@
 
 الواجهة والخطوط والمحرك داخل ملف تنفيذي واحد. تظل الحزم والفهارس في مجلدات منفصلة، فتستخدم مكتبتك الأوفلاين الموجودة دون تضخيم البرنامج بحزم التعريفات.
 
-> **بيتا عامة · 0.22.0** — إصدار موحّد يجمع تعديلات الواجهة وربط المحرك المتراكمة. اختبار الأجهزة وإصدارات Windows مستمر. هذا مشروع مجتمعي مستقل، مع حفظ حقوق المحرك الأصلي ومساهميه.
+> **بيتا عامة · 0.22.1** — إصدار موحّد يجمع تعديلات الواجهة وربط المحرك المتراكمة. اختبار الأجهزة وإصدارات Windows مستمر. هذا مشروع مجتمعي مستقل، مع حفظ حقوق المحرك الأصلي ومساهميه.
 
 ## المزايا بنظرة واحدة
 
@@ -28,7 +28,7 @@
 | 📦 **مكتبات أوفلاين** | اكتشاف مجلدات SDI/SDIO، واختيار الحزم والفهارس، والاستخراج وصيانة نسخة الفهارس الخاصة بالبرنامج. |
 | 🌐 **تنزيل الحزم** | تصفّح الكتالوج والتنزيل والاستئناف وإعداد المشاركة. |
 | 📊 **التشخيص والأدوات** | معلومات النظام، وتصدير التقارير، وأدوات الصيانة والنسخ الاحتياطي المتاحة للنظام. |
-| 🎨 **التخصيص** | فاتح وداكن، واستيراد وتصدير الثيم، وتكبير مستقل، وخطوط وأيقونات مدمجة. |
+| 🎨 **التخصيص** | فاتح وداكن، وانتقال سلس للهوفر والتحديد بالقائمة الجانبية، واستيراد وتصدير الثيم، وتكبير مستقل، وخطوط وأيقونات مدمجة. |
 | 🌍 **اللغات** | تغطية كاملة للنصوص المجمّعة بالإنجليزي والعربي مع RTL؛ و40 كتالوجًا مدمجًا، مع رجوع جزئي للإنجليزي في اللغات الأخرى. |
 | ⚙️ **الأتمتة** | خطط JSON ومسار الأوامر والسكربتات القديمة المنفّذ؛ التفاصيل في دليل التوافق. |
 
@@ -67,7 +67,7 @@
 
 ## ابدأ الاستخدام
 
-1. حمّل **ملف EXE** أو **الحزمة المحمولة ZIP** من [0.22.0 Beta](https://github.com/Diagoo1/Snappy-Driver-Installer-Modern/releases/tag/v0.22.0).
+1. حمّل **ملف EXE** أو **الحزمة المحمولة ZIP** من [0.22.1 Beta](https://github.com/Diagoo1/Snappy-Driver-Installer-Modern/releases/tag/v0.22.1).
 2. ضع البرنامج بجوار المكتبة أو حدّد مجلداتها من الإعدادات:
 
 ```text
@@ -83,11 +83,11 @@ Your driver library/
 
 | التنزيل | المحتوى |
 | --- | --- |
-| [الحزمة المحمولة](https://github.com/Diagoo1/Snappy-Driver-Installer-Modern/releases/download/v0.22.0/SnappyDriverInstaller-Modern-0.22.0-Beta-portable.zip) | ملف تشغيل واحد مع التراخيص ودليل بدء مختصر، دون DLL تشغيل بجواره. |
-| [ملف EXE](https://github.com/Diagoo1/Snappy-Driver-Installer-Modern/releases/download/v0.22.0/SnappyDriverInstaller-TS.exe) | نفس ملف البرنامج التنفيذي. |
-| [السورس](https://github.com/Diagoo1/Snappy-Driver-Installer-Modern/releases/download/v0.22.0/SnappyDriverInstaller-Modern-0.22.0-source.zip) | نسخة المصدر المطابقة للإصدار. |
-| [الصور](https://github.com/Diagoo1/Snappy-Driver-Installer-Modern/releases/download/v0.22.0/SnappyDriverInstaller-Modern-0.22.0-screenshots.zip) | معرض العربي والإنجليزي بالوضعين. |
-| [بصمات SHA-256](https://github.com/Diagoo1/Snappy-Driver-Installer-Modern/releases/download/v0.22.0/SHA256SUMS.txt) | للتحقق من سلامة التنزيلات المنشورة. |
+| [الحزمة المحمولة](https://github.com/Diagoo1/Snappy-Driver-Installer-Modern/releases/download/v0.22.1/SnappyDriverInstaller-Modern-0.22.1-Beta-portable.zip) | ملف تشغيل واحد مع التراخيص ودليل بدء مختصر، دون DLL تشغيل بجواره. |
+| [ملف EXE](https://github.com/Diagoo1/Snappy-Driver-Installer-Modern/releases/download/v0.22.1/SnappyDriverInstaller-TS.exe) | نفس ملف البرنامج التنفيذي. |
+| [السورس](https://github.com/Diagoo1/Snappy-Driver-Installer-Modern/releases/download/v0.22.1/SnappyDriverInstaller-Modern-0.22.1-source.zip) | نسخة المصدر المطابقة للإصدار. |
+| [الصور](https://github.com/Diagoo1/Snappy-Driver-Installer-Modern/releases/download/v0.22.1/SnappyDriverInstaller-Modern-0.22.1-screenshots.zip) | معرض العربي والإنجليزي بالوضعين. |
+| [بصمات SHA-256](https://github.com/Diagoo1/Snappy-Driver-Installer-Modern/releases/download/v0.22.1/SHA256SUMS.txt) | للتحقق من سلامة التنزيلات المنشورة. |
 
 ## التوافق وحالة البيتا
 

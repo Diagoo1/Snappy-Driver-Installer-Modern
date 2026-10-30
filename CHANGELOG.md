@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.22.1 Beta
+
+- Slide a shared hover surface between sidebar items and animate the selected background/rounded marker together, with finite easing and immediate retargeting. Text and icons remain directly rendered.
+- Align shared highlights after compact/expanded layouts and window resizing; snap when motion is disabled and stop animation when navigation is hidden. Preserve RTL and theme support.
+- Replace the previous public Beta with this cumulative release; keep one current download while preserving source history and local asset backups.
+
 ## 0.22.0 Beta — consolidated release
 
 - Consolidate all accumulated engine integration, offline libraries, downloads, automation, localization and interface improvements into one current public Beta. Earlier release entries below remain the source history.
