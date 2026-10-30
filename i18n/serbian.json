@@ -43,7 +43,6 @@
     "%1 packages  ·  %2 indexes  ·  %3": "%1 пакети ·  %2 индекси ·  %3",
     "%1 present PnP devices  ·  %2 matched  ·  %3 warnings in matches": "%1 представити ПнП уређаје ·  %2 подудара се ·  %3 опомене на утакмицама",
     "%1 selected · Files: %2 · Verified download: up to %3": "%1 изабрано · Фајлови: %2 · Верификовано преузимање: до %3",
-    "%1 verified files saved. Close this window and scan again. No driver was installed.": "%1 верификоване датотеке сачуване. Затворите овај прозор и скенирајте поново. Није инсталиран ниједан драјвер.",
     "%1 versions": "%1 верзије",
     "%1 × %2  ·  %3 screen(s)": "%1 × %2  ·  %3 екран(и)",
     "%1% battery": "%1% батерије",
@@ -341,7 +340,6 @@
     "Finish the active operation before updating the application.": "Завршите активну операцију пре ажурирања апликације.",
     "Finish the active operation or perform a native scan first.": "Завршите активну операцију или прво извршите изворно скенирање.",
     "Finishing the current request before closing...": "Завршетак тренутног захтева пре затварања...",
-    "Found locally": "Пронађено локално",
     "GPLv3 license is included in the source package.": "ГПЛв3 лиценца је укључена у изворни пакет.",
     "General Settings": "Општа подешавања",
     "General settings": "Општа подешавања",
@@ -420,7 +418,6 @@
     "Invalid transfer settings.": "Неважећа подешавања преноса.",
     "Keep sharing verified downloads": "Наставите да делите верификована преузимања",
     "Keep your library ready": "Нека ваша библиотека буде спремна",
-    "LOCAL FILE": "ЛОЦАЛ ФИЛЕ",
     "LOCAL PACKAGE MATCHES": "ЛОКАЛНИ ПАКЕТ Уклапања",
     "Library ready": "Библиотека спремна",
     "License": "Лиценца",
@@ -473,7 +470,6 @@
     "Network Connections": "Мрежне везе",
     "Network adapters": "Мрежни адаптери",
     "Network package downloads require Windows.": "Потребна су преузимања мрежних пакета Windows.",
-    "New packages or indexes were saved. Scan again to refresh driver matches.": "Нови пакети или индекси су сачувани. Поново скенирајте да бисте освежили подударања драјвера.",
     "Newer": "Новије",
     "No": "Не",
     "No HTTP status received.": "Није примљен ХТТП статус.",
@@ -502,7 +498,6 @@
     "Not enough free space. About %1 MB is required for verified blocks and selected files on %2.": "Нема довољно слободног простора. Абоут %1 МБ је потребно за верификоване блокове и одабране датотеке укључене %2.",
     "Not enough space to publish %1. Verified blocks were retained.": "Нема довољно простора за објављивање %1. Верификовани блокови су задржани.",
     "Not installed": "Није инсталирано",
-    "Not present": "Није присутан",
     "Not present (optional)": "Није присутан (опционо)",
     "Not reported": "Није пријављено",
     "Not reported by display driver": "Није пријављено од стране управљачког програма екрана",
@@ -858,6 +853,10 @@
     "Paste": "Налепи",
     "Delete": "Обриши",
     "Status": "Статус",
-    "System Protection": "Заштита система"
+    "System Protection": "Заштита система",
+    "Download speed": "Брзина преузимања",
+    "Peers": "Примаоци",
+    "Time remaining": "Преостало време",
+    "Upload speed": "Брзина слања"
   }
 }

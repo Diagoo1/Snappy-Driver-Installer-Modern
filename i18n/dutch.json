@@ -43,7 +43,6 @@
     "%1 packages  ·  %2 indexes  ·  %3": "%1-pakketten · %2-indexen · %3",
     "%1 present PnP devices  ·  %2 matched  ·  %3 warnings in matches": "%1 huidige PnP-apparaten · %2 komt overeen · %3-waarschuwingen in wedstrijden",
     "%1 selected · Files: %2 · Verified download: up to %3": "%1 geselecteerd · Bestanden: %2 · Geverifieerde download: tot %3",
-    "%1 verified files saved. Close this window and scan again. No driver was installed.": "%1 geverifieerde bestanden opgeslagen. Sluit dit venster en scan opnieuw. Er is geen stuurprogramma geïnstalleerd.",
     "%1 versions": "%1-versies",
     "%1 × %2  ·  %3 screen(s)": "%1 × %2 · %3 scherm(en)",
     "%1% battery": "%1% batterij",
@@ -341,7 +340,6 @@
     "Finish the active operation before updating the application.": "Beëindig de actieve bewerking voordat u de applicatie bijwerkt.",
     "Finish the active operation or perform a native scan first.": "Voltooi de actieve bewerking of voer eerst een native scan uit.",
     "Finishing the current request before closing...": "Het huidige verzoek voltooien voordat het wordt gesloten...",
-    "Found locally": "Lokaal gevonden",
     "GPLv3 license is included in the source package.": "GPLv3-licentie is opgenomen in het bronpakket.",
     "General Settings": "Algemene instellingen",
     "General settings": "Algemene instellingen",
@@ -420,7 +418,6 @@
     "Invalid transfer settings.": "Ongeldige overdrachtsinstellingen.",
     "Keep sharing verified downloads": "Blijf geverifieerde downloads delen",
     "Keep your library ready": "Houd uw bibliotheek gereed",
-    "LOCAL FILE": "LOKAAL BESTAND",
     "LOCAL PACKAGE MATCHES": "LOKALE PAKKETWEDSTRIJDEN",
     "Library ready": "Bibliotheek klaar",
     "License": "-licentie",
@@ -473,7 +470,6 @@
     "Network Connections": "Netwerkverbindingen",
     "Network adapters": "Netwerkadapters",
     "Network package downloads require Windows.": "Voor het downloaden van netwerkpakketten is Windows vereist.",
-    "New packages or indexes were saved. Scan again to refresh driver matches.": "Er zijn nieuwe pakketten of indexen opgeslagen. Scan opnieuw om de drivermatches te vernieuwen.",
     "Newer": "Nieuwer",
     "No": "Nee",
     "No HTTP status received.": "Geen HTTP-status ontvangen.",
@@ -502,7 +498,6 @@
     "Not enough free space. About %1 MB is required for verified blocks and selected files on %2.": "Onvoldoende vrije ruimte. Over %1 MB is vereist voor geverifieerde blokken en geselecteerde bestanden op %2.",
     "Not enough space to publish %1. Verified blocks were retained.": "Onvoldoende ruimte om %1 te publiceren. Geverifieerde blokken zijn behouden.",
     "Not installed": "Niet geïnstalleerd",
-    "Not present": "Niet aanwezig",
     "Not present (optional)": "Niet aanwezig (optioneel)",
     "Not reported": "Niet gerapporteerd",
     "Not reported by display driver": "Niet gerapporteerd door beeldschermstuurprogramma",
@@ -858,6 +853,10 @@
     "Paste": "Plakken",
     "Delete": "Verwijderen",
     "Status": "Status",
-    "System Protection": "Systeem beveiliging"
+    "System Protection": "Systeem beveiliging",
+    "Download speed": "Download snelheid",
+    "Peers": "Peers",
+    "Time remaining": "Resterende tijd",
+    "Upload speed": "Upload snelheid"
   }
 }

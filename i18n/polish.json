@@ -43,7 +43,6 @@
     "%1 packages  ·  %2 indexes  ·  %3": "%1 pakiety · %2 indeksy · %3",
     "%1 present PnP devices  ·  %2 matched  ·  %3 warnings in matches": "%1 obecne urządzenia PnP · %2 dopasowane · %3 ostrzeżenia w meczach\nWybrano",
     "%1 selected · Files: %2 · Verified download: up to %3": "%1 · Pliki: %2 · Sprawdzone pobieranie: do %3\nZapisano zweryfikowane pliki",
-    "%1 verified files saved. Close this window and scan again. No driver was installed.": "%1. Zamknij to okno i skanuj ponownie. Nie zainstalowano żadnego sterownika.\nWersje",
     "%1 versions": "%1",
     "%1 × %2  ·  %3 screen(s)": "%1 × %2 · %3 ekran(y)",
     "%1% battery": "%1% baterii",
@@ -341,7 +340,6 @@
     "Finish the active operation before updating the application.": "Zakończ aktywną operację przed aktualizacją aplikacji.",
     "Finish the active operation or perform a native scan first.": "Zakończ aktywną operację lub najpierw wykonaj skanowanie natywne.",
     "Finishing the current request before closing...": "Zakończenie bieżącego żądania przed zamknięciem...",
-    "Found locally": "Znaleziono lokalnie\nLicencja",
     "GPLv3 license is included in the source package.": "GPLv3 jest dołączona do pakietu źródłowego.\nUstawienia ogólne",
     "General Settings": "ZAINSTALOWONY STEROWNIK",
     "General settings": "Ustawienia ogólne\nProjekty",
@@ -420,7 +418,6 @@
     "Invalid transfer settings.": "Nieprawidłowe ustawienia przesyłania.",
     "Keep sharing verified downloads": "Udostępniaj dalej zweryfikowane pliki do pobrania",
     "Keep your library ready": "Przygotuj swoją bibliotekę",
-    "LOCAL FILE": "PLIK LOKALNY\nPAKIET LOKALNY",
     "LOCAL PACKAGE MATCHES": "PASUJE\nBiblioteka",
     "Library ready": "gotowa\nLicencja",
     "License": "Umowa licencyjna",
@@ -473,7 +470,6 @@
     "Network Connections": "Brak pakietu",
     "Network adapters": "Karty sieciowe",
     "Network package downloads require Windows.": "Pobieranie pakietów sieciowych wymaga Windows.",
-    "New packages or indexes were saved. Scan again to refresh driver matches.": "Zapisano nowe pakiety lub indeksy. Zeskanuj ponownie, aby odświeżyć dopasowania sterowników.",
     "Newer": "Nowsze",
     "No": "Nie",
     "No HTTP status received.": "Nie odebrano statusu HTTP.",
@@ -502,7 +498,6 @@
     "Not enough free space. About %1 MB is required for verified blocks and selected files on %2.": "Za mało wolnego miejsca. O %1 MB jest wymagany dla zweryfikowanych bloków i wybranych plików na %2.",
     "Not enough space to publish %1. Verified blocks were retained.": "Za mało miejsca, aby opublikować %1. Zweryfikowane bloki zostały zachowane.",
     "Not installed": "Nie zainstalowane",
-    "Not present": "Brak",
     "Not present (optional)": "Brak (opcjonalnie)",
     "Not reported": "Nie zgłoszono",
     "Not reported by display driver": "Nie zgłaszane przez sterownik ekranu",
@@ -858,6 +853,10 @@
     "Paste": "Wklej",
     "Delete": "Usuń",
     "Status": "Stan",
-    "System Protection": "Ochrona systemu"
+    "System Protection": "Ochrona systemu",
+    "Download speed": "Prędkość pobierania",
+    "Peers": "Peerów",
+    "Time remaining": "Pozostało:",
+    "Upload speed": "Prędkość wysyłania"
   }
 }

@@ -43,7 +43,6 @@
     "%1 packages  ·  %2 indexes  ·  %3": "%1 пакети · %2 индекси · %3",
     "%1 present PnP devices  ·  %2 matched  ·  %3 warnings in matches": "%1 присъстват PnP устройства · %2 съответства · %3 предупреждения в съвпадения",
     "%1 selected · Files: %2 · Verified download: up to %3": "%1 избран · Файлове: %2 · Проверено изтегляне: до %3",
-    "%1 verified files saved. Close this window and scan again. No driver was installed.": "%1 Запазени проверени файлове. Затворете този прозорец и сканирайте отново. Не е инсталиран драйвер.",
     "%1 versions": "%1 версии",
     "%1 × %2  ·  %3 screen(s)": "%1 × %2 · %3 екран(и)",
     "%1% battery": "%1% батерия",
@@ -341,7 +340,6 @@
     "Finish the active operation before updating the application.": "Завършете активната операция, преди да актуализирате приложението.",
     "Finish the active operation or perform a native scan first.": "Завършете активната операция или първо извършете собствено сканиране.",
     "Finishing the current request before closing...": "Завършване на текущата заявка преди затваряне...",
-    "Found locally": "Намерен локално\nЛицензът",
     "GPLv3 license is included in the source package.": "GPLv3 е включен в изходния пакет.",
     "General Settings": "Общи настройки",
     "General settings": "Общи настройки",
@@ -420,7 +418,6 @@
     "Invalid transfer settings.": "Невалидни настройки за прехвърляне.",
     "Keep sharing verified downloads": "Продължавайте да споделяте проверени изтегляния",
     "Keep your library ready": "Поддържайте библиотеката си готова",
-    "LOCAL FILE": "ЛОКАЛЕН ФАЙЛ",
     "LOCAL PACKAGE MATCHES": "МЕСТЕН ПАКЕТ СЪВПАДА",
     "Library ready": "Библиотеката е готова",
     "License": "Лиценз",
@@ -473,7 +470,6 @@
     "Network Connections": "Мрежови връзки",
     "Network adapters": "Мрежови адаптери",
     "Network package downloads require Windows.": "Изтеглянията на мрежови пакети изискват Windows.",
-    "New packages or indexes were saved. Scan again to refresh driver matches.": "Бяха записани нови пакети или индекси. Сканирайте отново, за да опресните съвпаденията на драйвери.",
     "Newer": "По-нови",
     "No": "Не",
     "No HTTP status received.": "Не е получен HTTP статус.",
@@ -502,7 +498,6 @@
     "Not enough free space. About %1 MB is required for verified blocks and selected files on %2.": "Няма достатъчно свободно място. Около %1 MB са необходими за проверени блокове и избрани файлове на %2.",
     "Not enough space to publish %1. Verified blocks were retained.": "Няма достатъчно място за публикуване на %1. Проверените блокове бяха запазени.",
     "Not installed": "Неинсталирани",
-    "Not present": "Няма",
     "Not present (optional)": "Не присъства (по избор)",
     "Not reported": "Не се съобщава",
     "Not reported by display driver": "Не се съобщава от драйвера на дисплея",
@@ -858,6 +853,10 @@
     "Paste": "Поставяне",
     "Delete": "Изтриване",
     "Status": "Статус",
-    "System Protection": "Защита на системата"
+    "System Protection": "Защита на системата",
+    "Download speed": "Скорост на изтегляне",
+    "Peers": "Пиъри",
+    "Time remaining": "Оставащо време",
+    "Upload speed": "Скорост на качване"
   }
 }

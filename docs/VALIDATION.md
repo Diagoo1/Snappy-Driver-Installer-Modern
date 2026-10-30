@@ -1,16 +1,16 @@
 # Validation scope
 
-Current application version: **0.22.1 Beta**. Hardware/Windows compatibility testing is ongoing. This document separates verified behavior from implementation that still needs hardware/VM testing.
+Current application version: **0.23.0 Beta**. Hardware/Windows compatibility testing is ongoing. This document separates verified behavior from implementation that still needs hardware/VM testing.
 
 | Area | Evidence |
 | --- | --- |
-| Interface, menus, RTL and instances | 277 regression checks at 100% and 150%; English/Arabic and light/dark visual review |
+| Interface, menus, RTL and instances | 288 regression checks at 100% and 150%; English/Arabic and light/dark visual review |
 | Structural/source integration | 82 checks; critical original source fingerprints and reviewed patches |
 | Current native matching | Read-only scan: 216 devices and 567 candidates on the development host |
 | Original engine workflows | Repeated scan, snapshot save/load, target-system preview and extraction of six INF files |
 | Index maintenance | Original rebuild, text export, deliberate damaged-cache recovery and reload |
 | Legacy automation | Read-only script/device-list output, parse-only validation of effectful scripts and installed-ID queries |
-| Transfers | 31 offline checks; 95,000 verified loopback bytes including a second downloader served through sharing |
+| Transfers | 38 offline checks; 95,000 verified loopback bytes including a second downloader served through sharing |
 | Self-update | Public release metadata/download verified against asset size, SHA-256 and PE before any replacement |
 | Binary | Static x86 build; targeted audit found no known post-XP static imports |
 
@@ -50,3 +50,5 @@ The old static assertion requiring filter-scoped bulk selection was removed beca
 The final sidebar marker is paint-only: its short inset rounded pill and rounded pressed state were rebuilt and reviewed visually in the refreshed four-mode gallery. The 271-check runs above validate the scroll/branch fixes before that final cosmetic adjustment.
 
 0.22.1: 277 UI checks passed at both 100% and 150%, including intermediate shared hover/selection positions, rapid retargeting, immediate reduced-motion behavior and highlight alignment after compact footer/layout changes. Shared selection/marker and hover surfaces use finite property animations; item text/icons remain directly rendered. Resize/show synchronization and hide-time cancellation are implemented. The final four-mode gallery and static x86 import audit were reviewed. No new real hardware operations were performed.
+
+0.23.0: 288 UI regression checks at 100% and 150% cover single-surface sidebar motion, repeated active-page clicks, update notices, download columns/metrics/filtering and classic Index directory resolution. The 38 offline transfer checks include cross-file verified progress and local-version availability. The loopback peer test transferred 95,000 verified bytes to an independent downloader. HTTPS metadata-only probes parsed 68 packs + 68 indexes from SDI and 109 packs + 109 indexes from SDIO at validation time. These changing catalog counts are observations, not hard-coded application values. Full public driver-pack downloads and real installation/restore/reboot were not performed. The 84-image four-mode gallery uses labeled sample data.

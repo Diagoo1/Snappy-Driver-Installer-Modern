@@ -43,7 +43,6 @@
     "%1 packages  ·  %2 indexes  ·  %3": "%1 · Chỉ mục %2 · %3",
     "%1 present PnP devices  ·  %2 matched  ·  %3 warnings in matches": "%1 giới thiệu các thiết bị PnP · %2 đã khớp · Cảnh báo %3 trong các trận đấu\nĐã chọn",
     "%1 selected · Files: %2 · Verified download: up to %3": "%1 · Tệp: %2 · Tải xuống đã được xác minh: tối đa %3\nĐã lưu các tệp đã xác minh",
-    "%1 verified files saved. Close this window and scan again. No driver was installed.": "%1. Đóng cửa sổ này và quét lại. Không có trình điều khiển đã được cài đặt.\nCác phiên bản",
     "%1 versions": "%1",
     "%1 × %2  ·  %3 screen(s)": "%1 × %2 · Màn hình %3\nPin",
     "%1% battery": "%1%\nĐang sử dụng",
@@ -341,7 +340,6 @@
     "Finish the active operation before updating the application.": "Hoàn tất thao tác đang hoạt động trước khi cập nhật ứng dụng.",
     "Finish the active operation or perform a native scan first.": "Hoàn tất thao tác đang hoạt động hoặc thực hiện quét gốc trước.",
     "Finishing the current request before closing...": "Hoàn tất yêu cầu hiện tại trước khi đóng...",
-    "Found locally": "Được tìm thấy cục bộ\nGiấy phép",
     "GPLv3 license is included in the source package.": "GPLv3 được bao gồm trong gói nguồn.\nCài đặt chung",
     "General Settings": "Bộ điều hợp đồ họa",
     "General settings": "Cài đặt chung\nDự án",
@@ -420,7 +418,6 @@
     "Invalid transfer settings.": "Cài đặt truyền không hợp lệ.",
     "Keep sharing verified downloads": "Tiếp tục chia sẻ các bản tải xuống đã được xác minh",
     "Keep your library ready": "Luôn sẵn sàng cho thư viện của bạn\nTẬP TIN ĐỊA PHƯƠNG",
-    "LOCAL FILE": "Liên kết",
     "LOCAL PACKAGE MATCHES": "TRỌN GÓI ĐỊA PHƯƠNG\nThư viện",
     "Library ready": "đã sẵn sàng\nGiấy phép",
     "License": "Thỏa thuận cấp phép",
@@ -473,7 +470,6 @@
     "Network Connections": "Bộ điều hợp mạng",
     "Network adapters": "Tải xuống gói Mạng",
     "Network package downloads require Windows.": "yêu cầu Windows.",
-    "New packages or indexes were saved. Scan again to refresh driver matches.": "Các gói hoặc chỉ mục mới đã được lưu. Quét lại để làm mới các trình điều khiển phù hợp.",
     "Newer": "Mới hơn",
     "No": "Không",
     "No HTTP status received.": "Không nhận được trạng thái HTTP.",
@@ -502,7 +498,6 @@
     "Not enough free space. About %1 MB is required for verified blocks and selected files on %2.": "Không đủ dung lượng trống. Cần có khoảng %1 MB cho các khối đã xác minh và các tệp đã chọn trên %2.",
     "Not enough space to publish %1. Verified blocks were retained.": "Không đủ dung lượng để xuất bản %1. Các khối đã được xác minh đã được giữ lại.",
     "Not installed": "Không cài được",
-    "Not present": "Không có",
     "Not present (optional)": "Không có (tùy chọn)",
     "Not reported": "Không được báo cáo",
     "Not reported by display driver": "Không được trình điều khiển hiển thị báo cáo",
@@ -858,6 +853,10 @@
     "Paste": "Dán",
     "Delete": "Xóa",
     "Status": "Trạng thái",
-    "System Protection": "Bảo vệ hệ thống"
+    "System Protection": "Bảo vệ hệ thống",
+    "Download speed": "Tốc độ tải",
+    "Peers": "Người nhận",
+    "Time remaining": "Thời gian còn lại",
+    "Upload speed": "Tốc độ tải lên"
   }
 }

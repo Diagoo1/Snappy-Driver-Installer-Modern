@@ -43,7 +43,6 @@
     "%1 packages  ·  %2 indexes  ·  %3": "%1 · ดัชนี %2 · %3",
     "%1 present PnP devices  ·  %2 matched  ·  %3 warnings in matches": "%1 แสดงอุปกรณ์ PnP · %2 ตรงกัน · คำเตือน %3 ในการแข่งขัน\nเลือก",
     "%1 selected · Files: %2 · Verified download: up to %3": "%1 แล้ว · ไฟล์: %2 · ดาวน์โหลดที่ยืนยันแล้ว: สูงสุด %3",
-    "%1 verified files saved. Close this window and scan again. No driver was installed.": "%1 verified files saved. ปิดหน้าต่างนี้แล้วสแกนอีกครั้ง ไม่มีการติดตั้งไดรเวอร์",
     "%1 versions": "%1 versions",
     "%1 × %2  ·  %3 screen(s)": "%1 × %2 · หน้าจอ %3\nแบตเตอรี่",
     "%1% battery": "%1%",
@@ -341,7 +340,6 @@
     "Finish the active operation before updating the application.": "เสร็จสิ้นการดำเนินการที่ใช้งานอยู่ก่อนที่จะอัปเดตแอปพลิเคชัน",
     "Finish the active operation or perform a native scan first.": "เสร็จสิ้นการดำเนินการที่ใช้งานอยู่หรือทำการสแกนแบบเนทิฟก่อน",
     "Finishing the current request before closing...": "เสร็จสิ้นคำขอปัจจุบันก่อนปิด...",
-    "Found locally": "พบในเครื่อง\nใบอนุญาต",
     "GPLv3 license is included in the source package.": "GPLv3 รวมอยู่ในแพ็คเกจซอร์ส",
     "General Settings": "การตั้งค่าทั่วไป",
     "General settings": "การตั้งค่าทั่วไป\nโครงการ",
@@ -420,7 +418,6 @@
     "Invalid transfer settings.": "การตั้งค่าการถ่ายโอนไม่ถูกต้อง",
     "Keep sharing verified downloads": "แบ่งปันการดาวน์โหลดที่ตรวจสอบแล้วต่อไป",
     "Keep your library ready": "เตรียมห้องสมุดของคุณให้พร้อม\nไฟล์ท้องถิ่น",
-    "LOCAL FILE": "การจับคู่แพ็คเกจท้องถิ่น",
     "LOCAL PACKAGE MATCHES": "ไลบรารี",
     "Library ready": "พร้อมแล้ว\nใบอนุญาต",
     "License": "ข้อตกลงใบอนุญาต",
@@ -473,7 +470,6 @@
     "Network Connections": "ตัวเลือกพลังงาน",
     "Network adapters": "อะแดปเตอร์เครือข่าย\nการดาวน์โหลดแพ็คเกจเครือข่าย",
     "Network package downloads require Windows.": "ต้องใช้ Windows",
-    "New packages or indexes were saved. Scan again to refresh driver matches.": "บันทึกแพ็คเกจหรือดัชนีใหม่แล้ว สแกนอีกครั้งเพื่อรีเฟรชการจับคู่ไดรเวอร์",
     "Newer": "ใหม่กว่า",
     "No": "ไม่",
     "No HTTP status received.": "ไม่ได้รับสถานะ HTTP",
@@ -502,7 +498,6 @@
     "Not enough free space. About %1 MB is required for verified blocks and selected files on %2.": "พื้นที่ว่างไม่เพียงพอ ต้องใช้ประมาณ %1 MB สำหรับบล็อกที่ได้รับการตรวจสอบและไฟล์ที่เลือกใน %2",
     "Not enough space to publish %1. Verified blocks were retained.": "พื้นที่ไม่เพียงพอที่จะเผยแพร่ %1 บล็อกที่ตรวจสอบแล้วยังคงอยู่",
     "Not installed": "ยังไม่ได้ติดตั้ง",
-    "Not present": "ไม่มีอยู่",
     "Not present (optional)": "ไม่มีอยู่ (เป็นทางเลือก)",
     "Not reported": "ไม่มีการรายงาน",
     "Not reported by display driver": "ไม่ได้รายงานโดยไดรเวอร์จอแสดงผล",
@@ -858,6 +853,10 @@
     "Paste": "วาง",
     "Delete": "ลบ",
     "Status": "สถานะ",
-    "System Protection": "การป้องกันระบบ"
+    "System Protection": "การป้องกันระบบ",
+    "Download speed": "ความเร็วการดาวน์โหลด",
+    "Peers": "โหลด",
+    "Time remaining": "ใช้เวลาอีก",
+    "Upload speed": "ความเร็วการอัพโหลด"
   }
 }

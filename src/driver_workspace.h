@@ -43,6 +43,7 @@ public:
     void openInstallOptions();
     void setInstallationPreferences(bool restorePoint,bool rebootAfter);
     void applyLegacyDisplay(int filters,bool expert,bool packageNames);
+    void setPackageUpdateStatus(int packages,int indexes,const QString &source,const QString &message=QString(),bool checking=false);
 
 signals:
     void scanRequested();
@@ -54,6 +55,8 @@ signals:
     void candidateExtractionRequested(int row,int candidate);
     void infViewRequested(int row,int candidate,bool locate);
     void optionsRequested();
+    void packageUpdatesRequested();
+    void packageUpdateCheckRequested();
 
 protected:
     void resizeEvent(QResizeEvent *event) Q_DECL_OVERRIDE;
@@ -95,6 +98,13 @@ private:
     PremiumPopover *m_filterPopup,*m_installPopup;
     QLabel *m_filterViewHeading,*m_filterFoundHeading,*m_filterAbsentHeading,*m_installHeading;
     QPushButton *m_filterReset;
+    QWidget *m_packageNotice;
+    QLabel *m_packageTitle,*m_packageDetail;
+    QPushButton *m_packageBrowse,*m_packageCheck;
+    int m_packageCount=-1,m_packageIndexes=-1;
+    QString m_packageSource,m_packageMessage;
+    bool m_packageChecking=false;
+    void refreshPackageNotice();
     QVector<QCheckBox*> m_matchFilters;
 };
 

@@ -1,4 +1,5 @@
 #include "online_packages.h"
+#include "offline_paths.h"
 #include <QCoreApplication>
 #include <QCryptographicHash>
 #include <QFile>
@@ -66,7 +67,26 @@ static QString component(const QByteArray &raw){
        s.contains(QRegularExpression(QStringLiteral("[\\x00-\\x1f<>:\"/\\\\|?*]"))) ||
        s.contains(QRegularExpression(QStringLiteral("^(CON|PRN|AUX|NUL|COM[1-9]|LPT[1-9])(?:\\.|$)"),QRegularExpression::CaseInsensitiveOption)))fail(QStringLiteral("Unsafe path in torrent metadata."));return s;
 }
-QUrl officialMetadataUrl(){return QUrl(QStringLiteral("https://www.glenn.delahoy.com/downloads/sdio/SDIO_Update.torrent"));}
+QUrl officialMetadataUrl(const QString &family){return QUrl(family==QStringLiteral("SDI")?QStringLiteral("https://sdi-tool.org/releases/SDI_Update.torrent"):QStringLiteral("https://www.glenn.delahoy.com/downloads/sdio/SDIO_Update.torrent"));}
+static QPair<QString,QString> packIdentity(QString name){
+    name=QFileInfo(QDir::fromNativeSeparators(name)).fileName();if(name.startsWith(QStringLiteral("_P_"),Qt::CaseInsensitive))name.replace(0,3,QStringLiteral("DP_"));
+    const QRegularExpression expression(QStringLiteral("^(.*)_([0-9]{4,8})\\.(?:7z|bin)$"),QRegularExpression::CaseInsensitiveOption);const auto match=expression.match(name);
+    return match.hasMatch()?qMakePair(match.captured(1).toLower(),match.captured(2)):qMakePair(name.toLower(),QString());
+}
+QVector<Availability> availability(const Catalog &catalog,const QString &drivers,const QString &indexes,const QStringList &needed){
+    QMap<QString,QPair<QString,qint64> > localPacks,localIndexes;
+    auto inventory=[](const QString &folder,QMap<QString,QPair<QString,qint64> > &out){for(const QString &name:QDir(folder).entryList(QDir::Files)){const auto id=packIdentity(name);if(!out.contains(id.first) || id.second.toLongLong()>out[id.first].first.toLongLong())out[id.first]=qMakePair(id.second,QFileInfo(QDir(folder).filePath(name)).size());}};
+    inventory(drivers,localPacks);inventory(indexes,localIndexes);QStringList families;for(const QString &name:needed)families<<packIdentity(name).first;
+    QVector<Availability> result;result.reserve(catalog.files.size());for(const File &file:catalog.files){Availability state;const auto id=packIdentity(file.targetName);state.available=id.second;const auto &inventory=file.kind==Driver?localPacks:localIndexes;state.missing=!inventory.contains(id.first);if(!state.missing)state.current=inventory.value(id.first).first;
+        const QFileInfo exact(QDir(file.kind==Driver?drivers:indexes).filePath(file.targetName));state.local=exact.isFile() && exact.size()==file.size;
+        state.update=!state.local && (state.missing || state.available.isEmpty() || state.current.isEmpty() || state.available.toLongLong()>=state.current.toLongLong());
+        state.needed=file.kind==Driver && families.contains(id.first);state.network=file.kind==Driver && (id.first.contains(QStringLiteral("_lan_")) || id.first.contains(QStringLiteral("_wlan_")) || id.first.contains(QStringLiteral("_wifi_")) || id.first.contains(QStringLiteral("_wwan_")));result.append(state);
+    }return result;
+}
+void recordVerifiedPiece(const Catalog &catalog,int piece,Progress &progress){
+    const qint64 begin=qint64(piece)*catalog.pieceLength,end=qMin(catalog.total,begin+catalog.pieceLength);progress.verified+=qMax(qint64(0),end-begin);
+    for(auto it=progress.fileVerified.begin();it!=progress.fileVerified.end();++it){const File &file=catalog.files[it.key()];it.value()+=qMax(qint64(0),qMin(end,file.offset+file.size)-qMax(begin,file.offset));}
+}
 Catalog parse(const QByteArray &bytes){
     if(bytes.isEmpty() || bytes.size()>8*1024*1024)fail(QStringLiteral("Torrent metadata exceeds the size limit."));
     Decoder decoder(bytes);const Node root=decoder.read();if(root.type!='d' || !decoder.complete())fail(QStringLiteral("Invalid torrent document."));
@@ -84,8 +104,8 @@ Catalog parse(const QByteArray &bytes){
         QStringList path;for(const Node &p:field(n,"path",'l').list){if(p.type!='s')fail(QStringLiteral("Invalid file path."));path.append(component(p.text));}
         if(path.isEmpty() || path.size()>16)fail(QStringLiteral("Invalid file path depth."));f.path=path.join(QLatin1Char('/'));
         if(paths.contains(f.path.toCaseFolded()))fail(QStringLiteral("Duplicate torrent file path."));paths.insert(f.path.toCaseFolded());
-        if(path.size()==2 && path[0]==QStringLiteral("drivers") && path.last().startsWith(QStringLiteral("DP_")) && path.last().endsWith(QStringLiteral(".7z")))f.kind=Driver;
-        if(path.size()==3 && path[0]==QStringLiteral("indexes") && (path[1]==QStringLiteral("SDIO") || path[1]==QStringLiteral("SDI")) && path.last().startsWith(QStringLiteral("DP_")) && path.last().endsWith(QStringLiteral(".bin")))f.kind=Index;
+        if(path.size()==2 && path[0].compare(QStringLiteral("drivers"),Qt::CaseInsensitive)==0 && path.last().startsWith(QStringLiteral("DP_"),Qt::CaseInsensitive) && path.last().endsWith(QStringLiteral(".7z"),Qt::CaseInsensitive))f.kind=Driver;
+        if(path.size()==3 && (path[0].compare(QStringLiteral("indexes"),Qt::CaseInsensitive)==0 || path[0].compare(QStringLiteral("index"),Qt::CaseInsensitive)==0) && (path[1].compare(QStringLiteral("SDIO"),Qt::CaseInsensitive)==0 || path[1].compare(QStringLiteral("SDI"),Qt::CaseInsensitive)==0) && path.last().startsWith(QStringLiteral("DP_"),Qt::CaseInsensitive) && path.last().endsWith(QStringLiteral(".bin"),Qt::CaseInsensitive))f.kind=Index;
         if(f.kind!=Other){f.targetName=f.kind==Index?QStringLiteral("_")+path.last().mid(1):path.last();const QString target=QString::number(f.kind)+f.targetName.toCaseFolded();if(targets.contains(target))fail(QStringLiteral("Conflicting update targets."));targets.insert(target);}
         c.total+=f.size;c.files.append(f);
     }
@@ -101,7 +121,7 @@ Catalog parse(const QByteArray &bytes){
 }
 #ifdef Q_OS_WIN
 struct InternetHandle { HINTERNET value;explicit InternetHandle(HINTERNET v):value(v){}~InternetHandle(){if(value)InternetCloseHandle(value);} };
-static QByteArray get(const QUrl &url,qint64 offset,qint64 length,qint64 fileSize,const std::atomic<bool> &stop,int downloadKiB=0){
+static QByteArray get(const QUrl &url,qint64 offset,qint64 length,qint64 fileSize,const std::atomic<bool> &stop,int downloadKiB=0,const std::function<void(qint64)> &received=std::function<void(qint64)>()){
     if(!url.isValid() || url.host().isEmpty() || !url.userInfo().isEmpty() || (url.scheme()!=QStringLiteral("https") && url.scheme()!=QStringLiteral("http")))fail(QStringLiteral("Invalid download URL."));
     cancelled(stop);InternetHandle session(InternetOpenW(L"SDIO Modern / verified package updates",INTERNET_OPEN_TYPE_PRECONFIG,0,0,0));
     if(!session.value)fail(QStringLiteral("Windows could not open an Internet session."));
@@ -119,11 +139,11 @@ static QByteArray get(const QUrl &url,qint64 offset,qint64 length,qint64 fileSiz
     }else if(status!=200)fail(QStringLiteral("Cannot download the update catalog (HTTP %1).").arg(status));
     QByteArray output;const qint64 limit=offset>=0?length:8*1024*1024;char buffer[65536];DWORD read=0;
     QElapsedTimer rateClock;rateClock.start();
-    for(;;){cancelled(stop);if(!InternetReadFile(request.value,buffer,sizeof(buffer),&read))fail(QStringLiteral("The network transfer failed. Verified blocks can be resumed."));if(!read)break;if(output.size()+static_cast<qint64>(read)>limit)fail(QStringLiteral("Server response exceeds the expected size."));output.append(buffer,static_cast<int>(read));if(downloadKiB>0){const qint64 due=qint64(output.size())*1000/(qint64(downloadKiB)*1024);while(rateClock.elapsed()<due){cancelled(stop);QThread::msleep(static_cast<unsigned long>(qMax<qint64>(1,qMin<qint64>(50,due-rateClock.elapsed()))));}}}
+    for(;;){cancelled(stop);if(!InternetReadFile(request.value,buffer,sizeof(buffer),&read))fail(QStringLiteral("The network transfer failed. Verified blocks can be resumed."));if(!read)break;if(output.size()+static_cast<qint64>(read)>limit)fail(QStringLiteral("Server response exceeds the expected size."));output.append(buffer,static_cast<int>(read));if(received)received(read);if(downloadKiB>0){const qint64 due=qint64(output.size())*1000/(qint64(downloadKiB)*1024);while(rateClock.elapsed()<due){cancelled(stop);QThread::msleep(static_cast<unsigned long>(qMax<qint64>(1,qMin<qint64>(50,due-rateClock.elapsed()))));}}}
     if(offset>=0 && output.size()!=length)fail(QStringLiteral("Incomplete HTTP range response."));return output;
 }
 #else
-static QByteArray get(const QUrl&,qint64,qint64,qint64,const std::atomic<bool>&,int=0){fail(QStringLiteral("Network package downloads require Windows."));return QByteArray();}
+static QByteArray get(const QUrl&,qint64,qint64,qint64,const std::atomic<bool>&,int=0,const std::function<void(qint64)> &received=std::function<void(qint64)>()){fail(QStringLiteral("Network package downloads require Windows."));return QByteArray();}
 #endif
 QByteArray fetchMetadata(const QUrl &url,const std::atomic<bool> &stop){if(url.scheme()!=QStringLiteral("https"))fail(QStringLiteral("Update catalogs must be fetched over HTTPS."));return get(url,-1,0,0,stop);}
 static QVector<int> blocks(const Catalog &c,const QVector<int> &selection){
@@ -141,7 +161,7 @@ QStringList download(const Catalog &c,const QVector<int> &selection,const QStrin
     const QString cache=QDir(cacheRoot).filePath(QString::fromLatin1(c.infoHash.toHex()));if(!QDir().mkpath(cache))fail(QStringLiteral("Cannot create the download cache."));
     const QString canonicalCache=QFileInfo(cache).canonicalFilePath(),canonicalRoot=QFileInfo(cacheRoot).canonicalFilePath();
     if(canonicalCache!=QDir(canonicalRoot).filePath(QString::fromLatin1(c.infoHash.toHex())))fail(QStringLiteral("The download cache resolves outside its chosen folder."));
-    Progress progress;progress.total=required;qint64 missing=0;for(int p:pieces){cancelled(stop);if(!cached(c,cache,p).isEmpty())progress.verified+=qMin<qint64>(c.pieceLength,c.total-static_cast<qint64>(p)*c.pieceLength);else missing+=qMin<qint64>(c.pieceLength,c.total-static_cast<qint64>(p)*c.pieceLength);}
+    Progress progress;progress.total=required;for(int index:selection)progress.fileVerified[index]=0;QElapsedTimer notice;notice.start();qint64 missing=0;for(int p:pieces){cancelled(stop);if(!cached(c,cache,p).isEmpty())recordVerifiedPiece(c,p,progress);else missing+=qMin<qint64>(c.pieceLength,c.total-static_cast<qint64>(p)*c.pieceLength);}
     QMap<QString,qint64> space;QMap<QString,QStorageInfo> volumes;
     QStorageInfo storage(cache);const QString cacheVolume=storage.rootPath().toCaseFolded();space[cacheVolume]+=missing;volumes[cacheVolume]=storage;
     QSet<int> budgeted;
@@ -153,7 +173,10 @@ QStringList download(const Catalog &c,const QVector<int> &selection,const QStrin
         if(volume.isValid() && volume.bytesAvailable()>=0 && volume.bytesAvailable()<it.value()+32*1024*1024)
             fail(QStringLiteral("Not enough free space. About %1 MB is required for verified blocks and selected files on %2.").arg(it.value()/(1024*1024)+33).arg(volume.rootPath()));
     }
-    const RangeFetch fetch=custom?custom:[&stop,&c](const QUrl &u,qint64 first,qint64 count,qint64 total){return get(u,first,count,total,stop,c.transfer.downloadKiB);};
+    const RangeFetch fetch=[&](const QUrl &u,qint64 first,qint64 count,qint64 total){
+        if(custom){const QByteArray data=custom(u,first,count,total);progress.received+=data.size();if(sink)sink(progress);return data;}
+        return get(u,first,count,total,stop,c.transfer.downloadKiB,[&](qint64 bytes){progress.received+=bytes;if(notice.elapsed()>200){if(sink)sink(progress);notice.restart();}});
+    };
     QSet<int> rejectedSeeds;QVector<int> peerNeeded;QString unavailable;int singleUntil=0;
     // Batch adjacent pieces (up to 16 MiB) so large packages do not generate a request per piece.
     for(int at=0;at<pieces.size();){
@@ -178,7 +201,7 @@ QStringList download(const Catalog &c,const QVector<int> &selection,const QStrin
             peerNeeded.append(first);unavailable=lastError;at=end;continue;
         }
         for(int n=at;n<end;++n){cancelled(stop);const qint64 position=static_cast<qint64>(pieces[n])*c.pieceLength-begin;const QByteArray piece=batch.mid(static_cast<int>(position),static_cast<int>(qMin<qint64>(c.pieceLength,c.total-begin-position)));
-            QSaveFile out(blockPath(cache,pieces[n]));if(!out.open(QIODevice::WriteOnly) || out.write(piece)!=piece.size() || !out.commit())fail(QStringLiteral("Could not save a verified download block."));progress.verified+=piece.size();if(sink)sink(progress);}
+            QSaveFile out(blockPath(cache,pieces[n]));if(!out.open(QIODevice::WriteOnly) || out.write(piece)!=piece.size() || !out.commit())fail(QStringLiteral("Could not save a verified download block."));recordVerifiedPiece(c,pieces[n],progress);if(sink)sink(progress);}
         at=end;
     }
     if(!peerNeeded.isEmpty()){
@@ -215,7 +238,7 @@ int runReport(int argc,char **argv){
     QCoreApplication app(argc,argv);const QStringList args=app.arguments();auto value=[&args](const QString &key){int i=args.indexOf(key);return i>=0 && i+1<args.size()?args[i+1]:QString();};
     QJsonObject report;report.insert(QStringLiteral("installationRequested"),false);int code=0;
     try{std::atomic<bool> stop(false);QByteArray bytes;const QString source=value(QStringLiteral("--torrent"));
-        if(source.isEmpty())bytes=fetchMetadata(officialMetadataUrl(),stop);else{QFile input(source);if(!input.open(QIODevice::ReadOnly) || input.size()>8*1024*1024)fail(QStringLiteral("Cannot read bounded torrent metadata."));bytes=input.readAll();}
+        if(source.isEmpty())bytes=fetchMetadata(officialMetadataUrl(libraryFamily(value(QStringLiteral("--drivers")),resolveIndexDirectory(value(QStringLiteral("--indexes")),value(QStringLiteral("--drivers"))))),stop);else{QFile input(source);if(!input.open(QIODevice::ReadOnly) || input.size()>8*1024*1024)fail(QStringLiteral("Cannot read bounded torrent metadata."));bytes=input.readAll();}
         Catalog c=parse(bytes);
         auto limit=[&](const QString &key,int low,int high,int fallback){if(!args.contains(key))return fallback;bool ok=false;const int number=value(key).toInt(&ok);if(!ok || number<low || number>high)fail(QStringLiteral("Invalid transfer limit: ")+key);return number;};
         c.transfer.downloadKiB=limit(QStringLiteral("--download-limit-kib"),0,102400,0);c.transfer.uploadKiB=limit(QStringLiteral("--upload-limit-kib"),1,102400,64);c.transfer.connections=limit(QStringLiteral("--peer-connections"),1,200,40);c.transfer.port=limit(QStringLiteral("--peer-port"),0,65535,0);

@@ -43,7 +43,6 @@
     "%1 packages  ·  %2 indexes  ·  %3": "Forfaits %1 · Index %2 · %3",
     "%1 present PnP devices  ·  %2 matched  ·  %3 warnings in matches": "%1 présente des appareils PnP · %2 correspond · %3 avertissements dans les correspondances",
     "%1 selected · Files: %2 · Verified download: up to %3": "%1 sélectionné · Fichiers : %2 · Téléchargement vérifié : jusqu'à %3\nFichiers vérifiés",
-    "%1 verified files saved. Close this window and scan again. No driver was installed.": "%1 enregistrés. Fermez cette fenêtre et scannez à nouveau. Aucun pilote n'a été installé.\nVersions",
     "%1 versions": "%1",
     "%1 × %2  ·  %3 screen(s)": "%1 × %2 · Écran(s) %3\nBatterie",
     "%1% battery": "%1%",
@@ -341,7 +340,6 @@
     "Finish the active operation before updating the application.": "Terminez l'opération active avant de mettre à jour l'application.",
     "Finish the active operation or perform a native scan first.": "Terminez l’opération active ou effectuez d’abord une analyse native.",
     "Finishing the current request before closing...": "Fin de la demande en cours avant la fermeture...",
-    "Found locally": "Trouvé localement\nLa licence",
     "GPLv3 license is included in the source package.": "GPLv3 est incluse dans le package source.\nParamètres généraux",
     "General Settings": "Adaptateurs graphiques",
     "General settings": "Paramètres généraux\nProjets",
@@ -420,7 +418,6 @@
     "Invalid transfer settings.": "Paramètres de transfert non valides.",
     "Keep sharing verified downloads": "Continuer à partager les téléchargements vérifiés",
     "Keep your library ready": "Gardez votre bibliothèque prête\nFICHIER LOCAL",
-    "LOCAL FILE": "CORRESPONDANCE DES FORFAITS LOCAUX",
     "LOCAL PACKAGE MATCHES": "Prêt pour la bibliothèque",
     "Library ready": "Licence",
     "License": "Contrat de licence",
@@ -473,7 +470,6 @@
     "Network Connections": "Adaptateurs réseau",
     "Network adapters": "Les téléchargements du package réseau",
     "Network package downloads require Windows.": "nécessitent Windows.",
-    "New packages or indexes were saved. Scan again to refresh driver matches.": "De nouveaux packages ou index ont été enregistrés. Scannez à nouveau pour actualiser les correspondances de pilotes.",
     "Newer": "Plus récents",
     "No": "Non",
     "No HTTP status received.": "Aucun état HTTP reçu.",
@@ -502,7 +498,6 @@
     "Not enough free space. About %1 MB is required for verified blocks and selected files on %2.": "Espace libre insuffisant. À propos de %1 Mo est requis pour les blocs vérifiés et les fichiers sélectionnés sur %2.",
     "Not enough space to publish %1. Verified blocks were retained.": "Espace insuffisant pour publier %1. Les blocs vérifiés ont été conservés.",
     "Not installed": "Non installés",
-    "Not present": "Non présent",
     "Not present (optional)": "Non présent (facultatif)",
     "Not reported": "Non rapporté",
     "Not reported by display driver": "Non signalé par le pilote d'affichage",
@@ -858,6 +853,10 @@
     "Paste": "Coller",
     "Delete": "Supprimer",
     "Status": "Etat",
-    "System Protection": "Protection du système"
+    "System Protection": "Protection du système",
+    "Download speed": "Vitesse de DL",
+    "Peers": "Pairs",
+    "Time remaining": "Temps restant",
+    "Upload speed": "Vitesse d'UL"
   }
 }

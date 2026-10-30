@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.23.0 Beta
+
+- Use one interpolated sidebar highlight during hover/click transitions; keep the active page checked and bold on repeated clicks or keyboard activation.
+- Show pack/index updates in the driver workspace, with an optional startup metadata check and the official catalog selected from the detected SDI/SDIO library.
+- Support classic SDI `Drivers` and `Index/SDI` catalog paths as well as SDIO layouts. Compare local and offered package versions and distinguish missing packages.
+- Add a themed download center with current/new versions, scan relevance, selection presets, filters, verified per-file progress, received bytes, live rates, ETA, peers and pause/resume.
+- Refresh matching after downloaded files are saved. Keep explicit downloads separate from installation.
+
 ## 0.22.1 Beta
 
 - Slide a shared hover surface between sidebar items and animate the selected background/rounded marker together, with finite easing and immediate retargeting. Text and icons remain directly rendered.

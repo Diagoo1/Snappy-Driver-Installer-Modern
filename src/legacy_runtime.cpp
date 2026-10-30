@@ -46,7 +46,7 @@ struct Runtime {
     std::atomic<bool> stop;
     QJsonArray events;
     QJsonObject outcomes;
-    Runtime():repository(AppUpdate::projectRepository()),stop(false){const QDir root(QCoreApplication::applicationDirPath());paths.drivers=root.filePath(QStringLiteral("drivers")).toStdWString();paths.indexes=root.filePath(QStringLiteral("indexes/SDIO")).toStdWString();paths.logDirectory=root.filePath(QStringLiteral("logs")).toStdWString();}
+    Runtime():repository(AppUpdate::projectRepository()),stop(false){const QDir root(QCoreApplication::applicationDirPath());paths.drivers=root.filePath(QStringLiteral("drivers")).toStdWString();paths.indexes=root.filePath(QStringLiteral("indexes")).toStdWString();paths.logDirectory=root.filePath(QStringLiteral("logs")).toStdWString();}
     sdiomodern::OriginCore &engine(){if(!core)core.reset(new sdiomodern::OriginCore);return *core;}
     sdiomodern::EventSink sink(){return [this](const sdiomodern::Event &event){QJsonObject item;item.insert(QStringLiteral("message"),QString::fromStdWString(event.message));item.insert(QStringLiteral("stage"),int(event.stage));item.insert(QStringLiteral("nativeError"),double(event.nativeError));events.append(item);};}
     void scan(){if(!QDir().mkpath(QString::fromStdWString(paths.logDirectory)))fail(QStringLiteral("Cannot create the requested index/log folders."));sdiomodern::Paths session=paths;session.indexes=prepareLibraryIndexes(QString::fromStdWString(paths.drivers),QString::fromStdWString(paths.indexes)).toStdWString();snapshot=engine().scan(session,sink());paths.forceReindex=false;selected.clear();selectedPackages.clear();if(!selectionCriteria.isEmpty())select(selectionCriteria);}
@@ -70,7 +70,7 @@ struct Runtime {
         for(const auto &entry:selected){sdiomodern::Selection item;item.deviceInstanceId=entry.first.toStdWString();item.candidateToken=entry.second;result.selections.push_back(item);}
         if(installing && (!enableInstall || !paths.snapshotFile.empty() || paths.targetVersion || paths.targetArchitecture))fail(QStringLiteral("Installation is disabled for this script or preview."));return result;
     }
-    void checkUpdates(){const QUrl url=activeTorrent?QUrl(QStringLiteral("https://www.glenn.delahoy.com/downloads/sdio/Drivers.torrent")):OnlinePackages::officialMetadataUrl();torrent=OnlinePackages::parse(OnlinePackages::fetchMetadata(url,stop));torrent.transfer=transfer;updatesReady=true;}
+    void checkUpdates(){const QUrl url=activeTorrent?QUrl(QStringLiteral("https://www.glenn.delahoy.com/downloads/sdio/Drivers.torrent")):OnlinePackages::officialMetadataUrl(libraryFamily(QString::fromStdWString(paths.drivers),resolveIndexDirectory(QString::fromStdWString(paths.indexes),QString::fromStdWString(paths.drivers))));torrent=OnlinePackages::parse(OnlinePackages::fetchMetadata(url,stop));torrent.transfer=transfer;updatesReady=true;}
     void download(const QString &target,const QString &choice){
         if(target==QStringLiteral("app")){
             const auto release=AppUpdate::latest(repository,stop);const QString folder=QDir(QString::fromStdWString(paths.logDirectory)).filePath(QStringLiteral("application-update"));if(!QDir().mkpath(folder))fail(QStringLiteral("Cannot create the application download folder."));stagedApp=QDir(folder).filePath(QStringLiteral("SnappyDriverInstaller-TS.exe"));AppUpdate::downloadVerified(release,stagedApp,stop);outcomes.insert(QStringLiteral("downloadedApplication"),stagedApp);return;

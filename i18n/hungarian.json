@@ -43,7 +43,6 @@
     "%1 packages  ·  %2 indexes  ·  %3": "%1 csomagok · %2 indexek · %3",
     "%1 present PnP devices  ·  %2 matched  ·  %3 warnings in matches": "%1 jelen PnP eszközök · %2 egyezés · %3 figyelmeztetések a mérkőzéseken",
     "%1 selected · Files: %2 · Verified download: up to %3": "%1 kiválasztva · Fájlok: %2 · Ellenőrzött letöltés: %3-ig",
-    "%1 verified files saved. Close this window and scan again. No driver was installed.": "%1 ellenőrzött fájlok mentve. Zárja be ezt az ablakot, és ellenőrizze újra. Nem volt telepítve illesztőprogram.",
     "%1 versions": "%1 változatok",
     "%1 × %2  ·  %3 screen(s)": "%1 × %2 · %3 képernyő(k)",
     "%1% battery": "%1% akkumulátor",
@@ -341,7 +340,6 @@
     "Finish the active operation before updating the application.": "Az alkalmazás frissítése előtt fejezze be az aktív műveletet.",
     "Finish the active operation or perform a native scan first.": "Fejezze be az aktív műveletet, vagy először hajtson végre egy natív vizsgálatot.",
     "Finishing the current request before closing...": "Az aktuális kérés befejezése a bezárás előtt...",
-    "Found locally": "Helyben található\nA",
     "GPLv3 license is included in the source package.": "GPLv3 licencet a forráscsomag tartalmazza.",
     "General Settings": "Általános beállítások",
     "General settings": "Általános beállítások",
@@ -420,7 +418,6 @@
     "Invalid transfer settings.": "Érvénytelen átviteli beállítások.",
     "Keep sharing verified downloads": "Folytassa az ellenőrzött letöltések megosztását",
     "Keep your library ready": "Tartsa készenlétben könyvtárát",
-    "LOCAL FILE": "HELYI FÁJL",
     "LOCAL PACKAGE MATCHES": "HELYI CSOMAG MEGFELELŐ",
     "Library ready": "A könyvtár készen áll",
     "License": "licenc",
@@ -473,7 +470,6 @@
     "Network Connections": "hálózati kapcsolatok",
     "Network adapters": "Hálózati adapterek",
     "Network package downloads require Windows.": "A hálózati csomag letöltéséhez Windows szükséges.",
-    "New packages or indexes were saved. Scan again to refresh driver matches.": "Új csomagok vagy indexek mentése megtörtént. Szkennelje újra az illesztőprogram-egyezések frissítéséhez.",
     "Newer": "Újabbak",
     "No": "Nem",
     "No HTTP status received.": "Nem érkezett HTTP állapot.",
@@ -502,7 +498,6 @@
     "Not enough free space. About %1 MB is required for verified blocks and selected files on %2.": "Nincs elég szabad hely. Körülbelül %1 MB szükséges a %2 ellenőrzött blokkjaihoz és kiválasztott fájljaihoz.",
     "Not enough space to publish %1. Verified blocks were retained.": "Nincs elég hely a %1 közzétételéhez. Az ellenőrzött blokkok megmaradtak.",
     "Not installed": "Nincs telepítve",
-    "Not present": "Nincs jelen",
     "Not present (optional)": "Nincs jelen (opcionális)",
     "Not reported": "Nem jelentették",
     "Not reported by display driver": "A kijelző-illesztőprogram nem jelentette",
@@ -858,6 +853,10 @@
     "Paste": "Beillesztés",
     "Delete": "Törlés",
     "Status": "Állapot :",
-    "System Protection": "Rendszervédelem"
+    "System Protection": "Rendszervédelem",
+    "Download speed": "Letöltési sebesség :",
+    "Peers": "Kapcsolódva :",
+    "Time remaining": "Hátralévő idő :",
+    "Upload speed": "Feltöltési sebesség :"
   }
 }

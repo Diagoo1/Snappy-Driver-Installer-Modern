@@ -43,7 +43,6 @@
     "%1 packages  ·  %2 indexes  ·  %3": "%1 пакеты · %2 індэксы · %3",
     "%1 present PnP devices  ·  %2 matched  ·  %3 warnings in matches": "%1 прадстаўлены прылады PnP · %2 супадае · %3 папярэджанні ў супадзеннях",
     "%1 selected · Files: %2 · Verified download: up to %3": "%1 выбрана · Файлы: %2 · Правераная спампоўка: да %3",
-    "%1 verified files saved. Close this window and scan again. No driver was installed.": "%1 правераныя файлы захаваны. Зачыніце гэтае акно і паўторыце сканаванне. Не быў усталяваны драйвер.\nВерсіі",
     "%1 versions": "%1",
     "%1 × %2  ·  %3 screen(s)": "%1 × %2 · Экран(ы) %3\nАкумулятар",
     "%1% battery": "%1%.\nВыкарыстоўваецца",
@@ -341,7 +340,6 @@
     "Finish the active operation before updating the application.": "Завяршыце актыўную аперацыю перад абнаўленнем прыкладання.",
     "Finish the active operation or perform a native scan first.": "Скончыце актыўную аперацыю або выканайце першаснае сканаванне.",
     "Finishing the current request before closing...": "Завяршэнне бягучага запыту перад закрыццём...",
-    "Found locally": "Знойдзена лакальна\nЛіцэнзія",
     "GPLv3 license is included in the source package.": "GPLv3 уключана ў зыходны пакет.",
     "General Settings": "Агульныя налады",
     "General settings": "Агульныя налады\nПраекты",
@@ -420,7 +418,6 @@
     "Invalid transfer settings.": "Няправільныя налады перадачы.",
     "Keep sharing verified downloads": "Працягвайце дзяліцца праверанымі спампоўкамі",
     "Keep your library ready": "Трымайце сваю бібліятэку напагатове\nЛАКАЛЬНЫ ФАЙЛ",
-    "LOCAL FILE": "ЛАКАЛЬНЫ ФАЙЛ",
     "LOCAL PACKAGE MATCHES": "ЛАКАЛЬНЫ ПАКЕТ СУПАДАЕ",
     "Library ready": "Бібліятэка гатовая\nЛіцэнзія",
     "License": "Ліцэнзійнае пагадненне",
@@ -473,7 +470,6 @@
     "Network Connections": "Сеткавыя злучэнні",
     "Network adapters": "Сеткавыя адаптары",
     "Network package downloads require Windows.": "Для загрузкі сеткавага пакета патрабуецца Windows.",
-    "New packages or indexes were saved. Scan again to refresh driver matches.": "Былі захаваны новыя пакеты або індэксы. Сканіруйце яшчэ раз, каб абнавіць супадзенні драйвераў.",
     "Newer": "Новыя версіі",
     "No": "Не",
     "No HTTP status received.": "Статус HTTP не атрыманы.",
@@ -502,7 +498,6 @@
     "Not enough free space. About %1 MB is required for verified blocks and selected files on %2.": "Недастаткова вольнага месца. Для правераных блокаў і выбраных файлаў на %2 патрабуецца каля %1 МБ.",
     "Not enough space to publish %1. Verified blocks were retained.": "Не хапае месца для публікацыі %1. Правераныя блокі былі захаваны.",
     "Not installed": "Не ўсталяваныя",
-    "Not present": "Няма",
     "Not present (optional)": "Няма (неабавязкова)",
     "Not reported": "Не паведамляецца",
     "Not reported by display driver": "Не паведамляецца драйверам дысплея",
@@ -858,6 +853,10 @@
     "Paste": "Уставіць",
     "Delete": "Выдаліць",
     "Status": "Статут",
-    "System Protection": "сістэма абароны"
+    "System Protection": "сістэма абароны",
+    "Download speed": "Прыём",
+    "Peers": "Піраў",
+    "Time remaining": "Засталося",
+    "Upload speed": "Аддача"
   }
 }

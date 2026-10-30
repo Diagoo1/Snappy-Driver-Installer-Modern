@@ -43,7 +43,6 @@
     "%1 packages  ·  %2 indexes  ·  %3": "%1-paket · %2-index · %3",
     "%1 present PnP devices  ·  %2 matched  ·  %3 warnings in matches": "%1 närvarande PnP-enheter · %2 matchade · %3 varningar i matcher",
     "%1 selected · Files: %2 · Verified download: up to %3": "%1 valt · Filer: %2 · Verifierad nedladdning: upp till %3",
-    "%1 verified files saved. Close this window and scan again. No driver was installed.": "%1 verifierade filer sparade. Stäng det här fönstret och skanna igen. Ingen drivrutin installerades.",
     "%1 versions": "%1 versioner",
     "%1 × %2  ·  %3 screen(s)": "%1 × %2 · %3 skärm(ar)",
     "%1% battery": "%1 % batteri",
@@ -341,7 +340,6 @@
     "Finish the active operation before updating the application.": "Avsluta den aktiva operationen innan du uppdaterar programmet.",
     "Finish the active operation or perform a native scan first.": "Avsluta den aktiva operationen eller utför en inbyggd skanning först.",
     "Finishing the current request before closing...": "Avslutar den aktuella begäran innan stängning...",
-    "Found locally": "Hittade lokalt",
     "GPLv3 license is included in the source package.": "GPLv3-licens ingår i källkodspaketet.",
     "General Settings": "Allmänna inställningar",
     "General settings": "Allmänna inställningar",
@@ -420,7 +418,6 @@
     "Invalid transfer settings.": "Ogiltiga överföringsinställningar.",
     "Keep sharing verified downloads": "Fortsätt dela verifierade nedladdningar",
     "Keep your library ready": "Håll ditt bibliotek redo",
-    "LOCAL FILE": "LOKAL FIL",
     "LOCAL PACKAGE MATCHES": "LOKALPAKET MATCHAR",
     "Library ready": "bibliotek redo",
     "License": "-licens",
@@ -473,7 +470,6 @@
     "Network Connections": "Nätverksanslutningar",
     "Network adapters": "Nätverksadaptrar",
     "Network package downloads require Windows.": "Nätverkspaketnedladdningar kräver Windows.",
-    "New packages or indexes were saved. Scan again to refresh driver matches.": "Nya paket eller index har sparats. Skanna igen för att uppdatera drivrutinsmatchningar.",
     "Newer": "Nyare",
     "No": "Nej",
     "No HTTP status received.": "Ingen HTTP-status mottagen.",
@@ -502,7 +498,6 @@
     "Not enough free space. About %1 MB is required for verified blocks and selected files on %2.": "Inte tillräckligt med ledigt utrymme. Om %1 MB krävs för verifierade block och valda filer på %2.",
     "Not enough space to publish %1. Verified blocks were retained.": "Inte tillräckligt med utrymme för att publicera %1. Verifierade block behölls.",
     "Not installed": "Inte installerad",
-    "Not present": "Ej närvarande",
     "Not present (optional)": "Ej närvarande (valfritt)",
     "Not reported": "Ej rapporterad",
     "Not reported by display driver": "Rapporteras inte av bildskärmsdrivrutinen",
@@ -858,6 +853,10 @@
     "Paste": "Klistra in",
     "Delete": "Ta bort",
     "Status": "Status",
-    "System Protection": "Systemskydd"
+    "System Protection": "Systemskydd",
+    "Download speed": "Nedladdningshastighet",
+    "Peers": "Noder",
+    "Time remaining": "Återstående tid",
+    "Upload speed": "Uppladdningshastighet"
   }
 }

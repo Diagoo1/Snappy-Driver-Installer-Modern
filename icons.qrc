@@ -60,6 +60,9 @@
     <file>assets/sdio-modern.png</file>
     <file>assets/tarek-sadek-logo.png</file>
     <file>assets/icons/camera.svg</file>
+    <file>assets/icons/download.svg</file>
+    <file>assets/icons/upload.svg</file>
+    <file>assets/icons/clock.svg</file>
     <file>i18n/arabic.json</file>
     <file>i18n/armenian.json</file>
     <file>i18n/azerbaijan.json</file>

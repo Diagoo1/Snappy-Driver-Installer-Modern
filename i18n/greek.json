@@ -43,7 +43,6 @@
     "%1 packages  ·  %2 indexes  ·  %3": "%1 · Ευρετήρια %2 · %3\nΤο",
     "%1 present PnP devices  ·  %2 matched  ·  %3 warnings in matches": "%1 παρουσιάζει συσκευές PnP · %2 αντιστοιχισμένο · %3 προειδοποιήσεις σε αγώνες\nΕπιλέχτηκε το",
     "%1 selected · Files: %2 · Verified download: up to %3": "%1 · Αρχεία: %2 · Επαληθευμένη λήψη: έως και %3\nΤα επαληθευμένα αρχεία",
-    "%1 verified files saved. Close this window and scan again. No driver was installed.": "%1 αποθηκεύτηκαν. Κλείστε αυτό το παράθυρο και σαρώστε ξανά. Δεν εγκαταστάθηκε κανένα πρόγραμμα οδήγησης.\nΕκδόσεις",
     "%1 versions": "%1",
     "%1 × %2  ·  %3 screen(s)": "%1 × %2 · %3 οθόνες\nΜπαταρία",
     "%1% battery": "%1%.",
@@ -341,7 +340,6 @@
     "Finish the active operation before updating the application.": "Ολοκληρώστε την ενεργή λειτουργία πριν ενημερώσετε την εφαρμογή.\nΤο",
     "Finish the active operation or perform a native scan first.": "Ολοκληρώστε την ενεργή λειτουργία ή εκτελέστε πρώτα μια εγγενή σάρωση.",
     "Finishing the current request before closing...": "Ολοκλήρωση του τρέχοντος αιτήματος πριν από το κλείσιμο...",
-    "Found locally": "Βρέθηκε τοπικά\nΗ άδεια",
     "GPLv3 license is included in the source package.": "GPLv3 περιλαμβάνεται στο πακέτο προέλευσης.",
     "General Settings": "Γενικές ρυθμίσεις",
     "General settings": "Γενικές ρυθμίσεις\nΈργα",
@@ -420,7 +418,6 @@
     "Invalid transfer settings.": "Μη έγκυρες ρυθμίσεις μεταφοράς.",
     "Keep sharing verified downloads": "Συνεχίστε να μοιράζεστε επαληθευμένες λήψεις",
     "Keep your library ready": "Διατηρήστε τη βιβλιοθήκη σας έτοιμη\nΤΟΠΙΚΟ ΑΡΧΕΙΟ",
-    "LOCAL FILE": "Σύνδεσμος",
     "LOCAL PACKAGE MATCHES": "ΤΟΠΙΚΟ ΠΑΚΕΤΟ ΑΓΩΝΕΣ\nΈτοιμη η βιβλιοθήκη",
     "Library ready": "Άδεια",
     "License": "Συμφωνία άδειας χρήσης",
@@ -473,7 +470,6 @@
     "Network Connections": "Συνδέσεις δικτύου",
     "Network adapters": "Προσαρμογείς δικτύου\nΟι λήψεις πακέτων δικτύου",
     "Network package downloads require Windows.": "απαιτούν Windows.",
-    "New packages or indexes were saved. Scan again to refresh driver matches.": "Αποθηκεύτηκαν νέα πακέτα ή ευρετήρια. Σάρωση ξανά για ανανέωση των αντιστοιχιών προγραμμάτων οδήγησης.",
     "Newer": "Νέα έκδοση",
     "No": "Όχι",
     "No HTTP status received.": "Δεν ελήφθη κατάσταση HTTP.",
@@ -502,7 +498,6 @@
     "Not enough free space. About %1 MB is required for verified blocks and selected files on %2.": "Δεν υπάρχει αρκετός ελεύθερος χώρος. Απαιτούνται περίπου %1 MB για επαληθευμένα μπλοκ και επιλεγμένα αρχεία στο %2.",
     "Not enough space to publish %1. Verified blocks were retained.": "Δεν υπάρχει αρκετός χώρος για τη δημοσίευση του %1. Τα επαληθευμένα μπλοκ διατηρήθηκαν.",
     "Not installed": "Μη εγκατεστημένοι",
-    "Not present": "Δεν υπάρχει",
     "Not present (optional)": "Δεν υπάρχει (προαιρετικό)",
     "Not reported": "Δεν αναφέρεται",
     "Not reported by display driver": "Δεν αναφέρεται από το πρόγραμμα οδήγησης οθόνης",
@@ -858,6 +853,10 @@
     "Paste": "Επικόλληση",
     "Delete": "Διαγραφή",
     "Status": "Κατάσταση",
-    "System Protection": "Προστασία συστήματος"
+    "System Protection": "Προστασία συστήματος",
+    "Download speed": "Λήψη",
+    "Peers": "Αποδεκτών",
+    "Time remaining": "Χρόνος που απομένει",
+    "Upload speed": "Απόδοση"
   }
 }

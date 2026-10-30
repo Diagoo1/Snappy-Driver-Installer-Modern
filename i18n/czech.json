@@ -43,7 +43,6 @@
     "%1 packages  ·  %2 indexes  ·  %3": "Balíčky %1 · Indexy %2 · %3",
     "%1 present PnP devices  ·  %2 matched  ·  %3 warnings in matches": "%1 přítomná zařízení PnP · Shoda %2 · Varování %3 v zápasech",
     "%1 selected · Files: %2 · Verified download: up to %3": "Vybráno %1 · Soubory: %2 · Ověřené stažení: až %3",
-    "%1 verified files saved. Close this window and scan again. No driver was installed.": "%1 ověřené soubory uloženy. Zavřete toto okno a skenujte znovu. Nebyl nainstalován žádný ovladač.\nVerze",
     "%1 versions": "%1",
     "%1 × %2  ·  %3 screen(s)": "%1 × %2 · Obrazovky %3",
     "%1% battery": "%1% baterie\nPoužívá se",
@@ -341,7 +340,6 @@
     "Finish the active operation before updating the application.": "Před aktualizací aplikace dokončete aktivní operaci.",
     "Finish the active operation or perform a native scan first.": "Dokončete aktivní operaci nebo nejprve proveďte nativní skenování.",
     "Finishing the current request before closing...": "Dokončení aktuálního požadavku před uzavřením...",
-    "Found locally": "Nalezeno místně\nLicence",
     "GPLv3 license is included in the source package.": "GPLv3 je součástí zdrojového balíčku.",
     "General Settings": "Obecná nastavení",
     "General settings": "Obecná nastavení\nProjekty",
@@ -420,7 +418,6 @@
     "Invalid transfer settings.": "Neplatná nastavení přenosu.",
     "Keep sharing verified downloads": "Pokračujte ve sdílení ověřených stažených souborů",
     "Keep your library ready": "Udržujte svou knihovnu připravenou",
-    "LOCAL FILE": "MÍSTNÍ SOUBOR",
     "LOCAL PACKAGE MATCHES": "SHODY MÍSTNÍHO BALÍČKU\nPřipravena knihovna",
     "Library ready": "Licence",
     "License": "Licenční smlouva",
@@ -473,7 +470,6 @@
     "Network Connections": "Síťové adaptéry",
     "Network adapters": "Operační systém",
     "Network package downloads require Windows.": "Stažení síťových balíčků vyžaduje Windows.",
-    "New packages or indexes were saved. Scan again to refresh driver matches.": "Byly uloženy nové balíčky nebo indexy. Znovu naskenujte a obnovte shodu ovladačů.",
     "Newer": "Novější",
     "No": "Ne",
     "No HTTP status received.": "Nebyl přijat žádný stav HTTP.",
@@ -502,7 +498,6 @@
     "Not enough free space. About %1 MB is required for verified blocks and selected files on %2.": "Nedostatek volného místa. Pro ověřené bloky a vybrané soubory na %2 je zapotřebí přibližně %1 MB.",
     "Not enough space to publish %1. Verified blocks were retained.": "Nedostatek místa pro publikování %1. Ověřené bloky byly zachovány.",
     "Not installed": "Nenainstalované",
-    "Not present": "Není k dispozici",
     "Not present (optional)": "Není k dispozici (volitelné)",
     "Not reported": "Nebylo hlášeno",
     "Not reported by display driver": "Není hlášeno ovladačem displeje",
@@ -858,6 +853,10 @@
     "Paste": "Vložit",
     "Delete": "Odstranit",
     "Status": "Stav",
-    "System Protection": "Ochrana systému"
+    "System Protection": "Ochrana systému",
+    "Download speed": "Rychlost stahování",
+    "Peers": "Peerů",
+    "Time remaining": "Zbývající čas",
+    "Upload speed": "Rychlost odesílání"
   }
 }

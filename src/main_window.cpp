@@ -29,6 +29,7 @@
 #include <QStyle>
 #include "support_report.h"
 #include "online_dialog.h"
+#include <QCheckBox>
 #include <QSaveFile>
 #include <QSignalBlocker>
 #include <QJsonDocument>
@@ -233,6 +234,7 @@ MainWindow::MainWindow(bool demo,QWidget *parent)
     connect(m_drivers,&DriverWorkspace::utilitiesRequested,this,&MainWindow::openToolsMenu);
     connect(m_drivers,&DriverWorkspace::snapshotRequested,this,&MainWindow::openSnapshot);
     connect(m_drivers,&DriverWorkspace::extractRequested,this,&MainWindow::openExtract);
+    connect(m_drivers,&DriverWorkspace::packageUpdatesRequested,this,[this](){openOnlinePackages();});connect(m_drivers,&DriverWorkspace::packageUpdateCheckRequested,this,[this](){checkLibraryUpdates();});
     connect(m_drivers,&DriverWorkspace::packageDownloadRequested,this,[this](const QString &package){openOnlinePackages(package);});
     connect(m_drivers,&DriverWorkspace::candidateExtractionRequested,this,[this](int row,int candidate){
         if(m_engine->isBusy() || !m_catalog->native() || row<0 || row>=m_catalog->size())return;
@@ -308,8 +310,15 @@ MainWindow::MainWindow(bool demo,QWidget *parent)
         OnlinePackages::setSharingEnabled(true);OnlinePackages::TransferSettings limits;limits.keepSharing=true;limits.uploadKiB=m_settings->value(QStringLiteral("transfer/uploadKiB"),64).toInt();limits.connections=m_settings->value(QStringLiteral("transfer/connections"),40).toInt();limits.port=m_settings->value(QStringLiteral("transfer/port"),0).toInt();
         m_sharingRestore=new SharingRestore(QDir(m_driversPath).filePath(QStringLiteral(".sdio-downloads")),limits,this);m_sharingRestore->start();
     }
+    m_updateCheck=new OnlineWorker(this);connect(m_updateCheck,&QThread::finished,this,[this](){
+        const QUrl wanted=OnlinePackages::officialMetadataUrl(libraryFamily(m_driversPath,resolveIndexDirectory(m_indexesPath,m_driversPath)));
+        if(m_updateCheck->metadataUrl!=wanted || m_updateCheck->drivers!=m_driversPath){refreshLibraryNotice();if(!m_demo && m_settings->value(QStringLiteral("updates/checkAtStartup"),true).toBool())QTimer::singleShot(0,this,[this](){checkLibraryUpdates();});return;}
+        m_updateError=m_updateCheck->error;if(m_updateError.isEmpty()){m_updateCatalog=m_updateCheck->catalog;m_updateCatalogSource=wanted;}refreshLibraryNotice();
+    });
+    if(!m_demo && m_settings->value(QStringLiteral("updates/checkAtStartup"),true).toBool())QTimer::singleShot(1800,this,[this](){checkLibraryUpdates();});
+
 }
-MainWindow::~MainWindow() {OnlinePackages::stopSharing();delete m_sharingRestore;delete m_scanClock;}
+MainWindow::~MainWindow() {if(m_updateCheck){m_updateCheck->stop.store(true);if(m_updateCheck->isRunning()){m_updateCheck->disconnect(this);m_updateCheck->setParent(0);connect(m_updateCheck,&QThread::finished,m_updateCheck,&QObject::deleteLater);}}OnlinePackages::stopSharing();delete m_sharingRestore;delete m_scanClock;}
 void MainWindow::paintEvent(QPaintEvent *)
 {
     QPainter painter(this);painter.setRenderHint(QPainter::Antialiasing);
@@ -787,7 +796,7 @@ QWidget *MainWindow::createOffline()
     m_probeStatus=newLabel(QString(),"subText",actions);m_probeStatus->setWordWrap(true);box->addWidget(m_probeStatus);m_toolsFolder=newLabel(QString(),"subText",actions);m_toolsFolder->hide();
     ActionButton *portable=new ActionButton(t("Create portable USB library...","إنشاء مكتبة USB محمولة..."),actions);portable->setObjectName(QStringLiteral("textLinkButton"));portable->setProperty("englishCopy",QStringLiteral("Create portable USB library..."));portable->setProperty("arabicCopy",QString::fromUtf8("إنشاء مكتبة USB محمولة..."));box->addWidget(portable);
     connect(portable,&QPushButton::clicked,this,[this](){if(m_engine->isBusy())return;QStringList packages;for(const DriverEntry &entry:m_catalog->entries())for(const DriverCandidate &candidate:entry.candidates)if(candidate.recommended && candidate.local && !packages.contains(candidate.packageSource,Qt::CaseInsensitive))packages<<candidate.packageSource;openPortableLibrary(this,m_driversPath,resolveIndexDirectory(m_indexesPath,m_driversPath),packages,m_arabic);});
-    connect(m_onlineButton,&QPushButton::clicked,this,[this](){openOnlinePackages();});layout->addWidget(actions);layout->addStretch(1);scroll->setWidget(body);return page;
+    connect(m_onlineButton,&QPushButton::clicked,this,[this](){openOnlinePackages();});QCheckBox *autoCatalog=new QCheckBox(t("Check driver pack updates at startup","فحص تحديثات حزم التعريفات عند بدء التشغيل"),actions);autoCatalog->setChecked(m_settings->value(QStringLiteral("updates/checkAtStartup"),true).toBool());box->addWidget(autoCatalog);connect(autoCatalog,&QCheckBox::toggled,this,[this](bool checked){m_settings->setValue(QStringLiteral("updates/checkAtStartup"),checked);m_settings->sync();});layout->addWidget(actions);layout->addStretch(1);scroll->setWidget(body);return page;
 }
 QWidget *MainWindow::createSettings()
 {
@@ -920,7 +929,7 @@ void MainWindow::onNativeSnapshot(const sdiomodern::Snapshot &snapshot)
     const QString timing=QStringLiteral("Origin scan: %1 ms; Qt list: %2 ms. ").arg(engineMs).arg(listingMs);
     m_drivers->setStatus((m_engine->previewVersion() || m_engine->previewArchitecture())?t("Compatibility preview · Installation is disabled.","معاينة التوافق · التثبيت معطّل."):(m_lastInstallation.rebootRequired?t("Windows requested a restart. Some installed versions are reported only after reboot.","طلب ويندوز إعادة تشغيل الجهاز؛ بعض الإصدارات المثبّتة لا تظهر إلا بعد إعادة التشغيل."):QString()));m_probeStatus->setText(t("Scan complete. Your driver matches are ready.","اكتمل الفحص. مطابقة التعريفات جاهزة."));
     Q_UNUSED(text);Q_UNUSED(timing);
-    m_titleBar->setStatus(QStringLiteral("ORIGIN NATIVE - REAL MATCHES"));
+    m_titleBar->setStatus(QStringLiteral("ORIGIN NATIVE - REAL MATCHES"));refreshLibraryNotice();
     // Show scan results before a separate expensive SetupAPI diagnostics enumeration.
     // In particular, avoid blocking the very first paint of a large offline list.
     QTimer::singleShot(250,this,[this](){if(!m_engine->isBusy())updateDiagnostics();});
@@ -963,6 +972,7 @@ void MainWindow::onEngineError(const QString &reason)
 
 void MainWindow::updateOffline()
 {
+    refreshLibraryNotice();
     m_driversFolder->setText(m_driversPath);m_indexesFolder->setText(m_indexesPath);
     m_toolsFolder->setText(QDir(m_toolsPath).exists()?m_toolsPath:QStringLiteral("Not present (optional)"));
     const QDir drivers(m_driversPath),indexes(resolveIndexDirectory(m_indexesPath,m_driversPath));
@@ -1133,15 +1143,26 @@ void MainWindow::translateUi()
     UiLanguage::refresh();
 }
 
+QStringList MainWindow::matchingPackages()const{QStringList result;for(const DriverEntry &entry:m_catalog->entries())for(const DriverCandidate &candidate:entry.candidates)if(candidate.valid && candidate.engineToken && !candidate.packageSource.isEmpty() && !result.contains(candidate.packageSource,Qt::CaseInsensitive))result<<candidate.packageSource;return result;}
+void MainWindow::checkLibraryUpdates(){
+    if(m_demo || !m_updateCheck || m_updateCheck->isRunning())return;
+    m_updateCheck->checking=true;m_updateCheck->drivers=m_driversPath;m_updateCheck->indexes=resolveIndexDirectory(m_indexesPath,m_driversPath);m_updateCheck->metadataUrl=OnlinePackages::officialMetadataUrl(libraryFamily(m_driversPath,m_updateCheck->indexes));m_updateCheck->imported.clear();m_updateCheck->stop.store(false);m_updateError.clear();m_drivers->setPackageUpdateStatus(-1,-1,m_updateCheck->metadataUrl.host().contains(QStringLiteral("sdi-tool"))?QStringLiteral("SDI"):QStringLiteral("SDIO"),QString(),true);m_updateCheck->start();
+}
+void MainWindow::refreshLibraryNotice(){
+    const QString family=libraryFamily(m_driversPath,resolveIndexDirectory(m_indexesPath,m_driversPath));const QUrl source=OnlinePackages::officialMetadataUrl(family);const QString displaySource=family==QStringLiteral("SDI")?QStringLiteral("SDI"):QStringLiteral("SDIO");
+    if(m_updateCatalog.files.isEmpty() || m_updateCatalogSource!=source){m_drivers->setPackageUpdateStatus(-1,-1,displaySource,m_updateError.isEmpty()?t("Check the official library catalog for new packages and indexes.","افحص كتالوج المكتبة الرسمي للبحث عن حزم وفهارس جديدة."):t("Could not check the catalog. Your offline library is still available; retry when connected.","تعذّر فحص الكتالوج. مكتبتك الأوفلاين ما زالت متاحة؛ أعد المحاولة عند الاتصال."),m_updateCheck && m_updateCheck->isRunning());return;}
+    const auto state=OnlinePackages::availability(m_updateCatalog,m_driversPath,resolveIndexDirectory(m_indexesPath,m_driversPath),matchingPackages());int packs=0,indexes=0;for(int i=0;i<state.size();++i)if(state[i].update){if(m_updateCatalog.files[i].kind==OnlinePackages::Driver)++packs;else if(m_updateCatalog.files[i].kind==OnlinePackages::Index)++indexes;}
+    m_drivers->setPackageUpdateStatus(packs,indexes,displaySource,m_updateError.isEmpty()?QString():t("Could not refresh. Showing the last catalog from this session.","تعذّر التحديث؛ تُعرض آخر قائمة من هذه الجلسة."),m_updateCheck && m_updateCheck->isRunning());
+}
 void MainWindow::openOnlinePackages(const QString &package){
     if(m_demo || m_engine->isBusy() || m_installation->isActive())return;
-    QStringList needed;if(!package.isEmpty())needed<<package;
-    else for(const DriverEntry &entry:m_catalog->entries())for(const DriverCandidate &candidate:entry.candidates)
-        if(candidate.engineToken && candidate.recommended && !candidate.local && !needed.contains(candidate.packageSource,Qt::CaseInsensitive))needed<<candidate.packageSource;
-    OnlineDialog dialog(m_driversPath,resolveIndexDirectory(m_indexesPath,m_driversPath),needed,m_arabic,this);dialog.exec();
-    if(!dialog.lastError().isEmpty())m_lastEngineError=dialog.lastError();
+    QStringList needed=matchingPackages();if(!package.isEmpty() && !needed.contains(package,Qt::CaseInsensitive))needed<<package;
+    OnlineDialog dialog(m_driversPath,resolveIndexDirectory(m_indexesPath,m_driversPath),needed,m_arabic,this);
+    if(!m_updateCatalog.files.isEmpty() && m_updateCatalogSource==dialog.catalogSource())dialog.setCatalog(m_updateCatalog);else dialog.refreshCatalog();dialog.exec();
+    if(!dialog.catalog().files.isEmpty() && dialog.catalogSource()==OnlinePackages::officialMetadataUrl(libraryFamily(m_driversPath,resolveIndexDirectory(m_indexesPath,m_driversPath)))){m_updateCatalog=dialog.catalog();m_updateCatalogSource=dialog.catalogSource();m_updateError.clear();}
+    if(!dialog.lastError().isEmpty()){m_lastEngineError=dialog.lastError();if(dialog.catalogSource()==OnlinePackages::officialMetadataUrl(libraryFamily(m_driversPath,resolveIndexDirectory(m_indexesPath,m_driversPath))))m_updateError=dialog.lastError();}refreshLibraryNotice();
     if(dialog.filesChanged()){
         m_catalog->invalidateNative();updateOffline();
-        m_drivers->setStatus(t("New packages or indexes were saved. Scan again to refresh driver matches.","تم حفظ حزم أو فهارس جديدة. أعد الفحص لتحديث مطابقة التعريفات."));
+        m_drivers->setStatus(t("Refreshing matches after downloading packages...","تحديث المطابقة بعد تنزيل الحزم..."));beginScan();
     }
 }

@@ -43,7 +43,6 @@
     "%1 packages  ·  %2 indexes  ·  %3": "%1 · Індекси %2 · %3",
     "%1 present PnP devices  ·  %2 matched  ·  %3 warnings in matches": "%1 присутні пристрої PnP · %2 відповідає · %3 попередження в збігах",
     "%1 selected · Files: %2 · Verified download: up to %3": "%1 вибрано · Файли: %2 · Перевірене завантаження: до %3\nЗбережено перевірені файли",
-    "%1 verified files saved. Close this window and scan again. No driver was installed.": "%1. Закрийте це вікно та повторіть сканування. Драйвер не встановлено.\nВерсії",
     "%1 versions": "%1",
     "%1 × %2  ·  %3 screen(s)": "%1 × %2 · %3 екран(и)",
     "%1% battery": "%1% акумулятор",
@@ -341,7 +340,6 @@
     "Finish the active operation before updating the application.": "Завершіть активну операцію перед оновленням програми.",
     "Finish the active operation or perform a native scan first.": "Завершіть активну операцію або спочатку виконайте власне сканування.",
     "Finishing the current request before closing...": "Завершення поточного запиту перед закриттям...",
-    "Found locally": "Знайдено локально\nЛіцензія",
     "GPLv3 license is included in the source package.": "GPLv3 включена в вихідний пакет.",
     "General Settings": "Загальні налаштування",
     "General settings": "Загальні налаштування\nПроекти",
@@ -420,7 +418,6 @@
     "Invalid transfer settings.": "Недійсні налаштування передачі.",
     "Keep sharing verified downloads": "Продовжуйте ділитися перевіреними завантаженнями",
     "Keep your library ready": "Тримайте свою бібліотеку напоготові",
-    "LOCAL FILE": "ЛОКАЛЬНИЙ ФАЙЛ",
     "LOCAL PACKAGE MATCHES": "ЛОКАЛЬНИЙ ПАКЕТ ВІДПОВІДАЄ",
     "Library ready": "Бібліотека готова\nЛіцензія",
     "License": "Ліцензійна угода",
@@ -473,7 +470,6 @@
     "Network Connections": "Мережеві підключення",
     "Network adapters": "Мережеві адаптери",
     "Network package downloads require Windows.": "Для завантаження мережевих пакетів потрібен Windows.",
-    "New packages or indexes were saved. Scan again to refresh driver matches.": "Збережено нові пакунки або індекси. Повторне сканування, щоб оновити збіги драйверів.",
     "Newer": "Нові версії",
     "No": "Ні",
     "No HTTP status received.": "Статус HTTP не отримано.",
@@ -502,7 +498,6 @@
     "Not enough free space. About %1 MB is required for verified blocks and selected files on %2.": "Недостатньо вільного місця. Для перевірених блоків і вибраних файлів на %2 потрібно близько %1 МБ.",
     "Not enough space to publish %1. Verified blocks were retained.": "Недостатньо місця для публікації %1. Перевірені блоки були збережені.",
     "Not installed": "Невстановлені",
-    "Not present": "Немає",
     "Not present (optional)": "Немає (необов'язково)",
     "Not reported": "Не повідомляється",
     "Not reported by display driver": "Не повідомляється драйвером дисплея",
@@ -858,6 +853,10 @@
     "Paste": "Вставити",
     "Delete": "Видалити",
     "Status": "Статус",
-    "System Protection": "Захист системи"
+    "System Protection": "Захист системи",
+    "Download speed": "Прийом",
+    "Peers": "Пірів",
+    "Time remaining": "Залишилось",
+    "Upload speed": "Віддача"
   }
 }

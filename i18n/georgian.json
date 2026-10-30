@@ -43,7 +43,6 @@
     "%1 packages  ·  %2 indexes  ·  %3": "%1 პაკეტები · %2 ინდექსები · %3",
     "%1 present PnP devices  ·  %2 matched  ·  %3 warnings in matches": "%1 წარმოგიდგენთ PnP მოწყობილობებს · %2 შეესაბამება · %3 გაფრთხილებებს მატჩებში",
     "%1 selected · Files: %2 · Verified download: up to %3": "%1 არჩეულია · ფაილები: %2 · დადასტურებული ჩამოტვირთვა: %3-მდე",
-    "%1 verified files saved. Close this window and scan again. No driver was installed.": "%1 დადასტურებული ფაილები შენახულია. დახურეთ ეს ფანჯარა და ხელახლა დაასკანირეთ. დრაივერი არ იყო დაინსტალირებული.",
     "%1 versions": "%1 ვერსიები",
     "%1 × %2  ·  %3 screen(s)": "%1 × %2 · %3 ეკრან(ები)",
     "%1% battery": "%1% ბატარეა",
@@ -341,7 +340,6 @@
     "Finish the active operation before updating the application.": "დაასრულეთ აქტიური ოპერაცია აპლიკაციის განახლებამდე.",
     "Finish the active operation or perform a native scan first.": "დაასრულეთ აქტიური ოპერაცია ან შეასრულეთ პირველადი სკანირება.",
     "Finishing the current request before closing...": "მიმდინარე მოთხოვნის დასრულებამდე დახურვამდე...",
-    "Found locally": "ნაპოვნია ადგილობრივად",
     "GPLv3 license is included in the source package.": "GPLv3 ლიცენზია შედის წყაროს პაკეტში.",
     "General Settings": "ზოგადი პარამეტრები",
     "General settings": "ზოგადი პარამეტრები",
@@ -420,7 +418,6 @@
     "Invalid transfer settings.": "არასწორი გადაცემის პარამეტრები.",
     "Keep sharing verified downloads": "გააგრძელეთ დადასტურებული ჩამოტვირთვების გაზიარება",
     "Keep your library ready": "შეინახეთ თქვენი ბიბლიოთეკა მზად",
-    "LOCAL FILE": "ლოკალური ფაილი",
     "LOCAL PACKAGE MATCHES": "ლოკალური პაკეტის მატჩები",
     "Library ready": "ბიბლიოთეკა მზადაა",
     "License": "ლიცენზია",
@@ -473,7 +470,6 @@
     "Network Connections": "ქსელური კავშირები",
     "Network adapters": "ქსელის ადაპტერები",
     "Network package downloads require Windows.": "ქსელის პაკეტის ჩამოტვირთვისთვის საჭიროა Windows.",
-    "New packages or indexes were saved. Scan again to refresh driver matches.": "შენახულია ახალი პაკეტები ან ინდექსები. ხელახლა დაასკანირეთ დრაივერის შესატყვისების განახლებისთვის.",
     "Newer": "ახალი ვერსიები",
     "No": "არა",
     "No HTTP status received.": "HTTP სტატუსი არ არის მიღებული.",
@@ -502,7 +498,6 @@
     "Not enough free space. About %1 MB is required for verified blocks and selected files on %2.": "არ არის საკმარისი თავისუფალი ადგილი. დაახლოებით %1 მბაიტია საჭირო %2-ზე დამოწმებული ბლოკებისთვის და არჩეული ფაილებისთვის.",
     "Not enough space to publish %1. Verified blocks were retained.": "არ არის საკმარისი ადგილი %1 გამოსაქვეყნებლად. დამოწმებული ბლოკები შენარჩუნდა.",
     "Not installed": "დაუდგენელი",
-    "Not present": "არ არის",
     "Not present (optional)": "არ არის (არასავალდებულო)",
     "Not reported": "არ არის მოხსენებული",
     "Not reported by display driver": "არ არის მოხსენებული ეკრანის დრაივერის მიერ",
@@ -858,6 +853,10 @@
     "Paste": "ჩასმა",
     "Delete": "წაშლა",
     "Status": "სტატუსი",
-    "System Protection": "სისტემის დაცვა"
+    "System Protection": "სისტემის დაცვა",
+    "Download speed": "მიღება",
+    "Peers": "პირები",
+    "Time remaining": "დარჩენილი",
+    "Upload speed": "დაბრუნება"
   }
 }

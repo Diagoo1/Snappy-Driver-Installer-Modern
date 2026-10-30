@@ -43,7 +43,6 @@
     "%1 packages  ·  %2 indexes  ·  %3": "%1 Pakete · %2 Indizes · %3",
     "%1 present PnP devices  ·  %2 matched  ·  %3 warnings in matches": "%1 vorhanden PnP-Geräte · %2 übereinstimmend · %3 Warnungen in Übereinstimmungen",
     "%1 selected · Files: %2 · Verified download: up to %3": "%1 ausgewählt · Dateien: %2 · Verifizierter Download: bis zu %3",
-    "%1 verified files saved. Close this window and scan again. No driver was installed.": "%1 überprüfte Dateien gespeichert. Schließen Sie dieses Fenster und scannen Sie erneut. Es wurde kein Treiber installiert.",
     "%1 versions": "%1-Versionen",
     "%1 × %2  ·  %3 screen(s)": "%1 × %2 · %3 Bildschirm(e)",
     "%1% battery": "%1% Batterie",
@@ -341,7 +340,6 @@
     "Finish the active operation before updating the application.": "Beenden Sie den aktiven Vorgang, bevor Sie die Anwendung aktualisieren.",
     "Finish the active operation or perform a native scan first.": "Beenden Sie den aktiven Vorgang oder führen Sie zunächst einen nativen Scan durch.",
     "Finishing the current request before closing...": "Die aktuelle Anfrage wird vor dem Schließen abgeschlossen ...",
-    "Found locally": "Lokal gefunden\nDie",
     "GPLv3 license is included in the source package.": "GPLv3-Lizenz ist im Quellpaket enthalten.",
     "General Settings": "Allgemeine Einstellungen",
     "General settings": "Allgemeine Einstellungen",
@@ -420,7 +418,6 @@
     "Invalid transfer settings.": "Ungültige Übertragungseinstellungen.",
     "Keep sharing verified downloads": "Geben Sie weiterhin verifizierte Downloads weiter",
     "Keep your library ready": "Halten Sie Ihre Bibliothek bereit",
-    "LOCAL FILE": "LOKALE DATEI",
     "LOCAL PACKAGE MATCHES": "LOKALE PAKET-ÜBEREINSTIMMUNGEN",
     "Library ready": "Bibliothek bereit",
     "License": "-Lizenz",
@@ -473,7 +470,6 @@
     "Network Connections": "Netzwerkverbindungen",
     "Network adapters": "Netzwerkadapter",
     "Network package downloads require Windows.": "Netzwerkpaket-Downloads erfordern Windows.",
-    "New packages or indexes were saved. Scan again to refresh driver matches.": "Neue Pakete oder Indizes wurden gespeichert. Scannen Sie erneut, um die Treiberübereinstimmungen zu aktualisieren.",
     "Newer": "Neuere Treiber",
     "No": "Nein",
     "No HTTP status received.": "Kein HTTP-Status empfangen.",
@@ -502,7 +498,6 @@
     "Not enough free space. About %1 MB is required for verified blocks and selected files on %2.": "Nicht genügend freier Speicherplatz. Über %1 MB sind für verifizierte Blöcke und ausgewählte Dateien auf %2 erforderlich.",
     "Not enough space to publish %1. Verified blocks were retained.": "Nicht genügend Speicherplatz zum Veröffentlichen von %1. Verifizierte Blöcke wurden beibehalten.",
     "Not installed": "Nicht installiert",
-    "Not present": "Nicht vorhanden",
     "Not present (optional)": "Nicht vorhanden (optional)",
     "Not reported": "Nicht gemeldet",
     "Not reported by display driver": "Wird vom Anzeigetreiber nicht gemeldet",
@@ -858,6 +853,10 @@
     "Paste": "Einfügen",
     "Delete": "Löschen",
     "Status": "Status",
-    "System Protection": "Computerschutz"
+    "System Protection": "Computerschutz",
+    "Download speed": "Herunterladerate",
+    "Peers": "Peers",
+    "Time remaining": "Restzeit",
+    "Upload speed": "Hochladerate"
   }
 }

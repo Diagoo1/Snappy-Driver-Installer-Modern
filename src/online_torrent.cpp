@@ -153,6 +153,7 @@ void fetchPeerBlocks(const Catalog &catalog,const QVector<int> &pieces,const QSt
     }
     int dhtNodes=0;QString networkError;
     QElapsedTimer idle,notice,elapsed;idle.start();notice.start();elapsed.start();
+    const qint64 receivedBeforePeers=progress.received;
     while(!wanted.empty()){
         if(stop.load()){handle.pause();throw std::runtime_error("Download paused. Verified blocks were kept for resuming.");}
         for(int p:wanted)if(!reading.count(p) && handle.have_piece(lt::piece_index_t(p))){handle.read_piece(lt::piece_index_t(p));reading.insert(p);}
@@ -170,14 +171,15 @@ void fetchPeerBlocks(const Catalog &catalog,const QVector<int> &pieces,const QSt
             if(QCryptographicHash::hash(bytes,QCryptographicHash::Sha1)!=catalog.hashes.mid(index*20,20))throw std::runtime_error("Peer data failed independent block verification.");
             QSaveFile file(QDir(cache).filePath(QString::number(index)+QStringLiteral(".block")));
             if(!file.open(QIODevice::WriteOnly) || file.write(bytes)!=bytes.size() || !file.commit())throw std::runtime_error("Cannot save a verified peer block.");
-            wanted.erase(index);reading.erase(index);progress.verified+=bytes.size();progress.message=QStringLiteral("Receiving verified blocks from download peers");if(sink)sink(progress);idle.restart();
+            wanted.erase(index);reading.erase(index);recordVerifiedPiece(catalog,index,progress);progress.message=QStringLiteral("Receiving verified blocks from download peers");if(sink)sink(progress);idle.restart();
         }
-        if(notice.elapsed()>1000){session.post_dht_stats();progress.diagnostic=QStringLiteral("DHT nodes: %1; network: %2").arg(dhtNodes).arg(networkError);if(!loopbackPeer.isEmpty() && elapsed.elapsed()%5000<1200){const int port=loopbackPeer.section(QLatin1Char(':'),-1).toInt();handle.connect_peer(lt::tcp::endpoint(lt::address_v4::loopback(),static_cast<unsigned short>(port)));}const lt::torrent_status status=handle.status();if(status.errc)throw std::runtime_error(status.errc.message());
+        if(notice.elapsed()>1000){session.post_dht_stats();progress.diagnostic=QStringLiteral("DHT nodes: %1; network: %2").arg(dhtNodes).arg(networkError);if(!loopbackPeer.isEmpty() && elapsed.elapsed()%5000<1200){const int port=loopbackPeer.section(QLatin1Char(':'),-1).toInt();handle.connect_peer(lt::tcp::endpoint(lt::address_v4::loopback(),static_cast<unsigned short>(port)));}const lt::torrent_status status=handle.status();if(status.errc)throw std::runtime_error(status.errc.message());progress.received=receivedBeforePeers+status.total_payload_download;progress.downloadRate=status.download_payload_rate;progress.uploadRate=status.upload_payload_rate;progress.peers=status.num_peers;
             progress.message=QStringLiteral("Peer-assisted download · %1 peers · %2 blocks remaining · %3 s").arg(status.num_peers).arg(static_cast<qulonglong>(wanted.size())).arg(elapsed.elapsed()/1000);if(sink)sink(progress);notice.restart();}
         const qint64 idleLimit=catalog.transfer.downloadKiB?qMax<qint64>(90000,qint64(catalog.pieceLength)*2000/(catalog.transfer.downloadKiB*1024)+30000):90000;
         if(idle.elapsed()>idleLimit){handle.pause();throw std::runtime_error("No verified peer blocks arrived. Check the network or resume later; existing files were preserved.");}
         session.wait_for_alert(std::chrono::milliseconds(150));
     }
+    {const lt::torrent_status status=handle.status();progress.received=receivedBeforePeers+status.total_payload_download;progress.downloadRate=status.download_payload_rate;progress.uploadRate=status.upload_payload_rate;progress.peers=status.num_peers;if(sink)sink(progress);}
     handle.pause();session.pause();
 #else
     Q_UNUSED(catalog);Q_UNUSED(pieces);Q_UNUSED(cache);Q_UNUSED(stop);Q_UNUSED(sink);Q_UNUSED(progress);Q_UNUSED(loopbackPeer);

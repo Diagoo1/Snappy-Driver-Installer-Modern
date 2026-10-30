@@ -43,7 +43,6 @@
     "%1 packages  ·  %2 indexes  ·  %3": "%1 paketi · %2 indeksi · %3",
     "%1 present PnP devices  ·  %2 matched  ·  %3 warnings in matches": "%1 prisutni PnP uređaji · %2 usklađeno · %3 upozorenja u utakmicama\nOdabrano",
     "%1 selected · Files: %2 · Verified download: up to %3": "%1 · Datoteke: %2 · Potvrđeno preuzimanje: do %3",
-    "%1 verified files saved. Close this window and scan again. No driver was installed.": "%1 potvrđene datoteke spremljene. Zatvorite ovaj prozor i ponovno skenirajte. Nije instaliran nijedan upravljački program.\nVerzije",
     "%1 versions": "%1",
     "%1 × %2  ·  %3 screen(s)": "%1 × %2 · %3 zaslon(i)",
     "%1% battery": "%1% baterije",
@@ -341,7 +340,6 @@
     "Finish the active operation before updating the application.": "Završite aktivnu operaciju prije ažuriranja aplikacije.",
     "Finish the active operation or perform a native scan first.": "Završite aktivnu operaciju ili prvo izvedite izvorno skeniranje.",
     "Finishing the current request before closing...": "Završetak trenutnog zahtjeva prije zatvaranja...",
-    "Found locally": "Pronađeno lokalno",
     "GPLv3 license is included in the source package.": "GPLv3 licenca uključena je u izvorni paket.",
     "General Settings": "Opće postavke",
     "General settings": "Opće postavke",
@@ -420,7 +418,6 @@
     "Invalid transfer settings.": "Nevažeće postavke prijenosa.",
     "Keep sharing verified downloads": "Nastavite dijeliti provjerena preuzimanja",
     "Keep your library ready": "Neka vaša knjižnica bude spremna",
-    "LOCAL FILE": "LOKALNA DATOTEKA",
     "LOCAL PACKAGE MATCHES": "LOKALNI PAKET ODGOVARA",
     "Library ready": "Biblioteka spremna\nLicenca",
     "License": "Veza",
@@ -473,7 +470,6 @@
     "Network Connections": "Mrežne veze",
     "Network adapters": "Mrežni adapteri",
     "Network package downloads require Windows.": "Za preuzimanje mrežnog paketa potreban je Windows.",
-    "New packages or indexes were saved. Scan again to refresh driver matches.": "Novi paketi ili indeksi su spremljeni. Ponovo skenirajte da biste osvježili podudaranja upravljačkih programa.",
     "Newer": "Noviji",
     "No": "Ne",
     "No HTTP status received.": "Nije primljen HTTP status.",
@@ -502,7 +498,6 @@
     "Not enough free space. About %1 MB is required for verified blocks and selected files on %2.": "Nema dovoljno slobodnog prostora. Oko %1 MB potrebno je za potvrđene blokove i odabrane datoteke na %2.",
     "Not enough space to publish %1. Verified blocks were retained.": "Nema dovoljno prostora za objavu %1. Provjereni blokovi su zadržani.",
     "Not installed": "Nisu instalirani",
-    "Not present": "Nije prisutan",
     "Not present (optional)": "Nije prisutan (izborno)",
     "Not reported": "Nije prijavljeno",
     "Not reported by display driver": "Nije prijavio upravljački program zaslona",
@@ -858,6 +853,10 @@
     "Paste": "Zalijepi",
     "Delete": "Izbriši",
     "Status": "Status",
-    "System Protection": "Zaštita sustava"
+    "System Protection": "Zaštita sustava",
+    "Download speed": "Brzina preuzimanja",
+    "Peers": "Peers",
+    "Time remaining": "Preostalo vrijeme",
+    "Upload speed": "Brzina prijenosa"
   }
 }

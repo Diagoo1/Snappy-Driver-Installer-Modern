@@ -43,7 +43,6 @@
     "%1 packages  ·  %2 indexes  ·  %3": "%1 封装 · %2 索引 · %3",
     "%1 present PnP devices  ·  %2 matched  ·  %3 warnings in matches": "%1 呈现 PnP 设备 · %2 匹配 · %3 匹配中警告\n已选择",
     "%1 selected · Files: %2 · Verified download: up to %3": "%1 · 文件：%2 · 已验证下载：最多 %3",
-    "%1 verified files saved. Close this window and scan again. No driver was installed.": "%1 已保存已验证的文件。关闭该窗口并再次扫描。没有安装驱动程序。",
     "%1 versions": "%1 版本",
     "%1 × %2  ·  %3 screen(s)": "%1 × %2 · %3 屏幕",
     "%1% battery": "%1%电池",
@@ -341,7 +340,6 @@
     "Finish the active operation before updating the application.": "在更新应用程序之前完成活动操作。",
     "Finish the active operation or perform a native scan first.": "完成活动操作或先执行本机扫描。",
     "Finishing the current request before closing...": "关闭前正在完成当前请求...",
-    "Found locally": "本地发现",
     "GPLv3 license is included in the source package.": "GPLv3许可证包含在源码包中。",
     "General Settings": "常规设置",
     "General settings": "常规设置",
@@ -420,7 +418,6 @@
     "Invalid transfer settings.": "传输设置无效。",
     "Keep sharing verified downloads": "继续分享经过验证的下载",
     "Keep your library ready": "让您的图书馆做好准备",
-    "LOCAL FILE": "本地文件",
     "LOCAL PACKAGE MATCHES": "本地套餐匹配",
     "Library ready": "库就绪",
     "License": "许可证",
@@ -473,7 +470,6 @@
     "Network Connections": "网络连接",
     "Network adapters": "网络适配器",
     "Network package downloads require Windows.": "网络包下载需要 Windows。",
-    "New packages or indexes were saved. Scan again to refresh driver matches.": "已保存新包或索引。再次扫描以刷新驱动程序匹配。",
     "Newer": "较新",
     "No": "否",
     "No HTTP status received.": "未收到 HTTP 状态。",
@@ -502,7 +498,6 @@
     "Not enough free space. About %1 MB is required for verified blocks and selected files on %2.": "可用空间不足。关于 %1 %2 上已验证的块和选定的文件需要 MB。",
     "Not enough space to publish %1. Verified blocks were retained.": "没有足够的空间来发布 %1。已验证的块被保留。",
     "Not installed": "未安装",
-    "Not present": "不存在",
     "Not present (optional)": "不存在（可选）",
     "Not reported": "未报道",
     "Not reported by display driver": "显示驱动程序未报告",
@@ -858,6 +853,10 @@
     "Paste": "粘贴",
     "Delete": "删除",
     "Status": "状态",
-    "System Protection": "系统保护"
+    "System Protection": "系统保护",
+    "Download speed": "下载速度",
+    "Peers": "用户",
+    "Time remaining": "剩余时间",
+    "Upload speed": "上传速度"
   }
 }

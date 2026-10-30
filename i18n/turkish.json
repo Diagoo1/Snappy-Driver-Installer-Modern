@@ -43,7 +43,6 @@
     "%1 packages  ·  %2 indexes  ·  %3": "%1 paketleri · %2 dizinleri · %3",
     "%1 present PnP devices  ·  %2 matched  ·  %3 warnings in matches": "%1 mevcut PnP cihazları · %2 eşleşti · %3 maçlarda uyarılar",
     "%1 selected · Files: %2 · Verified download: up to %3": "%1 seçildi · Dosyalar: %2 · Doğrulanmış indirme: %3'ye kadar",
-    "%1 verified files saved. Close this window and scan again. No driver was installed.": "%1 doğrulanmış dosyalar kaydedildi. Bu pencereyi kapatın ve tekrar tarayın. Hiçbir sürücü kurulmadı.",
     "%1 versions": "%1 versiyonları",
     "%1 × %2  ·  %3 screen(s)": "%1 × %2 · %3 ekran(lar)",
     "%1% battery": "%1% pil",
@@ -341,7 +340,6 @@
     "Finish the active operation before updating the application.": "Uygulamayı güncellemeden önce etkin işlemi sonlandırın.",
     "Finish the active operation or perform a native scan first.": "Etkin işlemi bitirin veya önce yerel bir tarama gerçekleştirin.",
     "Finishing the current request before closing...": "Kapatılmadan önce mevcut istek sonlandırılıyor...",
-    "Found locally": "Yerel olarak bulundu",
     "GPLv3 license is included in the source package.": "GPLv3 lisansı kaynak pakete dahildir.",
     "General Settings": "Genel Ayarlar",
     "General settings": "Genel ayarlar",
@@ -420,7 +418,6 @@
     "Invalid transfer settings.": "Geçersiz aktarım ayarları.",
     "Keep sharing verified downloads": "Doğrulanmış indirmeleri paylaşmaya devam edin",
     "Keep your library ready": "Kitaplığınızı hazır tutun",
-    "LOCAL FILE": "YEREL DOSYA",
     "LOCAL PACKAGE MATCHES": "YEREL PAKET MAÇLARI",
     "Library ready": "Kitaplığı hazır",
     "License": "Lisansı",
@@ -473,7 +470,6 @@
     "Network Connections": "Ağ Bağlantıları",
     "Network adapters": "Ağ adaptörleri",
     "Network package downloads require Windows.": "Ağ paketi indirmeleri Windows gerektirir.",
-    "New packages or indexes were saved. Scan again to refresh driver matches.": "Yeni paketler veya dizinler kaydedildi. Sürücü eşleşmelerini yenilemek için tekrar tarayın.",
     "Newer": "En Yeni",
     "No": "Hayır",
     "No HTTP status received.": "HTTP durumu alınmadı.",
@@ -502,7 +498,6 @@
     "Not enough free space. About %1 MB is required for verified blocks and selected files on %2.": "Yeterli boş alan yok. %1 Hakkında %2'de doğrulanmış bloklar ve seçilen dosyalar için MB gereklidir.",
     "Not enough space to publish %1. Verified blocks were retained.": "%1'yi yayınlamak için yeterli alan yok. Doğrulanan bloklar tutuldu.",
     "Not installed": "Kurulmamış",
-    "Not present": "Mevcut değil",
     "Not present (optional)": "Mevcut değil (isteğe bağlı)",
     "Not reported": "Bildirilmedi",
     "Not reported by display driver": "Ekran sürücüsü tarafından bildirilmedi",
@@ -858,6 +853,10 @@
     "Paste": "Yapıştır",
     "Delete": "Sil",
     "Status": "Durum",
-    "System Protection": "Sistem koruması"
+    "System Protection": "Sistem koruması",
+    "Download speed": "İndirme hızı",
+    "Peers": "Eşler",
+    "Time remaining": "Kalan süre",
+    "Upload speed": "Yükleme hızı"
   }
 }

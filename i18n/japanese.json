@@ -43,7 +43,6 @@
     "%1 packages  ·  %2 indexes  ·  %3": "%1 パッケージ · %2 インデックス · %3",
     "%1 present PnP devices  ·  %2 matched  ·  %3 warnings in matches": "%1 には PnP デバイスが存在します · %2 は一致しました · 一致中の %3 警告",
     "%1 selected · Files: %2 · Verified download: up to %3": "%1 が選択されました · ファイル: %2 · 確認済みダウンロード: %3 まで",
-    "%1 verified files saved. Close this window and scan again. No driver was installed.": "%1 検証済みのファイルが保存されました。このウィンドウを閉じて、再度スキャンしてください。ドライバーがインストールされていませんでした。",
     "%1 versions": "%1 バージョン",
     "%1 × %2  ·  %3 screen(s)": "%1 × %2 ・ %3 画面",
     "%1% battery": "%1% バッテリー",
@@ -341,7 +340,6 @@
     "Finish the active operation before updating the application.": "アプリケーションを更新する前に、アクティブな操作を終了してください。",
     "Finish the active operation or perform a native scan first.": "アクティブな操作を終了するか、最初にネイティブ スキャンを実行してください。",
     "Finishing the current request before closing...": "閉じる前に現在のリクエストを終了しています...",
-    "Found locally": "ローカルで見つかりました",
     "GPLv3 license is included in the source package.": "GPLv3 ライセンスはソース パッケージに含まれています。",
     "General Settings": "一般設定",
     "General settings": "一般設定",
@@ -420,7 +418,6 @@
     "Invalid transfer settings.": "転送設定が無効です。",
     "Keep sharing verified downloads": "検証済みのダウンロードを共有し続ける",
     "Keep your library ready": "ライブラリを準備しておいてください",
-    "LOCAL FILE": "ローカル ファイル",
     "LOCAL PACKAGE MATCHES": "ローカル パッケージの一致",
     "Library ready": "ライブラリ準備完了",
     "License": "ライセンス",
@@ -473,7 +470,6 @@
     "Network Connections": "ネットワーク接続",
     "Network adapters": "ネットワークアダプター",
     "Network package downloads require Windows.": "ネットワーク パッケージのダウンロードには Windows が必要です。",
-    "New packages or indexes were saved. Scan again to refresh driver matches.": "新しいパッケージまたはインデックスが保存されました。再度スキャンしてドライバーの一致を更新します。",
     "Newer": "最新",
     "No": "いいえ",
     "No HTTP status received.": "HTTP ステータスを受信しませんでした。",
@@ -502,7 +498,6 @@
     "Not enough free space. About %1 MB is required for verified blocks and selected files on %2.": "空き容量が不足しています。 %1 について %2 で検証されたブロックと選択されたファイルには MB が必要です。",
     "Not enough space to publish %1. Verified blocks were retained.": "%1 を公開するのに十分なスペースがありません。検証されたブロックが保持されていました。",
     "Not installed": "未インストール",
-    "Not present": "存在しません",
     "Not present (optional)": "なし (オプション)",
     "Not reported": "報告されていません",
     "Not reported by display driver": "ディスプレイドライバーによって報告されません",
@@ -858,6 +853,10 @@
     "Paste": "貼り付け",
     "Delete": "削除",
     "Status": "ステータス",
-    "System Protection": "システム保護"
+    "System Protection": "システム保護",
+    "Download speed": "ダウンロード速度",
+    "Peers": "ピア",
+    "Time remaining": "残り時間",
+    "Upload speed": "アップロード速度"
   }
 }

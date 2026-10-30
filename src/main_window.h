@@ -5,6 +5,7 @@
 #include <QVector>
 #include <QMap>
 #include "device_types.h"
+#include "online_packages.h"
 #include "../native/origin_api.h"
 class QWidget;
 class QLabel;
@@ -67,6 +68,9 @@ private slots:
     void updateReduceMotion(bool enabled);
 
 private:
+    void checkLibraryUpdates();
+    void refreshLibraryNotice();
+    QStringList matchingPackages()const;
     void openOnlinePackages(const QString &package=QString());
     void importTheme();
     void exportTheme();
@@ -110,6 +114,10 @@ private:
     InstallationWorkspace *m_installation;
     QLabel *m_diagnosticsTitle,*m_diagnosticsSubtitle,*m_offlineTitle,*m_offlineStatus,*m_driversFolder,*m_indexesFolder,*m_toolsFolder;
     QLabel *m_settingsTitle,*m_settingsHint,*m_langLabel,*m_darkLabel,*m_motionLabel,*m_langNotice;
+    class OnlineWorker *m_updateCheck=0;
+    OnlinePackages::Catalog m_updateCatalog;
+    QUrl m_updateCatalogSource;
+    QString m_updateError;
     class SharingRestore *m_sharingRestore=0;
     QLabel *m_themeName;
     QString m_languageCode;

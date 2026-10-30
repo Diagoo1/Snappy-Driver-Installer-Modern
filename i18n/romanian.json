@@ -43,7 +43,6 @@
     "%1 packages  ·  %2 indexes  ·  %3": "%1 · indexuri %2 · %3",
     "%1 present PnP devices  ·  %2 matched  ·  %3 warnings in matches": "%1 prezintă dispozitive PnP · %2 potrivite · %3 avertismente în meciuri",
     "%1 selected · Files: %2 · Verified download: up to %3": "%1 selectat · Fișiere: %2 · Descărcare verificată: până la %3",
-    "%1 verified files saved. Close this window and scan again. No driver was installed.": "%1 fișierele verificate salvate. Închideți această fereastră și scanați din nou. Nu a fost instalat niciun driver.",
     "%1 versions": "%1 versiuni",
     "%1 × %2  ·  %3 screen(s)": "%1 × %2 · Ecran(e) %3",
     "%1% battery": "%1% baterie",
@@ -341,7 +340,6 @@
     "Finish the active operation before updating the application.": "Finalizați operațiunea activă înainte de a actualiza aplicația.",
     "Finish the active operation or perform a native scan first.": "Terminați operațiunea activă sau efectuați mai întâi o scanare nativă.",
     "Finishing the current request before closing...": "Finalizarea solicitării curente înainte de închidere...",
-    "Found locally": "Găsit local\nLicența",
     "GPLv3 license is included in the source package.": "GPLv3 este inclusă în pachetul sursă.",
     "General Settings": "Setări generale",
     "General settings": "Setări generale",
@@ -420,7 +418,6 @@
     "Invalid transfer settings.": "Setări de transfer nevalide.",
     "Keep sharing verified downloads": "Partajați în continuare descărcări verificate",
     "Keep your library ready": "Păstrați-vă biblioteca pregătită",
-    "LOCAL FILE": "FIȘIER LOCAL",
     "LOCAL PACKAGE MATCHES": "PACHETUL LOCAL SE POTRIVĂ",
     "Library ready": "Biblioteca gata\nLicență",
     "License": "Procesor",
@@ -473,7 +470,6 @@
     "Network Connections": "Conexiuni de rețea",
     "Network adapters": "Adaptoare de rețea",
     "Network package downloads require Windows.": "Descărcările pachetului de rețea necesită Windows.",
-    "New packages or indexes were saved. Scan again to refresh driver matches.": "Au fost salvate noi pachete sau indecși. Scanați din nou pentru a reîmprospăta potrivirile driverului.",
     "Newer": "Mai nou",
     "No": "Nu",
     "No HTTP status received.": "Nu s-a primit nicio stare HTTP.",
@@ -502,7 +498,6 @@
     "Not enough free space. About %1 MB is required for verified blocks and selected files on %2.": "Nu este suficient spațiu liber. Despre %1 MB este necesar pentru blocurile verificate și fișierele selectate pe %2.",
     "Not enough space to publish %1. Verified blocks were retained.": "Spațiu insuficient pentru a publica %1. Blocurile verificate au fost reținute.",
     "Not installed": "Neinstalat",
-    "Not present": "Nu este prezent",
     "Not present (optional)": "Nu este prezent (opțional)",
     "Not reported": "Nu este raportat",
     "Not reported by display driver": "Nu este raportat de driverul de afișare",
@@ -858,6 +853,10 @@
     "Paste": "Lipește",
     "Delete": "Șterge",
     "Status": "Stare",
-    "System Protection": "Protecția sistemului"
+    "System Protection": "Protecția sistemului",
+    "Download speed": "Viteză descărcare",
+    "Peers": "Peers",
+    "Time remaining": "Timp rămas",
+    "Upload speed": "Viteză încărcare"
   }
 }

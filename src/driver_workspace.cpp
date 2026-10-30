@@ -226,6 +226,11 @@ DriverWorkspace::DriverWorkspace(DriverCatalog *catalog,QWidget *parent)
     QLabel *noticeIcon=new QLabel(m_reinstallNotice);noticeIcon->setPixmap(VectorIcons::icon(QStringLiteral("shield"),QColor("#B78A35"),24).pixmap(24,24));noticeLayout->addWidget(noticeIcon,0,Qt::AlignVCenter);
     m_reinstallText=label(QString(),"reinstallNoticeText",m_reinstallNotice);m_reinstallText->setWordWrap(true);m_reinstallText->setTextFormat(Qt::PlainText);noticeLayout->addWidget(m_reinstallText,1);m_reinstallNotice->hide();root->insertWidget(1,m_reinstallNotice);
 
+    m_packageNotice=new SurfaceCard(this);m_packageNotice->setObjectName(QStringLiteral("packageUpdateNotice"));m_packageNotice->setProperty("tone",QStringLiteral("violet"));QHBoxLayout *packageLine=new QHBoxLayout(m_packageNotice);packageLine->setContentsMargins(16,10,16,12);packageLine->setSpacing(12);
+    QLabel *packageIcon=new QLabel(m_packageNotice);packageIcon->setPixmap(VectorIcons::pixmap(QStringLiteral("download"),QColor("#08A99D"),24));packageLine->addWidget(packageIcon);QVBoxLayout *packageCopy=new QVBoxLayout;packageCopy->setSpacing(3);m_packageTitle=label(QString(),"sectionTitle",m_packageNotice);m_packageDetail=label(QString(),"subText",m_packageNotice);m_packageDetail->setWordWrap(true);m_packageTitle->setProperty("skipTranslation",true);m_packageDetail->setProperty("skipTranslation",true);packageCopy->addWidget(m_packageTitle);packageCopy->addWidget(m_packageDetail);packageLine->addLayout(packageCopy,1);
+    m_packageCheck=actionButton(UiLanguage::text(QStringLiteral("Check updates")),"outlineButton",m_packageNotice);m_packageCheck->setObjectName(QStringLiteral("checkPackageUpdates"));m_packageCheck->setIcon(VectorIcons::icon(QStringLiteral("refresh"),QColor("#08A99D"),18));m_packageBrowse=actionButton(UiLanguage::text(QStringLiteral("View updates")),"primaryButton",m_packageNotice);m_packageBrowse->setObjectName(QStringLiteral("viewPackageUpdates"));m_packageBrowse->setProperty("primaryAction",true);packageLine->addWidget(m_packageCheck);packageLine->addWidget(m_packageBrowse);root->insertWidget(1,m_packageNotice);
+    connect(m_packageCheck,&QPushButton::clicked,this,&DriverWorkspace::packageUpdateCheckRequested);connect(m_packageBrowse,&QPushButton::clicked,this,&DriverWorkspace::packageUpdatesRequested);refreshPackageNotice();
+
     // A single summary/action strip: no competing control panels around the hero.
     QWidget *summary=new QWidget(this);
     summary->setObjectName(QStringLiteral("driverSummaryStrip"));
@@ -680,6 +685,7 @@ void DriverWorkspace::showEntry(int row)
 }
 void DriverWorkspace::updateCount()
 {
+    refreshPackageNotice();
     const int selected=m_catalog->selectedDrivers();
     const int reinstalls=m_catalog->selectedReinstalls();
     m_reinstallNotice->setVisible(reinstalls>0 && !m_busy);
@@ -736,6 +742,14 @@ void DriverWorkspace::updateCount()
     m_reboot->setEnabled(!m_busy);
     m_filters->setEnabled((m_demo || m_catalog->native()) && !m_busy);
     m_tree->setEnabled(!m_busy);
+}
+void DriverWorkspace::setPackageUpdateStatus(int packages,int indexes,const QString &source,const QString &message,bool checking){m_packageCount=packages;m_packageIndexes=indexes;m_packageSource=source;m_packageMessage=message;m_packageChecking=checking;refreshPackageNotice();}
+void DriverWorkspace::refreshPackageNotice(){
+    if(!m_packageNotice)return;
+    m_packageNotice->setVisible((!m_demo || m_packageCount>=0) && (m_packageChecking || m_packageCount!=0 || m_packageIndexes!=0 || !m_packageMessage.isEmpty()));
+    m_packageTitle->setText(m_packageChecking?UiLanguage::text(QStringLiteral("Checking driver pack updates..."),QString::fromUtf8("جارٍ فحص تحديثات حزم التعريفات...")):m_packageCount>=0?UiLanguage::text(QStringLiteral("Updates available · %1 driver packs · %2 indexes"),QString::fromUtf8("تحديثات متاحة · %1 حزمة تعريفات · %2 فهرس")).arg(m_packageCount).arg(m_packageIndexes):UiLanguage::text(QStringLiteral("Driver pack updates"),QString::fromUtf8("تحديثات حزم التعريفات")));
+    m_packageDetail->setText(m_packageMessage.isEmpty()?UiLanguage::text(QStringLiteral("%1 catalog · Review packages before downloading. Installation is a separate step."),QString::fromUtf8("كتالوج %1 · راجع الحزم قبل التنزيل. التثبيت خطوة منفصلة.")).arg(m_packageSource.isEmpty()?QStringLiteral("SDI / SDIO"):m_packageSource):UiLanguage::text(m_packageMessage));
+    m_packageCheck->setEnabled(!m_packageChecking && !m_demo);m_packageBrowse->setEnabled(!m_busy && !m_demo);
 }
 void DriverWorkspace::setStatus(const QString &status)
 { m_info->setText(status);m_info->setVisible(!status.trimmed().isEmpty()); }

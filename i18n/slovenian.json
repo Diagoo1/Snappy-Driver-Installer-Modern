@@ -43,7 +43,6 @@
     "%1 packages  ·  %2 indexes  ·  %3": "%1 paketi · %2 indeksi · %3",
     "%1 present PnP devices  ·  %2 matched  ·  %3 warnings in matches": "%1 predstavlja naprave PnP · %2 se ujema · %3 opozorila v tekmah",
     "%1 selected · Files: %2 · Verified download: up to %3": "%1 izbrano · Datoteke: %2 · Preverjen prenos: do %3",
-    "%1 verified files saved. Close this window and scan again. No driver was installed.": "%1 shranjene preverjene datoteke. Zaprite to okno in znova skenirajte. Noben gonilnik ni bil nameščen.\nRazličice",
     "%1 versions": "%1",
     "%1 × %2  ·  %3 screen(s)": "%1 × %2 · %3 zaslon(i)",
     "%1% battery": "%1% baterije",
@@ -341,7 +340,6 @@
     "Finish the active operation before updating the application.": "Pred posodobitvijo aplikacije dokončajte aktivno operacijo.",
     "Finish the active operation or perform a native scan first.": "Dokončajte aktivno operacijo ali najprej izvedite izvorno skeniranje.",
     "Finishing the current request before closing...": "Dokončanje trenutne zahteve pred zapiranjem ...",
-    "Found locally": "Najdeno lokalno\nLicenca",
     "GPLv3 license is included in the source package.": "GPLv3 je vključena v izvorni paket.",
     "General Settings": "Splošne nastavitve",
     "General settings": "Splošne nastavitve\nProjekti",
@@ -420,7 +418,6 @@
     "Invalid transfer settings.": "Neveljavne nastavitve prenosa.",
     "Keep sharing verified downloads": "Še naprej delite preverjene prenose",
     "Keep your library ready": "Pripravite svojo knjižnico",
-    "LOCAL FILE": "LOKALNA DATOTEKA",
     "LOCAL PACKAGE MATCHES": "LOKALNI PAKET SE ujema",
     "Library ready": "Knjižnica pripravljena\nLicenca",
     "License": "Povezava",
@@ -473,7 +470,6 @@
     "Network Connections": "Omrežne povezave\nOmrežni adapterji",
     "Network adapters": "Omrežni adapterji\nPosodobitve paketa",
     "Network package downloads require Windows.": "Prenosi omrežnih paketov zahtevajo Windows.",
-    "New packages or indexes were saved. Scan again to refresh driver matches.": "Shranjeni so bili novi paketi ali indeksi. Ponovno skenirajte, da osvežite ujemanja gonilnikov.",
     "Newer": "Novejši",
     "No": "Ne",
     "No HTTP status received.": "Ni prejetega statusa HTTP.",
@@ -502,7 +498,6 @@
     "Not enough free space. About %1 MB is required for verified blocks and selected files on %2.": "Ni dovolj prostega prostora. Za preverjene bloke in izbrane datoteke na %2 je potrebnih približno %1 MB.",
     "Not enough space to publish %1. Verified blocks were retained.": "Ni dovolj prostora za objavo %1. Preverjeni bloki so bili ohranjeni.",
     "Not installed": "Niso nameščene",
-    "Not present": "Ni prisoten",
     "Not present (optional)": "Ni prisotno (neobvezno)",
     "Not reported": "Ni prijavljeno",
     "Not reported by display driver": "Ni poročal gonilnik zaslona",
@@ -858,6 +853,10 @@
     "Paste": "Prilepi",
     "Delete": "Izbriši",
     "Status": "Stanje",
-    "System Protection": "Zaščita sistema"
+    "System Protection": "Zaščita sistema",
+    "Download speed": "Hitrost prenosa",
+    "Peers": "Vrstniki",
+    "Time remaining": "Preostali čas",
+    "Upload speed": "Hitrost nalaganja"
   }
 }

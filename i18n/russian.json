@@ -43,7 +43,6 @@
     "%1 packages  ·  %2 indexes  ·  %3": "%1 пакеты · %2 индексы · %3",
     "%1 present PnP devices  ·  %2 matched  ·  %3 warnings in matches": "%1 присутствуют PnP-устройства · %2 соответствует · %3 предупреждения в матчах",
     "%1 selected · Files: %2 · Verified download: up to %3": "%1 выбран · Файлы: %2 · Подтвержденная загрузка: до %3",
-    "%1 verified files saved. Close this window and scan again. No driver was installed.": "%1 Проверенные файлы сохранены. Закройте это окно и повторите сканирование. Драйвер не был установлен.\nВерсии",
     "%1 versions": "%1",
     "%1 × %2  ·  %3 screen(s)": "%1 × %2 · %3 экран(ы)",
     "%1% battery": "%1% аккумулятор",
@@ -341,7 +340,6 @@
     "Finish the active operation before updating the application.": "Завершите активную операцию перед обновлением приложения.",
     "Finish the active operation or perform a native scan first.": "Завершите активную операцию или сначала выполните собственное сканирование.",
     "Finishing the current request before closing...": "Завершение текущего запроса перед закрытием...",
-    "Found locally": "Найдено локально\nЛицензия",
     "GPLv3 license is included in the source package.": "GPLv3 включена в исходный пакет.",
     "General Settings": "Общие настройки",
     "General settings": "Общие настройки",
@@ -420,7 +418,6 @@
     "Invalid transfer settings.": "Неверные настройки передачи.",
     "Keep sharing verified downloads": "Продолжайте делиться проверенными загрузками",
     "Keep your library ready": "Держите свою библиотеку наготове",
-    "LOCAL FILE": "ЛОКАЛЬНЫЙ ФАЙЛ",
     "LOCAL PACKAGE MATCHES": "СОВПАДАЕТ С ЛОКАЛЬНЫМ ПАКЕТОМ\nБиблиотека",
     "Library ready": "готова\nЛицензия",
     "License": "Лицензионное соглашение",
@@ -473,7 +470,6 @@
     "Network Connections": "Сетевые подключения",
     "Network adapters": "Сетевые адаптеры",
     "Network package downloads require Windows.": "Для загрузки сетевых пакетов требуется Windows.",
-    "New packages or indexes were saved. Scan again to refresh driver matches.": "Сохранены новые пакеты или индексы. Сканируйте еще раз, чтобы обновить совпадения драйверов.",
     "Newer": "Новые версии",
     "No": "Нет",
     "No HTTP status received.": "Статус HTTP не получен.",
@@ -502,7 +498,6 @@
     "Not enough free space. About %1 MB is required for verified blocks and selected files on %2.": "Недостаточно свободного места. О %1 МБ требуется для проверенных блоков и выбранных файлов на %2.",
     "Not enough space to publish %1. Verified blocks were retained.": "Недостаточно места для публикации %1. Проверенные блоки были сохранены.",
     "Not installed": "Неустановленные",
-    "Not present": "Нет",
     "Not present (optional)": "Нет (дополнительно)",
     "Not reported": "Не сообщается",
     "Not reported by display driver": "Не сообщается драйвером дисплея",
@@ -858,6 +853,10 @@
     "Paste": "Вставить",
     "Delete": "Удалить",
     "Status": "Статус",
-    "System Protection": "Защита системы"
+    "System Protection": "Защита системы",
+    "Download speed": "Приём",
+    "Peers": "Пиров",
+    "Time remaining": "Осталось",
+    "Upload speed": "Отдача"
   }
 }

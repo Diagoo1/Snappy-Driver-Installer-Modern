@@ -43,7 +43,6 @@
     "%1 packages  ·  %2 indexes  ·  %3": "%1 · Índexs %2 · %3",
     "%1 present PnP devices  ·  %2 matched  ·  %3 warnings in matches": "%1 presenten dispositius PnP · %2 coincideixen · %3 avisos en partits",
     "%1 selected · Files: %2 · Verified download: up to %3": "%1 seleccionat · Fitxers: %2 · Descàrrega verificada: fins a %3\nS'han desat els fitxers verificats",
-    "%1 verified files saved. Close this window and scan again. No driver was installed.": "%1. Tanqueu aquesta finestra i torneu a escanejar. No s'ha instal·lat cap controlador.\nVersions",
     "%1 versions": "%1",
     "%1 × %2  ·  %3 screen(s)": "%1 × %2 · Pantalles %3",
     "%1% battery": "%1% bateria",
@@ -341,7 +340,6 @@
     "Finish the active operation before updating the application.": "Finalitzeu l'operació activa abans d'actualitzar l'aplicació.",
     "Finish the active operation or perform a native scan first.": "Acabeu l'operació activa o feu primer una exploració nativa.",
     "Finishing the current request before closing...": "S'està acabant la sol·licitud actual abans de tancar...",
-    "Found locally": "S'ha trobat localment\nLa llicència",
     "GPLv3 license is included in the source package.": "GPLv3 s'inclou al paquet font.",
     "General Settings": "Configuració general",
     "General settings": "Configuració general\nProjectes",
@@ -420,7 +418,6 @@
     "Invalid transfer settings.": "Configuració de transferència no vàlida.",
     "Keep sharing verified downloads": "Continueu compartint descàrregues verificades",
     "Keep your library ready": "Mantingueu a punt la vostra biblioteca",
-    "LOCAL FILE": "FITXER LOCAL",
     "LOCAL PACKAGE MATCHES": "EL PAQUET LOCAL COINCIDEIX",
     "Library ready": "Biblioteca preparada\nLlicència",
     "License": "Enllaç",
@@ -473,7 +470,6 @@
     "Network Connections": "Connexions de xarxa",
     "Network adapters": "Adaptadors de xarxa",
     "Network package downloads require Windows.": "Les descàrregues de paquets de xarxa requereixen Windows.",
-    "New packages or indexes were saved. Scan again to refresh driver matches.": "S'han desat nous paquets o índexs. Torna a escanejar per actualitzar les coincidències del controlador.",
     "Newer": "Més nou",
     "No": "Не",
     "No HTTP status received.": "No s'ha rebut cap estat HTTP.",
@@ -502,7 +498,6 @@
     "Not enough free space. About %1 MB is required for verified blocks and selected files on %2.": "No hi ha prou espai lliure. Sobre %1 es requereix MB per als blocs verificats i els fitxers seleccionats a %2.",
     "Not enough space to publish %1. Verified blocks were retained.": "No hi ha prou espai per publicar %1. Es van mantenir els blocs verificats.",
     "Not installed": "No instal.lat",
-    "Not present": "No present",
     "Not present (optional)": "No present (opcional)",
     "Not reported": "No informat",
     "Not reported by display driver": "No informat pel controlador de pantalla",
@@ -858,6 +853,10 @@
     "Paste": "Enganxa",
     "Delete": "Suprimeix",
     "Status": "Estat",
-    "System Protection": "Защита на системата"
+    "System Protection": "Защита на системата",
+    "Download speed": "Velocitat de baixada",
+    "Peers": "Peers",
+    "Time remaining": "Temps restant",
+    "Upload speed": "Velocitat de pujada"
   }
 }

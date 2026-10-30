@@ -3,7 +3,7 @@
   <h1>مدير تعريفات الأجهزة — الواجهة الحديثة</h1>
   <p><strong>مكتبة تعريفاتك، ومحرك المطابقة الأصلي، وتجربة Windows حديثة.</strong></p>
   <p>فحص ومقارنة وإدارة التعريفات من برنامج محمول واحد.<br>من تطوير <strong>طارق صادق · Diagoo1</strong></p>
-  <p><a href="https://github.com/Diagoo1/Snappy-Driver-Installer-Modern/releases/tag/v0.22.1"><img src="https://img.shields.io/badge/Download-0.22.1_Beta-008D86?style=for-the-badge" alt="تحميل البيتا"></a> <img src="https://img.shields.io/badge/License-GPL--3.0-075266?style=for-the-badge" alt="GPL 3"></p>
+  <p><a href="https://github.com/Diagoo1/Snappy-Driver-Installer-Modern/releases/tag/v0.23.0"><img src="https://img.shields.io/badge/Download-0.23.0_Beta-008D86?style=for-the-badge" alt="تحميل البيتا"></a> <img src="https://img.shields.io/badge/License-GPL--3.0-075266?style=for-the-badge" alt="GPL 3"></p>
   <p><a href="README.md">English</a> · <a href="#جولة-بالصور">الصور</a> · <a href="#ابدأ-الاستخدام">ابدأ الاستخدام</a> · <a href="https://github.com/Diagoo1/Snappy-Driver-Installer-Modern/issues/new?template=bug_report.yml">الإبلاغ عن مشكلة</a></p>
 </div>
 
@@ -15,7 +15,7 @@
 
 الواجهة والخطوط والمحرك داخل ملف تنفيذي واحد. تظل الحزم والفهارس في مجلدات منفصلة، فتستخدم مكتبتك الأوفلاين الموجودة دون تضخيم البرنامج بحزم التعريفات.
 
-> **بيتا عامة · 0.22.1** — إصدار موحّد يجمع تعديلات الواجهة وربط المحرك المتراكمة. اختبار الأجهزة وإصدارات Windows مستمر. هذا مشروع مجتمعي مستقل، مع حفظ حقوق المحرك الأصلي ومساهميه.
+> **بيتا عامة · 0.23.0** — إصدار موحّد يجمع تعديلات الواجهة وربط المحرك المتراكمة. اختبار الأجهزة وإصدارات Windows مستمر. هذا مشروع مجتمعي مستقل، مع حفظ حقوق المحرك الأصلي ومساهميه.
 
 ## المزايا بنظرة واحدة
 
@@ -26,7 +26,7 @@
 | 🔎 **تفاصيل الإصدار** | الإصدار والتاريخ والمورّد وملف INF ومعرّفات الجهاز واسم حزمة التعريف الفعلية. |
 | 🛠️ **خطوات التثبيت** | مراجعة الخطة ونقطة الاستعادة، ومتابعة نتيجة كل عنصر، وتمييز الترقية عن إعادة التثبيت. |
 | 📦 **مكتبات أوفلاين** | اكتشاف مجلدات SDI/SDIO، واختيار الحزم والفهارس، والاستخراج وصيانة نسخة الفهارس الخاصة بالبرنامج. |
-| 🌐 **تنزيل الحزم** | تصفّح الكتالوج والتنزيل والاستئناف وإعداد المشاركة. |
+| 🌐 **تنزيل الحزم** | إشعار بتحديثات مصدر المكتبة، ومقارنة الإصدارات، وتنزيل واستئناف مع السرعة والوقت المتبقي والتقدم المتحقق. |
 | 📊 **التشخيص والأدوات** | معلومات النظام، وتصدير التقارير، وأدوات الصيانة والنسخ الاحتياطي المتاحة للنظام. |
 | 🎨 **التخصيص** | فاتح وداكن، وانتقال سلس للهوفر والتحديد بالقائمة الجانبية، واستيراد وتصدير الثيم، وتكبير مستقل، وخطوط وأيقونات مدمجة. |
 | 🌍 **اللغات** | تغطية كاملة للنصوص المجمّعة بالإنجليزي والعربي مع RTL؛ و40 كتالوجًا مدمجًا، مع رجوع جزئي للإنجليزي في اللغات الأخرى. |
@@ -67,7 +67,7 @@
 
 ## ابدأ الاستخدام
 
-1. حمّل **ملف EXE** أو **الحزمة المحمولة ZIP** من [0.22.1 Beta](https://github.com/Diagoo1/Snappy-Driver-Installer-Modern/releases/tag/v0.22.1).
+1. حمّل **ملف EXE** أو **الحزمة المحمولة ZIP** من [0.23.0 Beta](https://github.com/Diagoo1/Snappy-Driver-Installer-Modern/releases/tag/v0.23.0).
 2. ضع البرنامج بجوار المكتبة أو حدّد مجلداتها من الإعدادات:
 
 ```text
@@ -83,18 +83,18 @@ Your driver library/
 
 | التنزيل | المحتوى |
 | --- | --- |
-| [الحزمة المحمولة](https://github.com/Diagoo1/Snappy-Driver-Installer-Modern/releases/download/v0.22.1/SnappyDriverInstaller-Modern-0.22.1-Beta-portable.zip) | ملف تشغيل واحد مع التراخيص ودليل بدء مختصر، دون DLL تشغيل بجواره. |
-| [ملف EXE](https://github.com/Diagoo1/Snappy-Driver-Installer-Modern/releases/download/v0.22.1/SnappyDriverInstaller-TS.exe) | نفس ملف البرنامج التنفيذي. |
-| [السورس](https://github.com/Diagoo1/Snappy-Driver-Installer-Modern/releases/download/v0.22.1/SnappyDriverInstaller-Modern-0.22.1-source.zip) | نسخة المصدر المطابقة للإصدار. |
-| [الصور](https://github.com/Diagoo1/Snappy-Driver-Installer-Modern/releases/download/v0.22.1/SnappyDriverInstaller-Modern-0.22.1-screenshots.zip) | معرض العربي والإنجليزي بالوضعين. |
-| [بصمات SHA-256](https://github.com/Diagoo1/Snappy-Driver-Installer-Modern/releases/download/v0.22.1/SHA256SUMS.txt) | للتحقق من سلامة التنزيلات المنشورة. |
+| [الحزمة المحمولة](https://github.com/Diagoo1/Snappy-Driver-Installer-Modern/releases/download/v0.23.0/SnappyDriverInstaller-Modern-0.23.0-Beta-portable.zip) | ملف تشغيل واحد مع التراخيص ودليل بدء مختصر، دون DLL تشغيل بجواره. |
+| [ملف EXE](https://github.com/Diagoo1/Snappy-Driver-Installer-Modern/releases/download/v0.23.0/SnappyDriverInstaller-TS.exe) | نفس ملف البرنامج التنفيذي. |
+| [السورس](https://github.com/Diagoo1/Snappy-Driver-Installer-Modern/releases/download/v0.23.0/SnappyDriverInstaller-Modern-0.23.0-source.zip) | نسخة المصدر المطابقة للإصدار. |
+| [الصور](https://github.com/Diagoo1/Snappy-Driver-Installer-Modern/releases/download/v0.23.0/SnappyDriverInstaller-Modern-0.23.0-screenshots.zip) | معرض العربي والإنجليزي بالوضعين. |
+| [بصمات SHA-256](https://github.com/Diagoo1/Snappy-Driver-Installer-Modern/releases/download/v0.23.0/SHA256SUMS.txt) | للتحقق من سلامة التنزيلات المنشورة. |
 
 ## التوافق وحالة البيتا
 
 | الجزء | النطاق الحالي |
 | --- | --- |
 | **محرك المطابقة** | SDIO Origin مدمج بإصدار محدد؛ لا يشغّل ملفات SDI/SDIO التنفيذية الخارجية. |
-| **مكتبات SDI وSDIO** | اكتشاف تلقائي لتنظيم المجلدات. الفهارس المتوافقة SDW 0x204/0x205 تُنسخ لكاش خاص، وغير المدعومة يمكن توليدها من الحزم المحلية. فهارس المكتبة الأصلية لا تُعدّل. |
+| **مكتبات SDI وSDIO** | اكتشاف تلقائي لتنظيم المجلدات. الفهارس المتوافقة SDW 0x204/0x205 تُنسخ لكاش خاص، وغير المدعومة يمكن توليدها من الحزم المحلية. الفحص لا يعدّل فهارس المكتبة الأصلية؛ تنزيل الفهارس المحددة يحدّث مجلد الوجهة صراحةً. |
 | **Windows والمعمارية** | بناء x86 ثابت يستهدف XP إلى 11 مع مساعد تثبيت x64 مدمج. تشغيل ويندوز القديم وأنظمة 32 بت الفعلية يحتاج اختبارًا إضافيًا. لا توجد نسخة ARM64 أصلية. |
 | **عمليات الجهاز** | التثبيت الفعلي وإنشاء نقاط الاستعادة والنسخ الاحتياطي وإعادة التشغيل تحتاج بيئة تجارب. نتائج الفحص للقراءة واختبارات المحاكاة موضّحة منفصلة. |
 | **تحديث البرنامج** | التحديث التلقائي يتابع الإصدارات المستقرة. الإصدار الموحّد الحالي بيتا؛ استخدم تصفّح الإصدارات حتى نشر إصدار مستقر. |
@@ -133,3 +133,7 @@ BUILD.cmd -Help
   <p><a href="https://ko-fi.com/diagoo1">☕ ادعم المشروع بقهوة</a> · <a href="https://paypal.me/Diagoo1">PayPal</a> · <a href="mailto:tarek.sadek44@gmail.com">تواصل معي</a></p>
   <p>GPL-3.0 · المطابقة والتثبيت مبنيان على عمل مساهمي SDIO.<br>جميع حقوق المحرك والمكونات الأصلية محفوظة. <a href="LICENSE-GPL-3.0.txt">الترخيص</a>.</p>
 </div>
+
+### تحديث الحزم والفهارس
+
+إشعار صفحة التعريفات يفتح مركز التنزيل: الإصدار الجديد والمحلي، والحزم المرتبطة بآخر فحص، والفلاتر، وتقدم كل ملف والسرعة والوقت المتبقي والمصادر. فحص البداية اختياري ويجلب بيانات الكتالوج فقط؛ التنزيل لا يبدأ التثبيت. [دليل مركز التنزيل](docs/UPDATE_CENTER.md).

@@ -43,7 +43,6 @@
     "%1 packages  ·  %2 indexes  ·  %3": "%1 փաթեթներ · %2 ինդեքսներ · %3",
     "%1 present PnP devices  ·  %2 matched  ·  %3 warnings in matches": "%1 ներկայացնում է PnP սարքեր · %2 համընկնում · %3 նախազգուշացումներ համընկնումների ժամանակ",
     "%1 selected · Files: %2 · Verified download: up to %3": "%1 ընտրված · Ֆայլեր՝ %2 · Ստուգված ներբեռնում՝ մինչև %3",
-    "%1 verified files saved. Close this window and scan again. No driver was installed.": "%1 ստուգված ֆայլերը պահպանված են: Փակեք այս պատուհանը և նորից սկանավորեք: Ոչ մի վարորդ չի տեղադրվել:",
     "%1 versions": "%1 տարբերակները",
     "%1 × %2  ·  %3 screen(s)": "%1 × %2 · %3 էկրան(ներ)",
     "%1% battery": "%1% մարտկոց",
@@ -341,7 +340,6 @@
     "Finish the active operation before updating the application.": "Ավարտեք ակտիվ գործողությունը նախքան հավելվածը թարմացնելը:",
     "Finish the active operation or perform a native scan first.": "Ավարտեք ակտիվ գործողությունը կամ նախ կատարեք բնօրինակ սկանավորում:",
     "Finishing the current request before closing...": "Ավարտելով ընթացիկ հարցումը մինչև փակելը...",
-    "Found locally": "Հայտնաբերվել է տեղում",
     "GPLv3 license is included in the source package.": "GPLv3 լիցենզիան ներառված է սկզբնաղբյուր փաթեթում:",
     "General Settings": "Ընդհանուր կարգավորումներ",
     "General settings": "Ընդհանուր պարամետրեր",
@@ -420,7 +418,6 @@
     "Invalid transfer settings.": "Անվավեր փոխանցման կարգավորումներ:",
     "Keep sharing verified downloads": "Շարունակեք կիսվել ստուգված ներբեռնումներով",
     "Keep your library ready": "Ձեր գրադարանը պատրաստ պահեք",
-    "LOCAL FILE": "ՏԵՂԱԿԱՆ ՖԱՅԼ",
     "LOCAL PACKAGE MATCHES": "ՏԵՂԱԿԱՆ ՓԱԹԵԹԻ ՀԱՄԱԽՈՒՄՆԵՐ",
     "Library ready": "գրադարանը պատրաստ է",
     "License": "լիցենզիա",
@@ -473,7 +470,6 @@
     "Network Connections": "ցանցային միացումներ",
     "Network adapters": "ցանցային ադապտերներ",
     "Network package downloads require Windows.": "ցանցային փաթեթի ներլցումները պահանջում են Windows:",
-    "New packages or indexes were saved. Scan again to refresh driver matches.": "Պահպանվել են նոր փաթեթներ կամ ինդեքսներ: Կրկին սկանավորեք՝ վարորդների համընկնումները թարմացնելու համար:",
     "Newer": "Նոր տարբերակներ",
     "No": "Ոչ",
     "No HTTP status received.": "HTTP կարգավիճակ չի ստացվել:",
@@ -502,7 +498,6 @@
     "Not enough free space. About %1 MB is required for verified blocks and selected files on %2.": "Բավարար ազատ տարածք չկա: %1 ՄԲ-ն անհրաժեշտ է %2-ում հաստատված բլոկների և ընտրված ֆայլերի համար:",
     "Not enough space to publish %1. Verified blocks were retained.": "Բավական տարածք չկա %1 հրապարակելու համար: Ստուգված բլոկները պահպանվել են:",
     "Not installed": "Չտեղադրվածները",
-    "Not present": "Ներկա չէ",
     "Not present (optional)": "Չկա (ըստ ցանկության)",
     "Not reported": "Չի հաղորդվում",
     "Not reported by display driver": "Չի հաղորդվում ցուցադրման վարորդի կողմից",
@@ -858,6 +853,10 @@
     "Paste": "Տեղադրել",
     "Delete": "Ջնջել",
     "Status": "Կարգավիճակ",
-    "System Protection": "Համակարգի պաշտպանություն"
+    "System Protection": "Համակարգի պաշտպանություն",
+    "Download speed": "Բեռնման արագություն",
+    "Peers": "Տվողներ",
+    "Time remaining": "Մնաց",
+    "Upload speed": "Ներբեռնման արագություն"
   }
 }

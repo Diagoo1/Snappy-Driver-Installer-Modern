@@ -33,6 +33,7 @@ SidebarItem::SidebarItem(const QString &symbol,QWidget *parent)
     m_animation->setEasingCurve(QEasingCurve::OutCubic);
 }
 void SidebarItem::setCompact(bool compact) { m_compact=compact; update(); }
+void SidebarItem::nextCheckState(){if(!property("sharedNavigation").toBool())QAbstractButton::nextCheckState();}
 void SidebarItem::setMotionEnabled(bool enabled)
 {
     m_motion=enabled;
@@ -68,7 +69,7 @@ void SidebarItem::paintEvent(QPaintEvent *)
         QColor hover=Theme::color("accentSoft");hover.setAlphaF(m_hover * (active ? 0.18 : 0.29));
         p.setPen(Qt::NoPen);p.setBrush(hover);p.drawRoundedRect(rect().adjusted(8,4,-8,-4),12,12);
     }
-    if (isDown()) {p.setPen(Qt::NoPen);p.setBrush(QColor(1,22,41,42));p.drawRoundedRect(rect().adjusted(8,4,-8,-4),12,12);}
+    if (isDown() && !shared) {p.setPen(Qt::NoPen);p.setBrush(QColor(1,22,41,42));p.drawRoundedRect(rect().adjusted(8,4,-8,-4),12,12);}
     const int iconSize=24;
     const qreal openness=qBound(0.0,(width()-84)/140.0,1.0);
     const int logicalX=qRound(30-5*openness);
@@ -147,10 +148,11 @@ void Sidebar::paintEvent(QPaintEvent *)
     p.setRenderHint(QPainter::Antialiasing);
     p.setPen(Qt::NoPen);
     if(m_activeY>=0){
-        p.setBrush(Theme::color("sidebarMiddle").lighter(145));p.drawRoundedRect(QRectF(8,m_activeY+4,width()-16,58),12,12);
+        const qreal surfaceY=m_hoverY<0?m_activeY:m_activeY+(m_hoverY-m_activeY)*qBound(0.0,m_hoverOpacity,1.0);
+        QColor fill=Theme::color("sidebarMiddle").lighter(145);for(SidebarItem *button:m_buttons)if(button->isDown()){fill=fill.darker(108);break;}
+        p.setBrush(fill);p.drawRoundedRect(QRectF(8,surfaceY+4,width()-16,58),12,12);
         p.setBrush(Theme::color("accentSoft"));p.drawRoundedRect(QRectF(layoutDirection()==Qt::RightToLeft?width()-6:2,m_activeY+17,4,32),2,2);
     }
-    if(m_hoverY>=0 && m_hoverOpacity>.001){QColor hover=Theme::color("accentSoft");hover.setAlphaF(qBound(0.0,m_hoverOpacity*.23,1.0));p.setBrush(hover);p.drawRoundedRect(QRectF(8,m_hoverY+4,width()-16,58),12,12);}
     // The top-level window paints the sidebar surface once at the outer edge.
     p.setPen(QColor(255,255,255,18));
     const int x=layoutDirection()==Qt::RightToLeft?0:width()-1;
@@ -174,6 +176,7 @@ bool Sidebar::eventFilter(QObject *watched,QEvent *event){
     if(button && button->isEnabled()){
         if(event->type()==QEvent::Enter)moveHover(button);
         else if(event->type()==QEvent::Leave && m_hoverButton==button)moveHover(0);
+        else if(event->type()==QEvent::MouseButtonPress || event->type()==QEvent::MouseButtonRelease || event->type()==QEvent::KeyPress || event->type()==QEvent::KeyRelease)update();
     }
     return QWidget::eventFilter(watched,event);
 }

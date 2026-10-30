@@ -43,7 +43,6 @@
     "%1 packages  ·  %2 indexes  ·  %3": "%1 paketləri · %2 indeksləri · %3",
     "%1 present PnP devices  ·  %2 matched  ·  %3 warnings in matches": "%1 PnP cihazlarını təqdim edir · %2 uyğun gəlir · Uyğunluqlarda %3 xəbərdarlıqları",
     "%1 selected · Files: %2 · Verified download: up to %3": "%1 seçildi · Fayllar: %2 · Doğrulanmış endirmə: %3-ə qədər",
-    "%1 verified files saved. Close this window and scan again. No driver was installed.": "%1 təsdiqlənmiş fayllar yadda saxlanıldı. Bu pəncərəni bağlayın və yenidən skan edin. Heç bir sürücü quraşdırılmayıb.",
     "%1 versions": "%1 versiyaları",
     "%1 × %2  ·  %3 screen(s)": "%1 × %2 · %3 ekran(lar)",
     "%1% battery": "%1% batareya",
@@ -341,7 +340,6 @@
     "Finish the active operation before updating the application.": "Proqramı yeniləməzdən əvvəl aktiv əməliyyatı tamamlayın.",
     "Finish the active operation or perform a native scan first.": "Aktiv əməliyyatı bitirin və ya əvvəlcə yerli skan edin.",
     "Finishing the current request before closing...": "Bağlamadan əvvəl cari sorğu tamamlanır...",
-    "Found locally": "Yerli tapıldı",
     "GPLv3 license is included in the source package.": "GPLv3 lisenziyası mənbə paketinə daxildir.",
     "General Settings": "Ümumi Parametrlər",
     "General settings": "Ümumi parametrlər",
@@ -420,7 +418,6 @@
     "Invalid transfer settings.": "Yanlış ötürmə parametrləri.",
     "Keep sharing verified downloads": "Təsdiqlənmiş endirmələri paylaşmağa davam edin",
     "Keep your library ready": "Kitabxananızı hazır saxlayın",
-    "LOCAL FILE": "YERLİ FAYL",
     "LOCAL PACKAGE MATCHES": "YERLİ PAKET UYUMLARI",
     "Library ready": "Kitabxanası hazırdır",
     "License": "Lisenziyası",
@@ -473,7 +470,6 @@
     "Network Connections": "Şəbəkə Əlaqələri",
     "Network adapters": "Şəbəkə adapterləri",
     "Network package downloads require Windows.": "Şəbəkə paketinin endirilməsi üçün Windows tələb olunur.",
-    "New packages or indexes were saved. Scan again to refresh driver matches.": "Yeni paketlər və ya indekslər saxlanıldı. Sürücü uyğunluqlarını yeniləmək üçün yenidən skan edin.",
     "Newer": "Yeni versiyalar",
     "No": "Yox",
     "No HTTP status received.": "HTTP statusu alınmadı.",
@@ -502,7 +498,6 @@
     "Not enough free space. About %1 MB is required for verified blocks and selected files on %2.": "Kifayət qədər boş yer yoxdur. %2-də təsdiqlənmiş bloklar və seçilmiş fayllar üçün təxminən %1 MB tələb olunur.",
     "Not enough space to publish %1. Verified blocks were retained.": "%1-ni dərc etmək üçün kifayət qədər yer yoxdur. Təsdiqlənmiş bloklar saxlanıldı.",
     "Not installed": "Quraşdırılmayanlar",
-    "Not present": "Mövcud deyil",
     "Not present (optional)": "Mövcud deyil (isteğe bağlı)",
     "Not reported": "Məlumat yoxdur",
     "Not reported by display driver": "Displey sürücüsü tərəfindən məlumat verilmir",
@@ -858,6 +853,10 @@
     "Paste": "Yapışdır",
     "Delete": "Sil",
     "Status": "Vəziyyət",
-    "System Protection": "Sistem qorunması"
+    "System Protection": "Sistem qorunması",
+    "Download speed": "Qəbul",
+    "Peers": "Pirlər",
+    "Time remaining": "Qalıb",
+    "Upload speed": "Qaytarılma"
   }
 }

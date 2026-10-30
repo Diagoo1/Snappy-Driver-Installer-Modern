@@ -43,7 +43,6 @@
     "%1 packages  ·  %2 indexes  ·  %3": "%1-pakker · %2-indekser · %3",
     "%1 present PnP devices  ·  %2 matched  ·  %3 warnings in matches": "%1 nuværende PnP-enheder · %2 matchede · %3 advarsler i kampe",
     "%1 selected · Files: %2 · Verified download: up to %3": "%1 valgt · Filer: %2 · Verificeret download: op til %3",
-    "%1 verified files saved. Close this window and scan again. No driver was installed.": "%1 verificerede filer gemt. Luk dette vindue og scan igen. Ingen driver blev installeret.",
     "%1 versions": "%1 versioner",
     "%1 × %2  ·  %3 screen(s)": "%1 × %2 · %3 skærm(e)",
     "%1% battery": "%1% batteri",
@@ -341,7 +340,6 @@
     "Finish the active operation before updating the application.": "Afslut den aktive handling, før du opdaterer applikationen.",
     "Finish the active operation or perform a native scan first.": "Afslut den aktive handling eller udfør en indbygget scanning først.",
     "Finishing the current request before closing...": "Afslutter den aktuelle anmodning før lukning...",
-    "Found locally": "Fundet lokalt",
     "GPLv3 license is included in the source package.": "GPLv3-licens er inkluderet i kildepakken.",
     "General Settings": "Generelle indstillinger",
     "General settings": "Generelle indstillinger",
@@ -420,7 +418,6 @@
     "Invalid transfer settings.": "Ugyldige overførselsindstillinger.",
     "Keep sharing verified downloads": "Fortsæt med at dele bekræftede downloads",
     "Keep your library ready": "Hold dit bibliotek klar",
-    "LOCAL FILE": "LOKAL FIL",
     "LOCAL PACKAGE MATCHES": "LOKAL PAKKE MATCHER",
     "Library ready": "bibliotek klar",
     "License": "-licens",
@@ -473,7 +470,6 @@
     "Network Connections": "Netværksforbindelser",
     "Network adapters": "Netværksadaptere",
     "Network package downloads require Windows.": "Netværkspakkedownloads kræver Windows.",
-    "New packages or indexes were saved. Scan again to refresh driver matches.": "Nye pakker eller indekser blev gemt. Scan igen for at opdatere drivermatches.",
     "Newer": "Nyere",
     "No": "Nej",
     "No HTTP status received.": "Ingen HTTP-status modtaget.",
@@ -502,7 +498,6 @@
     "Not enough free space. About %1 MB is required for verified blocks and selected files on %2.": "Ikke nok ledig plads. Om %1 MB er påkrævet for verificerede blokke og udvalgte filer på %2.",
     "Not enough space to publish %1. Verified blocks were retained.": "Ikke nok plads til at publicere %1. Verificerede blokke blev bibeholdt.",
     "Not installed": "Ikke installeret",
-    "Not present": "Ikke til stede",
     "Not present (optional)": "Ikke til stede (valgfrit)",
     "Not reported": "Ikke rapporteret",
     "Not reported by display driver": "Ikke rapporteret af skærmdriver",
@@ -858,6 +853,10 @@
     "Paste": "Sæt ind",
     "Delete": "Slet",
     "Status": "Status",
-    "System Protection": "Systembeskyttelse"
+    "System Protection": "Systembeskyttelse",
+    "Download speed": "Download hastighed",
+    "Peers": "Klienter",
+    "Time remaining": "Tid tilbage",
+    "Upload speed": "Upload hastighed"
   }
 }

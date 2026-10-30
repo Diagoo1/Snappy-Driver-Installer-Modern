@@ -43,7 +43,6 @@
     "%1 packages  ·  %2 indexes  ·  %3": "%1 패키지 · %2 인덱스 · %3",
     "%1 present PnP devices  ·  %2 matched  ·  %3 warnings in matches": "%1 현재 PnP 장치 · %2 일치 · 일치 시 %3 경고",
     "%1 selected · Files: %2 · Verified download: up to %3": "%1 선택됨 · 파일: %2 · 검증된 다운로드: 최대 %3",
-    "%1 verified files saved. Close this window and scan again. No driver was installed.": "%1 검증된 파일이 저장되었습니다. 이 창을 닫고 다시 스캔하세요. 드라이버가 설치되지 않았습니다.",
     "%1 versions": "%1 버전",
     "%1 × %2  ·  %3 screen(s)": "%1 × %2 · %3 화면",
     "%1% battery": "%1% 배터리",
@@ -341,7 +340,6 @@
     "Finish the active operation before updating the application.": "애플리케이션을 업데이트하기 전에 활성 작업을 완료하세요.",
     "Finish the active operation or perform a native scan first.": "활성 작업을 완료하거나 기본 스캔을 먼저 수행하십시오.",
     "Finishing the current request before closing...": "닫기 전에 현재 요청을 완료하는 중...",
-    "Found locally": "로컬에서 발견됨",
     "GPLv3 license is included in the source package.": "GPLv3 라이센스는 소스 패키지에 포함되어 있습니다.",
     "General Settings": "일반 설정",
     "General settings": "일반 설정",
@@ -420,7 +418,6 @@
     "Invalid transfer settings.": "전송 설정이 잘못되었습니다.",
     "Keep sharing verified downloads": "검증된 다운로드를 계속 공유하세요",
     "Keep your library ready": "라이브러리를 준비하세요",
-    "LOCAL FILE": "로컬 파일",
     "LOCAL PACKAGE MATCHES": "로컬 패키지 일치",
     "Library ready": "라이브러리 준비됨",
     "License": "라이센스",
@@ -473,7 +470,6 @@
     "Network Connections": "네트워크 연결",
     "Network adapters": "네트워크 어댑터",
     "Network package downloads require Windows.": "네트워크 패키지를 다운로드하려면 Windows가 필요합니다.",
-    "New packages or indexes were saved. Scan again to refresh driver matches.": "새 패키지 또는 인덱스가 저장되었습니다. 드라이버 일치 항목을 새로 고치려면 다시 스캔하세요.",
     "Newer": "새 드라이버",
     "No": "아니오",
     "No HTTP status received.": "HTTP 상태가 수신되지 않았습니다.",
@@ -502,7 +498,6 @@
     "Not enough free space. About %1 MB is required for verified blocks and selected files on %2.": "여유 공간이 부족합니다. %1 정보 %2에서 검증된 블록과 선택된 파일에는 MB가 필요합니다.",
     "Not enough space to publish %1. Verified blocks were retained.": "%1를 게시할 공간이 부족합니다. 검증된 블록은 유지되었습니다.",
     "Not installed": "설치되지 않은 드라이버",
-    "Not present": "존재하지 않음",
     "Not present (optional)": "존재하지 않음(선택 사항)",
     "Not reported": "보고되지 않음",
     "Not reported by display driver": "디스플레이 드라이버에서 보고되지 않음",
@@ -858,6 +853,10 @@
     "Paste": "붙여넣기",
     "Delete": "삭제",
     "Status": "상태",
-    "System Protection": "시스템 보호"
+    "System Protection": "시스템 보호",
+    "Download speed": "다운로드 속도",
+    "Peers": "피어",
+    "Time remaining": "남은 시간",
+    "Upload speed": "업로드 속도"
   }
 }

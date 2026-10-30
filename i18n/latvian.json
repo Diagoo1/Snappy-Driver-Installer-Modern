@@ -43,7 +43,6 @@
     "%1 packages  ·  %2 indexes  ·  %3": "%1 pakotnes · %2 indeksi · %3",
     "%1 present PnP devices  ·  %2 matched  ·  %3 warnings in matches": "%1 piedāvā PnP ierīces · %2 atbilst · %3 brīdinājumi spēlēs",
     "%1 selected · Files: %2 · Verified download: up to %3": "%1 atlasīts · Faili: %2 · Verificēta lejupielāde: līdz %3",
-    "%1 verified files saved. Close this window and scan again. No driver was installed.": "%1 pārbaudītie faili ir saglabāti. Aizveriet šo logu un skenējiet vēlreiz. Nav instalēts neviens draiveris.",
     "%1 versions": "%1 versijas",
     "%1 × %2  ·  %3 screen(s)": "%1 × %2 · %3 ekrāns(-i)",
     "%1% battery": "%1% akumulators",
@@ -341,7 +340,6 @@
     "Finish the active operation before updating the application.": "Pirms lietojumprogrammas atjaunināšanas pabeidziet aktīvo darbību.",
     "Finish the active operation or perform a native scan first.": "Pabeidziet aktīvo darbību vai vispirms veiciet sākotnējo skenēšanu.",
     "Finishing the current request before closing...": "Pašreizējā pieprasījuma pabeigšana pirms aizvēršanas...",
-    "Found locally": "Atrasts lokāli",
     "GPLv3 license is included in the source package.": "GPLv3 licence ir iekļauta avota pakotnē.",
     "General Settings": "vispārīgie iestatījumi",
     "General settings": "Vispārīgie iestatījumi",
@@ -420,7 +418,6 @@
     "Invalid transfer settings.": "Nederīgi pārsūtīšanas iestatījumi.",
     "Keep sharing verified downloads": "Turpiniet kopīgot pārbaudītās lejupielādes",
     "Keep your library ready": "Sagatavojiet savu bibliotēku",
-    "LOCAL FILE": "LOKĀLAIS FAILS",
     "LOCAL PACKAGE MATCHES": "LOKĀLĀS IEPAKOJUMA ATTIECĪBAS",
     "Library ready": "bibliotēka ir gatava",
     "License": "licence",
@@ -473,7 +470,6 @@
     "Network Connections": "tīkla savienojumi",
     "Network adapters": "Tīkla adapteri",
     "Network package downloads require Windows.": "Tīkla pakotnes lejupielādei nepieciešams Windows.",
-    "New packages or indexes were saved. Scan again to refresh driver matches.": "Tika saglabātas jaunas pakotnes vai indeksi. Skenējiet vēlreiz, lai atsvaidzinātu draivera atbilstības.",
     "Newer": "Jaunās versijas",
     "No": "Nē",
     "No HTTP status received.": "HTTP statuss nav saņemts.",
@@ -502,7 +498,6 @@
     "Not enough free space. About %1 MB is required for verified blocks and selected files on %2.": "Nepietiek brīvas vietas. Apmēram %1 MB ir nepieciešami pārbaudītiem blokiem un atlasītajiem failiem vietnē %2.",
     "Not enough space to publish %1. Verified blocks were retained.": "Nepietiek vietas, lai publicētu %1. Tika saglabāti pārbaudītie bloki.",
     "Not installed": "Neuzstādītie",
-    "Not present": "Nav klāt",
     "Not present (optional)": "Nav (pēc izvēles)",
     "Not reported": "Nav ziņots",
     "Not reported by display driver": "Displeja draiveris neziņo",
@@ -858,6 +853,10 @@
     "Paste": "Ielīmēt",
     "Delete": "Dzēst",
     "Status": "Statuss",
-    "System Protection": "Sistēmas aizsardzība"
+    "System Protection": "Sistēmas aizsardzība",
+    "Download speed": "Lejuplādes ātrums",
+    "Peers": "Pīri",
+    "Time remaining": "Atlika",
+    "Upload speed": "Augšuplādes ātrums"
   }
 }

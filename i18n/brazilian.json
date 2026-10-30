@@ -43,7 +43,6 @@
     "%1 packages  ·  %2 indexes  ·  %3": "%1 · Índices %2 · %3",
     "%1 present PnP devices  ·  %2 matched  ·  %3 warnings in matches": "%1 apresentam dispositivos PnP · %2 combinados · %3 avisos em correspondências",
     "%1 selected · Files: %2 · Verified download: up to %3": "%1 selecionado · Arquivos: %2 · Download verificado: até %3",
-    "%1 verified files saved. Close this window and scan again. No driver was installed.": "%1 arquivos verificados salvos. Feche esta janela e verifique novamente. Nenhum driver foi instalado.\nVersões",
     "%1 versions": "%1",
     "%1 × %2  ·  %3 screen(s)": "%1 × %2 · Tela(s) %3\nBateria",
     "%1% battery": "%1%",
@@ -341,7 +340,6 @@
     "Finish the active operation before updating the application.": "Conclua a operação ativa antes de atualizar o aplicativo.",
     "Finish the active operation or perform a native scan first.": "Conclua a operação ativa ou execute primeiro uma varredura nativa.",
     "Finishing the current request before closing...": "Finalizando a solicitação atual antes de fechar...",
-    "Found locally": "encontrado localmente\nA licença",
     "GPLv3 license is included in the source package.": "GPLv3 está incluída no pacote fonte.\nConfigurações gerais do",
     "General Settings": "Configurações gerais\nAdaptadores gráficos",
     "General settings": "Configurações gerais\nProjetos",
@@ -420,7 +418,6 @@
     "Invalid transfer settings.": "Configurações de transferência inválidas.",
     "Keep sharing verified downloads": "Continue compartilhando downloads verificados",
     "Keep your library ready": "Mantenha sua biblioteca pronta\nARQUIVO LOCAL",
-    "LOCAL FILE": "Link",
     "LOCAL PACKAGE MATCHES": "JOGOS DE PACOTE LOCAL\nBiblioteca",
     "Library ready": "pronta\nLicença",
     "License": "Contrato de licença",
@@ -473,7 +470,6 @@
     "Network Connections": "NÚCLEO NATIVO DE ORIGEM",
     "Network adapters": "Adaptadores de rede\nOs downloads de pacotes de rede",
     "Network package downloads require Windows.": "requerem Windows.",
-    "New packages or indexes were saved. Scan again to refresh driver matches.": "Novos pacotes ou índices foram salvos. Digitalize novamente para atualizar as correspondências do driver.",
     "Newer": "Mais Novos",
     "No": "Não",
     "No HTTP status received.": "Nenhum status HTTP recebido.",
@@ -502,7 +498,6 @@
     "Not enough free space. About %1 MB is required for verified blocks and selected files on %2.": "Espaço livre insuficiente. Sobre %1 MB são necessários para blocos verificados e arquivos selecionados em %2.",
     "Not enough space to publish %1. Verified blocks were retained.": "Espaço insuficiente para publicar %1. Os blocos verificados foram retidos.",
     "Not installed": "Não foi instalado",
-    "Not present": "Não presente",
     "Not present (optional)": "Não presente (opcional)",
     "Not reported": "Não relatado",
     "Not reported by display driver": "Não relatado pelo driver de vídeo",
@@ -858,6 +853,10 @@
     "Paste": "Colar",
     "Delete": "Excluir",
     "Status": "Status",
-    "System Protection": "Proteção do Sistema"
+    "System Protection": "Proteção do Sistema",
+    "Download speed": "Velocidade de download",
+    "Peers": "Pares",
+    "Time remaining": "Tempo restante",
+    "Upload speed": "Velocidade de upload"
   }
 }

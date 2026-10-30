@@ -43,7 +43,6 @@
     "%1 packages  ·  %2 indexes  ·  %3": "%1 paketai · %2 rodyklės · %3",
     "%1 present PnP devices  ·  %2 matched  ·  %3 warnings in matches": "%1 pateikiami PnP įrenginiai · %2 atitiko · %3 įspėjimai rungtynėse",
     "%1 selected · Files: %2 · Verified download: up to %3": "%1 pasirinktas · Failai: %2 · Patvirtintas atsisiuntimas: iki %3",
-    "%1 verified files saved. Close this window and scan again. No driver was installed.": "%1 patvirtinti failai išsaugoti. Uždarykite šį langą ir dar kartą nuskaitykite. Nebuvo įdiegta tvarkyklė.",
     "%1 versions": "%1 versijos",
     "%1 × %2  ·  %3 screen(s)": "%1 × %2 · %3 ekranas (-ai)",
     "%1% battery": "%1% baterija\nNaudojamas",
@@ -341,7 +340,6 @@
     "Finish the active operation before updating the application.": "Užbaikite aktyvią operaciją prieš atnaujindami programą.",
     "Finish the active operation or perform a native scan first.": "Užbaikite aktyvią operaciją arba pirmiausia atlikite vietinį nuskaitymą.",
     "Finishing the current request before closing...": "Baigiama dabartinė užklausa prieš uždarant...",
-    "Found locally": "Rasta vietoje",
     "GPLv3 license is included in the source package.": "GPLv3 licencija įtraukta į šaltinio paketą.",
     "General Settings": "bendrieji nustatymai",
     "General settings": "Bendrieji nustatymai",
@@ -420,7 +418,6 @@
     "Invalid transfer settings.": "Netinkami perdavimo nustatymai.",
     "Keep sharing verified downloads": "Bendrinkite patvirtintus atsisiuntimus",
     "Keep your library ready": "Paruoškite savo biblioteką",
-    "LOCAL FILE": "VIETINIS FAILAS",
     "LOCAL PACKAGE MATCHES": "VIETINĖS PAKUOTĖS ATITIKTYS",
     "Library ready": "biblioteka paruošta",
     "License": "licencija",
@@ -473,7 +470,6 @@
     "Network Connections": "tinklo jungtys",
     "Network adapters": "Tinklo adapteriai",
     "Network package downloads require Windows.": "Norint atsisiųsti tinklo paketą, reikia Windows.",
-    "New packages or indexes were saved. Scan again to refresh driver matches.": "Išsaugoti nauji paketai arba indeksai. Nuskaitykite dar kartą, kad atnaujintumėte tvarkyklės atitikmenis.",
     "Newer": "Naujesnės",
     "No": "Ne",
     "No HTTP status received.": "Negauta HTTP būsena.",
@@ -502,7 +498,6 @@
     "Not enough free space. About %1 MB is required for verified blocks and selected files on %2.": "Nepakanka laisvos vietos. Maždaug %1 MB reikia patvirtintiems blokams ir pasirinktiems failams %2.",
     "Not enough space to publish %1. Verified blocks were retained.": "Nepakanka vietos publikuoti %1. Patvirtinti blokai buvo išsaugoti.",
     "Not installed": "Neįdiegta",
-    "Not present": "Nėra",
     "Not present (optional)": "Nėra (neprivaloma)",
     "Not reported": "Nepranešta",
     "Not reported by display driver": "Ekrano tvarkyklė nepranešė",
@@ -858,6 +853,10 @@
     "Paste": "Įklijuoti",
     "Delete": "Ištrinti",
     "Status": "Būsena",
-    "System Protection": "Sistemos apsauga"
+    "System Protection": "Sistemos apsauga",
+    "Download speed": "Atsisiuntimo greitis",
+    "Peers": "Siuntėjai",
+    "Time remaining": "Liko laiko",
+    "Upload speed": "Išsiuntimo sparta"
   }
 }

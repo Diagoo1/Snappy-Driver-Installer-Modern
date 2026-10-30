@@ -52,6 +52,8 @@ QWidget#driverTableCard,QWidget#driverTableToolbar {background:transparent;borde
 QAbstractButton[workspaceCommand="true"] {background:transparent;border:0;padding:0;min-height:0;font-size:13px;font-weight:500;}
 QWidget#driverSummaryStrip { background:transparent; border:0; }
 QFrame#metricCard {background:transparent; border:0; border-radius:10px; min-height:54px;}
+QWidget#transferTile {background:%3;border:1px solid %6;border-radius:11px;}
+QLabel[transferMetric="true"] {font-size:18px;font-weight:600;color:%4;background:transparent;}
 QLabel#metricValue {font-size:17px; font-weight:700; color:%4; background:transparent;}
 QLabel#metricCaption {font-size:12px; font-weight:500; color:%5; background:transparent;}
 QLabel#driverStats {color:%4; background:%3; padding:8px 13px; border:0; border-radius:6px;
@@ -213,7 +215,9 @@ QProgressBar#mainProgress::chunk {background:qlineargradient(x1:0,y1:0,x2:1,y2:0
 QWidget#aboutBody {background:transparent;}
 QTreeWidget#onlineFiles {background:%2;alternate-background-color:%1;color:%4;border:1px solid %6;border-radius:13px;outline:0;padding:8px;selection-background-color:%3;selection-color:%4;}
 QTreeWidget#onlineFiles::item {padding:11px 8px;border-bottom:1px solid %6;min-height:24px;}
-QTreeWidget#onlineFiles::item:hover {background:%3;}
+QTreeWidget#onlineFiles::item:hover {background:transparent;}
+QTreeWidget#onlineFiles::indicator:unchecked {width:18px;height:18px;background:%2;border:1px solid %7;border-radius:4px;}
+QTreeWidget#onlineFiles::indicator:checked {width:18px;height:18px;background:#10AAA0;border:1px solid #10AAA0;border-radius:4px;image:url(:/sdio/assets/icons/check.svg);}
 QTreeWidget#onlineFiles QHeaderView::section {background:%2;color:%5;padding:12px 10px;}
 QComboBox#candidatePicker::drop-down {background:transparent;border:0;width:34px;}
 QComboBox#candidatePicker::down-arrow {image:url(%8);width:14px;height:14px;}
