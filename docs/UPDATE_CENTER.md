@@ -33,3 +33,7 @@ Files are checked before publication. Downloads do not install drivers. Closing 
 Both real official metadata catalogs were parsed, offline integrity/resume cases passed, and a second loopback downloader received verified peer data. Public multi-gigabyte pack downloads, network behavior on old Windows, restore points and hardware installation still need beta testing. See [validation scope](VALIDATION.md).
 
 The Download center opens within the main window and available screen. Compact parent windows use content scrolling. The table uses the same painted card shadow as the rest of the application; progress fills have rounded exposed ends. Reinstall selection notices reveal/collapse over a short finite animation and respect reduced motion.
+
+Click any cell in a package row to toggle its checkbox. Clicking the checkbox itself uses the same single toggle. A drag or release on another row cancels marking. Space toggles the focused row while idle; transfer-time mouse/keyboard selection locks remain in place.
+
+Application preferences are stored under `HKEY_CURRENT_USER\Software\TarekSadek\SnappyDriverInstaller-TS`. The embedded engine is configured with `FLAG_PRESERVECFG`; it does not save its upstream configuration file. An existing `sdi.cfg` beside a classic SDI installation belongs to that separate application and is neither deleted nor automatically imported by the modern interface.

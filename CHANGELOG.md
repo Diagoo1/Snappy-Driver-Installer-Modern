@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.23.5 Beta
+
+- Toggle a download package checkbox by clicking anywhere in its row, including progress/version/status cells. Handle the checkbox through the same single toggle path.
+- Cancel marking on a drag or a release over another row, keep keyboard Space working while idle, and preserve selection locks during transfers.
+- Clarify that application preferences use Registry; the supplied `sdi.cfg` belongs to the separate classic SDI application and is preserved.
+
 ## 0.23.4 Beta
 
 - Keep per-file progress tracks and status pills distinct from the hovered package row in light and dark themes, using a contrasting surface and thin rounded border. Retain the actual progress fill and text.

@@ -11,6 +11,7 @@
 #include <QPushButton>
 #include <QTreeWidget>
 #include <QHeaderView>
+#include <QPersistentModelIndex>
 #include <QScrollArea>
 #include <QProgressBar>
 #include <QFileDialog>
@@ -82,11 +83,14 @@ protected:void paintEvent(QPaintEvent*) Q_DECL_OVERRIDE {QPainter p(viewport());
 class PackageTree : public QTreeWidget {
 public:explicit PackageTree(QWidget *parent):QTreeWidget(parent){setMouseTracking(true);}
 protected:void resizeEvent(QResizeEvent *event) Q_DECL_OVERRIDE {QTreeWidget::resizeEvent(event);const int widths[]={34,9,19,9,9,9,11};const int total=viewport()->width();for(int i=0;i<7;++i)header()->resizeSection(i,qMax(i==0?240:70,total*widths[i]/100));}
- void mouseMoveEvent(QMouseEvent *event) Q_DECL_OVERRIDE {QTreeWidgetItem *item=itemAt(event->pos());setProperty("hoverPackage",item?item->data(0,Qt::UserRole).toInt():-1);viewport()->update();QTreeWidget::mouseMoveEvent(event);}
+ void mouseMoveEvent(QMouseEvent *event) Q_DECL_OVERRIDE {QTreeWidgetItem *item=itemAt(event->pos());setProperty("hoverPackage",item?item->data(0,Qt::UserRole).toInt():-1);viewport()->setCursor(item && !property("transferLocked").toBool()?Qt::PointingHandCursor:Qt::ArrowCursor);viewport()->update();QTreeWidget::mouseMoveEvent(event);}
  void leaveEvent(QEvent *event) Q_DECL_OVERRIDE {setProperty("hoverPackage",-1);viewport()->update();QTreeWidget::leaveEvent(event);}
- void mousePressEvent(QMouseEvent *event) Q_DECL_OVERRIDE {if(property("transferLocked").toBool() && event->button()==Qt::LeftButton){event->accept();return;}QTreeWidget::mousePressEvent(event);}
- void keyPressEvent(QKeyEvent *event) Q_DECL_OVERRIDE {if(property("transferLocked").toBool() && event->key()==Qt::Key_Space){event->accept();return;}QTreeWidget::keyPressEvent(event);}
+ void mousePressEvent(QMouseEvent *event) Q_DECL_OVERRIDE {m_pressed=QPersistentModelIndex();if(event->button()==Qt::LeftButton){if(property("transferLocked").toBool()){event->accept();return;}QTreeWidgetItem *item=itemAt(event->pos());if(item && (item->flags()&Qt::ItemIsEnabled) && (item->flags()&Qt::ItemIsUserCheckable)){m_pressed=indexFromItem(item,0);m_pressPoint=event->pos();setCurrentItem(item,0);setFocus(Qt::MouseFocusReason);event->accept();return;}}QTreeWidget::mousePressEvent(event);}
+ void mouseReleaseEvent(QMouseEvent *event) Q_DECL_OVERRIDE {if(event->button()==Qt::LeftButton){const QPersistentModelIndex pressed=m_pressed;m_pressed=QPersistentModelIndex();QTreeWidgetItem *item=itemAt(event->pos());if(!property("transferLocked").toBool() && pressed.isValid() && item && indexFromItem(item,0)==pressed && (item->flags()&Qt::ItemIsEnabled) && (event->pos()-m_pressPoint).manhattanLength()<=QApplication::startDragDistance())item->setCheckState(0,item->checkState(0)==Qt::Checked?Qt::Unchecked:Qt::Checked);event->accept();return;}QTreeWidget::mouseReleaseEvent(event);}
+ void mouseDoubleClickEvent(QMouseEvent *event) Q_DECL_OVERRIDE {if(event->button()==Qt::LeftButton){m_pressed=QPersistentModelIndex();event->accept();return;}QTreeWidget::mouseDoubleClickEvent(event);}
+ void keyPressEvent(QKeyEvent *event) Q_DECL_OVERRIDE {if(property("transferLocked").toBool() && (event->key()==Qt::Key_Space || event->key()==Qt::Key_Select)){event->accept();return;}QTreeWidget::keyPressEvent(event);}
  void drawRow(QPainter *p,const QStyleOptionViewItem &option,const QModelIndex &index)const Q_DECL_OVERRIDE {if(property("hoverPackage").isValid() && property("hoverPackage").toInt()==index.data(Qt::UserRole).toInt()){p->save();p->setRenderHint(QPainter::Antialiasing);p->setPen(Qt::NoPen);p->setBrush(Theme::color("elevated",Theme::isDark(this)));p->drawRoundedRect(QRectF(2,option.rect.top()+3,viewport()->width()-4,option.rect.height()-6),11,11);p->restore();}QStyleOptionViewItem clean(option);clean.state &= ~(QStyle::State_MouseOver|QStyle::State_Selected|QStyle::State_HasFocus);QTreeWidget::drawRow(p,clean,index);}
+private:QPersistentModelIndex m_pressed;QPoint m_pressPoint;
 };
 class PackageDelegate : public QStyledItemDelegate {
 public:explicit PackageDelegate(QObject *parent):QStyledItemDelegate(parent){}
