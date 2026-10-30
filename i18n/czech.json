@@ -171,7 +171,6 @@
     "Cannot verify the copied file.": "Nelze ověřit zkopírovaný soubor.",
     "Cannot verify the update executable.": "Nelze ověřit spustitelný soubor aktualizace.",
     "Cannot write the application update.": "Nelze zapsat aktualizaci aplikace.",
-    "Catalog ready: %1 indexes and %2 packages. Select what you need.": "Katalog připraven: indexy %1 a balíčky %2. Vyberte, co potřebujete.",
     "Check application update...": "Zkontrolovat aktualizaci aplikace...",
     "Check for updates": "Zkontrolujte aktualizace",
     "Check for updates to read the official catalog. A catalog file can also be opened without an Internet connection.": "Chcete-li si přečíst oficiální katalog, zkontrolujte aktualizace. Soubor katalogu lze otevřít i bez připojení k internetu.",

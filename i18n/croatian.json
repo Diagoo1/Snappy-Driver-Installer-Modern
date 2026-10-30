@@ -171,7 +171,6 @@
     "Cannot verify the copied file.": "Ne može se provjeriti kopirana datoteka.",
     "Cannot verify the update executable.": "Ne mogu provjeriti izvršnu datoteku ažuriranja.",
     "Cannot write the application update.": "Ne može napisati ažuriranje aplikacije.",
-    "Catalog ready: %1 indexes and %2 packages. Select what you need.": "Katalog spreman: %1 indeksi i %2 paketi. Odaberite ono što vam je potrebno.",
     "Check application update...": "Provjerite ažuriranje aplikacije...",
     "Check for updates": "Provjerite ima li ažuriranja",
     "Check for updates to read the official catalog. A catalog file can also be opened without an Internet connection.": "Provjerite ima li ažuriranja za čitanje službenog kataloga. Datoteka kataloga također se može otvoriti bez internetske veze.",

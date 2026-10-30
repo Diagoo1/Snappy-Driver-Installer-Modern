@@ -171,7 +171,6 @@
     "Cannot verify the copied file.": "无法验证复制的文件。",
     "Cannot verify the update executable.": "无法验证更新可执行文件。",
     "Cannot write the application update.": "无法写入应用程序更新。",
-    "Catalog ready: %1 indexes and %2 packages. Select what you need.": "目录就绪：%1 索引和 %2 封装。选择您需要的。",
     "Check application update...": "检查应用程序更新...",
     "Check for updates": "检查更新",
     "Check for updates to read the official catalog. A catalog file can also be opened without an Internet connection.": "检查更新以阅读官方目录。目录文件也可以在没有 Internet 连接的情况下打开。",

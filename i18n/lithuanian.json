@@ -171,7 +171,6 @@
     "Cannot verify the copied file.": "Nepavyko patikrinti nukopijuoto failo.",
     "Cannot verify the update executable.": "Nepavyko patikrinti naujinimo vykdomojo failo.",
     "Cannot write the application update.": "Nepavyko parašyti programos naujinio.",
-    "Catalog ready: %1 indexes and %2 packages. Select what you need.": "Katalogas paruoštas: %1 indeksai ir %2 paketai. Pasirinkite, ko jums reikia.",
     "Check application update...": "Patikrinkite programos naujinį...",
     "Check for updates": "Patikrinkite, ar nėra naujinimų",
     "Check for updates to read the official catalog. A catalog file can also be opened without an Internet connection.": "Norėdami perskaityti oficialų katalogą, ieškokite atnaujinimų. Katalogo failą galima atidaryti ir neprisijungus prie interneto.",

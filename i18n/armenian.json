@@ -171,7 +171,6 @@
     "Cannot verify the copied file.": "Հնարավոր չէ ստուգել պատճենված ֆայլը:",
     "Cannot verify the update executable.": "Հնարավոր չէ ստուգել թարմացման գործարկվող տարբերակը:",
     "Cannot write the application update.": "Հնարավոր չէ գրել հավելվածի թարմացումը:",
-    "Catalog ready: %1 indexes and %2 packages. Select what you need.": "կատալոգը պատրաստ է. %1 ինդեքսներ և %2 փաթեթներ: Ընտրեք այն, ինչ ձեզ հարկավոր է:",
     "Check application update...": "Ստուգեք հավելվածի թարմացումը...",
     "Check for updates": "Ստուգեք թարմացումների համար",
     "Check for updates to read the official catalog. A catalog file can also be opened without an Internet connection.": "Ստուգեք թարմացումները՝ պաշտոնական կատալոգը կարդալու համար: Կատալոգի ֆայլը կարող է բացվել նաև առանց ինտերնետ կապի:",

@@ -1,5 +1,14 @@
 # Changelog
 
+## 0.23.2 Beta
+
+- Keep the selected sidebar background in place with an independent quiet animated hover; clip hover out of the selected surface.
+- Fit short dropdowns to their actual rows without reserved search-field space.
+- Show a changed reinstall selection warning for three seconds, clear it immediately on deselection and keep installation consent intact.
+- Hide the home update notice on a fresh Manual session; add Never to suppress it entirely and disable automatic checks.
+- Open the Download center with a fresh catalog check from Settings → Check now, showing available update counts.
+- Use tinted metric cards with painted shadows/bottom accents and mark completed catalog checking clearly.
+
 ## 0.23.1 Beta
 
 - Add saved Automatic / SDI / SDIO catalog selection, including standalone use without an offline library.

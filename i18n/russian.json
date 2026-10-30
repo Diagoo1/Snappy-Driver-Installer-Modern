@@ -171,7 +171,6 @@
     "Cannot verify the copied file.": "Невозможно проверить скопированный файл.",
     "Cannot verify the update executable.": "Невозможно проверить исполняемый файл обновления.",
     "Cannot write the application update.": "Невозможно записать обновление приложения.",
-    "Catalog ready: %1 indexes and %2 packages. Select what you need.": "Готовый каталог: индексы %1 и пакеты %2. Выберите то, что вам нужно.",
     "Check application update...": "Проверить обновление приложения...",
     "Check for updates": "Проверить наличие обновлений",
     "Check for updates to read the official catalog. A catalog file can also be opened without an Internet connection.": "Проверьте наличие обновлений, читайте официальный каталог. Файл каталога также можно открыть без подключения к Интернету.",

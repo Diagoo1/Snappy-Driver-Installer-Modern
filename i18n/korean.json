@@ -171,7 +171,6 @@
     "Cannot verify the copied file.": "복사된 파일을 확인할 수 없습니다.",
     "Cannot verify the update executable.": "업데이트 실행 파일을 확인할 수 없습니다.",
     "Cannot write the application update.": "애플리케이션 업데이트를 쓸 수 없습니다.",
-    "Catalog ready: %1 indexes and %2 packages. Select what you need.": "카탈로그 준비됨: %1 인덱스 및 %2 패키지. 필요한 것을 선택하세요.",
     "Check application update...": "애플리케이션 업데이트 확인...",
     "Check for updates": "업데이트 확인",
     "Check for updates to read the official catalog. A catalog file can also be opened without an Internet connection.": "공식 카탈로그를 읽으려면 업데이트를 확인하세요. 카탈로그 파일은 인터넷 연결 없이도 열 수 있습니다.",

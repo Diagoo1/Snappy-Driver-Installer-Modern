@@ -171,7 +171,6 @@
     "Cannot verify the copied file.": "Nu se poate verifica fișierul copiat.",
     "Cannot verify the update executable.": "Nu se poate verifica executabilul de actualizare.",
     "Cannot write the application update.": "Nu se poate scrie actualizarea aplicației.",
-    "Catalog ready: %1 indexes and %2 packages. Select what you need.": "Catalog pregătit: indexuri %1 și pachete %2. Selectați ceea ce aveți nevoie.",
     "Check application update...": "Verificați actualizarea aplicației...",
     "Check for updates": "Verificați actualizările",
     "Check for updates to read the official catalog. A catalog file can also be opened without an Internet connection.": "Verificați actualizările pentru a citi catalogul oficial. Un fișier catalog poate fi deschis și fără o conexiune la internet.",

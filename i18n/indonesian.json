@@ -171,7 +171,6 @@
     "Cannot verify the copied file.": "Tidak dapat memverifikasi file yang disalin.\nKatalog",
     "Cannot verify the update executable.": "Tidak dapat memverifikasi pembaruan yang dapat dijalankan.",
     "Cannot write the application update.": "Tidak dapat menulis pembaruan aplikasi.",
-    "Catalog ready: %1 indexes and %2 packages. Select what you need.": "siap: indeks %1 dan paket %2. Pilih apa yang Anda butuhkan.",
     "Check application update...": "Periksa pembaruan aplikasi...",
     "Check for updates": "Periksa pembaruan",
     "Check for updates to read the official catalog. A catalog file can also be opened without an Internet connection.": "Periksa pembaruan untuk membaca katalog resmi. File katalog juga dapat dibuka tanpa koneksi internet.",

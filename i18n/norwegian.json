@@ -171,7 +171,6 @@
     "Cannot verify the copied file.": "Kan ikke bekrefte den kopierte filen.",
     "Cannot verify the update executable.": "Kan ikke bekrefte den kjørbare oppdateringen.",
     "Cannot write the application update.": "Kan ikke skrive applikasjonsoppdateringen.",
-    "Catalog ready: %1 indexes and %2 packages. Select what you need.": "Katalog klar: %1-indekser og %2-pakker. Velg det du trenger.",
     "Check application update...": "Sjekk programoppdatering...",
     "Check for updates": "Se etter oppdateringer",
     "Check for updates to read the official catalog. A catalog file can also be opened without an Internet connection.": "Se etter oppdateringer for å lese den offisielle katalogen. En katalogfil kan også åpnes uten Internett-tilkobling.",

@@ -8,9 +8,10 @@ inline QString family(const QSettings &settings,const QString &detected){
     return selected==QStringLiteral("SDI") || selected==QStringLiteral("SDIO")?selected:detected==QStringLiteral("SDI")?QStringLiteral("SDI"):QStringLiteral("SDIO");
 }
 inline QString mode(const QSettings &settings){return settings.value(QStringLiteral("updates/mode"),settings.value(QStringLiteral("updates/checkAtStartup"),true).toBool()?QStringLiteral("startup"):QStringLiteral("manual")).toString();}
+inline bool showNotice(const QString &mode,bool checkedThisSession){return mode!=QStringLiteral("never") && (mode!=QStringLiteral("manual") || checkedThisSession);}
 inline QString key(const QString &family,const char *field){return QStringLiteral("updates/history/")+family+QLatin1Char('/')+QString::fromLatin1(field);}
 inline bool due(const QSettings &settings,const QString &family,const QDateTime &now,bool startup){
-    const QString selected=mode(settings);if(selected==QStringLiteral("manual"))return false;
+    const QString selected=mode(settings);if(selected==QStringLiteral("manual") || selected==QStringLiteral("never"))return false;
     if(selected==QStringLiteral("startup"))return startup;
     const QDateTime attempt=settings.value(key(family,"attempt")).toDateTime();
     if(attempt.isValid() && attempt.secsTo(now)<900)return false;

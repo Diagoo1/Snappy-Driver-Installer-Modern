@@ -171,7 +171,6 @@
     "Cannot verify the copied file.": "Kopyalanan faylı yoxlamaq mümkün deyil.",
     "Cannot verify the update executable.": "İcra olunan yeniləməni yoxlamaq mümkün deyil.",
     "Cannot write the application update.": "Tətbiq yeniləməsini yazmaq olmur.",
-    "Catalog ready: %1 indexes and %2 packages. Select what you need.": "Kataloq hazırdır: %1 indeksləri və %2 paketləri. Lazım olanı seçin.",
     "Check application update...": "Proqram yeniləməsini yoxlayın...",
     "Check for updates": "Yeniləmələri yoxlayın",
     "Check for updates to read the official catalog. A catalog file can also be opened without an Internet connection.": "Rəsmi kataloqu oxumaq üçün yeniləmələri yoxlayın. Kataloq faylı internet bağlantısı olmadan da açıla bilər.",

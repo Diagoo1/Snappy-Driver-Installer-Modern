@@ -171,7 +171,6 @@
     "Cannot verify the copied file.": "لا يمكن التحقق من الملف المنسوخ.",
     "Cannot verify the update executable.": "تعذر التحقق من ملف تحديث البرنامج.",
     "Cannot write the application update.": "تعذرت كتابة تحديث البرنامج.",
-    "Catalog ready: %1 indexes and %2 packages. Select what you need.": "القائمة جاهزة: %1 فهرس و%2 حزمة. حدد المطلوب تنزيله.",
     "Check application update...": "البحث عن تحديث البرنامج...",
     "Check for updates": "البحث عن تحديثات",
     "Check for updates to read the official catalog. A catalog file can also be opened without an Internet connection.": "اضغط البحث عن تحديثات لقراءة القائمة الرسمية، أو افتح ملف التحديثات المحفوظ دون اتصال.",
@@ -983,8 +982,12 @@
     "Apply schedule": "تطبيق الجدولة",
     "Check now": "افحص الآن",
     "Saved. Update results appear on the Drivers home page.": "تم الحفظ. نتائج التحديثات تظهر في الصفحة الرئيسية للتعريفات.",
-    "Checking the saved source. See the Drivers home page for results.": "جارٍ فحص المصدر المحفوظ. راجع الصفحة الرئيسية للتعريفات للنتائج.",
-    "Version: 0.23.1 (Beta)\nWindows: %1\nArchitecture: %2\nLanguage: %3\nTheme: %4": "الإصدار: 0.23.1 (بيتا)\nويندوز: %1\nالمعمارية: %2\nاللغة: %3\nالمظهر: %4",
-    "yyyy-MM-dd  HH:mm": "yyyy-MM-dd  HH:mm"
+    "yyyy-MM-dd  HH:mm": "yyyy-MM-dd  HH:mm",
+    "Never show update notices": "عدم إظهار إشعارات التحديث مطلقًا",
+    "Catalog check complete. Select files to download.": "اكتمل فحص القائمة. حدد الملفات المطلوب تنزيلها.",
+    "Version: 0.23.2 (Beta)\nWindows: %1\nArchitecture: %2\nLanguage: %3\nTheme: %4": "الإصدار: 0.23.2 (بيتا)\nويندوز: %1\nالمعمارية: %2\nاللغة: %3\nالمظهر: %4",
+    "Opening the download center to check the saved source.": "فتح مركز التنزيل لفحص المصدر المحفوظ.",
+    "Available updates: %1 driver packs · %2 indexes. Select what you need.": "التحديثات المتاحة: %1 حزمة تعريفات · %2 فهرس. حدد المطلوب تنزيله.",
+    "Wait for the current operation to finish, then check again.": "انتظر انتهاء العملية الحالية ثم أعد الفحص."
   }
 }

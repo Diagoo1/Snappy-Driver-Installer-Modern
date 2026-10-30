@@ -171,7 +171,6 @@
     "Cannot verify the copied file.": "Не вдається перевірити скопійований файл.\nГотовий каталог",
     "Cannot verify the update executable.": "Не вдається перевірити виконуваний файл оновлення.",
     "Cannot write the application update.": "Не вдається записати оновлення програми.",
-    "Catalog ready: %1 indexes and %2 packages. Select what you need.": ": індекси %1 та пакети %2. Виберіть те, що вам потрібно.",
     "Check application update...": "Перевірте оновлення програми...",
     "Check for updates": "Перевірити наявність оновлень",
     "Check for updates to read the official catalog. A catalog file can also be opened without an Internet connection.": "Перевірте наявність оновлень, щоб прочитати офіційний каталог. Файл каталогу також можна відкрити без підключення до Інтернету.",

@@ -171,7 +171,6 @@
     "Cannot verify the copied file.": "Não é possível verificar o ficheiro copiado.",
     "Cannot verify the update executable.": "Não é possível verificar o executável da atualização.",
     "Cannot write the application update.": "Não é possível gravar a atualização da aplicação.",
-    "Catalog ready: %1 indexes and %2 packages. Select what you need.": "Catálogo pronto: índices %1 e pacotes %2. Selecione o que precisa.",
     "Check application update...": "Verifique a atualização da aplicação...",
     "Check for updates": "Verifique se existem atualizações",
     "Check for updates to read the official catalog. A catalog file can also be opened without an Internet connection.": "Verifique se existem atualizações para ler o catálogo oficial. Um ficheiro de catálogo também pode ser aberto sem ligação à Internet.",

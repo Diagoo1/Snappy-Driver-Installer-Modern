@@ -171,7 +171,6 @@
     "Cannot verify the copied file.": "Kopeeritud faili ei saa kontrollida.",
     "Cannot verify the update executable.": "Värskenduse käivitatavat faili ei saa kontrollida.",
     "Cannot write the application update.": "Rakenduse värskendust ei saa kirjutada.",
-    "Catalog ready: %1 indexes and %2 packages. Select what you need.": "Kataloogi valmidus: %1 indeksid ja %2 paketid. Valige, mida vajate.",
     "Check application update...": "Kontrollige rakenduse värskendust...",
     "Check for updates": "Kontrollige värskendusi",
     "Check for updates to read the official catalog. A catalog file can also be opened without an Internet connection.": "Otsige värskendusi, et lugeda ametlikku kataloogi. Kataloogifaili saab avada ka ilma Interneti-ühenduseta.",

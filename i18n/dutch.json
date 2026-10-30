@@ -171,7 +171,6 @@
     "Cannot verify the copied file.": "Kan het gekopieerde bestand niet verifiëren.",
     "Cannot verify the update executable.": "Kan het uitvoerbare updatebestand niet verifiëren.",
     "Cannot write the application update.": "Kan de applicatie-update niet schrijven.",
-    "Catalog ready: %1 indexes and %2 packages. Select what you need.": "Catalogus gereed: %1-indexen en %2-pakketten. Selecteer wat je nodig hebt.",
     "Check application update...": "Applicatie-update controleren...",
     "Check for updates": "Controleer op updates",
     "Check for updates to read the official catalog. A catalog file can also be opened without an Internet connection.": "Controleer op updates om de officiële catalogus te lezen. Een catalogusbestand kan ook zonder internetverbinding worden geopend.",

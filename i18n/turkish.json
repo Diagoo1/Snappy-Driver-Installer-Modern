@@ -171,7 +171,6 @@
     "Cannot verify the copied file.": "Kopyalanan dosya doğrulanamıyor.",
     "Cannot verify the update executable.": "Yürütülebilir güncelleme dosyası doğrulanamıyor.",
     "Cannot write the application update.": "Uygulama güncellemesi yazılamıyor.",
-    "Catalog ready: %1 indexes and %2 packages. Select what you need.": "Katalog hazır: %1 indeksleri ve %2 paketleri. İhtiyacınız olanı seçin.",
     "Check application update...": "Uygulama güncellemesini kontrol edin...",
     "Check for updates": "Güncellemeleri kontrol edin",
     "Check for updates to read the official catalog. A catalog file can also be opened without an Internet connection.": "Resmi kataloğu okumak için güncellemeleri kontrol edin. Bir katalog dosyası İnternet bağlantısı olmadan da açılabilir.",

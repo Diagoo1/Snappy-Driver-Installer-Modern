@@ -221,6 +221,7 @@ DriverWorkspace::DriverWorkspace(DriverCatalog *catalog,QWidget *parent)
     m_info=label(QStringLiteral("DEMO — matches are illustrative. No changes to your system."),"demoText",this);
     m_info->setWordWrap(true);
     titleBox->addWidget(m_info);
+    m_reinstallTimer=new QTimer(this);m_reinstallTimer->setObjectName(QStringLiteral("reinstallNoticeTimer"));m_reinstallTimer->setSingleShot(true);m_reinstallTimer->setInterval(3000);connect(m_reinstallTimer,&QTimer::timeout,this,[this](){m_reinstallNotice->hide();});
     m_reinstallNotice=new ReinstallNotice(this);m_reinstallNotice->setObjectName(QStringLiteral("reinstallNotice"));
     QHBoxLayout *noticeLayout=new QHBoxLayout(m_reinstallNotice);noticeLayout->setContentsMargins(16,12,16,12);noticeLayout->setSpacing(12);
     QLabel *noticeIcon=new QLabel(m_reinstallNotice);noticeIcon->setPixmap(VectorIcons::icon(QStringLiteral("shield"),QColor("#B78A35"),24).pixmap(24,24));noticeLayout->addWidget(noticeIcon,0,Qt::AlignVCenter);
@@ -688,7 +689,9 @@ void DriverWorkspace::updateCount()
     refreshPackageNotice();
     const int selected=m_catalog->selectedDrivers();
     const int reinstalls=m_catalog->selectedReinstalls();
-    m_reinstallNotice->setVisible(reinstalls>0 && !m_busy);
+    QString signature;for(int row=0;row<m_catalog->size();++row){const DriverEntry &entry=m_catalog->entryRef(row);if(entry.checked && isReinstallCandidate(entry,entry.chosenCandidate))signature+=QString::number(row)+QLatin1Char(':')+QString::number(entry.chosenCandidate)+QLatin1Char(';');}if(!signature.isEmpty())signature+=m_restore->isChecked()?QLatin1Char('1'):QLatin1Char('0');
+    if(signature!=m_reinstallSignature){m_reinstallSignature=signature;m_reinstallTimer->stop();m_reinstallNotice->setVisible(!signature.isEmpty() && !m_busy);if(!signature.isEmpty() && !m_busy)m_reinstallTimer->start();}
+    if(reinstalls==0 || m_busy){m_reinstallTimer->stop();m_reinstallNotice->hide();}
     if(reinstalls>0){
         const QString heading=UiLanguage::text(QStringLiteral("Reinstallation selected: %1"),QString::fromUtf8("إعادة تثبيت: %1")).arg(reinstalls);
         const QString protection=UiLanguage::text(m_restore->isChecked()?QStringLiteral("A restore point is required before reinstalling. If creation fails, installation stops."):QStringLiteral("Restore point is off. Enable it in Install options before continuing."));
@@ -746,7 +749,7 @@ void DriverWorkspace::updateCount()
 void DriverWorkspace::setPackageUpdateStatus(int packages,int indexes,const QString &source,const QString &message,bool checking){m_packageCount=packages;m_packageIndexes=indexes;m_packageSource=source;m_packageMessage=message;m_packageChecking=checking;refreshPackageNotice();}
 void DriverWorkspace::refreshPackageNotice(){
     if(!m_packageNotice)return;
-    m_packageNotice->setVisible((!m_demo || m_packageCount>=0) && (m_packageChecking || m_packageCount!=0 || m_packageIndexes!=0 || !m_packageMessage.isEmpty()));
+    m_packageNotice->setVisible(m_packageAllowed && (!m_demo || m_packageCount>=0) && (m_packageChecking || m_packageCount!=0 || m_packageIndexes!=0 || !m_packageMessage.isEmpty()));
     m_packageTitle->setText(m_packageChecking?UiLanguage::text(QStringLiteral("Checking driver pack updates..."),QString::fromUtf8("جارٍ فحص تحديثات حزم التعريفات...")):m_packageCount>=0?UiLanguage::text(QStringLiteral("Updates available · %1 driver packs · %2 indexes"),QString::fromUtf8("تحديثات متاحة · %1 حزمة تعريفات · %2 فهرس")).arg(m_packageCount).arg(m_packageIndexes):UiLanguage::text(QStringLiteral("Driver pack updates"),QString::fromUtf8("تحديثات حزم التعريفات")));
     m_packageDetail->setText(m_packageMessage.isEmpty()?UiLanguage::text(QStringLiteral("%1 catalog · Review packages before downloading. Installation is a separate step."),QString::fromUtf8("كتالوج %1 · راجع الحزم قبل التنزيل. التثبيت خطوة منفصلة.")).arg(m_packageSource.isEmpty()?QStringLiteral("SDI / SDIO"):m_packageSource):UiLanguage::text(m_packageMessage));
     m_packageCheck->setEnabled(!m_packageChecking && !m_demo);m_packageBrowse->setEnabled(!m_busy && !m_demo);

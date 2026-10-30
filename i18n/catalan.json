@@ -171,7 +171,6 @@
     "Cannot verify the copied file.": "No es pot verificar el fitxer copiat.",
     "Cannot verify the update executable.": "No es pot verificar l'executable d'actualització.",
     "Cannot write the application update.": "No es pot escriure l'actualització de l'aplicació.",
-    "Catalog ready: %1 indexes and %2 packages. Select what you need.": "Catàleg preparat: índexs %1 i paquets %2. Seleccioneu el que necessiteu.",
     "Check application update...": "Comproveu l'actualització de l'aplicació...",
     "Check for updates": "Comproveu si hi ha actualitzacions",
     "Check for updates to read the official catalog. A catalog file can also be opened without an Internet connection.": "Comproveu si hi ha actualitzacions per llegir el catàleg oficial. També es pot obrir un fitxer de catàleg sense connexió a Internet.",

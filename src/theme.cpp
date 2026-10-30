@@ -52,7 +52,7 @@ QWidget#driverTableCard,QWidget#driverTableToolbar {background:transparent;borde
 QAbstractButton[workspaceCommand="true"] {background:transparent;border:0;padding:0;min-height:0;font-size:13px;font-weight:500;}
 QWidget#driverSummaryStrip { background:transparent; border:0; }
 QFrame#metricCard {background:transparent; border:0; border-radius:10px; min-height:54px;}
-QWidget#transferTile {background:%3;border:1px solid %6;border-radius:11px;}
+QWidget#transferTile {background:transparent;border:0;}
 QLabel[transferMetric="true"] {font-size:18px;font-weight:600;color:%4;background:transparent;}
 QLabel#metricValue {font-size:17px; font-weight:700; color:%4; background:transparent;}
 QLabel#metricCaption {font-size:12px; font-weight:500; color:%5; background:transparent;}

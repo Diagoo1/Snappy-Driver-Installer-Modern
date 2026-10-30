@@ -43,6 +43,7 @@ public:
     void openInstallOptions();
     void setInstallationPreferences(bool restorePoint,bool rebootAfter);
     void applyLegacyDisplay(int filters,bool expert,bool packageNames);
+    void setPackageUpdatesVisible(bool allowed){m_packageAllowed=allowed;refreshPackageNotice();}
     void setPackageUpdateStatus(int packages,int indexes,const QString &source,const QString &message=QString(),bool checking=false);
 
 signals:
@@ -84,6 +85,8 @@ private:
     QString m_originLocale;
     QWidget *m_controlBar,*m_reinstallNotice;
     QLabel *m_reinstallText;
+    QTimer *m_reinstallTimer;
+    QString m_reinstallSignature;
     QLabel *m_title,*m_subtitle,*m_info,*m_stats,*m_listTitle;
     QLabel *m_devicesNumber,*m_warningsNumber,*m_selectedNumber;
     QTreeWidget *m_tree;
@@ -103,7 +106,7 @@ private:
     QPushButton *m_packageBrowse,*m_packageCheck;
     int m_packageCount=-1,m_packageIndexes=-1;
     QString m_packageSource,m_packageMessage;
-    bool m_packageChecking=false;
+    bool m_packageChecking=false,m_packageAllowed=true;
     void refreshPackageNotice();
     QVector<QCheckBox*> m_matchFilters;
 };

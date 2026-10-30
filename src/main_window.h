@@ -74,7 +74,7 @@ private:
     QWidget *createLibraryUpdateSettings();
     void refreshLibraryNotice();
     QStringList matchingPackages()const;
-    void openOnlinePackages(const QString &package=QString());
+    void openOnlinePackages(const QString &package=QString(),bool forceRefresh=false);
     void importTheme();
     void exportTheme();
     QWidget *createDiagnostics();
@@ -118,6 +118,7 @@ private:
     QLabel *m_diagnosticsTitle,*m_diagnosticsSubtitle,*m_offlineTitle,*m_offlineStatus,*m_driversFolder,*m_indexesFolder,*m_toolsFolder;
     QLabel *m_settingsTitle,*m_settingsHint,*m_langLabel,*m_darkLabel,*m_motionLabel,*m_langNotice;
     class OnlineWorker *m_updateCheck=0;
+    bool m_updateSessionChecked=false;
     OnlinePackages::Catalog m_updateCatalog;
     QUrl m_updateCatalogSource;
     QString m_updateError;

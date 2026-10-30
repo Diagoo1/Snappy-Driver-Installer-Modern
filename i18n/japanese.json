@@ -171,7 +171,6 @@
     "Cannot verify the copied file.": "コピーされたファイルを検証できません。",
     "Cannot verify the update executable.": "アップデートの実行可能ファイルを確認できません。",
     "Cannot write the application update.": "アプリケーションのアップデートを書き込めません。",
-    "Catalog ready: %1 indexes and %2 packages. Select what you need.": "カタログ準備完了: %1 インデックスと %2 パッケージ。必要なものを選択してください。",
     "Check application update...": "アプリケーションのアップデートを確認します...",
     "Check for updates": "アップデートを確認する",
     "Check for updates to read the official catalog. A catalog file can also be opened without an Internet connection.": "公式カタログを読むには更新情報を確認してください。カタログ ファイルは、インターネットに接続していなくても開くことができます。",

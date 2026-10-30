@@ -171,7 +171,6 @@
     "Cannot verify the copied file.": "ไม่สามารถตรวจสอบไฟล์ที่คัดลอกได้\nแคตตาล็อก",
     "Cannot verify the update executable.": "ไม่สามารถตรวจสอบปฏิบัติการอัพเดตได้",
     "Cannot write the application update.": "ไม่สามารถเขียนการอัปเดตแอปพลิเคชันได้",
-    "Catalog ready: %1 indexes and %2 packages. Select what you need.": "พร้อมแล้ว: ดัชนี %1 และแพ็คเกจ %2 เลือกสิ่งที่คุณต้องการ",
     "Check application update...": "ตรวจสอบการอัปเดตแอปพลิเคชัน...",
     "Check for updates": "ตรวจสอบการอัปเดต",
     "Check for updates to read the official catalog. A catalog file can also be opened without an Internet connection.": "ตรวจสอบการอัปเดตเพื่ออ่านแค็ตตาล็อกอย่างเป็นทางการ ไฟล์แค็ตตาล็อกสามารถเปิดได้โดยไม่ต้องเชื่อมต่ออินเทอร์เน็ต",

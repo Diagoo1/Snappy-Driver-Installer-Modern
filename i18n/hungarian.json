@@ -171,7 +171,6 @@
     "Cannot verify the copied file.": "Nem lehet ellenőrizni a másolt fájlt.",
     "Cannot verify the update executable.": "Nem lehet ellenőrizni a frissítés végrehajtható fájlját.",
     "Cannot write the application update.": "Nem lehet megírni az alkalmazásfrissítést.",
-    "Catalog ready: %1 indexes and %2 packages. Select what you need.": "Katalógus kész: %1 indexek és %2 csomagok. Válassza ki, amire szüksége van.",
     "Check application update...": "Alkalmazásfrissítés ellenőrzése...",
     "Check for updates": "Frissítések keresése",
     "Check for updates to read the official catalog. A catalog file can also be opened without an Internet connection.": "A hivatalos katalógus elolvasásához ellenőrizze a frissítéseket. A katalógusfájl internetkapcsolat nélkül is megnyitható.",

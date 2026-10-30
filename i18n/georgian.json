@@ -171,7 +171,6 @@
     "Cannot verify the copied file.": "კოპირებული ფაილის გადამოწმება შეუძლებელია.",
     "Cannot verify the update executable.": "არ შეუძლია განახლების შესრულებადი გადამოწმება.",
     "Cannot write the application update.": "ვერ წერს აპლიკაციის განახლებას.",
-    "Catalog ready: %1 indexes and %2 packages. Select what you need.": "კატალოგი მზად არის: %1 ინდექსები და %2 პაკეტები. აირჩიეთ ის, რაც გჭირდებათ.",
     "Check application update...": "შეამოწმეთ აპლიკაციის განახლება...",
     "Check for updates": "შეამოწმეთ განახლებები",
     "Check for updates to read the official catalog. A catalog file can also be opened without an Internet connection.": "შეამოწმეთ განახლებები ოფიციალური კატალოგის წასაკითხად. კატალოგის ფაილის გახსნა ასევე შესაძლებელია ინტერნეტის გარეშე.",

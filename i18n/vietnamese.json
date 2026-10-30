@@ -171,7 +171,6 @@
     "Cannot verify the copied file.": "Không thể xác minh tệp đã sao chép.\nDanh mục",
     "Cannot verify the update executable.": "Không thể xác minh bản cập nhật có thể thực thi được.",
     "Cannot write the application update.": "Không thể ghi bản cập nhật ứng dụng.",
-    "Catalog ready: %1 indexes and %2 packages. Select what you need.": "đã sẵn sàng: chỉ mục %1 và gói %2. Chọn những gì bạn cần.",
     "Check application update...": "Kiểm tra cập nhật ứng dụng...",
     "Check for updates": "Kiểm tra cập nhật",
     "Check for updates to read the official catalog. A catalog file can also be opened without an Internet connection.": "Kiểm tra các bản cập nhật để đọc danh mục chính thức. Tệp danh mục cũng có thể được mở mà không cần kết nối Internet.",

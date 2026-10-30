@@ -148,9 +148,10 @@ void Sidebar::paintEvent(QPaintEvent *)
     p.setRenderHint(QPainter::Antialiasing);
     p.setPen(Qt::NoPen);
     if(m_activeY>=0){
-        const qreal surfaceY=m_hoverY<0?m_activeY:m_activeY+(m_hoverY-m_activeY)*qBound(0.0,m_hoverOpacity,1.0);
-        QColor fill=Theme::color("sidebarMiddle").lighter(145);for(SidebarItem *button:m_buttons)if(button->isDown()){fill=fill.darker(108);break;}
-        p.setBrush(fill);p.drawRoundedRect(QRectF(8,surfaceY+4,width()-16,58),12,12);
+        const QRectF active(8,m_activeY+4,width()-16,58);QPainterPath activePath;activePath.addRoundedRect(active,12,12);
+        QColor fill=Theme::color("sidebarMiddle").lighter(145);for(SidebarItem *button:m_buttons)if(button->isChecked() && button->isDown()){fill=fill.darker(108);break;}
+        p.fillPath(activePath,fill);
+        if(m_hoverY>=0 && m_hoverOpacity>.001){QPainterPath hoverPath;hoverPath.addRoundedRect(QRectF(8,m_hoverY+4,width()-16,58),12,12);QColor hover(Qt::white);hover.setAlpha(qRound(24*m_hoverOpacity));p.fillPath(hoverPath.subtracted(activePath),hover);}
         p.setBrush(Theme::color("accentSoft"));p.drawRoundedRect(QRectF(layoutDirection()==Qt::RightToLeft?width()-6:2,m_activeY+17,4,32),2,2);
     }
     // The top-level window paints the sidebar surface once at the outer edge.

@@ -171,7 +171,6 @@
     "Cannot verify the copied file.": "نمی تواند فایل کپی شده را تأیید کند.\nکاتالوگ",
     "Cannot verify the update executable.": "نمی تواند فایل اجرایی به روز رسانی را تأیید کند.",
     "Cannot write the application update.": "نمی تواند به روز رسانی برنامه را بنویسد.",
-    "Catalog ready: %1 indexes and %2 packages. Select what you need.": "آماده: فهرست های %1 و بسته های %2. آنچه را که نیاز دارید انتخاب کنید.",
     "Check application update...": "بررسی آپدیت برنامه...",
     "Check for updates": "به روز رسانی را بررسی کنید",
     "Check for updates to read the official catalog. A catalog file can also be opened without an Internet connection.": "برای خواندن کاتالوگ رسمی، به روز رسانی ها را بررسی کنید. یک فایل کاتالوگ نیز می تواند بدون اتصال به اینترنت باز شود.",
