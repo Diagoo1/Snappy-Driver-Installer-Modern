@@ -94,7 +94,10 @@ protected:
     void leaveEvent(QEvent *event) Q_DECL_OVERRIDE {setProperty("hoverRow",-1);viewport()->update();QTreeWidget::leaveEvent(event);}
     void drawRow(QPainter *p,const QStyleOptionViewItem &option,const QModelIndex &index)const Q_DECL_OVERRIDE {
         const bool hovered=property("hoverRow").toInt()==index.data(Qt::UserRole).toInt() && property("hoverCandidate").toInt()==index.data(Qt::UserRole+1).toInt();
-        if(hovered || selectionModel()->isSelected(index)){p->save();p->setRenderHint(QPainter::Antialiasing);p->setPen(Qt::NoPen);p->setBrush(Theme::color("elevated",Theme::isDark(this)));p->drawRoundedRect(QRectF(2,option.rect.top()+3,viewport()->width()-4,option.rect.height()-6),12,12);p->restore();}
+        const bool category=index.data(Qt::UserRole+13).toBool(),dark=Theme::isDark(this);
+        // Paint categories across the branch gutter too, so the chevron and label
+        // share one rounded surface and one hover state in either direction.
+        if(category || hovered || selectionModel()->isSelected(index)){p->save();p->setRenderHint(QPainter::Antialiasing);p->setPen(Qt::NoPen);p->setBrush(category?(dark?(hovered?QColor("#2D5262"):QColor("#244555")):(hovered?QColor("#DDEEF2"):QColor("#EAF4F6"))):Theme::color("elevated",dark));const int inset=category?5:3;p->drawRoundedRect(QRectF(2,option.rect.top()+inset,viewport()->width()-4,option.rect.height()-2*inset),category?13:12,category?13:12);p->restore();}
         QStyleOptionViewItem clean(option);clean.state &= ~(QStyle::State_MouseOver|QStyle::State_Selected|QStyle::State_HasFocus);QTreeWidget::drawRow(p,clean,index);
     }
     void drawBranches(QPainter *p,const QRect &rect,const QModelIndex &index)const Q_DECL_OVERRIDE {
