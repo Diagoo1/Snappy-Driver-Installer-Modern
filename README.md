@@ -1,69 +1,121 @@
 <div align="center">
-  <img src="assets/tarek-sadek-logo.png" width="92" alt="Snappy Driver Installer Modern">
+  <img src="assets/tarek-sadek-logo.png" width="100" alt="Snappy Driver Installer Modern">
   <h1>Snappy Driver Installer Modern</h1>
-  <p><strong>Original matching. A modern interface. A clearer driver workflow.</strong></p>
-  <p>A community project by <strong>Tarek Sadek · Diagoo1</strong></p>
+  <p><strong>Your driver library. The original matching engine. A modern Windows experience.</strong></p>
+  <p>Scan, compare and manage drivers from one portable application.<br>Created by <strong>Tarek Sadek · Diagoo1</strong></p>
   <p>
-    <img src="https://img.shields.io/badge/release-0.21.12_Beta-E9A23B" alt="Beta">
-    <img src="https://img.shields.io/badge/license-GPL--3.0-00857D" alt="GPL 3">
-    <img src="https://img.shields.io/badge/built_with-C%2B%2B_%2F_Qt-075266" alt="C++ and Qt">
+    <a href="https://github.com/Diagoo1/Snappy-Driver-Installer-Modern/releases/tag/v0.22.0"><img src="https://img.shields.io/badge/Download-0.22.0_Beta-008D86?style=for-the-badge" alt="Download Beta"></a>
+    <img src="https://img.shields.io/badge/License-GPL--3.0-075266?style=for-the-badge" alt="GPL 3">
+    <img src="https://img.shields.io/badge/Desktop-C%2B%2B_%2F_Qt-075266?style=for-the-badge" alt="C++ and Qt">
   </p>
-  <p><a href="README_AR.md">العربية</a> · <a href="https://github.com/Diagoo1/Snappy-Driver-Installer-Modern/releases/tag/v0.21.12">Download Beta</a> · <a href="docs/GALLERY.md">Screenshots</a> · <a href="https://github.com/Diagoo1/Snappy-Driver-Installer-Modern/issues/new?template=bug_report.yml">Report a bug</a></p>
+  <p><a href="README_AR.md">العربية</a> · <a href="#screenshots">Screenshots</a> · <a href="#get-started">Get started</a> · <a href="https://github.com/Diagoo1/Snappy-Driver-Installer-Modern/issues/new?template=bug_report.yml">Report a bug</a></p>
 </div>
 
-## Meet the project
+---
 
-A native Windows interface built around an embedded, pinned **Snappy Driver Installer Origin** engine. Browse installed drivers and matching alternatives, compare versions and follow installation from one dedicated page. The application ships as **one EXE**; driver packs and indexes remain separate.
+## Overview
 
-**This is a Beta.** Compatibility testing across hardware and Windows versions is ongoing. Actual installation, restore points and reboot require further disposable-system testing; this project is not an official SDI/SDIO release.
+**Snappy Driver Installer Modern** brings the driver workflow into a native, theme-aware Windows interface: organized device categories, clear version comparisons, explicit installation choices and readable results. It embeds a pinned **SDIO Origin** matching engine and works with local **SDI / SDIO library layouts**.
 
-## A look inside
+One executable contains the interface, fonts and engine. Your driver packs and indexes stay in separate folders, so an existing offline library can be reused without bundling gigabytes of drivers into the application.
 
-| English · Light | English · Dark |
+> **Public Beta · 0.22.0** — This consolidated release contains the accumulated engine integration and interface improvements. Hardware and Windows compatibility testing is ongoing. This is an independent community project, with original engine and contributor credits preserved.
+
+## Features at a glance
+
+| | What you can do |
 | --- | --- |
-| [![English light](docs/screenshots/en-light/01-drivers.png)](docs/screenshots/en-light/01-drivers.png) | [![English dark](docs/screenshots/en-dark/01-drivers.png)](docs/screenshots/en-dark/01-drivers.png) |
-| العربية · فاتح | العربية · داكن |
-| [![Arabic light](docs/screenshots/ar-light/01-drivers.png)](docs/screenshots/ar-light/01-drivers.png) | [![Arabic dark](docs/screenshots/ar-dark/01-drivers.png)](docs/screenshots/ar-dark/01-drivers.png) |
+| 🖥️ **Driver workspace** | Scan devices, browse collapsible categories, search and compare installed/available versions. |
+| 🎯 **Recommended view** | Start with eligible local engine recommendations; switch to all matches or custom filters when needed. Manual selections remain visible. |
+| 🔎 **Version comparison** | Inspect version, date, provider, INF, device identifiers and the actual driver-pack archive. |
+| 🛠️ **Installation workflow** | Review the plan and restore-point preference, follow each item's result and distinguish updates from reinstalls. |
+| 📦 **Offline libraries** | Detect SDI/SDIO directory layouts, select local packs/indexes, extract packages and maintain the private index cache. |
+| 🌐 **Package downloads** | Browse the online catalog, download/resume packages and configure sharing. |
+| 📊 **Diagnostics & tools** | Inspect system information, export reports and use supported maintenance/backup tools. |
+| 🎨 **Personalization** | Light/dark themes, theme import/export, independent interface scaling and embedded vector icons/fonts. |
+| 🌍 **Languages** | Complete collected English/Arabic interface coverage with RTL; 40 embedded catalogs, with partial English fallback in other locales. |
+| ⚙️ **Automation** | JSON plans and the implemented legacy command/script workflow. See the compatibility guide for scope. |
 
-[Open the full gallery](docs/GALLERY.md). Captures use sample data. Installation screens are explicit simulations, not evidence of a real install.
+## Screenshots
 
-## Tools for the whole workflow
+<table>
+<tr><th>English · Light</th><th>العربية · داكن</th></tr>
+<tr><td><a href="docs/screenshots/en-light/01-drivers.png"><img src="docs/screenshots/en-light/01-drivers.png" alt="Driver workspace in English, light mode" width="560"></a></td><td><a href="docs/screenshots/ar-dark/01-drivers.png"><img src="docs/screenshots/ar-dark/01-drivers.png" alt="Arabic RTL driver workspace in dark mode" width="560"></a></td></tr>
+<tr><th>Driver comparison</th><th>Diagnostics</th></tr>
+<tr><td><a href="docs/screenshots/en-dark/09-comparison.png"><img src="docs/screenshots/en-dark/09-comparison.png" alt="Driver version comparison" width="560"></a></td><td><a href="docs/screenshots/ar-light/03-diagnostics.png"><img src="docs/screenshots/ar-light/03-diagnostics.png" alt="Diagnostics in Arabic" width="560"></a></td></tr>
+</table>
 
-| Area | What you can do |
-| --- | --- |
-| Driver matching | Scan devices, inspect installed and alternative versions, compare candidates and select a specific version |
-| Installation | Review the selection and restore/restart options; reopen as administrator before installation when needed; follow per-driver results |
-| Offline libraries | Choose driver/index folders, download/resume packages, extract files and maintain indexes |
-| Device tools | View diagnostics, save/load snapshots and open Windows utilities |
-| Your interface | Arabic RTL, English, embedded Cairo/Satoshi fonts, light/dark, zoom and importable JSON themes |
-| Automation | Legacy commands/scripts and validated JSON installation plans |
-| Feedback | Review minimal environment details before opening a public GitHub issue; no automatic report or log upload |
+[**Explore the full gallery →**](docs/GALLERY.md) — English/Arabic, light/dark, settings, downloads, tools and installation screens. Captures use sample data; installation/completion images are labeled simulations, not records of a real installation.
 
-Stars indicate **relative matching priority**, not safety. Forty locales are embedded; English and Arabic cover current collected keys, while some new strings use English in other locales. Native translation review is welcome.
+## Explore the workspace
+
+### Drivers — from scan to an explicit choice
+
+- Browse graphics, chipset, audio, network and other device categories.
+- Use **Recommended view** for a focused list, or turn it off in **Match filters** to inspect every available match.
+- Expand a device to compare versions. Select the exact version you intend to install; select it again to clear it.
+- Open the details dialog for comparison, hardware identity and engine metadata. Stars express relative matching priority, not a safety or quality score.
+- Keep your place while making selections; selected versions and expanded categories survive list refreshes.
+
+### Installation — review, progress and results
+
+The installation page opens from the reviewed selection. It identifies reinstalls separately, displays the queue and reports each operation's outcome. A required restore point is requested before installation; if Windows cannot create it, installation stops with the actual reason.
+
+**Reinstalling the same version:** expand the device and select its installed-version row when an eligible matching local package exists. Installed Windows metadata alone is not a driver archive. Add/download that version's package and rescan if it is missing.
+
+### Library, diagnostics and settings
+
+Manage pack/index locations, inspect downloads and sharing, export local reports and use the available maintenance tools. Compatibility preview stages another Windows/architecture target until **Apply**; **Restore default** returns to this computer and rescans. Installation is disabled while previewing another target.
+
+Settings include language/RTL, theme, motion, interface size and the project's release channel. Preferences are stored in Windows Registry, with no adjacent INI file.
 
 ## Get started
 
-1. Download the EXE or portable archive from [0.21.12 Beta](https://github.com/Diagoo1/Snappy-Driver-Installer-Modern/releases/tag/v0.21.12).
-2. Place `drivers` and `indexes` beside it, or choose their locations in Settings. Packs are not included.
-3. Scan, compare versions and review your selection. If administrator access is needed, the app offers to reopen; scan and confirm again afterward. No selection is installed automatically after elevation.
+1. Download the **EXE** or **portable ZIP** from [0.22.0 Beta](https://github.com/Diagoo1/Snappy-Driver-Installer-Modern/releases/tag/v0.22.0).
+2. Place the application beside your library, or select its folders in Settings:
 
-To reinstall, select the installed version when its matching local package is available. The review and queue identify it as **Reinstall**; bulk selection follows the engine Recommended candidate, and reinstall operations remain clearly identified in the review.
+```text
+Your driver library/
+├── SnappyDriverInstaller-TS.exe
+├── drivers/                 ← your existing .7z driver packs
+└── indexes/
+    └── SDI/ or SDIO/         ← library indexes, when available
+```
 
-Device categories can be expanded or collapsed. Recommended view defaults to eligible local engine recommendations and your manual selections. Turn it off in Match filters to browse the full candidate list; changing an advanced filter switches to custom filtering. Compatibility target changes require **Apply**, and **Restore default** returns to this PC and rescans. After installation, the app refreshes matching automatically; Windows may still require a reboot to publish some installed versions.
+3. Scan the computer and review the recommended matches. No driver packs are included in the application download.
+4. Select the versions you need and review **Install options**. If elevation is required, reopen as Administrator, then scan and confirm again. Reopening never starts an installation automatically.
 
-Settings use your Windows Registry. No adjacent DLLs or INI are required. Automatic application updates follow the stable release channel; Beta downloads use their explicit release links.
+| Download | Contents |
+| --- | --- |
+| [Portable application](https://github.com/Diagoo1/Snappy-Driver-Installer-Modern/releases/download/v0.22.0/SnappyDriverInstaller-Modern-0.22.0-Beta-portable.zip) | One EXE with the license notices and quick-start text. No adjacent runtime DLLs. |
+| [Standalone EXE](https://github.com/Diagoo1/Snappy-Driver-Installer-Modern/releases/download/v0.22.0/SnappyDriverInstaller-TS.exe) | The same application executable. |
+| [Source code](https://github.com/Diagoo1/Snappy-Driver-Installer-Modern/releases/download/v0.22.0/SnappyDriverInstaller-Modern-0.22.0-source.zip) | The source snapshot for this release. |
+| [Screenshots](https://github.com/Diagoo1/Snappy-Driver-Installer-Modern/releases/download/v0.22.0/SnappyDriverInstaller-Modern-0.22.0-screenshots.zip) | The English/Arabic light/dark gallery. |
+| [SHA-256 checksums](https://github.com/Diagoo1/Snappy-Driver-Installer-Modern/releases/download/v0.22.0/SHA256SUMS.txt) | Integrity hashes for the published downloads. |
 
-## SDI, SDIO and Windows support
+## Compatibility & Beta status
 
-The app automatically detects **SDI and SDIO library layouts**, including flat, `indexes/SDI` and `indexes/SDIO` folders. When both exist, it uses the detected distribution or the index names matching your local packs. Native scanning and maintenance use a private application cache: compatible SDW 0x204/0x205 indexes are copied, while unsupported formats are regenerated from available local archives. Native processing does not overwrite the source library's indexes.
+| Area | Current scope |
+| --- | --- |
+| **Matching engine** | Embedded, pinned SDIO Origin; external SDI/SDIO executables are not launched. |
+| **SDI / SDIO libraries** | Auto-detected layouts. Compatible SDW 0x204/0x205 indexes are copied into a private cache; unsupported indexes can be regenerated from local archives. Source library indexes remain untouched. |
+| **Windows / architecture** | Static x86 build targeting XP–11, with an embedded x64 installation helper. Older Windows and actual 32-bit hosts still need validation. No native ARM64 build. |
+| **Hardware operations** | Real installs, restore creation, backup and reboot still need controlled hardware/VM testing. Read-only scans and fixture tests are recorded separately. |
+| **Application updates** | Automatic updates follow stable releases. The current consolidated download is a Beta; use Browse releases until a stable version is published. |
 
-Both layouts were tested with the same supplied SDI R2600 pack library and produced equal device/candidate counts. An unsupported-index regeneration case was also verified. The matching engine remains embedded SDIO Origin; there is no dependency on launching external SDI/SDIO executables, and every fork's index format is not guaranteed.
+Both library layouts were tested using the same supplied SDI R2600 pack library and returned equal device/candidate counts. This does not certify every fork's index format or universal Windows compatibility.
 
-The x86 build targets XP–11 and includes the helper used for x64 driver workflows. Older-Windows execution, actual 32-bit hosts and broad hardware compatibility remain unverified. This is not a native ARM64 build. Read the [validation scope](docs/VALIDATION.md) and [engine provenance](docs/ARCHITECTURE.md).
+[Validation results](docs/VALIDATION.md) · [Engine provenance](docs/ARCHITECTURE.md) · [SDI/SDIO parity audit](docs/SOURCE_PARITY_AUDIT_AR.md) · [Restore behavior](docs/RESTORE_BEHAVIOR.md)
 
-## Build and contribute
+## Report a problem & contribute
 
-Run **`BUILD.cmd`** for the interactive menu, or use:
+[**Open a bug report →**](https://github.com/Diagoo1/Snappy-Driver-Installer-Modern/issues/new?template=bug_report.yml) Include your Windows version/architecture, application version, steps to reproduce and a screenshot when useful. Review logs before attaching them to a public issue. The in-app bug report shows a preview and opens GitHub; it does not send an issue automatically.
+
+Hardware test results, reproducible bug reports, translation reviews and small focused pull requests are welcome. For scripts and command support, read the [legacy compatibility guide](docs/LEGACY_COMPATIBILITY_AR.md).
+
+## Build from source
+
+Use the single **`BUILD.cmd`** menu for setup, builds and checks:
 
 ```bat
 BUILD.cmd -PrepareStaticQt
@@ -73,20 +125,15 @@ BUILD.cmd -RunTests
 BUILD.cmd -Help
 ```
 
-[Build guide](docs/BUILDING.md) · [Engine comparison](docs/SOURCE_PARITY_AUDIT_AR.md) · [Legacy compatibility](docs/LEGACY_COMPATIBILITY_AR.md) · [Changelog](CHANGELOG.md)
+[Build instructions](docs/BUILDING.md) · [Changelog](CHANGELOG.md) · [License notices](docs/licenses)
 
-| Folder | Purpose |
-| --- | --- |
-| `src`, `native` | Interface, worker and engine integration |
-| `assets`, `i18n`, `themes` | Resources, translations and sample theme |
-| `tools` | Build, verification and release tools |
-| `tests` | Maintained regressions; not application runtime files |
-| `docs` | Guides, validation, gallery and legal notices |
+Build outputs, private reports, caches and vendor checkouts are excluded from Git. Standalone Satoshi fonts are fetched and fingerprint-checked during bootstrap rather than redistributed in the source archive.
 
-Build outputs, caches, private reports and vendor checkouts are excluded from Git. Standalone Satoshi fonts are fetched and fingerprint-checked during bootstrap rather than redistributed in source.
+---
 
-## License and credits
-
-GPL-3.0, preserving original SDIO and third-party rights. See [LICENSE](LICENSE-GPL-3.0.txt) and [dependency notices](docs/licenses). Driver matching and installation are based on SDIO contributors' work; the modern interface is developed by Tarek Sadek.
-
-<div align="center">Made with care by <strong>Tarek Sadek · Diagoo1</strong><br><a href="https://github.com/Diagoo1">More projects</a> · <a href="https://github.com/Diagoo1/Dreams-Software-Collection">Dreams Software Collection</a></div>
+<div align="center">
+  <h3>Made with ❤️ by Tarek Sadek</h3>
+  <p>Interface design & development · <a href="https://github.com/Diagoo1">Diagoo1</a><br>Creator of <a href="https://github.com/Diagoo1/Dreams-Software-Collection">Dreams Software Collection</a></p>
+  <p><a href="https://ko-fi.com/diagoo1">☕ Support on Ko-fi</a> · <a href="https://paypal.me/Diagoo1">PayPal</a> · <a href="mailto:tarek.sadek44@gmail.com">Contact</a></p>
+  <p>GPL-3.0 · Matching and installation are based on SDIO contributors' work.<br>Original engine and third-party rights are preserved. <a href="LICENSE-GPL-3.0.txt">Read the license</a>.</p>
+</div>

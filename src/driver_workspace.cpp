@@ -351,7 +351,7 @@ DriverWorkspace::DriverWorkspace(DriverCatalog *catalog,QWidget *parent)
     m_tree->setHeaderLabels(QStringList()<<QStringLiteral("Device / installed version")
                                           <<QStringLiteral("Status")<<QStringLiteral("Priority")<<QStringLiteral("Actions"));
     m_tree->setRootIsDecorated(true);
-    m_tree->setIndentation(21);
+    m_tree->setIndentation(36);
     m_tree->setAlternatingRowColors(false);
     m_tree->setMouseTracking(true);
     m_tree->setUniformRowHeights(false);
@@ -504,6 +504,8 @@ void DriverWorkspace::rebuild()
     QSet<int> expanded;QSet<QString> collapsedCategories;
     for(QTreeWidgetItemIterator it(m_tree);*it;++it){QTreeWidgetItem *item=*it;if(item->data(0,Qt::UserRole+13).toBool()){if(!item->isExpanded())collapsedCategories.insert(item->data(0,Qt::UserRole+14).toString());}else if(item->data(0,Qt::UserRole+1).toInt()==-1 && item->isExpanded())expanded.insert(item->data(0,Qt::UserRole).toInt());}
     const int scroll=m_tree->verticalScrollBar()->value();
+    const bool animated=m_tree->isAnimated();
+    m_tree->setAnimated(false);
     m_tree->setUpdatesEnabled(false);
     m_tree->clear();
     QMap<QString,QTreeWidgetItem*> categories;
@@ -570,10 +572,16 @@ void DriverWorkspace::rebuild()
 
     }
     for(auto it=categories.begin();it!=categories.end();++it){it.value()->setText(0,UiLanguage::text(it.key())+QStringLiteral("  ·  ")+QString::number(it.value()->childCount()));it.value()->setExpanded(!collapsedCategories.contains(it.key()));}
-    if (scroll>0) m_tree->verticalScrollBar()->setValue(scroll);
     m_rebuilding=false;
     m_tree->setUpdatesEnabled(true);
     updateCount();
+    // Clearing the model resets the scrollbar range. Measure the rebuilt rows
+    // and notice layout before restoring the position, otherwise Qt clamps it
+    // to zero while the new scroll range is still pending.
+    layout()->activate();
+    m_tree->doItemsLayout();
+    m_tree->verticalScrollBar()->setValue(scroll);
+    m_tree->setAnimated(animated);
 }
 
 void DriverWorkspace::populateCandidates(QTreeWidgetItem *root)

@@ -416,6 +416,17 @@ int main(int argc,char **argv){
         check(selectedVisible,"recommended view keeps a manually selected alternative visible");smartView->setChecked(false);QTest::qWait(30);
         check(nativeCatalog.chooseCandidate(0,12),"native alternative can be explicitly selected in model test");QTest::qWait(50);
         check(deviceItem(nativeTree)->data(2,Qt::UserRole+2).toInt()==1,"device row priority follows new selection rather than old recommendation");
+        sdiomodern::Snapshot longFixture=nativeFixture;longFixture.devices.clear();
+        for(int i=0;i<48;++i){sdiomodern::Device device=nativeDevice;device.name=L"SCROLL FIXTURE "+std::to_wstring(i);device.instanceId=L"SCROLL-ID-"+std::to_wstring(i);longFixture.devices.push_back(device);}
+        DriverCatalog longCatalog;longCatalog.replaceNative(longFixture);DriverWorkspace longBoard(&longCatalog);longBoard.setDemo(false);longBoard.setAnimations(false);longBoard.resize(1080,650);longBoard.show();QTest::qWait(40);
+        QTreeWidget *longTree=longBoard.findChild<QTreeWidget*>(QStringLiteral("driverTree"));longTree->scrollToItem(deviceItem(longTree,30),QAbstractItemView::PositionAtCenter);QTest::qWait(30);
+        const int beforeSelection=longTree->verticalScrollBar()->value();QTreeWidgetItem *scrolledDevice=deviceItem(longTree,30);
+        const int selectX=longTree->header()->sectionViewportPosition(3)+12;
+        QTest::mouseClick(longTree->viewport(),Qt::LeftButton,Qt::NoModifier,QPoint(selectX,longTree->visualItemRect(scrolledDevice).center().y()));QTest::qWait(80);
+        check(beforeSelection>1000 && longCatalog.entryRef(30).checked && qAbs(longTree->verticalScrollBar()->value()-beforeSelection)<=2,"selecting a driver far down the list preserves its scroll position after rebuilding");
+        bool stableScroll=true;for(int i=0;i<12;++i){longCatalog.setSelected(30,i%2==0);QTest::qWait(15);stableScroll=stableScroll && qAbs(longTree->verticalScrollBar()->value()-beforeSelection)<=2;}
+        check(stableScroll,"repeated selection changes do not jump a scrolled list back to the top");
+        check(longTree->indentation()==36,"branch gutter gives chevrons an inset inside the rounded surface");longBoard.close();
         sdiomodern::Snapshot missingFixture=nativeFixture;missingFixture.devices[0].candidates.resize(1);missingFixture.devices[0].candidates[0].local=false;
         DriverCatalog missingCatalog;missingCatalog.replaceNative(missingFixture);
         check(missingCatalog.entryRef(0).candidates[1].matchStars==5,"missing package retains its real match priority");

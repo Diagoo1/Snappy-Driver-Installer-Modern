@@ -56,13 +56,14 @@ void SidebarItem::paintEvent(QPaintEvent *)
     const bool active=isChecked(),rtl=layoutDirection()==Qt::RightToLeft;
     if (active) {
         p.setPen(Qt::NoPen);p.setBrush(Theme::color("sidebarMiddle").lighter(145));p.drawRoundedRect(rect().adjusted(8,4,-8,-4),12,12);
-        p.fillRect(QRect(rtl?width()-4:0,0,4,height()),Theme::color("accentSoft"));
+        p.setBrush(Theme::color("accentSoft"));
+        p.drawRoundedRect(QRectF(rtl?width()-6:2,(height()-32)/2.0,4,32),2,2);
     }
     if (m_hover>0.001) {
         QColor hover=Theme::color("accentSoft");hover.setAlphaF(m_hover * (active ? 0.18 : 0.29));
         p.setPen(Qt::NoPen);p.setBrush(hover);p.drawRoundedRect(rect().adjusted(8,4,-8,-4),12,12);
     }
-    if (isDown()) p.fillRect(rect(),QColor(1,22,41,42));
+    if (isDown()) {p.setPen(Qt::NoPen);p.setBrush(QColor(1,22,41,42));p.drawRoundedRect(rect().adjusted(8,4,-8,-4),12,12);}
     const int iconSize=24;
     const qreal openness=qBound(0.0,(width()-84)/140.0,1.0);
     const int logicalX=qRound(30-5*openness);

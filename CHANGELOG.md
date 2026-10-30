@@ -1,5 +1,14 @@
 # Changelog
 
+## 0.22.0 Beta — consolidated release
+
+- Consolidate all accumulated engine integration, offline libraries, downloads, automation, localization and interface improvements into one current public Beta. Earlier release entries below remain the source history.
+- Restore the driver list scrollbar only after completing the rebuilt row geometry; repeated selections no longer reset a scrolled list to the top. Disable expansion animations during internal rebuilds while keeping normal user animations.
+- Inset category/device chevrons with a wider branch gutter inside the shared rounded category/hover surfaces. Retain the enlarged header, labels and icons.
+- Use an inset rounded pill for the active sidebar marker and keep pressed backgrounds within the rounded navigation surface.
+- Replace English/Arabic project pages with a structured feature tour, paired gallery, download choices, setup guide, compatibility scope, contributor and support links.
+- Explain the absence of a stable update channel while the consolidated release remains a Beta.
+
 ## 0.21.12 Beta
 
 - Distinguish the rounded column header with a deep gradient and bright text, separate from quiet category bands.

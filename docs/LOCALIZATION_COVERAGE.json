@@ -1,14 +1,14 @@
 {
   "arabic": {
-    "translated": 931,
-    "total": 932,
+    "translated": 932,
+    "total": 933,
     "englishFallbacks": [
-      "Version: 0.21.12 (Beta)\nWindows: %1\nArchitecture: %2\nLanguage: %3\nTheme: %4"
+      "Version: 0.22.0 (Beta)\nWindows: %1\nArchitecture: %2\nLanguage: %3\nTheme: %4"
     ]
   },
   "armenian": {
     "translated": 854,
-    "total": 932,
+    "total": 933,
     "englishFallbacks": [
       "A restore point is required before reinstalling. If creation fails, installation stops.",
       "About compatibility preview",
@@ -53,6 +53,7 @@
       "Network",
       "No matching archive in this library",
       "No report is sent automatically. Hardware IDs, device names, paths and logs are not included. Check any screenshots or files you attach for private information.",
+      "No stable release is published yet. Open Browse releases in Settings to download the current Beta.",
       "Only the selected drivers will be installed on this computer.",
       "Open GitHub",
       "Open System Protection from Windows System Properties.",
@@ -85,14 +86,14 @@
       "The administrator restart was cancelled or could not start. Your selection is unchanged. Windows error: %1",
       "This view helps technicians prepare an offline driver library for another Windows version or architecture. It does not change Windows. Press Apply to scan that target; installation is disabled in preview. Restore default returns to this computer and refreshes its matches.",
       "To reinstall the same version, expand the device and select its installed version. The exact version must have an eligible local 7z package; Windows' installed-driver information alone is not an installation package. If it is absent, add or download that version's package and scan again. Turn off Recommended view in Match filters to browse installed devices without a recommended update. Create restore point in Install options applies to reinstallation too. Windows System Protection must be enabled; a required restore-point failure stops installation.",
-      "Version: 0.21.12 (Beta)\nWindows: %1\nArchitecture: %2\nLanguage: %3\nTheme: %4",
+      "Version: 0.22.0 (Beta)\nWindows: %1\nArchitecture: %2\nLanguage: %3\nTheme: %4",
       "Windows requested a restart. Some installed versions are reported only after reboot.",
       "[Bug] "
     ]
   },
   "azerbaijan": {
     "translated": 854,
-    "total": 932,
+    "total": 933,
     "englishFallbacks": [
       "A restore point is required before reinstalling. If creation fails, installation stops.",
       "About compatibility preview",
@@ -137,6 +138,7 @@
       "Network",
       "No matching archive in this library",
       "No report is sent automatically. Hardware IDs, device names, paths and logs are not included. Check any screenshots or files you attach for private information.",
+      "No stable release is published yet. Open Browse releases in Settings to download the current Beta.",
       "Only the selected drivers will be installed on this computer.",
       "Open GitHub",
       "Open System Protection from Windows System Properties.",
@@ -169,14 +171,14 @@
       "The administrator restart was cancelled or could not start. Your selection is unchanged. Windows error: %1",
       "This view helps technicians prepare an offline driver library for another Windows version or architecture. It does not change Windows. Press Apply to scan that target; installation is disabled in preview. Restore default returns to this computer and refreshes its matches.",
       "To reinstall the same version, expand the device and select its installed version. The exact version must have an eligible local 7z package; Windows' installed-driver information alone is not an installation package. If it is absent, add or download that version's package and scan again. Turn off Recommended view in Match filters to browse installed devices without a recommended update. Create restore point in Install options applies to reinstallation too. Windows System Protection must be enabled; a required restore-point failure stops installation.",
-      "Version: 0.21.12 (Beta)\nWindows: %1\nArchitecture: %2\nLanguage: %3\nTheme: %4",
+      "Version: 0.22.0 (Beta)\nWindows: %1\nArchitecture: %2\nLanguage: %3\nTheme: %4",
       "Windows requested a restart. Some installed versions are reported only after reboot.",
       "[Bug] "
     ]
   },
   "belarusian": {
     "translated": 854,
-    "total": 932,
+    "total": 933,
     "englishFallbacks": [
       "A restore point is required before reinstalling. If creation fails, installation stops.",
       "About compatibility preview",
@@ -221,6 +223,7 @@
       "Network",
       "No matching archive in this library",
       "No report is sent automatically. Hardware IDs, device names, paths and logs are not included. Check any screenshots or files you attach for private information.",
+      "No stable release is published yet. Open Browse releases in Settings to download the current Beta.",
       "Only the selected drivers will be installed on this computer.",
       "Open GitHub",
       "Open System Protection from Windows System Properties.",
@@ -253,14 +256,14 @@
       "The administrator restart was cancelled or could not start. Your selection is unchanged. Windows error: %1",
       "This view helps technicians prepare an offline driver library for another Windows version or architecture. It does not change Windows. Press Apply to scan that target; installation is disabled in preview. Restore default returns to this computer and refreshes its matches.",
       "To reinstall the same version, expand the device and select its installed version. The exact version must have an eligible local 7z package; Windows' installed-driver information alone is not an installation package. If it is absent, add or download that version's package and scan again. Turn off Recommended view in Match filters to browse installed devices without a recommended update. Create restore point in Install options applies to reinstallation too. Windows System Protection must be enabled; a required restore-point failure stops installation.",
-      "Version: 0.21.12 (Beta)\nWindows: %1\nArchitecture: %2\nLanguage: %3\nTheme: %4",
+      "Version: 0.22.0 (Beta)\nWindows: %1\nArchitecture: %2\nLanguage: %3\nTheme: %4",
       "Windows requested a restart. Some installed versions are reported only after reboot.",
       "[Bug] "
     ]
   },
   "brazilian": {
     "translated": 854,
-    "total": 932,
+    "total": 933,
     "englishFallbacks": [
       "A restore point is required before reinstalling. If creation fails, installation stops.",
       "About compatibility preview",
@@ -305,6 +308,7 @@
       "Network",
       "No matching archive in this library",
       "No report is sent automatically. Hardware IDs, device names, paths and logs are not included. Check any screenshots or files you attach for private information.",
+      "No stable release is published yet. Open Browse releases in Settings to download the current Beta.",
       "Only the selected drivers will be installed on this computer.",
       "Open GitHub",
       "Open System Protection from Windows System Properties.",
@@ -337,14 +341,14 @@
       "The administrator restart was cancelled or could not start. Your selection is unchanged. Windows error: %1",
       "This view helps technicians prepare an offline driver library for another Windows version or architecture. It does not change Windows. Press Apply to scan that target; installation is disabled in preview. Restore default returns to this computer and refreshes its matches.",
       "To reinstall the same version, expand the device and select its installed version. The exact version must have an eligible local 7z package; Windows' installed-driver information alone is not an installation package. If it is absent, add or download that version's package and scan again. Turn off Recommended view in Match filters to browse installed devices without a recommended update. Create restore point in Install options applies to reinstallation too. Windows System Protection must be enabled; a required restore-point failure stops installation.",
-      "Version: 0.21.12 (Beta)\nWindows: %1\nArchitecture: %2\nLanguage: %3\nTheme: %4",
+      "Version: 0.22.0 (Beta)\nWindows: %1\nArchitecture: %2\nLanguage: %3\nTheme: %4",
       "Windows requested a restart. Some installed versions are reported only after reboot.",
       "[Bug] "
     ]
   },
   "bulgarian": {
     "translated": 854,
-    "total": 932,
+    "total": 933,
     "englishFallbacks": [
       "A restore point is required before reinstalling. If creation fails, installation stops.",
       "About compatibility preview",
@@ -389,6 +393,7 @@
       "Network",
       "No matching archive in this library",
       "No report is sent automatically. Hardware IDs, device names, paths and logs are not included. Check any screenshots or files you attach for private information.",
+      "No stable release is published yet. Open Browse releases in Settings to download the current Beta.",
       "Only the selected drivers will be installed on this computer.",
       "Open GitHub",
       "Open System Protection from Windows System Properties.",
@@ -421,14 +426,14 @@
       "The administrator restart was cancelled or could not start. Your selection is unchanged. Windows error: %1",
       "This view helps technicians prepare an offline driver library for another Windows version or architecture. It does not change Windows. Press Apply to scan that target; installation is disabled in preview. Restore default returns to this computer and refreshes its matches.",
       "To reinstall the same version, expand the device and select its installed version. The exact version must have an eligible local 7z package; Windows' installed-driver information alone is not an installation package. If it is absent, add or download that version's package and scan again. Turn off Recommended view in Match filters to browse installed devices without a recommended update. Create restore point in Install options applies to reinstallation too. Windows System Protection must be enabled; a required restore-point failure stops installation.",
-      "Version: 0.21.12 (Beta)\nWindows: %1\nArchitecture: %2\nLanguage: %3\nTheme: %4",
+      "Version: 0.22.0 (Beta)\nWindows: %1\nArchitecture: %2\nLanguage: %3\nTheme: %4",
       "Windows requested a restart. Some installed versions are reported only after reboot.",
       "[Bug] "
     ]
   },
   "catalan": {
     "translated": 854,
-    "total": 932,
+    "total": 933,
     "englishFallbacks": [
       "A restore point is required before reinstalling. If creation fails, installation stops.",
       "About compatibility preview",
@@ -473,6 +478,7 @@
       "Network",
       "No matching archive in this library",
       "No report is sent automatically. Hardware IDs, device names, paths and logs are not included. Check any screenshots or files you attach for private information.",
+      "No stable release is published yet. Open Browse releases in Settings to download the current Beta.",
       "Only the selected drivers will be installed on this computer.",
       "Open GitHub",
       "Open System Protection from Windows System Properties.",
@@ -505,14 +511,14 @@
       "The administrator restart was cancelled or could not start. Your selection is unchanged. Windows error: %1",
       "This view helps technicians prepare an offline driver library for another Windows version or architecture. It does not change Windows. Press Apply to scan that target; installation is disabled in preview. Restore default returns to this computer and refreshes its matches.",
       "To reinstall the same version, expand the device and select its installed version. The exact version must have an eligible local 7z package; Windows' installed-driver information alone is not an installation package. If it is absent, add or download that version's package and scan again. Turn off Recommended view in Match filters to browse installed devices without a recommended update. Create restore point in Install options applies to reinstallation too. Windows System Protection must be enabled; a required restore-point failure stops installation.",
-      "Version: 0.21.12 (Beta)\nWindows: %1\nArchitecture: %2\nLanguage: %3\nTheme: %4",
+      "Version: 0.22.0 (Beta)\nWindows: %1\nArchitecture: %2\nLanguage: %3\nTheme: %4",
       "Windows requested a restart. Some installed versions are reported only after reboot.",
       "[Bug] "
     ]
   },
   "chinese_cn": {
     "translated": 854,
-    "total": 932,
+    "total": 933,
     "englishFallbacks": [
       "A restore point is required before reinstalling. If creation fails, installation stops.",
       "About compatibility preview",
@@ -557,6 +563,7 @@
       "Network",
       "No matching archive in this library",
       "No report is sent automatically. Hardware IDs, device names, paths and logs are not included. Check any screenshots or files you attach for private information.",
+      "No stable release is published yet. Open Browse releases in Settings to download the current Beta.",
       "Only the selected drivers will be installed on this computer.",
       "Open GitHub",
       "Open System Protection from Windows System Properties.",
@@ -589,14 +596,14 @@
       "The administrator restart was cancelled or could not start. Your selection is unchanged. Windows error: %1",
       "This view helps technicians prepare an offline driver library for another Windows version or architecture. It does not change Windows. Press Apply to scan that target; installation is disabled in preview. Restore default returns to this computer and refreshes its matches.",
       "To reinstall the same version, expand the device and select its installed version. The exact version must have an eligible local 7z package; Windows' installed-driver information alone is not an installation package. If it is absent, add or download that version's package and scan again. Turn off Recommended view in Match filters to browse installed devices without a recommended update. Create restore point in Install options applies to reinstallation too. Windows System Protection must be enabled; a required restore-point failure stops installation.",
-      "Version: 0.21.12 (Beta)\nWindows: %1\nArchitecture: %2\nLanguage: %3\nTheme: %4",
+      "Version: 0.22.0 (Beta)\nWindows: %1\nArchitecture: %2\nLanguage: %3\nTheme: %4",
       "Windows requested a restart. Some installed versions are reported only after reboot.",
       "[Bug] "
     ]
   },
   "chinese_tw": {
     "translated": 854,
-    "total": 932,
+    "total": 933,
     "englishFallbacks": [
       "A restore point is required before reinstalling. If creation fails, installation stops.",
       "About compatibility preview",
@@ -641,6 +648,7 @@
       "Network",
       "No matching archive in this library",
       "No report is sent automatically. Hardware IDs, device names, paths and logs are not included. Check any screenshots or files you attach for private information.",
+      "No stable release is published yet. Open Browse releases in Settings to download the current Beta.",
       "Only the selected drivers will be installed on this computer.",
       "Open GitHub",
       "Open System Protection from Windows System Properties.",
@@ -673,14 +681,14 @@
       "The administrator restart was cancelled or could not start. Your selection is unchanged. Windows error: %1",
       "This view helps technicians prepare an offline driver library for another Windows version or architecture. It does not change Windows. Press Apply to scan that target; installation is disabled in preview. Restore default returns to this computer and refreshes its matches.",
       "To reinstall the same version, expand the device and select its installed version. The exact version must have an eligible local 7z package; Windows' installed-driver information alone is not an installation package. If it is absent, add or download that version's package and scan again. Turn off Recommended view in Match filters to browse installed devices without a recommended update. Create restore point in Install options applies to reinstallation too. Windows System Protection must be enabled; a required restore-point failure stops installation.",
-      "Version: 0.21.12 (Beta)\nWindows: %1\nArchitecture: %2\nLanguage: %3\nTheme: %4",
+      "Version: 0.22.0 (Beta)\nWindows: %1\nArchitecture: %2\nLanguage: %3\nTheme: %4",
       "Windows requested a restart. Some installed versions are reported only after reboot.",
       "[Bug] "
     ]
   },
   "croatian": {
     "translated": 854,
-    "total": 932,
+    "total": 933,
     "englishFallbacks": [
       "A restore point is required before reinstalling. If creation fails, installation stops.",
       "About compatibility preview",
@@ -725,6 +733,7 @@
       "Network",
       "No matching archive in this library",
       "No report is sent automatically. Hardware IDs, device names, paths and logs are not included. Check any screenshots or files you attach for private information.",
+      "No stable release is published yet. Open Browse releases in Settings to download the current Beta.",
       "Only the selected drivers will be installed on this computer.",
       "Open GitHub",
       "Open System Protection from Windows System Properties.",
@@ -757,14 +766,14 @@
       "The administrator restart was cancelled or could not start. Your selection is unchanged. Windows error: %1",
       "This view helps technicians prepare an offline driver library for another Windows version or architecture. It does not change Windows. Press Apply to scan that target; installation is disabled in preview. Restore default returns to this computer and refreshes its matches.",
       "To reinstall the same version, expand the device and select its installed version. The exact version must have an eligible local 7z package; Windows' installed-driver information alone is not an installation package. If it is absent, add or download that version's package and scan again. Turn off Recommended view in Match filters to browse installed devices without a recommended update. Create restore point in Install options applies to reinstallation too. Windows System Protection must be enabled; a required restore-point failure stops installation.",
-      "Version: 0.21.12 (Beta)\nWindows: %1\nArchitecture: %2\nLanguage: %3\nTheme: %4",
+      "Version: 0.22.0 (Beta)\nWindows: %1\nArchitecture: %2\nLanguage: %3\nTheme: %4",
       "Windows requested a restart. Some installed versions are reported only after reboot.",
       "[Bug] "
     ]
   },
   "czech": {
     "translated": 854,
-    "total": 932,
+    "total": 933,
     "englishFallbacks": [
       "A restore point is required before reinstalling. If creation fails, installation stops.",
       "About compatibility preview",
@@ -809,6 +818,7 @@
       "Network",
       "No matching archive in this library",
       "No report is sent automatically. Hardware IDs, device names, paths and logs are not included. Check any screenshots or files you attach for private information.",
+      "No stable release is published yet. Open Browse releases in Settings to download the current Beta.",
       "Only the selected drivers will be installed on this computer.",
       "Open GitHub",
       "Open System Protection from Windows System Properties.",
@@ -841,14 +851,14 @@
       "The administrator restart was cancelled or could not start. Your selection is unchanged. Windows error: %1",
       "This view helps technicians prepare an offline driver library for another Windows version or architecture. It does not change Windows. Press Apply to scan that target; installation is disabled in preview. Restore default returns to this computer and refreshes its matches.",
       "To reinstall the same version, expand the device and select its installed version. The exact version must have an eligible local 7z package; Windows' installed-driver information alone is not an installation package. If it is absent, add or download that version's package and scan again. Turn off Recommended view in Match filters to browse installed devices without a recommended update. Create restore point in Install options applies to reinstallation too. Windows System Protection must be enabled; a required restore-point failure stops installation.",
-      "Version: 0.21.12 (Beta)\nWindows: %1\nArchitecture: %2\nLanguage: %3\nTheme: %4",
+      "Version: 0.22.0 (Beta)\nWindows: %1\nArchitecture: %2\nLanguage: %3\nTheme: %4",
       "Windows requested a restart. Some installed versions are reported only after reboot.",
       "[Bug] "
     ]
   },
   "danish": {
     "translated": 854,
-    "total": 932,
+    "total": 933,
     "englishFallbacks": [
       "A restore point is required before reinstalling. If creation fails, installation stops.",
       "About compatibility preview",
@@ -893,6 +903,7 @@
       "Network",
       "No matching archive in this library",
       "No report is sent automatically. Hardware IDs, device names, paths and logs are not included. Check any screenshots or files you attach for private information.",
+      "No stable release is published yet. Open Browse releases in Settings to download the current Beta.",
       "Only the selected drivers will be installed on this computer.",
       "Open GitHub",
       "Open System Protection from Windows System Properties.",
@@ -925,14 +936,14 @@
       "The administrator restart was cancelled or could not start. Your selection is unchanged. Windows error: %1",
       "This view helps technicians prepare an offline driver library for another Windows version or architecture. It does not change Windows. Press Apply to scan that target; installation is disabled in preview. Restore default returns to this computer and refreshes its matches.",
       "To reinstall the same version, expand the device and select its installed version. The exact version must have an eligible local 7z package; Windows' installed-driver information alone is not an installation package. If it is absent, add or download that version's package and scan again. Turn off Recommended view in Match filters to browse installed devices without a recommended update. Create restore point in Install options applies to reinstallation too. Windows System Protection must be enabled; a required restore-point failure stops installation.",
-      "Version: 0.21.12 (Beta)\nWindows: %1\nArchitecture: %2\nLanguage: %3\nTheme: %4",
+      "Version: 0.22.0 (Beta)\nWindows: %1\nArchitecture: %2\nLanguage: %3\nTheme: %4",
       "Windows requested a restart. Some installed versions are reported only after reboot.",
       "[Bug] "
     ]
   },
   "dutch": {
     "translated": 854,
-    "total": 932,
+    "total": 933,
     "englishFallbacks": [
       "A restore point is required before reinstalling. If creation fails, installation stops.",
       "About compatibility preview",
@@ -977,6 +988,7 @@
       "Network",
       "No matching archive in this library",
       "No report is sent automatically. Hardware IDs, device names, paths and logs are not included. Check any screenshots or files you attach for private information.",
+      "No stable release is published yet. Open Browse releases in Settings to download the current Beta.",
       "Only the selected drivers will be installed on this computer.",
       "Open GitHub",
       "Open System Protection from Windows System Properties.",
@@ -1009,19 +1021,19 @@
       "The administrator restart was cancelled or could not start. Your selection is unchanged. Windows error: %1",
       "This view helps technicians prepare an offline driver library for another Windows version or architecture. It does not change Windows. Press Apply to scan that target; installation is disabled in preview. Restore default returns to this computer and refreshes its matches.",
       "To reinstall the same version, expand the device and select its installed version. The exact version must have an eligible local 7z package; Windows' installed-driver information alone is not an installation package. If it is absent, add or download that version's package and scan again. Turn off Recommended view in Match filters to browse installed devices without a recommended update. Create restore point in Install options applies to reinstallation too. Windows System Protection must be enabled; a required restore-point failure stops installation.",
-      "Version: 0.21.12 (Beta)\nWindows: %1\nArchitecture: %2\nLanguage: %3\nTheme: %4",
+      "Version: 0.22.0 (Beta)\nWindows: %1\nArchitecture: %2\nLanguage: %3\nTheme: %4",
       "Windows requested a restart. Some installed versions are reported only after reboot.",
       "[Bug] "
     ]
   },
   "english": {
-    "translated": 932,
-    "total": 932,
+    "translated": 933,
+    "total": 933,
     "englishFallbacks": []
   },
   "estonian": {
     "translated": 854,
-    "total": 932,
+    "total": 933,
     "englishFallbacks": [
       "A restore point is required before reinstalling. If creation fails, installation stops.",
       "About compatibility preview",
@@ -1066,6 +1078,7 @@
       "Network",
       "No matching archive in this library",
       "No report is sent automatically. Hardware IDs, device names, paths and logs are not included. Check any screenshots or files you attach for private information.",
+      "No stable release is published yet. Open Browse releases in Settings to download the current Beta.",
       "Only the selected drivers will be installed on this computer.",
       "Open GitHub",
       "Open System Protection from Windows System Properties.",
@@ -1098,14 +1111,14 @@
       "The administrator restart was cancelled or could not start. Your selection is unchanged. Windows error: %1",
       "This view helps technicians prepare an offline driver library for another Windows version or architecture. It does not change Windows. Press Apply to scan that target; installation is disabled in preview. Restore default returns to this computer and refreshes its matches.",
       "To reinstall the same version, expand the device and select its installed version. The exact version must have an eligible local 7z package; Windows' installed-driver information alone is not an installation package. If it is absent, add or download that version's package and scan again. Turn off Recommended view in Match filters to browse installed devices without a recommended update. Create restore point in Install options applies to reinstallation too. Windows System Protection must be enabled; a required restore-point failure stops installation.",
-      "Version: 0.21.12 (Beta)\nWindows: %1\nArchitecture: %2\nLanguage: %3\nTheme: %4",
+      "Version: 0.22.0 (Beta)\nWindows: %1\nArchitecture: %2\nLanguage: %3\nTheme: %4",
       "Windows requested a restart. Some installed versions are reported only after reboot.",
       "[Bug] "
     ]
   },
   "farsi": {
     "translated": 854,
-    "total": 932,
+    "total": 933,
     "englishFallbacks": [
       "A restore point is required before reinstalling. If creation fails, installation stops.",
       "About compatibility preview",
@@ -1150,6 +1163,7 @@
       "Network",
       "No matching archive in this library",
       "No report is sent automatically. Hardware IDs, device names, paths and logs are not included. Check any screenshots or files you attach for private information.",
+      "No stable release is published yet. Open Browse releases in Settings to download the current Beta.",
       "Only the selected drivers will be installed on this computer.",
       "Open GitHub",
       "Open System Protection from Windows System Properties.",
@@ -1182,14 +1196,14 @@
       "The administrator restart was cancelled or could not start. Your selection is unchanged. Windows error: %1",
       "This view helps technicians prepare an offline driver library for another Windows version or architecture. It does not change Windows. Press Apply to scan that target; installation is disabled in preview. Restore default returns to this computer and refreshes its matches.",
       "To reinstall the same version, expand the device and select its installed version. The exact version must have an eligible local 7z package; Windows' installed-driver information alone is not an installation package. If it is absent, add or download that version's package and scan again. Turn off Recommended view in Match filters to browse installed devices without a recommended update. Create restore point in Install options applies to reinstallation too. Windows System Protection must be enabled; a required restore-point failure stops installation.",
-      "Version: 0.21.12 (Beta)\nWindows: %1\nArchitecture: %2\nLanguage: %3\nTheme: %4",
+      "Version: 0.22.0 (Beta)\nWindows: %1\nArchitecture: %2\nLanguage: %3\nTheme: %4",
       "Windows requested a restart. Some installed versions are reported only after reboot.",
       "[Bug] "
     ]
   },
   "french": {
     "translated": 854,
-    "total": 932,
+    "total": 933,
     "englishFallbacks": [
       "A restore point is required before reinstalling. If creation fails, installation stops.",
       "About compatibility preview",
@@ -1234,6 +1248,7 @@
       "Network",
       "No matching archive in this library",
       "No report is sent automatically. Hardware IDs, device names, paths and logs are not included. Check any screenshots or files you attach for private information.",
+      "No stable release is published yet. Open Browse releases in Settings to download the current Beta.",
       "Only the selected drivers will be installed on this computer.",
       "Open GitHub",
       "Open System Protection from Windows System Properties.",
@@ -1266,14 +1281,14 @@
       "The administrator restart was cancelled or could not start. Your selection is unchanged. Windows error: %1",
       "This view helps technicians prepare an offline driver library for another Windows version or architecture. It does not change Windows. Press Apply to scan that target; installation is disabled in preview. Restore default returns to this computer and refreshes its matches.",
       "To reinstall the same version, expand the device and select its installed version. The exact version must have an eligible local 7z package; Windows' installed-driver information alone is not an installation package. If it is absent, add or download that version's package and scan again. Turn off Recommended view in Match filters to browse installed devices without a recommended update. Create restore point in Install options applies to reinstallation too. Windows System Protection must be enabled; a required restore-point failure stops installation.",
-      "Version: 0.21.12 (Beta)\nWindows: %1\nArchitecture: %2\nLanguage: %3\nTheme: %4",
+      "Version: 0.22.0 (Beta)\nWindows: %1\nArchitecture: %2\nLanguage: %3\nTheme: %4",
       "Windows requested a restart. Some installed versions are reported only after reboot.",
       "[Bug] "
     ]
   },
   "georgian": {
     "translated": 854,
-    "total": 932,
+    "total": 933,
     "englishFallbacks": [
       "A restore point is required before reinstalling. If creation fails, installation stops.",
       "About compatibility preview",
@@ -1318,6 +1333,7 @@
       "Network",
       "No matching archive in this library",
       "No report is sent automatically. Hardware IDs, device names, paths and logs are not included. Check any screenshots or files you attach for private information.",
+      "No stable release is published yet. Open Browse releases in Settings to download the current Beta.",
       "Only the selected drivers will be installed on this computer.",
       "Open GitHub",
       "Open System Protection from Windows System Properties.",
@@ -1350,14 +1366,14 @@
       "The administrator restart was cancelled or could not start. Your selection is unchanged. Windows error: %1",
       "This view helps technicians prepare an offline driver library for another Windows version or architecture. It does not change Windows. Press Apply to scan that target; installation is disabled in preview. Restore default returns to this computer and refreshes its matches.",
       "To reinstall the same version, expand the device and select its installed version. The exact version must have an eligible local 7z package; Windows' installed-driver information alone is not an installation package. If it is absent, add or download that version's package and scan again. Turn off Recommended view in Match filters to browse installed devices without a recommended update. Create restore point in Install options applies to reinstallation too. Windows System Protection must be enabled; a required restore-point failure stops installation.",
-      "Version: 0.21.12 (Beta)\nWindows: %1\nArchitecture: %2\nLanguage: %3\nTheme: %4",
+      "Version: 0.22.0 (Beta)\nWindows: %1\nArchitecture: %2\nLanguage: %3\nTheme: %4",
       "Windows requested a restart. Some installed versions are reported only after reboot.",
       "[Bug] "
     ]
   },
   "german": {
     "translated": 854,
-    "total": 932,
+    "total": 933,
     "englishFallbacks": [
       "A restore point is required before reinstalling. If creation fails, installation stops.",
       "About compatibility preview",
@@ -1402,6 +1418,7 @@
       "Network",
       "No matching archive in this library",
       "No report is sent automatically. Hardware IDs, device names, paths and logs are not included. Check any screenshots or files you attach for private information.",
+      "No stable release is published yet. Open Browse releases in Settings to download the current Beta.",
       "Only the selected drivers will be installed on this computer.",
       "Open GitHub",
       "Open System Protection from Windows System Properties.",
@@ -1434,14 +1451,14 @@
       "The administrator restart was cancelled or could not start. Your selection is unchanged. Windows error: %1",
       "This view helps technicians prepare an offline driver library for another Windows version or architecture. It does not change Windows. Press Apply to scan that target; installation is disabled in preview. Restore default returns to this computer and refreshes its matches.",
       "To reinstall the same version, expand the device and select its installed version. The exact version must have an eligible local 7z package; Windows' installed-driver information alone is not an installation package. If it is absent, add or download that version's package and scan again. Turn off Recommended view in Match filters to browse installed devices without a recommended update. Create restore point in Install options applies to reinstallation too. Windows System Protection must be enabled; a required restore-point failure stops installation.",
-      "Version: 0.21.12 (Beta)\nWindows: %1\nArchitecture: %2\nLanguage: %3\nTheme: %4",
+      "Version: 0.22.0 (Beta)\nWindows: %1\nArchitecture: %2\nLanguage: %3\nTheme: %4",
       "Windows requested a restart. Some installed versions are reported only after reboot.",
       "[Bug] "
     ]
   },
   "greek": {
     "translated": 854,
-    "total": 932,
+    "total": 933,
     "englishFallbacks": [
       "A restore point is required before reinstalling. If creation fails, installation stops.",
       "About compatibility preview",
@@ -1486,6 +1503,7 @@
       "Network",
       "No matching archive in this library",
       "No report is sent automatically. Hardware IDs, device names, paths and logs are not included. Check any screenshots or files you attach for private information.",
+      "No stable release is published yet. Open Browse releases in Settings to download the current Beta.",
       "Only the selected drivers will be installed on this computer.",
       "Open GitHub",
       "Open System Protection from Windows System Properties.",
@@ -1518,14 +1536,14 @@
       "The administrator restart was cancelled or could not start. Your selection is unchanged. Windows error: %1",
       "This view helps technicians prepare an offline driver library for another Windows version or architecture. It does not change Windows. Press Apply to scan that target; installation is disabled in preview. Restore default returns to this computer and refreshes its matches.",
       "To reinstall the same version, expand the device and select its installed version. The exact version must have an eligible local 7z package; Windows' installed-driver information alone is not an installation package. If it is absent, add or download that version's package and scan again. Turn off Recommended view in Match filters to browse installed devices without a recommended update. Create restore point in Install options applies to reinstallation too. Windows System Protection must be enabled; a required restore-point failure stops installation.",
-      "Version: 0.21.12 (Beta)\nWindows: %1\nArchitecture: %2\nLanguage: %3\nTheme: %4",
+      "Version: 0.22.0 (Beta)\nWindows: %1\nArchitecture: %2\nLanguage: %3\nTheme: %4",
       "Windows requested a restart. Some installed versions are reported only after reboot.",
       "[Bug] "
     ]
   },
   "hungarian": {
     "translated": 854,
-    "total": 932,
+    "total": 933,
     "englishFallbacks": [
       "A restore point is required before reinstalling. If creation fails, installation stops.",
       "About compatibility preview",
@@ -1570,6 +1588,7 @@
       "Network",
       "No matching archive in this library",
       "No report is sent automatically. Hardware IDs, device names, paths and logs are not included. Check any screenshots or files you attach for private information.",
+      "No stable release is published yet. Open Browse releases in Settings to download the current Beta.",
       "Only the selected drivers will be installed on this computer.",
       "Open GitHub",
       "Open System Protection from Windows System Properties.",
@@ -1602,14 +1621,14 @@
       "The administrator restart was cancelled or could not start. Your selection is unchanged. Windows error: %1",
       "This view helps technicians prepare an offline driver library for another Windows version or architecture. It does not change Windows. Press Apply to scan that target; installation is disabled in preview. Restore default returns to this computer and refreshes its matches.",
       "To reinstall the same version, expand the device and select its installed version. The exact version must have an eligible local 7z package; Windows' installed-driver information alone is not an installation package. If it is absent, add or download that version's package and scan again. Turn off Recommended view in Match filters to browse installed devices without a recommended update. Create restore point in Install options applies to reinstallation too. Windows System Protection must be enabled; a required restore-point failure stops installation.",
-      "Version: 0.21.12 (Beta)\nWindows: %1\nArchitecture: %2\nLanguage: %3\nTheme: %4",
+      "Version: 0.22.0 (Beta)\nWindows: %1\nArchitecture: %2\nLanguage: %3\nTheme: %4",
       "Windows requested a restart. Some installed versions are reported only after reboot.",
       "[Bug] "
     ]
   },
   "indonesian": {
     "translated": 854,
-    "total": 932,
+    "total": 933,
     "englishFallbacks": [
       "A restore point is required before reinstalling. If creation fails, installation stops.",
       "About compatibility preview",
@@ -1654,6 +1673,7 @@
       "Network",
       "No matching archive in this library",
       "No report is sent automatically. Hardware IDs, device names, paths and logs are not included. Check any screenshots or files you attach for private information.",
+      "No stable release is published yet. Open Browse releases in Settings to download the current Beta.",
       "Only the selected drivers will be installed on this computer.",
       "Open GitHub",
       "Open System Protection from Windows System Properties.",
@@ -1686,14 +1706,14 @@
       "The administrator restart was cancelled or could not start. Your selection is unchanged. Windows error: %1",
       "This view helps technicians prepare an offline driver library for another Windows version or architecture. It does not change Windows. Press Apply to scan that target; installation is disabled in preview. Restore default returns to this computer and refreshes its matches.",
       "To reinstall the same version, expand the device and select its installed version. The exact version must have an eligible local 7z package; Windows' installed-driver information alone is not an installation package. If it is absent, add or download that version's package and scan again. Turn off Recommended view in Match filters to browse installed devices without a recommended update. Create restore point in Install options applies to reinstallation too. Windows System Protection must be enabled; a required restore-point failure stops installation.",
-      "Version: 0.21.12 (Beta)\nWindows: %1\nArchitecture: %2\nLanguage: %3\nTheme: %4",
+      "Version: 0.22.0 (Beta)\nWindows: %1\nArchitecture: %2\nLanguage: %3\nTheme: %4",
       "Windows requested a restart. Some installed versions are reported only after reboot.",
       "[Bug] "
     ]
   },
   "italian": {
     "translated": 854,
-    "total": 932,
+    "total": 933,
     "englishFallbacks": [
       "A restore point is required before reinstalling. If creation fails, installation stops.",
       "About compatibility preview",
@@ -1738,6 +1758,7 @@
       "Network",
       "No matching archive in this library",
       "No report is sent automatically. Hardware IDs, device names, paths and logs are not included. Check any screenshots or files you attach for private information.",
+      "No stable release is published yet. Open Browse releases in Settings to download the current Beta.",
       "Only the selected drivers will be installed on this computer.",
       "Open GitHub",
       "Open System Protection from Windows System Properties.",
@@ -1770,14 +1791,14 @@
       "The administrator restart was cancelled or could not start. Your selection is unchanged. Windows error: %1",
       "This view helps technicians prepare an offline driver library for another Windows version or architecture. It does not change Windows. Press Apply to scan that target; installation is disabled in preview. Restore default returns to this computer and refreshes its matches.",
       "To reinstall the same version, expand the device and select its installed version. The exact version must have an eligible local 7z package; Windows' installed-driver information alone is not an installation package. If it is absent, add or download that version's package and scan again. Turn off Recommended view in Match filters to browse installed devices without a recommended update. Create restore point in Install options applies to reinstallation too. Windows System Protection must be enabled; a required restore-point failure stops installation.",
-      "Version: 0.21.12 (Beta)\nWindows: %1\nArchitecture: %2\nLanguage: %3\nTheme: %4",
+      "Version: 0.22.0 (Beta)\nWindows: %1\nArchitecture: %2\nLanguage: %3\nTheme: %4",
       "Windows requested a restart. Some installed versions are reported only after reboot.",
       "[Bug] "
     ]
   },
   "japanese": {
     "translated": 854,
-    "total": 932,
+    "total": 933,
     "englishFallbacks": [
       "A restore point is required before reinstalling. If creation fails, installation stops.",
       "About compatibility preview",
@@ -1822,6 +1843,7 @@
       "Network",
       "No matching archive in this library",
       "No report is sent automatically. Hardware IDs, device names, paths and logs are not included. Check any screenshots or files you attach for private information.",
+      "No stable release is published yet. Open Browse releases in Settings to download the current Beta.",
       "Only the selected drivers will be installed on this computer.",
       "Open GitHub",
       "Open System Protection from Windows System Properties.",
@@ -1854,14 +1876,14 @@
       "The administrator restart was cancelled or could not start. Your selection is unchanged. Windows error: %1",
       "This view helps technicians prepare an offline driver library for another Windows version or architecture. It does not change Windows. Press Apply to scan that target; installation is disabled in preview. Restore default returns to this computer and refreshes its matches.",
       "To reinstall the same version, expand the device and select its installed version. The exact version must have an eligible local 7z package; Windows' installed-driver information alone is not an installation package. If it is absent, add or download that version's package and scan again. Turn off Recommended view in Match filters to browse installed devices without a recommended update. Create restore point in Install options applies to reinstallation too. Windows System Protection must be enabled; a required restore-point failure stops installation.",
-      "Version: 0.21.12 (Beta)\nWindows: %1\nArchitecture: %2\nLanguage: %3\nTheme: %4",
+      "Version: 0.22.0 (Beta)\nWindows: %1\nArchitecture: %2\nLanguage: %3\nTheme: %4",
       "Windows requested a restart. Some installed versions are reported only after reboot.",
       "[Bug] "
     ]
   },
   "korean": {
     "translated": 854,
-    "total": 932,
+    "total": 933,
     "englishFallbacks": [
       "A restore point is required before reinstalling. If creation fails, installation stops.",
       "About compatibility preview",
@@ -1906,6 +1928,7 @@
       "Network",
       "No matching archive in this library",
       "No report is sent automatically. Hardware IDs, device names, paths and logs are not included. Check any screenshots or files you attach for private information.",
+      "No stable release is published yet. Open Browse releases in Settings to download the current Beta.",
       "Only the selected drivers will be installed on this computer.",
       "Open GitHub",
       "Open System Protection from Windows System Properties.",
@@ -1938,14 +1961,14 @@
       "The administrator restart was cancelled or could not start. Your selection is unchanged. Windows error: %1",
       "This view helps technicians prepare an offline driver library for another Windows version or architecture. It does not change Windows. Press Apply to scan that target; installation is disabled in preview. Restore default returns to this computer and refreshes its matches.",
       "To reinstall the same version, expand the device and select its installed version. The exact version must have an eligible local 7z package; Windows' installed-driver information alone is not an installation package. If it is absent, add or download that version's package and scan again. Turn off Recommended view in Match filters to browse installed devices without a recommended update. Create restore point in Install options applies to reinstallation too. Windows System Protection must be enabled; a required restore-point failure stops installation.",
-      "Version: 0.21.12 (Beta)\nWindows: %1\nArchitecture: %2\nLanguage: %3\nTheme: %4",
+      "Version: 0.22.0 (Beta)\nWindows: %1\nArchitecture: %2\nLanguage: %3\nTheme: %4",
       "Windows requested a restart. Some installed versions are reported only after reboot.",
       "[Bug] "
     ]
   },
   "latvian": {
     "translated": 854,
-    "total": 932,
+    "total": 933,
     "englishFallbacks": [
       "A restore point is required before reinstalling. If creation fails, installation stops.",
       "About compatibility preview",
@@ -1990,6 +2013,7 @@
       "Network",
       "No matching archive in this library",
       "No report is sent automatically. Hardware IDs, device names, paths and logs are not included. Check any screenshots or files you attach for private information.",
+      "No stable release is published yet. Open Browse releases in Settings to download the current Beta.",
       "Only the selected drivers will be installed on this computer.",
       "Open GitHub",
       "Open System Protection from Windows System Properties.",
@@ -2022,14 +2046,14 @@
       "The administrator restart was cancelled or could not start. Your selection is unchanged. Windows error: %1",
       "This view helps technicians prepare an offline driver library for another Windows version or architecture. It does not change Windows. Press Apply to scan that target; installation is disabled in preview. Restore default returns to this computer and refreshes its matches.",
       "To reinstall the same version, expand the device and select its installed version. The exact version must have an eligible local 7z package; Windows' installed-driver information alone is not an installation package. If it is absent, add or download that version's package and scan again. Turn off Recommended view in Match filters to browse installed devices without a recommended update. Create restore point in Install options applies to reinstallation too. Windows System Protection must be enabled; a required restore-point failure stops installation.",
-      "Version: 0.21.12 (Beta)\nWindows: %1\nArchitecture: %2\nLanguage: %3\nTheme: %4",
+      "Version: 0.22.0 (Beta)\nWindows: %1\nArchitecture: %2\nLanguage: %3\nTheme: %4",
       "Windows requested a restart. Some installed versions are reported only after reboot.",
       "[Bug] "
     ]
   },
   "lithuanian": {
     "translated": 854,
-    "total": 932,
+    "total": 933,
     "englishFallbacks": [
       "A restore point is required before reinstalling. If creation fails, installation stops.",
       "About compatibility preview",
@@ -2074,6 +2098,7 @@
       "Network",
       "No matching archive in this library",
       "No report is sent automatically. Hardware IDs, device names, paths and logs are not included. Check any screenshots or files you attach for private information.",
+      "No stable release is published yet. Open Browse releases in Settings to download the current Beta.",
       "Only the selected drivers will be installed on this computer.",
       "Open GitHub",
       "Open System Protection from Windows System Properties.",
@@ -2106,14 +2131,14 @@
       "The administrator restart was cancelled or could not start. Your selection is unchanged. Windows error: %1",
       "This view helps technicians prepare an offline driver library for another Windows version or architecture. It does not change Windows. Press Apply to scan that target; installation is disabled in preview. Restore default returns to this computer and refreshes its matches.",
       "To reinstall the same version, expand the device and select its installed version. The exact version must have an eligible local 7z package; Windows' installed-driver information alone is not an installation package. If it is absent, add or download that version's package and scan again. Turn off Recommended view in Match filters to browse installed devices without a recommended update. Create restore point in Install options applies to reinstallation too. Windows System Protection must be enabled; a required restore-point failure stops installation.",
-      "Version: 0.21.12 (Beta)\nWindows: %1\nArchitecture: %2\nLanguage: %3\nTheme: %4",
+      "Version: 0.22.0 (Beta)\nWindows: %1\nArchitecture: %2\nLanguage: %3\nTheme: %4",
       "Windows requested a restart. Some installed versions are reported only after reboot.",
       "[Bug] "
     ]
   },
   "norwegian": {
     "translated": 854,
-    "total": 932,
+    "total": 933,
     "englishFallbacks": [
       "A restore point is required before reinstalling. If creation fails, installation stops.",
       "About compatibility preview",
@@ -2158,6 +2183,7 @@
       "Network",
       "No matching archive in this library",
       "No report is sent automatically. Hardware IDs, device names, paths and logs are not included. Check any screenshots or files you attach for private information.",
+      "No stable release is published yet. Open Browse releases in Settings to download the current Beta.",
       "Only the selected drivers will be installed on this computer.",
       "Open GitHub",
       "Open System Protection from Windows System Properties.",
@@ -2190,14 +2216,14 @@
       "The administrator restart was cancelled or could not start. Your selection is unchanged. Windows error: %1",
       "This view helps technicians prepare an offline driver library for another Windows version or architecture. It does not change Windows. Press Apply to scan that target; installation is disabled in preview. Restore default returns to this computer and refreshes its matches.",
       "To reinstall the same version, expand the device and select its installed version. The exact version must have an eligible local 7z package; Windows' installed-driver information alone is not an installation package. If it is absent, add or download that version's package and scan again. Turn off Recommended view in Match filters to browse installed devices without a recommended update. Create restore point in Install options applies to reinstallation too. Windows System Protection must be enabled; a required restore-point failure stops installation.",
-      "Version: 0.21.12 (Beta)\nWindows: %1\nArchitecture: %2\nLanguage: %3\nTheme: %4",
+      "Version: 0.22.0 (Beta)\nWindows: %1\nArchitecture: %2\nLanguage: %3\nTheme: %4",
       "Windows requested a restart. Some installed versions are reported only after reboot.",
       "[Bug] "
     ]
   },
   "polish": {
     "translated": 854,
-    "total": 932,
+    "total": 933,
     "englishFallbacks": [
       "A restore point is required before reinstalling. If creation fails, installation stops.",
       "About compatibility preview",
@@ -2242,6 +2268,7 @@
       "Network",
       "No matching archive in this library",
       "No report is sent automatically. Hardware IDs, device names, paths and logs are not included. Check any screenshots or files you attach for private information.",
+      "No stable release is published yet. Open Browse releases in Settings to download the current Beta.",
       "Only the selected drivers will be installed on this computer.",
       "Open GitHub",
       "Open System Protection from Windows System Properties.",
@@ -2274,14 +2301,14 @@
       "The administrator restart was cancelled or could not start. Your selection is unchanged. Windows error: %1",
       "This view helps technicians prepare an offline driver library for another Windows version or architecture. It does not change Windows. Press Apply to scan that target; installation is disabled in preview. Restore default returns to this computer and refreshes its matches.",
       "To reinstall the same version, expand the device and select its installed version. The exact version must have an eligible local 7z package; Windows' installed-driver information alone is not an installation package. If it is absent, add or download that version's package and scan again. Turn off Recommended view in Match filters to browse installed devices without a recommended update. Create restore point in Install options applies to reinstallation too. Windows System Protection must be enabled; a required restore-point failure stops installation.",
-      "Version: 0.21.12 (Beta)\nWindows: %1\nArchitecture: %2\nLanguage: %3\nTheme: %4",
+      "Version: 0.22.0 (Beta)\nWindows: %1\nArchitecture: %2\nLanguage: %3\nTheme: %4",
       "Windows requested a restart. Some installed versions are reported only after reboot.",
       "[Bug] "
     ]
   },
   "portuguese": {
     "translated": 854,
-    "total": 932,
+    "total": 933,
     "englishFallbacks": [
       "A restore point is required before reinstalling. If creation fails, installation stops.",
       "About compatibility preview",
@@ -2326,6 +2353,7 @@
       "Network",
       "No matching archive in this library",
       "No report is sent automatically. Hardware IDs, device names, paths and logs are not included. Check any screenshots or files you attach for private information.",
+      "No stable release is published yet. Open Browse releases in Settings to download the current Beta.",
       "Only the selected drivers will be installed on this computer.",
       "Open GitHub",
       "Open System Protection from Windows System Properties.",
@@ -2358,14 +2386,14 @@
       "The administrator restart was cancelled or could not start. Your selection is unchanged. Windows error: %1",
       "This view helps technicians prepare an offline driver library for another Windows version or architecture. It does not change Windows. Press Apply to scan that target; installation is disabled in preview. Restore default returns to this computer and refreshes its matches.",
       "To reinstall the same version, expand the device and select its installed version. The exact version must have an eligible local 7z package; Windows' installed-driver information alone is not an installation package. If it is absent, add or download that version's package and scan again. Turn off Recommended view in Match filters to browse installed devices without a recommended update. Create restore point in Install options applies to reinstallation too. Windows System Protection must be enabled; a required restore-point failure stops installation.",
-      "Version: 0.21.12 (Beta)\nWindows: %1\nArchitecture: %2\nLanguage: %3\nTheme: %4",
+      "Version: 0.22.0 (Beta)\nWindows: %1\nArchitecture: %2\nLanguage: %3\nTheme: %4",
       "Windows requested a restart. Some installed versions are reported only after reboot.",
       "[Bug] "
     ]
   },
   "romanian": {
     "translated": 854,
-    "total": 932,
+    "total": 933,
     "englishFallbacks": [
       "A restore point is required before reinstalling. If creation fails, installation stops.",
       "About compatibility preview",
@@ -2410,6 +2438,7 @@
       "Network",
       "No matching archive in this library",
       "No report is sent automatically. Hardware IDs, device names, paths and logs are not included. Check any screenshots or files you attach for private information.",
+      "No stable release is published yet. Open Browse releases in Settings to download the current Beta.",
       "Only the selected drivers will be installed on this computer.",
       "Open GitHub",
       "Open System Protection from Windows System Properties.",
@@ -2442,14 +2471,14 @@
       "The administrator restart was cancelled or could not start. Your selection is unchanged. Windows error: %1",
       "This view helps technicians prepare an offline driver library for another Windows version or architecture. It does not change Windows. Press Apply to scan that target; installation is disabled in preview. Restore default returns to this computer and refreshes its matches.",
       "To reinstall the same version, expand the device and select its installed version. The exact version must have an eligible local 7z package; Windows' installed-driver information alone is not an installation package. If it is absent, add or download that version's package and scan again. Turn off Recommended view in Match filters to browse installed devices without a recommended update. Create restore point in Install options applies to reinstallation too. Windows System Protection must be enabled; a required restore-point failure stops installation.",
-      "Version: 0.21.12 (Beta)\nWindows: %1\nArchitecture: %2\nLanguage: %3\nTheme: %4",
+      "Version: 0.22.0 (Beta)\nWindows: %1\nArchitecture: %2\nLanguage: %3\nTheme: %4",
       "Windows requested a restart. Some installed versions are reported only after reboot.",
       "[Bug] "
     ]
   },
   "russian": {
     "translated": 854,
-    "total": 932,
+    "total": 933,
     "englishFallbacks": [
       "A restore point is required before reinstalling. If creation fails, installation stops.",
       "About compatibility preview",
@@ -2494,6 +2523,7 @@
       "Network",
       "No matching archive in this library",
       "No report is sent automatically. Hardware IDs, device names, paths and logs are not included. Check any screenshots or files you attach for private information.",
+      "No stable release is published yet. Open Browse releases in Settings to download the current Beta.",
       "Only the selected drivers will be installed on this computer.",
       "Open GitHub",
       "Open System Protection from Windows System Properties.",
@@ -2526,14 +2556,14 @@
       "The administrator restart was cancelled or could not start. Your selection is unchanged. Windows error: %1",
       "This view helps technicians prepare an offline driver library for another Windows version or architecture. It does not change Windows. Press Apply to scan that target; installation is disabled in preview. Restore default returns to this computer and refreshes its matches.",
       "To reinstall the same version, expand the device and select its installed version. The exact version must have an eligible local 7z package; Windows' installed-driver information alone is not an installation package. If it is absent, add or download that version's package and scan again. Turn off Recommended view in Match filters to browse installed devices without a recommended update. Create restore point in Install options applies to reinstallation too. Windows System Protection must be enabled; a required restore-point failure stops installation.",
-      "Version: 0.21.12 (Beta)\nWindows: %1\nArchitecture: %2\nLanguage: %3\nTheme: %4",
+      "Version: 0.22.0 (Beta)\nWindows: %1\nArchitecture: %2\nLanguage: %3\nTheme: %4",
       "Windows requested a restart. Some installed versions are reported only after reboot.",
       "[Bug] "
     ]
   },
   "serbian": {
     "translated": 854,
-    "total": 932,
+    "total": 933,
     "englishFallbacks": [
       "A restore point is required before reinstalling. If creation fails, installation stops.",
       "About compatibility preview",
@@ -2578,6 +2608,7 @@
       "Network",
       "No matching archive in this library",
       "No report is sent automatically. Hardware IDs, device names, paths and logs are not included. Check any screenshots or files you attach for private information.",
+      "No stable release is published yet. Open Browse releases in Settings to download the current Beta.",
       "Only the selected drivers will be installed on this computer.",
       "Open GitHub",
       "Open System Protection from Windows System Properties.",
@@ -2610,14 +2641,14 @@
       "The administrator restart was cancelled or could not start. Your selection is unchanged. Windows error: %1",
       "This view helps technicians prepare an offline driver library for another Windows version or architecture. It does not change Windows. Press Apply to scan that target; installation is disabled in preview. Restore default returns to this computer and refreshes its matches.",
       "To reinstall the same version, expand the device and select its installed version. The exact version must have an eligible local 7z package; Windows' installed-driver information alone is not an installation package. If it is absent, add or download that version's package and scan again. Turn off Recommended view in Match filters to browse installed devices without a recommended update. Create restore point in Install options applies to reinstallation too. Windows System Protection must be enabled; a required restore-point failure stops installation.",
-      "Version: 0.21.12 (Beta)\nWindows: %1\nArchitecture: %2\nLanguage: %3\nTheme: %4",
+      "Version: 0.22.0 (Beta)\nWindows: %1\nArchitecture: %2\nLanguage: %3\nTheme: %4",
       "Windows requested a restart. Some installed versions are reported only after reboot.",
       "[Bug] "
     ]
   },
   "slovenian": {
     "translated": 854,
-    "total": 932,
+    "total": 933,
     "englishFallbacks": [
       "A restore point is required before reinstalling. If creation fails, installation stops.",
       "About compatibility preview",
@@ -2662,6 +2693,7 @@
       "Network",
       "No matching archive in this library",
       "No report is sent automatically. Hardware IDs, device names, paths and logs are not included. Check any screenshots or files you attach for private information.",
+      "No stable release is published yet. Open Browse releases in Settings to download the current Beta.",
       "Only the selected drivers will be installed on this computer.",
       "Open GitHub",
       "Open System Protection from Windows System Properties.",
@@ -2694,14 +2726,14 @@
       "The administrator restart was cancelled or could not start. Your selection is unchanged. Windows error: %1",
       "This view helps technicians prepare an offline driver library for another Windows version or architecture. It does not change Windows. Press Apply to scan that target; installation is disabled in preview. Restore default returns to this computer and refreshes its matches.",
       "To reinstall the same version, expand the device and select its installed version. The exact version must have an eligible local 7z package; Windows' installed-driver information alone is not an installation package. If it is absent, add or download that version's package and scan again. Turn off Recommended view in Match filters to browse installed devices without a recommended update. Create restore point in Install options applies to reinstallation too. Windows System Protection must be enabled; a required restore-point failure stops installation.",
-      "Version: 0.21.12 (Beta)\nWindows: %1\nArchitecture: %2\nLanguage: %3\nTheme: %4",
+      "Version: 0.22.0 (Beta)\nWindows: %1\nArchitecture: %2\nLanguage: %3\nTheme: %4",
       "Windows requested a restart. Some installed versions are reported only after reboot.",
       "[Bug] "
     ]
   },
   "spanish": {
     "translated": 854,
-    "total": 932,
+    "total": 933,
     "englishFallbacks": [
       "A restore point is required before reinstalling. If creation fails, installation stops.",
       "About compatibility preview",
@@ -2746,6 +2778,7 @@
       "Network",
       "No matching archive in this library",
       "No report is sent automatically. Hardware IDs, device names, paths and logs are not included. Check any screenshots or files you attach for private information.",
+      "No stable release is published yet. Open Browse releases in Settings to download the current Beta.",
       "Only the selected drivers will be installed on this computer.",
       "Open GitHub",
       "Open System Protection from Windows System Properties.",
@@ -2778,14 +2811,14 @@
       "The administrator restart was cancelled or could not start. Your selection is unchanged. Windows error: %1",
       "This view helps technicians prepare an offline driver library for another Windows version or architecture. It does not change Windows. Press Apply to scan that target; installation is disabled in preview. Restore default returns to this computer and refreshes its matches.",
       "To reinstall the same version, expand the device and select its installed version. The exact version must have an eligible local 7z package; Windows' installed-driver information alone is not an installation package. If it is absent, add or download that version's package and scan again. Turn off Recommended view in Match filters to browse installed devices without a recommended update. Create restore point in Install options applies to reinstallation too. Windows System Protection must be enabled; a required restore-point failure stops installation.",
-      "Version: 0.21.12 (Beta)\nWindows: %1\nArchitecture: %2\nLanguage: %3\nTheme: %4",
+      "Version: 0.22.0 (Beta)\nWindows: %1\nArchitecture: %2\nLanguage: %3\nTheme: %4",
       "Windows requested a restart. Some installed versions are reported only after reboot.",
       "[Bug] "
     ]
   },
   "swedish": {
     "translated": 854,
-    "total": 932,
+    "total": 933,
     "englishFallbacks": [
       "A restore point is required before reinstalling. If creation fails, installation stops.",
       "About compatibility preview",
@@ -2830,6 +2863,7 @@
       "Network",
       "No matching archive in this library",
       "No report is sent automatically. Hardware IDs, device names, paths and logs are not included. Check any screenshots or files you attach for private information.",
+      "No stable release is published yet. Open Browse releases in Settings to download the current Beta.",
       "Only the selected drivers will be installed on this computer.",
       "Open GitHub",
       "Open System Protection from Windows System Properties.",
@@ -2862,14 +2896,14 @@
       "The administrator restart was cancelled or could not start. Your selection is unchanged. Windows error: %1",
       "This view helps technicians prepare an offline driver library for another Windows version or architecture. It does not change Windows. Press Apply to scan that target; installation is disabled in preview. Restore default returns to this computer and refreshes its matches.",
       "To reinstall the same version, expand the device and select its installed version. The exact version must have an eligible local 7z package; Windows' installed-driver information alone is not an installation package. If it is absent, add or download that version's package and scan again. Turn off Recommended view in Match filters to browse installed devices without a recommended update. Create restore point in Install options applies to reinstallation too. Windows System Protection must be enabled; a required restore-point failure stops installation.",
-      "Version: 0.21.12 (Beta)\nWindows: %1\nArchitecture: %2\nLanguage: %3\nTheme: %4",
+      "Version: 0.22.0 (Beta)\nWindows: %1\nArchitecture: %2\nLanguage: %3\nTheme: %4",
       "Windows requested a restart. Some installed versions are reported only after reboot.",
       "[Bug] "
     ]
   },
   "thai": {
     "translated": 854,
-    "total": 932,
+    "total": 933,
     "englishFallbacks": [
       "A restore point is required before reinstalling. If creation fails, installation stops.",
       "About compatibility preview",
@@ -2914,6 +2948,7 @@
       "Network",
       "No matching archive in this library",
       "No report is sent automatically. Hardware IDs, device names, paths and logs are not included. Check any screenshots or files you attach for private information.",
+      "No stable release is published yet. Open Browse releases in Settings to download the current Beta.",
       "Only the selected drivers will be installed on this computer.",
       "Open GitHub",
       "Open System Protection from Windows System Properties.",
@@ -2946,14 +2981,14 @@
       "The administrator restart was cancelled or could not start. Your selection is unchanged. Windows error: %1",
       "This view helps technicians prepare an offline driver library for another Windows version or architecture. It does not change Windows. Press Apply to scan that target; installation is disabled in preview. Restore default returns to this computer and refreshes its matches.",
       "To reinstall the same version, expand the device and select its installed version. The exact version must have an eligible local 7z package; Windows' installed-driver information alone is not an installation package. If it is absent, add or download that version's package and scan again. Turn off Recommended view in Match filters to browse installed devices without a recommended update. Create restore point in Install options applies to reinstallation too. Windows System Protection must be enabled; a required restore-point failure stops installation.",
-      "Version: 0.21.12 (Beta)\nWindows: %1\nArchitecture: %2\nLanguage: %3\nTheme: %4",
+      "Version: 0.22.0 (Beta)\nWindows: %1\nArchitecture: %2\nLanguage: %3\nTheme: %4",
       "Windows requested a restart. Some installed versions are reported only after reboot.",
       "[Bug] "
     ]
   },
   "turkish": {
     "translated": 854,
-    "total": 932,
+    "total": 933,
     "englishFallbacks": [
       "A restore point is required before reinstalling. If creation fails, installation stops.",
       "About compatibility preview",
@@ -2998,6 +3033,7 @@
       "Network",
       "No matching archive in this library",
       "No report is sent automatically. Hardware IDs, device names, paths and logs are not included. Check any screenshots or files you attach for private information.",
+      "No stable release is published yet. Open Browse releases in Settings to download the current Beta.",
       "Only the selected drivers will be installed on this computer.",
       "Open GitHub",
       "Open System Protection from Windows System Properties.",
@@ -3030,14 +3066,14 @@
       "The administrator restart was cancelled or could not start. Your selection is unchanged. Windows error: %1",
       "This view helps technicians prepare an offline driver library for another Windows version or architecture. It does not change Windows. Press Apply to scan that target; installation is disabled in preview. Restore default returns to this computer and refreshes its matches.",
       "To reinstall the same version, expand the device and select its installed version. The exact version must have an eligible local 7z package; Windows' installed-driver information alone is not an installation package. If it is absent, add or download that version's package and scan again. Turn off Recommended view in Match filters to browse installed devices without a recommended update. Create restore point in Install options applies to reinstallation too. Windows System Protection must be enabled; a required restore-point failure stops installation.",
-      "Version: 0.21.12 (Beta)\nWindows: %1\nArchitecture: %2\nLanguage: %3\nTheme: %4",
+      "Version: 0.22.0 (Beta)\nWindows: %1\nArchitecture: %2\nLanguage: %3\nTheme: %4",
       "Windows requested a restart. Some installed versions are reported only after reboot.",
       "[Bug] "
     ]
   },
   "ukrainian": {
     "translated": 854,
-    "total": 932,
+    "total": 933,
     "englishFallbacks": [
       "A restore point is required before reinstalling. If creation fails, installation stops.",
       "About compatibility preview",
@@ -3082,6 +3118,7 @@
       "Network",
       "No matching archive in this library",
       "No report is sent automatically. Hardware IDs, device names, paths and logs are not included. Check any screenshots or files you attach for private information.",
+      "No stable release is published yet. Open Browse releases in Settings to download the current Beta.",
       "Only the selected drivers will be installed on this computer.",
       "Open GitHub",
       "Open System Protection from Windows System Properties.",
@@ -3114,14 +3151,14 @@
       "The administrator restart was cancelled or could not start. Your selection is unchanged. Windows error: %1",
       "This view helps technicians prepare an offline driver library for another Windows version or architecture. It does not change Windows. Press Apply to scan that target; installation is disabled in preview. Restore default returns to this computer and refreshes its matches.",
       "To reinstall the same version, expand the device and select its installed version. The exact version must have an eligible local 7z package; Windows' installed-driver information alone is not an installation package. If it is absent, add or download that version's package and scan again. Turn off Recommended view in Match filters to browse installed devices without a recommended update. Create restore point in Install options applies to reinstallation too. Windows System Protection must be enabled; a required restore-point failure stops installation.",
-      "Version: 0.21.12 (Beta)\nWindows: %1\nArchitecture: %2\nLanguage: %3\nTheme: %4",
+      "Version: 0.22.0 (Beta)\nWindows: %1\nArchitecture: %2\nLanguage: %3\nTheme: %4",
       "Windows requested a restart. Some installed versions are reported only after reboot.",
       "[Bug] "
     ]
   },
   "vietnamese": {
     "translated": 854,
-    "total": 932,
+    "total": 933,
     "englishFallbacks": [
       "A restore point is required before reinstalling. If creation fails, installation stops.",
       "About compatibility preview",
@@ -3166,6 +3203,7 @@
       "Network",
       "No matching archive in this library",
       "No report is sent automatically. Hardware IDs, device names, paths and logs are not included. Check any screenshots or files you attach for private information.",
+      "No stable release is published yet. Open Browse releases in Settings to download the current Beta.",
       "Only the selected drivers will be installed on this computer.",
       "Open GitHub",
       "Open System Protection from Windows System Properties.",
@@ -3198,7 +3236,7 @@
       "The administrator restart was cancelled or could not start. Your selection is unchanged. Windows error: %1",
       "This view helps technicians prepare an offline driver library for another Windows version or architecture. It does not change Windows. Press Apply to scan that target; installation is disabled in preview. Restore default returns to this computer and refreshes its matches.",
       "To reinstall the same version, expand the device and select its installed version. The exact version must have an eligible local 7z package; Windows' installed-driver information alone is not an installation package. If it is absent, add or download that version's package and scan again. Turn off Recommended view in Match filters to browse installed devices without a recommended update. Create restore point in Install options applies to reinstallation too. Windows System Protection must be enabled; a required restore-point failure stops installation.",
-      "Version: 0.21.12 (Beta)\nWindows: %1\nArchitecture: %2\nLanguage: %3\nTheme: %4",
+      "Version: 0.22.0 (Beta)\nWindows: %1\nArchitecture: %2\nLanguage: %3\nTheme: %4",
       "Windows requested a restart. Some installed versions are reported only after reboot.",
       "[Bug] "
     ]
